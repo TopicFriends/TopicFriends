@@ -1,30 +1,68 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { AppComponent } from './app.component';
+import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { EventListComponent } from './event-list/event-list.component';
-import {MdButtonModule} from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdSlideToggleModule} from '@angular/material';
-import { MdIconModule,  } from '@angular/material';
+import { MdButtonModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdSlideToggleModule, MdIconModule } from '@angular/material';
+
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { LoginComponent } from './login/login.component';
 
 
 // import 'hammerjs';
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'event-list',
+    component: EventListComponent
+  },
+  {
+    path: 'event-details',
+    component: EventDetailsComponent
+  },
+  {
+    path: 'people-list',
+    component: UserListComponent
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     UserProfileComponent,
     UserListComponent,
-    EventListComponent
-  ],
+    EventListComponent,
+    EventDetailsComponent,
+    LoginComponent
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MdButtonModule,
     MdSlideToggleModule,
-    MdIconModule
+    MdIconModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
