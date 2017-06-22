@@ -10,8 +10,7 @@ import {MdSlideToggleModule} from '@angular/material';
 import { MdIconModule,  } from '@angular/material';
 
 
-
-import 'hammerjs';
+// import 'hammerjs';
 
 @NgModule({
   declarations: [
