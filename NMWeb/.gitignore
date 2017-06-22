@@ -9,7 +9,7 @@
 /node_modules
 
 # IDEs and editors
-/.idea
+#/.idea
 .project
 .classpath
 .c9/
@@ -17,6 +17,9 @@
 .settings/
 *.sublime-workspace
 
+# ======== IDE - WebStorm:
+.idea/workspace.xml
+# note keeping .idea itself, which has some potentially useful goodies like inspectionProfiles
 
 
 # IDE - VSCode
