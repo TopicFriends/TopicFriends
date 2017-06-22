@@ -4,5 +4,13 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: { /* FIXME: add separate firebase db for testing */
+    apiKey: 'AIzaSyDrpkKpJR_qFxCwtEs4jvcFF7HAfzRA42Y',
+    authDomain: 'peoplematcher-a18df.firebaseapp.com',
+    databaseURL: 'https://peoplematcher-a18df.firebaseio.com',
+    projectId: 'peoplematcher-a18df',
+    storageBucket: 'peoplematcher-a18df.appspot.com',
+    messagingSenderId: '284723983189'
+  },
 };

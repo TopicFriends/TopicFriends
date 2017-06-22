@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -11,6 +11,16 @@ import { MdSlideToggleModule, MdIconModule } from '@angular/material';
 
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { LoginComponent } from './login/login.component';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+
+// import {
+//   AngularFireModule,
+//   AngularFire,
+//   AuthMethods,
+//   AuthProviders} from 'angularfire2';
 
 
 // import 'hammerjs';
@@ -63,6 +73,10 @@ const appRoutes: Routes = [
     MdSlideToggleModule,
     MdIconModule,
     RouterModule.forRoot(appRoutes),
+    // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
   providers: [],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

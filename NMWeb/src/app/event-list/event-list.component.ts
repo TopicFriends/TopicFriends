@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 
 @Component({
   selector: 'app-event-list',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventListComponent implements OnInit {
 
-  constructor() { }
+  items: FirebaseListObservable<any>;
+
+  constructor(private db: AngularFireDatabase) {
+    this.items = db.list('Event');
+  }
 
   ngOnInit() {
   }
