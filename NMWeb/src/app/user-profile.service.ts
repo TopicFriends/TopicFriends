@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import {Observable} from "rxjs/Observable";
 
 export class WantedTopics {
   topics: string;
@@ -46,11 +47,12 @@ export class UserProfileService {
 
 
   userProfiles: FirebaseListObservable<any>;
+  myUserProfile = this.db.object('UserProfile/-KnIHsSBYiDR08YnJog5');
 
   constructor(
-      private db: AngularFireDatabase
+      private db: AngularFireDatabase,
   ) {
-    this.userProfiles = db.list('UserProfile');
+    this.userProfiles = db.list('UserProfile'); // just example
   }
 
 
@@ -58,4 +60,7 @@ export class UserProfileService {
     this.userProfiles.push(data); // FIXME: nasty crude quick stub
   }
 
+  getProfile(): Observable<UserProfile> {
+    return this.myUserProfile;
+  }
 }

@@ -9,12 +9,17 @@ import {UserProfile, UserProfileService, WhatUserWants} from '../user-profile.se
 export class UserProfileComponent implements OnInit {
 
   userProfile: UserProfile = new UserProfile();
-  whatUserWants = this.userProfile.whatUserWants;
+  userProfileObservable = this.userProfileService.getProfile();
+  whatUserWants: WhatUserWants;
 
   constructor(
     protected userProfileService: UserProfileService,
   ) {
-
+    this.userProfileObservable.subscribe(p => {
+      this.userProfile = p;
+      this.whatUserWants = this.userProfile.whatUserWants;
+      console.log('new user profile!', p);
+    });
   }
 
   ngOnInit() {
