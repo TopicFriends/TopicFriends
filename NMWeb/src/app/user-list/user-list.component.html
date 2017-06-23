@@ -1,3 +1,5 @@
-<p>
-  user-list works!
-</p>
+<h1>User List</h1>
+
+<ng-template ngFor let-item [ngForOf]="userList | async" >
+  <p>User: {{item | json}}</p>
+</ng-template>
