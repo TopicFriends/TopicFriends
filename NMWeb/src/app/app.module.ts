@@ -5,9 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { EventListComponent } from './event-list/event-list.component';
-import { MdButtonModule } from '@angular/material';
+import {MdButtonModule, MdSlideToggleModule, MdIconModule, MdListModule, MdCardModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdSlideToggleModule, MdIconModule } from '@angular/material';
 
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { LoginComponent } from './login/login.component';
@@ -19,7 +18,7 @@ import {UserProfileService} from './user-profile.service';
 import {FormsModule} from '@angular/forms';
 import {AuthService} from './user-profile/auth.service';
 import {UserListService} from './user-list.service';
-import { EventComponent } from './event-list/event/event.component';
+import { EventListItemComponent } from './event-list/event/event-list-item.component';
 
 // import {
 //   AngularFireModule,
@@ -70,7 +69,7 @@ const appRoutes: Routes = [
     EventListComponent,
     EventDetailsComponent,
     LoginComponent,
-    EventComponent
+    EventListItemComponent
     ],
   imports: [
     BrowserModule,
@@ -78,7 +77,9 @@ const appRoutes: Routes = [
     MdButtonModule,
     MdSlideToggleModule,
     MdIconModule,
+    MdListModule,
     RouterModule.forRoot(appRoutes),
+    MdCardModule,
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,

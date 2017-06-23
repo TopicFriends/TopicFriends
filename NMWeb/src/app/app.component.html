@@ -3,7 +3,7 @@
 <button md-button md-raised-button (click)="login()">Login via Google</button>
  User: {{ (user | async)?.uid }}
 
-<div style="text-align:center">
+<div>
     <h1>
         Welcome to {{title}}!
     </h1>
@@ -21,11 +21,11 @@
 <md-pseudo-checkbox>check-box 2</md-pseudo-checkbox>
 
 <router-outlet></router-outlet>
-<nav>
-  <button md-button md-raised-button><a routerLink="/" routerLinkActive="active">Default (Login)</a></button>
-  <button md-button md-raised-button><a routerLink="/login" routerLinkActive="active">Login</a></button>
-  <button md-button md-raised-button><a routerLink="/event-list" routerLinkActive="active">Event list</a></button>
-  <button md-button md-raised-button><a routerLink="/event-details" routerLinkActive="active">Event details</a></button>
-  <button md-button md-raised-button><a routerLink="/people-list" routerLinkActive="active">People list</a></button>
-  <button md-button md-raised-button><a routerLink="/profile" routerLinkActive="active">Profile</a></button>
-</nav>
+<md-nav-list>
+  <button md-button md-raised-button color="primary" routerLink="/" routerLinkActive="active">Default (Login)</button>
+  <button md-button md-raised-button color="primary" routerLink="/login" routerLinkActive="active">Login</button>
+  <button md-button md-raised-button color="primary" routerLink="/event-list" routerLinkActive="active">Event list</button>
+  <button md-button md-raised-button color="primary" routerLink="/event-details" routerLinkActive="active">Event details</button>
+  <button md-button md-raised-button color="primary" routerLink="/people-list" routerLinkActive="active">People list</button>
+  <button md-button md-raised-button color="primary" routerLink="/profile" routerLinkActive="active">Profile</button>
+</md-nav-list>
