@@ -1,3 +1,39 @@
+<hr/>
 <p>
-  user-profile works!
+  My Profile
 </p>
+<md-input-container>
+  <input mdInput placeholder="I would like to be hired for" >
+  <!--<md-error *ngIf="emailFormControl.hasError('required')">-->
+    <!--This field is required-->
+  <!--</md-error>-->
+  <!--<md-error *ngIf="emailFormControl.hasError('pattern')">-->
+    <!--Please enter a valid email address-->
+  <!--</md-error>-->
+</md-input-container>
+
+<md-input-container>
+  <input mdInput placeholder="I would like to be hired for" value="Ionic">
+</md-input-container>
+
+<md-input-container>
+  <input mdInput placeholder="I would like to find mentor" value="Angular, Ionic, Firebase">
+</md-input-container>
+
+<md-input-container>
+  <input mdInput placeholder="I would like to mentor someone in" value="Angular, Ionic, Firebase">
+</md-input-container>
+
+<md-input-container>
+  <input mdInput placeholder="I would like to exchange skills in" value="Angular, Ionic, Firebase">
+</md-input-container>
+
+<p>
+  <button md-button md-raised-button (click)="save()">Save</button>
+
+</p>
+
+
+<hr/>
+
+
