@@ -5,8 +5,8 @@
 
 <form>
   <md-input-container>
-    <input mdInput placeholder="I would like to be hired for" value="Ionic"
-           [(ngModel)]="whatUserWants.freelance.supply.topics" name="wantToBeFreelance">
+    <input mdInput placeholder="I would like to be hired for"   value="Ionic"
+           [(ngModel)]="userProfile?.whatUserWants?.freelance?.supply.topics" name="wantToBeFreelance">
   </md-input-container>
 
   <md-input-container>
@@ -33,7 +33,7 @@
   </md-input-container>
 
   <p>
-    <button md-button md-raised-button (click)="save()">Save</button>
+    <button md-button md-raised-button (click)="save()">Save <i>(Enter)</i></button>
 
   </p>
 

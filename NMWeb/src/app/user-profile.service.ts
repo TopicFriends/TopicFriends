@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 
 export class WantedTopics {
   topics: string;
@@ -45,9 +45,10 @@ export class UserProfile {
 @Injectable()
 export class UserProfileService {
 
+  userId = '-KnIHsSBYiDR08YnJog5';
 
   userProfiles: FirebaseListObservable<any>;
-  myUserProfile = this.db.object('UserProfile/-KnIHsSBYiDR08YnJog5');
+  myUserProfile = this.db.object(`UserProfile/${this.userId}`);
 
   constructor(
       private db: AngularFireDatabase,
@@ -57,7 +58,7 @@ export class UserProfileService {
 
 
   public saveUserProfile(data: UserProfile) {
-    this.userProfiles.push(data); // FIXME: nasty crude quick stub
+    this.userProfiles.update(this.userId, data); // FIXME: nasty crude quick stub
   }
 
   getProfile(): Observable<UserProfile> {

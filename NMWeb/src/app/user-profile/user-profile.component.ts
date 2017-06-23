@@ -10,15 +10,17 @@ export class UserProfileComponent implements OnInit {
 
   userProfile: UserProfile = new UserProfile();
   userProfileObservable = this.userProfileService.getProfile();
-  whatUserWants: WhatUserWants;
 
   constructor(
     protected userProfileService: UserProfileService,
   ) {
     this.userProfileObservable.subscribe(p => {
       this.userProfile = p;
-      this.whatUserWants = this.userProfile.whatUserWants;
+      // this.whatUserWants = this.userProfile.whatUserWants;
       console.log('new user profile!', p);
+      if ( ! (<any>p).whatUserWants ) {
+        this.userProfile = new UserProfile();
+      }
     });
   }
 
