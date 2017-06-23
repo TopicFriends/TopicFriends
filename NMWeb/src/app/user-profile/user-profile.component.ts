@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserProfile, WhatUserWants} from '../user-profile.service';
+import {UserProfile, UserProfileService, WhatUserWants} from '../user-profile.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,15 +8,20 @@ import {UserProfile, WhatUserWants} from '../user-profile.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  userProfile: UserProfile;
+  userProfile: UserProfile = new UserProfile();
+  whatUserWants = this.userProfile.whatUserWants;
 
-  constructor() { }
+  constructor(
+    protected userProfileService: UserProfileService,
+  ) {
+
+  }
 
   ngOnInit() {
   }
 
   save() {
-
+    this.userProfileService.saveUserProfile(this.userProfile);
   }
 
 }

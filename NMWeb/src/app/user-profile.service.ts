@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 
 export class WantedTopics {
   topics: string;
@@ -7,8 +8,8 @@ export class WantedTopics {
 
 /** Other potential names: GiveReceive, PassiveActive, FindAndBecome */
 export class SupplyDemand {
-  supply: WantedTopics;
-  demand: WantedTopics;
+  supply: WantedTopics = new WantedTopics();
+  demand: WantedTopics = new WantedTopics();
   // we can add more metadata, like time period
 }
 
@@ -16,12 +17,12 @@ export class WhatUserWants {
   /** General exchange of knowledge/skills and brainstorming */
   exchange: WantedTopics;
 
-  intern: SupplyDemand;
-  mentor: SupplyDemand;
-  freelance: SupplyDemand;
-  job: SupplyDemand;
-  sponsorEvents: SupplyDemand;
-  coFounderSpecializingIn: SupplyDemand;
+  intern: SupplyDemand = new SupplyDemand();
+  mentor: SupplyDemand = new SupplyDemand();
+  freelance: SupplyDemand = new SupplyDemand();
+  job: SupplyDemand  = new SupplyDemand();
+  sponsorEvents: SupplyDemand = new SupplyDemand();
+  coFounderSpecializingIn: SupplyDemand = new SupplyDemand();
 
   // TODO: old way, contemplate and remove:
   wantToFindMentor: WantedTopics;
@@ -36,7 +37,7 @@ export class WhatUserWants {
 export class UserProfile {
   name: string;
 
-  whatUserWants: WhatUserWants;
+  whatUserWants: WhatUserWants = new WhatUserWants();
 
 }
 
@@ -44,7 +45,17 @@ export class UserProfile {
 export class UserProfileService {
 
 
+  userProfiles: FirebaseListObservable<any>;
 
-  constructor() { }
+  constructor(
+      private db: AngularFireDatabase
+  ) {
+    this.userProfiles = db.list('UserProfile');
+  }
+
+
+  public saveUserProfile(data: UserProfile) {
+    this.userProfiles.push(data); // FIXME: nasty crude quick stub
+  }
 
 }
