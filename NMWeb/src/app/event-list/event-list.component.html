@@ -1,5 +1,5 @@
 <h1>Events</h1>
 
 <ng-template ngFor let-item [ngForOf]="items | async" >
-  <p>Event: {{item.$key}}</p>
+  <app-event [event]="item"></app-event>
 </ng-template>

@@ -19,6 +19,7 @@ import {UserProfileService} from './user-profile.service';
 import {FormsModule} from '@angular/forms';
 import {AuthService} from './user-profile/auth.service';
 import {UserListService} from './user-list.service';
+import { EventComponent } from './event-list/event/event.component';
 
 // import {
 //   AngularFireModule,
@@ -68,7 +69,8 @@ const appRoutes: Routes = [
     UserListComponent,
     EventListComponent,
     EventDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    EventComponent
     ],
   imports: [
     BrowserModule,
