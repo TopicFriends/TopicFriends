@@ -17,6 +17,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {UserProfileService} from './user-profile.service';
 import {FormsModule} from '@angular/forms';
+import {AuthService} from './user-profile/auth.service';
 
 // import {
 //   AngularFireModule,
@@ -81,7 +82,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     FormsModule,
   ],
-  providers: [UserProfileService],
+  providers: [AuthService, UserProfileService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })

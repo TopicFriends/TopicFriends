@@ -8,7 +8,7 @@ import {UserProfile, UserProfileService, WhatUserWants} from '../user-profile.se
 })
 export class UserProfileComponent implements OnInit {
 
-  userProfile: UserProfile = new UserProfile();
+  userProfile: UserProfile;
   userProfileObservable = this.userProfileService.getProfile();
 
   constructor(
