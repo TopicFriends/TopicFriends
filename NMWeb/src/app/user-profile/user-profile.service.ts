@@ -65,7 +65,8 @@ export class UserProfileService {
   ) {
     this.userProfiles = db.list('UserProfile'); // just example
     authService.user.subscribe(user => {
-      this.userId = user.uid;
+      console.log('authService.user.subscribe user', user);
+      this.userId = user && user.uid;
     })
   }
 
