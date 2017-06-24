@@ -21,6 +21,8 @@ export class UserProfileComponent implements OnInit {
     this._userProfileForm = this._fb.group({
       wantToBeFreelance: ['Desing, Devops, QA'],
       wantToHireFreelance: ['Angular, React, Ionic'],
+      wantToFindMentor: [''],
+      wantToBecomeMentor: [''],
     });
   }
 

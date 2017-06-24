@@ -25,29 +25,33 @@
     </md-input-container>
 
     <br />
-    <i class="material-icons">build</i>
     <md-input-container>
-      <input mdInput placeholder="I would like to be hired for" >
-      <!--<md-error *ngIf="emailFormControl.hasError('required')">-->
-      <!--This field is required-->
-      <!--</md-error>-->
-      <!--<md-error *ngIf="emailFormControl.hasError('pattern')">-->
-      <!--Please enter a valid email address-->
-      <!--</md-error>-->
+      <md-placeholder>
+        <md-icon>build</md-icon> I would like to <b>find mentor</b> with skills:
+      </md-placeholder>
+
+      <input mdInput
+             formControlName="wantToFindMentor"> <!-- ngModel variable is missing due to code crashing -->
     </md-input-container>
 
-
+    <br />
     <md-input-container>
-      <input mdInput placeholder="I would like to find mentor" value="Angular, Ionic, Firebase">
-    </md-input-container>
+      <input mdInput
+             formControlName="wantToBecomeMentor"> <!-- ngModel variable is missing due to code crashing -->
+      <md-placeholder>
+        <md-icon>build</md-icon> I would like to <b>become mentor</b> with skills:
+      </md-placeholder>
 
-    <md-input-container>
-      <input mdInput placeholder="I would like to mentor someone in" value="Angular, Ionic, Firebase">
-    </md-input-container>
+      <md-hint>
+        <md-icon>favorite</md-icon> Be a hero and help others learn! The good karma will come back to you.
+      </md-hint>
+      <!--<md-hint>-->
+        <!--I also <md-icon>home</md-icon> <i>italic</i> hint labels-->
+      <!--</md-hint>-->
 
-    <md-input-container>
-      <input mdInput placeholder="I would like to exchange skills in" value="Angular, Ionic, Firebase">
+
     </md-input-container>
+    <br />
 
     <p>
       <button md-button md-raised-button (click)="save()">Save <i>(Enter)</i></button>
