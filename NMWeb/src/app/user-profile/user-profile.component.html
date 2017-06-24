@@ -1,6 +1,7 @@
 <h2>
   My Profile
 </h2>
+<!--<p>userProfileService.userId: {{ userProfileService.userId }}</p>-->
 <ng-template [ngIf]="! userProfile" >Loading User Profile...</ng-template>
 <ng-template [ngIf]="! userProfileService.userId" >Please log in, to access your profile</ng-template>
 <ng-template [ngIf]="userProfileService.userId && userProfile">
@@ -13,7 +14,7 @@
 
     <md-input-container>
       <md-placeholder>
-        <md-icon>build</md-icon> I would like to <b>be hired as freelance</b> with skills
+        <md-icon>build</md-icon> I would like to <b><u>be hired</u> as freelance</b> with skills
       </md-placeholder>
       <input mdInput
              formControlName="wantToBeFreelance">
@@ -23,7 +24,7 @@
     <br />
     <md-input-container>
       <md-placeholder>
-        <md-icon>build</md-icon> I would like to <b>hire freelance</b> with skills:
+        <md-icon>build</md-icon> I would like to <b><u>hire</u> freelance</b> with skills:
       </md-placeholder>
 
       <input mdInput
@@ -33,7 +34,7 @@
     <br />
     <md-input-container>
       <md-placeholder>
-        <md-icon>build</md-icon> I would like to <b>find mentor</b> with skills:
+        <md-icon>build</md-icon> I would like to <b><u>find</u> a mentor</b> with skills:
       </md-placeholder>
 
       <input mdInput
@@ -45,7 +46,7 @@
       <input mdInput
              formControlName="wantToBecomeMentor"> <!-- ngModel variable is missing due to code crashing -->
       <md-placeholder>
-        <md-icon>build</md-icon> I would like to <b>become mentor</b> with skills:
+        <md-icon>build</md-icon> I would like to <b><u>become</u> a mentor</b> with skills:
       </md-placeholder>
 
       <md-hint>
