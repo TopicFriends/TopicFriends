@@ -24,6 +24,8 @@ import {UserListService} from './user-list/user-list.service';
 import {UserMatcherService} from './user-matcher.service';
 import { NpmComponent } from './npm/npm.component';
 import { HeaderComponent } from './header/header.component';
+import { UserTemplateComponent } from './user-list/user-template/user-template.component';
+
 
 // import {
 //   AngularFireModule,
@@ -75,7 +77,8 @@ const appRoutes: Routes = [
     EventDetailsComponent,
     LoginComponent,
     NpmComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserTemplateComponent
     ],
   imports: [
     BrowserModule,
