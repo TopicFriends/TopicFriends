@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserProfile, UserProfileService, WhatUserWants} from './user-profile.service';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import {AuthService} from './auth.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,7 +17,9 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
       private _fb: FormBuilder,
-      protected userProfileService: UserProfileService) {
+      protected userProfileService: UserProfileService,
+      public authService: AuthService,
+  ) {
 
     this._userProfileForm = this._fb.group({
       wantToBeFreelance: ['Desing, Devops, QA'],

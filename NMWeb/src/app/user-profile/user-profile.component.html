@@ -1,8 +1,10 @@
 <h2>
   My Profile
 </h2>
-<ng-template [ngIf]="! userProfile" >Loading Profile...</ng-template>
+<ng-template [ngIf]="! userProfile" >Loading User Profile...</ng-template>
 <ng-template [ngIf]="userProfile">
+  <p>Name: {{ (authService.user | async)?.displayName }}</p>
+
   <form [formGroup]="_userProfileForm">
 
     <md-input-container>

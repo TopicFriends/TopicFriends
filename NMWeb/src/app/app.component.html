@@ -1,7 +1,8 @@
 <!--The whole content below can be removed with the new code.-->
 
-<button md-button md-raised-button (click)="login()">Login via Google</button>
- User: {{ (user | async)?.uid }}
+<button md-button md-raised-button (click)="authService.login()">Login via Google</button>
+User:
+  {{ (authService.user | async)?.displayName }}
 
 <div style="text-align:center">
     <h1>
