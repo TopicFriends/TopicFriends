@@ -19,12 +19,13 @@ export class UserProfileComponent implements OnInit {
       protected userProfileService: UserProfileService) {
 
     this._userProfileForm = this._fb.group({
-      wantToBeFreelance: ['', Validators.required]
+      wantToBeFreelance: ['Desing, Devops, QA', Validators.required],
+      wantToHireFreelance: ['Angular, React, Ionic', Validators.required],
     });
   }
 
   ngOnInit() {
-    this.userProfileService.getProfile();
+    this.userProfileObservable = this.userProfileService.getProfile();
     this.userProfileObservable.subscribe(p => {
       this.userProfile = p;
       // this.whatUserWants = this.userProfile.whatUserWants;

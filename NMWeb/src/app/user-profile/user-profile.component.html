@@ -8,13 +8,14 @@
     <md-input-container>
       <input mdInput 
              placeholder="I would like to be hired as freelance for"   
-             value="Ionic"
-             [(ngModel)]="userProfile?.whatUserWants?.freelance?.supply.topics" name="wantToBeFreelance">
-    </md-input-container>
+             formControlName="wantToBeFreelance">
+    </md-input-container> <!-- ngModel variable is missing due to code crashing -->
+    <!-- [(ngModel)]="userProfile?.whatUserWants?.freelance?.supply?.topics" -->
 
     <md-input-container>
-      <input mdInput placeholder="I would like to hire freelance"   value="Ionic"
-             [(ngModel)]="userProfile?.whatUserWants?.freelance?.demand.topics" name="wantToHireFreelance">
+      <input mdInput 
+             placeholder="I would like to hire freelance"   
+             formControlName="wantToHireFreelance"> <!-- ngModel variable is missing due to code crashing -->
     </md-input-container>
 
     <md-input-container>
