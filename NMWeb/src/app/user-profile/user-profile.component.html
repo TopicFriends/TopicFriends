@@ -1,6 +1,6 @@
-<p>
+<h2>
   My Profile
-</p>
+</h2>
 <ng-template [ngIf]="! userProfile" >Loading Profile...</ng-template>
 <ng-template [ngIf]="userProfile">
   <form [formGroup]="_userProfileForm">
@@ -52,9 +52,10 @@
 
     </md-input-container>
     <br />
+    <br />
 
     <p>
-      <button md-button md-raised-button (click)="save()">Save <i>(Enter)</i></button>
+      <button style="width:100%" md-button md-raised-button (click)="save()">Save <i>(Enter)</i></button>
 
     </p>
 
