@@ -4,19 +4,23 @@
 <ng-template [ngIf]="! userProfile" >Loading Profile...</ng-template>
 <ng-template [ngIf]="userProfile">
   <form [formGroup]="_userProfileForm">
-    <i class="material-icons">build</i>
+
     <md-input-container>
+      <md-placeholder>
+        <md-icon>build</md-icon> I would like to <b>be hired as freelance</b> with skills
+      </md-placeholder>
       <input mdInput
-             placeholder="I would like to be hired as freelance for"
              formControlName="wantToBeFreelance">
     </md-input-container> <!-- ngModel variable is missing due to code crashing -->
     <!-- [(ngModel)]="userProfile?.whatUserWants?.freelance?.supply?.topics" -->
 
     <br />
-    <i class="material-icons">build</i>
     <md-input-container>
+      <md-placeholder>
+        <md-icon>build</md-icon> I would like to <b>hire freelance</b> with skills:
+      </md-placeholder>
+
       <input mdInput
-             placeholder="I would like to hire freelance"
              formControlName="wantToHireFreelance"> <!-- ngModel variable is missing due to code crashing -->
     </md-input-container>
 
