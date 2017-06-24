@@ -8,6 +8,8 @@ import { EventListComponent } from './event-list/event-list.component';
 import {MdButtonModule, MdCheckboxModule, MdInputModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdSlideToggleModule, MdIconModule, MaterialModule } from '@angular/material';
+import {MdMenuModule} from '@angular/material';
+
 
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { LoginComponent } from './login/login.component';
@@ -20,6 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './user-profile/auth.service';
 import {UserListService} from './user-list/user-list.service';
 import {UserMatcherService} from './user-matcher.service';
+import { NpmComponent } from './npm/npm.component';
+import { HeaderComponent } from './header/header.component';
 
 // import {
 //   AngularFireModule,
@@ -69,7 +73,9 @@ const appRoutes: Routes = [
     UserListComponent,
     EventListComponent,
     EventDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    NpmComponent,
+    HeaderComponent
     ],
   imports: [
     BrowserModule,
@@ -77,6 +83,7 @@ const appRoutes: Routes = [
     MdButtonModule,
     MdSlideToggleModule,
     MdInputModule,
+    MdMenuModule,
     MdCheckboxModule,
     MdIconModule,
     RouterModule.forRoot(appRoutes),
