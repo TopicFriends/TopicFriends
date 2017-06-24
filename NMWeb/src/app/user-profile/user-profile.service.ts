@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
+import {AuthService} from './auth.service';
 
 export class WantedTopics {
   topics: string;
@@ -24,6 +25,11 @@ export class WhatUserWants {
   job: SupplyDemand  = new SupplyDemand();
   sponsorEvents: SupplyDemand = new SupplyDemand();
   coFounderSpecializingIn: SupplyDemand = new SupplyDemand();
+
+  // work on hobby project together
+  /** Work on open-source together */
+  contributeToOpenSource: SupplyDemand = new SupplyDemand();
+  hackathon: SupplyDemand = new SupplyDemand();
 
   // TODO: old way, contemplate and remove:
   wantToFindMentor: WantedTopics;
@@ -52,6 +58,7 @@ export class UserProfileService {
 
   constructor(
       private db: AngularFireDatabase,
+      private authService: AuthService,
   ) {
     this.userProfiles = db.list('UserProfile'); // just example
   }

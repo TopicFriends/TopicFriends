@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserProfile, UserProfileService, WhatUserWants} from './user-profile.service';
-import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,15 +12,15 @@ export class UserProfileComponent implements OnInit {
   userProfile: UserProfile;
   userProfileObservable;
 
-  private _userProfileForm: FormGroup;
+  public _userProfileForm: FormGroup;
 
-  constructor( 
+  constructor(
       private _fb: FormBuilder,
       protected userProfileService: UserProfileService) {
 
     this._userProfileForm = this._fb.group({
-      wantToBeFreelance: ['Desing, Devops, QA', Validators.required],
-      wantToHireFreelance: ['Angular, React, Ionic', Validators.required],
+      wantToBeFreelance: ['Desing, Devops, QA'],
+      wantToHireFreelance: ['Angular, React, Ionic'],
     });
   }
 

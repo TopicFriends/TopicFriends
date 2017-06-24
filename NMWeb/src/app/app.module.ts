@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { EventListComponent } from './event-list/event-list.component';
-import { MdButtonModule } from '@angular/material';
+import {MdButtonModule, MdCheckboxModule, MdInputModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdSlideToggleModule, MdIconModule, MaterialModule } from '@angular/material';
 
@@ -19,6 +19,7 @@ import {UserProfileService} from './user-profile/user-profile.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './user-profile/auth.service';
 import {UserListService} from './user-list/user-list.service';
+import {UserMatcherService} from './user-matcher.service';
 
 // import {
 //   AngularFireModule,
@@ -75,6 +76,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MdButtonModule,
     MdSlideToggleModule,
+    MdInputModule,
+    MdCheckboxModule,
     MdIconModule,
     RouterModule.forRoot(appRoutes),
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
@@ -85,7 +88,12 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MaterialModule,
   ],
-  providers: [AuthService, UserProfileService, UserListService],
+  providers: [
+    AuthService,
+    UserProfileService,
+    UserListService,
+    UserMatcherService,
+  ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
