@@ -4,12 +4,10 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { EventListComponent } from './event-list/event-list.component';
 import {MdButtonModule, MdCheckboxModule, MdInputModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdSlideToggleModule, MdIconModule, MaterialModule } from '@angular/material';
 import {MdMenuModule} from '@angular/material';
-import { EventDetailsComponent } from './event-details/event-details.component';
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -23,6 +21,7 @@ import {UserMatcherService} from './user-matcher.service';
 import { NpmComponent } from './npm/npm.component';
 import { HeaderComponent } from './header/header.component';
 import { UserTemplateComponent } from './user-list/user-template/user-template.component';
+import {EventsModule} from './event-list/events.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -47,14 +46,6 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'event-list',
-    component: EventListComponent
-  },
-  {
-    path: 'event-details',
-    component: EventDetailsComponent
-  },
-  {
     path: 'people-list',
     component: UserListComponent
   },
@@ -73,14 +64,12 @@ const appRoutes: Routes = [
     AppComponent,
     UserProfileComponent,
     UserListComponent,
-    EventListComponent,
-    EventDetailsComponent,
     LoginComponent,
     NpmComponent,
     HeaderComponent,
     UserTemplateComponent,
     NavbarComponent
-    ],
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -90,6 +79,7 @@ const appRoutes: Routes = [
     MdMenuModule,
     MdCheckboxModule,
     MdIconModule,
+    EventsModule,
     RouterModule.forRoot(appRoutes),
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,5 +1,7 @@
-<h1>Events</h1>
+<h2>Events</h2>
 
-<ng-template ngFor let-item [ngForOf]="items | async" >
-  <p>Event: {{item.$key}}</p>
+<ng-template md-list ngFor let-item [ngForOf]="items | async" >
+    <md-list-item>
+      <app-event-list-item md-list-item [event]="item"></app-event-list-item>
+    </md-list-item>
 </ng-template>
