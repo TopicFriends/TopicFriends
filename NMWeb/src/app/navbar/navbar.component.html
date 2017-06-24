@@ -1,6 +1,6 @@
 <div class.xs="navbar-container-mobile" class="navbar-container" fxLayout="column" fxLayout.xs="row">
  <div fxFlexOrder="1" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==0)}" (click)="selectedTab = 0">
-    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/event-list" routerLinkActive="active">
+    <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/event-list" routerLinkActive="active">
          <div class="nav-bar-centerd-items">
             <md-icon>format_list_numbered</md-icon>
             <p>Events</p>
@@ -9,7 +9,7 @@
 
  </div>
  <div fxFlexOrder="2" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==1)}"  (click)="selectedTab = 1">
-    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/people-list" routerLinkActive="active">
+    <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/people-list" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
             <md-icon>search</md-icon>
             <p>Search</p>
@@ -17,7 +17,7 @@
     </div>
  </div>
  <div fxFlexOrder="3" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==2)}"  (click)="selectedTab = 2">
-    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/profile" routerLinkActive="active">
+    <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/profile" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
             <md-icon>person_pin</md-icon>
             <p>Profile</p>

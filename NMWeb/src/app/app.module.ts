@@ -1,5 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -9,8 +9,6 @@ import {MdButtonModule, MdCheckboxModule, MdInputModule} from '@angular/material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdSlideToggleModule, MdIconModule, MaterialModule } from '@angular/material';
 import {MdMenuModule} from '@angular/material';
-
-
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
