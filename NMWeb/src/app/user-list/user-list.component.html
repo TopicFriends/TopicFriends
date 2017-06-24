@@ -1,5 +1,3 @@
 <h1>User List</h1>
 
-<ng-template ngFor let-item [ngForOf]="userList | async" >
-  <p>User: {{item | json}}</p>
-</ng-template>
+<nw-user-template *ngFor="let user of userList" [userProfile]="user"></nw-user-template>

@@ -37,7 +37,9 @@ export class WhatUserWants {
 
 export class UserProfile {
   name: string;
-
+  suername: string;
+  company: string;
+  role: string;
   whatUserWants: WhatUserWants = new WhatUserWants();
 
 }

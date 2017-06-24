@@ -19,6 +19,8 @@ import {UserProfileService} from './user-profile/user-profile.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './user-profile/auth.service';
 import {UserListService} from './user-list/user-list.service';
+import { UserTemplateComponent } from './user-list/user-template/user-template.component';
+
 
 // import {
 //   AngularFireModule,
@@ -68,7 +70,8 @@ const appRoutes: Routes = [
     UserListComponent,
     EventListComponent,
     EventDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    UserTemplateComponent
     ],
   imports: [
     BrowserModule,
