@@ -4,25 +4,33 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { MdButtonModule, MdSlideToggleModule, MdIconModule } from '@angular/material';
+import {MdButtonModule, MdCheckboxModule, MdInputModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdSlideToggleModule, MdIconModule, MaterialModule } from '@angular/material';
+import {MdMenuModule} from '@angular/material';
 
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
-import {UserProfileService} from './user-profile.service';
-import {FormsModule} from '@angular/forms';
+import {UserProfileService} from './user-profile/user-profile.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './user-profile/auth.service';
-import {UserListService} from './user-list.service';
-import { EventsModule } from './event-list/events.module';
+import {UserListService} from './user-list/user-list.service';
+import {UserMatcherService} from './user-matcher.service';
+import { NpmComponent } from './npm/npm.component';
+import { HeaderComponent } from './header/header.component';
+import { UserTemplateComponent } from './user-list/user-template/user-template.component';
+import {EventsModule} from './event-list/events.module';
+
 
 // import {
 //   AngularFireModule,
 //   AngularFire,
 //   AuthMethods,
 //   AuthProviders} from 'angularfire2';
+
 
 // import 'hammerjs';
 
@@ -36,6 +44,14 @@ const appRoutes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  // {
+  //   path: 'event-list',
+  //   component: EventListComponent
+  // },
+  // {
+  //   path: 'event-details',
+  //   component: EventDetailsComponent
+  // },
   {
     path: 'people-list',
     component: UserListComponent
@@ -55,13 +71,19 @@ const appRoutes: Routes = [
     AppComponent,
     UserProfileComponent,
     UserListComponent,
-    LoginComponent
-    ],
+    LoginComponent,
+    NpmComponent,
+    HeaderComponent,
+    UserTemplateComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MdButtonModule,
     MdSlideToggleModule,
+    MdInputModule,
+    MdMenuModule,
+    MdCheckboxModule,
     MdIconModule,
     EventsModule,
     RouterModule.forRoot(appRoutes),
@@ -69,9 +91,16 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
   ],
-  providers: [AuthService, UserProfileService, UserListService],
+  providers: [
+    AuthService,
+    UserProfileService,
+    UserListService,
+    UserMatcherService,
+  ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })

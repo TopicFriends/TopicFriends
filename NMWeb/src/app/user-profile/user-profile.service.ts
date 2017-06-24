@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
+import {AuthService} from './auth.service';
 
 export class WantedTopics {
   topics: string;
@@ -25,6 +26,11 @@ export class WhatUserWants {
   sponsorEvents: SupplyDemand = new SupplyDemand();
   coFounderSpecializingIn: SupplyDemand = new SupplyDemand();
 
+  // work on hobby project together
+  /** Work on open-source together */
+  contributeToOpenSource: SupplyDemand = new SupplyDemand();
+  hackathon: SupplyDemand = new SupplyDemand();
+
   // TODO: old way, contemplate and remove:
   wantToFindMentor: WantedTopics;
   wantToBecomeMentor: WantedTopics;
@@ -37,7 +43,9 @@ export class WhatUserWants {
 
 export class UserProfile {
   name: string;
-
+  suername: string;
+  company: string;
+  role: string;
   whatUserWants: WhatUserWants = new WhatUserWants();
 
 }
@@ -45,20 +53,26 @@ export class UserProfile {
 @Injectable()
 export class UserProfileService {
 
-  userId = '-KnIHsSBYiDR08YnJog5';
+  // userId = '-KnIHsSBYiDR08YnJog5';
+  userId;
 
   userProfiles: FirebaseListObservable<any>;
   myUserProfile = this.db.object(`UserProfile/${this.userId}`);
 
   constructor(
       private db: AngularFireDatabase,
+      private authService: AuthService,
   ) {
     this.userProfiles = db.list('UserProfile'); // just example
+    authService.user.subscribe(user => {
+      this.userId = user.uid;
+    })
   }
 
 
   public saveUserProfile(data: UserProfile) {
-    this.userProfiles.update(this.userId, data); // FIXME: nasty crude quick stub
+    // this.userProfiles.update(this.userId, data); // FIXME: nasty crude quick stub
+    this.userProfiles.update(this.userId, {some: 'example'}); // FIXME: nasty crude quick stub
   }
 
   getProfile(): Observable<UserProfile> {

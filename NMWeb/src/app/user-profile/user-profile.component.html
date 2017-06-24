@@ -1,50 +1,71 @@
-<hr/>
-<p>
+<h2>
   My Profile
-</p>
-<ng-template [ngIf]="! userProfile" >Loading Profile...</ng-template>
-<ng-template [ngIf]="userProfile">
-  <form>
-    <md-input-container>
-      <input mdInput placeholder="I would like to be hired as freelance for"   value="Ionic"
-             [(ngModel)]="userProfile?.whatUserWants?.freelance?.supply.topics" name="wantToBeFreelance">
-    </md-input-container>
+</h2>
+<ng-template [ngIf]="! userProfile" >Loading User Profile...</ng-template>
+<ng-template [ngIf]="! userProfileService.userId" >Please log in, to access your profile</ng-template>
+<ng-template [ngIf]="userProfileService.userId && userProfile">
+  <img style="width: 100px" src="{{(authService.user | async)?.photoURL}}" />
+  Name: {{ (authService.user | async)?.displayName }}
+
+  <br />
+  <br />
+  <form [formGroup]="_userProfileForm">
 
     <md-input-container>
-      <input mdInput placeholder="I would like to hire freelance"   value="Ionic"
-             [(ngModel)]="userProfile?.whatUserWants?.freelance?.demand.topics" name="wantToHireFreelance">
-    </md-input-container>
+      <md-placeholder>
+        <md-icon>build</md-icon> I would like to <b>be hired as freelance</b> with skills
+      </md-placeholder>
+      <input mdInput
+             formControlName="wantToBeFreelance">
+    </md-input-container> <!-- ngModel variable is missing due to code crashing -->
+    <!-- [(ngModel)]="userProfile?.whatUserWants?.freelance?.supply?.topics" -->
 
+    <br />
     <md-input-container>
-      <input mdInput placeholder="I would like to be hired for" >
-      <!--<md-error *ngIf="emailFormControl.hasError('required')">-->
-      <!--This field is required-->
-      <!--</md-error>-->
-      <!--<md-error *ngIf="emailFormControl.hasError('pattern')">-->
-      <!--Please enter a valid email address-->
-      <!--</md-error>-->
+      <md-placeholder>
+        <md-icon>build</md-icon> I would like to <b>hire freelance</b> with skills:
+      </md-placeholder>
+
+      <input mdInput
+             formControlName="wantToHireFreelance"> <!-- ngModel variable is missing due to code crashing -->
     </md-input-container>
 
-
+    <br />
     <md-input-container>
-      <input mdInput placeholder="I would like to find mentor" value="Angular, Ionic, Firebase">
+      <md-placeholder>
+        <md-icon>build</md-icon> I would like to <b>find mentor</b> with skills:
+      </md-placeholder>
+
+      <input mdInput
+             formControlName="wantToFindMentor"> <!-- ngModel variable is missing due to code crashing -->
     </md-input-container>
 
+    <br />
     <md-input-container>
-      <input mdInput placeholder="I would like to mentor someone in" value="Angular, Ionic, Firebase">
-    </md-input-container>
+      <input mdInput
+             formControlName="wantToBecomeMentor"> <!-- ngModel variable is missing due to code crashing -->
+      <md-placeholder>
+        <md-icon>build</md-icon> I would like to <b>become mentor</b> with skills:
+      </md-placeholder>
 
-    <md-input-container>
-      <input mdInput placeholder="I would like to exchange skills in" value="Angular, Ionic, Firebase">
+      <md-hint>
+        <md-icon>favorite</md-icon> Be a hero and help others learn! The good karma will come back to you.
+      </md-hint>
+      <!--<md-hint>-->
+        <!--I also <md-icon>home</md-icon> <i>italic</i> hint labels-->
+      <!--</md-hint>-->
+
+
     </md-input-container>
+    <br />
+    <br />
 
     <p>
-      <button md-button md-raised-button (click)="save()">Save <i>(Enter)</i></button>
+      <button style="width:100%" md-button md-raised-button (click)="save()">Save <i>(Enter)</i></button>
 
     </p>
 
 
-    <hr/>
   </form>
 
 </ng-template>
