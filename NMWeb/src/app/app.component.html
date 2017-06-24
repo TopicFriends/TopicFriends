@@ -1,11 +1,6 @@
 <app-header></app-header>
+<div class="content-container" class.xs="content-container-mobile">
+  <router-outlet></router-outlet>
+</div>
 
-<router-outlet></router-outlet>
-<nav style="position: fixed; bottom: 0px; left: 0px; padding: 1em; background: #4499ff; width: 100%; text-align: center;">
-  <button md-raised-button routerLink="/" routerLinkActive="active">Default (Login)</button>
-  <button md-raised-button routerLink="/login" routerLinkActive="active">Login</button>
-  <button md-raised-button routerLink="/event-list" routerLinkActive="active">Event list</button>
-  <button md-raised-button routerLink="/event-details" routerLinkActive="active">Event details</button>
-  <button md-raised-button routerLink="/people-list" routerLinkActive="active">People list</button>
-  <button md-raised-button routerLink="/profile" routerLinkActive="active">Profile</button>
-</nav>
+<app-navbar></app-navbar>
