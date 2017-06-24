@@ -51,7 +51,8 @@ export class UserProfile {
 @Injectable()
 export class UserProfileService {
 
-  userId = '-KnIHsSBYiDR08YnJog5';
+  // userId = '-KnIHsSBYiDR08YnJog5';
+  userId;
 
   userProfiles: FirebaseListObservable<any>;
   myUserProfile = this.db.object(`UserProfile/${this.userId}`);
@@ -61,11 +62,15 @@ export class UserProfileService {
       private authService: AuthService,
   ) {
     this.userProfiles = db.list('UserProfile'); // just example
+    authService.user.subscribe(user => {
+      this.userId = user.uid;
+    })
   }
 
 
   public saveUserProfile(data: UserProfile) {
-    this.userProfiles.update(this.userId, data); // FIXME: nasty crude quick stub
+    // this.userProfiles.update(this.userId, data); // FIXME: nasty crude quick stub
+    this.userProfiles.update(this.userId, {some: 'example'}); // FIXME: nasty crude quick stub
   }
 
   getProfile(): Observable<UserProfile> {

@@ -2,9 +2,13 @@
   My Profile
 </h2>
 <ng-template [ngIf]="! userProfile" >Loading User Profile...</ng-template>
-<ng-template [ngIf]="userProfile">
-  <p>Name: {{ (authService.user | async)?.displayName }}</p>
+<ng-template [ngIf]="! userProfileService.userId" >Please log in, to access your profile</ng-template>
+<ng-template [ngIf]="userProfileService.userId && userProfile">
+  <img style="width: 100px" src="{{(authService.user | async).photoURL}}" />
+  Name: {{ (authService.user | async)?.displayName }}
 
+  <br />
+  <br />
   <form [formGroup]="_userProfileForm">
 
     <md-input-container>
