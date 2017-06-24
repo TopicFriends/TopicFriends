@@ -4,11 +4,9 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { EventListComponent } from './event-list/event-list.component';
-import {MdButtonModule, MdSlideToggleModule, MdIconModule, MdListModule, MdCardModule} from '@angular/material';
+import { MdButtonModule, MdSlideToggleModule, MdIconModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { EventDetailsComponent } from './event-details/event-details.component';
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -18,14 +16,13 @@ import {UserProfileService} from './user-profile.service';
 import {FormsModule} from '@angular/forms';
 import {AuthService} from './user-profile/auth.service';
 import {UserListService} from './user-list.service';
-import { EventListItemComponent } from './event-list/event/event-list-item.component';
+import { EventsModule } from './event-list/events.module';
 
 // import {
 //   AngularFireModule,
 //   AngularFire,
 //   AuthMethods,
 //   AuthProviders} from 'angularfire2';
-
 
 // import 'hammerjs';
 
@@ -38,14 +35,6 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  },
-  {
-    path: 'event-list',
-    component: EventListComponent
-  },
-  {
-    path: 'event-details',
-    component: EventDetailsComponent
   },
   {
     path: 'people-list',
@@ -66,10 +55,7 @@ const appRoutes: Routes = [
     AppComponent,
     UserProfileComponent,
     UserListComponent,
-    EventListComponent,
-    EventDetailsComponent,
-    LoginComponent,
-    EventListItemComponent
+    LoginComponent
     ],
   imports: [
     BrowserModule,
@@ -77,14 +63,13 @@ const appRoutes: Routes = [
     MdButtonModule,
     MdSlideToggleModule,
     MdIconModule,
-    MdListModule,
+    EventsModule,
     RouterModule.forRoot(appRoutes),
-    MdCardModule,
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [AuthService, UserProfileService, UserListService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
