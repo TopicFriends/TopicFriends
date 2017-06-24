@@ -7,7 +7,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { MdButtonModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdSlideToggleModule, MdIconModule } from '@angular/material';
+import { MdSlideToggleModule, MdIconModule, MaterialModule } from '@angular/material';
 
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { LoginComponent } from './login/login.component';
@@ -15,10 +15,10 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
-import {UserProfileService} from './user-profile.service';
-import {FormsModule} from '@angular/forms';
+import {UserProfileService} from './user-profile/user-profile.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './user-profile/auth.service';
-import {UserListService} from './user-list.service';
+import {UserListService} from './user-list/user-list.service';
 
 // import {
 //   AngularFireModule,
@@ -82,6 +82,8 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
   ],
   providers: [AuthService, UserProfileService, UserListService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

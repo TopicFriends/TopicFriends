@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserProfile, UserProfileService, WhatUserWants} from '../user-profile.service';
+import {UserProfile, UserProfileService, WhatUserWants} from './user-profile.service';
+import {FormBuilder, FormGroup, Validators, FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-user-profile',
@@ -9,11 +10,21 @@ import {UserProfile, UserProfileService, WhatUserWants} from '../user-profile.se
 export class UserProfileComponent implements OnInit {
 
   userProfile: UserProfile;
-  userProfileObservable = this.userProfileService.getProfile();
+  userProfileObservable;
 
-  constructor(
-    protected userProfileService: UserProfileService,
-  ) {
+  private _userProfileForm: FormGroup;
+
+  constructor( 
+      private _fb: FormBuilder,
+      protected userProfileService: UserProfileService) {
+
+    this._userProfileForm = this._fb.group({
+      wantToBeFreelance: ['', Validators.required]
+    });
+  }
+
+  ngOnInit() {
+    this.userProfileService.getProfile();
     this.userProfileObservable.subscribe(p => {
       this.userProfile = p;
       // this.whatUserWants = this.userProfile.whatUserWants;
@@ -24,11 +35,8 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   save() {
-    this.userProfileService.saveUserProfile(this.userProfile);
+    this.userProfileObservable = this.userProfileService.saveUserProfile(this.userProfile);
   }
 
 }

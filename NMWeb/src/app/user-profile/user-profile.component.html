@@ -4,9 +4,11 @@
 </p>
 <ng-template [ngIf]="! userProfile" >Loading Profile...</ng-template>
 <ng-template [ngIf]="userProfile">
-  <form>
+  <form [formGroup]="_userProfileForm">
     <md-input-container>
-      <input mdInput placeholder="I would like to be hired as freelance for"   value="Ionic"
+      <input mdInput 
+             placeholder="I would like to be hired as freelance for"   
+             value="Ionic"
              [(ngModel)]="userProfile?.whatUserWants?.freelance?.supply.topics" name="wantToBeFreelance">
     </md-input-container>
 
