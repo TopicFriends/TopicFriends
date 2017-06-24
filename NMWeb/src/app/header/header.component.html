@@ -1,0 +1,13 @@
+<md-toolbar>
+    <span>{{title}}</span>
+    <span class="toolbar-spacer"></span>
+    <button  *ngIf="!(authService.user | async)?.displayName" md-button (click)="authService.login()">Login via Google</button> 
+    <button *ngIf="(authService.user | async)?.displayName" md-button [mdMenuTriggerFor]="menu">{{ (authService.user | async)?.displayName }}</button>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item routerLink="/profile" routerLinkActive="active">Profile</button>
+      <button md-menu-item (click)="authService.logout()">Logout</button>
+    </md-menu>
+</md-toolbar>
+
+
+
