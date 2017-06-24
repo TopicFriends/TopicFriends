@@ -24,6 +24,8 @@ import {UserListService} from './user-list/user-list.service';
 import {UserMatcherService} from './user-matcher.service';
 import { NpmComponent } from './npm/npm.component';
 import { HeaderComponent } from './header/header.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // import {
 //   AngularFireModule,
@@ -75,7 +77,8 @@ const appRoutes: Routes = [
     EventDetailsComponent,
     LoginComponent,
     NpmComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavbarComponent
     ],
   imports: [
     BrowserModule,
@@ -94,6 +97,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    FlexLayoutModule
   ],
   providers: [
     AuthService,

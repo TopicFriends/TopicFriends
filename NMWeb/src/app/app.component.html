@@ -1,11 +1,6 @@
 <app-header></app-header>
+<div class="content-container" class.xs="content-container-mobile">
+  <router-outlet></router-outlet>
+</div>
 
-<router-outlet></router-outlet>
-<nav>
-  <button md-button md-raised-button><a routerLink="/" routerLinkActive="active">Default (Login)</a></button>
-  <button md-button md-raised-button><a routerLink="/login" routerLinkActive="active">Login</a></button>
-  <button md-button md-raised-button><a routerLink="/event-list" routerLinkActive="active">Event list</a></button>
-  <button md-button md-raised-button><a routerLink="/event-details" routerLinkActive="active">Event details</a></button>
-  <button md-button md-raised-button><a routerLink="/people-list" routerLinkActive="active">People list</a></button>
-  <button md-button md-raised-button><a routerLink="/profile" routerLinkActive="active">Profile</a></button>
-</nav>
+<app-navbar></app-navbar>

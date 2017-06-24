@@ -1,3 +1,15 @@
-router-outlet{
-    padding:50px;
+
+.content-container{
+    margin-top:60px;
+    margin-left:80px;
+     padding:10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.content-container-mobile{
+    margin-top:60px;
+     padding:10px;
+    margin-bottom:60px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
