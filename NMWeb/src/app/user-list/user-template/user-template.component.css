@@ -6,3 +6,8 @@
     background: url('/assets/images/avatar1.png');
     background-size: cover;
 }
+
+.highlight{
+    font-weight: bold; 
+    color: #3498db;
+}

@@ -22,18 +22,18 @@ export class UserListService {
     userProfile.name = "Rubén Triviño Juárez";
     userProfile.company = "Willimbu";
     userProfile.role = "Developer";
-    userProfile.whatUserWants.intern.demand.topics = "Angular Junior";
-    userProfile.whatUserWants.intern.supply.topics = "DJango";
+    // Mentor
     userProfile.whatUserWants.mentor.demand.topics = "Business Model";
+    userProfile.whatUserWants.mentor.demand.action = "find mentor";
     userProfile.whatUserWants.mentor.supply.topics = "Business Strategy";
+    userProfile.whatUserWants.mentor.supply.action = "be mentor";
+
+    // Freelance
     userProfile.whatUserWants.freelance.demand.topics = "iOS Senior developer";
+    userProfile.whatUserWants.freelance.demand.action = "hire freelancer";
     userProfile.whatUserWants.freelance.supply.topics = "Android developer";
-    userProfile.whatUserWants.job.demand.topics = "UX/UI Expert";
-    userProfile.whatUserWants.job.supply.topics = "Angular Junior";
-    userProfile.whatUserWants.sponsorEvents.demand.topics = "Comunity Manager";
-    userProfile.whatUserWants.sponsorEvents.supply.topics = "Gamer events";
-    userProfile.whatUserWants.coFounderSpecializingIn.demand.topics = "Project idea";
-    userProfile.whatUserWants.coFounderSpecializingIn.supply.topics = "Wanna join";
+    userProfile.whatUserWants.freelance.supply.action = "be hired as freelancer";
+
     this.userList.push(userProfile);
     this.userList.push(userProfile);
     this.userList.push(userProfile);

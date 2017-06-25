@@ -5,6 +5,7 @@ import {AuthService} from './auth.service';
 
 export class WantedTopics {
   topics: string;
+  action: string;
   // we can add more metadata, like time period
 }
 

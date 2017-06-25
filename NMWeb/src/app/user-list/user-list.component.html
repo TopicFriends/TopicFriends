@@ -1,4 +1,1 @@
-<h1>User List</h1>
-
-<nw-user-template *ngFor="let user of userList" [userProfile]="user"></nw-user-template>
-<div style="height: 100px;"></div>
+<nw-user-template *ngFor="let user of userList" [userProfile]="user" (onMeetPressed)="meetUser(user)"></nw-user-template>

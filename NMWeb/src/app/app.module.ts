@@ -25,6 +25,7 @@ import {EventsModule} from './event-list/events.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { UserDetailComponent } from './user-list/user-detail/user-detail.component';
 
 // import {
 //   AngularFireModule,
@@ -50,6 +51,10 @@ const appRoutes: Routes = [
     component: UserListComponent
   },
   {
+    path: 'people-list/:name',
+    component: UserDetailComponent
+  },
+  {
     path: 'profile',
     component: UserProfileComponent
   },
@@ -68,7 +73,8 @@ const appRoutes: Routes = [
     NpmComponent,
     HeaderComponent,
     UserTemplateComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

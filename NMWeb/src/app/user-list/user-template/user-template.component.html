@@ -1,4 +1,4 @@
-<md-card style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
+<md-card style="margin-bottom: 0.5em; margin-left: 0.2em; margin-right: 0.2em;">
     <md-card-header>
         <div md-card-avatar class="card-avatar"></div>
         <md-card-title>{{_userPublicProfile?.name}}</md-card-title>
@@ -13,34 +13,28 @@
 
     <md-content>        
         <div *ngIf="_whatUserWants.length > 0" style="padding-bottom: 0.5em;">
-            {{_whatUserWants[0].desireType == 'supply' ? 'Is looking for beign' : 'Is looking for '}} 
-            <span style="font-weight: bold; color: #666666">{{_whatUserWants[0].topics}}</span>
-            <span *ngIf="_whatUserWants.length > 1"
-                  style="display: inline-block; margin-left: 1em; font-size: 0.8em; color: #116633; cursor: pointer;"
-                  (click)="_expand = !_expand">{{_expand ? 'less' : 'more'}}</span>
+            Would like to 
+            <span class="highlight">{{' ' + _whatUserWants[0].action + ' '}}</span>
+            with skills: 
+            <span class="highlight">{{_whatUserWants[0].topics}}</span>
         </div>
         <div *ngIf="_expand">
             <div *ngFor="let supplyDemand of _getWhatUserWants(); let i = index">
                 <div *ngIf="i > 0" style="padding-bottom: 0.5em;">
-                    {{supplyDemand.desireType == 'supply' ? 'Is looking for beign' : 'Is looking for '}} 
-                    <span style="font-weight: bold; color: #666666">{{supplyDemand.topics}}</span>
+                    Would like to 
+                    <span class="highlight">{{' ' + supplyDemand.action + ' '}}</span>
+                    with skills:  
+                    <span class="highlight">{{supplyDemand.topics}}</span>
                 </div>
             </div>
         </div>
+        
+        <span *ngIf="_whatUserWants.length > 1"
+                style="position: absolute; right: 1.5em; top: 1.5em; font-size: 0.8em; color: #3498db; cursor: pointer;"
+                (click)="_expand = !_expand">{{_expand ? 'less' : 'more'}}</span>
     </md-content>
     <md-actions>
-        <button md-raised-button>MEET</button>
-        <button md-raised-button>SHARE</button>
+        <button md-raised-button (click)="onMeetButtonPressed()">MEET</button>
+        <button md-raised-button (click)="onShareButtonPressed()">SHARE</button>
     </md-actions>
 </md-card>
-<!--
-<md-grid-list 
-    cols="12" 
-    rowHeight="20px" 
-    class="grid-element">
-    <md-grid-tile [colspan]=3 [rowspan]=6>{{_userPublicProfile?.name}}</md-grid-tile>
-    <md-grid-tile [colspan]=3 [rowspan]=6>Prueba</md-grid-tile>
-    <md-grid-tile [colspan]=3 [rowspan]=6>Prueba</md-grid-tile>
-    <md-grid-tile [colspan]=3 [rowspan]=6>Prueba</md-grid-tile>
-</md-grid-list>
--->
