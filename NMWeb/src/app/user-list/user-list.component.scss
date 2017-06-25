@@ -1,0 +1,44 @@
+app-user-list{
+    .mini-fab{
+        position: fixed; 
+        right: 16px; 
+        bottom: 64px; 
+        font-size: 1em; 
+        z-index: 1;
+    }
+    .expanded-fab{
+        bottom: 200px;
+    }
+
+    .filter-back{
+        height: 250px; 
+        width: 100%; 
+        position: fixed; 
+        bottom: 0px; 
+        left: 0px; 
+        background: #f5f5f5; 
+        z-index: 0;
+    }
+}
+
+
+    .filter-back{
+        height: 250px; 
+        width: 100%; 
+        position: fixed; 
+        bottom: 0px; 
+        left: 0px; 
+        background: #f5f5f5; 
+        z-index: 0;
+    }
+    
+    .mini-fab{
+        position: fixed; 
+        right: 16px; 
+        bottom: 64px; 
+        font-size: 1em; 
+        z-index: 1;
+    }
+    .expanded-fab{
+        bottom: 200px;
+    }

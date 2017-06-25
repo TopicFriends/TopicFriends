@@ -1,1 +1,17 @@
-<nw-user-template *ngFor="let user of userList" [userProfile]="user" (onMeetPressed)="meetUser(user)"></nw-user-template>
+<nm-user-template *ngFor="let user of userList" [userProfile]="user" (onMeetPressed)="meetUser(user)"></nm-user-template>
+
+<button md-mini-fab 
+        [ngClass]="{'mini-fab': true}"
+        [@filterStateFab]="isExpanded"
+        (click)="expandFilter()">
+    <md-icon>filter_list</md-icon>
+</button>
+
+<md-icon class="mini-fab"
+         [@filterStateFabClose]="isExpanded"
+         (click)="isExpanded = !isExpanded">close</md-icon>
+
+<div [@filterState]="isExpanded" class="filter-back">
+    <h1>Pick your filters</h1>
+    <p>I would like to...</p>
+</div>

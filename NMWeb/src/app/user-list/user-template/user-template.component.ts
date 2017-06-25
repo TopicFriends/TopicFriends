@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserProfile, WantedTopics } from "app/user-profile/user-profile.service";
 
 @Component({
-  selector: 'nw-user-template',
+  selector: 'nm-user-template',
   templateUrl: './user-template.component.html',
   styleUrls: ['./user-template.component.css']
 })
@@ -13,6 +13,7 @@ export class UserTemplateComponent implements OnInit {
   @Output('onSharePressed') onSharePressed: EventEmitter<any> = new EventEmitter<any>();
   
   private _whatUserWants: WantedTopics[] = [];
+  private _expand: boolean = false;
   constructor() { }
 
   ngOnInit() {
@@ -43,4 +44,8 @@ export class UserTemplateComponent implements OnInit {
     this.onSharePressed.emit();
   }
 
+  expandClick(){
+    event.stopPropagation();
+    this._expand = !this._expand;
+  }
 }

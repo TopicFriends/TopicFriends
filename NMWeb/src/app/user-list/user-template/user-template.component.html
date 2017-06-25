@@ -1,4 +1,4 @@
-<md-card style="margin-bottom: 0.5em; margin-left: 0.2em; margin-right: 0.2em;">
+<md-card md-ripple style="margin-bottom: 0.5em; margin-left: 0.2em; margin-right: 0.2em;" (click)="onMeetButtonPressed()">
     <md-card-header>
         <div md-card-avatar class="card-avatar"></div>
         <md-card-title>{{_userPublicProfile?.name}}</md-card-title>
@@ -31,10 +31,6 @@
         
         <span *ngIf="_whatUserWants.length > 1"
                 style="position: absolute; right: 1.5em; top: 1.5em; font-size: 0.8em; color: #3498db; cursor: pointer;"
-                (click)="_expand = !_expand">{{_expand ? 'less' : 'more'}}</span>
+                (click)="expandClick()">{{_expand ? 'less' : 'more'}}</span>
     </md-content>
-    <md-actions>
-        <button md-raised-button (click)="onMeetButtonPressed()">MEET</button>
-        <button md-raised-button (click)="onShareButtonPressed()">SHARE</button>
-    </md-actions>
 </md-card>
