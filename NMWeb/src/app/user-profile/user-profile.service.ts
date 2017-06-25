@@ -16,8 +16,9 @@ export class SupplyDemand {
 }
 
 export class WhatUserWants {
-  /** General exchange of knowledge/skills and brainstorming */
+  /** General exchange of knowledge/skills and brainstorming, pair programming */
   exchange: WantedTopics;
+  pairProgramming: WantedTopics;
 
   intern: SupplyDemand = new SupplyDemand();
   mentor: SupplyDemand = new SupplyDemand();
@@ -48,6 +49,9 @@ export class UserProfile {
   role: string;
   whatUserWants: WhatUserWants = new WhatUserWants();
 
+  profileLinkedIn: string;
+  profileGitHub: string;
+  profileStackOverflow: string;
 }
 
 @Injectable()

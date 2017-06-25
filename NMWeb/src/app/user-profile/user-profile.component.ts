@@ -26,6 +26,7 @@ export class UserProfileComponent implements OnInit {
       wantToHireFreelance: ['Angular, React, Ionic'],
       wantToFindMentor: [''],
       wantToBecomeMentor: [''],
+      profileLinkedIn: [''],
     });
   }
 
