@@ -52,6 +52,8 @@ export class UserProfile {
   profileLinkedIn: string;
   profileGitHub: string;
   profileStackOverflow: string;
+  profileTwitter: string;
+  profileFacebook: string;
 }
 
 @Injectable()
