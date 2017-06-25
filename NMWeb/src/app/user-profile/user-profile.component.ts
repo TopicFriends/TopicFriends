@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserProfile, UserProfileService, WhatUserWants} from './user-profile.service';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {AuthService} from './auth.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,10 +11,17 @@ import {AuthService} from './auth.service';
 })
 export class UserProfileComponent implements OnInit {
 
+
+
   userProfile: UserProfile;
   userProfileObservable;
 
   public _userProfileForm: FormGroup;
+
+  myControl = new FormControl();
+
+  options = ['Angular', 'Ionic', 'Firebase']
+  filteredOptions: Observable<string[]>;
 
   constructor(
       private _fb: FormBuilder,
@@ -21,12 +29,14 @@ export class UserProfileComponent implements OnInit {
       public authService: AuthService,
   ) {
 
+
     this._userProfileForm = this._fb.group({
       wantToBeFreelance: ['Design, DevOps, QA'],
       wantToHireFreelance: ['Angular, React, Ionic'],
       wantToFindMentor: [''],
       wantToBecomeMentor: [''],
       profileLinkedIn: [''],
+      // myControl: [''],
     });
   }
 
@@ -40,6 +50,14 @@ export class UserProfileComponent implements OnInit {
         this.userProfile = new UserProfile();
       }
     });
+    this.filteredOptions = this.myControl.valueChanges
+      .startWith(null)
+      .map(val => val ? this.filter(val) : this.options.slice());
+
+  }
+
+  filter(val: string): string[] {
+    return this.options.filter(option => new RegExp(`^${val}`, 'gi').test(option));
   }
 
   save() {

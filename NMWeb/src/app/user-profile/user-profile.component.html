@@ -23,12 +23,28 @@
     </md-input-container> <!-- ngModel variable is missing due to code crashing -->
 
     <md-input-container>
+      <input type="text" mdInput [formControl]="myControl" [mdAutocomplete]="auto">
+    </md-input-container>
+
+    <md-autocomplete #auto="mdAutocomplete">
+      <md-option *ngFor="let option of options" [value]="option">
+        {{ option }}
+      </md-option>
+    </md-autocomplete>
+
+
+    <md-input-container>
       <md-placeholder>
         <md-icon>build</md-icon> I would like to <b><u>be hired</u> as freelance</b> with skills
       </md-placeholder>
-      <input mdInput
-             formControlName="wantToBeFreelance">
+      <input mdInput type="text"
+             formControlName="wantToBeFreelance" [mdAutocomplete]="auto">
     </md-input-container> <!-- ngModel variable is missing due to code crashing -->
+    <!--<md-autocomplete #auto="mdAutocomplete">-->
+      <!--<md-option *ngFor="let option of options" [value]="option">-->
+        <!--{{ option }}-->
+      <!--</md-option>-->
+    <!--</md-autocomplete>-->
     <!-- [(ngModel)]="userProfile?.whatUserWants?.freelance?.supply?.topics" -->
 
     <br />
