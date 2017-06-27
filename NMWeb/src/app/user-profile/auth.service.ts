@@ -9,8 +9,14 @@ export class AuthService {
 
   public user: Observable<firebase.User>;
 
+  /** Crude way to save from observable, revise for async later */
+  public userSaved: firebase.User;
+
   constructor(public afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
+    this.user.subscribe(user => {
+      this.userSaved = user;
+    });
     console.log('AuthService constructor')
   }
 
