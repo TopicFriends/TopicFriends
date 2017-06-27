@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup1">
+  <md-input-container>
+    <input type="text" mdInput [formControl]="reusableControl"
+           [mdAutocomplete]="auto"
+           formControlName="myControl">
+    <md-placeholder>
+      <ng-content select="app-item-list-input-title"></ng-content>
+    </md-placeholder>
+
+  </md-input-container>
+
+  <md-autocomplete #auto="mdAutocomplete">
+    <md-option *ngFor="let option of options" [value]="option">
+      {{ option }}
+    </md-option>
+  </md-autocomplete>
+</form>

@@ -25,6 +25,10 @@ import {EventsModule} from './event-list/events.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ItemListInputComponent } from './user-profile/item-list-input/item-list-input.component';
+import { TestReusableComponent } from './user-profile/test-reusable/test-reusable.component';
+import { SkillsVisualizerTestComponent } from './user-profile/skills-visualizer-test/skills-visualizer-test.component';
+import {SkillsVisualizer} from './user-profile/skills-visualizer/skills-visualizer';
 
 // import {
 //   AngularFireModule,
@@ -54,6 +58,10 @@ const appRoutes: Routes = [
     component: UserProfileComponent
   },
   {
+    path: 'skills-test',
+    component: SkillsVisualizerTestComponent
+  },
+  {
     path: '**',
     redirectTo: ''
   },
@@ -68,7 +76,11 @@ const appRoutes: Routes = [
     NpmComponent,
     HeaderComponent,
     UserTemplateComponent,
-    NavbarComponent
+    NavbarComponent,
+    ItemListInputComponent,
+    TestReusableComponent,
+    SkillsVisualizer,
+    SkillsVisualizerTestComponent,
   ],
   imports: [
     BrowserModule,

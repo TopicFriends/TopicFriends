@@ -36,6 +36,7 @@ export class UserProfileComponent implements OnInit {
       wantToFindMentor: [''],
       wantToBecomeMentor: [''],
       profileLinkedIn: [''],
+      myControl: [''],
       // myControl: [''],
     });
   }

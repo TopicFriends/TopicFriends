@@ -12,6 +12,7 @@
   <br />
   <form [formGroup]="_userProfileForm">
 
+
     <md-input-container>
       <md-placeholder>
         <md-icon>person</md-icon><b>LinkedIn</b> Profile (optional, user name is enough)
@@ -22,24 +23,30 @@
              formControlName="profileLinkedIn">
     </md-input-container> <!-- ngModel variable is missing due to code crashing -->
 
-    <md-input-container>
-      <input type="text" mdInput [formControl]="myControl" [mdAutocomplete]="auto">
-    </md-input-container>
 
-    <md-autocomplete #auto="mdAutocomplete">
-      <md-option *ngFor="let option of options" [value]="option">
-        {{ option }}
-      </md-option>
-    </md-autocomplete>
+    <!-- Reusable component: -->
+    <app-item-list-input [formGroup1]="_userProfileForm">
+      <app-item-list-input-title>
+        <md-icon>build</md-icon>Reusable Component <b>title</b>!
+      </app-item-list-input-title>
+    </app-item-list-input>
+
+    <!-- Reusable component: -->
+    <app-item-list-input [formGroup1]="_userProfileForm">
+      <app-item-list-input-title>
+        Reusable 2! Component <b>title</b>!
+      </app-item-list-input-title>
+    </app-item-list-input>
 
 
-    <md-input-container>
-      <md-placeholder>
-        <md-icon>build</md-icon> I would like to <b><u>be hired</u> as freelance</b> with skills
-      </md-placeholder>
-      <input mdInput type="text"
-             formControlName="wantToBeFreelance" [mdAutocomplete]="auto">
-    </md-input-container> <!-- ngModel variable is missing due to code crashing -->
+
+    <!--<md-input-container>-->
+      <!--<md-placeholder>-->
+        <!--<md-icon>build</md-icon> I would like to <b><u>be hired</u> as freelance</b> with skills-->
+      <!--</md-placeholder>-->
+      <!--<input mdInput type="text"-->
+             <!--formControlName="wantToBeFreelance" [mdAutocomplete]="auto">-->
+    <!--</md-input-container> &lt;!&ndash; ngModel variable is missing due to code crashing &ndash;&gt;-->
     <!--<md-autocomplete #auto="mdAutocomplete">-->
       <!--<md-option *ngFor="let option of options" [value]="option">-->
         <!--{{ option }}-->
