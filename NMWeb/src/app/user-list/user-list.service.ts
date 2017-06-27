@@ -18,7 +18,7 @@ export class UserListService {
   }
 
   public getDefaultUserList(){
-    let userProfile = new UserProfile();
+    let userProfile = new UserProfile({});
     userProfile.name = "Rubén Triviño Juárez";
     userProfile.company = "Willimbu";
     userProfile.role = "Developer";

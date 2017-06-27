@@ -18,14 +18,14 @@ export class SupplyDemandTemplate{
 })
 export class UserTemplateComponent implements OnInit {
 
-  @Input('userProfile') private _userPublicProfile: UserProfile = new UserProfile();
+  @Input('userProfile') private _userPublicProfile: UserProfile; // = new UserProfile();
 
   private _whatUserWants: SupplyDemandTemplate[] = [];
   constructor() { }
 
   ngOnInit() {
     this._whatUserWants = this._getWhatUserWants();
-    
+
   }
 
   private _getWhatUserWants(){

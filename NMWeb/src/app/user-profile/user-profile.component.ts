@@ -48,7 +48,7 @@ export class UserProfileComponent implements OnInit {
       // this.whatUserWants = this.userProfile.whatUserWants;
       console.log('new user profile!', p);
       if ( ! (<any>p).whatUserWants ) {
-        this.userProfile = new UserProfile();
+        // this.userProfile = new UserProfile();
       }
     });
     this.filteredOptions = this.myControl.valueChanges
