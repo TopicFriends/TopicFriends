@@ -63,13 +63,16 @@ export class UserProfileService {
   userId;
 
   userProfiles: FirebaseListObservable<any>;
+  whatUserWantsList: FirebaseListObservable<any>;
   myUserProfile = this.db.object(`UserProfile/${this.userId}`);
+  myWhatUserWants = this.db.object(`WhatUserWants/${this.userId}`);
 
   constructor(
       private db: AngularFireDatabase,
       private authService: AuthService,
   ) {
     this.userProfiles = db.list('UserProfile'); // just example
+    this.whatUserWantsList = db.list('WhatUserWants');
     authService.user.subscribe(user => {
       console.log('authService.user.subscribe user', user);
       this.userId = user && user.uid;
@@ -80,34 +83,48 @@ export class UserProfileService {
   public saveUserProfile(data: UserProfile) {
     // this.userProfiles.update(this.userId, data); // FIXME: nasty crude quick stub
     // this.userProfiles.update(this.userId, {some: 'example'}); // FIXME: nasty crude quick stub
-    this.userProfiles.update(this.userId, {
+
+    /* NOTE: this will be hopefully wrapped in some OOP objects in TS,
+      to make it work nicely with other services/components
+     */
+    const userId = this.userId;
+    this.userProfiles.update(userId, {
       displayName: this.authService.userSaved.displayName,
-      whatUserWants: {
-        /** note: those push ids, like 'pushId1' are not id-s of the topics (like Angular),
-         but rather the ids of the association between the topic and whatUserWants.
-         This is in order to leave the option to have many-to-many
-         (as we might also add more metadata later, like enabled/disabled, comments, skill level).
-         And users could be able to have multiple variants of the same skill enabled/disabled and with different metadata.
-         This is not needed for MVP, but I would like to keep that option open in the data structure.
-         */
-        pushId1: {
-          active: true,
-          /** For now, for looking for matching users, we can ignore the foreign key (topicId) and just compare by name */
-          topicId: 'someForeignKey_Angular',
-          name: 'Angular',
-        },
-        pushId2: {
-          active: true,
-          topicId: 'someForeignKey_Ionic',
-          name: 'Ionic',
-        },
-        pushId3: {
-          active: true,
-          name: 'WordPress',
-          topicId: 'someForeignKey_WordPress',
-        },
-      }
     }); // FIXME: nasty crude quick stub
+
+    /* separating this into another firebase location, to not have to read all that if we just want
+    * to read a list of users */
+    this.whatUserWantsList.update(userId, {
+      whatUserWants: {
+        freelance: {
+          supply: {
+            /** note: those push ids, like 'pushId1' are not id-s of the topics (like Angular),
+             but rather the ids of the association between the topic and whatUserWants.
+             This is in order to leave the option to have many-to-many
+             (as we might also add more metadata later, like enabled/disabled, comments, skill level).
+             And users could be able to have multiple variants of the same skill enabled/disabled and with different metadata.
+             This is not needed for MVP, but I would like to keep that option open in the data structure.
+             */
+            pushId1: {
+              active: true,
+              /** For now, for looking for matching users, we can ignore the foreign key (topicId) and just compare by name */
+              topicId: 'someForeignKey_Angular',
+              name: 'Angular',
+            },
+            pushId2: {
+              active: true,
+              topicId: 'someForeignKey_Ionic',
+              name: 'Ionic',
+            },
+            pushId3: {
+              active: true,
+              name: 'WordPress',
+              topicId: 'someForeignKey_WordPress',
+            },
+          }
+        }
+      }
+  }); // FIXME: nasty crude quick stub
   }
 
   getProfile(): Observable<UserProfile> {
