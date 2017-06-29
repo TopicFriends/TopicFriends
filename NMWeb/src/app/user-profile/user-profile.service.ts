@@ -7,7 +7,8 @@ import {initFromObject} from '../util/util';
 export class TopicInterest {
   name: string;
   active?: boolean;
-  topicId;
+  topicId?;
+  // potential in the future: where. E.g. play soccer where
 }
 
 /** TODO: better name */
@@ -28,20 +29,51 @@ export class SupplyDemand {
 export class WhatUserWants {
 
   byInteractionMode: {
-    /** General exchange of knowledge/skills and brainstorming, pair programming */
-    exchange: WantedTopics,
-    pairProgramming: WantedTopics,
-    intern: SupplyDemand,
-    mentor: SupplyDemand,
-    freelance: SupplyDemand,
-    job: SupplyDemand,
-    sponsorEvents: SupplyDemand,
-    coFounderSpecializingIn: SupplyDemand,
-    // work on hobby project together,
-    /** Work on open-source together */
-    contributeToOpenSource: SupplyDemand,
-    hackathon: SupplyDemand,
+    symmetric: {
+      /** General exchange of knowledge/skills and brainstorming, pair programming */
+      exchange?: WantedTopics,
+      pairProgramming?: WantedTopics,
+      /** play together, e.g. soccer, chess */
+      play?: WantedTopics,
+    },
+    supplyDemand: {
+      intern?: SupplyDemand,
+      mentor?: SupplyDemand,
+      freelance?: SupplyDemand,
+      job?: SupplyDemand,
+      advising?: SupplyDemand,
+      sponsorEvents?: SupplyDemand,
+      coFounderSpecializingIn?: SupplyDemand,
+      // work on hobby project together,
+      /** Work on open-source together; probably move to symmetric */
+      contributeToOpenSource?: SupplyDemand,
+      /** probably move to symmetric */
+      hackathon?: SupplyDemand,
+    }
   };
+
+  getInterestsMatchWith(other: WhatUserWants): WhatUserWants {
+    let rating = 0;
+    const supplyDemandOfOther = other.byInteractionMode.supplyDemand;
+    for (const interactionModeKey in supplyDemandOfOther) {
+      const supplyDemandOfOther2: SupplyDemand = supplyDemandOfOther[interactionModeKey];
+      const ourTopics = this.byInteractionMode.supplyDemand[interactionModeKey].topics;
+      for (const topicInclusionId in supplyDemandPerMode) {
+        supplyDemandPerMode[topicInclusionId];
+      }
+      supplyDemandOfOther2.name;
+    }
+  }
+
+  public getTopicMatchesWithinInteractionMode(
+    topics1: { [topicInclusionId: string]: TopicInterest },
+    topics2: TopicInterest[] ): TopicInterest[] {
+    return topics1.filter((topic1: TopicInterest) => {
+      return topics2.filter((topic2: TopicInterest) => {
+        return topic1.name === topic2.name;
+      });
+    });
+  }
 
   // TODO: old way, contemplate and remove:
   // wantToFindMentor: WantedTopics;
@@ -100,7 +132,7 @@ export class UserProfileService {
       console.log('getWhatUsersWant()', wuws);
       console.log(
         "wuws[0].byInteractionMode.freelance.supply.topics['pushId1'].name;",
-        wuws[0].byInteractionMode.freelance.supply.topics['pushId1'].name);
+        wuws[0].byInteractionMode.supplyDemand.freelance.supply.topics['pushId1'].name);
       this.saveWhatUserWants('exampleSavedWuw', wuws[0]);
     })
   }
