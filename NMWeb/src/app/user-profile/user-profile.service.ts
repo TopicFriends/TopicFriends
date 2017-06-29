@@ -2,9 +2,19 @@ import { Injectable } from '@angular/core';
 import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
 import {AuthService} from './auth.service';
+import {initFromObject} from '../util/util';
 
+export class TopicInterest {
+  name: string;
+  active?: boolean;
+  topicId;
+}
+
+/** TODO: better name */
 export class WantedTopics {
-  topics: string;
+  public topics: { [/** Note: this is not the id of the topic itself */ topicInclusionId: string]: TopicInterest } = {};
+
+  // topics: string;
   // we can add more metadata, like time period
 }
 
@@ -16,30 +26,38 @@ export class SupplyDemand {
 }
 
 export class WhatUserWants {
-  /** General exchange of knowledge/skills and brainstorming, pair programming */
-  exchange: WantedTopics;
-  pairProgramming: WantedTopics;
 
-  intern: SupplyDemand = new SupplyDemand();
-  mentor: SupplyDemand = new SupplyDemand();
-  freelance: SupplyDemand = new SupplyDemand();
-  job: SupplyDemand  = new SupplyDemand();
-  sponsorEvents: SupplyDemand = new SupplyDemand();
-  coFounderSpecializingIn: SupplyDemand = new SupplyDemand();
-
-  // work on hobby project together
-  /** Work on open-source together */
-  contributeToOpenSource: SupplyDemand = new SupplyDemand();
-  hackathon: SupplyDemand = new SupplyDemand();
+  byInteractionMode: {
+    /** General exchange of knowledge/skills and brainstorming, pair programming */
+    exchange: WantedTopics,
+    pairProgramming: WantedTopics,
+    intern: SupplyDemand,
+    mentor: SupplyDemand,
+    freelance: SupplyDemand,
+    job: SupplyDemand,
+    sponsorEvents: SupplyDemand,
+    coFounderSpecializingIn: SupplyDemand,
+    // work on hobby project together,
+    /** Work on open-source together */
+    contributeToOpenSource: SupplyDemand,
+    hackathon: SupplyDemand,
+  };
 
   // TODO: old way, contemplate and remove:
-  wantToFindMentor: WantedTopics;
-  wantToBecomeMentor: WantedTopics;
-  wantToWorkAsFreelanceFor: WantedTopics;
-  wantToHireFreelanceFor: WantedTopics;
-  wantToGetSponsorForEvents: WantedTopics;
-  wantToSponsorEvents: WantedTopics;
+  // wantToFindMentor: WantedTopics;
+  // wantToBecomeMentor: WantedTopics;
+  // wantToWorkAsFreelanceFor: WantedTopics;
+  // wantToHireFreelanceFor: WantedTopics;
+  // wantToGetSponsorForEvents: WantedTopics;
+  // wantToSponsorEvents: WantedTopics;
 
+  public static fromJson(initFrom: any) {
+    return new WhatUserWants(initFrom);
+  }
+
+  constructor(initFrom: any) {
+    initFromObject(this, initFrom);
+  }
 }
 
 export class UserProfile {
@@ -47,7 +65,7 @@ export class UserProfile {
   suername: string;
   company: string;
   role: string;
-  whatUserWants: WhatUserWants = new WhatUserWants();
+  whatUserWants: WhatUserWants; // = new WhatUserWants();
 
   profileLinkedIn: string;
   profileGitHub: string;
@@ -77,6 +95,13 @@ export class UserProfileService {
       console.log('authService.user.subscribe user', user);
       this.userId = user && user.uid;
     })
+
+    this.getWhatUsersWant().subscribe((wuws) => {
+      console.log('getWhatUsersWant()', wuws);
+      console.log(
+        "wuws[0].byInteractionMode.freelance.supply.topics['pushId1'].name;",
+        wuws[0].byInteractionMode.freelance.supply.topics['pushId1'].name);
+    })
   }
 
 
@@ -96,31 +121,35 @@ export class UserProfileService {
     * to read a list of users */
     this.whatUserWantsList.update(userId, {
       whatUserWants: {
-        freelance: {
-          supply: {
-            /** note: those push ids, like 'pushId1' are not id-s of the topics (like Angular),
-             but rather the ids of the association between the topic and whatUserWants.
-             This is in order to leave the option to have many-to-many
-             (as we might also add more metadata later, like enabled/disabled, comments, skill level).
-             And users could be able to have multiple variants of the same skill enabled/disabled and with different metadata.
-             This is not needed for MVP, but I would like to keep that option open in the data structure.
-             */
-            pushId1: {
-              active: true,
-              /** For now, for looking for matching users, we can ignore the foreign key (topicId) and just compare by name */
-              topicId: 'someForeignKey_Angular',
-              name: 'Angular',
-            },
-            pushId2: {
-              active: true,
-              topicId: 'someForeignKey_Ionic',
-              name: 'Ionic',
-            },
-            pushId3: {
-              active: true,
-              name: 'WordPress',
-              topicId: 'someForeignKey_WordPress',
-            },
+        byInteractionMode: {
+          freelance: {
+            supply: {
+              topics: {
+                /** note: those push ids, like 'pushId1' are not id-s of the topics (like Angular),
+                 but rather the ids of the association between the topic and whatUserWants.
+                 This is in order to leave the option to have many-to-many
+                 (as we might also add more metadata later, like enabled/disabled, comments, skill level).
+                 And users could be able to have multiple variants of the same skill enabled/disabled and with different metadata.
+                 This is not needed for MVP, but I would like to keep that option open in the data structure.
+                 */
+                pushId1: {
+                  active: true,
+                  /** For now, for looking for matching users, we can ignore the foreign key (topicId) and just compare by name */
+                  topicId: 'someForeignKey_Angular',
+                  name: 'Angular',
+                },
+                pushId2: {
+                  active: true,
+                  topicId: 'someForeignKey_Ionic',
+                  name: 'Ionic',
+                },
+                pushId3: {
+                  active: true,
+                  name: 'WordPress',
+                  topicId: 'someForeignKey_WordPress',
+                },
+              }
+            }
           }
         }
       }
@@ -129,5 +158,13 @@ export class UserProfileService {
 
   getProfile(): Observable<UserProfile> {
     return this.myUserProfile;
+  }
+
+  getWhatUsersWant(): Observable<WhatUserWants[]> {
+    return this.whatUserWantsList.map((wuws: any[]) => {
+      return wuws.map((wuw) => {
+        return WhatUserWants.fromJson(wuw.whatUserWants);
+      });
+    });
   }
 }
