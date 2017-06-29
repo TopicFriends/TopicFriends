@@ -82,15 +82,15 @@ export class UserProfileService {
 
   userProfiles: FirebaseListObservable<any>;
   whatUserWantsList: FirebaseListObservable<any>;
+  examplesList: FirebaseListObservable<any>;
   myUserProfile = this.db.object(`UserProfile/${this.userId}`);
   myWhatUserWants = this.db.object(`WhatUserWants/${this.userId}`);
 
-  constructor(
-      private db: AngularFireDatabase,
-      private authService: AuthService,
-  ) {
+  constructor(private db: AngularFireDatabase,
+              private authService: AuthService,) {
     this.userProfiles = db.list('UserProfile'); // just example
     this.whatUserWantsList = db.list('WhatUserWants');
+    this.examplesList = db.list('examplesList');
     authService.user.subscribe(user => {
       console.log('authService.user.subscribe user', user);
       this.userId = user && user.uid;
@@ -101,6 +101,7 @@ export class UserProfileService {
       console.log(
         "wuws[0].byInteractionMode.freelance.supply.topics['pushId1'].name;",
         wuws[0].byInteractionMode.freelance.supply.topics['pushId1'].name);
+      this.saveWhatUserWants('exampleSavedWuw', wuws[0]);
     })
   }
 
@@ -110,7 +111,7 @@ export class UserProfileService {
     // this.userProfiles.update(this.userId, {some: 'example'}); // FIXME: nasty crude quick stub
 
     /* NOTE: this will be hopefully wrapped in some OOP objects in TS,
-      to make it work nicely with other services/components
+     to make it work nicely with other services/components
      */
     const userId = this.userId;
     this.userProfiles.update(userId, {
@@ -118,7 +119,7 @@ export class UserProfileService {
     }); // FIXME: nasty crude quick stub
 
     /* separating this into another firebase location, to not have to read all that if we just want
-    * to read a list of users */
+     * to read a list of users */
     this.whatUserWantsList.update(userId, {
       whatUserWants: {
         byInteractionMode: {
@@ -153,7 +154,7 @@ export class UserProfileService {
           }
         }
       }
-  }); // FIXME: nasty crude quick stub
+    }); // FIXME: nasty crude quick stub
   }
 
   getProfile(): Observable<UserProfile> {
@@ -167,4 +168,9 @@ export class UserProfileService {
       });
     });
   }
+
+  public saveWhatUserWants(userId, whatUserWants: WhatUserWants) {
+    this.examplesList.update(userId, whatUserWants);
+  }
+
 }
