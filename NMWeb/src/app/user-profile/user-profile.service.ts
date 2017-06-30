@@ -66,7 +66,7 @@ export class WhatUserWants {
     return topics1.filter((topic1: TopicInterest) => {
       return topics2.filter((topic2: TopicInterest) => {
         return topic1.name === topic2.name;
-      });
+      }).length >= 1;
     });
   }
 

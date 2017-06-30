@@ -23,6 +23,15 @@ fdescribe('UserProfileService', () => {
     ).length).toBe(0);
   });
 
+  it('should be created 2 2', () => {
+    expect(WhatUserWants.getTopicMatchesWithinInteractionMode(
+      [],
+      [
+        {name: 'Angular'}
+      ],
+    ).length).toBe(0);
+  });
+
   it('should be created 3', () => {
     expect(WhatUserWants.getTopicMatchesWithinInteractionMode(
       [
@@ -37,10 +46,36 @@ fdescribe('UserProfileService', () => {
       [
         {name: 'Angular'},
         {name: 'Ionic'},
-      ], [
+      ],
+      [
         {name: 'Angular'},
         {name: 'Firebase'},
-      ]
+      ],
     ).length).toBe(1);
+  });
+  it('should be created 4 2', () => {
+    expect(WhatUserWants.getTopicMatchesWithinInteractionMode(
+      [
+        {name: 'Angular'},
+        {name: 'Firebase'},
+      ],
+      [
+        {name: 'Angular'},
+        {name: 'Ionic'},
+      ],
+    ).length).toBe(1);
+  });
+  it('should be created 5 1', () => {
+    expect(WhatUserWants.getTopicMatchesWithinInteractionMode(
+      [
+        {name: 'Angular'},
+        {name: 'Firebase'},
+      ],
+      [
+        {name: 'Firebase'},
+        {name: 'Angular'},
+        {name: 'Ionic'},
+      ],
+    ).length).toBe(2);
   });
 });
