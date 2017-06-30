@@ -13,6 +13,7 @@ export class TopicInterest {
 
 /** TODO: better name */
 export class WantedTopics {
+  active?: boolean;
   public topics: { [/** Note: this is not the id of the topic itself */ topicInclusionId: string]: TopicInterest } = {};
 
   // topics: string;
@@ -21,25 +22,31 @@ export class WantedTopics {
 
 /** Other potential names: GiveReceive, PassiveActive, FindAndBecome */
 export class SupplyDemand {
-  supply: WantedTopics = new WantedTopics();
-  demand: WantedTopics = new WantedTopics();
+  supply?: WantedTopics = new WantedTopics();
+  demand?: WantedTopics = new WantedTopics();
   // we can add more metadata, like time period
 }
 
 export class WhatUserWants {
 
   byInteractionMode: {
-    symmetric: {
+    symmetric?: {
       /** General exchange of knowledge/skills and brainstorming, pair programming */
       exchange?: WantedTopics,
       pairProgramming?: WantedTopics,
       /** play together, e.g. soccer, chess */
       play?: WantedTopics,
+      /** Watch together (/screening). E.g. watch Silicon Valley together, wink, wink :) */
+      watch?: WantedTopics,
+      // TODO: party (specifies what kinds of parties)
+      // TODO: socialize (specifies what kinds of socializing)
     },
-    supplyDemand: {
+    supplyDemand?: {
       intern?: SupplyDemand,
       mentor?: SupplyDemand,
       freelance?: SupplyDemand,
+      /** Code review */
+      review?: SupplyDemand,
       job?: SupplyDemand,
       advising?: SupplyDemand,
       sponsorEvents?: SupplyDemand,
@@ -52,28 +59,30 @@ export class WhatUserWants {
     }
   };
 
-  getInterestsMatchWith(other: WhatUserWants): WhatUserWants {
-    let rating = 0;
-    const supplyDemandOfOther = other.byInteractionMode.supplyDemand;
-    for (const interactionModeKey in supplyDemandOfOther) {
-      const supplyDemandOfOther2: SupplyDemand = supplyDemandOfOther[interactionModeKey];
-      const ourTopics = this.byInteractionMode.supplyDemand[interactionModeKey].topics;
-      for (const topicInclusionId in supplyDemandPerMode) {
-        supplyDemandPerMode[topicInclusionId];
-      }
-      supplyDemandOfOther2.name;
-    }
-  }
-
-  public getTopicMatchesWithinInteractionMode(
-    topics1: { [topicInclusionId: string]: TopicInterest },
-    topics2: TopicInterest[] ): TopicInterest[] {
+  public static getTopicMatchesWithinInteractionMode(
+      // topics1: { [topicInclusionId: string]: TopicInterest },
+      topics1: TopicInterest[],
+      topics2: TopicInterest[] ): TopicInterest[] {
     return topics1.filter((topic1: TopicInterest) => {
       return topics2.filter((topic2: TopicInterest) => {
         return topic1.name === topic2.name;
       });
     });
   }
+
+  // getInterestsMatchWith?(other: WhatUserWants): WhatUserWants {
+  //   let rating = 0;
+  //   const supplyDemandOfOther = other.byInteractionMode.supplyDemand;
+  //   for (const interactionModeKey in supplyDemandOfOther) {
+  //     const supplyDemandOfOther2: SupplyDemand = supplyDemandOfOther[interactionModeKey];
+  //     const ourTopics = this.byInteractionMode.supplyDemand[interactionModeKey].topics;
+  //     for (const topicInclusionId in supplyDemandPerMode) {
+  //       supplyDemandPerMode[topicInclusionId];
+  //     }
+  //     supplyDemandOfOther2.name;
+  //   }
+  // }
+
 
   // TODO: old way, contemplate and remove:
   // wantToFindMentor: WantedTopics;
@@ -152,9 +161,9 @@ export class UserProfileService {
 
     /* separating this into another firebase location, to not have to read all that if we just want
      * to read a list of users */
-    this.whatUserWantsList.update(userId, {
-      whatUserWants: {
-        byInteractionMode: {
+    const whatUserWants: WhatUserWants = {
+      byInteractionMode: {
+        supplyDemand: {
           freelance: {
             supply: {
               topics: {
@@ -186,6 +195,11 @@ export class UserProfileService {
           }
         }
       }
+    }
+    this.whatUserWantsList.update(userId, {
+      whatUserWants: {
+        whatUserWants
+      }
     }); // FIXME: nasty crude quick stub
   }
 
@@ -194,11 +208,12 @@ export class UserProfileService {
   }
 
   getWhatUsersWant(): Observable<WhatUserWants[]> {
-    return this.whatUserWantsList.map((wuws: any[]) => {
-      return wuws.map((wuw) => {
-        return WhatUserWants.fromJson(wuw.whatUserWants);
-      });
-    });
+    return null;
+    // return this.whatUserWantsList.map((wuws: any[]) => {
+    //   return wuws.map((wuw) => {
+    //     return WhatUserWants.fromJson(wuw.whatUserWants);
+    //   });
+    // });
   }
 
   public saveWhatUserWants(userId, whatUserWants: WhatUserWants) {
