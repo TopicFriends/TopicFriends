@@ -35,6 +35,16 @@ export class MatchResults {
   // TODO: fine-grained match results later on (not necessary for MVP)
 }
 
+function getDictionaryValuesAsArray<T>(dictionary: { [p: string]: T }): T[] {
+  const values = [];
+  if ( dictionary ) {
+    for (const key in dictionary) {
+      values.push(dictionary[key]);
+    }
+  }
+  return values;
+}
+
 export class WhatUserWants {
 
   byInteractionMode: {
@@ -81,8 +91,25 @@ export class WhatUserWants {
     });
   }
 
+  /** getSymmetricExchangeInterestsMatchWith */
   public getInterestsMatchWith?(other: WhatUserWants): MatchResults {
-    let matchScore = 0;
+    const topicMatches = WhatUserWants.getTopicMatchesWithinInteractionMode(
+      getDictionaryValuesAsArray(
+        this.byInteractionMode &&
+        this.byInteractionMode.symmetric.exchange.topics),
+      getDictionaryValuesAsArray(
+        other.byInteractionMode &&
+        other.byInteractionMode.symmetric.exchange.topics)
+    )
+    const matchScore = topicMatches.length;
+    return {
+      matchScore: matchScore, // FIXME
+    }
+  }
+
+  /** TODO target version. We simplify for now */
+  public getInterestsMatchWithIncludingSupplyDemand?(other: WhatUserWants): MatchResults {
+    const matchScore = 0;
     const allSupplyDemandOfOther =
       other.byInteractionMode &&
       other.byInteractionMode.supplyDemand;
