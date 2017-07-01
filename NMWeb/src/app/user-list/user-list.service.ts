@@ -18,7 +18,7 @@ export class UserListService {
   }
 
   public getDefaultUserList(){
-    // let userProfile = new UserProfile();
+    let userProfile = new UserProfile();
     // userProfile.name = "Rubén Triviño Juárez";
     // userProfile.company = "Willimbu";
     // userProfile.role = "Developer";
@@ -34,14 +34,14 @@ export class UserListService {
     // userProfile.whatUserWants.sponsorEvents.supply.topics = "Gamer events";
     // userProfile.whatUserWants.coFounderSpecializingIn.demand.topics = "Project idea";
     // userProfile.whatUserWants.coFounderSpecializingIn.supply.topics = "Wanna join";
-    // this.userList.push(userProfile);
-    // this.userList.push(userProfile);
-    // this.userList.push(userProfile);
-    // this.userList.push(userProfile);
-    // this.userList.push(userProfile);
-    // this.userList.push(userProfile);
-    // this.userList.push(userProfile);
-    // this.userList.push(userProfile);
+    this.userList.push(userProfile);
+    this.userList.push(userProfile);
+    this.userList.push(userProfile);
+    this.userList.push(userProfile);
+    this.userList.push(userProfile);
+    this.userList.push(userProfile);
+    this.userList.push(userProfile);
+    this.userList.push(userProfile);
 
     return this.userList;
   }
