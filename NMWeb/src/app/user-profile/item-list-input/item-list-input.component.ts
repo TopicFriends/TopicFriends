@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import {ControlValueAccessor, FormControl, FormGroup} from '@angular/forms';
 import { TagEntry } from "app/user-profile/tag-entry";
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-item-list-input',
@@ -41,12 +42,19 @@ export class ItemListInputComponent implements OnInit
   // Tag list 
   public tagList = [{name: "Angular", level: "beginner"}, {name: "Firebase"}];
 
-
+  filteredOptions: Observable<string[]>;
 
   constructor() { }
 
   ngOnInit() {
+    this.filteredOptions = this.reusableControl.valueChanges
+         .startWith(null)
+         .map(val => val ? this.filter(val) : this.tagList['name'].slice());
   }
+
+  filter(val: TagEntry): TagEntry[] {
+      return this.tagList['name'].filter(option => new RegExp(`^${val}`, 'gi').test(option)); 
+   }
 
   /**
    * Send the tags entered by the user to the parent (user-profile component)
