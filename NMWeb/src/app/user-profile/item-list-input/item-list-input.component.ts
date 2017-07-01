@@ -11,7 +11,7 @@ export class ItemListInputComponent implements OnInit
   // , ControlValueAccessor
 {
 
-  options = ['Angular', 'Ionic', 'Firebase']
+  //options = ['Angular', 'Ionic', 'Firebase']
 
   reusableControl = new FormControl();
 
@@ -34,12 +34,14 @@ export class ItemListInputComponent implements OnInit
   @Input() public formGroup1: FormGroup;
 
   // All possible tags
-  @Input() public inputTagList: TagEntry[];
+  @Input() public inputTagList: TagEntry[] = [new TagEntry('Angular'), new TagEntry('Ionic'), new TagEntry('Firebase')];
 
   @Output() public outputTagList = new EventEmitter();
 
   // Tag list 
   public tagList = [{name: "Angular", level: "beginner"}, {name: "Firebase"}];
+
+
 
   constructor() { }
 
