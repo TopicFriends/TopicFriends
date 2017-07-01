@@ -69,13 +69,15 @@ fdescribe('UserProfileService', () => {
     expect(WhatUserWants.getTopicMatchesWithinInteractionMode(
       [
         {name: 'Angular'},
+        {name: 'TypeScript'},
         {name: 'Firebase'},
       ],
       [
+        {name: 'TypeScript'},
         {name: 'Firebase'},
         {name: 'Angular'},
         {name: 'Ionic'},
       ],
-    ).length).toBe(2);
+    ).length).toBe(3);
   });
 });

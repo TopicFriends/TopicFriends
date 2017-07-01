@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {AuthService} from './auth.service';
 import {initFromObject} from '../util/util';
 
+/* TODO: rename to WantedTopic for consistency? */
 export class TopicInterest {
   name: string;
   active?: boolean;
@@ -14,7 +15,9 @@ export class TopicInterest {
 /** TODO: better name */
 export class WantedTopics {
   active?: boolean;
-  public topics: { [/** Note: this is not the id of the topic itself */ topicInclusionId: string]: TopicInterest } = {};
+  public topics: {
+    [/** Note: this is NOT the id of the topic itself */ topicInclusionId: string]: TopicInterest
+  } = {};
 
   // topics: string;
   // we can add more metadata, like time period
@@ -25,6 +28,11 @@ export class SupplyDemand {
   supply?: WantedTopics = new WantedTopics();
   demand?: WantedTopics = new WantedTopics();
   // we can add more metadata, like time period
+}
+
+export class MatchResults {
+  matchScore: number;
+  // TODO: fine-grained match results later on (not necessary for MVP)
 }
 
 export class WhatUserWants {
@@ -45,6 +53,8 @@ export class WhatUserWants {
       intern?: SupplyDemand,
       mentor?: SupplyDemand,
       freelance?: SupplyDemand,
+
+
       /** Code review */
       review?: SupplyDemand,
       job?: SupplyDemand,
@@ -65,23 +75,35 @@ export class WhatUserWants {
       topics2: TopicInterest[] ): TopicInterest[] {
     return topics1.filter((topic1: TopicInterest) => {
       return topics2.filter((topic2: TopicInterest) => {
+        // later use id-s
         return topic1.name === topic2.name;
       }).length >= 1;
     });
   }
 
-  // getInterestsMatchWith?(other: WhatUserWants): WhatUserWants {
-  //   let rating = 0;
-  //   const supplyDemandOfOther = other.byInteractionMode.supplyDemand;
-  //   for (const interactionModeKey in supplyDemandOfOther) {
-  //     const supplyDemandOfOther2: SupplyDemand = supplyDemandOfOther[interactionModeKey];
-  //     const ourTopics = this.byInteractionMode.supplyDemand[interactionModeKey].topics;
-  //     for (const topicInclusionId in supplyDemandPerMode) {
-  //       supplyDemandPerMode[topicInclusionId];
-  //     }
-  //     supplyDemandOfOther2.name;
-  //   }
-  // }
+  public getInterestsMatchWith?(other: WhatUserWants): MatchResults {
+    let matchScore = 0;
+    const allSupplyDemandOfOther =
+      other.byInteractionMode &&
+      other.byInteractionMode.supplyDemand;
+    if ( allSupplyDemandOfOther && this.byInteractionMode && this.byInteractionMode.supplyDemand ) {
+      for (const interactionModeKey in allSupplyDemandOfOther) {
+        const supplyDemandOfOther2: SupplyDemand = allSupplyDemandOfOther[interactionModeKey]; // e.g. mentor
+        const ourSupplyDemand = this.byInteractionMode.supplyDemand[interactionModeKey];
+        const ourTopics = ourSupplyDemand && ourSupplyDemand.topics;
+        if ( ourTopics ) {
+          for (const topicInclusionId in supplyDemandPerMode) {
+            supplyDemandPerMode[topicInclusionId];
+            matchScore += WhatUserWants.getTopicMatchesWithinInteractionMode().length;
+          }
+          supplyDemandOfOther2.name;
+        }
+      }
+    }
+    return {
+      matchScore: matchScore + 999, // FIXME
+    }
+  }
 
 
   // TODO: old way, contemplate and remove:
@@ -92,12 +114,12 @@ export class WhatUserWants {
   // wantToGetSponsorForEvents: WantedTopics;
   // wantToSponsorEvents: WantedTopics;
 
-  public static fromJson(initFrom: any) {
+  public static fromJson(initFrom: WhatUserWants) {
     return new WhatUserWants(initFrom);
   }
 
-  constructor(initFrom: any) {
-    initFromObject(this, initFrom);
+  constructor(initFrom: WhatUserWants) {
+    initFromObject<WhatUserWants>(this, initFrom);
   }
 }
 
@@ -129,6 +151,7 @@ export class UserProfileService {
 
   constructor(private db: AngularFireDatabase,
               private authService: AuthService,) {
+    // TODO: have some intermediate path for prod/test db, etc.
     this.userProfiles = db.list('UserProfile'); // just example
     this.whatUserWantsList = db.list('WhatUserWants');
     this.examplesList = db.list('examplesList');
@@ -146,7 +169,6 @@ export class UserProfileService {
     })
   }
 
-
   public saveUserProfile(data: UserProfile) {
     // this.userProfiles.update(this.userId, data); // FIXME: nasty crude quick stub
     // this.userProfiles.update(this.userId, {some: 'example'}); // FIXME: nasty crude quick stub
@@ -161,7 +183,7 @@ export class UserProfileService {
 
     /* separating this into another firebase location, to not have to read all that if we just want
      * to read a list of users */
-    const whatUserWants: WhatUserWants = {
+    const whatUserWants: WhatUserWants = WhatUserWants.fromJson({
       byInteractionMode: {
         supplyDemand: {
           freelance: {
@@ -171,12 +193,15 @@ export class UserProfileService {
                  but rather the ids of the association between the topic and whatUserWants.
                  This is in order to leave the option to have many-to-many
                  (as we might also add more metadata later, like enabled/disabled, comments, skill level).
-                 And users could be able to have multiple variants of the same skill enabled/disabled and with different metadata.
-                 This is not needed for MVP, but I would like to keep that option open in the data structure.
+                 And users could be able to have multiple variants of the same skill
+                 enabled/disabled and with different metadata.
+                 This is not needed for MVP, but I would like to
+                 keep that option possible in the data structure.
                  */
                 pushId1: {
                   active: true,
-                  /** For now, for looking for matching users, we can ignore the foreign key (topicId) and just compare by name */
+                  /** For now, for looking for matching users, we can ignore the foreign key (topicId)
+                   * and just compare by name */
                   topicId: 'someForeignKey_Angular',
                   name: 'Angular',
                 },
@@ -195,7 +220,7 @@ export class UserProfileService {
           }
         }
       }
-    }
+    });
     this.whatUserWantsList.update(userId, {
       whatUserWants: {
         whatUserWants

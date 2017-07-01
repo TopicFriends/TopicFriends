@@ -29,7 +29,7 @@ export class UserProfileComponent implements OnInit {
       public authService: AuthService,
   ) {
 
-
+    // FIXME: extract WhatUserWantsForm !
     this._userProfileForm = this._fb.group({
       wantToBeFreelance: ['Design, DevOps, QA'],
       wantToHireFreelance: ['Angular, React, Ionic'],
