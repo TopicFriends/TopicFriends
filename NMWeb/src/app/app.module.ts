@@ -29,6 +29,7 @@ import { ItemListInputComponent } from './user-profile/item-list-input/item-list
 import { TestReusableComponent } from './user-profile/test-reusable/test-reusable.component';
 import { SkillsVisualizerTestComponent } from './user-profile/skills-visualizer-test/skills-visualizer-test.component';
 import {SkillsVisualizer} from './user-profile/skills-visualizer/skills-visualizer';
+import { WhatUserWantsFormComponent } from './user-profile/what-user-wants-form/what-user-wants-form.component';
 
 // import {
 //   AngularFireModule,
@@ -81,6 +82,7 @@ const appRoutes: Routes = [
     TestReusableComponent,
     SkillsVisualizer,
     SkillsVisualizerTestComponent,
+    WhatUserWantsFormComponent,
   ],
   imports: [
     BrowserModule,
