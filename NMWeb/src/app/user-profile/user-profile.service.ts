@@ -96,9 +96,13 @@ export class WhatUserWants {
     const topicMatches = WhatUserWants.getTopicMatchesWithinInteractionMode(
       getDictionaryValuesAsArray(
         this.byInteractionMode &&
+        this.byInteractionMode.symmetric &&
+        this.byInteractionMode.symmetric.exchange &&
         this.byInteractionMode.symmetric.exchange.topics),
       getDictionaryValuesAsArray(
         other.byInteractionMode &&
+        other.byInteractionMode.symmetric &&
+        other.byInteractionMode.symmetric.exchange &&
         other.byInteractionMode.symmetric.exchange.topics)
     )
     const matchScore = topicMatches.length;
