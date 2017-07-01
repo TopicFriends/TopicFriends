@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import {ControlValueAccessor, FormControl, FormGroup} from '@angular/forms';
+import { TagEntry } from "app/user-profile/tag-entry";
 
 @Component({
   selector: 'app-item-list-input',
@@ -32,9 +33,24 @@ export class ItemListInputComponent implements OnInit
 
   @Input() public formGroup1: FormGroup;
 
+  // All possible tags
+  @Input() public inputTagList: TagEntry[];
+
+  @Output() public outputTagList = new EventEmitter();
+
+  // Tag list 
+  public tagList = [{name: "Angular", level: "beginner"}, {name: "Firebase"}];
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  /**
+   * Send the tags entered by the user to the parent (user-profile component)
+   */
+  sendTagsToParent() {
+    this.outputTagList.emit({tagList: this.tagList});
   }
 
 }
