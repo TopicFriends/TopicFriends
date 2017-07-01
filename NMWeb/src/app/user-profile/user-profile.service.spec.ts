@@ -135,7 +135,7 @@ fdescribe('UserProfileService: getInterestsMatchWith()', () => {
     let othersExchangeDetails = testData.createWhatUserWants(testData.topics_Default, false);
 
     let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
-    expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails)).toBe(3);
+    expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(3);
   });
 
   it('supplied - 2 out of 3 - matching supply-demand, should be matched: 2', () => {
