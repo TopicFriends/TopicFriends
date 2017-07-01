@@ -102,7 +102,9 @@ export class ExampleData {
   private createWhatUserWantsExchange(topics: WantedTopics) {
     return   {
       byInteractionMode: {
-        exchange: topics
+        symmetric: {
+          exchange: topics
+        }
       }
     }
   }
