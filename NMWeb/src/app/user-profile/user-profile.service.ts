@@ -169,7 +169,7 @@ export class UserProfileService {
     // })
   }
 
-  public saveUserProfile(data: UserProfile, whatUserWants: WhatUserWants) {
+  public saveUserProfile(data: UserProfile, whatUserWants?: WhatUserWants) {
     // this.userProfiles.update(this.userId, data); // FIXME: nasty crude quick stub
     // this.userProfiles.update(this.userId, {some: 'example'}); // FIXME: nasty crude quick stub
 
