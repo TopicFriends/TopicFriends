@@ -29,7 +29,7 @@ export class UserProfileComponent implements OnInit {
       public authService: AuthService,
   ) {
 
-
+    // FIXME: extract WhatUserWantsForm !
     this._userProfileForm = this._fb.group({
       wantToBeFreelance: ['Design, DevOps, QA'],
       wantToHireFreelance: ['Angular, React, Ionic'],
@@ -51,9 +51,9 @@ export class UserProfileComponent implements OnInit {
         this.userProfile = new UserProfile();
       }
     });
-    this.filteredOptions = this.myControl.valueChanges
-      .startWith(null)
-      .map(val => val ? this.filter(val) : this.options.slice());
+    // this.filteredOptions = this.myControl.valueChanges
+    //   .startWith(null)
+    //   .map(val => val ? this.filter(val) : this.options.slice());
 
   }
 
