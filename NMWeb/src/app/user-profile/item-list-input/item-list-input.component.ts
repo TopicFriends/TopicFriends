@@ -14,7 +14,7 @@ export class ItemListInputComponent implements OnInit
 
   //options = ['Angular', 'Ionic', 'Firebase']
 
-  reusableControl = new FormControl();
+  //reusableControl = new FormControl();
 
   // writeValue(obj: any): void {
   //   throw new Error("Method not implemented.");
@@ -35,26 +35,40 @@ export class ItemListInputComponent implements OnInit
   @Input() public formGroup1: FormGroup;
 
   // All possible tags
-  @Input() public inputTagList: TagEntry[] = [new TagEntry('Angular'), new TagEntry('Ionic'), new TagEntry('Firebase')];
+  //@Input() public inputTagList: TagEntry[] = [new TagEntry('Angular'), new TagEntry('Ionic'), new TagEntry('Firebase')];
+  @Input() public inputTagList: string[] = ['Angular', 'Ionic', 'Firebase', 'PHP'];
 
   @Output() public outputTagList = new EventEmitter();
 
   // Tag list 
-  public tagList = [{name: "Angular", level: "beginner"}, {name: "Firebase"}];
+  public tagList: string[] = [];
 
-  filteredOptions: Observable<string[]>;
+  stateCtrl: FormControl;
+  filteredOptions: any;
 
-  constructor() { }
-
-  ngOnInit() {
-    this.filteredOptions = this.reusableControl.valueChanges
-         .startWith(null)
-         .map(val => val ? this.filter(val) : this.tagList['name'].slice());
+  constructor() {
+    this.stateCtrl = new FormControl();
+    this.filteredOptions = this.stateCtrl.valueChanges
+        .startWith(null)
+        .map(name => this.filter(name));
   }
 
-  filter(val: TagEntry): TagEntry[] {
-      return this.tagList['name'].filter(option => new RegExp(`^${val}`, 'gi').test(option)); 
-   }
+  ngOnInit() {
+  }
+
+  filter(val: string) {
+    return val ? this.inputTagList.filter(s => s.toLowerCase().indexOf(val.toLowerCase()) === 0)
+               : this.inputTagList;
+  }
+
+  addTag(tag: string) {
+    this.tagList.push(tag);
+    this.stateCtrl.reset();
+  }
+
+  deleteTag(tag: string) {
+    this.tagList = this.tagList.filter(t => t != tag);
+  }
 
   /**
    * Send the tags entered by the user to the parent (user-profile component)

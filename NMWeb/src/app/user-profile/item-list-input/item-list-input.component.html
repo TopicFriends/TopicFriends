@@ -1,28 +1,28 @@
-{{reusableControl.value}}
+{{reusableControl | json}}
 <br>
 
-    <md-chip-list>
-      <md-chip *ngFor="let chip of tagList">{{chip.name}}</md-chip>
-    </md-chip-list>
+<md-chip-list>
+  <md-chip
+    *ngFor="let chip of tagList">
+    {{chip}}
+    <span (click)=deleteTag(chip)>X</span>
+  </md-chip>
+</md-chip-list>
 <br>
 
-<form [formGroup]="formGroup1" style="width:100%">
-  <md-input-container>
-    <input
-      type="text"
-      mdInput
-      [formControl]="reusableControl"
-      [mdAutocomplete]="auto"
-      formControlName="myControl">
-    <md-placeholder>
-      <ng-content select="app-item-list-input-title"></ng-content>
-    </md-placeholder>
+<md-input-container style="width:100%">
+  <input
+    mdInput
+    placeholder="My skills"
+    [mdAutocomplete]="auto"
+    [formControl]="stateCtrl">
+</md-input-container>
 
-  </md-input-container>
-
-  <md-autocomplete #auto="mdAutocomplete">
-    <md-option *ngFor="let option of filteredOptions | async" [value]="option.name">
-      {{ option.name }}
-    </md-option>
-  </md-autocomplete>
-</form>
+<md-autocomplete #auto="mdAutocomplete">
+  <md-option
+    *ngFor="let option of filteredOptions | async"
+    [value]="option"
+    (click)="addTag(option)">
+    {{ option }}
+  </md-option>
+</md-autocomplete>
