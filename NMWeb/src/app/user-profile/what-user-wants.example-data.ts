@@ -66,11 +66,14 @@ export class ExampleData {
     }
   };
 
-  public readonly topics_Empty = {
-    topics: null
+  public readonly topics_IonicAndroid = {
+    topics: {
+      pushId2: ionic,
+      pushId3: android,
+    }
   };
 
-  public readonly topics_Ionic = {    //User_3a_wantsToMentor_Ionic, User_3b_wantsToBeMentored_Ionic
+  public readonly topics_Ionic = {
     topics: {
       pushId2: ionic
     }
