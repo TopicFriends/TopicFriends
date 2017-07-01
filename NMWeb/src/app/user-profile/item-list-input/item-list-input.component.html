@@ -1,5 +1,15 @@
+{{reusableControl.value}}
+<br>
+
+
 <form [formGroup]="formGroup1" style="width:100%">
-  <md-input-container style="width:100%">
+  <md-input-container>
+
+    <md-chip-list>
+      <md-chip>Papadum</md-chip>
+      <md-chip>Naan</md-chip>
+      <md-chip>Dal</md-chip>
+    </md-chip-list>
     <input type="text" mdInput [formControl]="reusableControl"
            [mdAutocomplete]="auto"
            formControlName="myControl">
@@ -10,7 +20,7 @@
   </md-input-container>
 
   <md-autocomplete #auto="mdAutocomplete">
-    <md-option *ngFor="let option of options" [value]="option">
+    <md-option *ngFor="let option of inputTagList" [value]="option">
       {{ option }}
     </md-option>
   </md-autocomplete>
