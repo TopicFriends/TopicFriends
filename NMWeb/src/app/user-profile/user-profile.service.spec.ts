@@ -98,11 +98,11 @@ fdescribe('UserProfileService: getInterestsMatchWith()', () => {
     expect(whatUserWants.getInterestsMatchWith(whatUserWants)).toBe(0);
   });
 
-  // it('suppliled non-matching supply-demand, should be matched: 0', () => {
-  //   let exchangeDetails =
-  //   whatUserWants = WhatUserWants.fromJson(null);
-  //   expect(whatUserWants.getInterestsMatchWith(whatUserWants)).toBe(1);
-  // });
+  it('suppliled non-matching supply-demand, should be matched: 0', () => {
+    let userExchangeDetails = testData.createWhatUserWants(testData.topics_GraphicDesign, false);
+    let othersExchangeDetails = testData.createWhatUserWants(testData.topics_Default, false);
 
-
+    let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
+    expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails)).toBe(0);
+  });
 });

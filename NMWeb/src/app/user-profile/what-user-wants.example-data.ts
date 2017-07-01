@@ -1,57 +1,68 @@
 import {UserProfile, WantedTopics, WhatUserWants} from './user-profile.service';
 
-const topic_Angular =
+const angular =
   {
     active: true,
     topicId: 'someForeignKey_Angular',
     name: 'Angular',
   };
 
-const topic_Ionic =
+const ionic =
   {
     active: true,
     topicId: 'someForeignKey_Ionic',
     name: 'Ionic',
   };
 
-const topic_Android =
+const android =
   {
     active: true,
     name: 'Android',
     topicId: 'someForeignKey_Android',
   };
 
+const graphicDesign =
+  {
+    active: true,
+    name: 'Graphic Design',
+    topicId: 'someForeignKey_GraphicDesign',
+  }
+
 // Firebase: objects that have no children become null. Simulate that in passing data around here.
 // The null is for all the objects that have no children, so if distant descendant has no children, all ancestors don't exist.
 
 export class ExampleData {
 
-  public createUserWith(topics: WantedTopics, supplyDemand?: boolean) { //TODO: get rid of booleans
-    var user = new UserProfile();
-    if(supplyDemand) {
-      user.whatUserWants = this.createWhatUserWantsSupplyDemand(topics);
-    }
-    else {
-      user.whatUserWants = this.createWhatUserWantsExchange(topics);
-    }
-    user.name = 'Some user name';
-    user.suername = 'Some surname';
-    user.company = 'Some company';
-    user.role = 'Some user role';
-    user.profileFacebook = 'Facebook profile url';
-    user.profileGitHub = 'GitHub profile url';
-    user.profileLinkedIn = 'LinkedIn profile url';
-    user.profileStackOverflow = 'StackOverflow profile url';
-    user.profileTwitter = 'Twitter profile url';
+  // public createUserWith(topics: WantedTopics, supplyDemand?: boolean) { //TODO: get rid of boolean
+  //   let user = new UserProfile();
+  //   if(supplyDemand) {
+  //     user.whatUserWants = this.createWhatUserWantsSupplyDemand(topics);
+  //   }
+  //   else {
+  //     user.whatUserWants = this.createWhatUserWantsExchange(topics);
+  //   }
+  //   user.name = 'Some user name';
+  //   user.suername = 'Some surname';
+  //   user.company = 'Some company';
+  //   user.role = 'Some user role';
+  //   user.profileFacebook = 'Facebook profile url';
+  //   user.profileGitHub = 'GitHub profile url';
+  //   user.profileLinkedIn = 'LinkedIn profile url';
+  //   user.profileStackOverflow = 'StackOverflow profile url';
+  //   user.profileTwitter = 'Twitter profile url';
+  //
+  //   return user;
+  // }
 
-    return user;
+  public createWhatUserWants(topics: WantedTopics, supplyDemand?: boolean) { //TODO: get rid of boolean
+   return this.createWhatUserWantsExchange(topics);
   }
 
   public readonly topics_Default = {
     topics: {
-      pushId1: topic_Angular,
-      pushId2: topic_Ionic,
-      pushId3: topic_Android,
+      pushId1: angular,
+      pushId2: ionic,
+      pushId3: android,
     }
   };
 
@@ -61,31 +72,39 @@ export class ExampleData {
 
   public readonly topics_Ionic = {    //User_3a_wantsToMentor_Ionic, User_3b_wantsToBeMentored_Ionic
     topics: {
-      pushId2: topic_Ionic
+      pushId2: ionic
     }
   };
 
   public readonly topics_Android = {
     topics: {
-      pushId2: topic_Android
+      pushId2: android
     }
-  };  //User_3c_wantsToBeMentored_Android   //replace with a b
+  };
 
-  public readonly User_4a_wantsFreelancingJob_GraphicDesing;
+  public readonly topics_GraphicDesign = {
+    topics: {
+      pushId2: graphicDesign
+    }
+  };
 
-  public readonly User_4b_wantsToHireFreelancer_GraphicDesing;
-
-  public readonly User_4c_wantsFreelancingJob_FullStack;
-
-  public readonly User_5a_wantsAnInternship_Android;
-
-  public readonly User_5b_wantsToHireAnIntern_Android;  //split into two
-
-  public readonly User_6a_wantsAJob_FullStack;
-
-  public readonly User_6b_wantsToHireForAJob_FullStack;
-
-  public readonly User_6c_wantsToHireForAJob_GraphicDesign;
+  //User_3c_wantsToBeMentored_Android   //replace with a b
+  //
+  // public readonly User_4a_wantsFreelancingJob_GraphicDesing;
+  //
+  // public readonly User_4b_wantsToHireFreelancer_GraphicDesing;
+  //
+  // public readonly User_4c_wantsFreelancingJob_FullStack;
+  //
+  // public readonly User_5a_wantsAnInternship_Android;
+  //
+  // public readonly User_5b_wantsToHireAnIntern_Android;  //split into two
+  //
+  // public readonly User_6a_wantsAJob_FullStack;
+  //
+  // public readonly User_6b_wantsToHireForAJob_FullStack;
+  //
+  // public readonly User_6c_wantsToHireForAJob_GraphicDesign;
 
   private createWhatUserWantsSupplyDemand(topics: WantedTopics) {
     return   {
