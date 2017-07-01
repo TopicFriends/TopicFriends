@@ -169,7 +169,7 @@ export class UserProfileService {
     // })
   }
 
-  public saveUserProfile(data: UserProfile) {
+  public saveUserProfile(data: UserProfile, whatUserWants: WhatUserWants) {
     // this.userProfiles.update(this.userId, data); // FIXME: nasty crude quick stub
     // this.userProfiles.update(this.userId, {some: 'example'}); // FIXME: nasty crude quick stub
 
@@ -183,7 +183,7 @@ export class UserProfileService {
 
     /* separating this into another firebase location, to not have to read all that if we just want
      * to read a list of users */
-    const whatUserWants: WhatUserWants = WhatUserWants.fromJson({
+    whatUserWants = WhatUserWants.fromJson({
       byInteractionMode: {
         supplyDemand: {
           freelance: {
