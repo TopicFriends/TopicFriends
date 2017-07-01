@@ -160,13 +160,13 @@ export class UserProfileService {
       this.userId = user && user.uid;
     })
 
-    this.getWhatUsersWant().subscribe((wuws) => {
-      console.log('getWhatUsersWant()', wuws);
-      console.log(
-        "wuws[0].byInteractionMode.freelance.supply.topics['pushId1'].name;",
-        wuws[0].byInteractionMode.supplyDemand.freelance.supply.topics['pushId1'].name);
-      this.saveWhatUserWants('exampleSavedWuw', wuws[0]);
-    })
+    // this.getWhatUsersWant().subscribe((wuws) => {
+    //   console.log('getWhatUsersWant()', wuws);
+    //   console.log(
+    //     "wuws[0].byInteractionMode.freelance.supply.topics['pushId1'].name;",
+    //     wuws[0].byInteractionMode.supplyDemand.freelance.supply.topics['pushId1'].name);
+    //   this.saveWhatUserWants('exampleSavedWuw', wuws[0]);
+    // })
   }
 
   public saveUserProfile(data: UserProfile) {
