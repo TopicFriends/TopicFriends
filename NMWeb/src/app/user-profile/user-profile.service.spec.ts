@@ -1,8 +1,7 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { WhatUserWants } from './user-profile.service';
+import { ExampleData } from './what-user-wants.example-data';
 
-import {UserProfileService, WhatUserWants} from './user-profile.service';
-
-fdescribe('UserProfileService', () => {
+describe('UserProfileService: getTopicMatchesWithinInteractionMode()', () => {
   beforeEach(() => {
     // TestBed.configureTestingModule({
     //   providers: [UserProfileService]
@@ -53,6 +52,7 @@ fdescribe('UserProfileService', () => {
       ],
     ).length).toBe(1);
   });
+
   it('should be created 4 2', () => {
     expect(WhatUserWants.getTopicMatchesWithinInteractionMode(
       [
@@ -65,6 +65,7 @@ fdescribe('UserProfileService', () => {
       ],
     ).length).toBe(1);
   });
+
   it('should be created 5 1', () => {
     expect(WhatUserWants.getTopicMatchesWithinInteractionMode(
       [
@@ -79,5 +80,29 @@ fdescribe('UserProfileService', () => {
         {name: 'Ionic'},
       ],
     ).length).toBe(3);
+  });
+});
+
+
+let whatUserWants: WhatUserWants;
+let testData: ExampleData;
+
+fdescribe('UserProfileService: getInterestsMatchWith()', () => {
+
+  beforeAll(() => {
+    testData = new ExampleData();
+  });
+
+  it('nothing supplied, should be matched: 0', () => {
+    whatUserWants = WhatUserWants.fromJson(null);
+    expect(whatUserWants.getInterestsMatchWith(whatUserWants)).toBe(0);
+  });
+
+  it('suppliled non-matching supply-demand, should be matched: 0', () => {
+    let userExchangeDetails = testData.createWhatUserWants(testData.topics_GraphicDesign, false);
+    let othersExchangeDetails = testData.createWhatUserWants(testData.topics_Default, false);
+
+    let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
+    expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails)).toBe(0);
   });
 });
