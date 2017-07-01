@@ -92,11 +92,11 @@ export class WhatUserWants {
         const ourSupplyDemand = this.byInteractionMode.supplyDemand[interactionModeKey];
         const ourTopics = ourSupplyDemand && ourSupplyDemand.topics;
         if ( ourTopics ) {
-          for (const topicInclusionId in supplyDemandPerMode) {
-            supplyDemandPerMode[topicInclusionId];
-            matchScore += WhatUserWants.getTopicMatchesWithinInteractionMode().length;
-          }
-          supplyDemandOfOther2.name;
+          // for (const topicInclusionId in supplyDemandPerMode) {
+            // supplyDemandPerMode[topicInclusionId];
+            // matchScore += WhatUserWants.getTopicMatchesWithinInteractionMode().length;
+          // }
+          // supplyDemandOfOther2.name;
         }
       }
     }
