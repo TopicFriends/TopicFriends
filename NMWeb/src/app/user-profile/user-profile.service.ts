@@ -32,6 +32,7 @@ export class SupplyDemand {
 
 export class MatchResults {
   matchScore: number;
+  topicMatches: TopicInterest[];
   // TODO: fine-grained match results later on (not necessary for MVP)
 }
 
@@ -102,7 +103,7 @@ export class WhatUserWants {
 
   /** getSymmetricExchangeInterestsMatchWith */
   public getInterestsMatchWith?(other: WhatUserWants): MatchResults {
-    const topicMatches = WhatUserWants.getTopicMatchesWithinInteractionMode(
+    let topicMatches = WhatUserWants.getTopicMatchesWithinInteractionMode(
       getDictionaryValuesAsArray(
         this.byInteractionMode &&
         this.byInteractionMode.symmetric &&
@@ -114,9 +115,23 @@ export class WhatUserWants {
         other.byInteractionMode.symmetric.exchange &&
         other.byInteractionMode.symmetric.exchange.topics)
     )
+    const topicMatches2 = WhatUserWants.getTopicMatchesWithinInteractionMode(
+      getDictionaryValuesAsArray(
+        this.byInteractionMode &&
+        this.byInteractionMode.symmetric &&
+        this.byInteractionMode.symmetric.pairProgramming &&
+        this.byInteractionMode.symmetric.pairProgramming.topics),
+      getDictionaryValuesAsArray(
+        other.byInteractionMode &&
+        other.byInteractionMode.symmetric &&
+        other.byInteractionMode.symmetric.pairProgramming &&
+        other.byInteractionMode.symmetric.pairProgramming.topics)
+    )
+    topicMatches = topicMatches.concat(topicMatches2)
     const matchScore = topicMatches.length;
     return {
       matchScore: matchScore, // FIXME
+      topicMatches: topicMatches,
     }
   }
 
@@ -142,6 +157,7 @@ export class WhatUserWants {
     }
     return {
       matchScore: matchScore + 999, // FIXME
+      topicMatches: [], // FIXME
     }
   }
 
