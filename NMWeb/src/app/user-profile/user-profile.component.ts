@@ -20,7 +20,7 @@ export class UserProfileComponent implements OnInit {
 
   myControl = new FormControl();
 
-  options = ['Angular', 'Ionic', 'Firebase'];
+  options = ['Angular', 'Ionic', 'Firebase', 'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails'];
   filteredOptions: Observable<string[]>;
 
   constructor(
