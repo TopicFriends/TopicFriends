@@ -58,8 +58,15 @@ export class WhatUserWants {
       watch?: WantedTopics,
       // TODO: party (specifies what kinds of parties)
       // TODO: socialize (specifies what kinds of socializing)
+      hackathon?: WantedTopics,   /** Keep in mind it also exists in supplyDemand for later more advanced use.
+        This symmetric hackathon could be called "informal". */
     },
-    supplyDemand?: {
+    supplyDemand?: {    // The more heavy something is, the more it should be in supplyDemand
+      //  as opposed to symmetric, because it might require organizers, e.g. hackathon, workshop, presentation,
+      /** though, hackathon is a special case in which it could work with or without organizers, meaning
+       *  the matching algorithm should have a mode in which it will also match in a case where, let's say everyone
+       *  wants to organize, or everyone just wants to participate.
+          For now we are doing only symmetric for hackathon */
       intern?: SupplyDemand,
       mentor?: SupplyDemand,
       freelance?: SupplyDemand,
@@ -74,7 +81,8 @@ export class WhatUserWants {
       /** Work on open-source together; probably move to symmetric */
       contributeToOpenSource?: SupplyDemand,
       /** probably move to symmetric */
-      hackathon?: SupplyDemand,
+      organizeHackathon?: SupplyDemand,     /** I would like to organize/participate */ /** For hackathon in supplyDemand we could
+        have a stronger wording: "I would like to organize hackathon." / "I would like to participate in an **organized** hackathon" */
       presentation?: SupplyDemand,      /** I'm interested in making/attending presentation */
       workshop?: SupplyDemand,
     }
