@@ -2,6 +2,8 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import {ControlValueAccessor, FormControl, FormGroup} from '@angular/forms';
 import { TagEntry } from "app/user-profile/tag-entry";
 import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-item-list-input',
@@ -40,7 +42,7 @@ export class ItemListInputComponent implements OnInit
 
   @Output() public outputTagList = new EventEmitter();
 
-  // Tag list 
+  // Tag list
   public tagList: string[] = [];
 
   stateCtrl: FormControl;
