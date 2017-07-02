@@ -98,7 +98,7 @@ fdescribe('UserProfileService: getInterestsMatchWith()', () => {
     expect(whatUserWants.getInterestsMatchWith(whatUserWants).matchScore).toBe(0);
   });
 
-  it('supplied non-matching supply-demand, should be matched: 0', () => {
+  it('supplied non-matching (disjoint sets) supply-demand, should be matched: 0', () => {
     let userExchangeDetails = testData.createWhatUserWants(testData.topics_Ionic, false);
     let othersExchangeDetails = testData.createWhatUserWants(testData.topics_Android, false);
 
@@ -143,15 +143,15 @@ fdescribe('UserProfileService: getInterestsMatchWith()', () => {
     let othersExchangeDetails = testData.createWhatUserWants(testData.topics_Default, false);
 
     let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
-    expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(3);
+    expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(2);
   });
 
- it('supplied - 2 out of 3 - matching supply-demand, should be matched: 2', () => {
+  it('supplied - 2 out of 3 - matching supply-demand, should be matched: 2', () => {
     let userExchangeDetails = testData.createWhatUserWants(testData.topics_Default, false);
     let othersExchangeDetails = testData.createWhatUserWants(testData.topics_IonicAndroid, false);
 
     let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
-    expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(3);
+    expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(2);
   });
 
 
