@@ -1,4 +1,4 @@
-import { WantedTopics } from './user-profile.service';
+import {WantedTopics} from './user-profile.service';
 
 const angular =
   {
@@ -39,7 +39,7 @@ export class ExampleData {
   //     user.whatUserWants = this.createWhatUserWantsSupplyDemand(topics);
   //   }
   //   else {
-  //     user.whatUserWants = this.createWhatUserWantsExchange(topics);
+  //     user.whatUserWants = this.createWhatUserWantsSymmetricOneBranch(topics);
   //   }
   //   user.name = 'Some user name';
   //   user.suername = 'Some surname';
@@ -54,8 +54,38 @@ export class ExampleData {
   //   return user;
   // }
 
-  public createWhatUserWants(topics: WantedTopics, supplyDemand?: boolean) { //TODO: get rid of boolean
-   return this.createWhatUserWantsExchange(topics);
+  public createWhatUserWantsSupplyDemand(topics: WantedTopics) {
+    return {
+      byInteractionMode: {
+        supplyDemand: {
+          freelance: {
+            supply: topics,
+          },
+        },
+      },
+    }
+  }
+
+  public createWhatUserWantsSymmetric(exchangeTopics: WantedTopics,
+                                      pairProgrammingTopics?: WantedTopics) {
+    let topics;
+    if (pairProgrammingTopics) {
+      topics = {
+        exchange: exchangeTopics,
+        pairProgramming: pairProgrammingTopics,
+      }
+    }
+    else {
+      topics = {
+        exchange: exchangeTopics,
+      }
+    }
+
+    return {
+      byInteractionMode: {
+        symmetric: topics,
+      },
+    }
   }
 
   public readonly topics_IonicAndroidAngular = {
@@ -63,53 +93,31 @@ export class ExampleData {
       pushId2: ionic,
       pushId3: android,
       pushId1: angular,
-    }
+    },
   };
 
   public readonly topics_IonicAndroid = {
     topics: {
       pushId2: ionic,
       pushId3: android,
-    }
+    },
   };
 
   public readonly topics_Ionic = {
     topics: {
-      pushId2: ionic
-    }
+      pushId2: ionic,
+    },
   };
 
   public readonly topics_Android = {
     topics: {
-      pushId2: android
-    }
+      pushId2: android,
+    },
   };
 
   public readonly topics_GraphicDesign = {
     topics: {
-      pushId2: graphicDesign
-    }
+      pushId2: graphicDesign,
+    },
   };
-
-  private createWhatUserWantsSupplyDemand(topics: WantedTopics) {
-    return   {
-      byInteractionMode: {
-        supplyDemand: {
-          freelance: {
-            supply: topics
-          }
-        }
-      }
-    }
-  }
-
-  private createWhatUserWantsExchange(topics: WantedTopics) {
-    return   {
-      byInteractionMode: {
-        symmetric: {
-          exchange: topics
-        }
-      }
-    }
-  }
 }

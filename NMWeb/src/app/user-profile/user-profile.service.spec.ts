@@ -99,59 +99,69 @@ fdescribe('UserProfileService: getInterestsMatchWith()', () => {
   });
 
   it('supplied non-matching (disjoint sets) supply-demand, should be matched: 0', () => {
-    let userExchangeDetails = testData.createWhatUserWants(testData.topics_Ionic, false);
-    let othersExchangeDetails = testData.createWhatUserWants(testData.topics_Android, false);
+    let userExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_Ionic);
+    let othersExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_Android);
 
     let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
     expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(0);
   });
 
   it('supplied nothing supply-demand, should be matched: 0', () => {
-    let userExchangeDetails = testData.createWhatUserWants(null, false);
-    let othersExchangeDetails = testData.createWhatUserWants(testData.topics_IonicAndroidAngular, false);
+    let userExchangeDetails = testData.createWhatUserWantsSymmetric(null);
+    let othersExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_IonicAndroidAngular);
 
     let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
     expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(0);
   });
 
   it('supplied non-matching supply-demand, nothing for others, should be matched: 0', () => {
-    let userExchangeDetails = testData.createWhatUserWants(testData.topics_IonicAndroidAngular, false);
-    let othersExchangeDetails = testData.createWhatUserWants(null, false);
+    let userExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_IonicAndroidAngular);
+    let othersExchangeDetails = testData.createWhatUserWantsSymmetric(null);
 
     let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
     expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(0);
   });
 
   it('supplied - 1 for each - matching supply-demand, should be matched: 1', () => {
-    let userExchangeDetails = testData.createWhatUserWants(testData.topics_Android, false);
-    let othersExchangeDetails = testData.createWhatUserWants(testData.topics_Android, false);
+    let userExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_Android);
+    let othersExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_Android);
 
     let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
     expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(1);
   });
 
   it('supplied - all - matching supply-demand, should be matched: 3', () => {
-    let userExchangeDetails = testData.createWhatUserWants(testData.topics_IonicAndroidAngular, false);
-    let othersExchangeDetails = testData.createWhatUserWants(testData.topics_IonicAndroidAngular, false);
+    let userExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_IonicAndroidAngular);
+    let othersExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_IonicAndroidAngular);
 
     let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
     expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(3);
   });
 
   it('supplied - 2 out of 3 - matching supply-demand, should be matched: 2', () => {
-    let userExchangeDetails = testData.createWhatUserWants(testData.topics_IonicAndroid, false);
-    let othersExchangeDetails = testData.createWhatUserWants(testData.topics_IonicAndroidAngular, false);
+    let userExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_IonicAndroid);
+    let othersExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_IonicAndroidAngular);
 
     let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
     expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(2);
   });
 
   it('supplied - 2 out of 3 - matching supply-demand, should be matched: 2', () => {
-    let userExchangeDetails = testData.createWhatUserWants(testData.topics_IonicAndroidAngular, false);
-    let othersExchangeDetails = testData.createWhatUserWants(testData.topics_IonicAndroid, false);
+    let userExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_IonicAndroidAngular);
+    let othersExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_IonicAndroid);
 
     let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
     expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(2);
   });
+
+  // ===========================
+  //
+  // it('supplied - 2 out of 3 - matching supply-demand, should be matched: 0', () => {
+  //   let userExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_IonicAndroidAngular);
+  //   let othersExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_IonicAndroid);
+  //
+  //   let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
+  //   expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(2);
+  // });
 
 });
