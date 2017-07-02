@@ -20,13 +20,13 @@ export class UserProfileComponent implements OnInit {
 
   myControl = new FormControl();
 
-  options = ['Angular', 'Ionic', 'Firebase']
+  options = ['Angular', 'Ionic', 'Firebase'];
   filteredOptions: Observable<string[]>;
 
   constructor(
-      private _fb: FormBuilder,
-      protected userProfileService: UserProfileService,
-      public authService: AuthService,
+    private _fb: FormBuilder,
+    protected userProfileService: UserProfileService,
+    public authService: AuthService,
   ) {
 
     // FIXME: extract WhatUserWantsForm !
@@ -55,6 +55,11 @@ export class UserProfileComponent implements OnInit {
     //   .startWith(null)
     //   .map(val => val ? this.filter(val) : this.options.slice());
 
+  }
+
+  updateUserProfile(event) {
+    console.log(event);
+    // TODO save function
   }
 
   filter(val: string): string[] {
