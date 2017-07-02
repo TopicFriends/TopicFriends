@@ -17,9 +17,11 @@
 <md-input-container style="width:100%">
   <input
     mdInput
-    placeholder="My skills"
     [mdAutocomplete]="auto"
     [formControl]="stateCtrl">
+  <md-placeholder>
+    <ng-content select="app-item-list-input-title"></ng-content>
+  </md-placeholder>
 </md-input-container>
 
 <md-autocomplete #auto="mdAutocomplete">
