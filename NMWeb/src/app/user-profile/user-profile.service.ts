@@ -64,7 +64,6 @@ export class WhatUserWants {
       mentor?: SupplyDemand,
       freelance?: SupplyDemand,
 
-
       /** Code review */
       review?: SupplyDemand,
       job?: SupplyDemand,
@@ -76,6 +75,8 @@ export class WhatUserWants {
       contributeToOpenSource?: SupplyDemand,
       /** probably move to symmetric */
       hackathon?: SupplyDemand,
+      presentation?: SupplyDemand,      /** I'm interested in making/attending presentation */
+      workshop?: SupplyDemand,
     }
   };
 
