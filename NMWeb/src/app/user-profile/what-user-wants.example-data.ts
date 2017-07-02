@@ -1,4 +1,4 @@
-import {UserProfile, WantedTopics, WhatUserWants} from './user-profile.service';
+import { WantedTopics } from './user-profile.service';
 
 const angular =
   {
@@ -58,11 +58,11 @@ export class ExampleData {
    return this.createWhatUserWantsExchange(topics);
   }
 
-  public readonly topics_Default = {
+  public readonly topics_IonicAndroidAngular = {
     topics: {
-      pushId1: angular,
       pushId2: ionic,
       pushId3: android,
+      pushId1: angular,
     }
   };
 
@@ -90,24 +90,6 @@ export class ExampleData {
       pushId2: graphicDesign
     }
   };
-
-  //User_3c_wantsToBeMentored_Android   //replace with a b
-  //
-  // public readonly User_4a_wantsFreelancingJob_GraphicDesing;
-  //
-  // public readonly User_4b_wantsToHireFreelancer_GraphicDesing;
-  //
-  // public readonly User_4c_wantsFreelancingJob_FullStack;
-  //
-  // public readonly User_5a_wantsAnInternship_Android;
-  //
-  // public readonly User_5b_wantsToHireAnIntern_Android;  //split into two
-  //
-  // public readonly User_6a_wantsAJob_FullStack;
-  //
-  // public readonly User_6b_wantsToHireForAJob_FullStack;
-  //
-  // public readonly User_6c_wantsToHireForAJob_GraphicDesign;
 
   private createWhatUserWantsSupplyDemand(topics: WantedTopics) {
     return   {
