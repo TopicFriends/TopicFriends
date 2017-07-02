@@ -115,6 +115,12 @@ export class ExampleData {
     },
   };
 
+  public readonly topics_Angular = {
+    topics: {
+      pushId2: angular,
+    },
+  };
+
   public readonly topics_GraphicDesign = {
     topics: {
       pushId2: graphicDesign,
