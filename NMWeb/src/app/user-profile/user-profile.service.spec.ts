@@ -1,7 +1,7 @@
 import { WhatUserWants } from './user-profile.service';
 import { ExampleData } from './what-user-wants.example-data';
 
-describe('UserProfileService: getTopicMatchesWithinInteractionMode()', () => {
+fdescribe('UserProfileService: getTopicMatchesWithinInteractionMode()', () => {
   beforeEach(() => {
     // TestBed.configureTestingModule({
     //   providers: [UserProfileService]
@@ -212,6 +212,14 @@ fdescribe('UserProfileService: getInterestsMatchWith()', () => {
 
     let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
     expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(0);
+  });
+
+  it('three symmetric branches, with cross-matching topics (3 against 3), should be matched: 2', () => {
+    let userExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_IonicAndroidAngular, testData.topics_GraphicDesign, testData.topics_Ionic);
+    let othersExchangeDetails = testData.createWhatUserWantsSymmetric(testData.topics_Ionic, testData.topics_Ionic, testData.topics_Ionic);
+
+    let whatUserWants = WhatUserWants.fromJson(userExchangeDetails);
+    expect(whatUserWants.getInterestsMatchWith(othersExchangeDetails).matchScore).toBe(2);
   });
 
 });

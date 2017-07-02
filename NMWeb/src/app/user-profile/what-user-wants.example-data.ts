@@ -66,16 +66,25 @@ export class ExampleData {
     }
   }
 
-  public createWhatUserWantsSymmetric(exchangeTopics: WantedTopics,
-                                      pairProgrammingTopics?: WantedTopics) {
+  public createWhatUserWantsSymmetric(exchangeTopics: WantedTopics,   // TODO: refactor me
+                                      pairProgrammingTopics?: WantedTopics,
+                                      hackathon?: WantedTopics) {
     let topics;
     if (pairProgrammingTopics) {
-      topics = {
-        exchange: exchangeTopics,
-        pairProgramming: pairProgrammingTopics,
+      if (hackathon) {
+        topics = {
+          exchange: exchangeTopics,
+          pairProgramming: pairProgrammingTopics,
+          hackathon: hackathon,
+        }
       }
-    }
-    else {
+      else {
+        topics = {
+          exchange: exchangeTopics,
+          pairProgramming: pairProgrammingTopics,
+        }
+      }
+    } else {
       topics = {
         exchange: exchangeTopics,
       }
