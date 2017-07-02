@@ -127,7 +127,19 @@ export class WhatUserWants {
         other.byInteractionMode.symmetric.pairProgramming &&
         other.byInteractionMode.symmetric.pairProgramming.topics)
     )
-    topicMatches = topicMatches.concat(topicMatches2)
+    const topicMatches3 = WhatUserWants.getTopicMatchesWithinInteractionMode(
+      getDictionaryValuesAsArray(
+        this.byInteractionMode &&
+        this.byInteractionMode.symmetric &&
+        this.byInteractionMode.symmetric.hackathon &&
+        this.byInteractionMode.symmetric.hackathon.topics),
+      getDictionaryValuesAsArray(
+        other.byInteractionMode &&
+        other.byInteractionMode.symmetric &&
+        other.byInteractionMode.symmetric.hackathon &&
+        other.byInteractionMode.symmetric.hackathon.topics)
+    )
+    topicMatches = topicMatches.concat(topicMatches2).concat(topicMatches3)
     const matchScore = topicMatches.length;
     return {
       matchScore: matchScore, // FIXME
