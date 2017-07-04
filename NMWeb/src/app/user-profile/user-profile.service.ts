@@ -6,6 +6,7 @@ import {initFromObject} from '../util/util';
 
 /* TODO: rename to WantedTopic for consistency? */
 export class TopicInterest {
+  // idea: hourly / per-minute rates (in Pro version? :) )
   name: string;
   active?: boolean;
   topicId?;
@@ -14,6 +15,7 @@ export class TopicInterest {
 
 /** TODO: better name */
 export class WantedTopics {
+
   active?: boolean;
   public topics: {
     [/** Note: this is NOT the id of the topic itself */ topicInclusionId: string]: TopicInterest
@@ -25,6 +27,7 @@ export class WantedTopics {
 
 /** Other potential names: GiveReceive, PassiveActive, FindAndBecome */
 export class SupplyDemand {
+  // idea: hourly rates (range)
   supply?: WantedTopics = new WantedTopics();
   demand?: WantedTopics = new WantedTopics();
   // we can add more metadata, like time period
@@ -59,6 +62,8 @@ export class SymmetricInteractions {
   /** Keep in mind that hackathon also exists in supplyDemand for later more advanced use.
    This symmetric hackathon could be called "informal". */
   hackathon?: WantedTopics;
+  /** Thanks, Luis Jose Sanchez, for the idea for the name "telehackathon" ;-) */
+  teleHackathon?: WantedTopics;
 }
 export class WhatUserWants {
 
@@ -71,10 +76,11 @@ export class WhatUserWants {
        *  wants to organize, or everyone just wants to participate.
           For now we are doing only symmetric for hackathon */
       intern?: SupplyDemand,
+      /** Mentor / advisor (should advisor be separate from mentor?) */
       mentor?: SupplyDemand,
       freelance?: SupplyDemand,
 
-      /** Code review */
+      /** Code/architecture review */
       review?: SupplyDemand,
       job?: SupplyDemand,
       advising?: SupplyDemand,
