@@ -46,22 +46,24 @@ function getDictionaryValuesAsArray<T>(dictionary: { [p: string]: T }): T[] {
   return values;
 }
 
+export class SymmetricInteractions {
+  /** General exchange of knowledge/skills and brainstorming, pair programming */
+  exchange?: WantedTopics;
+  pairProgramming?: WantedTopics;
+  /** play together, e.g. soccer, chess */
+  play?: WantedTopics;
+  /** Watch together (/screening). E.g. watch Silicon Valley together, wink, wink :) */
+  watch?: WantedTopics;
+  // TODO: party (specifies what kinds of parties)
+  // TODO: socialize (specifies what kinds of socializing)
+  /** Keep in mind that hackathon also exists in supplyDemand for later more advanced use.
+   This symmetric hackathon could be called "informal". */
+  hackathon?: WantedTopics;
+}
 export class WhatUserWants {
 
-  byInteractionMode: {
-    symmetric?: {
-      /** General exchange of knowledge/skills and brainstorming, pair programming */
-      exchange?: WantedTopics,
-      pairProgramming?: WantedTopics,
-      /** play together, e.g. soccer, chess */
-      play?: WantedTopics,
-      /** Watch together (/screening). E.g. watch Silicon Valley together, wink, wink :) */
-      watch?: WantedTopics,
-      // TODO: party (specifies what kinds of parties)
-      // TODO: socialize (specifies what kinds of socializing)
-      hackathon?: WantedTopics,   /** Keep in mind it also exists in supplyDemand for later more advanced use.
-        This symmetric hackathon could be called "informal". */
-    },
+  byInteractionMode?: {
+    symmetric?: SymmetricInteractions,
     supplyDemand?: {    // The more heavy something is, the more it should be in supplyDemand
       //  as opposed to symmetric, because it might require organizers, e.g. hackathon, workshop, presentation,
       /** though, hackathon is a special case in which it could work with or without organizers, meaning
@@ -82,7 +84,8 @@ export class WhatUserWants {
       /** Work on open-source together; probably move to symmetric */
       contributeToOpenSource?: SupplyDemand,
       /** probably move to symmetric */
-      organizeHackathon?: SupplyDemand,     /** I would like to organize/participate */ /** For hackathon in supplyDemand we could
+      organizeHackathon?: SupplyDemand,
+      /** I would like to organize/participate */ /** For hackathon in supplyDemand we could
         have a stronger wording: "I would like to organize hackathon." / "I would like to participate in an **organized** hackathon" */
       presentation?: SupplyDemand,      /** I'm interested in making/attending presentation */
       workshop?: SupplyDemand,
@@ -192,17 +195,17 @@ export class WhatUserWants {
 }
 
 export class UserProfile {
-  name: string;
-  suername: string;
-  company: string;
-  role: string;
-  whatUserWants: WhatUserWants; // = new WhatUserWants();
+  name?: string;
+  suername?: string;
+  company?: string;
+  role?: string;
+  whatUserWants?: WhatUserWants; // = new WhatUserWants();
 
-  profileLinkedIn: string;
-  profileGitHub: string;
-  profileStackOverflow: string;
-  profileTwitter: string;
-  profileFacebook: string;
+  profileLinkedIn?: string;
+  profileGitHub?: string;
+  profileStackOverflow?: string;
+  profileTwitter?: string;
+  profileFacebook?: string;
 }
 
 @Injectable()
@@ -211,8 +214,8 @@ export class UserProfileService {
   // userId = '-KnIHsSBYiDR08YnJog5';
   userId;
 
-  userProfiles: FirebaseListObservable<any>;
-  whatUserWantsList: FirebaseListObservable<any>;
+  userProfiles: FirebaseListObservable<UserProfile>;
+  whatUserWantsList: FirebaseListObservable<WhatUserWants>;
   examplesList: FirebaseListObservable<any>;
   myUserProfile = this.db.object(`UserProfile/${this.userId}`);
   myWhatUserWants = this.db.object(`WhatUserWants/${this.userId}`);
@@ -251,48 +254,46 @@ export class UserProfileService {
 
     /* separating this into another firebase location, to not have to read all that if we just want
      * to read a list of users */
-    whatUserWants = WhatUserWants.fromJson({
-      byInteractionMode: {
-        supplyDemand: {
-          freelance: {
-            supply: {
-              topics: {
-                /** note: those push ids, like 'pushId1' are not id-s of the topics (like Angular),
-                 but rather the ids of the association between the topic and whatUserWants.
-                 This is in order to leave the option to have many-to-many
-                 (as we might also add more metadata later, like enabled/disabled, comments, skill level).
-                 And users could be able to have multiple variants of the same skill
-                 enabled/disabled and with different metadata.
-                 This is not needed for MVP, but I would like to
-                 keep that option possible in the data structure.
-                 */
-                pushId1: {
-                  active: true,
-                  /** For now, for looking for matching users, we can ignore the foreign key (topicId)
-                   * and just compare by name */
-                  topicId: 'someForeignKey_Angular',
-                  name: 'Angular',
-                },
-                pushId2: {
-                  active: true,
-                  topicId: 'someForeignKey_Ionic',
-                  name: 'Ionic',
-                },
-                pushId3: {
-                  active: true,
-                  name: 'WordPress',
-                  topicId: 'someForeignKey_WordPress',
-                },
-              }
-            }
-          }
-        }
-      }
-    });
+    // whatUserWants = WhatUserWants.fromJson({
+    //   byInteractionMode: {
+    //     supplyDemand: {
+    //       freelance: {
+    //         supply: {
+    //           topics: {
+    //             /** note: those push ids, like 'pushId1' are not id-s of the topics (like Angular),
+    //              but rather the ids of the association between the topic and whatUserWants.
+    //              This is in order to leave the option to have many-to-many
+    //              (as we might also add more metadata later, like enabled/disabled, comments, skill level).
+    //              And users could be able to have multiple variants of the same skill
+    //              enabled/disabled and with different metadata.
+    //              This is not needed for MVP, but I would like to
+    //              keep that option possible in the data structure.
+    //              */
+    //             pushId1: {
+    //               active: true,
+    //               /** For now, for looking for matching users, we can ignore the foreign key (topicId)
+    //                * and just compare by name */
+    //               topicId: 'someForeignKey_Angular',
+    //               name: 'Angular',
+    //             },
+    //             pushId2: {
+    //               active: true,
+    //               topicId: 'someForeignKey_Ionic',
+    //               name: 'Ionic',
+    //             },
+    //             pushId3: {
+    //               active: true,
+    //               name: 'WordPress',
+    //               topicId: 'someForeignKey_WordPress',
+    //             },
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // });
     this.whatUserWantsList.update(userId, {
-      whatUserWants: {
-        whatUserWants
-      }
+      whatUserWants
     }); // FIXME: nasty crude quick stub
   }
 

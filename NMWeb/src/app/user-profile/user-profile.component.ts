@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserProfile, UserProfileService, WhatUserWants} from './user-profile.service';
+import {SymmetricInteractions, UserProfile, UserProfileService, WhatUserWants} from './user-profile.service';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {AuthService} from './auth.service';
 import {Observable} from 'rxjs/Observable';
@@ -20,8 +20,13 @@ export class UserProfileComponent implements OnInit {
 
   myControl = new FormControl();
 
-  options = ['Angular', 'Ionic', 'Firebase', 'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails'];
+  options = ['Angular', 'Ionic', 'Firebase',
+    'Protractor', 'Karma', 'Jasmin',
+    'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails'];
   filteredOptions: Observable<string[]>;
+  whatUserWants = WhatUserWants.fromJson({});
+
+  symmetricInteractions = new SymmetricInteractions();
 
   constructor(
     private _fb: FormBuilder,
@@ -45,7 +50,7 @@ export class UserProfileComponent implements OnInit {
     this.userProfileObservable = this.userProfileService.getProfile();
     this.userProfileObservable.subscribe(p => {
       this.userProfile = p;
-      // this.whatUserWants = this.userProfile.whatUserWants;
+      this.whatUserWants = this.userProfile.whatUserWants;
       console.log('new user profile!', p);
       if ( ! (<any>p).whatUserWants ) {
         this.userProfile = new UserProfile();
@@ -62,12 +67,41 @@ export class UserProfileComponent implements OnInit {
     // TODO save function
   }
 
+  updateWantExchange(event) {
+    // console.log('updateWantExchange', event);
+    console.log('updateWantExchange', event);
+    console.log('updateWantExchange', this.whatUserWants);
+    // this.whatUserWants.byInteractionMode.symmetric.exchange.topics = {};
+    this.symmetricInteractions.exchange = {
+      topics: this.createTopicsDictionary(event.tagList),
+    };
+    // event.tagList
+
+    // TODO save function
+  }
+
+  private createTopicsDictionary(topics: string[]) {
+    let ret = {};
+    let i = 0;
+    for ( const topic of topics ) {
+      ret[i] = topic;
+      i++;
+    }
+    return ret;
+  }
+
   filter(val: string): string[] {
     return this.options.filter(option => new RegExp(`^${val}`, 'gi').test(option));
   }
 
   save() {
-    this.userProfileObservable = this.userProfileService.saveUserProfile(this.userProfile);
+    const whatUserWants2 = WhatUserWants.fromJson({
+      byInteractionMode: {
+        symmetric: this.symmetricInteractions,
+      }
+    })
+    console.log('save()', whatUserWants2)
+    this.userProfileObservable = this.userProfileService.saveUserProfile(this.userProfile, whatUserWants2);
   }
 
 }

@@ -66,10 +66,12 @@ export class ItemListInputComponent implements OnInit
   addTag(tag: string) {
     this.tagList.push(tag);
     this.stateCtrl.reset();
+    this.sendTagsToParent();
   }
 
   deleteTag(tag: string) {
     this.tagList = this.tagList.filter(t => t != tag);
+    this.sendTagsToParent();
   }
 
   /**
