@@ -33,14 +33,14 @@
       </app-item-list-input-title>
     </app-item-list-input>
 
-    <app-item-list-input (outputTagList)="updateUserProfile($event)" [inputTagList]="options" [formGroup1]="_userProfileForm">
+    <app-item-list-input (outputTagList)="updateWantHackathon($event)" [inputTagList]="options" [formGroup1]="_userProfileForm">
       <app-item-list-input-title>
         <md-icon>build</md-icon>I would like to do <b>hackathon</b> on topics
       </app-item-list-input-title>
     </app-item-list-input>
 
     <!-- Reusable component: -->
-    <app-item-list-input (outputTagList)="updateUserProfile($event)" [inputTagList]="options" [formGroup1]="_userProfileForm">
+    <app-item-list-input (outputTagList)="updateWantPairProgramming($event)" [inputTagList]="options" [formGroup1]="_userProfileForm">
       <app-item-list-input-title>
         <md-icon>build</md-icon>I would like to do <b>pair programming</b> on topics
       </app-item-list-input-title>

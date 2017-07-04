@@ -75,9 +75,19 @@ export class UserProfileComponent implements OnInit {
     this.symmetricInteractions.exchange = {
       topics: this.createTopicsDictionary(event.tagList),
     };
-    // event.tagList
 
-    // TODO save function
+  }
+
+  updateWantHackathon(event: {tagList: TopicInterest[]}) {
+    this.symmetricInteractions.hackathon = {
+      topics: this.createTopicsDictionary(event.tagList),
+    };
+  }
+
+  updateWantPairProgramming(event: {tagList: TopicInterest[]}) {
+    this.symmetricInteractions.pairProgramming = {
+      topics: this.createTopicsDictionary(event.tagList),
+    };
   }
 
   private createTopicsDictionary(topics: TopicInterest[]) {
