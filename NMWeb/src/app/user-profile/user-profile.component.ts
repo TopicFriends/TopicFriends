@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SymmetricInteractions, UserProfile, UserProfileService, WhatUserWants} from './user-profile.service';
+import {SymmetricInteractions, TopicInterest, UserProfile, UserProfileService, WhatUserWants} from './user-profile.service';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {AuthService} from './auth.service';
 import {Observable} from 'rxjs/Observable';
@@ -67,7 +67,7 @@ export class UserProfileComponent implements OnInit {
     // TODO save function
   }
 
-  updateWantExchange(event) {
+  updateWantExchange(event: {tagList: TopicInterest[]}) {
     // console.log('updateWantExchange', event);
     console.log('updateWantExchange', event);
     console.log('updateWantExchange', this.whatUserWants);
@@ -80,7 +80,7 @@ export class UserProfileComponent implements OnInit {
     // TODO save function
   }
 
-  private createTopicsDictionary(topics: string[]) {
+  private createTopicsDictionary(topics: TopicInterest[]) {
     let ret = {};
     let i = 0;
     for ( const topic of topics ) {

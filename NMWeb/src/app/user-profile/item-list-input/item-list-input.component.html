@@ -4,7 +4,7 @@
 <md-chip-list>
   <md-chip
     *ngFor="let chip of tagList">
-    {{chip}}
+    {{chip.name}}
     <span style="cursor:pointer" (click)=deleteTag(chip)>
       &nbsp; X
       <!--<md-icon style="font-size: 20px">close</md-icon>-->

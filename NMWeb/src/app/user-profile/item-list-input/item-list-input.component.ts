@@ -4,6 +4,7 @@ import { TagEntry } from "app/user-profile/tag-entry";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
+import {TopicInterest} from '../user-profile.service'
 
 @Component({
   selector: 'app-item-list-input',
@@ -40,10 +41,10 @@ export class ItemListInputComponent implements OnInit
   //@Input() public inputTagList: TagEntry[] = [new TagEntry('Angular'), new TagEntry('Ionic'), new TagEntry('Firebase')];
   @Input() public inputTagList: string[] = ['Angular', 'Ionic', 'Firebase', 'PHP'];
 
-  @Output() public outputTagList = new EventEmitter();
+  @Output() public outputTagList = new EventEmitter<{tagList: TopicInterest[]}>();
 
   // Tag list
-  public tagList: string[] = [];
+  public tagList: TopicInterest[] = [];
 
   stateCtrl: FormControl;
   filteredOptions: any;
@@ -64,13 +65,16 @@ export class ItemListInputComponent implements OnInit
   }
 
   addTag(tag: string) {
-    this.tagList.push(tag);
+    this.tagList.push(
+      {
+        name: tag
+      });
     this.stateCtrl.reset();
     this.sendTagsToParent();
   }
 
-  deleteTag(tag: string) {
-    this.tagList = this.tagList.filter(t => t != tag);
+  deleteTag(tag: TopicInterest) {
+    this.tagList = this.tagList.filter(t => t.name !== tag.name);
     this.sendTagsToParent();
   }
 
