@@ -22,7 +22,9 @@ export class UserProfileComponent implements OnInit {
 
   options = ['Angular', 'Ionic', 'Firebase',
     'Protractor', 'Karma', 'Jasmin',
-    'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails'];
+    'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails',
+    'PeopleMatcher' /* PeopleMatcher is a valid topic as well of course :) */
+  ];
   filteredOptions: Observable<string[]>;
   whatUserWants = WhatUserWants.fromJson({});
 
