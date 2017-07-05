@@ -32,6 +32,10 @@
     *ngFor="let option of filteredOptions | async"
     [value]="option"
     (click)="addTag(option)">
+    <!--<ng-template [ngIf]="option.logo" >-->
+      <!--<img src="{{chip.logo}}"/>-->
+      <img src="{{option}}"/> <!-- FIXME option.logo -->
+    <!--</ng-template>-->
     {{ option }}
   </md-option>
 </md-autocomplete>
