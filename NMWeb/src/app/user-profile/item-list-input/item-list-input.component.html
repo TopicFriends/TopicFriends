@@ -5,7 +5,7 @@
   <md-chip
     *ngFor="let chip of tagList">
     <ng-template [ngIf]="chip.logo" >
-      <img src="{{chip.logo}}"/>
+      <img src="{{chip.logo}}" onerror="this.style.display='none';"/>
     </ng-template>
       {{chip.name}}
     <span style="cursor:pointer" (click)=deleteTag(chip)>

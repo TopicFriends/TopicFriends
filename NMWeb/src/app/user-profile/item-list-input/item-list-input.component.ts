@@ -68,9 +68,8 @@ export class ItemListInputComponent implements OnInit
     this.tagList.push(
       {
         name: tag,
-        logo: '../../assets/images/logos/' + tag + '.svg'
+        logo: '../../../assets/images/logos/' + tag.toLowerCase() + '-icon.svg'
       });
-    console.log(this.tagList);
     this.stateCtrl.reset();
     this.sendTagsToParent();
   }
