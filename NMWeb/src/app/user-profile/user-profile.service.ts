@@ -8,6 +8,7 @@ import {initFromObject} from '../util/util';
 export class TopicInterest {
   // idea: hourly / per-minute rates (in Pro version? :) )
   name: string;
+  logo: string;
   active?: boolean;
   topicId?;
   // potential in the future: where. E.g. play soccer where

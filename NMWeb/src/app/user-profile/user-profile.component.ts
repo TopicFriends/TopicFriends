@@ -19,13 +19,29 @@ export class UserProfileComponent implements OnInit {
   public _userProfileForm: FormGroup;
 
   myControl = new FormControl();
-
-  options = ['Angular', 'Ionic', 'Firebase',
-    'Protractor', 'Karma', 'Jasmin',
-    'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails',
-    'PeopleMatcher' /* PeopleMatcher is a valid topic as well of course :) */
+  options = [
+    {
+      name:'Angular',
+      logo:'../../assets/images/logo_xs.png'
+    },
+    {
+      name:'Ionic',
+      logo:'../../assets/images/logo_xs.png'
+    },
+    {
+      name:'Firebase',
+      logo:'../../assets/images/logo_xs.png'
+    },
+    {
+      name:'Protractor',
+      logo:'../../assets/images/logo_xs.png'
+    }
+    // },'Angular', 'Ionic', 'Firebase',
+    // 'Protractor', 'Karma', 'Jasmin',
+    // 'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails',
+    // 'PeopleMatcher' /* PeopleMatcher is a valid topic as well of course :) */
   ];
-  filteredOptions: Observable<string[]>;
+  filteredOptions: Observable<any[]>;
   whatUserWants = WhatUserWants.fromJson({});
 
   symmetricInteractions = new SymmetricInteractions();
@@ -69,6 +85,15 @@ export class UserProfileComponent implements OnInit {
     // TODO save function
   }
 
+  getOptionsNames(){
+    let names:string[];
+    for (let option of this.options) {
+          names.push(option.name);
+    }
+    console.log("This are the names " + -names);
+    return names;
+  }
+
   updateWantExchange(event: {tagList: TopicInterest[]}) {
     // console.log('updateWantExchange', event);
     console.log('updateWantExchange', event);
@@ -102,8 +127,8 @@ export class UserProfileComponent implements OnInit {
     return ret;
   }
 
-  filter(val: string): string[] {
-    return this.options.filter(option => new RegExp(`^${val}`, 'gi').test(option));
+  filter(val: string): any[] {
+    return this.options.filter(option => new RegExp(`^${val}`, 'gi').test(option.name));
   }
 
   save() {
