@@ -40,7 +40,6 @@ export class ItemListInputComponent implements OnInit
   // All possible tags
   //@Input() public inputTagList: TagEntry[] = [new TagEntry('Angular'), new TagEntry('Ionic'), new TagEntry('Firebase')];
   @Input() public inputTagList: string[] = ['Angular', 'Ionic', 'Firebase', 'PHP'];
-
   @Output() public outputTagList = new EventEmitter<{tagList: TopicInterest[]}>();
 
   // Tag list
@@ -68,10 +67,14 @@ export class ItemListInputComponent implements OnInit
     this.tagList.push(
       {
         name: tag,
-        logo: '../../../assets/images/logos/' + tag.toLowerCase() + '-icon.svg'
+        logo: this.getLogoPath(tag)
       });
     this.stateCtrl.reset();
     this.sendTagsToParent();
+  }
+
+  getLogoPath(tag: string){
+    return '../../../assets/images/logos/' + tag.toLowerCase() + '-icon.svg'
   }
 
   deleteTag(tag: TopicInterest) {

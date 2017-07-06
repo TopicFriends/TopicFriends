@@ -34,7 +34,7 @@
     (click)="addTag(option)">
     <!--<ng-template [ngIf]="option.logo" >-->
       <!--<img src="{{chip.logo}}"/>-->
-      <img src="{{option}}"/> <!-- FIXME option.logo -->
+      <img src="{{getLogoPath(option)}}" onerror="this.style.display='none';"/> <!-- FIXME option.logo -->
     <!--</ng-template>-->
     {{ option }}
   </md-option>
