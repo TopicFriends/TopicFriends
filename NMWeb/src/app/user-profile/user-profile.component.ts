@@ -11,14 +11,14 @@ import {Observable} from 'rxjs/Observable';
 })
 export class UserProfileComponent implements OnInit {
 
-
-
   userProfile: UserProfile;
   userProfileObservable;
 
   public _userProfileForm: FormGroup;
 
+  displayName = new FormControl();
   myControl = new FormControl();
+
   options = [
     'Angular', 'Ionic', 'Firebase',
     'Protractor', 'Karma', 'Jasmin',
@@ -34,6 +34,9 @@ export class UserProfileComponent implements OnInit {
     protected userProfileService: UserProfileService,
     public authService: AuthService,
   ) {
+    this.authService.user.subscribe((user) => {
+      this.displayName.setValue(user.displayName);
+    });
 
     // FIXME: extract WhatUserWantsForm !
     this._userProfileForm = this._fb.group({
@@ -110,6 +113,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   save() {
+    console.log('this.displayName.value', this.displayName.value);
+    this.userProfile.name = this.displayName.value;
     const whatUserWants2 = WhatUserWants.fromJson({
       byInteractionMode: {
         symmetric: this.symmetricInteractions,

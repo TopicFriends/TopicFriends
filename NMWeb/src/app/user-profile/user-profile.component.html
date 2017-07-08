@@ -12,6 +12,14 @@
   <br />
   <form [formGroup]="_userProfileForm">
 
+    <md-input-container>
+      <md-placeholder>
+        Display Name
+      </md-placeholder>
+
+      <input mdInput
+             [formControl]="displayName">
+    </md-input-container> <!-- ngModel variable is missing due to code crashing -->
 
     <md-input-container>
       <md-placeholder>

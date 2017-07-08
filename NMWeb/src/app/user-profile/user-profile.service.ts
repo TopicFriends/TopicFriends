@@ -247,17 +247,17 @@ export class UserProfileService {
     // })
   }
 
-  public saveUserProfile(data: UserProfile, whatUserWants?: WhatUserWants) {
-    // this.userProfiles.update(this.userId, data); // FIXME: nasty crude quick stub
+  public saveUserProfile(userProfile: UserProfile, whatUserWants?: WhatUserWants) {
+    this.userProfiles.update(this.userId, userProfile); // FIXME: nasty crude quick stub
     // this.userProfiles.update(this.userId, {some: 'example'}); // FIXME: nasty crude quick stub
 
     /* NOTE: this will be hopefully wrapped in some OOP objects in TS,
      to make it work nicely with other services/components
      */
     const userId = this.userId;
-    this.userProfiles.update(userId, {
-      displayName: this.authService.userSaved.displayName,
-    }); // FIXME: nasty crude quick stub
+    // this.userProfiles.update(userId, {
+    //   displayName: this.authService.userSaved.displayName,
+    // }); // FIXME: nasty crude quick stub
 
     /* separating this into another firebase location, to not have to read all that if we just want
      * to read a list of users */
