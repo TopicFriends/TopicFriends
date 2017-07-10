@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  firebase: { /* FIXME: add separate firebase db for testing */
+  firebase: {
     apiKey: 'AIzaSyDrpkKpJR_qFxCwtEs4jvcFF7HAfzRA42Y',
     authDomain: 'peoplematcher-a18df.firebaseapp.com',
     databaseURL: 'https://peoplematcher-a18df.firebaseio.com',
