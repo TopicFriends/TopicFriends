@@ -17,14 +17,14 @@ export class UserProfileComponent implements OnInit {
   public _userProfileForm: FormGroup;
 
   displayName = new FormControl();
-  myControl = new FormControl();
+  profileLinkedIn = new FormControl();
 
   options = [
     'Angular', 'Ionic', 'Firebase',
     'Protractor', 'Karma', 'Jasmin',
     'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails',
     'PeopleMatcher'];
-  filteredOptions: Observable<any[]>;
+
   whatUserWants = WhatUserWants.fromJson({});
 
   symmetricInteractions = new SymmetricInteractions();
@@ -38,15 +38,13 @@ export class UserProfileComponent implements OnInit {
       this.displayName.setValue(user.displayName);
     });
 
-    // FIXME: extract WhatUserWantsForm !
+    // TODO: extract WhatUserWantsForm !
     this._userProfileForm = this._fb.group({
       wantToBeFreelance: ['Design, DevOps, QA'],
       wantToHireFreelance: ['Angular, React, Ionic'],
       wantToFindMentor: [''],
       wantToBecomeMentor: [''],
       profileLinkedIn: [''],
-      myControl: [''],
-      // myControl: [''],
     });
   }
 
@@ -60,10 +58,6 @@ export class UserProfileComponent implements OnInit {
         this.userProfile = new UserProfile();
       }
     });
-    // this.filteredOptions = this.myControl.valueChanges
-    //   .startWith(null)
-    //   .map(val => val ? this.filter(val) : this.options.slice());
-
   }
 
   updateUserProfile(event) {

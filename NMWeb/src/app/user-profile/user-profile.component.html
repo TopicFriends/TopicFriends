@@ -6,7 +6,7 @@
 <ng-template [ngIf]="! userProfileService.userId" >Please log in, to access your profile</ng-template>
 <ng-template [ngIf]="userProfileService.userId && userProfile">
   <img style="width: 100px" src="{{(authService.user | async)?.photoURL}}" />
-  Name: {{ (authService.user | async)?.displayName }}
+  <span style="color: grey">Google Account Name: </span>{{ (authService.user | async)?.displayName }}
 
   <br />
   <br />
@@ -25,14 +25,16 @@
       <md-placeholder>
         <md-icon>person</md-icon><b>LinkedIn</b> Profile (optional, user name is enough)
       </md-placeholder>
-      <span mdPrefix>linkedin.com/in/</span>
+      <span mdPrefix><i class="icon ion-social-linkedin"></i> linkedin.com/in/</span>
 
       <input mdInput
-             formControlName="profileLinkedIn">
+             [formControl]="profileLinkedIn">
     </md-input-container> <!-- ngModel variable is missing due to code crashing -->
 
     <!--<app-what-user-wants-form>-->
     <!--</app-what-user-wants-form>-->
+
+    <hr />
 
     <!-- Reusable component: -->
     <app-item-list-input (outputTagList)="updateWantExchange($event)" (inputTagList)="getOptionsNames()" [formGroup1]="_userProfileForm">
@@ -41,11 +43,15 @@
       </app-item-list-input-title>
     </app-item-list-input>
 
+    <hr />
+
     <app-item-list-input (outputTagList)="updateWantHackathon($event)" (inputTagList)="options" [formGroup1]="_userProfileForm">
       <app-item-list-input-title>
         <md-icon>build</md-icon>I would like to do <b>hackathon</b> on topics
       </app-item-list-input-title>
     </app-item-list-input>
+
+    <hr />
 
     <!-- Reusable component: -->
     <app-item-list-input (outputTagList)="updateWantPairProgramming($event)" (inputTagList)="options" [formGroup1]="_userProfileForm">
