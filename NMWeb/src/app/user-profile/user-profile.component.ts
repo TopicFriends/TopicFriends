@@ -1,5 +1,6 @@
+///<reference path="user-profile.service.ts"/>
 import { Component, OnInit } from '@angular/core';
-import {SymmetricInteractions, TopicInterest, UserProfile, UserProfileService, WhatUserWants} from './user-profile.service';
+import {SymmetricInteractions, TopicInterest, UserProfile, UserProfileService, UserInterests, OtherProfiles} from './user-profile.service';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {AuthService} from './auth.service';
 import {Observable} from 'rxjs/Observable';
@@ -13,6 +14,7 @@ export class UserProfileComponent implements OnInit {
 
   userProfile: UserProfile;
   userProfileObservable;
+  otherProfiles: OtherProfiles = new OtherProfiles();
 
   public _userProfileForm: FormGroup;
 
@@ -23,9 +25,11 @@ export class UserProfileComponent implements OnInit {
     'Angular', 'Ionic', 'Firebase',
     'Protractor', 'Karma', 'Jasmin',
     'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails',
-    'PeopleMatcher'];
+    'PeopleMatcher',
+    'Android', 'Kotlin', 'Java'
+  ];
 
-  whatUserWants = WhatUserWants.fromJson({});
+  whatUserWants = UserInterests.fromJson({});
 
   symmetricInteractions = new SymmetricInteractions();
 
@@ -49,15 +53,21 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userProfileObservable = this.userProfileService.getProfile();
-    this.userProfileObservable.subscribe(p => {
-      this.userProfile = p;
-      this.whatUserWants = this.userProfile.whatUserWants;
-      console.log('new user profile!', p);
-      if ( ! (<any>p).whatUserWants ) {
-        this.userProfile = new UserProfile();
-      }
-    });
+    // TODO: getOtherProfiles()
+    this.authService.user.subscribe(user => {
+      console.log('authService.user.subscribe user', user);
+      this.userProfileObservable = this.userProfileService.getProfile();
+      this.userProfileObservable.subscribe(p => {
+        this.userProfile = p;
+        // this.whatUserWants = this.;
+        console.log('new user profile!', p);
+        if ( ! (<any>p).whatUserWants ) {
+          this.userProfile = new UserProfile();
+        }
+      });
+      // this.userId = user && user.uid;
+      // this.myUserData = this.db.userDataById(this.userId);
+    })
   }
 
   updateUserProfile(event) {
@@ -102,20 +112,25 @@ export class UserProfileComponent implements OnInit {
     return ret;
   }
 
-  filter(val: string): any[] {
-    return this.options.filter(option => new RegExp(`^${val}`, 'gi').test(option));
-  }
-
   save() {
     console.log('this.displayName.value', this.displayName.value);
     this.userProfile.name = this.displayName.value;
-    const whatUserWants2 = WhatUserWants.fromJson({
+    this.otherProfiles.linkedIn = {
+      userName: this.profileLinkedIn.value
+    };
+    // this..profileFacebook = this.displayName.value;
+    const whatUserWants2 = UserInterests.fromJson({
       byInteractionMode: {
         symmetric: this.symmetricInteractions,
       }
     })
     console.log('save()', whatUserWants2)
-    this.userProfileObservable = this.userProfileService.saveUserProfile(this.userProfile, whatUserWants2);
+    // this.userProfileObservable =
+    this.userProfileService.saveUserProfile(
+      this.userProfile,
+      whatUserWants2,
+      this.otherProfiles,
+    );
   }
 
 }

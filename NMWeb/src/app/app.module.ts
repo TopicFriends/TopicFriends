@@ -30,6 +30,8 @@ import { TestReusableComponent } from './user-profile/test-reusable/test-reusabl
 import { SkillsVisualizerTestComponent } from './user-profile/skills-visualizer-test/skills-visualizer-test.component';
 import {SkillsVisualizer} from './user-profile/skills-visualizer/skills-visualizer';
 import { WhatUserWantsFormComponent } from './user-profile/what-user-wants-form/what-user-wants-form.component';
+import {DbService} from './db.service'
+import {DomainDbService} from './domain-db.service'
 
 // import {
 //   AngularFireModule,
@@ -106,6 +108,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     AuthService,
+    DbService,
+    DomainDbService,
     UserProfileService,
     UserListService,
     UserMatcherService,

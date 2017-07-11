@@ -3,6 +3,8 @@ import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database
 import {Observable} from 'rxjs/Observable';
 import {AuthService} from './auth.service';
 import {initFromObject} from '../util/util';
+import {DbObject, DbService} from '../db.service'
+import {DomainDbService} from '../domain-db.service'
 
 /* TODO: rename to WantedTopic for consistency? */
 export class TopicInterest {
@@ -66,7 +68,13 @@ export class SymmetricInteractions {
   /** Thanks, Luis Jose Sanchez, for the idea for the name "telehackathon" ;-) */
   teleHackathon?: WantedTopics;
 }
-export class WhatUserWants {
+
+/* Other names:
+  UserInterestedIn
+  UserInterests
+  WhatUserWishes
+ */
+export class UserInterests {
 
   byInteractionMode?: {
     symmetric?: SymmetricInteractions,
@@ -93,7 +101,8 @@ export class WhatUserWants {
       /** probably move to symmetric */
       organizeHackathon?: SupplyDemand,
       /** I would like to organize/participate */ /** For hackathon in supplyDemand we could
-        have a stronger wording: "I would like to organize hackathon." / "I would like to participate in an **organized** hackathon" */
+        have a stronger wording: "I would like to organize hackathon."
+       / "I would like to participate in an **organized** hackathon" */
       presentation?: SupplyDemand,      /** I'm interested in making/attending presentation */
       workshop?: SupplyDemand,
     }
@@ -112,8 +121,8 @@ export class WhatUserWants {
   }
 
   /** getSymmetricExchangeInterestsMatchWith */
-  public getInterestsMatchWith?(other: WhatUserWants): MatchResults {
-    let topicMatches = WhatUserWants.getTopicMatchesWithinInteractionMode(
+  public getInterestsMatchWith?(other: UserInterests): MatchResults {
+    let topicMatches = UserInterests.getTopicMatchesWithinInteractionMode(
       getDictionaryValuesAsArray(
         this.byInteractionMode &&
         this.byInteractionMode.symmetric &&
@@ -125,7 +134,7 @@ export class WhatUserWants {
         other.byInteractionMode.symmetric.exchange &&
         other.byInteractionMode.symmetric.exchange.topics)
     )
-    const topicMatches2 = WhatUserWants.getTopicMatchesWithinInteractionMode(
+    const topicMatches2 = UserInterests.getTopicMatchesWithinInteractionMode(
       getDictionaryValuesAsArray(
         this.byInteractionMode &&
         this.byInteractionMode.symmetric &&
@@ -137,7 +146,7 @@ export class WhatUserWants {
         other.byInteractionMode.symmetric.pairProgramming &&
         other.byInteractionMode.symmetric.pairProgramming.topics)
     )
-    const topicMatches3 = WhatUserWants.getTopicMatchesWithinInteractionMode(
+    const topicMatches3 = UserInterests.getTopicMatchesWithinInteractionMode(
       getDictionaryValuesAsArray(
         this.byInteractionMode &&
         this.byInteractionMode.symmetric &&
@@ -158,7 +167,7 @@ export class WhatUserWants {
   }
 
   /** TODO target version. We simplify for now */
-  public getInterestsMatchWithIncludingSupplyDemand?(other: WhatUserWants): MatchResults {
+  public getInterestsMatchWithIncludingSupplyDemand?(other: UserInterests): MatchResults {
     const matchScore = 0;
     const allSupplyDemandOfOther =
       other.byInteractionMode &&
@@ -171,7 +180,7 @@ export class WhatUserWants {
         if ( ourTopics ) {
           // for (const topicInclusionId in supplyDemandPerMode) {
             // supplyDemandPerMode[topicInclusionId];
-            // matchScore += WhatUserWants.getTopicMatchesWithinInteractionMode().length;
+            // matchScore += UserInterests.getTopicMatchesWithinInteractionMode().length;
           // }
           // supplyDemandOfOther2.name;
         }
@@ -192,13 +201,34 @@ export class WhatUserWants {
   // wantToGetSponsorForEvents: WantedTopics;
   // wantToSponsorEvents: WantedTopics;
 
-  public static fromJson(initFrom: WhatUserWants) {
-    return new WhatUserWants(initFrom);
+  public static fromJson(initFrom: UserInterests) {
+    return new UserInterests(initFrom);
   }
 
-  constructor(initFrom: WhatUserWants) {
-    initFromObject<WhatUserWants>(this, initFrom);
+  constructor(initFrom: UserInterests) {
+    initFromObject<UserInterests>(this, initFrom);
   }
+}
+
+export class OtherProfile {
+  userName?: string;
+  url?: string;
+  show?: boolean;
+}
+
+export class OtherProfiles {
+
+  linkedIn?: OtherProfile;
+  gitHub?: OtherProfile;
+  stackOverflow?: OtherProfile;
+  twitter?: OtherProfile;
+  facebook?: OtherProfile;
+
+  // Phone number/whatsapp
+  // telegram (phone?)
+  // google / hangouts
+  // slack?
+
 }
 
 export class UserProfile {
@@ -206,13 +236,12 @@ export class UserProfile {
   suername?: string;
   company?: string;
   role?: string;
-  whatUserWants?: WhatUserWants; // = new WhatUserWants();
+}
 
-  profileLinkedIn?: string;
-  profileGitHub?: string;
-  profileStackOverflow?: string;
-  profileTwitter?: string;
-  profileFacebook?: string;
+export class UserData {
+  profile?: DbObject<UserProfile>;
+  interests?: DbObject<UserInterests>;
+  otherProfiles?: DbObject<OtherProfiles>;
 }
 
 @Injectable()
@@ -221,21 +250,16 @@ export class UserProfileService {
   // userId = '-KnIHsSBYiDR08YnJog5';
   userId;
 
-  userProfiles: FirebaseListObservable<UserProfile>;
-  whatUserWantsList: FirebaseListObservable<WhatUserWants>;
-  examplesList: FirebaseListObservable<any>;
-  myUserProfile = this.db.object(`UserProfile/${this.userId}`);
-  myWhatUserWants = this.db.object(`WhatUserWants/${this.userId}`);
+  myUserData: UserData;
 
-  constructor(private db: AngularFireDatabase,
-              private authService: AuthService,) {
-    // TODO: have some intermediate path for prod/test db, etc.
-    this.userProfiles = db.list('UserProfile'); // just example
-    this.whatUserWantsList = db.list('WhatUserWants');
-    this.examplesList = db.list('examplesList');
+  constructor(
+    private db: DomainDbService,
+    private authService: AuthService,
+  ) {
     authService.user.subscribe(user => {
       console.log('authService.user.subscribe user', user);
       this.userId = user && user.uid;
+      this.myUserData = this.db.userDataById(this.userId);
     })
 
     // this.getWhatUsersWant().subscribe((wuws) => {
@@ -247,9 +271,11 @@ export class UserProfileService {
     // })
   }
 
-  public saveUserProfile(userProfile: UserProfile, whatUserWants?: WhatUserWants) {
-    this.userProfiles.update(this.userId, userProfile); // FIXME: nasty crude quick stub
-    // this.userProfiles.update(this.userId, {some: 'example'}); // FIXME: nasty crude quick stub
+  public saveUserProfile(
+    userProfile: UserProfile, interests: UserInterests,
+    otherProfiles: OtherProfiles,
+  ) {
+    this.myUserData.profile.update(userProfile);
 
     /* NOTE: this will be hopefully wrapped in some OOP objects in TS,
      to make it work nicely with other services/components
@@ -261,7 +287,7 @@ export class UserProfileService {
 
     /* separating this into another firebase location, to not have to read all that if we just want
      * to read a list of users */
-    // whatUserWants = WhatUserWants.fromJson({
+    // whatUserWants = UserInterests.fromJson({
     //   byInteractionMode: {
     //     supplyDemand: {
     //       freelance: {
@@ -299,26 +325,25 @@ export class UserProfileService {
     //     }
     //   }
     // });
-    this.whatUserWantsList.update(userId, {
-      whatUserWants
-    }); // FIXME: nasty crude quick stub
+    this.myUserData.interests.update(interests);
+    this.myUserData.otherProfiles.update(otherProfiles);
   }
 
   getProfile(): Observable<UserProfile> {
-    return this.myUserProfile;
+    return this.myUserData.profile;
   }
 
-  getWhatUsersWant(): Observable<WhatUserWants[]> {
+  getOtherProfiles(): Observable<UserProfile> {
+    return this.myUserData.otherProfiles;
+  }
+
+  getWhatUsersWant(): Observable<UserInterests[]> {
     return null;
     // return this.whatUserWantsList.map((wuws: any[]) => {
     //   return wuws.map((wuw) => {
-    //     return WhatUserWants.fromJson(wuw.whatUserWants);
+    //     return UserInterests.fromJson(wuw.whatUserWants);
     //   });
     // });
-  }
-
-  public saveWhatUserWants(userId, whatUserWants: WhatUserWants) {
-    this.examplesList.update(userId, whatUserWants);
   }
 
 }

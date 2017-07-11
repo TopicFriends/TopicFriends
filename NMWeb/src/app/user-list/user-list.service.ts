@@ -22,18 +22,18 @@ export class UserListService {
     // userProfile.name = "Rubén Triviño Juárez";
     // userProfile.company = "Willimbu";
     // userProfile.role = "Developer";
-    // userProfile.whatUserWants.intern.demand.topics = "Angular Junior";
-    // userProfile.whatUserWants.intern.supply.topics = "DJango";
-    // userProfile.whatUserWants.mentor.demand.topics = "Business Model";
-    // userProfile.whatUserWants.mentor.supply.topics = "Business Strategy";
-    // userProfile.whatUserWants.freelance.demand.topics = "iOS Senior developer";
-    // userProfile.whatUserWants.freelance.supply.topics = "Android developer";
-    // userProfile.whatUserWants.job.demand.topics = "UX/UI Expert";
-    // userProfile.whatUserWants.job.supply.topics = "Angular Junior";
-    // userProfile.whatUserWants.sponsorEvents.demand.topics = "Comunity Manager";
-    // userProfile.whatUserWants.sponsorEvents.supply.topics = "Gamer events";
-    // userProfile.whatUserWants.coFounderSpecializingIn.demand.topics = "Project idea";
-    // userProfile.whatUserWants.coFounderSpecializingIn.supply.topics = "Wanna join";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.intern.demand.topics.topicInclusionId.name = "Angular Junior";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.intern.supply.topics.topicInclusionId.name = "DJango";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.mentor.demand.topics.topicInclusionId.name = "Business Model";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.mentor.supply.topics.topicInclusionId.name = "Business Strategy";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.freelance.demand.topics.topicInclusionId.name = "iOS Senior developer";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.freelance.supply.topics.topicInclusionId.name = "Android developer";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.job.demand.topics.topicInclusionId.name = "UX/UI Expert";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.job.supply.topics.topicInclusionId.name = "Angular Junior";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.sponsorEvents.demand.topics.topicInclusionId.name = "Comunity Manager";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.sponsorEvents.supply.topics.topicInclusionId.name = "Gamer events";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.coFounderSpecializingIn.demand.topics.topicInclusionId.name = "Project idea";
+    // userProfile.whatUserWants.byInteractionMode.supplyDemand.coFounderSpecializingIn.supply.topics.topicInclusionId.name = "Wanna join";
     this.userList.push(userProfile);
     this.userList.push(userProfile);
     this.userList.push(userProfile);
@@ -44,6 +44,10 @@ export class UserListService {
     this.userList.push(userProfile);
 
     return this.userList;
+  }
+
+  public getFilteredUsersList(minimumMatchScore: number) {
+
   }
 
 }
