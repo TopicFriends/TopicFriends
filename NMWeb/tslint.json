@@ -29,11 +29,11 @@
       140
     ],
     "member-access": false,
-    "member-ordering": [
-      true,
-      "static-before-instance",
-      "variables-before-functions"
-    ],
+//    "member-ordering": [
+//      true,
+//      "static-before-instance",
+//      "variables-before-functions"
+//    ],
     "no-arg": true,
     "no-bitwise": true,
     "no-console": [
@@ -66,22 +66,22 @@
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
-    "one-line": [
-      true,
+//    "one-line": [
+//      true,
 //      "check-open-brace",
-      "check-catch",
-      "check-else",
-      "check-whitespace"
-    ],
-    "prefer-const": true,
+//      "check-catch",
+//      "check-else",
+//      "check-whitespace"
+//    ],
+//    "prefer-const": true,
 //    "quotemark": [
 //      true,
 //      "single"
 //    ],
     "radix": true,
-    "semicolon": [
-      "always"
-    ],
+//    "semicolon": [
+//      "always"
+//    ],
     "triple-equals": [
       true,
       "allow-null-check"
@@ -113,12 +113,12 @@
       "app",
       "camelCase"
     ],
-    "component-selector": [
-      true,
-      "element",
-      "app",
-      "kebab-case"
-    ],
+//    "component-selector": [
+//      true,
+//      "element",
+//      "app",
+//      "kebab-case"
+//    ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
