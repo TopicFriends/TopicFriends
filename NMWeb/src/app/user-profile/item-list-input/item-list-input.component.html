@@ -1,4 +1,4 @@
-{{reusableControl | json}}
+
 <br>
 
 <md-chip-list>
@@ -6,6 +6,7 @@
     *ngFor="let chip of tagList">
     <ng-template [ngIf]="chip.logo" >
       <img src="{{chip.logo}}" onerror="this.style.display='none';"/>
+      &nbsp;
     </ng-template>
       {{chip.name}}
     <span style="cursor:pointer" (click)=deleteTag(chip)>
@@ -36,6 +37,6 @@
       <!--<img src="{{chip.logo}}"/>-->
       <img src="{{getLogoPath(option)}}" onerror="this.style.display='none';"/> <!-- FIXME option.logo -->
     <!--</ng-template>-->
-    {{ option }}
+    &nbsp;{{ option }}
   </md-option>
 </md-autocomplete>

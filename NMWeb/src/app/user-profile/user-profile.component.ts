@@ -21,12 +21,14 @@ export class UserProfileComponent implements OnInit {
   displayName = new FormControl();
   profileLinkedIn = new FormControl();
 
+  showSupplyDemand = false;
+
   options = [
     'Angular', 'Ionic', 'Firebase',
-    'Protractor', 'Karma', 'Jasmin',
-    'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails',
-    'PeopleMatcher',
-    'Android', 'Kotlin', 'Java'
+    // 'Protractor', 'Karma', 'Jasmin',
+    // 'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails',
+    // 'PeopleMatcher',
+    // 'Android', 'Kotlin', 'Java'
   ];
 
   whatUserWants = UserInterests.fromJson({});

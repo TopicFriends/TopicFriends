@@ -39,7 +39,16 @@ export class ItemListInputComponent implements OnInit
 
   // All possible tags
   //@Input() public inputTagList: TagEntry[] = [new TagEntry('Angular'), new TagEntry('Ionic'), new TagEntry('Firebase')];
-  @Input() public inputTagList: string[] = ['Angular', 'Ionic', 'Firebase', 'PHP'];
+  /** I moved it here, because @Input stopped working for some reason and I am to distracted to troubleshoot it :-\ */
+  @Input() public inputTagList: string[] = [
+    'Angular', 'Ionic', 'Firebase',
+    'Protractor', 'Karma', 'Jasmine',
+    'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails',
+    'PeopleMatcher',
+    'Android', 'Kotlin', 'Java',
+    'iOS', 'Swift',
+    'D3',
+  ];
   @Output() public outputTagList = new EventEmitter<{tagList: TopicInterest[]}>();
 
   // Tag list
@@ -74,7 +83,8 @@ export class ItemListInputComponent implements OnInit
   }
 
   getLogoPath(tag: string){
-    return '../../../assets/images/logos/' + tag.toLowerCase() + '-icon.svg'
+    // return '../../../assets/images/logos/' + tag.toLowerCase() + '-icon.svg'
+    return '../../../assets/images/logos/' + tag.toLowerCase() + '.svg'
   }
 
   deleteTag(tag: TopicInterest) {
