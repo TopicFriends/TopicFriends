@@ -18,7 +18,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './user-profile/auth.service';
 import {UserListService} from './user-list/user-list.service';
 import {UserMatcherService} from './user-matcher.service';
-import { NpmComponent } from './npm/npm.component';
 import { HeaderComponent } from './header/header.component';
 import { UserTemplateComponent } from './user-list/user-template/user-template.component';
 import {EventsModule} from './event-list/events.module';
@@ -76,7 +75,6 @@ const appRoutes: Routes = [
     UserProfileComponent,
     UserListComponent,
     LoginComponent,
-    NpmComponent,
     HeaderComponent,
     UserTemplateComponent,
     NavbarComponent,
