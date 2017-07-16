@@ -1,17 +1,21 @@
 import {$, browser, by, element, ExpectedConditions} from 'protractor';
 import * as environment from '../../src/environments/environment.qa';
+import {CommonUtils} from '../common-utils';
 
 var firebase = require("firebase");
 require("firebase/auth");
-var fs = require('fs-extra');
 
 export class Login {
   defaultSleep = 1000;
   ec = ExpectedConditions;
+  utils = new CommonUtils();
 
   userEmail = 'peoplematchertest@gmail.com';
   userPassword = '@ngul@rAppT3st!ng';
-  loginButton =  element(by.cssContainingText('md-toolbar button', 'Login via Google'));
+  testUserName = 'People Matcher';
+
+  menuButtonSelector = 'md-toolbar button';
+  loginButton =  element(by.cssContainingText(this.menuButtonSelector, 'Login via Google'));
   usernameField = $('#identifierId');
   passwordField = $('#password input');
   googleIdNextButton = $('#identifierNext');
@@ -48,35 +52,10 @@ export class Login {
   }
 
   confirmUserLoggedIn(): any {
-    var waitResult = browser.wait(this.ec.not(this.ec.presenceOf(this.loginButton)));
-    this.takeScreenshot();
-
-    return waitResult;
-  }
-
-  takeScreenshot() {
-    let fs = require('fs');
-    let folderPath = '/tmp/protractor';
-
-    if (!fs.existsSync(folderPath)) {
-      this.createDirectoryRecursively(folderPath);
-    }
-
-    browser.takeScreenshot().then(function (png) {
-      let stream = fs.createWriteStream(folderPath + '/screenshot-' + new Date().getTime() + '.png');
-      stream.write(new Buffer(png, 'base64'));
-      stream.end();
-    });
-  }
-
-  private createDirectoryRecursively(path: string) {
-    fs.mkdirp(path, function (err) {
-      if (err) {
-        console.error('Directory "' + path + '" not created!', err);
-      } else {
-        console.log('Directory "' + path + '" created!')
-      }
-    });
+    browser.wait(this.ec.presenceOf($(this.menuButtonSelector)));   //the button is shown at all
+    browser.wait(this.ec.not(this.ec.presenceOf(this.loginButton)));  //the button does NOT say to log in
+    this.utils.takeScreenshot('Login');
+    return element(by.cssContainingText(this.menuButtonSelector, this.testUserName)).isPresent();
   }
 
   logoutUser() {
