@@ -3,12 +3,15 @@ import * as environment from '../../src/environments/environment.qa';
 
 var firebase = require("firebase");
 require("firebase/auth");
+var fs = require('fs-extra');
 
 export class Login {
-  defaultleep = 2000;
+  defaultSleep = 1000;
+  ec = ExpectedConditions;
+
   userEmail = 'peoplematchertest@gmail.com';
   userPassword = '@ngul@rAppT3st!ng';
-  loginButton = $('md-toolbar button');
+  loginButton =  element(by.cssContainingText('md-toolbar button', 'Login via Google'));
   usernameField = $('#identifierId');
   passwordField = $('#password input');
   googleIdNextButton = $('#identifierNext');
@@ -18,7 +21,7 @@ export class Login {
     browser.get('/');
   }
 
-  signInDefaultTestUser() {
+  signInDefaultTestUser() {   //TODO: refactor
     this.loginButton.click();
 
     browser.getAllWindowHandles().then(function (handles) {
@@ -28,10 +31,10 @@ export class Login {
     browser.wait(ExpectedConditions.presenceOf(this.usernameField));
     this.usernameField.sendKeys(this.userEmail);
     browser.wait(ExpectedConditions.presenceOf(this.googleIdNextButton));
-    browser.sleep(this.defaultleep);
+    browser.sleep(this.defaultSleep);
     this.googleIdNextButton.click();
-    
-    browser.sleep(this.defaultleep);
+
+    browser.sleep(this.defaultSleep);
     browser.wait(ExpectedConditions.presenceOf(this.passwordField));
     this.passwordField.sendKeys(this.userPassword);
     browser.wait(ExpectedConditions.presenceOf(this.googlePasswordNextButton));
@@ -44,17 +47,45 @@ export class Login {
     return this.confirmUserLoggedIn();
   }
 
-  private confirmUserLoggedIn(): any {
-    return element(by.cssContainingText('app-login > p', 'login works!')).isPresent();
+  confirmUserLoggedIn(): any {
+    var waitResult = browser.wait(this.ec.not(this.ec.presenceOf(this.loginButton)));
+    this.takeScreenshot();
+
+    return waitResult;
+  }
+
+  takeScreenshot() {
+    let fs = require('fs');
+    let folderPath = '/tmp/protractor';
+
+    if (!fs.existsSync(folderPath)) {
+      this.createDirectoryRecursively(folderPath);
+    }
+
+    browser.takeScreenshot().then(function (png) {
+      let stream = fs.createWriteStream(folderPath + '/screenshot-' + new Date().getTime() + '.png');
+      stream.write(new Buffer(png, 'base64'));
+      stream.end();
+    });
+  }
+
+  private createDirectoryRecursively(path: string) {
+    fs.mkdirp(path, function (err) {
+      if (err) {
+        console.error('Directory "' + path + '" not created!', err);
+      } else {
+        console.log('Directory "' + path + '" created!')
+      }
+    });
   }
 
   logoutUser() {
-    // logout
-    // confirmUserLoggedOut(userId);
+    this.loginButton.click();
+    return this.confirmUserLoggedOut();
   }
 
-  private confirmUserLoggedOut(userId) {
-
+  confirmUserLoggedOut() {
+    return this.loginButton.isPresent();    //wait for the button?
   }
 
   // CLEANUP FOR LOGIN TESTS
