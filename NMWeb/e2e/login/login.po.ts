@@ -1,21 +1,20 @@
-import {$, browser, by, element, ExpectedConditions} from 'protractor';
+import {$, browser, by, element} from 'protractor';
 import * as environment from '../../src/environments/environment.qa';
 import {CommonUtils} from '../common-utils';
 
-var firebase = require("firebase");
+let firebase = require("firebase");
 require("firebase/auth");
 
 export class Login {
-  defaultSleep = 1000;
-  ec = ExpectedConditions;
-  utils = new CommonUtils();
+  private defaultSleep = 1000;
+  private utils = new CommonUtils();
 
   userEmail = 'peoplematchertest@gmail.com';
   userPassword = '@ngul@rAppT3st!ng';
   testUserName = 'People Matcher';
 
   menuButtonSelector = 'md-toolbar button';
-  loginButton =  element(by.cssContainingText(this.menuButtonSelector, 'Login via Google'));
+  loginButton = element(by.cssContainingText(this.menuButtonSelector, 'Login via Google'));
   usernameField = $('#identifierId');
   passwordField = $('#password input');
   googleIdNextButton = $('#identifierNext');
@@ -25,46 +24,53 @@ export class Login {
     browser.get('/');
   }
 
-  signInDefaultTestUser() {   //TODO: refactor
+  signInDefaultTestUser(done) {   //TODO: refactor
     this.loginButton.click();
 
-    browser.getAllWindowHandles().then(function (handles) {
-      browser.driver.switchTo().window(handles[1]);
-    });
+    this.utils.switchTabs(1);
 
-    browser.wait(ExpectedConditions.presenceOf(this.usernameField));
+    this.utils.waitForElement(this.usernameField);
     this.usernameField.sendKeys(this.userEmail);
-    browser.wait(ExpectedConditions.presenceOf(this.googleIdNextButton));
+    this.utils.waitForElement(this.googleIdNextButton);
     browser.sleep(this.defaultSleep);
     this.googleIdNextButton.click();
 
     browser.sleep(this.defaultSleep);
-    browser.wait(ExpectedConditions.presenceOf(this.passwordField));
+    this.utils.waitForElement(this.passwordField);
     this.passwordField.sendKeys(this.userPassword);
-    browser.wait(ExpectedConditions.presenceOf(this.googlePasswordNextButton));
+    this.utils.waitForElement(this.googlePasswordNextButton);
     this.googlePasswordNextButton.click();
 
-    browser.getAllWindowHandles().then(function (handles) {
-      browser.driver.switchTo().window(handles[0]);
-    });
+    this.utils.switchTabs(0);
 
-    return this.confirmUserLoggedIn();
+    return this.confirmUserLoggedIn(done);
   }
 
-  confirmUserLoggedIn(): any {
-    browser.wait(this.ec.presenceOf($(this.menuButtonSelector)));   //the button is shown at all
-    browser.wait(this.ec.not(this.ec.presenceOf(this.loginButton)));  //the button does NOT say to log in
+  confirmUserLoggedIn(done): any {
+    this.utils.waitForElement($(this.menuButtonSelector));   //the button is shown at all
+    this.utils.waitForElementNotPresent(this.loginButton);  //the button does NOT say to log in
     this.utils.takeScreenshot('Login');
-    return element(by.cssContainingText(this.menuButtonSelector, this.testUserName)).isPresent();
+    return element(by.cssContainingText(this.menuButtonSelector, this.testUserName)).isPresent().then(
+      (isPresent) => {
+        done();
+        return isPresent;
+      }
+    );
   }
 
   logoutUser() {
+    this.utils.waitForElement($(this.menuButtonSelector));
     this.loginButton.click();
-    return this.confirmUserLoggedOut();
   }
 
-  confirmUserLoggedOut() {
-    return this.loginButton.isPresent();    //wait for the button?
+  confirmUserLoggedOut(done) {
+    this.utils.waitForElement($(this.menuButtonSelector));
+    return this.loginButton.isPresent().then(
+      (isPresent) => {
+        done();
+        return isPresent;
+      }
+    );
   }
 
   // CLEANUP FOR LOGIN TESTS
@@ -81,15 +87,15 @@ export class Login {
   //     }
   //   });
   // }
-/*var p = new Promise(function(resolve, reject) {
- var observer = function(user) {
- // Unsubscribe on first call.
- unsubscribe();
- // Resolve with current state.
- resolve(user);
- };
- var unsubscribe = auth.onAuthStateChanged(observer);
- });*/
+  /*var p = new Promise(function(resolve, reject) {
+   var observer = function(user) {
+   // Unsubscribe on first call.
+   unsubscribe();
+   // Resolve with current state.
+   resolve(user);
+   };
+   var unsubscribe = auth.onAuthStateChanged(observer);
+   });*/
 
   deleteCurrentUserFromFirebase() {
     /*

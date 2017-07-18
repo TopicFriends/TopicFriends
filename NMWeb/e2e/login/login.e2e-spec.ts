@@ -1,7 +1,7 @@
 import { Login } from './login.po';
 import {$, browser, ExpectedConditions} from 'protractor';
 import {CommonUtils} from '../common-utils';
-// import { AngularFireAuth } from 'angularfire2/auth';
+
 browser.waitForAngularEnabled(false);
 
 fdescribe('User', () => {
@@ -13,29 +13,27 @@ fdescribe('User', () => {
     page = new Login();
   });
 
-  it('should be able to log in', () => {
+  it('should be able to log in', (done) => {
     page.navigateTo();
-    browser.wait(ec.presenceOf(page.loginButton));
-    var isUserSignedIn = page.signInDefaultTestUser();
-    expect(isUserSignedIn).toBeTruthy();
+    browser.wait(ec.presenceOf(page.loginButton)).then(() => {
+      var isUserSignedIn = page.signInDefaultTestUser(done);
+      expect(isUserSignedIn).toBeTruthy();
+    })
   });
 
-  // it('name should be displayed', () => {    //should be fetched from google
-  //
-  // });
-
-  it('should be logged in when returning to the app', () => {
+  it('should be logged in when returning to the app', (done) => {
     browser.get('http://www.google.com');
     browser.wait(ec.presenceOf($('input.gsfi')));
     browser.get('/');
     browser.wait(ec.presenceOf(page.loginButton));
 
-    expect(page.confirmUserLoggedIn()).toBeTruthy();
+    expect(page.confirmUserLoggedIn(done)).toBeTruthy();
     utils.takeScreenshot('Login');
-    //TODO: check if user is logged in by checking the button text: People Matcher
   });
 
-  // it('should be able to logout', () => {
-  //
-  // });
+  it('should be able to logout', (done) => {
+    // page.logoutUser();
+  //   expect(page.confirmUserLoggedOut(done)).toBeTruthy();
+    done();
+  });
 });
