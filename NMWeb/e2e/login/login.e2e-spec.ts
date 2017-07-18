@@ -31,9 +31,8 @@ fdescribe('User', () => {
     utils.takeScreenshot('Login');
   });
 
-  it('should be able to logout', (done) => {
-    // page.logoutUser();
-  //   expect(page.confirmUserLoggedOut(done)).toBeTruthy();
-    done();
+  it('should be able to logout', () => {
+    page.logoutUser();
+    expect(page.confirmUserLoggedOut()).toBeTruthy();
   });
 });

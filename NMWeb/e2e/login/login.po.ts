@@ -1,4 +1,4 @@
-import {$, browser, by, element} from 'protractor';
+import {$, browser, by, element, ExpectedConditions} from 'protractor';
 import * as environment from '../../src/environments/environment.qa';
 import {CommonUtils} from '../common-utils';
 
@@ -13,8 +13,10 @@ export class Login {
   userPassword = '@ngul@rAppT3st!ng';
   testUserName = 'People Matcher';
 
-  menuButtonSelector = 'md-toolbar button';
+  private menuButtonSelector = 'md-toolbar button';
+  loginMenuButton = $(this.menuButtonSelector);
   loginButton = element(by.cssContainingText(this.menuButtonSelector, 'Login via Google'));
+  logoutButton = element(by.cssContainingText('button.mat-menu-item', 'Logout'));
   usernameField = $('#identifierId');
   passwordField = $('#password input');
   googleIdNextButton = $('#identifierNext');
@@ -47,7 +49,7 @@ export class Login {
   }
 
   confirmUserLoggedIn(done): any {
-    this.utils.waitForElement($(this.menuButtonSelector));   //the button is shown at all
+    this.utils.waitForElement(this.loginMenuButton);   //the button is shown at all
     this.utils.waitForElementNotPresent(this.loginButton);  //the button does NOT say to log in
     this.utils.takeScreenshot('Login');
     return element(by.cssContainingText(this.menuButtonSelector, this.testUserName)).isPresent().then(
@@ -59,18 +61,14 @@ export class Login {
   }
 
   logoutUser() {
-    this.utils.waitForElement($(this.menuButtonSelector));
-    this.loginButton.click();
+    this.utils.waitForElement(this.loginMenuButton).then(() => {
+      this.loginMenuButton.click();
+      this.logoutButton.click();
+    });
   }
 
-  confirmUserLoggedOut(done) {
-    this.utils.waitForElement($(this.menuButtonSelector));
-    return this.loginButton.isPresent().then(
-      (isPresent) => {
-        done();
-        return isPresent;
-      }
-    );
+  confirmUserLoggedOut() {
+    return this.utils.waitForElement(this.loginButton); //
   }
 
   // CLEANUP FOR LOGIN TESTS
