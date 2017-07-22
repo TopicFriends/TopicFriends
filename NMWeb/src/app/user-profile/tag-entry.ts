@@ -1,6 +1,19 @@
+
+/* TODO rename to Topic */
 export class TagEntry {
+  logo: string;
+
   constructor(
-    private name: string,
-    private level?: string, // level of expertise
-  ) { }
+    public name: string,
+    // public topicId?,
+
+  ) {
+    this.logo = this.getLogoPath(name);
+  }
+
+  public getLogoPath(tag: string){
+    // return '../../../assets/images/logos/' + tag.toLowerCase() + '-icon.svg'
+    return '../../../assets/images/logos/' + tag.toLowerCase() + '.svg'
+  }
+
 }
