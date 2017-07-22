@@ -4,11 +4,11 @@
 <md-chip-list>
   <md-chip
     *ngFor="let chip of tagList">
-    <ng-template [ngIf]="chip.logo" >
-      <img src="{{chip.logo}}" onerror="this.style.display='none';"/>
+    <ng-template [ngIf]="chip.tagEntry.logo" >
+      <img src="{{chip.tagEntry.logo}}" onerror="this.style.display='none';"/>
       &nbsp;
     </ng-template>
-      {{chip.name}}
+      {{chip.tagEntry.name}}
     <span style="cursor:pointer" (click)=deleteTag(chip)>
       &nbsp; X
       <!--<md-icon style="font-size: 20px">close</md-icon>-->
@@ -31,12 +31,12 @@
 <md-autocomplete #auto="mdAutocomplete">
   <md-option
     *ngFor="let option of filteredOptions | async"
-    [value]="option"
+    [value]="option.name"
     (click)="addTag(option)">
     <!--<ng-template [ngIf]="option.logo" >-->
       <!--<img src="{{chip.logo}}"/>-->
-      <img src="{{getLogoPath(option)}}" onerror="this.style.display='none';"/> <!-- FIXME option.logo -->
+      <img src="{{option.logo}}" onerror="this.style.display='none';"/> <!-- FIXME option.logo -->
     <!--</ng-template>-->
-    &nbsp;{{ option }}
+    &nbsp;{{ option.name }}
   </md-option>
 </md-autocomplete>

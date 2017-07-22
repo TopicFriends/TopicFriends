@@ -5,14 +5,20 @@ import {AuthService} from './auth.service';
 import {initFromObject} from '../util/util';
 import {DbObject, DbService} from '../db.service'
 import {DomainDbService} from '../domain-db.service'
+import {TagEntry} from './tag-entry'
 
 /* TODO: rename to WantedTopic for consistency? */
 export class TopicInterest {
   // idea: hourly / per-minute rates (in Pro version? :) )
-  name: string;
-  logo: string;
-  active?: boolean;
-  topicId?;
+  // name: string;
+  constructor(
+    public tagEntry: TagEntry,
+    // public active?: boolean,
+    // public level?: string, // level of expertise
+
+  ) {
+
+  }
   // potential in the future: where. E.g. play soccer where
 }
 
@@ -115,7 +121,7 @@ export class UserInterests {
     return topics1.filter((topic1: TopicInterest) => {
       return topics2.filter((topic2: TopicInterest) => {
         // later use id-s
-        return topic1.name === topic2.name;
+        return topic1.tagEntry.name === topic2.tagEntry.name;
       }).length >= 1;
     });
   }
