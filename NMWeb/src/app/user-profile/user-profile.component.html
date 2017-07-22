@@ -21,7 +21,7 @@
              [formControl]="displayName">
     </md-input-container> <!-- ngModel variable is missing due to code crashing -->
 
-    <md-input-container>
+    <md-input-container id="linkedinLink">
       <md-placeholder>
         <md-icon>person</md-icon><b>LinkedIn</b> Profile (optional, user name is enough)
       </md-placeholder>
@@ -37,7 +37,8 @@
     <hr />
 
     <!-- Reusable component: -->
-    <app-item-list-input (outputTagList)="updateWantExchange($event)"
+    <app-item-list-input id="topicsExchange"
+                         (outputTagList)="updateWantExchange($event)"
                          (inputTagList)="getOptionsNames()" [formGroup1]="_userProfileForm">
       <app-item-list-input-title>
         <md-icon>build</md-icon>I would like to <b>exchange knowledge</b> on topics
@@ -46,7 +47,8 @@
 
     <hr />
 
-    <app-item-list-input (outputTagList)="updateWantHackathon($event)"
+    <app-item-list-input id="topicsHackathon"
+                         (outputTagList)="updateWantHackathon($event)"
                          (inputTagList)="options" [formGroup1]="_userProfileForm">
       <app-item-list-input-title>
         <md-icon>build</md-icon>I would like to do <b>hackathon</b> on topics
@@ -56,7 +58,8 @@
     <hr />
 
     <!-- Reusable component: -->
-    <app-item-list-input (outputTagList)="updateWantPairProgramming($event)"
+    <app-item-list-input id="topicsPairProgramming"
+                         (outputTagList)="updateWantPairProgramming($event)"
                          (inputTagList)="options" [formGroup1]="_userProfileForm">
       <app-item-list-input-title>
         <md-icon>build</md-icon>I would like to do <b>pair programming</b> on topics
@@ -125,7 +128,7 @@
     <br />
 
     <p>
-      <button style="width:100%" md-button md-raised-button (click)="save()">Save <i>(Enter)</i></button>
+      <button id="saveProfile" style="width:100%" md-button md-raised-button (click)="save()">Save <i>(Enter)</i></button>
 
     </p>
 
