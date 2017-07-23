@@ -89,8 +89,15 @@ export class ItemListInputComponent implements OnInit
   filter(val: string) {
     return val ? this.inputTagList.filter(
       option => option.matchesTextFilter(val)
+      && ! this.tagExists(option)
     )
       : this.inputTagList;
+  }
+
+  tagExists(option) {
+    return this.tagList.some((tag) => {
+      return tag.tagEntry.name.toLowerCase() === option.name.toLowerCase()
+    });
   }
 
   addTag(tagEntry: TagEntry) {
