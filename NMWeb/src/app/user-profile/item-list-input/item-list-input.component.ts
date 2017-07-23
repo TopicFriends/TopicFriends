@@ -4,7 +4,7 @@ import { TagEntry } from "app/user-profile/tag-entry";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
-import {TopicInterest} from '../user-profile.service'
+import {TopicInterest} from '../user-profile.service';
 
 @Component({
   selector: 'app-item-list-input',
@@ -69,6 +69,7 @@ export class ItemListInputComponent implements OnInit
 
   stateCtrl: FormControl;
   filteredOptions: Observable<TagEntry[]>; // TODO: change from any
+  currentFilteredOptions: TagEntry[] = [];
 
   constructor() {
     this.stateCtrl = new FormControl();
@@ -78,6 +79,9 @@ export class ItemListInputComponent implements OnInit
   }
 
   ngOnInit() {
+    this.filteredOptions.subscribe((filteredOptions) => {
+      this.currentFilteredOptions = filteredOptions;
+    });
   }
 
   filter(val: string) {
@@ -87,7 +91,7 @@ export class ItemListInputComponent implements OnInit
 
   addTag(tagEntry: TagEntry) {
     // const tagEntry = this.inputTagList.find(el => el.name === tag)
-    const topicInterest = new TopicInterest(tagEntry)
+    const topicInterest = new TopicInterest(tagEntry);
     this.tagList.push(topicInterest);
     this.stateCtrl.reset();
     this.sendTagsToParent();
@@ -104,5 +108,4 @@ export class ItemListInputComponent implements OnInit
   sendTagsToParent() {
     this.outputTagList.emit({tagList: this.tagList});
   }
-
 }

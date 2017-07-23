@@ -22,7 +22,9 @@
   <input
     mdInput
     [mdAutocomplete]="auto"
-    [formControl]="stateCtrl">
+    [formControl]="stateCtrl"
+    (keydown.enter)="addTag(currentFilteredOptions[0])"
+  >
   <md-placeholder>
     <ng-content select="app-item-list-input-title"></ng-content>
   </md-placeholder>
@@ -42,3 +44,5 @@
     &nbsp;{{ option.name }}
   </md-option>
 </md-autocomplete>
+
+<!-- https://github.com/angular/material2/tree/master/src/lib/autocomplete -->
