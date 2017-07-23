@@ -6,6 +6,10 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import {TopicInterest} from '../user-profile.service';
 
+
+function tag(name: string, logo?: string) {
+  return new TagEntry(name, logo);
+}
 @Component({
   selector: 'app-item-list-input',
   templateUrl: './item-list-input.component.html',
@@ -14,9 +18,6 @@ import {TopicInterest} from '../user-profile.service';
 export class ItemListInputComponent implements OnInit
   // , ControlValueAccessor
 {
-
-  //options = ['Angular', 'Ionic', 'Firebase']
-
   //reusableControl = new FormControl();
 
   // writeValue(obj: any): void {
@@ -38,19 +39,20 @@ export class ItemListInputComponent implements OnInit
   @Input() public formGroup1: FormGroup;
 
   // All possible tags
-  // @Input() public inputTagList: TagEntry[] = [new TagEntry('Angular'), new TagEntry('Ionic'), new TagEntry('Firebase')];
+  // @Input() public inputTagList: TagEntry[] = [tag('Angular'), tag('Ionic'), tag('Firebase')];
   /** I moved it here, because @Input stopped working for some reason and I am to distracted to troubleshoot it :-\ */
   @Input() public inputTagList: TagEntry[] = this.transformTags([
-    new TagEntry('Angular'), new TagEntry('Ionic'), new TagEntry('Firebase'),
-    new TagEntry('Protractor'), new TagEntry('Karma'), new TagEntry('Jasmine'),
-    new TagEntry('PHP'), new TagEntry('Material Design'), new TagEntry('TypeScript'),
-    new TagEntry('Django'), new TagEntry('Python'), new TagEntry('Ruby'), new TagEntry('Ruby On Rails'),
-    new TagEntry('PeopleMatcher'),
-    new TagEntry('Android'), new TagEntry('Kotlin'), new TagEntry('Java'),
-    new TagEntry('iOS'), new TagEntry('Swift'),
-    new TagEntry('D3'),
-    'Angular DI', 'Angular Modules', 'Angular Router', 'Webpack', 'VR',
-    'JavaScript', 'ECMAScript',
+    tag('Angular'), tag('Ionic'), tag('Firebase'),
+    tag('Protractor'), tag('Karma'), tag('Jasmine'),
+    tag('PHP'), tag('Material Design', null), tag('TypeScript'),
+    tag('Django'), tag('Python'), tag('Ruby'), tag('Ruby On Rails'),
+    tag('PeopleMatcher'),
+    tag('Android'), tag('Kotlin'), tag('Java'),
+    tag('iOS'), tag('Swift'),
+    tag('D3'),
+    tag('Angular DI', null), tag('Angular Modules', null), tag('Angular Router', null), 'Webpack',
+    tag('VR', null),
+    'JavaScript', tag('ECMAScript', 'es6'),
   ]);
 
   private transformTags(inputList: (TagEntry|string)[]): TagEntry[] {
@@ -58,7 +60,7 @@ export class ItemListInputComponent implements OnInit
       if (el instanceof TagEntry) {
         return el;
       } else {
-        return new TagEntry(el);
+        return tag(el);
       }
     })
   }
