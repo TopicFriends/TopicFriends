@@ -22,6 +22,8 @@ export class TopicInterest {
   // potential in the future: where. E.g. play soccer where
 }
 
+// TODO: split into what-user-wants-service
+
 /** TODO: better name */
 export class WantedTopics {
 
@@ -242,6 +244,7 @@ export class UserProfile {
   suername?: string;
   company?: string;
   role?: string;
+  lastSaved: Date;
 }
 
 export class UserData {
@@ -281,6 +284,7 @@ export class UserProfileService {
     userProfile: UserProfile, interests: UserInterests,
     otherProfiles: OtherProfiles,
   ) {
+    userProfile.lastSaved = new Date();
     this.myUserData.profile.update(userProfile);
 
     /* NOTE: this will be hopefully wrapped in some OOP objects in TS,
