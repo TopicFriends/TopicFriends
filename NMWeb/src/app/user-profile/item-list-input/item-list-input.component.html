@@ -32,7 +32,9 @@
   <md-option
     *ngFor="let option of filteredOptions | async"
     [value]="option.name"
-    (click)="addTag(option)">
+    (click)="addTag(option)"
+    (onSelectionChange)="addTag(option)"
+  >
     <!--<ng-template [ngIf]="option.logo" >-->
       <!--<img src="{{chip.logo}}"/>-->
       <img src="{{option.logo}}" onerror="this.style.display='none';"/> <!-- FIXME option.logo -->
