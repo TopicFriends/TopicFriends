@@ -26,7 +26,7 @@ export class Login {
     browser.get('/');
   }
 
-  signInDefaultTestUser(done) {   //TODO: refactor
+  logInDefaultTestUser(done) {   //TODO: refactor
     this.loginButton.click();
 
     this.utils.switchTabs(1);
@@ -68,42 +68,6 @@ export class Login {
   }
 
   confirmUserLoggedOut() {
-    return this.utils.waitForElement(this.loginButton); //
-  }
-
-  // CLEANUP FOR LOGIN TESTS
-  // getCurrentUserUidFromFirebase() {
-  //
-  //   firebase.initializeApp(environment.environment.firebase);
-  //   let fireBaseUser = firebase.auth().currentUser;
-  //   console.log(fireBaseUser)
-  //   firebase.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       console.log(user)
-  //     } else {
-  //       console.log('no');
-  //     }
-  //   });
-  // }
-  /*var p = new Promise(function(resolve, reject) {
-   var observer = function(user) {
-   // Unsubscribe on first call.
-   unsubscribe();
-   // Resolve with current state.
-   resolve(user);
-   };
-   var unsubscribe = auth.onAuthStateChanged(observer);
-   });*/
-
-  deleteCurrentUserFromFirebase() {
-    /*
-     var user = firebase.auth().currentUser;
-
-     user.delete().then(function() {
-     // Check that user is deleted.
-     }, function(error) {
-     // An error happened. Fail cleanup.
-     });
-     */
+    return this.utils.waitForElement(this.loginButton);
   }
 }

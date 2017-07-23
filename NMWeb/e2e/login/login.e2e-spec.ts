@@ -4,7 +4,7 @@ import {CommonUtils} from '../common-utils';
 
 browser.waitForAngularEnabled(false);
 
-fdescribe('User', () => {
+fdescribe('Login page: User', () => {
   let page: Login;
   let ec = ExpectedConditions;
   let utils = new CommonUtils();
@@ -16,19 +16,18 @@ fdescribe('User', () => {
   it('should be able to log in', (done) => {
     page.navigateTo();
     browser.wait(ec.presenceOf(page.loginButton)).then(() => {
-      var isUserSignedIn = page.signInDefaultTestUser(done);
+      var isUserSignedIn = page.logInDefaultTestUser(done);
       expect(isUserSignedIn).toBeTruthy();
     })
   });
 
   it('should be logged in when returning to the app', (done) => {
     browser.get('http://www.google.com');
-    browser.wait(ec.presenceOf($('input.gsfi')));
+    browser.wait(ec.presenceOf($('input.gsfi')));   //google search page
     browser.get('/');
     browser.wait(ec.presenceOf(page.loginButton));
 
     expect(page.confirmUserLoggedIn(done)).toBeTruthy();
-    utils.takeScreenshot('Login');
   });
 
   it('should be able to logout', () => {
