@@ -22,4 +22,8 @@ export class TagEntry {
     return '../../../assets/images/logos/' + tag.toLowerCase().replace(/ /g, '-') + '.svg'
   }
 
+  matchesTextFilter(value: string) {
+    return this.name.toLowerCase().indexOf(value.toLowerCase()) === 0;
+  }
+
 }

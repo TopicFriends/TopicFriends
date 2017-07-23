@@ -76,8 +76,8 @@ export class ItemListInputComponent implements OnInit
   constructor() {
     this.stateCtrl = new FormControl();
     this.filteredOptions = this.stateCtrl.valueChanges
-        .startWith(null)
-        .map(name => this.filter(name));
+      .startWith(null)
+      .map(name => this.filter(name));
   }
 
   ngOnInit() {
@@ -87,8 +87,10 @@ export class ItemListInputComponent implements OnInit
   }
 
   filter(val: string) {
-    return val ? this.inputTagList.filter(s => s.name.toLowerCase().indexOf(val.toLowerCase()) === 0)
-               : this.inputTagList;
+    return val ? this.inputTagList.filter(
+      option => option.matchesTextFilter(val)
+    )
+      : this.inputTagList;
   }
 
   addTag(tagEntry: TagEntry) {
