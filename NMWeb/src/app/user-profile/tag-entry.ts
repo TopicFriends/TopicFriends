@@ -13,7 +13,7 @@ export class TagEntry {
 
   public getLogoPath(tag: string){
     // return '../../../assets/images/logos/' + tag.toLowerCase() + '-icon.svg'
-    return '../../../assets/images/logos/' + tag.toLowerCase() + '.svg'
+    return '../../../assets/images/logos/' + tag.toLowerCase().replace(' ', '-') + '.svg'
   }
 
 }
