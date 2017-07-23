@@ -6,10 +6,10 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import {TopicInterest} from '../user-profile.service';
 
-
 function tag(name: string, logo?: string) {
   return new TagEntry(name, logo);
 }
+
 @Component({
   selector: 'app-item-list-input',
   templateUrl: './item-list-input.component.html',

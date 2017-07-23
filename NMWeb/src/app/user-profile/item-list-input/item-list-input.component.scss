@@ -2,3 +2,23 @@ img {
   width: 16px;
   height: 16px;
 }
+
+// ======= Animation:
+
+@keyframes ChipAnimation {
+  0% {
+    opacity: 0.0;
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1.0;
+    transform: scale(1);
+  }
+}
+
+md-chip {
+  animation: ChipAnimation 0.5s ease-in-out;
+}
