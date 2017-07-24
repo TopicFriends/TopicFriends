@@ -102,10 +102,12 @@ export class ItemListInputComponent implements OnInit
 
   addTag(tagEntry: TagEntry) {
     // const tagEntry = this.inputTagList.find(el => el.name === tag)
-    const topicInterest = new TopicInterest(tagEntry);
-    this.tagList.push(topicInterest);
-    this.stateCtrl.reset();
-    this.sendTagsToParent();
+    if(tagEntry) {
+      const topicInterest = new TopicInterest(tagEntry);
+      this.tagList.push(topicInterest);
+      this.stateCtrl.reset();
+      this.sendTagsToParent();
+    }
   }
 
   deleteTag(tag: TopicInterest) {
