@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
-import { UserProfile } from "app/user-profile/user-profile.service";
+import {UserDataFetched, UserProfile} from 'app/user-profile/user-profile.service';
+import {Observable} from 'rxjs/Observable'
+import {DomainDbService} from '../domain-db.service'
 
 @Injectable()
 export class UserListService {
@@ -8,7 +10,7 @@ export class UserListService {
   userList = [];
 
   constructor(
-    private db: AngularFireDatabase,
+    private domainDbService: DomainDbService,
   ) {
     //this.userList = db.list('UserProfile');
   }
@@ -19,9 +21,9 @@ export class UserListService {
 
   public getDefaultUserList(){
     let userProfile = new UserProfile();
-    // userProfile.name = "Rubén Triviño Juárez";
-    // userProfile.company = "Willimbu";
-    // userProfile.role = "Developer";
+    userProfile.name = "Rubén Triviño Juárez";
+    userProfile.company = "Willimbu";
+    userProfile.role = "Developer";
     // userProfile.whatUserWants.byInteractionMode.supplyDemand.intern.demand.topics.topicInclusionId.name = "Angular Junior";
     // userProfile.whatUserWants.byInteractionMode.supplyDemand.intern.supply.topics.topicInclusionId.name = "DJango";
     // userProfile.whatUserWants.byInteractionMode.supplyDemand.mentor.demand.topics.topicInclusionId.name = "Business Model";
@@ -46,8 +48,12 @@ export class UserListService {
     return this.userList;
   }
 
-  public getFilteredUsersList(minimumMatchScore: number) {
+  // public getFilteredUsersList(minimumMatchScore: number): Observable<UserDataFetched[]> {
+  //
+  // }
 
+  public listUserDataWithDetails(): Observable<UserDataFetched[]> {
+    return this.domainDbService.listUserDataWithDetails();
   }
 
 }

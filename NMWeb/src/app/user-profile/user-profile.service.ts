@@ -35,6 +35,7 @@ export class OtherProfiles {
 export class UserProfile {
   name?: string;
   suername?: string;
+  photoUrl?: string;
   company?: string;
   role?: string;
   lastSaved: Date;
@@ -45,6 +46,19 @@ export class UserData {
   interests?: DbObject<UserInterests>;
   otherProfiles?: DbObject<OtherProfiles>;
 }
+
+export class UserDataWithDetails {
+  profile: UserProfile;
+  interests: DbObject<UserInterests>;
+  otherProfiles: DbObject<OtherProfiles>;
+}
+
+export class UserDataFetched {
+  profile?: UserProfile;
+  interests?: UserInterests;
+  otherProfiles?: OtherProfiles;
+}
+
 
 @Injectable()
 export class UserProfileService {

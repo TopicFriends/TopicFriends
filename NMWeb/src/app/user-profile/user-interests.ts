@@ -49,7 +49,7 @@ export class MatchResults {
   // TODO: fine-grained match results later on (not necessary for MVP)
 }
 
-function getDictionaryValuesAsArray<T>(dictionary: { [p: string]: T }): T[] {
+export function getDictionaryValuesAsArray<T>(dictionary: { [p: string]: T }): T[] {
   const values = [];
   if ( dictionary ) {
     for (const key in dictionary) {

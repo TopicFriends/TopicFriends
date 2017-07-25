@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import {DbObject, DbList, DbService} from './db.service'
-import {OtherProfiles, UserProfile, UserData} from './user-profile/user-profile.service'
+import {OtherProfiles, UserProfile, UserData, UserDataFetched, UserDataWithDetails} from './user-profile/user-profile.service'
 import {Observable} from 'rxjs/Observable'
+
 import {UserInterests} from './user-profile/user-interests'
+import {combineLatest} from 'rxjs/operator/combineLatest'
 
 @Injectable()
 export class DomainDbService {
@@ -31,6 +33,26 @@ export class DomainDbService {
 
   listUserInterests(): DbList<UserInterests> {
     return this.db.list(this.PATHS.USER_INTERESTS);
+  }
+
+  listUserData(): Observable<UserDataFetched[]> {
+    return this.db.list(this.PATHS.USER_INTERESTS);
+  }
+
+  listUserDataWithDetails(): Observable<UserDataWithDetails[]> {
+    return this.listUserProfile().map(list => {
+      return list.map(profile => {
+          const id = (profile as any).$key;
+          const mapped: UserDataWithDetails = {
+            profile: profile,
+            otherProfiles: this.otherProfilesById(id),
+            interests: this.userInterestsById(id),
+          }
+          return mapped;
+        }
+      )
+    });
+
   }
 
   userProfileById(id: string): DbObject<UserProfile> {

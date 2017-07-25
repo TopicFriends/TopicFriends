@@ -9,7 +9,7 @@ import { UserListService } from "app/user-list/user-list.service";
 })
 export class UserListComponent implements OnInit {
 
-  userList: any[] = [];// = this.userListService.getUserList();
+  userList; // = [];// = this.userListService.getUserList();
 
   constructor(
     private userListService: UserListService
@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userList = this.userListService.getDefaultUserList();
+    this.userList = this.userListService.listUserDataWithDetails();
   }
 
 }
