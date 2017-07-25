@@ -94,7 +94,7 @@ export class ItemListInputComponent implements OnInit
       : this.inputTagList;
   }
 
-  tagExists(option) {
+  tagExists(option: TagEntry) {
     return this.tagList.some((tag) => {
       return tag.tagEntry.name.toLowerCase() === option.name.toLowerCase()
     });
@@ -103,6 +103,9 @@ export class ItemListInputComponent implements OnInit
   addTag(tagEntry: TagEntry) {
     // const tagEntry = this.inputTagList.find(el => el.name === tag)
     if(tagEntry) {
+      if (this.tagExists(tagEntry)) {
+        return;
+      }
       const topicInterest = new TopicInterest(tagEntry);
       this.tagList.push(topicInterest);
       this.stateCtrl.reset();
