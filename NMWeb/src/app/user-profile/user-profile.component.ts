@@ -1,9 +1,10 @@
 ///<reference path="user-profile.service.ts"/>
 import { Component, OnInit } from '@angular/core';
-import {SymmetricInteractions, TopicInterest, UserProfile, UserProfileService, UserInterests, OtherProfiles} from './user-profile.service';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {AuthService} from './auth.service';
 import {Observable} from 'rxjs/Observable';
+import {OtherProfiles, UserProfile, UserProfileService} from './user-profile.service'
+import {SymmetricInteractions, TopicInterest, UserInterests} from './user-interests'
 
 @Component({
   selector: 'app-user-profile',

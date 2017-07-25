@@ -4,7 +4,7 @@ import { TagEntry } from "app/user-profile/tag-entry";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
-import {TopicInterest} from '../user-profile.service';
+import {TopicInterest} from '../user-interests'
 
 function tag(name: string, logo?: string) {
   return new TagEntry(name, logo);

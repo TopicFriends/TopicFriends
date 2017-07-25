@@ -1,4 +1,4 @@
-import {WantedTopics} from './user-profile.service';
+import {WantedTopics} from './user-interests'
 
 const angular =
   {

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {DbObject, DbList, DbService} from './db.service'
-import {OtherProfiles, UserProfile, UserInterests, UserData} from './user-profile/user-profile.service'
+import {OtherProfiles, UserProfile, UserData} from './user-profile/user-profile.service'
 import {Observable} from 'rxjs/Observable'
+import {UserInterests} from './user-profile/user-interests'
 
 @Injectable()
 export class DomainDbService {
