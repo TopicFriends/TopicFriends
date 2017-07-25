@@ -1,6 +1,8 @@
 /* TODO: rename to WantedTopic for consistency? */
 import {initFromObject} from '../util/util'
 import {TagEntry} from './tag-entry'
+
+
 export class TopicInterest {
   // idea: hourly / per-minute rates (in Pro version? :) )
   // name: string;
@@ -17,22 +19,26 @@ export class TopicInterest {
 
 // TODO: split into what-user-wants-service
 
-/** TODO: better name */
+/** Other potential names: TopicGroup */
 export class WantedTopics {
-
   active?: boolean;
-  public topics: {
+
+  // we can add more metadata, like time periods
+
+  /** Must match at least that number of topics */
+  atLeast? = 1;
+  public topics?: {
     [/** Note: this is NOT the id of the topic itself */ topicInclusionId: string]: TopicInterest
   } = {};
-
-  // topics: string;
-  // we can add more metadata, like time period
+  public subGroups?: {
+    [groupId: string]: WantedTopics
+  } = {}
 }
 
 /** Other potential names: GiveReceive, PassiveActive, FindAndBecome */
 export class SupplyDemand {
   // idea: hourly rates (range)
-  supply?: WantedTopics = new WantedTopics();
+  supply?: WantedTopics = new WantedTopics(); // root group of topics
   demand?: WantedTopics = new WantedTopics();
   // we can add more metadata, like time period
 }
