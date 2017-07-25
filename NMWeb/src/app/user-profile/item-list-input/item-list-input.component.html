@@ -34,7 +34,6 @@
   <md-option
     *ngFor="let option of filteredOptions | async"
     [value]="option.name"
-    (click)="addTag(option)"
     (onSelectionChange)="addTag(option)"
   >
     <!--<ng-template [ngIf]="option.logo" >-->
