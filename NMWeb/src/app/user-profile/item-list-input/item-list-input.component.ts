@@ -10,6 +10,11 @@ function tag(name: string, logo?: string) {
   return new TagEntry(name, logo);
 }
 
+function tagLogoTipo(name: string, logo?: string) {
+  return tag(name, logo); // pass visual hint later
+}
+
+
 @Component({
   selector: 'app-item-list-input',
   templateUrl: './item-list-input.component.html',
@@ -54,9 +59,10 @@ export class ItemListInputComponent implements OnInit
     tag('VR', null),
     'JavaScript', tag('ECMAScript', 'es6'),
     'Elm', 'Scala', tag('.NET', 'dotnet'), '.NET Core', 'Docker', 'ElasticSearch',
-    'Ember', 'React', 'Git', 'TensorFlow', 'JHipster', 'Meteor', 'Hoodie',
+    tagLogoTipo('Ember'), 'React', 'Git', 'TensorFlow', 'JHipster', tagLogoTipo('Meteor'), tagLogoTipo('Hoodie'),
     'Laravel',
   ]);
+
 
   private transformTags(inputList: (TagEntry|string)[]): TagEntry[] {
     return inputList.map(el => {
