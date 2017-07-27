@@ -47,12 +47,15 @@ export class ItemListInputComponent implements OnInit
     tag('PHP'), tag('Material Design', null), tag('TypeScript'),
     tag('Django'), tag('Python'), tag('Ruby'), tag('Ruby On Rails'),
     tag('PeopleMatcher'),
-    tag('Android'), tag('Kotlin'), tag('Java'),
-    tag('iOS'), tag('Swift'),
+    tag('Android'), tag('Kotlin'), 'KotlinJS', tag('Java'),
+    tag('iOS'), tag('Swift'), 'Objective C',
     tag('D3'),
     tag('Angular DI', null), tag('Angular Modules', null), tag('Angular Router', null), 'Webpack',
     tag('VR', null),
     'JavaScript', tag('ECMAScript', 'es6'),
+    'Elm', 'Scala', tag('.NET', 'dotnet'), '.NET Core', 'Docker', 'ElasticSearch',
+    'Ember', 'React', 'Git', 'TensorFlow', 'JHipster', 'Meteor', 'Hoodie',
+    'Laravel',
   ]);
 
   private transformTags(inputList: (TagEntry|string)[]): TagEntry[] {
