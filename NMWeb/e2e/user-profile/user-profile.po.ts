@@ -1,8 +1,9 @@
-import {$, browser, by, element} from 'protractor';
+import {$, browser, by, element, ExpectedConditions} from 'protractor';
 
 export class UserProfile {
   saveProfileButton = $('#saveProfile');   //by click and by ENTER
-  profilePageHeader = $('app-user-profile h2');
+  userProfileSelector = 'app-user-profile';
+  userProfile = $(this.userProfileSelector);
   // public googleAccountName = $('');
 
   linkedInLink = $('#linkedinLink input');
@@ -11,8 +12,9 @@ export class UserProfile {
   topicsHackathon = $('#topicsHackathon input');
   topicsPairProgramming = $('#topicsPairProgramming input');
 
+  private ec = ExpectedConditions;
+
   // displayName = ;
-  // hireFreelanceTopics = $('input[formControlName="wantToHireFreelance"]');
 
   navigateTo() {
     browser.get('/profile');
