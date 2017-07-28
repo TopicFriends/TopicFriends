@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MeetingAttendanceService } from '../meeting-attendance.service';
 
 @Component({
   selector: 'app-going-button',
@@ -7,14 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoingButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private meetingAttendanceService: MeetingAttendanceService) {
+  }
 
   ngOnInit() {
   }
 
-  show: boolean = true;
+  show: boolean = false;
 
   userAttendsMeeting(choice: boolean) {
     this.show = choice;
+    this.meetingAttendanceService.updateAttandance(choice);
   }
 }

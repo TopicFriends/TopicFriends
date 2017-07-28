@@ -10,6 +10,7 @@ import { EventListItemComponent }  from './event-list-item/event-list-item.compo
 import { EventDetailsComponent }  from './event-details/event-details.component';
 import { MdListModule, MdCardModule, MdButtonModule } from '@angular/material';
 import { GoingButtonComponent } from './going-button/going-button.component';
+import {MeetingAttendanceService} from './meeting-attendance.service';
 
 const eventRoutes: Routes = [
   { path: 'event-list',  component: EventListComponent },
@@ -32,6 +33,9 @@ const eventRoutes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    MeetingAttendanceService
   ]
 })
 export class EventsModule { }
