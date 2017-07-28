@@ -9,6 +9,7 @@ import { EventListComponent }    from './event-list.component';
 import { EventListItemComponent }  from './event-list-item/event-list-item.component';
 import { EventDetailsComponent }  from './event-details/event-details.component';
 import { MdListModule, MdCardModule, MdButtonModule } from '@angular/material';
+import { GoingButtonComponent } from './going-button/going-button.component';
 
 const eventRoutes: Routes = [
   { path: 'event-list',  component: EventListComponent },
@@ -26,7 +27,8 @@ const eventRoutes: Routes = [
   declarations: [
     EventListComponent,
     EventListItemComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    GoingButtonComponent
   ],
   exports: [
     RouterModule

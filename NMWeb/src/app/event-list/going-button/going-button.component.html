@@ -1,0 +1,4 @@
+<button md-button md-raised-button (click)="userAttendsMeeting(false)" *ngIf="show; else elseBlock">I'm going</button>
+<ng-template #elseBlock>
+  <button md-button md-raised-button (click)="userAttendsMeeting(true)">Not going</button>
+</ng-template>

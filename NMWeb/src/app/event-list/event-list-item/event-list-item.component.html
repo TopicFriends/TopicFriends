@@ -1,9 +1,8 @@
 <md-card style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
   <md-card-title>{{event.$key}}</md-card-title>
-  <md-card-content>{{event.$value}}</md-card-content>
   <md-card-actions>
     <button md-button md-raised-button color="secondary" routerLink="/event-details">Details</button>
-    <button md-button md-raised-button color="secondary">I'm going</button>
+    <app-going-button></app-going-button>
   </md-card-actions>
 </md-card>
 
