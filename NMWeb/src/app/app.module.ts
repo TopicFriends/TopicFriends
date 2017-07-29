@@ -32,6 +32,7 @@ import { WhatUserWantsFormComponent } from './user-profile/what-user-wants-form/
 import {DbService} from './db.service'
 import {DomainDbService} from './domain-db.service'
 import {MeetingsService} from './shared/meetings.service'
+import {TopicsService} from './shared/topics.service'
 
 // import {
 //   AngularFireModule,
@@ -113,6 +114,7 @@ const appRoutes: Routes = [
     UserListService,
     UserMatcherService,
     MeetingsService,
+    TopicsService,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
