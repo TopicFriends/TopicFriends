@@ -29,14 +29,16 @@
         </div>
       Exchange knowledge on:
       <md-chip-list>
-        <md-chip
+        <md-chip style="vertical-align: middle;"
           *ngFor="let chip of topics(userInterests?.byInteractionMode?.symmetric?.exchange?.topics)">
           <ng-template [ngIf]="chip.tagEntry.logo" >
-            <img style="width: 16px; height: 16px;"
+            <img style="width: 20px; height: 20px; vertical-align:middle"
               src="{{chip.tagEntry.logo}}" onerror="this.style.display='none';"/>
             &nbsp;
           </ng-template>
-          {{chip.tagEntry.name}}
+          <div style="vertical-align: middle; display: inline; height: 100%">{{chip.tagEntry.name}}</div>
+          <!--<div style="vertical-align: middle; display: table-cell; height: 100px; width: 300px">{{chip.tagEntry.name}}</div>-->
+          <!--{{chip.tagEntry.name}}-->
         </md-chip>
       </md-chip-list>
     </md-content>
