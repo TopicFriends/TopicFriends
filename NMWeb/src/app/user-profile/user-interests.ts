@@ -74,6 +74,7 @@ export class SymmetricInteractions {
   hackathon?: WantedTopics;
   /** Thanks, Luis Jose Sanchez, for the idea for the name "telehackathon" ;-) */
   teleHackathon?: WantedTopics;
+  // TODO: discussOverBreakfast, discussOverLunch, discussOverDinner, discussOverWalking|Hiking|Bicycle
 }
 
 /* Other names:
