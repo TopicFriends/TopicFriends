@@ -1,6 +1,7 @@
 /* TODO: rename to WantedTopic for consistency? */
 import {initFromObject} from '../util/util'
 import {TagEntry} from './tag-entry'
+import {getDictionaryValuesAsArray} from '../shared/utils'
 
 
 export class TopicInterest {
@@ -49,16 +50,6 @@ export class MatchResults {
   // TODO: fine-grained match results later on (not necessary for MVP)
 }
 
-export function getDictionaryValuesAsArray<T>(dictionary: { [p: string]: T }): T[] {
-  const values = [];
-  if ( dictionary ) {
-    for (const key in dictionary) {
-      values.push(dictionary[key]);
-    }
-  }
-  return values;
-}
-
 export class SymmetricInteractions {
   /** General exchange of knowledge/skills and brainstorming, pair programming */
   exchange?: WantedTopics;
@@ -102,6 +93,7 @@ export class UserInterests {
       job?: SupplyDemand,
       advising?: SupplyDemand,
       sponsorEvents?: SupplyDemand,
+      /** co-founder / business partner */
       coFounderSpecializingIn?: SupplyDemand,
       // work on hobby project together,
       /** Work on open-source together; probably move to symmetric */
@@ -184,7 +176,7 @@ export class UserInterests {
       for (const interactionModeKey in allSupplyDemandOfOther) {
         const supplyDemandOfOther2: SupplyDemand = allSupplyDemandOfOther[interactionModeKey]; // e.g. mentor
         const ourSupplyDemand = this.byInteractionMode.supplyDemand[interactionModeKey];
-        const ourTopics = ourSupplyDemand && ourSupplyDemand.topics;
+        const ourTopics = ourSupplyDemand && ourSupplyDemand.extractTags;
         if ( ourTopics ) {
           // for (const topicInclusionId in supplyDemandPerMode) {
           // supplyDemandPerMode[topicInclusionId];

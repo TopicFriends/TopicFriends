@@ -34,6 +34,7 @@ export class TopicsService {
     'Elm', 'Scala', tag('.NET', 'dotnet'), tag('.NET Core', null), 'Docker', 'ElasticSearch',
     tagLogoTipo('Ember'), 'React', 'Git', tag('TensorFlow', null), 'JHipster', tagLogoTipo('Meteor'), tagLogoTipo('Hoodie'),
     'Laravel',
+    tag('CSS3', 'css-3'), tag('Responsive Design', null), tag('HTML5', 'html-5')
   ]);
 
 

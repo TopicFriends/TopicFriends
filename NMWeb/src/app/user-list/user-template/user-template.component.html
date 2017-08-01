@@ -13,7 +13,7 @@
 
     <md-content>
         <div *ngIf="_whatUserWants.length > 0" style="padding-bottom: 0.5em;">
-            {{_whatUserWants[0].desireType == 'supply' ? 'Is looking for beign' : 'Is looking for '}}
+            {{_whatUserWants[0].desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}
             <span style="font-weight: bold; color: #666666">{{_whatUserWants[0].topics}}</span>
             <span *ngIf="_whatUserWants.length > 1"
                   style="display: inline-block; margin-left: 1em; font-size: 0.8em; color: #116633; cursor: pointer;"
@@ -22,25 +22,14 @@
         <div *ngIf="_expand">
             <div *ngFor="let supplyDemand of _getWhatUserWants(); let i = index">
                 <div *ngIf="i > 0" style="padding-bottom: 0.5em;">
-                    {{supplyDemand.desireType == 'supply' ? 'Is looking for beign' : 'Is looking for '}}
+                    {{supplyDemand.desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}
                     <span style="font-weight: bold; color: #666666">{{supplyDemand.topics}}</span>
                 </div>
             </div>
         </div>
       Exchange knowledge on:
-      <md-chip-list>
-        <md-chip style="vertical-align: middle;"
-          *ngFor="let chip of topics(userInterests?.byInteractionMode?.symmetric?.exchange?.topics)">
-          <ng-template [ngIf]="chip.tagEntry.logo" >
-            <img style="width: 20px; height: 20px; vertical-align:middle"
-              src="{{chip.tagEntry.logo}}" onerror="this.style.display='none';"/>
-            &nbsp;
-          </ng-template>
-          <div style="vertical-align: middle; display: inline; height: 100%">{{chip.tagEntry.name}}</div>
-          <!--<div style="vertical-align: middle; display: table-cell; height: 100px; width: 300px">{{chip.tagEntry.name}}</div>-->
-          <!--{{chip.tagEntry.name}}-->
-        </md-chip>
-      </md-chip-list>
+      <app-topic-tag-list [tags]="userInterests?.byInteractionMode?.symmetric?.exchange?.topics">
+      </app-topic-tag-list>
     </md-content>
     <md-actions>
         <button md-raised-button>MEET</button>

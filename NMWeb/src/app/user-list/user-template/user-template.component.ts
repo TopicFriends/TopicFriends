@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {UserDataWithDetails, UserProfile} from 'app/user-profile/user-profile.service';
-import {getDictionaryValuesAsArray, TopicInterest, UserInterests} from '../../user-profile/user-interests'
+import {UserInterests} from '../../user-profile/user-interests'
 
 export class SupplyDemandTemplate{
   public static DESIRE_TYPE = {
@@ -36,9 +36,6 @@ export class UserTemplateComponent implements OnInit {
     });
   }
 
-  topics(dictionary: { [p: string]: TopicInterest }): TopicInterest[] {
-    return getDictionaryValuesAsArray(dictionary);
-  }
 
   private _getWhatUserWants(){
     let whatUserWants: SupplyDemandTemplate[] = [];

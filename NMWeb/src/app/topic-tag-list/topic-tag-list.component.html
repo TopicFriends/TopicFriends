@@ -1,0 +1,14 @@
+<md-chip-list>
+  <ng-template ngFor let-tag [ngForOf]="tags" >
+    <md-chip style="vertical-align: middle;">
+      <ng-template [ngIf]="tag.tagEntry.logo" >
+        <img style="width: 20px; height: 20px; vertical-align:middle"
+             src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>
+        &nbsp;
+      </ng-template>
+      <div style="vertical-align: middle; display: inline; height: 100%">{{tag.tagEntry.name}}</div>
+      <!--<div style="vertical-align: middle; display: table-cell; height: 100px; width: 300px">{{chip.tagEntry.name}}</div>-->
+      <!--{{chip.tagEntry.name}}-->
+    </md-chip>
+  </ng-template>
+</md-chip-list>
