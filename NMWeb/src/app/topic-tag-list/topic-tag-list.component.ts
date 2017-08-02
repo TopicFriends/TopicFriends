@@ -12,12 +12,16 @@ import {TagListModel} from '../shared/TagListModel'
 export class TopicTagListComponent implements OnInit {
 
   @Input() tagListModel: TagListModel;
+  @Input() tagList: TagInclusions;
   @Input() editable: boolean;
 
 
   constructor() { }
 
   ngOnInit() {
+    if ( this.tagList ) {
+      this.tagListModel = new TagListModel(getDictionaryValuesAsArray(this.tagList))
+    }
   }
 
 

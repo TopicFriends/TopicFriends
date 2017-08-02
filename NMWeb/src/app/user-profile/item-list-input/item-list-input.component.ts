@@ -53,7 +53,7 @@ export class ItemListInputComponent implements OnInit
   @Input() public formGroup1: FormGroup;
 
 
-  @Output() public outputTagList = new EventEmitter<{tagList: TopicInterest[]}>();
+  @Output() public outputTagList // = new EventEmitter<{tagList: TopicInterest[]}>();
 
   // rename: chosen Tag list
   public tagList: TopicInterest[] = this.exampleTags;
@@ -67,6 +67,7 @@ export class ItemListInputComponent implements OnInit
   ) {
     this.inputTagList = this.topicsService.topics;
     this.tagListModel = new TagListModel(this.tagList)
+    this.outputTagList = this.tagListModel.outputTagList
     this.stateCtrl = new FormControl();
     this.filteredOptions = this.stateCtrl.valueChanges
       .startWith(null)
