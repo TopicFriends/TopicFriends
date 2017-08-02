@@ -21,13 +21,22 @@ export class MeetingAttendanceService {
   }
 
   updateAttandance(meetingId: string, choice: boolean) {
-    let path = this.MEETING_ATTENDANCE + '/' + meetingId + '/' + this.userId;
-    this.allAttendance = this.db.list(path);
+    // TODO: if exists: update. Else: add.
+    if(this.userId) {
+      let path = this.MEETING_ATTENDANCE + '/' + meetingId + '/' + this.userId;
+      this.allAttendance = this.db.list(path);
 
-    this.allAttendance.push({
-      going: choice
-    });
+      this.allAttendance.push({
+        going: choice
+      });
 
-    console.log("Changing attendance to: " + choice + "!");
+      console.log("Changing attendance to: " + choice + "!");
+    }
+    else {
+      // TODO: show dialog prompting user to log in
+      console.log("User NOT logged in, NOT changing attendance!");
+    }
   }
+
+
 }
