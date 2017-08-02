@@ -8,6 +8,36 @@ import {TagInclusions, TopicInterest} from '../user-interests'
 import {TopicsService} from '../../shared/topics.service'
 
 
+const exampleTags = [
+  new TopicInterest(new TagEntry(
+    'Ionic'
+  )),
+  new TopicInterest(new TagEntry(
+    'UAP', null
+  )),
+  new TopicInterest(new TagEntry(
+    'PeopleMatcher'
+  )),
+  new TopicInterest(new TagEntry(
+    'Angular'
+  )),
+  new TopicInterest(new TagEntry(
+    'Karma'
+  )),
+  new TopicInterest(new TagEntry(
+    'Protractor'
+  )),
+  new TopicInterest(new TagEntry(
+    'Ember'
+  )),
+  new TopicInterest(new TagEntry(
+    'Elm'
+  )),
+  new TopicInterest(new TagEntry(
+    'Firebase'
+  )),
+]
+
 @Component({
   selector: 'app-item-list-input',
   templateUrl: './item-list-input.component.html',
@@ -42,11 +72,7 @@ export class ItemListInputComponent implements OnInit
   @Output() public outputTagList = new EventEmitter<{tagList: TopicInterest[]}>();
 
   // rename: chosen Tag list
-  public tagList: TopicInterest[] = [
-    new TopicInterest(new TagEntry(
-      'Ionic'
-    )),
-  ];
+  public tagList: TopicInterest[] = exampleTags;
 
   stateCtrl: FormControl;
   filteredOptions: Observable<TagEntry[]>; // TODO: change from any
