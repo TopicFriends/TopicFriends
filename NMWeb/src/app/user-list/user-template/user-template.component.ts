@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {UserDataWithDetails, UserProfile} from 'app/user-profile/user-profile.service';
 import {TopicInterest, UserInterests, TagInclusions} from '../../user-profile/user-interests'
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
+import {TagListModel} from '../../shared/TagListModel'
 
 export class SupplyDemandTemplate{
   public static DESIRE_TYPE = {
@@ -65,6 +66,10 @@ export class UserTemplateComponent implements OnInit {
     }
 
     return whatUserWants;
+  }
+
+  tagListModel(tags: TagInclusions) {
+    return new TagListModel(getDictionaryValuesAsArray(tags));
   }
 
 }
