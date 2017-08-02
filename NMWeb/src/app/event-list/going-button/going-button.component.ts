@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { MeetingAttendanceService } from '../meeting-attendance.service';
 
 @Component({
@@ -8,16 +8,17 @@ import { MeetingAttendanceService } from '../meeting-attendance.service';
 })
 export class GoingButtonComponent implements OnInit {
 
+  @Input() meeting;       //TODO: change later to meetingID
+  show: boolean = false;    //TODO: read from firebase
+
   constructor(private meetingAttendanceService: MeetingAttendanceService) {
   }
 
   ngOnInit() {
   }
 
-  show: boolean = false;
-
-  userAttendsMeeting(choice: boolean) {
+  userAttendsMeeting(meetingId: string, choice: boolean) {
     this.show = choice;
-    this.meetingAttendanceService.updateAttandance(choice);
+    this.meetingAttendanceService.updateAttandance(meetingId, choice);
   }
 }
