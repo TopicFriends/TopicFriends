@@ -20,6 +20,10 @@ export class TopicInterest {
 
 // TODO: split into what-user-wants-service
 
+export interface TagInclusions {
+  [/** Note: this is NOT the id of the topic itself */ topicInclusionId: string]: TopicInterest
+}
+
 /** Other potential names: TopicGroup */
 export class WantedTopics {
   active?: boolean;
@@ -28,9 +32,7 @@ export class WantedTopics {
 
   /** Must match at least that number of topics */
   atLeast? = 1;
-  public topics?: {
-    [/** Note: this is NOT the id of the topic itself */ topicInclusionId: string]: TopicInterest
-  } = {};
+  public topics?: TagInclusions = {};
   public subGroups?: {
     [groupId: string]: WantedTopics
   } = {}

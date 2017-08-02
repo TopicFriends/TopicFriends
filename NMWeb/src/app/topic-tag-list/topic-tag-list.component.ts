@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TopicInterest, WantedTopics} from '../user-profile/user-interests'
+import {TagInclusions, TopicInterest, WantedTopics} from '../user-profile/user-interests'
 import {getDictionaryValuesAsArray} from '../shared/utils'
 
 @Component({
@@ -9,19 +9,13 @@ import {getDictionaryValuesAsArray} from '../shared/utils'
 })
 export class TopicTagListComponent implements OnInit {
 
-  @Input() tags: WantedTopics;
-
-  tagList: TopicInterest[]
+  @Input() tags: TopicInterest[];
+  @Input() editable: boolean;
 
 
   constructor() { }
 
   ngOnInit() {
-    this.tagList = this.extractTags(this.tags.topics)
-  }
-
-  extractTags(dictionary: { [p: string]: TopicInterest }): TopicInterest[] {
-    return getDictionaryValuesAsArray(dictionary);
   }
 
 }

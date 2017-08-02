@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {UserDataWithDetails, UserProfile} from 'app/user-profile/user-profile.service';
-import {UserInterests} from '../../user-profile/user-interests'
+import {TopicInterest, UserInterests, TagInclusions} from '../../user-profile/user-interests'
+import {getDictionaryValuesAsArray} from 'app/shared/utils';
 
 export class SupplyDemandTemplate{
   public static DESIRE_TYPE = {
     SUPPLY: 'supply',
-    DEMAND: 'demand'
+    DEMAND: 'demand',
   };
 
   desireType: string;
@@ -15,7 +16,7 @@ export class SupplyDemandTemplate{
 @Component({
   selector: 'nw-user-template',
   templateUrl: './user-template.component.html',
-  styleUrls: ['./user-template.component.css']
+  styleUrls: ['./user-template.component.css'],
 })
 export class UserTemplateComponent implements OnInit {
 
@@ -36,6 +37,9 @@ export class UserTemplateComponent implements OnInit {
     });
   }
 
+  extractTags(dictionary: TagInclusions): TopicInterest[] {
+    return getDictionaryValuesAsArray(dictionary);
+  }
 
   private _getWhatUserWants(){
     let whatUserWants: SupplyDemandTemplate[] = [];

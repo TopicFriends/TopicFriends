@@ -28,8 +28,10 @@
             </div>
         </div>
       Exchange knowledge on:
-      <app-topic-tag-list [tags]="userInterests?.byInteractionMode?.symmetric?.exchange?.topics">
-      </app-topic-tag-list>
+      <app-topic-tag-list
+        [tags]="userInterests?.byInteractionMode?.symmetric?.exchange?.topics"
+        [editable]="false"
+      ></app-topic-tag-list>
     </md-content>
     <md-actions>
         <button md-raised-button>MEET</button>

@@ -4,7 +4,7 @@ import { TagEntry } from "app/user-profile/tag-entry";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
-import {TopicInterest} from '../user-interests'
+import {TagInclusions, TopicInterest} from '../user-interests'
 import {TopicsService} from '../../shared/topics.service'
 
 
@@ -42,7 +42,11 @@ export class ItemListInputComponent implements OnInit
   @Output() public outputTagList = new EventEmitter<{tagList: TopicInterest[]}>();
 
   // rename: chosen Tag list
-  public tagList: TopicInterest[] = [];
+  public tagList: TopicInterest[] = [
+    new TopicInterest(new TagEntry(
+      'Ionic'
+    )),
+  ];
 
   stateCtrl: FormControl;
   filteredOptions: Observable<TagEntry[]>; // TODO: change from any

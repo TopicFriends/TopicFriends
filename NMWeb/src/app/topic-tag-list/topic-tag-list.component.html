@@ -1,14 +1,27 @@
 <md-chip-list>
   <ng-template ngFor let-tag [ngForOf]="tags" >
     <md-chip style="vertical-align: middle;">
-      <ng-template [ngIf]="tag.tagEntry.logo" >
-        <img style="width: 20px; height: 20px; vertical-align:middle"
-             src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>
-        &nbsp;
-      </ng-template>
-      <div style="vertical-align: middle; display: inline; height: 100%">{{tag.tagEntry.name}}</div>
-      <!--<div style="vertical-align: middle; display: table-cell; height: 100px; width: 300px">{{chip.tagEntry.name}}</div>-->
-      <!--{{chip.tagEntry.name}}-->
+      <div style="display:table-cell; vertical-align: middle">
+        <ng-template [ngIf]="tag.tagEntry.logo" >
+          <img style="width: 20px; height: 20px; vertical-align:middle"
+               src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>&nbsp;
+        </ng-template>
+        <!--<i *ngIf="editable"-->
+           <!--class="ion-close-circled"-->
+           <!--style="cursor:pointer; color: rgba(0, 0, 0, 0.54); font-size: 20px"-->
+           <!--(click)=deleteTag(chip)></i>-->
+
+        <div style="vertical-align: middle; display: inline; height: 100%">
+          {{tag.tagEntry.name}}&nbsp;
+        </div>
+          <i *ngIf="editable"
+             class="ion-close-circled"
+             style="vertical-align: middle; cursor:pointer; color: rgba(0, 0, 0, 0.35); font-size: 20px"
+             (click)=deleteTag(chip)></i>
+        <!--</div>-->
+        <!--<div style="vertical-align: middle; display: table-cell; height: 100px; width: 300px">{{chip.tagEntry.name}}</div>-->
+        <!--{{chip.tagEntry.name}}-->
+      </div>
     </md-chip>
   </ng-template>
 </md-chip-list>
