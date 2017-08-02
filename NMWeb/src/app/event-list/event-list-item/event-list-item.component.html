@@ -1,10 +1,11 @@
 <md-card style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
   <md-card-title>{{event.$key}}</md-card-title>
+  <!--TODO: <div>Date/time/place</div>-->
   <md-card-actions>
     <button md-button md-raised-button color="secondary" routerLink="/event-details">Details</button>
-    <app-going-button></app-going-button>
+    <app-going-button [meeting]="event"></app-going-button>
+    <!-- TODO: Only meetingId needed -->
   </md-card-actions>
 </md-card>
 
 <!--Details button goes to details of event - routing-->
-<!--I'm going changes style when clicked-->
