@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TagInclusions, TopicInterest, WantedTopics} from '../user-profile/user-interests'
 import {getDictionaryValuesAsArray} from '../shared/utils'
+import {TagEntry} from '../user-profile/tag-entry'
+import {TagListModel} from '../shared/TagListModel'
 
 @Component({
   selector: 'app-topic-tag-list',
@@ -9,7 +11,7 @@ import {getDictionaryValuesAsArray} from '../shared/utils'
 })
 export class TopicTagListComponent implements OnInit {
 
-  @Input() tags: TopicInterest[];
+  @Input() tagListModel: TagListModel;
   @Input() editable: boolean;
 
 
@@ -17,5 +19,6 @@ export class TopicTagListComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }

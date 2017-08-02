@@ -1,5 +1,5 @@
 <md-chip-list>
-  <ng-template ngFor let-tag [ngForOf]="tags" >
+  <ng-template ngFor let-tag [ngForOf]="tagListModel.tags" >
     <md-chip style="vertical-align: middle; margin-bottom: 5px">
       <div style="display:table-cell; vertical-align: middle">
         <ng-template [ngIf]="tag.tagEntry.logo" >
@@ -16,8 +16,8 @@
         </div>
           <i *ngIf="editable"
              class="ion-close-circled"
-             style="vertical-align: middle; cursor:pointer; color: rgba(0, 0, 0, 0.35); font-size: 20px"
-             (click)=deleteTag(chip)></i>
+             style="vertical-align: middle; cursor:pointer; color: rgba(0, 0, 0, 0.30); font-size: 20px"
+             (click)="tagListModel.deleteTag(tag)"></i>
         <!--</div>-->
         <!--<div style="vertical-align: middle; display: table-cell; height: 100px; width: 300px">{{chip.tagEntry.name}}</div>-->
         <!--{{chip.tagEntry.name}}-->

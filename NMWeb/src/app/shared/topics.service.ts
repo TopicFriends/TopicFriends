@@ -18,7 +18,7 @@ export class TopicsService {
   // All possible tags
   // @Input() public inputTagList: TagEntry[] = [tag('Angular'), tag('Ionic'), tag('Firebase')];
   /** I moved it here, because @Input stopped working for some reason and I am to distracted to troubleshoot it :-\ */
-  @Input() public inputs: TagEntry[] = this.transformTags([
+  @Input() public topics: TagEntry[] = this.transformTags([
     tag('Angular'), tag('Ionic'), tag('Firebase'),
     tag('Protractor'), tag('Karma'), tag('Jasmine'),
     tag('PHP'), tag('Material Design', null), tag('TypeScript'),

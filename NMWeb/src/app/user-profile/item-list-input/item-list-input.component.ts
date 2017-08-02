@@ -6,37 +6,8 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import {TagInclusions, TopicInterest} from '../user-interests'
 import {TopicsService} from '../../shared/topics.service'
+import {TagListModel} from '../../shared/TagListModel'
 
-
-const exampleTags = [
-  new TopicInterest(new TagEntry(
-    'Ionic'
-  )),
-  new TopicInterest(new TagEntry(
-    'UAP', null
-  )),
-  new TopicInterest(new TagEntry(
-    'PeopleMatcher'
-  )),
-  new TopicInterest(new TagEntry(
-    'Angular'
-  )),
-  new TopicInterest(new TagEntry(
-    'Karma'
-  )),
-  new TopicInterest(new TagEntry(
-    'Protractor'
-  )),
-  new TopicInterest(new TagEntry(
-    'Ember'
-  )),
-  new TopicInterest(new TagEntry(
-    'Elm'
-  )),
-  new TopicInterest(new TagEntry(
-    'Firebase'
-  )),
-]
 
 @Component({
   selector: 'app-item-list-input',
@@ -64,7 +35,20 @@ export class ItemListInputComponent implements OnInit
   //   throw new Error("Method not implemented.");
   // }
 
+  exampleTags = [
+    new TopicInterest(new TagEntry('Ionic')),
+    new TopicInterest(new TagEntry('UAP', null)),
+    new TopicInterest(new TagEntry('PeopleMatcher')),
+    new TopicInterest(new TagEntry('Angular')),
+    new TopicInterest(new TagEntry('Karma')),
+    new TopicInterest(new TagEntry('Protractor')),
+    new TopicInterest(new TagEntry('Ember')),
+    new TopicInterest(new TagEntry('Elm')),
+    new TopicInterest(new TagEntry('Firebase')),
+  ]
+
   @Input() public inputTagList: TagEntry[]
+  tagListModel: TagListModel
 
   @Input() public formGroup1: FormGroup;
 
@@ -72,7 +56,7 @@ export class ItemListInputComponent implements OnInit
   @Output() public outputTagList = new EventEmitter<{tagList: TopicInterest[]}>();
 
   // rename: chosen Tag list
-  public tagList: TopicInterest[] = exampleTags;
+  public tagList: TopicInterest[] = this.exampleTags;
 
   stateCtrl: FormControl;
   filteredOptions: Observable<TagEntry[]>; // TODO: change from any
@@ -81,7 +65,8 @@ export class ItemListInputComponent implements OnInit
   constructor(
     public topicsService: TopicsService
   ) {
-    this.inputTagList = this.topicsService.inputs;
+    this.inputTagList = this.topicsService.topics;
+    this.tagListModel = new TagListModel(this.tagList)
     this.stateCtrl = new FormControl();
     this.filteredOptions = this.stateCtrl.valueChanges
       .startWith(null)
@@ -97,39 +82,14 @@ export class ItemListInputComponent implements OnInit
   filter(val: string) {
     return val ? this.inputTagList.filter(
       option => option.matchesTextFilter(val)
-      && ! this.tagExists(option)
+      && ! this.tagListModel.tagExists(option)
     )
       : this.inputTagList;
   }
 
-  tagExists(option: TagEntry) {
-    return this.tagList.some((tag) => {
-      return tag.tagEntry.name.toLowerCase() === option.name.toLowerCase()
-    });
-  }
-
   addTag(tagEntry: TagEntry) {
-    // const tagEntry = this.inputTagList.find(el => el.name === tag)
-    if(tagEntry) {
-      if (this.tagExists(tagEntry)) {
-        return;
-      }
-      const topicInterest = new TopicInterest(tagEntry);
-      this.tagList.push(topicInterest);
-      this.stateCtrl.reset();
-      this.sendTagsToParent();
-    }
+    this.tagListModel.addTag(tagEntry);
+    // I decided to not clear the input automatically
   }
 
-  deleteTag(tag: TopicInterest) {
-    this.tagList = this.tagList.filter(t => t.tagEntry.name !== tag.tagEntry.name);
-    this.sendTagsToParent();
-  }
-
-  /**
-   * Send the tags entered by the user to the parent (user-profile component)
-   */
-  sendTagsToParent() {
-    this.outputTagList.emit({tagList: this.tagList});
-  }
 }
