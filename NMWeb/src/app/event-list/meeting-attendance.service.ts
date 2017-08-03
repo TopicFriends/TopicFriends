@@ -8,25 +8,23 @@ export class MeetingAttendanceService {
   MEETING_ATTENDANCE = 'MeetingAttendanceByUser';
 
   private userId;
-  private allAttendance;
 
   constructor(private authService: AuthService,
               private db: DbService
   ) {
-    this.userId = this.authService.user;
+    //this.userId = this.authService.user;
 
     authService.user.subscribe(user => {
       this.userId = user && user.uid;
     });
   }
 
-  updateAttandance(meetingId: string, choice: boolean) {
-    // TODO: if exists: update. Else: add.
+  updateAttendance(meetingId: string, choice: boolean) {
     if(this.userId) {
-      let path = this.MEETING_ATTENDANCE + '/' + meetingId + '/' + this.userId;
-      this.allAttendance = this.db.list(path);
+      let path = this.buildUserMeetingAttendancePath(meetingId);
+      const allAttendance = this.db.objectByPath(path);
 
-      this.allAttendance.push({
+      allAttendance.set({
         going: choice
       });
 
@@ -38,5 +36,12 @@ export class MeetingAttendanceService {
     }
   }
 
+  retrieveCurrentAttendanceStatus(meetingId: string): any {
+    this.buildUserMeetingAttendancePath(meetingId);
+    // return (current) status
+  }
 
+  private buildUserMeetingAttendancePath(meetingId: string) {
+    return this.MEETING_ATTENDANCE + '/' + meetingId + '/' + this.userId;
+  }
 }

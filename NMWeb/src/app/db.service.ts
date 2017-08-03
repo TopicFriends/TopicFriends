@@ -41,8 +41,18 @@ export class DbService {
   }
 
   /** Idea: could add wrapping/mapping func here */
+  objectByPath<T>(path: string): DbObject<T> {
+    return this.db.object(this.adaptPath(path));
+  }
+
+  /** Idea: could add wrapping/mapping func here */
   list<T>(path: string): DbList<T> {
     return this.db.list(this.adaptPath(path));
+  }
+
+  /** Idea: could add wrapping/mapping func here */
+  listQueried<T>(path: string, query: any): DbList<T> {
+    return this.db.list(this.adaptPath(path), query);
   }
 
   private adaptPath(path: string) {
