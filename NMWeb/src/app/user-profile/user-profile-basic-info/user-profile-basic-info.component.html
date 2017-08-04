@@ -1,3 +1,19 @@
-<p>
-  user-profile-basic-info works!
-</p>
+<ng-template [ngIf]="! userProfile" >Loading User profile basic info...</ng-template>
+
+<img style="width: 100px" src="{{(authService.user | async)?.photoURL}}" />
+<span style="color: grey">Google Account Name: </span>{{ (authService.user | async)?.displayName }}
+
+<br />
+<br />
+
+<md-input-container style="width: 100%">
+  <md-placeholder>
+    Display Name
+  </md-placeholder>
+
+  <input mdInput
+         [formControl]="displayName">
+</md-input-container> <!-- ngModel variable is missing due to code crashing -->
+
+<br />
+<br />

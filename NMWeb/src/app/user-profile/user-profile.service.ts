@@ -40,7 +40,7 @@ export class UserProfile {
   photoUrl?: string;
   company?: string;
   role?: string;
-  lastSaved: Date;
+  lastSaved?: Date;
 }
 
 export class UserData {

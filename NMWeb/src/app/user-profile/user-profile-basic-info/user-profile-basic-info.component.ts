@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {AuthService} from '../auth.service'
+import {UserProfile, UserProfileService} from '../user-profile.service'
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 
 @Component({
   selector: 'app-user-profile-basic-info',
@@ -7,9 +11,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileBasicInfoComponent implements OnInit {
 
-  constructor() { }
+  userProfile: UserProfile;
+  userProfileObservable: Observable<UserProfile>;
+
+  public formGroup: FormGroup;
+
+  public displayName = new FormControl()
+
+
+  constructor(
+    private formBuilder: FormBuilder,
+    public authService: AuthService,
+    private userProfileService: UserProfileService,
+  ) {
+    this.formGroup = this.formBuilder.group({
+      displayName: this.displayName,
+    })
+  }
 
   ngOnInit() {
+    this.authService.user.subscribe(user => {
+      console.log('authService.user.subscribe user', user);
+      this.userProfileObservable = this.userProfileService.getProfile();
+      this.userProfileObservable.subscribe((userProfile: UserProfile) => {
+        this.userProfile = userProfile;
+        this.formGroup.patchValue(userProfile)
+        // this.whatUserWants = this.;
+        console.log('new user profile!', userProfile);
+        // FIXME
+        if (!(<any>userProfile).whatUserWants) {
+          this.userProfile = new UserProfile();
+        }
+      });
+    });
+
   }
 
 }

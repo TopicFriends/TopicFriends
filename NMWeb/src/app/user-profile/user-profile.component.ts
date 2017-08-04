@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {UserOtherProfiles, UserProfile, UserProfileService} from './user-profile.service'
 import {SymmetricInteractions, TopicInterest, UserInterests} from './user-interests'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
+import {UserProfileBasicInfoComponent} from './user-profile-basic-info/user-profile-basic-info.component'
 
 @Component({
   selector: 'app-user-profile',
@@ -15,10 +16,9 @@ import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profi
 export class UserProfileComponent implements OnInit {
 
   @ViewChild('userOtherProfiles') userOtherProfilesComponent: UserOtherProfilesComponent
+  @ViewChild('basicInfo') basicInfo: UserProfileBasicInfoComponent
 
-  userProfile: UserProfile;
   userInterestsObservable: Observable<UserInterests>;
-  userProfileObservable: Observable<UserProfile>;
 
   public _userProfileForm: FormGroup;
 
@@ -62,16 +62,6 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.authService.user.subscribe(user => {
       console.log('authService.user.subscribe user', user);
-      this.userProfileObservable = this.userProfileService.getProfile();
-      this.userProfileObservable.subscribe((userProfile: UserProfile) => {
-        this.userProfile = userProfile;
-        this._userProfileForm.patchValue(userProfile)
-        // this.whatUserWants = this.;
-        console.log('new user profile!', userProfile);
-        if ( ! (<any>userProfile).whatUserWants ) {
-          this.userProfile = new UserProfile();
-        }
-      });
       this.userInterestsObservable = this.userProfileService.getUserInterests();
       this.userInterestsObservable.subscribe((userInterests: UserInterests) => {
 
@@ -125,7 +115,7 @@ export class UserProfileComponent implements OnInit {
 
   save() {
     console.log('this.displayName.value', this.displayName.value);
-    this.userProfile.displayName = this.displayName.value;
+    // FIXME this.userProfile.displayName = this.displayName.value;
     const otherProfiles = {
       linkedIn: {
         userName: this.userOtherProfilesComponent.otherProfileLinkedIn.value
@@ -137,10 +127,13 @@ export class UserProfileComponent implements OnInit {
         symmetric: this.symmetricInteractions,
       }
     })
+    const userProfile: UserProfile = {
+      displayName: this.basicInfo.displayName.value
+    } // TODO: first created date
     console.log('save()', whatUserWants2)
     // this.userProfileObservable =
     this.userProfileService.saveUserProfile(
-      this.userProfile,
+      userProfile,
       whatUserWants2,
       otherProfiles,
     );

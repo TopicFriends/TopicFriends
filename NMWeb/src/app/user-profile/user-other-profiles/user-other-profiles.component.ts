@@ -16,6 +16,7 @@ export class UserOtherProfilesComponent implements OnInit {
   public formGroup: FormGroup;
 
   public otherProfileLinkedIn = new FormControl()
+  private otherProfiles: UserOtherProfiles
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,7 +34,7 @@ export class UserOtherProfilesComponent implements OnInit {
       this.userOtherProfilesObservable = this.userProfileService.getUserOtherProfiles();
       this.userOtherProfilesObservable.subscribe((otherProfiles: UserOtherProfiles) => {
         console.log('userOtherProfilesObservable.subscribe', otherProfiles);
-
+        this.otherProfiles = otherProfiles;
         this.formGroup.patchValue({
           otherProfileLinkedIn: otherProfiles.linkedIn.userName,
         })

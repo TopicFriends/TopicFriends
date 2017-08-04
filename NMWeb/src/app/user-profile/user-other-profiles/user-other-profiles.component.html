@@ -1,5 +1,6 @@
 <form [formGroup]="formGroup">
 
+  <ng-template [ngIf]="! otherProfiles" >Loading external profiles...</ng-template>
   <md-input-container id="linkedinLink">
     <md-placeholder>
       <md-icon>person</md-icon><b>LinkedIn</b> Profile (optional, user name is enough)

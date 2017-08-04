@@ -2,24 +2,17 @@
   My Profile
 </h2>
 <!--<p>userProfileService.userId: {{ userProfileService.userId }}</p>-->
-<ng-template [ngIf]="! userProfile" >Loading User Profile...</ng-template>
 <ng-template [ngIf]="! userProfileService.userId" >Please log in, to access your profile</ng-template>
-<ng-template [ngIf]="userProfileService.userId && userProfile">
-  <img style="width: 100px" src="{{(authService.user | async)?.photoURL}}" />
-  <span style="color: grey">Google Account Name: </span>{{ (authService.user | async)?.displayName }}
+<!--<ng-template [ngIf]="userProfileService.userId && userProfile">-->
+<ng-template [ngIf]="userProfileService.userId">
 
-  <br />
-  <br />
+  <app-user-profile-basic-info #basicInfo>
+
+  </app-user-profile-basic-info>
+
   <form [formGroup]="_userProfileForm">
 
-    <md-input-container>
-      <md-placeholder>
-        Display Name
-      </md-placeholder>
 
-      <input mdInput
-             [formControl]="displayName">
-    </md-input-container> <!-- ngModel variable is missing due to code crashing -->
 
     <app-user-other-profiles #userOtherProfiles>
 

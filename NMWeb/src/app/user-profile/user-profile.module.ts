@@ -38,8 +38,6 @@ const userProfileRoutes: Routes = [
     WhatUserWantsFormComponent,
   ],
   exports: [
-    UserProfileComponent,
-    ItemListInputComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
