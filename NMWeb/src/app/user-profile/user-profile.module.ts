@@ -5,7 +5,7 @@ import {UserProfileComponent} from './user-profile.component'
 import {Routes, RouterModule} from '@angular/router'
 import {SharedModule} from '../shared/shared.module'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import {MdAutocompleteModule, MdButtonModule, MdIconModule, MdInputModule} from '@angular/material'
+import {MdAutocompleteModule, MdButtonModule, MdCardModule, MdIconModule, MdInputModule} from '@angular/material'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {ItemListInputComponent} from './item-list-input/item-list-input.component'
 import {WhatUserWantsFormComponent} from './what-user-wants-form/what-user-wants-form.component';
@@ -30,6 +30,7 @@ const userProfileRoutes: Routes = [
     MdIconModule,
     MdAutocompleteModule,
     MdButtonModule,
+    MdCardModule,
   ],
   declarations: [
     UserProfileComponent,

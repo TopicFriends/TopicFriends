@@ -1,33 +1,39 @@
-<!-- Reusable component: -->
-<app-item-list-input id="topicsExchange"
-                     (outputTagList)="updateWantExchange($event)"
-                     (inputTagList)="getOptionsNames()">
-  <app-item-list-input-title>
-    <md-icon>build</md-icon>I would like to <b>exchange knowledge</b> on topics
-  </app-item-list-input-title>
-</app-item-list-input>
+<md-card style="margin-bottom: 0.5em">
+  <md-content>
+    <app-item-list-input id="topicsExchange"
+                         (outputTagList)="updateWantExchange($event)"
+                         (inputTagList)="getOptionsNames()">
+      <app-item-list-input-title>
+        <md-icon>build</md-icon>I would like to <b>exchange knowledge</b> on topics
+      </app-item-list-input-title>
+    </app-item-list-input>
+  </md-content>
+</md-card>
 
-<hr />
+<md-card style="margin-bottom: 0.5em">
+  <md-content>
+    <app-item-list-input id="topicsHackathon"
+                         (outputTagList)="updateWantHackathon($event)"
+                         (inputTagList)="options">
+      <app-item-list-input-title>
+        <md-icon>build</md-icon>I would like to do <b>hackathon</b> on topics
+      </app-item-list-input-title>
+    </app-item-list-input>
 
-<app-item-list-input id="topicsHackathon"
-                     (outputTagList)="updateWantHackathon($event)"
-                     (inputTagList)="options">
-  <app-item-list-input-title>
-    <md-icon>build</md-icon>I would like to do <b>hackathon</b> on topics
-  </app-item-list-input-title>
-</app-item-list-input>
+  </md-content>
+</md-card>
 
-<hr />
-
-<!-- Reusable component: -->
-<app-item-list-input id="topicsPairProgramming"
-                     (outputTagList)="updateWantPairProgramming($event)"
-                     (inputTagList)="options">
-  <app-item-list-input-title>
-    <md-icon>build</md-icon>I would like to do <b>pair programming</b> on topics
-  </app-item-list-input-title>
-</app-item-list-input>
-
+<md-card style="margin-bottom: 0.5em">
+  <md-content>
+    <app-item-list-input id="topicsPairProgramming"
+                         (outputTagList)="updateWantPairProgramming($event)"
+                         (inputTagList)="options">
+      <app-item-list-input-title>
+        <md-icon>build</md-icon>I would like to do <b>pair programming</b> on topics
+      </app-item-list-input-title>
+    </app-item-list-input>
+  </md-content>
+</md-card>
 
 
 <ng-template *ngIf="showSupplyDemand" >
