@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {UserDataWithDetails, UserProfile} from 'app/user-profile/user-profile.service';
-import {TopicInterest, UserInterests, TagInclusions} from '../../user-profile/user-interests'
+import {TopicInterest, UserInterests} from '../../user-profile/user-interests'
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
+import {TagInclusions} from '../../shared/TagInclusions'
 
 export class SupplyDemandTemplate{
   public static DESIRE_TYPE = {

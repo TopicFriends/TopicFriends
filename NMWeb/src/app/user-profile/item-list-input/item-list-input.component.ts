@@ -4,7 +4,7 @@ import { TagEntry } from "app/user-profile/tag-entry";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
-import {TagInclusions, TopicInterest} from '../user-interests'
+import {TopicInterest} from '../user-interests'
 import {TopicsService} from '../../shared/topics.service'
 import {TagListModel} from '../../shared/TagListModel'
 

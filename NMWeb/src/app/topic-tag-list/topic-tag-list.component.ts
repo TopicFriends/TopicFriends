@@ -1,13 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TagInclusions, TopicInterest, WantedTopics} from '../user-profile/user-interests'
+import {TopicInterest, WantedTopics} from '../user-profile/user-interests'
 import {getDictionaryValuesAsArray} from '../shared/utils'
 import {TagEntry} from '../user-profile/tag-entry'
 import {TagListModel} from '../shared/TagListModel'
+import {TagInclusions} from 'app/shared/TagInclusions';
 
 @Component({
   selector: 'app-topic-tag-list',
   templateUrl: './topic-tag-list.component.html',
-  styleUrls: ['./topic-tag-list.component.scss']
+  styleUrls: ['./topic-tag-list.component.scss'],
 })
 export class TopicTagListComponent implements OnInit {
 

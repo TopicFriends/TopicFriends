@@ -2,6 +2,7 @@
 import {initFromObject} from '../util/util'
 import {TagEntry} from './tag-entry'
 import {getDictionaryValuesAsArray} from '../shared/utils'
+import {TagInclusions} from '../shared/TagInclusions'
 
 
 export class TopicInterest {
@@ -20,9 +21,6 @@ export class TopicInterest {
 
 // TODO: split into what-user-wants-service
 
-export interface TagInclusions {
-  [/** Note: this is NOT the id of the topic itself */ topicInclusionId: string]: TopicInterest
-}
 
 /** Other potential names: TopicGroup */
 export class WantedTopics {
