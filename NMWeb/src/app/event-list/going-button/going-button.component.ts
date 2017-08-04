@@ -17,8 +17,16 @@ export class GoingButtonComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChange() {
+    // this.attendanceStatusOfMeeting
+  }
+
   userAttendsMeeting(meetingId: string, choice: boolean) {
     this.show = choice;
-    this.meetingAttendanceService.updateAttandance(meetingId, choice);
+    this.meetingAttendanceService.updateAttendance(meetingId, choice);
+  }
+
+  attendanceStatusOfMeeting(meetingId: string) {
+    this.meetingAttendanceService.retrieveCurrentAttendanceStatus(meetingId);
   }
 }
