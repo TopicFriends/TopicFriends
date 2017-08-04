@@ -21,4 +21,8 @@ export class UserListComponent implements OnInit {
     this.userList = this.userListService.listUserDataWithDetails();
   }
 
+  trackByKey(idx, val) {
+    return val.$key
+  }
+
 }
