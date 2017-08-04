@@ -1,16 +1,16 @@
-import { Login } from './login.po';
+import { LoginPage } from './login.po';
 import {$, browser, ExpectedConditions} from 'protractor';
 import {CommonUtils} from '../common-utils';
 
 browser.waitForAngularEnabled(false);
 
-describe('Login page: User', () => {
-  let page: Login;
+describe('LoginPage page: User', () => {
+  let page: LoginPage;
   let ec = ExpectedConditions;
   let utils = new CommonUtils();
 
   beforeAll(() => {
-    page = new Login();
+    page = new LoginPage();
   });
 
   it('can log in', (done) => {

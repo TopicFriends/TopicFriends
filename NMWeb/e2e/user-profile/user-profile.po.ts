@@ -1,6 +1,6 @@
 import {$, browser, by, element, ExpectedConditions} from 'protractor';
 
-export class UserProfile {
+export class UserProfilePage {
   saveProfileButton = $('#saveProfile');   //by click and by ENTER
   userProfileSelector = 'app-user-profile';
   userProfile = $(this.userProfileSelector);

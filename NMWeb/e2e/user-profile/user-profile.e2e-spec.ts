@@ -1,21 +1,21 @@
-import {UserProfile} from './user-profile.po';
+import {UserProfilePage} from './user-profile.po';
 import {$, browser, by, element, ExpectedConditions, protractor} from 'protractor';
 import {CommonUtils} from '../common-utils';
-import {Login} from '../login/login.po';
+import {LoginPage} from '../login/login.po';
 import {isSuccess} from '@angular/http/src/http_utils';
 
 browser.waitForAngularEnabled(false);
 
 describe('Profile page: User', () => {
-  let page: UserProfile;
-  let loginPage: Login;
+  let page: UserProfilePage;
+  let loginPage: LoginPage;
   let ec = ExpectedConditions;
   let utils = new CommonUtils();
   let defaultTimeout = 5000;
 
   beforeAll(() => {
-    page = new UserProfile();
-    loginPage = new Login();
+    page = new UserProfilePage();
+    loginPage = new LoginPage();
   });
 
   it('can see text "Please log in, to access your profile" when not logged in', () => {
