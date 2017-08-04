@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TopicInterest, WantedTopics} from '../user-profile/user-interests'
-import {getDictionaryValuesAsArray} from '../shared/utils'
-import {TagEntry} from '../user-profile/tag-entry'
-import {TagListModel} from '../shared/TagListModel'
+import {TopicInterest, WantedTopics} from '../../user-profile/user-interests'
+import {getDictionaryValuesAsArray} from '../utils'
+import {TagEntry} from '../../user-profile/tag-entry'
+import {TagListModel} from '../TagListModel'
 import {TagInclusions} from 'app/shared/TagInclusions';
 
 @Component({
@@ -28,7 +28,8 @@ export class TopicTagListComponent implements OnInit {
   }
 
   trackByKey(val) {
-    // console.log('trackByKey', val);
+    console.log('trackByKey', val);
+    console.log('trackByKey val.$key', val.$key);
     return val.$key
   }
 
