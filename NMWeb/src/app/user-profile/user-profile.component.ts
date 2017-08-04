@@ -1,10 +1,11 @@
 ///<reference path="user-profile.service.ts"/>
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {AuthService} from './auth.service';
 import {Observable} from 'rxjs/Observable';
-import {OtherProfiles, UserProfile, UserProfileService} from './user-profile.service'
+import {UserOtherProfiles, UserProfile, UserProfileService} from './user-profile.service'
 import {SymmetricInteractions, TopicInterest, UserInterests} from './user-interests'
+import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 
 @Component({
   selector: 'app-user-profile',
@@ -13,17 +14,15 @@ import {SymmetricInteractions, TopicInterest, UserInterests} from './user-intere
 })
 export class UserProfileComponent implements OnInit {
 
+  @ViewChild('userOtherProfiles') userOtherProfilesComponent: UserOtherProfilesComponent
+
   userProfile: UserProfile;
   userInterestsObservable: Observable<UserInterests>;
   userProfileObservable: Observable<UserProfile>;
-  userOtherProfilesObservable: Observable<OtherProfiles>;
-
-  otherProfiles: OtherProfiles = new OtherProfiles();
 
   public _userProfileForm: FormGroup;
 
   displayName = new FormControl(/*Validators.required*/);
-  profileLinkedIn = new FormControl();
 
   showSupplyDemand = false;
 
@@ -53,7 +52,6 @@ export class UserProfileComponent implements OnInit {
     // TODO: extract WhatUserWantsForm !
     this._userProfileForm = this._fb.group({
       displayName: this.displayName,
-      profileLinkedIn: this.profileLinkedIn,
       wantToBeFreelance: ['Design, DevOps, QA'],
       wantToHireFreelance: ['Angular, React, Ionic'],
       wantToFindMentor: [''],
@@ -62,7 +60,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO: getOtherProfiles()
     this.authService.user.subscribe(user => {
       console.log('authService.user.subscribe user', user);
       this.userProfileObservable = this.userProfileService.getProfile();
@@ -77,13 +74,6 @@ export class UserProfileComponent implements OnInit {
       });
       this.userInterestsObservable = this.userProfileService.getUserInterests();
       this.userInterestsObservable.subscribe((userInterests: UserInterests) => {
-
-      });
-      this.userOtherProfilesObservable = this.userProfileService.getOtherProfiles();
-      this.userOtherProfilesObservable.subscribe((otherProfiles: OtherProfiles) => {
-        this._userProfileForm.patchValue({
-          profileLinkedIn: otherProfiles.linkedIn.userName,
-        })
 
       });
         // this.userId = user && user.uid;
@@ -136,8 +126,10 @@ export class UserProfileComponent implements OnInit {
   save() {
     console.log('this.displayName.value', this.displayName.value);
     this.userProfile.displayName = this.displayName.value;
-    this.otherProfiles.linkedIn = {
-      userName: this.profileLinkedIn.value
+    const otherProfiles = {
+      linkedIn: {
+        userName: this.userOtherProfilesComponent.otherProfileLinkedIn.value
+      }
     };
     // this..profileFacebook = this.displayName.value;
     const whatUserWants2 = UserInterests.fromJson({
@@ -150,7 +142,7 @@ export class UserProfileComponent implements OnInit {
     this.userProfileService.saveUserProfile(
       this.userProfile,
       whatUserWants2,
-      this.otherProfiles,
+      otherProfiles,
     );
   }
 

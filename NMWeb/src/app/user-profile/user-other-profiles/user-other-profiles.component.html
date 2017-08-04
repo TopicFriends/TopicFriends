@@ -1,0 +1,13 @@
+<form [formGroup]="formGroup">
+
+  <md-input-container id="linkedinLink">
+    <md-placeholder>
+      <md-icon>person</md-icon><b>LinkedIn</b> Profile (optional, user name is enough)
+    </md-placeholder>
+    <span mdPrefix><i class="icon ion-social-linkedin"></i> linkedin.com/in/</span>
+
+    <input mdInput
+           [formControl]="otherProfileLinkedIn">
+  </md-input-container> <!-- ngModel variable is missing due to code crashing -->
+
+</form>

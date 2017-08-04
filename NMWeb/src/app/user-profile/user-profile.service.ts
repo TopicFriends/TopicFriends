@@ -16,7 +16,7 @@ export class OtherProfile {
   show?: boolean;
 }
 
-export class OtherProfiles {
+export class UserOtherProfiles {
 
   linkedIn?: OtherProfile;
   gitHub?: OtherProfile;
@@ -32,6 +32,8 @@ export class OtherProfiles {
 
 }
 
+/* Rename to UserBasicInfo or UserBasicProfile
+* and rename UserData to UserProfile */
 export class UserProfile {
   displayName?: string;
   suername?: string;
@@ -44,19 +46,19 @@ export class UserProfile {
 export class UserData {
   profile?: DbObject<UserProfile>;
   interests?: DbObject<UserInterests>;
-  otherProfiles?: DbObject<OtherProfiles>;
+  otherProfiles?: DbObject<UserOtherProfiles>;
 }
 
 export class UserDataWithDetails {
   profile: UserProfile;
   interests: DbObject<UserInterests>;
-  otherProfiles: DbObject<OtherProfiles>;
+  otherProfiles: DbObject<UserOtherProfiles>;
 }
 
 export class UserDataFetched {
   profile?: UserProfile;
   interests?: UserInterests;
-  otherProfiles?: OtherProfiles;
+  otherProfiles?: UserOtherProfiles;
 }
 
 
@@ -89,7 +91,7 @@ export class UserProfileService {
 
   public saveUserProfile(
     userProfile: UserProfile, interests: UserInterests,
-    otherProfiles: OtherProfiles,
+    otherProfiles: UserOtherProfiles,
   ) {
     userProfile.lastSaved = new Date();
     this.myUserData.profile.update(userProfile);
@@ -150,7 +152,7 @@ export class UserProfileService {
     return this.myUserData.profile;
   }
 
-  getOtherProfiles(): Observable<OtherProfiles> {
+  getUserOtherProfiles(): Observable<UserOtherProfiles> {
     return this.myUserData.otherProfiles;
   }
 

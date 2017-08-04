@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {DbObject, DbList, DbService} from './db.service'
-import {OtherProfiles, UserProfile, UserData, UserDataFetched, UserDataWithDetails} from './user-profile/user-profile.service'
+import {UserOtherProfiles, UserProfile, UserData, UserDataFetched, UserDataWithDetails} from './user-profile/user-profile.service'
 import {Observable} from 'rxjs/Observable'
 
 import {UserInterests} from './user-profile/user-interests'
@@ -27,7 +27,7 @@ export class DomainDbService {
     return this.db.list(this.PATHS.USER_PROFILE)
   }
 
-  listOtherProfiles(): DbList<OtherProfiles> {
+  listOtherProfiles(): DbList<UserOtherProfiles> {
     return this.db.list(this.PATHS.OTHER_PROFILES);
   }
 
@@ -59,7 +59,7 @@ export class DomainDbService {
     return this.db.objectById(this.PATHS.USER_PROFILE, id);
   }
 
-  otherProfilesById(id: string): DbObject<OtherProfiles> {
+  otherProfilesById(id: string): DbObject<UserOtherProfiles> {
     return this.db.objectById(this.PATHS.OTHER_PROFILES, id);
   }
 

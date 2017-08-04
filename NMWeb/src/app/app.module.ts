@@ -36,7 +36,8 @@ import {TopicsService} from './shared/topics.service';
 import { TopicTagComponent } from './topic-tag/topic-tag.component';
 import { TopicTagListComponent } from './topic-tag-list/topic-tag-list.component';
 import { SettableInputComponent } from './experiments/settable-input/settable-input.component';
-import { ParentSetsInputComponent } from './experiments/parent-sets-input/parent-sets-input.component'
+import { ParentSetsInputComponent } from './experiments/parent-sets-input/parent-sets-input.component';
+import { UserOtherProfilesComponent } from './user-profile/user-other-profiles/user-other-profiles.component'
 
 // import {
 //   AngularFireModule,
@@ -97,6 +98,7 @@ const appRoutes: Routes = [
     TopicTagListComponent,
     SettableInputComponent,
     ParentSetsInputComponent,
+    UserOtherProfilesComponent,
   ],
   imports: [
     BrowserModule,

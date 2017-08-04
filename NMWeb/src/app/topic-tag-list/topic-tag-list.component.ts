@@ -28,7 +28,7 @@ export class TopicTagListComponent implements OnInit {
   }
 
   trackByKey(val) {
-    console.log('trackByKey', val);
+    // console.log('trackByKey', val);
     return val.$key
   }
 

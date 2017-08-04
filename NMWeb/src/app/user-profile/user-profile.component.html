@@ -21,16 +21,9 @@
              [formControl]="displayName">
     </md-input-container> <!-- ngModel variable is missing due to code crashing -->
 
-    <md-input-container id="linkedinLink">
-      <md-placeholder>
-        <md-icon>person</md-icon><b>LinkedIn</b> Profile (optional, user name is enough)
-      </md-placeholder>
-      <span mdPrefix><i class="icon ion-social-linkedin"></i> linkedin.com/in/</span>
+    <app-user-other-profiles #userOtherProfiles>
 
-      <input mdInput
-             [formControl]="profileLinkedIn">
-    </md-input-container> <!-- ngModel variable is missing due to code crashing -->
-
+    </app-user-other-profiles>
     <!--<app-what-user-wants-form>-->
     <!--</app-what-user-wants-form>-->
 
