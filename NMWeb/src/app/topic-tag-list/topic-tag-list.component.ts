@@ -14,9 +14,9 @@ export class TopicTagListComponent implements OnInit {
   @Input() tagListModel: TagListModel;
   @Input() set tagList(tagList: TagInclusions) {
     console.log('set tagList', tagList)
-    if ( tagList ) {
+    // if ( tagList ) {
       this.tagListModel = new TagListModel(getDictionaryValuesAsArray(tagList))
-    }
+    // }
   }
   @Input() editable: boolean;
 
