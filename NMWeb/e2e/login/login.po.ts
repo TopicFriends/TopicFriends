@@ -5,7 +5,7 @@ import {CommonUtils} from '../common-utils';
 let firebase = require("firebase");
 require("firebase/auth");
 
-export class Login {
+export class LoginPage {
   private defaultSleep = 1000;
   private utils = new CommonUtils();
 
@@ -51,7 +51,7 @@ export class Login {
   confirmUserLoggedIn(done): any {
     this.utils.waitForElement(this.loginMenuButton);   //the button is shown at all
     this.utils.waitForElementNotPresent(this.loginButton);  //the button does NOT say to log in
-    this.utils.takeScreenshot('Login');
+    this.utils.takeScreenshot('LoginPage');
     return element(by.cssContainingText(this.menuButtonSelector, this.testUserName)).isPresent().then(
       (isPresent) => {
         done();
