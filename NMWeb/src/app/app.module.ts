@@ -26,8 +26,6 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ItemListInputComponent } from './user-profile/item-list-input/item-list-input.component';
 import { TestReusableComponent } from './user-profile/test-reusable/test-reusable.component';
-import { SkillsVisualizerTestComponent } from './user-profile/skills-visualizer-test/skills-visualizer-test.component';
-import {SkillsVisualizer} from './user-profile/skills-visualizer/skills-visualizer';
 import { WhatUserWantsFormComponent } from './user-profile/what-user-wants-form/what-user-wants-form.component';
 import {DbService} from './db.service'
 import {DomainDbService} from './domain-db.service'
@@ -35,8 +33,6 @@ import {MeetingsService} from './shared/meetings.service'
 import {TopicsService} from './shared/topics.service';
 import { TopicTagComponent } from './topic-tag/topic-tag.component';
 import { TopicTagListComponent } from './topic-tag-list/topic-tag-list.component';
-import { SettableInputComponent } from './experiments/settable-input/settable-input.component';
-import { ParentSetsInputComponent } from './experiments/parent-sets-input/parent-sets-input.component';
 import { UserOtherProfilesComponent } from './user-profile/user-other-profiles/user-other-profiles.component'
 import {UserProfileModule} from './user-profile/user-profile.module'
 import {CoreModule} from 'app/core/core.module';
@@ -70,14 +66,6 @@ const appRoutes: Routes = [
     component: UserProfileComponent,
   },
   {
-    path: 'skills-test',
-    component: SkillsVisualizerTestComponent,
-  },
-  {
-    path: 'settableInput',
-    component: ParentSetsInputComponent,
-  },
-  {
     path: '**',
     redirectTo: '',
   },
@@ -94,13 +82,9 @@ const appRoutes: Routes = [
     NavbarComponent,
     ItemListInputComponent,
     TestReusableComponent,
-    SkillsVisualizer,
-    SkillsVisualizerTestComponent,
     WhatUserWantsFormComponent,
     TopicTagComponent,
     TopicTagListComponent,
-    SettableInputComponent,
-    ParentSetsInputComponent,
     UserOtherProfilesComponent,
   ],
   imports: [

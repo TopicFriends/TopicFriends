@@ -1,9 +1,0 @@
-<div [ngClass]="{'main-contianer':true,'light-theme': (theme == 'LIGHT'),'dark-theme': (theme == 'DARK') }">
-    <div class="skills-visualizer-container" *ngFor="let skill of skills; let i = index;">
-        <p [ngClass]="{'editable-padding':editable}"><b>{{skill}}</b></p>
-        <div class="skills-visualizer-container-remove" *ngIf="editable">
-          <i class="icon ion-close-round" (click)="removeSkill(i)"></i>
-            <!--<ion-icon name="close" (click)="removeSkill(i)"></ion-icon>-->
-        </div>
-    </div>
-</div>
