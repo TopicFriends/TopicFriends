@@ -14,12 +14,15 @@ import {SymmetricInteractions, TopicInterest, UserInterests} from './user-intere
 export class UserProfileComponent implements OnInit {
 
   userProfile: UserProfile;
-  userProfileObservable;
+  userInterestsObservable: Observable<UserInterests>;
+  userProfileObservable: Observable<UserProfile>;
+  userOtherProfilesObservable: Observable<OtherProfiles>;
+
   otherProfiles: OtherProfiles = new OtherProfiles();
 
   public _userProfileForm: FormGroup;
 
-  displayName = new FormControl();
+  displayName = new FormControl(/*Validators.required*/);
   profileLinkedIn = new FormControl();
 
   showSupplyDemand = false;
@@ -49,11 +52,12 @@ export class UserProfileComponent implements OnInit {
 
     // TODO: extract WhatUserWantsForm !
     this._userProfileForm = this._fb.group({
+      displayName: this.displayName,
+      profileLinkedIn: this.profileLinkedIn,
       wantToBeFreelance: ['Design, DevOps, QA'],
       wantToHireFreelance: ['Angular, React, Ionic'],
       wantToFindMentor: [''],
       wantToBecomeMentor: [''],
-      profileLinkedIn: [''],
     });
   }
 
@@ -62,15 +66,27 @@ export class UserProfileComponent implements OnInit {
     this.authService.user.subscribe(user => {
       console.log('authService.user.subscribe user', user);
       this.userProfileObservable = this.userProfileService.getProfile();
-      this.userProfileObservable.subscribe(p => {
-        this.userProfile = p;
+      this.userProfileObservable.subscribe((userProfile: UserProfile) => {
+        this.userProfile = userProfile;
+        this._userProfileForm.patchValue(userProfile)
         // this.whatUserWants = this.;
-        console.log('new user profile!', p);
-        if ( ! (<any>p).whatUserWants ) {
+        console.log('new user profile!', userProfile);
+        if ( ! (<any>userProfile).whatUserWants ) {
           this.userProfile = new UserProfile();
         }
       });
-      // this.userId = user && user.uid;
+      this.userInterestsObservable = this.userProfileService.getUserInterests();
+      this.userInterestsObservable.subscribe((userInterests: UserInterests) => {
+
+      });
+      this.userOtherProfilesObservable = this.userProfileService.getOtherProfiles();
+      this.userOtherProfilesObservable.subscribe((otherProfiles: OtherProfiles) => {
+        this._userProfileForm.patchValue({
+          profileLinkedIn: otherProfiles.linkedIn.userName,
+        })
+
+      });
+        // this.userId = user && user.uid;
       // this.myUserData = this.db.userDataById(this.userId);
     })
   }
@@ -119,7 +135,7 @@ export class UserProfileComponent implements OnInit {
 
   save() {
     console.log('this.displayName.value', this.displayName.value);
-    this.userProfile.name = this.displayName.value;
+    this.userProfile.displayName = this.displayName.value;
     this.otherProfiles.linkedIn = {
       userName: this.profileLinkedIn.value
     };

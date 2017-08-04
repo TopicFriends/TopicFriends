@@ -21,7 +21,7 @@ export class UserListService {
 
   public getDefaultUserList(){
     let userProfile = new UserProfile();
-    userProfile.name = "Rubén Triviño Juárez";
+    userProfile.displayName = "Rubén Triviño Juárez";
     userProfile.company = "Willimbu";
     userProfile.role = "Developer";
     // userProfile.whatUserWants.byInteractionMode.supplyDemand.intern.demand.topics.topicInclusionId.name = "Angular Junior";

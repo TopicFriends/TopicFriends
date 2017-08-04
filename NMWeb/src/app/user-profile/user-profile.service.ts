@@ -33,7 +33,7 @@ export class OtherProfiles {
 }
 
 export class UserProfile {
-  name?: string;
+  displayName?: string;
   suername?: string;
   photoUrl?: string;
   company?: string;
@@ -150,8 +150,12 @@ export class UserProfileService {
     return this.myUserData.profile;
   }
 
-  getOtherProfiles(): Observable<UserProfile> {
+  getOtherProfiles(): Observable<OtherProfiles> {
     return this.myUserData.otherProfiles;
+  }
+
+  getUserInterests(): Observable<UserInterests> {
+    return this.myUserData.interests
   }
 
   getWhatUsersWant(): Observable<UserInterests[]> {
