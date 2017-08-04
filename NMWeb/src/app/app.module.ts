@@ -25,7 +25,6 @@ import {EventsModule} from './event-list/events.module';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ItemListInputComponent } from './user-profile/item-list-input/item-list-input.component';
-import { TestReusableComponent } from './user-profile/test-reusable/test-reusable.component';
 import { WhatUserWantsFormComponent } from './user-profile/what-user-wants-form/what-user-wants-form.component';
 import {DbService} from './db.service'
 import {DomainDbService} from './domain-db.service'
@@ -81,7 +80,6 @@ const appRoutes: Routes = [
     UserTemplateComponent,
     NavbarComponent,
     ItemListInputComponent,
-    TestReusableComponent,
     WhatUserWantsFormComponent,
     TopicTagComponent,
     TopicTagListComponent,
