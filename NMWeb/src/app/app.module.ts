@@ -34,7 +34,9 @@ import {DomainDbService} from './domain-db.service'
 import {MeetingsService} from './shared/meetings.service'
 import {TopicsService} from './shared/topics.service';
 import { TopicTagComponent } from './topic-tag/topic-tag.component';
-import { TopicTagListComponent } from './topic-tag-list/topic-tag-list.component'
+import { TopicTagListComponent } from './topic-tag-list/topic-tag-list.component';
+import { SettableInputComponent } from './experiments/settable-input/settable-input.component';
+import { ParentSetsInputComponent } from './experiments/parent-sets-input/parent-sets-input.component'
 
 // import {
 //   AngularFireModule,
@@ -68,6 +70,10 @@ const appRoutes: Routes = [
     component: SkillsVisualizerTestComponent
   },
   {
+    path: 'settableInput',
+    component: ParentSetsInputComponent
+  },
+  {
     path: '**',
     redirectTo: ''
   },
@@ -89,6 +95,8 @@ const appRoutes: Routes = [
     WhatUserWantsFormComponent,
     TopicTagComponent,
     TopicTagListComponent,
+    SettableInputComponent,
+    ParentSetsInputComponent,
   ],
   imports: [
     BrowserModule,
