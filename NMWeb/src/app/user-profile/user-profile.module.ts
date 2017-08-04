@@ -8,7 +8,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {MdAutocompleteModule, MdButtonModule, MdIconModule, MdInputModule} from '@angular/material'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {ItemListInputComponent} from './item-list-input/item-list-input.component'
-import {WhatUserWantsFormComponent} from './what-user-wants-form/what-user-wants-form.component'
+import {WhatUserWantsFormComponent} from './what-user-wants-form/what-user-wants-form.component';
+import { UserInterestsComponent } from './user-interests/user-interests.component'
 
 
 const userProfileRoutes: Routes = [
@@ -36,6 +37,7 @@ const userProfileRoutes: Routes = [
     UserOtherProfilesComponent,
     ItemListInputComponent,
     WhatUserWantsFormComponent,
+    UserInterestsComponent,
   ],
   exports: [
   ],

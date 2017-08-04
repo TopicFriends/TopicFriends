@@ -7,6 +7,7 @@ import {UserOtherProfiles, UserProfile, UserProfileService} from './user-profile
 import {SymmetricInteractions, TopicInterest, UserInterests} from './user-interests'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {UserProfileBasicInfoComponent} from './user-profile-basic-info/user-profile-basic-info.component'
+import {UserInterestsComponent} from './user-interests/user-interests.component'
 
 @Component({
   selector: 'app-user-profile',
@@ -17,104 +18,20 @@ export class UserProfileComponent implements OnInit {
 
   @ViewChild('userOtherProfiles') userOtherProfilesComponent: UserOtherProfilesComponent
   @ViewChild('basicInfo') basicInfo: UserProfileBasicInfoComponent
+  @ViewChild('userInterests') userInterests: UserInterestsComponent
 
-  userInterestsObservable: Observable<UserInterests>;
 
-  public _userProfileForm: FormGroup;
-
-  displayName = new FormControl(/*Validators.required*/);
-
-  showSupplyDemand = false;
-
-  options = [
-    'Angular', 'Ionic', 'Firebase',
-    // 'Protractor', 'Karma', 'Jasmin',
-    // 'PHP', 'Material Design', 'TypeScript', 'Django', 'Python', 'Ruby', 'Ruby On Rails',
-    // 'PeopleMatcher',
-    // 'Android', 'Kotlin', 'Java'
-  ];
-
-  whatUserWants = UserInterests.fromJson({});
-
-  symmetricInteractions = new SymmetricInteractions();
 
   constructor(
-    private _fb: FormBuilder,
     protected userProfileService: UserProfileService,
     public authService: AuthService,
   ) {
-    this.authService.user.subscribe((user) => {
-      if ( user ) {
-        this.displayName.setValue(user.displayName);
-      }
-    });
-
-    // TODO: extract WhatUserWantsForm !
-    this._userProfileForm = this._fb.group({
-      displayName: this.displayName,
-      wantToBeFreelance: ['Design, DevOps, QA'],
-      wantToHireFreelance: ['Angular, React, Ionic'],
-      wantToFindMentor: [''],
-      wantToBecomeMentor: [''],
-    });
   }
 
   ngOnInit() {
-    this.authService.user.subscribe(user => {
-      console.log('authService.user.subscribe user', user);
-      this.userInterestsObservable = this.userProfileService.getUserInterests();
-      this.userInterestsObservable.subscribe((userInterests: UserInterests) => {
-
-      });
-        // this.userId = user && user.uid;
-      // this.myUserData = this.db.userDataById(this.userId);
-    })
-  }
-
-  updateUserProfile(event) {
-    console.log(event);
-    // TODO save function
-  }
-
-  getOptionsNames(){
-    return this.options;
-  }
-
-  updateWantExchange(event: {tagList: TopicInterest[]}) {
-    // console.log('updateWantExchange', event);
-    console.log('updateWantExchange', event);
-    console.log('updateWantExchange', this.whatUserWants);
-    // this.whatUserWants.byInteractionMode.symmetric.exchange.topics = {};
-    this.symmetricInteractions.exchange = {
-      topics: this.createTopicsDictionary(event.tagList),
-    };
-
-  }
-
-  updateWantHackathon(event: {tagList: TopicInterest[]}) {
-    this.symmetricInteractions.hackathon = {
-      topics: this.createTopicsDictionary(event.tagList),
-    };
-  }
-
-  updateWantPairProgramming(event: {tagList: TopicInterest[]}) {
-    this.symmetricInteractions.pairProgramming = {
-      topics: this.createTopicsDictionary(event.tagList),
-    };
-  }
-
-  private createTopicsDictionary(topics: TopicInterest[]) {
-    let ret = {};
-    let i = 0;
-    for ( const topic of topics ) {
-      ret[i] = topic;
-      i++;
-    }
-    return ret;
   }
 
   save() {
-    console.log('this.displayName.value', this.displayName.value);
     // FIXME this.userProfile.displayName = this.displayName.value;
     const otherProfiles = {
       linkedIn: {
@@ -124,7 +41,7 @@ export class UserProfileComponent implements OnInit {
     // this..profileFacebook = this.displayName.value;
     const whatUserWants2 = UserInterests.fromJson({
       byInteractionMode: {
-        symmetric: this.symmetricInteractions,
+        symmetric: this.userInterests.symmetricInteractions,
       }
     })
     const userProfile: UserProfile = {

@@ -1,4 +1,4 @@
-<ng-template [ngIf]="! userProfile" >Loading User profile basic info...</ng-template>
+<ng-template [ngIf]="! userProfile" >Loading User profile basic info...<br/></ng-template>
 
 <img style="width: 100px" src="{{(authService.user | async)?.photoURL}}" />
 <span style="color: grey">Google Account Name: </span>{{ (authService.user | async)?.displayName }}

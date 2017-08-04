@@ -30,6 +30,13 @@ export class UserProfileBasicInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.authService.user.subscribe((user) => {
+      if ( user ) {
+        this.displayName.setValue(user.displayName);
+      }
+    });
+
     this.authService.user.subscribe(user => {
       console.log('authService.user.subscribe user', user);
       this.userProfileObservable = this.userProfileService.getProfile();

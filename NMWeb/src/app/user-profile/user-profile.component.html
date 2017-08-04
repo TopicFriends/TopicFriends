@@ -10,7 +10,7 @@
 
   </app-user-profile-basic-info>
 
-  <form [formGroup]="_userProfileForm">
+  <!--<form [formGroup]="_userProfileForm">-->
 
 
 
@@ -22,93 +22,11 @@
 
     <hr />
 
-    <!-- Reusable component: -->
-    <app-item-list-input id="topicsExchange"
-                         (outputTagList)="updateWantExchange($event)"
-                         (inputTagList)="getOptionsNames()" [formGroup1]="_userProfileForm">
-      <app-item-list-input-title>
-        <md-icon>build</md-icon>I would like to <b>exchange knowledge</b> on topics
-      </app-item-list-input-title>
-    </app-item-list-input>
+    <app-user-interests #userInterests>
 
-    <hr />
-
-    <app-item-list-input id="topicsHackathon"
-                         (outputTagList)="updateWantHackathon($event)"
-                         (inputTagList)="options" [formGroup1]="_userProfileForm">
-      <app-item-list-input-title>
-        <md-icon>build</md-icon>I would like to do <b>hackathon</b> on topics
-      </app-item-list-input-title>
-    </app-item-list-input>
-
-    <hr />
-
-    <!-- Reusable component: -->
-    <app-item-list-input id="topicsPairProgramming"
-                         (outputTagList)="updateWantPairProgramming($event)"
-                         (inputTagList)="options" [formGroup1]="_userProfileForm">
-      <app-item-list-input-title>
-        <md-icon>build</md-icon>I would like to do <b>pair programming</b> on topics
-      </app-item-list-input-title>
-    </app-item-list-input>
+    </app-user-interests>
 
 
-
-    <ng-template *ngIf="showSupplyDemand" >
-
-    <!--<md-input-container>-->
-    <!--<md-placeholder>-->
-    <!--<md-icon>build</md-icon> I would like to <b><u>be hired</u> as freelance</b> with skills-->
-    <!--</md-placeholder>-->
-    <!--<input mdInput type="text"-->
-    <!--formControlName="wantToBeFreelance" [mdAutocomplete]="auto">-->
-    <!--</md-input-container> &lt;!&ndash; ngModel variable is missing due to code crashing &ndash;&gt;-->
-    <!--<md-autocomplete #auto="mdAutocomplete">-->
-    <!--<md-option *ngFor="let option of options" [value]="option">-->
-    <!--{{ option }}-->
-    <!--</md-option>-->
-    <!--</md-autocomplete>-->
-    <!-- [(ngModel)]="userProfile?.whatUserWants?.freelance?.supply?.topics" -->
-
-    <br />
-    <md-input-container>
-      <md-placeholder>
-        <md-icon>build</md-icon> I would like to <b><u>hire</u> freelance</b> with skills:
-      </md-placeholder>
-
-      <input mdInput
-             formControlName="wantToHireFreelance"> <!-- ngModel variable is missing due to code crashing -->
-    </md-input-container>
-
-    <br />
-    <md-input-container>
-      <md-placeholder>
-        <md-icon>build</md-icon> I would like to <b><u>find</u> a mentor</b> with skills:
-      </md-placeholder>
-
-      <input mdInput
-             formControlName="wantToFindMentor"> <!-- ngModel variable is missing due to code crashing -->
-    </md-input-container>
-
-    <br />
-    <md-input-container>
-      <input mdInput
-             formControlName="wantToBecomeMentor"> <!-- ngModel variable is missing due to code crashing -->
-      <md-placeholder>
-        <md-icon>build</md-icon> I would like to <b><u>become</u> a mentor</b> with skills:
-      </md-placeholder>
-
-      <md-hint>
-        <md-icon>favorite</md-icon> Be a hero and help others learn! The good karma will come back to you.
-      </md-hint>
-      <!--<md-hint>-->
-      <!--I also <md-icon>home</md-icon> <i>italic</i> hint labels-->
-      <!--</md-hint>-->
-
-
-    </md-input-container>
-
-    </ng-template>
 
     <br />
     <br />
@@ -119,6 +37,6 @@
     </p>
 
 
-  </form>
+  <!--</form>-->
 
 </ng-template>
