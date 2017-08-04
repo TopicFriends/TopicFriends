@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentSetsInputComponent implements OnInit {
 
-  input: number = 10
+  input = 10
 
   constructor() { }
 
@@ -15,7 +15,7 @@ export class ParentSetsInputComponent implements OnInit {
   }
 
   onClick() {
-    ++this.input;
+    this.input++
   }
 
 }
