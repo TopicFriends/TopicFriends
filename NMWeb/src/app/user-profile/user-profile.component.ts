@@ -42,7 +42,9 @@ export class UserProfileComponent implements OnInit {
     public authService: AuthService,
   ) {
     this.authService.user.subscribe((user) => {
-      this.displayName.setValue(user.displayName);
+      if ( user ) {
+        this.displayName.setValue(user.displayName);
+      }
     });
 
     // TODO: extract WhatUserWantsForm !
