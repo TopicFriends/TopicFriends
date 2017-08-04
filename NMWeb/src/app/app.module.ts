@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileComponent } from './user-profile/user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 import {MdButtonModule, MdCheckboxModule, MdInputModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,6 +38,7 @@ import { TopicTagListComponent } from './topic-tag-list/topic-tag-list.component
 import { SettableInputComponent } from './experiments/settable-input/settable-input.component';
 import { ParentSetsInputComponent } from './experiments/parent-sets-input/parent-sets-input.component';
 import { UserOtherProfilesComponent } from './user-profile/user-other-profiles/user-other-profiles.component'
+import {UserProfileModule} from './user-profile/user-profile.module'
 
 // import {
 //   AngularFireModule,
@@ -110,6 +111,7 @@ const appRoutes: Routes = [
     MdCheckboxModule,
     MdIconModule,
     EventsModule,
+    UserProfileModule,
     RouterModule.forRoot(appRoutes),
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     AngularFireModule.initializeApp(environment.firebase),
