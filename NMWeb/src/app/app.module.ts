@@ -18,11 +18,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './user-profile/auth.service';
 import {UserListService} from './user-list/user-list.service';
 import {UserMatcherService} from './user-matcher.service';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './core/header/header.component';
 import { UserTemplateComponent } from './user-list/user-template/user-template.component';
 import {EventsModule} from './event-list/events.module';
 
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './core/navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ItemListInputComponent } from './user-profile/item-list-input/item-list-input.component';
 import { TestReusableComponent } from './user-profile/test-reusable/test-reusable.component';
@@ -39,6 +39,8 @@ import { SettableInputComponent } from './experiments/settable-input/settable-in
 import { ParentSetsInputComponent } from './experiments/parent-sets-input/parent-sets-input.component';
 import { UserOtherProfilesComponent } from './user-profile/user-other-profiles/user-other-profiles.component'
 import {UserProfileModule} from './user-profile/user-profile.module'
+import {CoreModule} from 'app/core/core.module';
+import {SharedModule} from './shared/shared.module'
 
 // import {
 //   AngularFireModule,
@@ -53,31 +55,31 @@ const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login'
+    redirectTo: 'login',
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'people-list',
-    component: UserListComponent
+    component: UserListComponent,
   },
   {
     path: 'profile',
-    component: UserProfileComponent
+    component: UserProfileComponent,
   },
   {
     path: 'skills-test',
-    component: SkillsVisualizerTestComponent
+    component: SkillsVisualizerTestComponent,
   },
   {
     path: 'settableInput',
-    component: ParentSetsInputComponent
+    component: ParentSetsInputComponent,
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: '',
   },
 ];
 
@@ -110,6 +112,8 @@ const appRoutes: Routes = [
     MdMenuModule,
     MdCheckboxModule,
     MdIconModule,
+    CoreModule,
+    SharedModule,
     EventsModule,
     UserProfileModule,
     RouterModule.forRoot(appRoutes),
@@ -120,7 +124,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   providers: [
     AuthService,
@@ -133,6 +137,6 @@ const appRoutes: Routes = [
     TopicsService,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
