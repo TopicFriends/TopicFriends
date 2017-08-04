@@ -1,5 +1,5 @@
 <md-chip-list>
-  <ng-template ngFor let-tag [ngForOf]="tagListModel?.tags" >
+  <ng-template ngFor let-tag [ngForOf]="tagListModel?.tags" [ngForTrackBy]="trackByKey">
     <md-chip style="vertical-align: middle; margin-bottom: 5px">
       <div style="display:table-cell; vertical-align: middle">
         <ng-template [ngIf]="tag.tagEntry.logo" >
@@ -11,9 +11,10 @@
            <!--style="cursor:pointer; color: rgba(0, 0, 0, 0.54); font-size: 20px"-->
            <!--(click)=deleteTag(chip)></i>-->
 
-        <div style="vertical-align: middle; display: inline; height: 100%">
+        <!--<div style="vertical-align: middle; display: inline; height: 100%">-->
+        <span style="display: inline; height: 100%">
           {{tag.tagEntry.name}}&nbsp;
-        </div>
+        </span>
           <i *ngIf="editable"
              class="ion-close-circled"
              style="vertical-align: middle; cursor:pointer; color: rgba(0, 0, 0, 0.30); font-size: 20px"

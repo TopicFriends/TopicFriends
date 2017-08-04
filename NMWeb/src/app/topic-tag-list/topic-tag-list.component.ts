@@ -15,7 +15,7 @@ export class TopicTagListComponent implements OnInit {
   @Input() set tagList(tagList: TagInclusions) {
     console.log('set tagList', tagList)
     if ( tagList ) {
-      this.tagListModel = new TagListModel(getDictionaryValuesAsArray(this.tagList))
+      this.tagListModel = new TagListModel(getDictionaryValuesAsArray(tagList))
     }
   }
   @Input() editable: boolean;
@@ -24,6 +24,11 @@ export class TopicTagListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  trackByKey(val) {
+    console.log('trackByKey', val);
+    return val.$key
   }
 
 
