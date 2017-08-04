@@ -35,6 +35,7 @@ export class UserTemplateComponent implements OnInit {
     this._whatUserWants = this._getWhatUserWants();
     this._userPublicProfile.interests.subscribe(it => {
       this.userInterests = it;
+      console.log('userPublicProfile.interests.subscribe', it)
     });
   }
 
