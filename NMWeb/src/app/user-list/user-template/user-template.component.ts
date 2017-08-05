@@ -18,7 +18,7 @@ export class SupplyDemandTemplate{
 @Component({
   selector: 'nw-user-template',
   templateUrl: './user-template.component.html',
-  styleUrls: ['./user-template.component.css'],
+  styleUrls: ['./user-template.component.scss'],
 })
 export class UserTemplateComponent implements OnInit {
 
