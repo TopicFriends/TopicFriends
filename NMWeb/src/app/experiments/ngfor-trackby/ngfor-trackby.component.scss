@@ -1,0 +1,18 @@
+@keyframes ChipAnimation {
+  0% {
+    opacity: 0.0;
+    transform: scale(0) rotateZ(0deg); // rotateY(0)
+  }
+  50% {
+    transform: scale(1.2) rotateZ(10deg); // rotateY(45deg)
+  }
+  100% {
+    opacity: 1.0;
+    transform: scale(1) rotateZ(0deg); // rotateY(0)
+  }
+}
+
+.tag-chip {
+  animation: ChipAnimation 0.5s ease-in-out;
+  //transform-style: preserve-3d;
+}

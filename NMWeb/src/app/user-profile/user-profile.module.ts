@@ -9,12 +9,17 @@ import {MdAutocompleteModule, MdButtonModule, MdCardModule, MdIconModule, MdInpu
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {ItemListInputComponent} from './item-list-input/item-list-input.component'
 import { UserInterestsComponent } from './user-interests/user-interests.component'
+import {NgforTrackbyComponent} from 'app/experiments/ngfor-trackby/ngfor-trackby.component';
+import {NgforParentComponent} from '../experiments/ngfor-parent/ngfor-parent.component'
 
 
 const userProfileRoutes: Routes = [
   {
     path: 'profile',
     component: UserProfileComponent,
+  },  {
+    path: 'trackBy',
+    component: NgforParentComponent,
   },
 ];
 

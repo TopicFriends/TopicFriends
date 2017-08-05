@@ -25,7 +25,9 @@ import {MeetingsService} from './shared/meetings.service'
 import {TopicsService} from './shared/topics.service';
 import {UserProfileModule} from './user-profile/user-profile.module'
 import {CoreModule} from 'app/core/core.module';
-import {SharedModule} from './shared/shared.module'
+import {SharedModule} from './shared/shared.module';
+import { NgforTrackbyComponent } from './experiments/ngfor-trackby/ngfor-trackby.component';
+import { NgforParentComponent } from './experiments/ngfor-parent/ngfor-parent.component'
 
 // import {
 //   AngularFireModule,
@@ -62,6 +64,8 @@ const appRoutes: Routes = [
     UserListComponent,
     LoginComponent,
     UserTemplateComponent,
+    NgforTrackbyComponent,
+    NgforParentComponent,
   ],
   imports: [
     BrowserModule,
