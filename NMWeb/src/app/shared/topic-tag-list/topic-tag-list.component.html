@@ -1,6 +1,6 @@
 <md-chip-list>
   <ng-template ngFor let-tag [ngForOf]="tagListModel?.tags" [ngForTrackBy]="trackByKey">
-    <md-chip style="vertical-align: middle; margin-bottom: 5px">
+    <md-chip class="tag-chip" style="vertical-align: middle; margin-bottom: 5px">
       <div style="display:table-cell; vertical-align: middle">
         <ng-template [ngIf]="tag.tagEntry.logo" >
           <img style="width: 20px; height: 20px; vertical-align:middle"

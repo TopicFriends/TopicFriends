@@ -13,6 +13,7 @@ import {TagInclusions} from 'app/shared/TagInclusions';
 export class TopicTagListComponent implements OnInit {
 
   @Input() tagListModel: TagListModel;
+
   @Input() set tagList(tagList: TagInclusions) {
     console.log('set tagList', tagList)
     // if ( tagList ) {
@@ -25,12 +26,15 @@ export class TopicTagListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('TopicTagListComponent ngOnInit')
   }
 
-  trackByKey(val) {
+  trackByKey(index, val) {
     console.log('trackByKey', val);
     console.log('trackByKey val.$key', val.$key);
-    return val.$key
+    console.log('val.tagEntry.name', val.tagEntry.name);
+    // return val.$key
+    return val.tagEntry.name // hack because we don't have $key here yet
   }
 
 
