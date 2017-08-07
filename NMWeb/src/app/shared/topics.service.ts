@@ -5,6 +5,7 @@ function tag(name: string, logo?: string) {
   return new TagEntry(name, logo);
 }
 
+/** Will cause double width for icon, because the logotipo's font otherwise is too tiny */
 function tagLogoTipo(name: string, logo?: string) {
   return tag(name, logo); // pass visual hint later
 }
@@ -22,7 +23,7 @@ export class TopicsService {
     tag('Angular'), tag('Ionic'), tag('Firebase'),
     tag('Protractor'), tag('Karma'), tag('Jasmine'),
     tag('PHP'), tag('Material Design', null), tag('TypeScript'),
-    tag('Django'), tag('Python'), tag('Ruby'), tag('Ruby On Rails'),
+    tag('Django'), tag('Python'), tag('Ruby'), tagLogoTipo('Ruby On Rails'),
     tag('PeopleMatcher'),
     tag('UAP', null),
     tag('Android'), tag('Kotlin'), tag('KotlinJS', null), tag('Java'),
@@ -34,7 +35,9 @@ export class TopicsService {
     'Elm', 'Scala', tag('.NET', 'dotnet'), tag('.NET Core', null), 'Docker', 'ElasticSearch',
     tagLogoTipo('Ember'), 'React', 'Git', tag('TensorFlow', null), 'JHipster', tagLogoTipo('Meteor'), tagLogoTipo('Hoodie'),
     'Laravel',
-    tag('CSS3', 'css-3'), tag('Responsive Design', null), tag('HTML5', 'html-5')
+    tag('CSS3', 'css-3'), tag('Responsive Design', null), tag('HTML5', 'html-5'),
+    tag('PWA', null), tag('REST', null), tag('HTTP', null), tag('WebSocket'), 'WebRTC', tagLogoTipo('Upwork'),
+    tagLogoTipo('NodeJS'), tagLogoTipo('NPM'),
   ]);
 
 
