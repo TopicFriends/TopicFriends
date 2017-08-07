@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
-import {UserOtherProfiles, UserProfileService} from '../user-profile.service'
+import {OtherProfile, UserOtherProfiles, UserProfileService} from '../user-profile.service'
 import {AuthService} from 'app/user-profile/auth.service';
 import {Observable} from 'rxjs/Observable'
+
+
+function getOtherProfileName(otherProfile: OtherProfile) {
+  return otherProfile && otherProfile.userName
+}
+
 
 @Component({
   selector: 'app-user-other-profiles',
@@ -16,6 +22,8 @@ export class UserOtherProfilesComponent implements OnInit {
   public formGroup: FormGroup;
 
   public otherProfileLinkedIn = new FormControl()
+  public otherProfileGitHub = new FormControl()
+
   private otherProfiles: UserOtherProfiles
 
   constructor(
@@ -35,8 +43,14 @@ export class UserOtherProfilesComponent implements OnInit {
       this.userOtherProfilesObservable.subscribe((otherProfiles: UserOtherProfiles) => {
         console.log('userOtherProfilesObservable.subscribe', otherProfiles);
         this.otherProfiles = otherProfiles;
+        if ( otherProfiles ) {
+
+        }
         this.formGroup.patchValue({
-          otherProfileLinkedIn: otherProfiles.linkedIn.userName,
+          otherProfileLinkedIn:
+            getOtherProfileName(otherProfiles.linkedIn),
+          otherProfileGitHub:
+            getOtherProfileName(otherProfiles.gitHub),
         })
 
       });
