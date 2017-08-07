@@ -32,7 +32,7 @@ export class TopicsService {
     tag('UAP', null),
     tag('Android'), tag('Kotlin'), tag('KotlinJS', null), tag('Java'), 'C++', 'C',
     tagNoIcon('C#'), tagNoIcon('ASP.NET'), tagNoIcon('ASP.NET MVC'), tagNoIcon('ASP.NET Core MVC') /* https://github.com/aspnet/Mvc */,
-    tag('iOS'), tag('Swift'), tag('Objective C', null),
+    tag('iOS'), tag('Swift'), tag('Objective-C', null),
     tag('D3'),
     tag('Angular DI', null), tag('Angular Modules', null), tag('Angular Router', null), 'Webpack',
     tagNoIcon('Web Development'), tagNoIcon('CMS'), tagNoIcon('Selenium'), tagNoIcon('Blog Software'),
@@ -44,13 +44,13 @@ export class TopicsService {
     tag('TensorFlow', null), 'OpenCV',
     'Appium', tagNoIcon('Robotium'),
     'JHipster', tagLogoTipo('Meteor'), tagLogoTipo('Hoodie'),
-    'Laravel', 'CakePHP', 'Zend Framework',
+    'Laravel', 'CakePHP', 'Zend Framework', 'CodeIgniter', 'Symfony',
     tag('CSS3', 'css-3'), tag('Responsive Design', null), tag('HTML5', 'html-5'),
     tag('PWA', null), tag('REST', null), tag('HTTP', null), tag('WebSocket'), 'WebRTC', tagLogoTipo('Upwork'),
     tagLogoTipo('NodeJS'), tagLogoTipo('NPM'),
     tagLogoTipo('Sass'), tagLogoTipo('Stylus'), tagLogoTipo('Less'),
     'Bitcoin', 'Ethereum', 'Steemit', 'Monero',
-    'Cryptography', 'Cryptocurrency', 'Blockchain',
+    'Cryptocurrency', 'Blockchain', 'Cryptography',
     'Cordova', 'PhoneGap',
     tagNoIcon('Geolocation'),
     tagNoIcon('Social graphs'),
@@ -58,7 +58,7 @@ export class TopicsService {
     tagNoIcon('HMR - Hot Module Replacement'),
     tagNoIcon('RxJS'), tagNoIcon('RxJava'), 'ReactiveX',
     tagNoIcon('Angular Material'), tagNoIcon('AngularFire'), /* Note: versions will be specified separately, thus not "AngularFire2" */
-    'SVG', tag('WordPress', 'wordpress-icon'), 'Drupal', 'Joomla', 'jQuery', 'CodeIgniter', 'Symfony',
+    'SVG', tag('WordPress', 'wordpress-icon'), 'Drupal', 'Joomla', 'jQuery',
     'PouchDB', tagNoIcon('CloudBoost'), 'Spring', tagLogoTipo('Vaadin'), 'Yarn',
     'Heroku', 'Jenkins', 'Vagrant', tag('Kubernetes', 'kubernets' /* they have a typo*/),
     tag('Vue.js', 'vue'),
@@ -88,7 +88,7 @@ export class TopicsService {
     'Electron',
     'Gradle', 'Grails',
     'Neo4j', 'Hadoop',
-    'OpenGL', 'Unity',
+    tagLogoTipo('OpenGL'), 'Unity',
   ]);
 
 
