@@ -5,6 +5,10 @@ function tag(name: string, logo?: string) {
   return new TagEntry(name, logo);
 }
 
+function tagNoIcon(name: string) {
+  return new TagEntry(name, null);
+}
+
 /** Will cause double width for icon, because the logotipo's font otherwise is too tiny */
 function tagLogoTipo(name: string, logo?: string) {
   return tag(name, logo); // pass visual hint later
@@ -38,6 +42,12 @@ export class TopicsService {
     tag('CSS3', 'css-3'), tag('Responsive Design', null), tag('HTML5', 'html-5'),
     tag('PWA', null), tag('REST', null), tag('HTTP', null), tag('WebSocket'), 'WebRTC', tagLogoTipo('Upwork'),
     tagLogoTipo('NodeJS'), tagLogoTipo('NPM'),
+    tagLogoTipo('Sass'), tagLogoTipo('Stylus'), tagLogoTipo('Less'),
+    'Bitcoin',
+    'Cordova', 'PhoneGap',
+    tagNoIcon('Geolocation'),
+    tagNoIcon('Social graphs'),
+    tagNoIcon('NoSQL'), tagNoIcon('HMR - Hot Module Replacement'),
   ]);
 
 
