@@ -1,7 +1,6 @@
 <md-card style="margin-bottom: 0.5em">
   <md-content>
     <app-item-list-input id="topicsExchange"
-                         (inputTagList)="getOptionsNames()"
                          [chosenTags]="userInterests?.byInteractionMode?.symmetric?.exchange?.topics"
                          (outputTagList)="updateWantExchange($event)"
     ><app-item-list-input-title>
@@ -14,7 +13,6 @@
 <md-card style="margin-bottom: 0.5em">
   <md-content>
     <app-item-list-input id="topicsHackathon"
-                         (inputTagList)="options"
                          [chosenTags]="userInterests?.byInteractionMode?.symmetric?.hackathon?.topics"
                          (outputTagList)="updateWantHackathon($event)"
     ><app-item-list-input-title>
@@ -28,7 +26,6 @@
 <md-card style="margin-bottom: 0.5em">
   <md-content>
     <app-item-list-input id="topicsPairProgramming"
-                         (inputTagList)="options"
                          [chosenTags]="userInterests?.byInteractionMode?.symmetric?.pairProgramming?.topics"
                          (outputTagList)="updateWantPairProgramming($event)"
     ><app-item-list-input-title>

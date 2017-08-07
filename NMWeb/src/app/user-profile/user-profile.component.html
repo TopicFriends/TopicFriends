@@ -7,32 +7,21 @@
 <ng-template [ngIf]="userProfileService.userId">
 
   <app-user-profile-basic-info #basicInfo>
-
   </app-user-profile-basic-info>
 
-  <!--<form [formGroup]="_userProfileForm">-->
+  <app-user-other-profiles #userOtherProfiles>
+  </app-user-other-profiles>
+
+  <app-user-interests #userInterests>
+  </app-user-interests>
 
 
+  <br />
+  <br />
 
-    <app-user-other-profiles #userOtherProfiles>
+  <p>
+    <button id="saveProfile" style="width:100%" md-button md-raised-button (click)="save()">Save <i>(Enter)</i></button>
 
-    </app-user-other-profiles>
-
-    <app-user-interests #userInterests>
-
-    </app-user-interests>
-
-
-
-    <br />
-    <br />
-
-    <p>
-      <button id="saveProfile" style="width:100%" md-button md-raised-button (click)="save()">Save <i>(Enter)</i></button>
-
-    </p>
-
-
-  <!--</form>-->
+  </p>
 
 </ng-template>
