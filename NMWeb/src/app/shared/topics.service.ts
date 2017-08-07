@@ -50,7 +50,7 @@ export class TopicsService {
     tagLogoTipo('NodeJS'), tagLogoTipo('NPM'),
     tagLogoTipo('Sass'), tagLogoTipo('Stylus'), tagLogoTipo('Less'),
     'Bitcoin', 'Ethereum', 'Steemit', 'Monero',
-    'Cryptocurrency', 'Blockchain', 'Cryptography',
+    tagNoIcon('Cryptocurrency'), tagNoIcon('Blockchain'), tagNoIcon('Cryptography'),
     'Cordova', 'PhoneGap',
     tagNoIcon('Geolocation'),
     tagNoIcon('Social graphs'),
@@ -58,7 +58,7 @@ export class TopicsService {
     tagNoIcon('HMR - Hot Module Replacement'),
     tagNoIcon('RxJS'), tagNoIcon('RxJava'), 'ReactiveX',
     tagNoIcon('Angular Material'), tagNoIcon('AngularFire'), /* Note: versions will be specified separately, thus not "AngularFire2" */
-    'SVG', tag('WordPress', 'wordpress-icon'), 'Drupal', 'Joomla', 'jQuery',
+    'SVG', tag('WordPress', 'wordpress-icon'), 'Drupal', 'Joomla', tagLogoTipo('jQuery'),
     'PouchDB', tagNoIcon('CloudBoost'), 'Spring', tagLogoTipo('Vaadin'), 'Yarn',
     'Heroku', 'Jenkins', 'Vagrant', tag('Kubernetes', 'kubernets' /* they have a typo*/),
     tag('Vue.js', 'vue'),
@@ -66,7 +66,7 @@ export class TopicsService {
     tag('Fedora', 'fedora'), tagLogoTipo('CentOS'), tagNoIcon('Gentoo Linux'), tag('Arch Linux', 'archlinux'),
     'FreeBSD',
     'Redis', 'CouchBase', 'CouchDB', tagLogoTipo('MongoDB'), 'Memcached',
-    'PrestaShop', 'WooCommerce', tagNoIcon('osCommerce'), 'Magento', 'Shopify', 'BigCommerce',
+    'PrestaShop', 'WooCommerce', tagNoIcon('osCommerce'), 'Magento', 'Shopify', tagNoIcon('BigCommerce'),
     'Travis CI',
     'Wix',
     tagLogoTipo('Lucene'), tagLogoTipo('Solr'),
@@ -89,6 +89,11 @@ export class TopicsService {
     'Gradle', 'Grails',
     'Neo4j', 'Hadoop',
     tagLogoTipo('OpenGL'), 'Unity',
+    // tagLogoTipo('Backbone.js', 'backbone-icon'),
+    tag('Backbone.js', 'backbone-icon'),
+    tagLogoTipo('Express'), 'Socket.IO',
+    'Sinatra',
+    tagNoIcon('ngrx' /* I've also seen different capitalizations: NgRx, ngRx etc */),
   ]);
 
 
