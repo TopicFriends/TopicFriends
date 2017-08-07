@@ -27,11 +27,15 @@
                 </div>
             </div>
         </div>
-      <span style="display: inline-block; margin-bottom: 2px; margin-top: 5px">Would like to exchange knowledge on:</span>
-      <app-topic-tag-list
-        [tagList]="userInterests?.byInteractionMode?.symmetric?.exchange?.topics"
-        [editable]="false"
-      ></app-topic-tag-list>
+      <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.exchange">
+        Would like to exchange knowledge on:
+      </app-user-interests-mode-view>
+      <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.pairProgramming">
+        Would like to do pair programming on:
+      </app-user-interests-mode-view>
+      <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.hackathon">
+        Would like to do hackathon on:
+      </app-user-interests-mode-view>
     </md-content>
     <md-actions>
         <button md-raised-button>MEET</button>

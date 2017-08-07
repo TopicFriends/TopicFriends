@@ -1,0 +1,7 @@
+<ng-template [ngIf]="topicGroup?.topics">
+  <span style="display: inline-block; margin-bottom: 2px; margin-top: 5px"><ng-content></ng-content></span>
+  <app-topic-tag-list
+    [tagList]="topicGroup?.topics"
+    [editable]="false"
+  ></app-topic-tag-list>
+</ng-template>

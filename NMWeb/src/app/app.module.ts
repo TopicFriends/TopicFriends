@@ -27,7 +27,8 @@ import {UserProfileModule} from './user-profile/user-profile.module'
 import {CoreModule} from 'app/core/core.module';
 import {SharedModule} from './shared/shared.module';
 import { NgforTrackbyComponent } from './experiments/ngfor-trackby/ngfor-trackby.component';
-import { NgforParentComponent } from './experiments/ngfor-parent/ngfor-parent.component'
+import { NgforParentComponent } from './experiments/ngfor-parent/ngfor-parent.component';
+import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component'
 
 // import {
 //   AngularFireModule,
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
     UserTemplateComponent,
     NgforTrackbyComponent,
     NgforParentComponent,
+    UserInterestsModeViewComponent,
   ],
   imports: [
     BrowserModule,
