@@ -22,8 +22,11 @@ export class TagEntry {
     return '../../../assets/images/logos/' + tag.toLowerCase().replace(/ /g, '-') + '.svg'
   }
 
-  matchesTextFilter(value: string) {
-    return this.name.toLowerCase().indexOf(value.toLowerCase()) === 0;
+  matchesTextFilter(filterString: string) {
+    if ( ! filterString ) {
+      return true;
+    }
+    return this.name.toLowerCase().indexOf(filterString.toLowerCase()) === 0;
   }
 
 }

@@ -91,12 +91,11 @@ export class ItemListInputComponent implements OnInit
     });
   }
 
-  filter(val: string) {
-    return val ? this.inputTagList.filter(
-      option => option.matchesTextFilter(val)
+  filter(filterString: string) {
+    return this.inputTagList.filter(
+      option => option.matchesTextFilter(filterString)
       && ! this.tagListModel.tagExists(option)
-    )
-      : this.inputTagList;
+    );
   }
 
   addTag(tagEntry: TagEntry) {
