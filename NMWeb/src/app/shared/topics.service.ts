@@ -23,7 +23,7 @@ export class TopicsService {
   // All possible tags
   // @Input() public inputTagList: TagEntry[] = [tag('Angular'), tag('Ionic'), tag('Firebase')];
   /** I moved it here, because @Input stopped working for some reason and I am to distracted to troubleshoot it :-\ */
-  @Input() public topics: TagEntry[] = this.transformTags([
+  public topics: TagEntry[] = this.transformTags([
     tag('Angular'), tag('Ionic'), tag('Firebase'),
     tag('Protractor'), tag('Karma'), tag('Jasmine'),
     tag('PHP'), tag('Material Design', null), tag('TypeScript'),
@@ -48,6 +48,11 @@ export class TopicsService {
     tagNoIcon('Geolocation'),
     tagNoIcon('Social graphs'),
     tagNoIcon('NoSQL'), tagNoIcon('HMR - Hot Module Replacement'),
+    tagNoIcon('RxJS'), tagNoIcon('RxJava'), 'ReactiveX',
+    tagNoIcon('Angular Material'), tagNoIcon('AngularFire'), /* Note: versions will be specified separately, thus not "AngularFire2" */
+    'SVG', tag('WordPress', 'wordpress-icon'), 'Joomla', 'jQuery', 'CodeIgniter', 'Symfony',
+    'PouchDB', tagNoIcon('CloudBoost'), 'Spring', tagLogoTipo('Vaadin'), 'Yarn',
+    'Heroku', 'Jenkins', 'Vagrant', tag('Kubernetes', 'kubernets' /* they have a typo*/)
   ]);
 
 

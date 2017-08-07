@@ -6,8 +6,18 @@ import {initFromObject} from '../util/util';
 import {DbObject, DbService} from '../db.service'
 import {DomainDbService} from '../domain-db.service'
 import {TagEntry} from './tag-entry'
-import {UserInterests} from './user-interests'
+import {TopicInterest, UserInterests} from './user-interests'
 
+
+export function createTopicsDictionary(topics: TopicInterest[]) {
+  let ret = {};
+  let i = 0;
+  for ( const topic of topics ) {
+    ret[i] = topic;
+    i++;
+  }
+  return ret;
+}
 
 
 export class OtherProfile {
