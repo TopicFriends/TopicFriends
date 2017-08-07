@@ -50,6 +50,7 @@ export class TopicsService {
     tagLogoTipo('NodeJS'), tagLogoTipo('NPM'),
     tagLogoTipo('Sass'), tagLogoTipo('Stylus'), tagLogoTipo('Less'),
     'Bitcoin', 'Ethereum', 'Steemit', 'Monero',
+    'Cryptography', 'Cryptocurrency', 'Blockchain',
     'Cordova', 'PhoneGap',
     tagNoIcon('Geolocation'),
     tagNoIcon('Social graphs'),
