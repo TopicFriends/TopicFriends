@@ -60,4 +60,11 @@ export class UserInterestsComponent implements OnInit {
   }
 
 
+  getUserInterests() {
+    return UserInterests.fromJson({
+      byInteractionMode: {
+        symmetric: this.symmetricInteractions,
+      }
+    })
+  }
 }

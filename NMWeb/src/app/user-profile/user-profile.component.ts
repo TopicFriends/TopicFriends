@@ -32,21 +32,18 @@ export class UserProfileComponent implements OnInit {
 
   save() {
     // FIXME this.userProfile.displayName = this.displayName.value;
-    const otherProfiles = this. userOtherProfilesComponent.getOtherProfiles()
-    // this..profileFacebook = this.displayName.value;
-    const whatUserWants2 = UserInterests.fromJson({
-      byInteractionMode: {
-        symmetric: this.userInterests.symmetricInteractions,
-      }
-    })
+
+    const otherProfiles = this.userOtherProfilesComponent.getOtherProfiles()
+    const userInterests = this.userInterests.getUserInterests()
     const userProfile: UserProfile = {
       displayName: this.basicInfo.displayName.value
     } // TODO: first created date
-    console.log('save()', whatUserWants2)
+    // TODO: photo
+    console.log('save()', userInterests)
     // this.userProfileObservable =
     this.userProfileService.saveUserProfile(
       userProfile,
-      whatUserWants2,
+      userInterests,
       otherProfiles,
     );
   }
