@@ -9,6 +9,9 @@ function getOtherProfileName(otherProfile: OtherProfile) {
   return otherProfile && otherProfile.userName
 }
 
+function otherProfileUserName(formControl: FormControl) {
+  return formControl.value || "" // || "" to prevent firebase complaining about undefined
+}
 
 @Component({
   selector: 'app-user-other-profiles',
@@ -33,6 +36,7 @@ export class UserOtherProfilesComponent implements OnInit {
   ) {
     this.formGroup = this.formBuilder.group({
       otherProfileLinkedIn: this.otherProfileLinkedIn,
+      otherProfileGitHub: this.otherProfileGitHub,
     })
   }
 
@@ -44,17 +48,26 @@ export class UserOtherProfilesComponent implements OnInit {
         console.log('userOtherProfilesObservable.subscribe', otherProfiles);
         this.otherProfiles = otherProfiles;
         if ( otherProfiles ) {
-
+          this.formGroup.patchValue({
+            otherProfileLinkedIn:
+              getOtherProfileName(otherProfiles.linkedIn),
+            otherProfileGitHub:
+              getOtherProfileName(otherProfiles.gitHub),
+          })
         }
-        this.formGroup.patchValue({
-          otherProfileLinkedIn:
-            getOtherProfileName(otherProfiles.linkedIn),
-          otherProfileGitHub:
-            getOtherProfileName(otherProfiles.gitHub),
-        })
 
       });
     })
   }
 
+  getOtherProfiles(): UserOtherProfiles {
+    return {
+      linkedIn: {
+        userName: otherProfileUserName(this.otherProfileLinkedIn),
+      },
+      gitHub: {
+        userName: otherProfileUserName(this.otherProfileGitHub),
+      },
+    };
+  }
 }

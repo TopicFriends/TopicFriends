@@ -21,7 +21,6 @@ export class UserProfileComponent implements OnInit {
   @ViewChild('userInterests') userInterests: UserInterestsComponent
 
 
-
   constructor(
     protected userProfileService: UserProfileService,
     public authService: AuthService,
@@ -33,11 +32,7 @@ export class UserProfileComponent implements OnInit {
 
   save() {
     // FIXME this.userProfile.displayName = this.displayName.value;
-    const otherProfiles = {
-      linkedIn: {
-        userName: this.userOtherProfilesComponent.otherProfileLinkedIn.value
-      }
-    };
+    const otherProfiles = this. userOtherProfilesComponent.getOtherProfiles()
     // this..profileFacebook = this.displayName.value;
     const whatUserWants2 = UserInterests.fromJson({
       byInteractionMode: {
