@@ -26,7 +26,8 @@ export class TagEntry {
     if ( ! filterString ) {
       return true;
     }
-    return this.name.toLowerCase().indexOf(filterString.toLowerCase()) === 0;
+    // return this.name.toLowerCase().indexOf(filterString.toLowerCase()) === 0;
+    return this.name.toLowerCase().match(filterString.toLowerCase());
   }
 
 }
