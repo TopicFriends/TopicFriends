@@ -7,6 +7,8 @@ import 'rxjs/add/operator/map';
 import {TopicInterest} from '../user-interests'
 import {TopicsService} from '../../shared/topics.service'
 import {TagListModel} from '../../shared/TagListModel'
+import {TagInclusions} from '../../shared/TagInclusions'
+import {getDictionaryValuesAsArray} from '../../shared/utils'
 
 
 @Component({
@@ -47,16 +49,25 @@ export class ItemListInputComponent implements OnInit
     new TopicInterest(new TagEntry('Firebase')),
   ]
 
+  /** rename: all *possible* tags */
   @Input() public inputTagList: TagEntry[]
-  tagListModel: TagListModel
+
+  @Input() public set chosenTags(val: TagInclusions) {
+    const tagList = getDictionaryValuesAsArray(val);
+
+    this.tagListModel.setChosenTags(tagList)
+  }
 
   @Input() public formGroup1: FormGroup;
 
 
-  @Output() public outputTagList // = new EventEmitter<{tagList: TopicInterest[]}>();
 
   // rename: chosen Tag list
-  public tagList: TopicInterest[] = this.exampleTags;
+  // public tagList: TopicInterest[] = this.exampleTags;
+  // tagListModel: TagListModel = new TagListModel(this.exampleTags)
+  tagListModel: TagListModel = new TagListModel([])
+  @Output() public outputTagList = this.tagListModel.outputTagList
+  // = new EventEmitter<{tagList: TopicInterest[]}>();
 
   stateCtrl: FormControl;
   filteredOptions: Observable<TagEntry[]>; // TODO: change from any
@@ -66,8 +77,7 @@ export class ItemListInputComponent implements OnInit
     public topicsService: TopicsService
   ) {
     this.inputTagList = this.topicsService.topics;
-    this.tagListModel = new TagListModel(this.tagList)
-    this.outputTagList = this.tagListModel.outputTagList
+
     this.stateCtrl = new FormControl();
     this.filteredOptions = this.stateCtrl.valueChanges
       .startWith(null)
@@ -75,6 +85,7 @@ export class ItemListInputComponent implements OnInit
   }
 
   ngOnInit() {
+
     this.filteredOptions.subscribe((filteredOptions) => {
       this.currentFilteredOptions = filteredOptions;
     });

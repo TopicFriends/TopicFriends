@@ -15,6 +15,7 @@ export class UserInterestsComponent implements OnInit {
 
   symmetricInteractions = new SymmetricInteractions();
   userInterestsObservable: Observable<UserInterests>;
+  userInterests: UserInterests
 
   showSupplyDemand = false;
 
@@ -36,7 +37,7 @@ export class UserInterestsComponent implements OnInit {
       console.log('authService.user.subscribe user', user);
       this.userInterestsObservable = this.userProfileService.getUserInterests();
       this.userInterestsObservable.subscribe((userInterests: UserInterests) => {
-
+        this.userInterests = userInterests
       });
       // this.userId = user && user.uid;
       // this.myUserData = this.db.userDataById(this.userId);

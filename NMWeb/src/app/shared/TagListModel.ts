@@ -43,4 +43,9 @@ export class TagListModel {
   emitTags() {
     this.outputTagList.emit({tagList: this.tags});
   }
+
+  setChosenTags(chosenTags: TopicInterest[]) {
+    this.tags = chosenTags
+
+  }
 }
