@@ -1,4 +1,7 @@
 <md-chip-list>
+  <ng-template [ngIf]="! tagListModel?.valueWasSet">
+    Loading...
+  </ng-template>
   <ng-template ngFor let-tag [ngForOf]="tagListModel?.tags" [ngForTrackBy]="trackByKey">
     <md-chip class="tag-chip" style="height: 20px; vertical-align: middle; margin-bottom: 5px">
       <div style="display:table-cell; vertical-align: middle">

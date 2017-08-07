@@ -36,7 +36,6 @@ export class UserOtherProfiles {
 * and rename UserData to UserProfile */
 export class UserProfile {
   displayName?: string;
-  suername?: string;
   photoUrl?: string;
   company?: string;
   role?: string;

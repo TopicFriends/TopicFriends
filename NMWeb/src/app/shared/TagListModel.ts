@@ -7,9 +7,15 @@ import {EventEmitter} from '@angular/core'
 
 export class TagListModel {
 
+  public valueWasSet = false
+
   constructor(
     public tags: TopicInterest[]
-  ) {}
+  ) {
+    if ( tags instanceof Array ) {
+      this.valueWasSet = true
+    }
+  }
 
   public outputTagList = new EventEmitter<{tagList: TopicInterest[]}>();
 
@@ -46,6 +52,7 @@ export class TagListModel {
 
   setChosenTags(chosenTags: TopicInterest[]) {
     this.tags = chosenTags
+    this.valueWasSet = true
 
   }
 }
