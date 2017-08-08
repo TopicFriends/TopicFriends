@@ -1,9 +1,9 @@
-<button md-button md-raised-button color="primary" (click)="userAttendsMeeting(meeting.$key, false)"
-        *ngIf="show; else elseBlock">I'm going
+<button md-button md-raised-button color="primary" (click)="updateUserAttendance(meeting.$key, false)"
+        *ngIf="goingStatus; else elseBlock">I'm going
   <i class="ion-checkmark-circled going-button-icon"></i>
 </button>
 <ng-template #elseBlock>
-  <button md-button md-raised-button (click)="userAttendsMeeting(meeting.$key,true)">Going
+  <button md-button md-raised-button (click)="updateUserAttendance(meeting.$key,true)">Going
     <i class="ion-help-circled going-button-icon"></i>
   </button>
 </ng-template>

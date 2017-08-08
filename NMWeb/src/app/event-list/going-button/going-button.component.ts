@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { MeetingAttendanceService } from '../meeting-attendance.service';
+import {validate} from 'codelyzer/walkerFactory/walkerFn';
+import {Meeting} from '../../shared/meetings.service';
 
 @Component({
   selector: 'app-going-button',
@@ -8,8 +10,8 @@ import { MeetingAttendanceService } from '../meeting-attendance.service';
 })
 export class GoingButtonComponent implements OnInit {
 
-  @Input() meeting;       //TODO: change later to meetingID
-  show: boolean = false;    //TODO: read from firebase
+  @Input() meeting: Meeting;       //TODO: change later to meetingID
+  @Input() goingStatus: boolean;
 
   constructor(private meetingAttendanceService: MeetingAttendanceService) {
   }
@@ -17,16 +19,12 @@ export class GoingButtonComponent implements OnInit {
   ngOnInit() {
   }
 
-  ngOnChange() {
-    // this.attendanceStatusOfMeeting
-  }
-
-  userAttendsMeeting(meetingId: string, choice: boolean) {
-    this.show = choice;
+  updateUserAttendance(meetingId: string, choice: boolean) {
+    this.goingStatus = choice;
     this.meetingAttendanceService.updateAttendance(meetingId, choice);
   }
 
-  attendanceStatusOfMeeting(meetingId: string) {
-    this.meetingAttendanceService.retrieveCurrentAttendanceStatus(meetingId);
-  }
+  // getMeetingAttendanceStatus(meetingId: string): any {
+  //   return this.meetingAttendanceService.retrieveUserCurrentAttendanceStatus(meetingId);
+  // }
 }
