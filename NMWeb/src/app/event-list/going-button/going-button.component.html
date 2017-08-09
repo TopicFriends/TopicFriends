@@ -1,9 +1,14 @@
 <button md-button md-raised-button color="primary" (click)="updateUserMeetingAttendance(false)"
-        *ngIf="meetingAttendanceByUser?.going; else elseBlock">I'm going
-  <i class="ion-checkmark-circled going-button-icon"></i>
+        *ngIf="meetingAttendanceByUser?.going === true">I'm going
+<i class="ion-checkmark-circled going-button-icon"></i>
 </button>
-<ng-template #elseBlock>
-  <button md-button md-raised-button (click)="updateUserMeetingAttendance(true)">Going
-    <i class="ion-help-circled going-button-icon"></i>
-  </button>
-</ng-template>
+
+<button md-button md-raised-button (click)="updateUserMeetingAttendance(true)"
+        *ngIf="meetingAttendanceByUser?.going === undefined">Going
+<i class="ion-help-circled going-button-icon"></i>
+</button>
+
+<button md-button md-raised-button (click)="updateUserMeetingAttendance(true)"
+        *ngIf="meetingAttendanceByUser?.going === false">Not going
+  <i class="ion-close-round going-button-icon"></i>
+</button>

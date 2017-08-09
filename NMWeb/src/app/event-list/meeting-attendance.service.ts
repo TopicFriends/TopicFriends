@@ -36,7 +36,6 @@ export class MeetingAttendanceService {
       console.log("Changing attendance to: " + chosenStatus + "!");
     }
     else {
-      // TODO: goingStatus dialog prompting user to log in
       console.log("User NOT logged in, NOT changing attendance!");
     }
   }

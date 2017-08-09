@@ -23,6 +23,8 @@ export class GoingButtonComponent implements OnInit {
   ngOnInit() {
   }
 
+  // FIXME: Don't change button status when user NOT logged in and show dialog prompting user to log in
+  // Can also change button status, prompt, if canceled then revert button value change.
   updateUserMeetingAttendance(chosenStatus: boolean) {
     this.meetingAttendanceByUser.going = chosenStatus;
     this.meetingAttendanceService.updateUserAttendance(this.meeting.$key, chosenStatus);
