@@ -17,7 +17,7 @@ import {UserListService} from './user-list/user-list.service';
 import {UserMatcherService} from './user-matcher.service';
 import { HeaderComponent } from './core/header/header.component';
 import { UserTemplateComponent } from './user-list/user-template/user-template.component';
-import {EventsModule} from './event-list/events.module';
+import {MeetingsModule} from './event-list/meetings.module';
 
 import {DbService} from './db.service'
 import {DomainDbService} from './domain-db.service'
@@ -80,7 +80,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
-    EventsModule,
+    MeetingsModule,
     UserProfileModule,
     RouterModule.forRoot(appRoutes),
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),

@@ -1,11 +1,16 @@
+<button md-button md-raised-button (click)="updateUserMeetingAttendance(true)"
+        *ngIf="meetingAttendanceByUser === undefined">Loading...
+  <i class="ion-load-a spin going-button-icon"></i>
+</button>
+
 <button md-button md-raised-button color="primary" (click)="updateUserMeetingAttendance(false)"
         *ngIf="meetingAttendanceByUser?.going === true">I'm going
-<i class="ion-checkmark-circled going-button-icon"></i>
+  <i class="ion-checkmark-circled going-button-icon"></i>
 </button>
 
 <button md-button md-raised-button (click)="updateUserMeetingAttendance(true)"
         *ngIf="meetingAttendanceByUser?.going === undefined">Going
-<i class="ion-help-circled going-button-icon"></i>
+  <i class="ion-help-circled going-button-icon"></i>
 </button>
 
 <button md-button md-raised-button (click)="updateUserMeetingAttendance(true)"

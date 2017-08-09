@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 
 @Component({
-  selector: 'app-event-list',
-  templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.scss']
+  selector: 'app-meeting-list',
+  templateUrl: './meeting-list.component.html',
+  styleUrls: ['./meeting-list.component.scss']
 })
-export class EventListComponent implements OnInit {
+export class MeetingListComponent implements OnInit {
 
   items: FirebaseListObservable<any>;
 
   constructor(private db: AngularFireDatabase) {
-    this.items = db.list('Event');
+    this.items = db.list('Meetings/Meeting');
   }
 
   ngOnInit() {

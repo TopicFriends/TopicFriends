@@ -4,13 +4,13 @@ import {Meeting} from '../../shared/meetings.service';
 import {AuthService} from '../../user-profile/auth.service';
 
 @Component({
-  selector: 'app-event-list-item',
-  templateUrl: './event-list-item.component.html',
-  styleUrls: ['./event-list-item.component.scss']
+  selector: 'app-meeting-list-item',
+  templateUrl: './meeting-list-item.component.html',
+  styleUrls: ['./meeting-list-item.component.scss']
 })
-export class EventListItemComponent implements OnInit {
+export class MeetingListItemComponent implements OnInit {
 
-  @Input() event: Meeting;
+  @Input() meeting: Meeting;
   meetingAttendanceByUser: MeetingAttendanceByUser;
 
   constructor(
@@ -20,12 +20,12 @@ export class EventListItemComponent implements OnInit {
 
   ngOnInit() {
     this.authService.user.subscribe(user => {
-      this.meetingAttendanceService.retrieveUserAttendanceStatus(this.event.$key)
+      this.meetingAttendanceService.retrieveUserAttendanceStatus(this.meeting.$key)
         .subscribe((status: MeetingAttendanceByUser) => {
           this.meetingAttendanceByUser = status;
-          console.log('EventListItemComponent, status.goingStatus: ' + status.going)
+          console.log('MeetingListItemComponent, status.goingStatus: ' + status.going)
         });
     })
-    console.log('event', this.event)
+    console.log('meeting', this.meeting)
   }
 }

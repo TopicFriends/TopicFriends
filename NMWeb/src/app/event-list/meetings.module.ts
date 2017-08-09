@@ -5,16 +5,16 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { EventListComponent }    from './event-list.component';
-import { EventListItemComponent }  from './event-list-item/event-list-item.component';
-import { EventDetailsComponent }  from './event-details/event-details.component';
+import { MeetingListComponent }    from './meeting-list.component';
+import { MeetingListItemComponent }  from './meeting-list-item/meeting-list-item.component';
+import { MeetingDetailsComponent }  from './meeting-details/meeting-details.component';
 import { MdListModule, MdCardModule, MdButtonModule } from '@angular/material';
 import { GoingButtonComponent } from './going-button/going-button.component';
 import {MeetingAttendanceService} from './meeting-attendance.service';
 
-const eventRoutes: Routes = [
-  { path: 'event-list',  component: EventListComponent },
-  { path: 'event-details/:id', component: EventDetailsComponent }
+const meetingRoutes: Routes = [
+  { path: 'meeting-list',  component: MeetingListComponent },
+  { path: 'meeting-details/:id', component: MeetingDetailsComponent }
 ];
 
 @NgModule({
@@ -23,12 +23,12 @@ const eventRoutes: Routes = [
     MdListModule,
     MdCardModule,
     MdButtonModule,
-    RouterModule.forChild(eventRoutes)
+    RouterModule.forChild(meetingRoutes)
   ],
   declarations: [
-    EventListComponent,
-    EventListItemComponent,
-    EventDetailsComponent,
+    MeetingListComponent,
+    MeetingListItemComponent,
+    MeetingDetailsComponent,
     GoingButtonComponent
   ],
   exports: [
@@ -38,4 +38,4 @@ const eventRoutes: Routes = [
     MeetingAttendanceService
   ]
 })
-export class EventsModule { }
+export class MeetingsModule { }
