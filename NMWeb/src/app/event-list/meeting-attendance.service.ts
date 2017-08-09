@@ -1,9 +1,9 @@
-import {Injectable, Input} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AuthService} from '../user-profile/auth.service';
 import {DbObject, DbService} from '../db.service';
 import 'rxjs/add/operator/take';
 
-export class MeetingAttendance {
+export class MeetingAttendanceByUser {
   going: boolean
 }
 
@@ -23,16 +23,17 @@ export class MeetingAttendanceService {
     });
   }
 
-  updateAttendance(meetingId: string, choice: boolean) {
+  updateUserAttendance(meetingId: string, chosenStatus: boolean) {
     if(this.userId) {
       let path = this.buildUserMeetingAttendancePath(meetingId);
-      const allAttendance = this.db.objectByPath<MeetingAttendance>(path);
+      const allAttendance = this.db.objectByPath<MeetingAttendanceByUser>(path);
+      let status: MeetingAttendanceByUser = {
+                                              going: chosenStatus
+                                            };
 
-      allAttendance.set({
-        going: choice
-      });
+      allAttendance.set(status);
 
-      console.log("Changing attendance to: " + choice + "!");
+      console.log("Changing attendance to: " + chosenStatus + "!");
     }
     else {
       // TODO: goingStatus dialog prompting user to log in
@@ -40,9 +41,9 @@ export class MeetingAttendanceService {
     }
   }
 
-  retrieveUserCurrentAttendanceStatus(meetingId: string): DbObject<MeetingAttendance> {
+  retrieveUserAttendanceStatus(meetingId: string): DbObject<MeetingAttendanceByUser> {
     const path = this.buildUserMeetingAttendancePath(meetingId);
-    let dbObject: DbObject<MeetingAttendance> = this.db.objectByPath(path);
+    let dbObject: DbObject<MeetingAttendanceByUser> = this.db.objectByPath(path);
     return dbObject;
   }
 

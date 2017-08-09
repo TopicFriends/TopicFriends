@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
-import {MeetingAttendanceService} from '../meeting-attendance.service';
+import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meeting-attendance.service';
 import {Meeting} from '../../shared/meetings.service';
 import {AuthService} from '../../user-profile/auth.service';
 
@@ -11,7 +11,7 @@ import {AuthService} from '../../user-profile/auth.service';
 export class EventListItemComponent implements OnInit {
 
   @Input() event: Meeting;
-  /*@Output()*/ goingStatus: boolean;
+  meetingAttendanceByUser: MeetingAttendanceByUser;
 
   constructor(
     private meetingAttendanceService: MeetingAttendanceService,
@@ -20,9 +20,9 @@ export class EventListItemComponent implements OnInit {
 
   ngOnInit() {
     this.authService.user.subscribe(user => {
-      this.meetingAttendanceService.retrieveUserCurrentAttendanceStatus(this.event.$key)
-        .subscribe(status => {
-          this.goingStatus = status.going;
+      this.meetingAttendanceService.retrieveUserAttendanceStatus(this.event.$key)
+        .subscribe((status: MeetingAttendanceByUser) => {
+          this.meetingAttendanceByUser = status;
           console.log('EventListItemComponent, status.goingStatus: ' + status.going)
         });
     })

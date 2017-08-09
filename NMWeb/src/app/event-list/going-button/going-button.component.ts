@@ -1,7 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { MeetingAttendanceService } from '../meeting-attendance.service';
-import {validate} from 'codelyzer/walkerFactory/walkerFn';
+import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meeting-attendance.service';
 import {Meeting} from '../../shared/meetings.service';
+
+/* TODO:
+- going button: 4 states: loading, unknown (no data), going, NOT going
+- 4 *ngIfs? *ngIf switch? other?
+ */
 
 @Component({
   selector: 'app-going-button',
@@ -10,8 +14,8 @@ import {Meeting} from '../../shared/meetings.service';
 })
 export class GoingButtonComponent implements OnInit {
 
-  @Input() meeting: Meeting;       //TODO: change later to meetingID
-  @Input() goingStatus: boolean;
+  @Input() meeting: Meeting;       // TODO: change later to meetingID?
+  @Input() meetingAttendanceByUser: MeetingAttendanceByUser;
 
   constructor(private meetingAttendanceService: MeetingAttendanceService) {
   }
@@ -19,12 +23,8 @@ export class GoingButtonComponent implements OnInit {
   ngOnInit() {
   }
 
-  updateUserAttendance(meetingId: string, choice: boolean) {
-    this.goingStatus = choice;
-    this.meetingAttendanceService.updateAttendance(meetingId, choice);
+  updateUserMeetingAttendance(chosenStatus: boolean) {
+    this.meetingAttendanceByUser.going = chosenStatus;
+    this.meetingAttendanceService.updateUserAttendance(this.meeting.$key, chosenStatus);
   }
-
-  // getMeetingAttendanceStatus(meetingId: string): any {
-  //   return this.meetingAttendanceService.retrieveUserCurrentAttendanceStatus(meetingId);
-  // }
 }

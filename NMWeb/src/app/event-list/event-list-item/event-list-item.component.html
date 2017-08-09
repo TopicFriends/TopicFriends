@@ -3,7 +3,7 @@
   <!--TODO: <div>Date/time/place</div>-->
   <md-card-actions>
     <button md-button md-raised-button color="secondary" routerLink="/event-details">Details</button>
-    <app-going-button [meeting]="event"></app-going-button>
+    <app-going-button [meeting]="event" [meetingAttendanceByUser]="meetingAttendanceByUser"></app-going-button>
     <!-- TODO: Only meetingId needed -->
   </md-card-actions>
 </md-card>
