@@ -17,7 +17,7 @@ import {UserListService} from './user-list/user-list.service';
 import {UserMatcherService} from './user-matcher.service';
 import { HeaderComponent } from './core/header/header.component';
 import { UserTemplateComponent } from './user-list/user-template/user-template.component';
-import {MeetingsModule} from './event-list/meetings.module';
+import {MeetingsModule} from './meeting-list/meetings.module';
 
 import {DbService} from './db.service'
 import {DomainDbService} from './domain-db.service'

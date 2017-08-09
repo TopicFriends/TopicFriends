@@ -1,11 +1,12 @@
 <md-card style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
   <md-card-title>{{meeting.title}}</md-card-title>
   <md-card-content>
-    {{meeting.date}} at {{meeting.place}}<br>
-    {{meeting.meetupLink}}
+    <p>{{meeting.date}} at {{meeting.place}}</p>
+    <a href="{{meeting.meetupLink}}">Meetup link</a>
   </md-card-content>
   <md-card-actions>
-    <button md-button md-raised-button color="secondary" routerLink="/meeting-details">Details</button>
+    <button md-button md-raised-button color="secondary"
+                          routerLink="/meeting-details/{{meeting.$key}}">Details</button>
     <app-going-button [meeting]="meeting" [meetingAttendanceByUser]="meetingAttendanceByUser"></app-going-button>
   </md-card-actions>
 </md-card>
