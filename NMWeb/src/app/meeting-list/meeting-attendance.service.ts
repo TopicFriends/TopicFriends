@@ -10,7 +10,7 @@ export class MeetingAttendanceByUser {
 @Injectable()
 export class MeetingAttendanceService {
 
-  MEETING_ATTENDANCE = 'MeetingAttendanceByUser';
+  MEETING_ATTENDANCE = 'Meetings/MeetingAttendanceByUser';
 
   private userId;
 
