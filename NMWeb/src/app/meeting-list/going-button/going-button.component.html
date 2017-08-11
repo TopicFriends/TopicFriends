@@ -1,0 +1,20 @@
+<button md-raised-button (click)="updateUserMeetingAttendance(true)"
+        *ngIf="meetingAttendanceByUser === undefined">Loading...
+  <md-progress-spinner style="font-size: 0.5em" mode="indeterminate"
+                       class="mat-progress-spinner"></md-progress-spinner>
+</button>
+
+<button md-raised-button color="primary" (click)="updateUserMeetingAttendance(false)"
+        *ngIf="meetingAttendanceByUser?.going === true">I'm going
+  <i class="ion-checkmark-circled going-button-icon"></i>
+</button>
+
+<button md-raised-button (click)="updateUserMeetingAttendance(true)"
+        *ngIf="meetingAttendanceByUser?.going === undefined">Are you going
+  <i class="ion-help-circled going-button-icon"></i>
+</button>
+
+<button md-raised-button (click)="updateUserMeetingAttendance(true)"
+        *ngIf="meetingAttendanceByUser?.going === false">I'm not going
+  <i class="ion-close-round going-button-icon"></i>
+</button>

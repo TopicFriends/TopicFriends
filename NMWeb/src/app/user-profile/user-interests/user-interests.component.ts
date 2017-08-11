@@ -42,25 +42,25 @@ export class UserInterestsComponent implements OnInit {
   }
 
   updateWantExchange(event: {tagList: TopicInterest[]}) {
-    // // console.log('updateWantExchange', event);
-    // console.log('updateWantExchange', event);
+    // // console.log('updateWantExchange', meeting);
+    // console.log('updateWantExchange', meeting);
     // console.log('updateWantExchange', this.whatUserWants);
     // // this.whatUserWants.byInteractionMode.symmetric.exchange.topics = {};
     // this.symmetricInteractions.exchange = {
-    //   topics: createTopicsDictionary(event.tagList),
+    //   topics: createTopicsDictionary(meeting.tagList),
     // };
 
   }
 
   updateWantHackathon(event: {tagList: TopicInterest[]}) {
     // this.symmetricInteractions.hackathon = {
-    //   topics: createTopicsDictionary(event.tagList),
+    //   topics: createTopicsDictionary(meeting.tagList),
     // };
   }
 
   updateWantPairProgramming(event: {tagList: TopicInterest[]}) {
     // this.symmetricInteractions.pairProgramming = {
-    //   topics: createTopicsDictionary(event.tagList),
+    //   topics: createTopicsDictionary(meeting.tagList),
     // };
   }
 

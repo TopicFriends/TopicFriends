@@ -8,7 +8,7 @@ import {MdButtonModule, MdCheckboxModule, MdInputModule} from '@angular/material
 import {MdMenuModule} from '@angular/material';
 import {SharedModule} from '../shared/shared.module'
 import {UserProfileModule} from '../user-profile/user-profile.module'
-import {EventsModule} from '../event-list/events.module'
+import {MeetingsModule} from '../meeting-list/meetings.module'
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import {EventsModule} from '../event-list/events.module'
     SharedModule,
     FlexLayoutModule,
     UserProfileModule,
-    EventsModule,
+    MeetingsModule,
     MdIconModule,
     MdMenuModule,
     MdButtonModule,

@@ -4,8 +4,8 @@ import {Observable} from 'rxjs/Observable'
 
 
 export interface DbObject<T> extends Observable<T> {
-  set(value: any): any;
-  update(value: Object): any;
+  set(value: T): any;
+  update(value: Object): any; // todo: partial<T>
   remove(): any;
 }
 

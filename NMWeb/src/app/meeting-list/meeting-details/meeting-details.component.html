@@ -1,0 +1,21 @@
+<button class="mat-button" style="font-size: 1em; margin-bottom: 0.5em;"
+        routerLink="/meeting-list">< Back to meetings list
+</button>
+
+<md-card *ngIf="meeting !== undefined">
+  <md-card-title-group>
+    <md-card-title>{{meeting.title}}
+      <app-going-button style="margin-left: 3em" [meeting]="meeting"
+                        [meetingAttendanceByUser]="meetingAttendanceByUser"></app-going-button>
+    </md-card-title>
+  </md-card-title-group>
+  <md-card-content>
+    <p>{{meeting.description}}</p>
+    <p>{{meeting.date}} at {{meeting.place}}</p>
+    <a href="{{meeting.meetupLink}}">Meetup link</a>
+  </md-card-content>
+</md-card>
+
+<button class="mat-button" style="font-size: 1em; margin-top: 0.5em;"
+        routerLink="/meeting-list">< Back to meetings list
+</button>
