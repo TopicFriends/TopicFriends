@@ -1,4 +1,8 @@
 
+function escapeRegexp(s) {
+  return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+
 /* TODO rename to Topic */
 export class TagEntry {
   logo: string;
@@ -26,8 +30,11 @@ export class TagEntry {
     if ( ! filterString ) {
       return true;
     }
+    filterString = escapeRegexp(filterString)
     // return this.name.toLowerCase().indexOf(filterString.toLowerCase()) === 0;
     return this.name.toLowerCase().match(filterString.toLowerCase());
   }
+
+
 
 }
