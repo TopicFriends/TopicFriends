@@ -1,6 +1,7 @@
 <button md-raised-button (click)="updateUserMeetingAttendance(true)"
         *ngIf="meetingAttendanceByUser === undefined">Loading...
-  <i class="ion-load-a spin going-button-icon"></i>
+  <md-progress-spinner style="font-size: 0.5em" mode="indeterminate"
+                       class="mat-progress-spinner"></md-progress-spinner>
 </button>
 
 <button md-raised-button color="primary" (click)="updateUserMeetingAttendance(false)"

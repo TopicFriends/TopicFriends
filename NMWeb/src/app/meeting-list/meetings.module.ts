@@ -11,6 +11,7 @@ import { MeetingDetailsComponent }  from './meeting-details/meeting-details.comp
 import { MdListModule, MdCardModule, MdButtonModule } from '@angular/material';
 import { GoingButtonComponent } from './going-button/going-button.component';
 import {MeetingAttendanceService} from './meeting-attendance.service';
+import {MdProgressSpinnerModule} from '@angular/material';
 
 const meetingRoutes: Routes = [
   { path: 'meeting-list',  component: MeetingListComponent },
@@ -23,7 +24,8 @@ const meetingRoutes: Routes = [
     MdListModule,
     MdCardModule,
     MdButtonModule,
-    RouterModule.forChild(meetingRoutes)
+    RouterModule.forChild(meetingRoutes),
+    MdProgressSpinnerModule
   ],
   declarations: [
     MeetingListComponent,
