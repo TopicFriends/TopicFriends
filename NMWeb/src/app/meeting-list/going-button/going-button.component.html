@@ -10,11 +10,11 @@
 </button>
 
 <button md-raised-button (click)="updateUserMeetingAttendance(true)"
-        *ngIf="meetingAttendanceByUser?.going === undefined">Going
+        *ngIf="meetingAttendanceByUser?.going === undefined">Are you going
   <i class="ion-help-circled going-button-icon"></i>
 </button>
 
 <button md-raised-button (click)="updateUserMeetingAttendance(true)"
-        *ngIf="meetingAttendanceByUser?.going === false">Not going
+        *ngIf="meetingAttendanceByUser?.going === false">I'm not going
   <i class="ion-close-round going-button-icon"></i>
 </button>
