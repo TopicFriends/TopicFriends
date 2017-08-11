@@ -51,6 +51,7 @@ export class MatchResults {
 }
 
 export class SymmetricInteractions {
+  // todo? "I'm actively using" ?
   /** General exchange of knowledge/skills and brainstorming, pair programming */
   exchange?: WantedTopics;
   pairProgramming?: WantedTopics;
