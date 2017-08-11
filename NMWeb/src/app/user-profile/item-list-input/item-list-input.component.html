@@ -8,27 +8,62 @@
 
 <br>
 
+<!--
+    (keydown.enter)="addTag(currentFilteredOptions[0])"
+-->
 <md-input-container style="width:100%">
   <input
     mdInput
     [mdAutocomplete]="auto"
     [formControl]="stateCtrl"
-    (keydown.enter)="addTag(currentFilteredOptions[0])"
-  >
+  > <!-- FIXME!!!: addTag(currentFilteredOptions[0]) : this should check if a specific item was selected by
+      down-arrow instead of always forcing [0] -->
   <md-placeholder>
     <ng-content select="app-item-list-input-title"></ng-content>
   </md-placeholder>
 </md-input-container>
 
+<!-- UX NOTE: autocomplete is not really what we want, because it has too many assumptions that are not good for us:
+- filling text with just-selected option (circumvented by me in an ugly way)
+- hiding the autocomplete when item is selected (losing the position where the user was)
+
+Replace with a filtered list, which could also be smarter
+- not necessarily vertical only (better use of space)
+- always visible-->
+<!--
+https://github.com/angular/material2/pull/1999
+"I wasn't aware that md-selection-list was a planned component. Closing in that case." -->
+<!-- TODO: make generic filtered list component -->
+<!-- Other benefits of getting rid of the <md-autocomplete> completely:
+- it has jittery scroll
+- don't know how to control its positioning
+- it covers the input field etc -->
+<!-- Filter scores ("I wanted to do smart filtering anyway :D, kinda like RateVote"):
+... https://github.com/brianreavis/sifter.js
+- 1: substring match
+- 2: word starts with filterText
+- 3: whole name starts with filterText
+- 4: whole name equals filterText
+- ?: CMM -> CamelCaseMatch -->
+<div *ngIf="false" style="max-height: 200px; overflow: scroll">
+  <md-list  >
+    <md-list-item *ngFor="let option of lastFilteredOptions">
+      <h4><img src="{{option.logo}}" onerror="this.style.display='none';"/> {{ option.name }}</h4>
+    </md-list-item>
+  </md-list>
+</div>
+
+
+<!--[value]="option.name"-->
 <md-autocomplete #auto="mdAutocomplete">
   <md-option
-    *ngFor="let option of filteredOptions | async"
-    [value]="option.name"
+    *ngFor="let option of lastFilteredOptions"
+
     (onSelectionChange)="addTag(option)"
   >
     <!--<ng-template [ngIf]="option.logo" >-->
       <!--<img src="{{chip.logo}}"/>-->
-      <img src="{{option.logo}}" onerror="this.style.display='none';"/> <!-- FIXME option.logo -->
+      <img src="{{option.logo}}" onerror="this.style.display='none';"/>
     <!--</ng-template>-->
     &nbsp;{{ option.name }}
   </md-option>

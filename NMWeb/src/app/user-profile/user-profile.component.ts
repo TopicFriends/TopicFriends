@@ -8,6 +8,7 @@ import {SymmetricInteractions, TopicInterest, UserInterests} from './user-intere
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {UserProfileBasicInfoComponent} from './user-profile-basic-info/user-profile-basic-info.component'
 import {UserInterestsComponent} from './user-interests/user-interests.component'
+import {SnackBarComponent} from '../shared/snackbar/snackbar.component'
 
 @Component({
   selector: 'app-user-profile',
@@ -24,6 +25,7 @@ export class UserProfileComponent implements OnInit {
   constructor(
     protected userProfileService: UserProfileService,
     public authService: AuthService,
+    public snackBarComponent: SnackBarComponent,
   ) {
   }
 
@@ -31,6 +33,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   save() {
+    // window.alert('save')
     // FIXME this.userProfile.displayName = this.displayName.value;
 
     const otherProfiles = this.userOtherProfilesComponent.getOtherProfiles()
@@ -46,6 +49,35 @@ export class UserProfileComponent implements OnInit {
       userInterests,
       otherProfiles,
     );
+    this.snackBarComponent.showSnackBar('Profile sent')
+  }
+
+  onKeyUpKarol($event: KeyboardEvent): void {
+    let charCode = String.fromCharCode($event.which).toLowerCase();
+    window.alert('metaKey: ' + $event.metaKey + ', ctrl: ' + $event.ctrlKey);
+    // if ($event.ctrlKey && charCode === 'e') {
+    //   // Perform your Save action here
+    //   this.save();
+    // }
+    if (($event.ctrlKey || $event.metaKey) && charCode === 's') {
+      // Perform your Save action here
+      this.save();
+    }
+  }
+
+  onKeyUp($event): void {
+    $event.preventDefault();
+    let charCode = String.fromCharCode($event.which).toLowerCase();
+    if (($event.ctrlKey || $event.metaKey) && charCode === 's') {
+      window.alert('cmd/ctrl s')
+      // Perform your Save action here
+      this.save();
+    }
+  }
+
+  keyDownSave(event) {
+    event.preventDefault()
+    this.save()
   }
 
 }

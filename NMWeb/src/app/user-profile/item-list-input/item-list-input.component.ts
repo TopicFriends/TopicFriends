@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output,  EventEmitter } from '@angular/core';
 import {ControlValueAccessor, FormControl, FormGroup} from '@angular/forms';
 import { TagEntry } from "app/user-profile/tag-entry";
 import { Observable } from "rxjs/Observable";
@@ -9,6 +9,7 @@ import {TopicsService} from '../../shared/topics.service'
 import {TagListModel} from '../../shared/TagListModel'
 import {TagInclusions} from '../../shared/TagInclusions'
 import {getDictionaryValuesAsArray} from '../../shared/utils'
+import {Subject} from 'rxjs/Subject'
 
 
 @Component({
@@ -56,6 +57,7 @@ export class ItemListInputComponent implements OnInit
     const tagList = getDictionaryValuesAsArray(val);
 
     this.tagListModel.setChosenTags(tagList)
+    this.reFilter()
   }
 
   @Input() public formGroup1: FormGroup;
@@ -70,8 +72,13 @@ export class ItemListInputComponent implements OnInit
   // = new EventEmitter<{tagList: TopicInterest[]}>();
 
   stateCtrl: FormControl;
-  filteredOptions: Observable<TagEntry[]>; // TODO: change from any
+  // filteredOptions: Observable<TagEntry[]>;
+  filteredOptions = new Subject<TagEntry[]>()
+  lastFilteredOptions: TagEntry[]
   currentFilteredOptions: TagEntry[] = [];
+  lastFilterText: string;
+
+  lastAddedOption: TagEntry
 
   constructor(
     public topicsService: TopicsService
@@ -79,9 +86,28 @@ export class ItemListInputComponent implements OnInit
     this.inputTagList = this.topicsService.topics;
 
     this.stateCtrl = new FormControl();
-    this.filteredOptions = this.stateCtrl.valueChanges
-      .startWith(null)
-      .map(name => this.filter(name));
+    this.stateCtrl.valueChanges
+      // .startWith(null /* ensures initial filtering (all) - note that apparently md autocomplete
+      //   does not show the auto-complete list initially anyway */ )
+      .subscribe(textFilter => {
+        if ( textFilter === this.lastFilterText ) {
+          return; // prevent stack overflow
+        }
+        // if ( this.lastAddedOption && this.lastAddedOption.name === textFilter) {
+        // autocomplete wants to set the text of the chosen option. We wanna prevent it
+        if ( !textFilter ) {
+          // autocomplete destroys value, we need to restore it
+          this.stateCtrl.setValue(this.lastFilterText);
+        }
+        this.lastFilterText = textFilter
+        this.reFilter()
+    });
+    this.reFilter() // force initial list
+    console.log('this.lastFilteredOptions.length', this.lastFilteredOptions.length)
+  }
+
+  private createFilteredOptions() {
+    return this.filter(this.lastFilterText)
   }
 
   ngOnInit() {
@@ -89,6 +115,9 @@ export class ItemListInputComponent implements OnInit
     this.filteredOptions.subscribe((filteredOptions) => {
       this.currentFilteredOptions = filteredOptions;
     });
+    this.outputTagList.subscribe(list => {
+      this.reFilter()
+    })
   }
 
   filter(filterString: string) {
@@ -99,8 +128,18 @@ export class ItemListInputComponent implements OnInit
   }
 
   addTag(tagEntry: TagEntry) {
+    this.lastAddedOption = tagEntry
     this.tagListModel.addTag(tagEntry);
+    this.reFilter()
+    if (this.lastFilteredOptions.length === 0) {
+      this.stateCtrl.setValue('');
+    }
     // I decided to not clear the input automatically
+  }
+
+  private reFilter() {
+    this.lastFilteredOptions = this.createFilteredOptions()
+    this.filteredOptions.next(this.lastFilteredOptions)
   }
 
 }
