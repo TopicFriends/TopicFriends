@@ -32,7 +32,13 @@ Please wait to log in...
 <script src="/__/firebase/init.js"></script>
 
 <script>
-  window.alert('hello script in popup.html')
+
+  function debugAlert(text) {
+//          window.alert('(popup.html)' + text)
+    console.log('debugAlert (popup.html): ', text);
+  }
+
+  debugAlert('hello script in popup.html')
 
   /**
    * Returns the value of the given URL query parameter.
@@ -53,7 +59,7 @@ Please wait to log in...
    * This callback is called by the JSONP callback of the 'token' Firebase Function with the Firebase auth token.
    */
   function tokenReceived(data) {
-    window.alert('tokenReceived in popup.html: ' + JSON.stringify(data))
+    debugAlert('tokenReceived in popup.html: ' + JSON.stringify(data))
     if (data.token) {
       firebase.auth().signInWithCustomToken(data.token).then(function() {
         window.close();
@@ -67,7 +73,7 @@ Please wait to log in...
   var code = getURLParameter('code');
   var state = getURLParameter('state');
   var error = getURLParameter('error');
-  window.alert('popup.html: code, state, error: \n\n' + code + '\n\n, ' + state + ',\n\n' + error);
+  debugAlert('popup.html: code, state, error: \n\n' + code + '\n\n, ' + state + ',\n\n' + error);
   console.log('popup.html: code, state, error: \n\n' + code + '\n\n, ' + state + ',\n\n' + error)
   if (error) {
     document.body.innerText = 'Error back from the LinkedIn auth page: ' + error;
@@ -75,7 +81,7 @@ Please wait to log in...
     // Start the auth flow.
     window.location.href  = 'https://us-central1-' + getFirebaseProjectId() + '.cloudfunctions.net/redirect';
   } else {
-    window.alert('hello in popup.html script body')
+    debugAlert('hello in popup.html script body')
     // Use JSONP to load the 'token' Firebase Function to exchange the auth code against a Firebase custom token.
     const script = document.createElement('script');
     script.type = 'text/javascript';

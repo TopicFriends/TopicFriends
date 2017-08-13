@@ -27,7 +27,15 @@
     <script src="/__/firebase/init.js"></script>
 
     <script>
-      window.alert('hello script in src/index.html, getFirebaseProjectId(): ' + getFirebaseProjectId());
+
+      function debugAlert(text) {
+//          window.alert('(src/index.html)' + text)
+        console.log('debugAlert (src/index.html): ', text);
+
+      }
+
+      debugAlert('hello script in src/index.html, getFirebaseProjectId(): ' + getFirebaseProjectId());
+
 
       /**
        * Returns the value of the given URL query parameter.
@@ -48,7 +56,7 @@
        * This callback is called by the JSONP callback of the 'token' Firebase Function with the Firebase auth token.
        */
       function tokenReceived(data) {
-        window.alert('tokenReceived(data) in src/index.html: ' + JSON.stringify(data))
+        debugAlert('tokenReceived(data) in src/index.html: ' + JSON.stringify(data))
         if (data.token) {
           firebase.auth().signInWithCustomToken(data.token).then(function() {
             window.close();
