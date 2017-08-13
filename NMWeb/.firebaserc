@@ -1,5 +1,6 @@
 {
   "projects": {
-    "PeopleMatcher": "peoplematcher-a18df"
+    "PeopleMatcher": "peoplematcher-a18df",
+    "pplmatcher": "peoplematcher-a18df"
   }
 }

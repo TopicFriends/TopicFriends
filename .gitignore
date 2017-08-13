@@ -59,4 +59,6 @@ typings/
 
 .DS_Store
 
+# ==== Firebase / Cloud Functions / GCM:
+service-account*.json
 

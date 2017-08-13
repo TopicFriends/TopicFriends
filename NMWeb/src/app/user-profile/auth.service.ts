@@ -24,6 +24,10 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
+  // loginViaLinkedIn() {
+  //   return this.afAuth.auth.signInWithCustomToken() // JSONP token
+  // }
+
   logout() {
     return this.afAuth.auth.signOut();
   }

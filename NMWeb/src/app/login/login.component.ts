@@ -12,4 +12,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  logInViaLinkedin() {
+    window.open('assets/login/popup.html', 'name', 'height=585,width=400');
+  }
+
 }
