@@ -5,7 +5,7 @@
     <button *ngIf="(authService.user | async)?.displayName" md-button [mdMenuTriggerFor]="menu">{{ (authService.user | async)?.displayName }}</button>
     <md-menu #menu="mdMenu">
       <button md-menu-item routerLink="/profile" routerLinkActive="active">Profile</button>
-      <button md-menu-item (click)="authService.logout()">Logout</button>
+      <button md-menu-item (click)="authService.logout()">Log out</button>
     </md-menu>
 </md-toolbar>
 

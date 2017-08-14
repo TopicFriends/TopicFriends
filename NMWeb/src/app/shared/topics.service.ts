@@ -104,7 +104,8 @@ export class TopicsService {
     tagNoIcon('Marketing'), tagNoIcon('Functional Programming'), tag('EC2', 'aws-ec2'), tagNoIcon('GCP'),
     'CocoaPods',
     tagLogoTipo('ArangoDB'),
-    'Auth0'
+    'Auth0',
+    // Mark: OData, PowerBI, SignalR
 
     // FIWARE, Smart City, Green Tech, IoT, IoE
     // Neural Networks, Machine Learning, 'Deep Learning', 'Deep Mind', '
