@@ -97,7 +97,7 @@ export class TopicsService {
     'Sinatra',
     tagNoIcon('ngrx' /* I've also seen different capitalizations: NgRx, ngRx etc */),
     'Flask', tagNoIcon('Pylons'), tagNoIcon('Zope'),
-    tagNoIcon('UX'), tagNoIcon('UI'),
+    tagNoIcon('UX'), tagNoIcon('UI'), tagNoIcon('Usability'), tagNoIcon('Accessibility'),
     'GraphQL', 'Grunt', tag('Browserify', 'browserify-icon'),
     'Hibernate', tagNoIcon('NHibernate'), 'MariaDB', 'Material-UI',
     tagNoIcon('FinTech'), tagNoIcon('PropTech'), tagNoIcon('Startups'), tagNoIcon('SEO'), tagNoIcon('JBoss'),
@@ -105,13 +105,18 @@ export class TopicsService {
     'CocoaPods',
     tagLogoTipo('ArangoDB'),
     'Auth0',
+    'Mapbox',
+    tag('GitHub', 'github-icon')
     // Mark: OData, PowerBI, SignalR
-
+    // Frontend
+    // Mapbox Studio
+    // TODO: check Malaga meetup topics
     // FIWARE, Smart City, Green Tech, IoT, IoE
     // Neural Networks, Machine Learning, 'Deep Learning', 'Deep Mind', '
     // web3, Truffle Framework, Distributed Ledger Technology, Attention Economy, Ethlance, Steem,
     // remix, mist, DApp
     // Smart contracts, Solidity, Private coin,
+
 
 
   ]);
