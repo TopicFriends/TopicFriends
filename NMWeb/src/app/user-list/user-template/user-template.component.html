@@ -11,7 +11,8 @@
         </md-card-subtitle>
     </md-card-header>
 
-    <md-content>
+    <!--<md-card-content>-->
+    <div>
         <div *ngIf="_whatUserWants.length > 0" style="padding-bottom: 0.5em;">
             {{_whatUserWants[0].desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}
             <span style="font-weight: bold; color: #666666">{{_whatUserWants[0].topics}}</span>
@@ -36,11 +37,14 @@
       <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.hackathon">
         Would like to do hackathon on:
       </app-user-interests-mode-view>
-    </md-content>
-    <md-actions>
+    <!--</md-card-content>-->
+    </div>
+    <md-card-actions>
+    <!--<div>-->
         <button md-raised-button>MEET</button>
         <button md-raised-button>SHARE</button>
-    </md-actions>
+    <!--</div>-->
+    </md-card-actions>
 </md-card>
 <!--
 <md-grid-list
