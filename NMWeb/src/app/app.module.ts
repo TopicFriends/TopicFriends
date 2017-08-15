@@ -89,6 +89,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     MdButtonModule,
     MdCardModule,
+    // FlexLayoutModule,
   ],
   providers: [
     AuthService,

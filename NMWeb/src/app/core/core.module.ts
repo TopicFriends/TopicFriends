@@ -30,6 +30,7 @@ import {MeetingsModule} from '../meeting-list/meetings.module'
   exports: [
     NavbarComponent,
     HeaderComponent,
+    FlexLayoutModule,
   ],
 })
 export class CoreModule {
