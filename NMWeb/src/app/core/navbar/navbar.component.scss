@@ -2,12 +2,13 @@
     position: fixed;
     left: 0px;
     top:0px;
-    background-color: #f5f5f5;
+    background-color: rgba(255, 255, 255, 0.5);
     width: 70px;
     height: 100vh;
     padding-top: 64px;
     z-index: 9;
     box-shadow: 3px 0 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    margin-top: 64px
 
 
 }
@@ -17,7 +18,7 @@
     left: 0px;
     top:inherit;
     padding-top: inherit;
-    background-color: #f5f5f5;
+    background-color: rgba(255, 255, 255, 0.5);
     bottom: 0px;
     width: 100vw;
     height: 50px;
