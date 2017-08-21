@@ -52,7 +52,10 @@ export class DomainDbService {
         }
       )
     });
+  }
 
+  userDataWithDetailsById(id: string): DbObject<UserDataWithDetails> {
+    return this.db.objectById(this.USER_DATA, id);
   }
 
   userProfileById(id: string): DbObject<UserProfile> {

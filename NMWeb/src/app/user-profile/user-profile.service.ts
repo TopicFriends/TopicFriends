@@ -180,4 +180,10 @@ export class UserProfileService {
     // });
   }
 
+  // v TODO: user profile service:
+  // v TODO: zrobic funkcje fetchUserDataWithDetailsById()
+  // TODO: returns UserDataWithDetails
+  fetchUserDataWithDetailsById(id: string): DbObject<UserDataWithDetails> {
+    return this.db.userDataWithDetailsById(id);
+  }
 }

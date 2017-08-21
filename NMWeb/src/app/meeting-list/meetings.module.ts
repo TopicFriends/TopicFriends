@@ -12,6 +12,10 @@ import { MdListModule, MdCardModule, MdButtonModule } from '@angular/material';
 import { GoingButtonComponent } from './going-button/going-button.component';
 import {MeetingAttendanceService} from './meeting-attendance.service';
 import {MdProgressSpinnerModule} from '@angular/material';
+import { MeetingAttendanceUserListComponent } from './meeting-attendance-user-list/meeting-attendance-user-list.component';
+import {UserTemplateComponent} from '../user-list/user-template/user-template.component';
+import {AppModule} from '../app.module';
+import {SharedModule} from '../shared/shared.module';
 
 const meetingRoutes: Routes = [
   { path: 'meeting-list',  component: MeetingListComponent },
@@ -25,13 +29,15 @@ const meetingRoutes: Routes = [
     MdCardModule,
     MdButtonModule,
     RouterModule.forChild(meetingRoutes),
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    SharedModule,
   ],
   declarations: [
     MeetingListComponent,
     MeetingListItemComponent,
     MeetingDetailsComponent,
-    GoingButtonComponent
+    GoingButtonComponent,
+    MeetingAttendanceUserListComponent
   ],
   exports: [
     RouterModule

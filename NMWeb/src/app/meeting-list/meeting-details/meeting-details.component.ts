@@ -15,10 +15,12 @@ export class MeetingDetailsComponent implements OnInit {
   meetingAttendanceByUser: MeetingAttendanceByUser;
   meeting: Meeting;
 
-  constructor(private meetingAttendanceService: MeetingAttendanceService,
+  constructor(
               private db: DbService,
               private route: ActivatedRoute,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private meetingAttendanceService: MeetingAttendanceService,
+  ) {
   }
 
   ngOnInit() {
@@ -28,17 +30,23 @@ export class MeetingDetailsComponent implements OnInit {
       meetingId = params['id'];
     });
 
-    this.db.objectByPath('Meetings/Meeting/' + meetingId).subscribe((meeting: Meeting) => {
-      this.meeting = meeting;
-    });
+    this.retrieveMeetingDetails(meetingId);
+    this.retrieveCurrentUserMeetingAttendance(meetingId);
+  }
 
+  private retrieveCurrentUserMeetingAttendance(meetingId: string) {
     this.authService.user.subscribe(user => {
       this.meetingAttendanceService.retrieveUserAttendanceStatus(meetingId)
         .subscribe((status: MeetingAttendanceByUser) => {
           this.meetingAttendanceByUser = status;
           console.log('MeetingListItemComponent, status.goingStatus: ' + status.going)
         });
-    })
-    console.log('meeting', this.meeting)
+    });
+  }
+
+  private retrieveMeetingDetails(meetingId: string) {
+    this.db.objectByPath('Meetings/Meeting/' + meetingId).subscribe((meeting: Meeting) => {
+      this.meeting = meeting;
+    });
   }
 }

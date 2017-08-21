@@ -16,7 +16,7 @@ import {AuthService} from './user-profile/auth.service';
 import {UserListService} from './user-list/user-list.service';
 import {UserMatcherService} from './user-matcher.service';
 import { HeaderComponent } from './core/header/header.component';
-import { UserTemplateComponent } from './user-list/user-template/user-template.component';
+// import { UserTemplateComponent } from './user-list/user-template/user-template.component';
 import {MeetingsModule} from './meeting-list/meetings.module';
 
 import {DbService} from './db.service'
@@ -28,7 +28,7 @@ import {CoreModule} from 'app/core/core.module';
 import {SharedModule} from './shared/shared.module';
 import { NgforTrackbyComponent } from './experiments/ngfor-trackby/ngfor-trackby.component';
 import { NgforParentComponent } from './experiments/ngfor-parent/ngfor-parent.component';
-import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
+// import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
 import { TopicsAllComponent } from './topics-all/topics-all.component'
 
 // import {
@@ -69,10 +69,10 @@ const appRoutes: Routes = [
     AppComponent,
     UserListComponent,
     LoginComponent,
-    UserTemplateComponent,
+    // UserTemplateComponent,
     NgforTrackbyComponent,
     NgforParentComponent,
-    UserInterestsModeViewComponent,
+    // UserInterestsModeViewComponent,
     TopicsAllComponent,
   ],
   imports: [

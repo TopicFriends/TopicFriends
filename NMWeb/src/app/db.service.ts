@@ -18,8 +18,8 @@ export interface DbList<T> extends Observable<T[]> {
   // remove(item?: FirebaseOperation): firebase.Promise<void>;
   // _checkOperationCases(item: FirebaseOperation, cases: FirebaseOperationCases): firebase.Promise<void>;
 
-  push(val: T): any;
-  update(id: any, value: T): any;
+  push?(val: T): any;
+  update?(id: any, value: T): any;
 }
 
 
