@@ -51,7 +51,8 @@ export class UserProfile {
   photoUrl?: string;
   company?: string;
   role?: string;
-  lastSaved?: Date;
+  whenLastSaved?: Date;
+  whenFirstSaved?: string;
 }
 
 export class UserData {
@@ -104,7 +105,7 @@ export class UserProfileService {
     userProfile: UserProfile, interests: UserInterests,
     otherProfiles: UserOtherProfiles,
   ) {
-    userProfile.lastSaved = new Date();
+    userProfile.whenLastSaved = new Date();
     this.myUserData.profile.update(userProfile);
 
     /* NOTE: this will be hopefully wrapped in some OOP objects in TS,
