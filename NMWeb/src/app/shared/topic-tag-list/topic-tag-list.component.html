@@ -9,6 +9,10 @@
           <img style="width: 20px; height: 20px; vertical-align:middle"
                src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>&nbsp;
         </ng-template>
+        <ng-template [ngIf]="! tag.tagEntry.logo" > <!-- hack for vertical alignment (middle) not working if no img -->
+          <img style="width: 0px; height: 20px; vertical-align:middle"
+               src="assets/images/logos/git.svg" onerror="this.style.display='none';"/>&nbsp;
+        </ng-template>
         <!--<i *ngIf="editable"-->
            <!--class="ion-close-circled"-->
            <!--style="cursor:pointer; color: rgba(0, 0, 0, 0.54); font-size: 20px"-->
@@ -22,6 +26,11 @@
              class="ion-close-circled"
              style="vertical-align: middle; cursor:pointer; color: rgba(0, 0, 0, 0.30); font-size: 20px"
              (click)="tagListModel.deleteTag(tag)"></i>
+          <!--<i *ngIf="! editable"-->
+           <!--class="ion-close-circled"-->
+           <!--style="vertical-align: middle; display: block; width: 0px;"-->
+           <!--&gt;</i>-->
+
         <!--</div>-->
         <!--<div style="vertical-align: middle; display: table-cell; height: 100px; width: 300px">{{chip.tagEntry.name}}</div>-->
         <!--{{chip.tagEntry.name}}-->
