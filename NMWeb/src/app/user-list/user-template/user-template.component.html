@@ -1,7 +1,10 @@
 <md-card class="user-item" style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
     <md-card-header>
-        <div md-card-avatar class="card-avatar"></div>
-        <md-card-title>{{_userPublicProfile?.profile?.displayName || _userPublicProfile?.profile?.name}}</md-card-title>
+        <!--<div md-card-avatar class="card-avatar"></div>-->
+        <img md-card-avatar style="vertical-align:middle" src="{{_userPublicProfile?.profile?.photoUrl}}"/>
+        <md-card-title style="vertical-align:middle">
+          {{_userPublicProfile?.profile?.displayName || _userPublicProfile?.profile?.name}}
+        </md-card-title>
         <md-card-subtitle>
             {{_userPublicProfile?.profile?.role}}
             <span *ngIf="_userPublicProfile?.profile?.company">

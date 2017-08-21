@@ -17,6 +17,7 @@ export class UserProfileBasicInfoComponent implements OnInit {
   public formGroup: FormGroup;
 
   public displayName = new FormControl()
+  public photoUrl: string
 
 
   constructor(
@@ -34,6 +35,7 @@ export class UserProfileBasicInfoComponent implements OnInit {
     this.authService.user.subscribe((user) => {
       if ( user ) {
         this.displayName.setValue(user.displayName);
+        this.photoUrl = user.photoURL;
       }
     });
 
@@ -53,5 +55,14 @@ export class UserProfileBasicInfoComponent implements OnInit {
     });
 
   }
+
+  public getUserBasicInfo() {
+    // TODO: first created date
+    return {
+      displayName: this.displayName.value,
+      photoUrl: this.photoUrl
+    }
+  }
+
 
 }

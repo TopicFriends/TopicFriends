@@ -38,9 +38,7 @@ export class UserProfileComponent implements OnInit {
 
     const otherProfiles = this.userOtherProfilesComponent.getOtherProfiles()
     const userInterests = this.userInterests.getUserInterests()
-    const userProfile: UserProfile = {
-      displayName: this.basicInfo.displayName.value
-    } // TODO: first created date
+    const userProfile: UserProfile = this.basicInfo.getUserBasicInfo()
     // TODO: photo
     console.log('save()', userInterests)
     // this.userProfileObservable =
