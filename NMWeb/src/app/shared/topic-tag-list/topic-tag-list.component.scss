@@ -16,6 +16,12 @@
 .mat-chip {
   animation: ChipAnimation 0.5s ease-in-out;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+
+  height: 18px !important;
+  vertical-align: middle !important;
+  margin-bottom: 8px !important;
+  margin-right: 6px !important;
+  margin-left: 0 !important;
   // margin is overwritten by:
   // >.mat-chip:not(.mat-basic-chip)+.mat-chip:not(.mat-basic-chip) {
   // > margin: 0 0 0 3px;
