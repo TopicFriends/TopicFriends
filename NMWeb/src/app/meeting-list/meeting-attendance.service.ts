@@ -1,15 +1,23 @@
 import {Injectable} from '@angular/core';
 import {AuthService} from '../user-profile/auth.service';
 import {DbList, DbObject, DbService} from '../db.service';
-import {UserDataWithDetails, UserOtherProfiles, UserProfileService} from '../user-profile/user-profile.service';
-import {UserInterests} from '../user-profile/user-interests';
+import {
+  UserData,
+  UserProfileService,
+} from '../user-profile/user-profile.service';
 import {Observable} from 'rxjs/Observable';
-import {resolveRendererType2} from '@angular/core/src/view/util';
 
 export class MeetingAttendanceByUser {
   $key?: string;
   going: boolean;
-  user?: UserDataWithDetails
+  user?: UserData
+}
+
+export class MeetingAttendanceByUserWithUserData {
+  public constructor(
+    public meetingAttendanceByUser: MeetingAttendanceByUser,
+    public userData: UserData
+  ) {}
 }
 
 @Injectable()
@@ -49,8 +57,8 @@ export class MeetingAttendanceService {
     const path = this.buildAllUsersMeetingAttendancePath(meetingId);
     let dbList: DbList<MeetingAttendanceByUser> = this.db.list(path);
     let mock: DbList<MeetingAttendanceByUser> = Observable.of([{$key: 'qwertyuio', going: true}, {$key: 'qwertyui', going: false}]);
-    // return dbList;
-    return mock;
+    return dbList;
+    // return mock;
   }
 
   retrieveUserAttendanceStatus(meetingId: string): DbObject<MeetingAttendanceByUser> {
@@ -59,50 +67,30 @@ export class MeetingAttendanceService {
     return dbObject;
   }
 
-  retrieveUsersAttendingMeeting(meetingId: string): DbList<MeetingAttendanceByUser>  {    //TODO: Move to existing user attendance service
+  //TODO: Move to existing user attendance service
+  fetchMeetingAttendanceByUserWithUserData(meetingId: string): Observable<MeetingAttendanceByUserWithUserData[]>  {
     let listOfMeetingAttendanceByUser: DbList<MeetingAttendanceByUser> =
       this.retrieveAllAttendeesStatuses(meetingId);
 
     console.log('Before: listOfMeetingAttendanceByUser.map')
-    return listOfMeetingAttendanceByUser.map((attendces: MeetingAttendanceByUser[]) => {
-      console.log("listOfMeetingAttendanceByUser.map", attendces)
-      return attendces.map(attendeeStatus => { //TODO: attendees może być null or undefined
-        let userInterests: DbObject<UserInterests> = null;
-        let otherProfiles: DbObject<UserOtherProfiles> = null;
-        let userData: UserDataWithDetails = new UserDataWithDetails();
-        userData.interests = userInterests;
-        userData.otherProfiles = otherProfiles;
-
-        console.log("attendees.map", attendeeStatus)
-        this.userProfileService.fetchUserDataWithDetailsById(attendeeStatus.$key)
-          .subscribe(data => {
-              userData.profile = data
-              console.log(" userData.profile = " + userData.profile)
-              console.log(" data.profile = " + data.profile)
-            },
-          );
-        return userData;
+    // consider switchMap
+    return listOfMeetingAttendanceByUser.map((meetingAttendanceByUserArray: MeetingAttendanceByUser[]) => {
+      console.log("listOfMeetingAttendanceByUser.map", meetingAttendanceByUserArray)
+      //TODO: attendees może być null or undefined
+      return meetingAttendanceByUserArray.filter(
+        (meetingAttendanceByUser: MeetingAttendanceByUser) => {
+          return meetingAttendanceByUser.going === true
+        }
+      ).map((meetingAttendanceByUser: MeetingAttendanceByUser) => {
+        let userId = meetingAttendanceByUser.$key;
+        let userData = this.userProfileService.userDataById(userId);
+        return new MeetingAttendanceByUserWithUserData(
+          meetingAttendanceByUser,
+          userData
+        )
       })
     });
   }
-
-  /*  this.userHasAgendas = this.userHasAgendaList.map(userHasAgendas => {
-    userHasAgendas.map(userHasAgenda => {
-     userData.profile = this.userProfileService.fetchUserDataWithDetailsById(attendees.$key);
-      return userHasAgenda;
-    })
-    return userHasAgendas;
-  });
-*/
-
-  // v przed utworzeniem userdatawithdetails utworzyc dwie zmienne lokalne
-  // v jedna dbobject<UserIntertests>, druga dbobject<otherprofiles>
-  // v i te dwa wrzucic do userdatawithdetails
-
-  // v utworzyc nowy obiekt userdatawithdetails przed
-  // v subscribe i dodac user interests i otherprofiles,
-  // a po subscribe zapisac sobie tylko .userprofile
-  //
 
   private buildUserMeetingAttendancePath(meetingId: string): any {
     return this.buildAllUsersMeetingAttendancePath(meetingId) + '/' + this.userId;

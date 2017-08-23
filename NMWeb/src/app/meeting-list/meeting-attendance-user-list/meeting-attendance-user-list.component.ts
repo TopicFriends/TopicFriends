@@ -1,8 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserListService} from '../../user-list/user-list.service';
 import {ActivatedRoute} from '@angular/router';
-import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meeting-attendance.service';
+import {
+  MeetingAttendanceByUser, MeetingAttendanceByUserWithUserData,
+  MeetingAttendanceService,
+} from '../meeting-attendance.service';
 import {AuthService} from '../../user-profile/auth.service';
+import {DbListReadOnly} from '../../db.service';
 
 @Component({
   selector: 'app-meeting-attendance-user-list',
@@ -11,26 +15,22 @@ import {AuthService} from '../../user-profile/auth.service';
 })
 export class MeetingAttendanceUserListComponent implements OnInit {
 
-  userList;
+  userList: DbListReadOnly<MeetingAttendanceByUserWithUserData>;
 
-  constructor(private userListService: UserListService,
-              private meetingAttendanceService: MeetingAttendanceService,
-              private route: ActivatedRoute,) {
+  @Input() meetingId: string;
+
+
+  constructor(private meetingAttendanceService: MeetingAttendanceService,) {
   }
 
   ngOnInit() {
 
-    //TODO:
-    let meetingId: string;
+    this.userList =
+      this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meetingId);
 
-    this.route.params.subscribe(params => {
-      meetingId = params['id'];
-    });
-
-    this.userList = this.userListService.listUserDataWithDetails();   //FIXME: all users attending meeting
-
-    this.meetingAttendanceService.retrieveUsersAttendingMeeting(meetingId).subscribe(list => {
-      console.log('retrieveUsersAttendingMeeting subscribed: ' + list);
+    this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meetingId)
+      .subscribe(list => {
+      console.log('fetchMeetingAttendanceByUserWithUserData subscribed: ', list);
     });
   }
 

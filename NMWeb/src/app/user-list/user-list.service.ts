@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase} from 'angularfire2/database';
-import {UserDataFetched, UserProfile} from 'app/user-profile/user-profile.service';
-import {Observable} from 'rxjs/Observable'
+import {UserData, UserProfile} from 'app/user-profile/user-profile.service';
 import {DomainDbService} from '../domain-db.service'
+import {DbListReadOnly} from '../db.service';
 
 @Injectable()
 export class UserListService {
@@ -52,8 +51,9 @@ export class UserListService {
   //
   // }
 
-  public listUserDataWithDetails(): Observable<UserDataFetched[]> {
-    return this.domainDbService.listUserDataWithDetails();
+  public listUserData(): DbListReadOnly<UserData> {
+    let listUserDataWithDetails: DbListReadOnly<UserData> = this.domainDbService.listUserDataWithDetails();
+    return listUserDataWithDetails;
   }
 
 }

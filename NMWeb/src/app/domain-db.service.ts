@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {DbObject, DbList, DbService} from './db.service'
-import {UserOtherProfiles, UserProfile, UserData, UserDataFetched, UserDataWithDetails} from './user-profile/user-profile.service'
+import {UserOtherProfiles, UserProfile, UserData} from './user-profile/user-profile.service'
 import {Observable} from 'rxjs/Observable'
 
 import {UserInterests} from './user-profile/user-interests'
@@ -35,27 +35,20 @@ export class DomainDbService {
     return this.db.list(this.PATHS.USER_INTERESTS);
   }
 
-  listUserData(): Observable<UserDataFetched[]> {
-    return this.db.list(this.PATHS.USER_INTERESTS);
-  }
 
-  listUserDataWithDetails(): Observable<UserDataWithDetails[]> {
+  listUserDataWithDetails(): Observable<UserData[]> {
     return this.listUserProfile().map(list => {
       return list.map(profile => {
           const id = (profile as any).$key;
-          const mapped: UserDataWithDetails = {
-            profile: profile,
-            otherProfiles: this.otherProfilesById(id),
-            interests: this.userInterestsById(id),
-          }
+          const mapped: UserData = new UserData(
+            Observable.of(profile),
+            this.otherProfilesById(id),
+            this.userInterestsById(id),
+          )
           return mapped;
         }
       )
     });
-  }
-
-  userDataWithDetailsById(id: string): DbObject<UserDataWithDetails> {
-    return this.db.objectById(this.USER_DATA, id);
   }
 
   userProfileById(id: string): DbObject<UserProfile> {

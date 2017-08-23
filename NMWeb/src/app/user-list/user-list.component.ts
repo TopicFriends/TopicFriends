@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfile } from 'app/user-profile/user-profile.service';
+import { UserData } from 'app/user-profile/user-profile.service';
 import { UserListService } from "app/user-list/user-list.service";
+import { DbListReadOnly } from '../db.service';
 
 @Component({
   selector: 'app-user-list',
@@ -9,7 +10,7 @@ import { UserListService } from "app/user-list/user-list.service";
 })
 export class UserListComponent implements OnInit {
 
-  userList; // = [];// = this.userListService.getUserList();
+  userList: DbListReadOnly<UserData>; // = [];// = this.userListService.getUserList();
 
   constructor(
     private userListService: UserListService
@@ -18,7 +19,7 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userList = this.userListService.listUserDataWithDetails();
+    this.userList = this.userListService.listUserData();
   }
 
   trackByKey(idx, val) {

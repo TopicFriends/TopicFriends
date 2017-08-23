@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
 import {AuthService} from './auth.service';
-import {initFromObject} from '../util/util';
-import {DbObject, DbService} from '../db.service'
+import {DbObject} from '../db.service'
 import {DomainDbService} from '../domain-db.service'
-import {TagEntry} from './tag-entry'
 import {TopicInterest, UserInterests} from './user-interests'
-
 
 export function createTopicsDictionary(topics: TopicInterest[]) {
   let ret = {};
@@ -18,7 +14,6 @@ export function createTopicsDictionary(topics: TopicInterest[]) {
   }
   return ret;
 }
-
 
 export class OtherProfile {
   userName?: string;
@@ -45,32 +40,35 @@ export class UserOtherProfiles {
 /* Rename to UserBasicInfo or UserBasicProfile
 * and rename UserData to UserProfile */
 export class UserProfile {
-  displayName?: string;
+  displayName: string;
   /** old name, for compatibility */
   name?: string;
   photoUrl?: string;
   company?: string;
   role?: string;
   lastSaved?: Date;
+  $key?: string;
 }
 
 export class UserData {
-  profile?: DbObject<UserProfile>;
-  interests?: DbObject<UserInterests>;
-  otherProfiles?: DbObject<UserOtherProfiles>;
+  public constructor(
+    public profile: DbObject<UserProfile>,
+    public interests: DbObject<UserInterests>,
+    public otherProfiles: DbObject<UserOtherProfiles>,
+  ) {}
 }
 
-export class UserDataWithDetails {
-  profile: UserProfile;
-  interests: DbObject<UserInterests>;
-  otherProfiles: DbObject<UserOtherProfiles>;
-}
+// export class UserDataWithDetails {
+//   profile: UserProfile; // user UserData class and replace this by ScalarObservaable<UserProfile> to unify
+//   interests: DbObject<UserInterests>;
+//   otherProfiles: DbObject<UserOtherProfiles>;
+// }
 
-export class UserDataFetched {
-  profile?: UserProfile;
-  interests?: UserInterests;
-  otherProfiles?: UserOtherProfiles;
-}
+// export class UserDataFetched {
+//   profile: UserProfile;
+//   interests: UserInterests;
+//   otherProfiles: UserOtherProfiles;
+// }
 
 
 @Injectable()
@@ -101,11 +99,12 @@ export class UserProfileService {
   }
 
   public saveUserProfile(
-    userProfile: UserProfile, interests: UserInterests,
+    userProfile: UserProfile,
+    interests: UserInterests,
     otherProfiles: UserOtherProfiles,
   ) {
     userProfile.lastSaved = new Date();
-    this.myUserData.profile.update(userProfile);
+    this.myUserData.profile.update(userProfile); // fixme: use service method
 
     /* NOTE: this will be hopefully wrapped in some OOP objects in TS,
      to make it work nicely with other services/components
@@ -180,10 +179,24 @@ export class UserProfileService {
     // });
   }
 
-  // v TODO: user profile service:
-  // v TODO: zrobic funkcje fetchUserDataWithDetailsById()
   // TODO: returns UserDataWithDetails
-  fetchUserDataWithDetailsById(id: string): DbObject<UserDataWithDetails> {
-    return this.db.userDataWithDetailsById(id);
+  // fetchUserDataWithDetailsById(id: string): Observable<UserDataWithDetails> {
+  //   return this.listUserProfile().map(list => {
+  //     return list.map(profile => {
+  //         const id = (profile as any).$key;
+  //         const mapped: UserDataWithDetails = {
+  //           profile: profile,
+  //           otherProfiles: this.otherProfilesById(id),
+  //           interests: this.userInterestsById(id),
+  //         }
+  //         return mapped;
+  //       }
+  //     )
+  //   });
+  // }
+
+  userDataById(userId: string): UserData {
+    return this.db.userDataById(userId)
   }
+
 }

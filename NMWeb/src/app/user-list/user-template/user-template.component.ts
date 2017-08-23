@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {UserDataWithDetails, UserProfile} from 'app/user-profile/user-profile.service';
+import {UserData, UserProfile} from 'app/user-profile/user-profile.service';
 import {TopicInterest, UserInterests} from '../../user-profile/user-interests'
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
@@ -22,7 +22,9 @@ export class SupplyDemandTemplate{
 })
 export class UserTemplateComponent implements OnInit {
 
-  @Input('userProfile') _userPublicProfile: UserDataWithDetails;
+  @Input('userProfile') _userPublicProfile: UserData
+
+  basicProfileInfo: UserProfile
   // @Input('userProfile') _userPublicProfile: UserProfile = new UserProfile();
 
 
@@ -38,6 +40,9 @@ export class UserTemplateComponent implements OnInit {
       this.userInterests = it;
       console.log('userPublicProfile.interests.subscribe', it)
     });
+    this._userPublicProfile.profile.subscribe(it => {
+      this.basicProfileInfo = it
+    })
   }
 
   extractTags(dictionary: TagInclusions): TopicInterest[] {

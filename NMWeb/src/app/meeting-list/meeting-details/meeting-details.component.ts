@@ -15,23 +15,21 @@ export class MeetingDetailsComponent implements OnInit {
   meetingAttendanceByUser: MeetingAttendanceByUser;
   meeting: Meeting;
 
+  meetingId: string = this.route.snapshot.params['meetingId'];
+
   constructor(
               private db: DbService,
               private route: ActivatedRoute,
               private authService: AuthService,
               private meetingAttendanceService: MeetingAttendanceService,
   ) {
+    console.log('meetingId: ', this.meetingId)
   }
 
   ngOnInit() {
-    let meetingId: string;
 
-    this.route.params.subscribe(params => {
-      meetingId = params['id'];
-    });
-
-    this.retrieveMeetingDetails(meetingId);
-    this.retrieveCurrentUserMeetingAttendance(meetingId);
+    this.retrieveMeetingDetails(this.meetingId); // fixme: misnomer
+    this.retrieveCurrentUserMeetingAttendance(this.meetingId);
   }
 
   private retrieveCurrentUserMeetingAttendance(meetingId: string) {
@@ -45,8 +43,10 @@ export class MeetingDetailsComponent implements OnInit {
   }
 
   private retrieveMeetingDetails(meetingId: string) {
+    // FIXME: move to service!
     this.db.objectByPath('Meetings/Meeting/' + meetingId).subscribe((meeting: Meeting) => {
       this.meeting = meeting;
+      console.log('retrieveMeetingDetails: ', meeting)
     });
   }
 }

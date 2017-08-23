@@ -1,12 +1,12 @@
 <md-card class="user-item" style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
     <md-card-header>
         <div md-card-avatar class="card-avatar"></div>
-        <md-card-title>{{_userPublicProfile?.profile?.displayName || _userPublicProfile?.profile?.name}}</md-card-title>
+        <md-card-title>{{basicProfileInfo?.displayName || basicProfileInfo?.name}}</md-card-title>
         <md-card-subtitle>
-            {{_userPublicProfile?.profile?.role}}
-            <span *ngIf="_userPublicProfile?.profile?.company">
+            {{basicProfileInfo?.role}}
+            <span *ngIf="basicProfileInfo?.company">
                 at
-                <span style="font-weight: bold;">{{' ' + _userPublicProfile?.profile?.company}}</span>
+                <span style="font-weight: bold;">{{' ' + basicProfileInfo?.company}}</span>
             </span>
         </md-card-subtitle>
     </md-card-header>
