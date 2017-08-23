@@ -29,7 +29,8 @@ import {SharedModule} from './shared/shared.module';
 import { NgforTrackbyComponent } from './experiments/ngfor-trackby/ngfor-trackby.component';
 import { NgforParentComponent } from './experiments/ngfor-parent/ngfor-parent.component';
 import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
-import { TopicsAllComponent } from './topics-all/topics-all.component'
+import { TopicsAllComponent } from './topics-all/topics-all.component';
+import { CheckFirebaseQueryComponent } from './experiments/check-firebase-query/check-firebase-query.component'
 
 // import {
 //   AngularFireModule,
@@ -59,9 +60,14 @@ const appRoutes: Routes = [
     component: TopicsAllComponent,
   },
   {
+    path: 'check-queries',
+    component: CheckFirebaseQueryComponent,
+  },
+  {
     path: '**',
     redirectTo: '',
   },
+
 ];
 
 @NgModule({
@@ -74,6 +80,7 @@ const appRoutes: Routes = [
     NgforParentComponent,
     UserInterestsModeViewComponent,
     TopicsAllComponent,
+    CheckFirebaseQueryComponent,
   ],
   imports: [
     BrowserModule,
