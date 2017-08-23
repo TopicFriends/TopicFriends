@@ -3,14 +3,14 @@
     Loading...
   </ng-template>
   <ng-template ngFor let-tag [ngForOf]="tagListModel?.tags" [ngForTrackBy]="trackByKey">
-    <md-chip class="tag-chip" style="height: 20px; vertical-align: middle; margin-bottom: 5px">
+    <md-chip class="tag-chip" style="height: 18px; vertical-align: middle; margin-bottom: 8px; margin-right: 6px; margin-left: 0">
       <div style="display:table-cell; vertical-align: middle">
         <ng-template [ngIf]="tag.tagEntry.logo" >
-          <img style="width: 20px; height: 20px; vertical-align:middle"
+          <img style="width: 18px; height: 18px; vertical-align: middle"
                src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>&nbsp;
         </ng-template>
-        <ng-template [ngIf]="! tag.tagEntry.logo" > <!-- hack for vertical alignment (middle) not working if no img -->
-          <img style="width: 0px; height: 20px; vertical-align:middle"
+        <ng-template [ngIf]="! tag.tagEntry.logo" > <!-- hack for "vertical-align: middle" slightly shifted if no img -->
+          <img style="width: 0px; height: 18px; vertical-align:middle"
                src="assets/images/logos/git.svg" onerror="this.style.display='none';"/>&nbsp;
         </ng-template>
         <!--<i *ngIf="editable"-->
@@ -24,7 +24,7 @@
         </span>
           <i *ngIf="editable"
              class="ion-close-circled"
-             style="vertical-align: middle; cursor:pointer; color: rgba(0, 0, 0, 0.30); font-size: 20px"
+             style="vertical-align: middle; cursor:pointer; color: rgba(0, 0, 0, 0.30); font-size: 14px"
              (click)="tagListModel.deleteTag(tag)"></i>
           <!--<i *ngIf="! editable"-->
            <!--class="ion-close-circled"-->

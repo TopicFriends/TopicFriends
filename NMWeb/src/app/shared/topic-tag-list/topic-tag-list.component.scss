@@ -12,7 +12,13 @@
   }
 }
 
-.tag-chip {
+//.tag-chip {
+.mat-chip {
   animation: ChipAnimation 0.5s ease-in-out;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  // margin is overwritten by:
+  // >.mat-chip:not(.mat-basic-chip)+.mat-chip:not(.mat-basic-chip) {
+  // > margin: 0 0 0 3px;
+  // >}
   //transform-style: preserve-3d;
 }
