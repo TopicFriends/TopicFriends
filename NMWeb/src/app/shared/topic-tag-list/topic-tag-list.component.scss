@@ -14,6 +14,7 @@
 
 //.tag-chip {
 .mat-chip {
+  transition: all 0.5s ease-in-out;
   animation: ChipAnimation 0.5s ease-in-out;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 
@@ -27,4 +28,8 @@
   // > margin: 0 0 0 3px;
   // >}
   //transform-style: preserve-3d;
+}
+
+.tag-chip:hover {
+  transform: scale(1.2);
 }
