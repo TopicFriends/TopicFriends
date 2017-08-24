@@ -1,3 +1,56 @@
-<p>
-  users-map works!
-</p>
+
+<!-- Quick "port" to PeopleMatcher codebase. No bootstrap though -->
+
+<div class="container">
+  <h1>
+    Users Map
+  </h1>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>This is your current location: </h2>
+      <div *ngIf="coordinates">
+        <p>Latitude: {{coordinates.latitude}}</p>
+        <p>Longitude: {{coordinates.longitude}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div *ngIf="coordinates">
+        <agm-map
+          [latitude]="coordinates.latitude"
+          [longitude]="coordinates.longitude"
+          [zoom]="15">
+          <agm-marker
+            [latitude]="coordinates.latitude"
+            [longitude]="coordinates.longitude"
+            >
+          </agm-marker>
+          <agm-marker
+            [latitude]="coordinates.latitude + 0.001"
+            [longitude]="coordinates.longitude + 0.001"
+            >
+          </agm-marker>
+          <agm-marker
+            [latitude]="coordinates.latitude + 0.002 "
+            [longitude]="coordinates.longitude - 0.004"
+            >
+          </agm-marker>
+          <agm-marker
+            [latitude]="coordinates.latitude - 0.005 "
+            [longitude]="coordinates.longitude - 0.004"
+            >
+          </agm-marker>
+
+          <!--<agm-circle-->
+            <!--[latitude]="coordinates.latitude"-->
+            <!--[longitude]="coordinates.longitude"-->
+            <!--[radius]="300"-->
+            <!--fillColor="#4885ed"-->
+          <!--&gt;</agm-circle>-->
+        </agm-map>
+      </div>
+    </div>
+  </div>
+</div>
+
