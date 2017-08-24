@@ -31,6 +31,7 @@ import { NgforParentComponent } from './experiments/ngfor-parent/ngfor-parent.co
 import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
 import { TopicsAllComponent } from './topics-all/topics-all.component';
 import { CheckFirebaseQueryComponent } from './experiments/check-firebase-query/check-firebase-query.component'
+import {MapsModule} from './maps/maps.module'
 
 // import {
 //   AngularFireModule,
@@ -89,6 +90,8 @@ const appRoutes: Routes = [
     SharedModule,
     MeetingsModule,
     UserProfileModule,
+    MapsModule,
+    // ----
     RouterModule.forRoot(appRoutes),
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     AngularFireModule.initializeApp(environment.firebase),
