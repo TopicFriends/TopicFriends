@@ -4,6 +4,7 @@ import { UsersMapComponent } from './users-map/users-map.component';
 import {RouterModule, Routes} from '@angular/router'
 import {GeolocationService} from './geolocation.service'
 import {AgmCoreModule} from '@agm/core'
+import {UserProfileModule} from '../user-profile/user-profile.module'
 
 
 const meetingRoutes: Routes = [
@@ -17,6 +18,7 @@ const meetingRoutes: Routes = [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB8eJ4NjIFWy0tABOEasmykdAj8e7aenL0'
     }),
+    UserProfileModule,
   ],
   declarations: [
     UsersMapComponent,

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {GeolocationService} from '../geolocation.service'
+import {UserProfile} from '../../user-profile/user-profile.service'
 
+export class UserCoords {
+  user?: UserProfile
+  geoCoords: GeoCoords
+}
 
 export class GeoCoords {
   latitude: number
@@ -15,6 +20,24 @@ export class GeoCoords {
 export class UsersMapComponent implements OnInit {
 
   coordinates: GeoCoords = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
+
+  usersCoords: UserCoords[] = [
+    {
+      geoCoords: {latitude: 36.723, longitude: -4.476}
+    },
+    {
+      geoCoords: {latitude: 36.726, longitude: -4.476}
+    },
+    {
+      geoCoords: {latitude: 36.727, longitude: -4.475}
+    },
+    {
+      geoCoords: {latitude: 36.7275, longitude: -4.4755}
+    },
+    {
+      geoCoords: {latitude: 36.7265, longitude: -4.4745}
+    },
+  ]
 
   constructor(
     private geolocationService: GeolocationService

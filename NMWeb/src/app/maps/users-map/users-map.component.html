@@ -21,24 +21,9 @@
           [latitude]="coordinates.latitude"
           [longitude]="coordinates.longitude"
           [zoom]="15">
-          <agm-marker
-            [latitude]="coordinates.latitude"
-            [longitude]="coordinates.longitude"
-            >
-          </agm-marker>
-          <agm-marker
-            [latitude]="coordinates.latitude + 0.001"
-            [longitude]="coordinates.longitude + 0.001"
-            >
-          </agm-marker>
-          <agm-marker
-            [latitude]="coordinates.latitude + 0.002 "
-            [longitude]="coordinates.longitude - 0.004"
-            >
-          </agm-marker>
-          <agm-marker
-            [latitude]="coordinates.latitude - 0.005 "
-            [longitude]="coordinates.longitude - 0.004"
+          <agm-marker *ngFor="let userCoords of usersCoords"
+            [latitude]="userCoords.geoCoords.latitude"
+            [longitude]="userCoords.geoCoords.longitude"
             >
           </agm-marker>
 
