@@ -51,6 +51,7 @@ export class MatchResults {
 }
 
 export class SymmetricInteractions {
+  // todo? "I'm actively using" ?
   /** General exchange of knowledge/skills and brainstorming, pair programming */
   exchange?: WantedTopics;
   pairProgramming?: WantedTopics;
@@ -104,6 +105,8 @@ export class UserInterests {
        have a stronger wording: "I would like to organize hackathon."
        / "I would like to participate in an **organized** hackathon" */
       presentation?: SupplyDemand,      /** I'm interested in making/attending presentation */
+
+      /* Krzysztof Falkowicz: find presenter / be presenter */
       workshop?: SupplyDemand,
     }
   };

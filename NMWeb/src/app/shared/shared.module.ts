@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipList, MdChipsModule, MdCommonModule,
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdChipsModule,
   MdIconModule, MdInputModule,
   MdMenuModule,
   MdSlideToggleModule,

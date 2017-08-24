@@ -20,9 +20,13 @@ export class AuthService {
     console.log('AuthService constructor')
   }
 
-  login() {
+  loginViaGoogle() {
     return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
+
+  // loginViaLinkedIn() {
+  //   return this.afAuth.auth.signInWithCustomToken() // JSONP token
+  // }
 
   logout() {
     return this.afAuth.auth.signOut();

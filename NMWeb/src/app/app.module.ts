@@ -4,21 +4,18 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MdSlideToggleModule, MdIconModule, MaterialModule, MdButtonModule, MdCardModule} from '@angular/material';
+import { MdButtonModule, MdCardModule} from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {UserProfileService} from './user-profile/user-profile.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './user-profile/auth.service';
 import {UserListService} from './user-list/user-list.service';
 import {UserMatcherService} from './user-matcher.service';
-import { HeaderComponent } from './core/header/header.component';
 // import { UserTemplateComponent } from './user-list/user-template/user-template.component';
 import {MeetingsModule} from './meeting-list/meetings.module';
-
 import {DbService} from './db.service'
 import {DomainDbService} from './domain-db.service'
 import {MeetingsService} from './shared/meetings.service'
@@ -30,6 +27,8 @@ import { NgforTrackbyComponent } from './experiments/ngfor-trackby/ngfor-trackby
 import { NgforParentComponent } from './experiments/ngfor-parent/ngfor-parent.component';
 // import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
 import { TopicsAllComponent } from './topics-all/topics-all.component'
+import {CheckFirebaseQueryComponent} from './experiments/check-firebase-query/check-firebase-query.component';
+
 
 // import {
 //   AngularFireModule,
@@ -59,9 +58,14 @@ const appRoutes: Routes = [
     component: TopicsAllComponent,
   },
   {
+    path: 'check-queries',
+    component: CheckFirebaseQueryComponent,
+  },
+  {
     path: '**',
     redirectTo: '',
   },
+
 ];
 
 @NgModule({
@@ -74,6 +78,7 @@ const appRoutes: Routes = [
     NgforParentComponent,
     // UserInterestsModeViewComponent,
     TopicsAllComponent,
+    CheckFirebaseQueryComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,6 +94,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     MdButtonModule,
     MdCardModule,
+    // FlexLayoutModule,
   ],
   providers: [
     AuthService,

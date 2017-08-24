@@ -24,7 +24,7 @@ export class TopicsService {
   // @Input() public inputTagList: TagEntry[] = [tag('Angular'), tag('Ionic'), tag('Firebase')];
   /** I moved it here, because @Input stopped working for some reason and I am to distracted to troubleshoot it :-\ */
   public topics: TagEntry[] = this.transformTags([
-    tag('Angular'), tag('Ionic'), tag('Firebase'),
+    tag('Angular'), tagNoIcon('AngularJS'), tag('Ionic'), tag('Firebase'),
     tag('Protractor'), tag('Karma'), tag('Jasmine'),
     tag('PHP'), tag('Material Design', null/** TODO: has icon: https://material.io */ ), tag('TypeScript'),
     tag('Django'), tag('Python'), tag('Ruby'), tagLogoTipo('Ruby On Rails'),
@@ -36,7 +36,7 @@ export class TopicsService {
     tag('D3'),
     tag('Angular DI', null), tag('Angular Modules', null), tag('Angular Router', null), 'Webpack',
     tagNoIcon('Web Development'), tagNoIcon('CMS'), tagNoIcon('Selenium'), tagNoIcon('Blog Software'),
-    tag('VR', null),
+    tagNoIcon('VR'),
     'JavaScript', tag('ECMAScript', 'es6'),
     'Elm', 'Scala', tag('.NET', 'dotnet'), tag('.NET Core', null), 'Docker', 'ElasticSearch',
     tagLogoTipo('Ember'), 'React', 'Redux', tagNoIcon('React Native'), 'Xamarin', tagNoIcon('Xamarin.Forms'),
@@ -46,24 +46,26 @@ export class TopicsService {
     'JHipster', tagLogoTipo('Meteor'), tagLogoTipo('Hoodie'),
     'Laravel', 'CakePHP', 'Zend Framework', 'CodeIgniter', 'Symfony',
     tag('CSS3', 'css-3'), tag('Responsive Design', null), tag('HTML5', 'html-5'),
-    tag('PWA', null), tag('REST', null), tag('HTTP', null), tag('WebSocket'), 'WebRTC', tagLogoTipo('Upwork'),
+    tag('PWA', null), tagNoIcon('SPA'), tag('REST', null), tag('HTTP', null), tag('WebSocket'), 'WebRTC', tagLogoTipo('Upwork'),
     tagLogoTipo('NodeJS'), tagLogoTipo('NPM'),
     tagLogoTipo('Sass'), tagLogoTipo('Stylus'), tagLogoTipo('Less'),
     'Bitcoin', 'Ethereum', 'Steemit', 'Monero',
     tagNoIcon('Cryptocurrency'), tagNoIcon('Blockchain'), tagNoIcon('Cryptography'),
     'Cordova', 'PhoneGap',
     tagNoIcon('Geolocation'),
-    tagNoIcon('Social graphs'),
+    tagNoIcon('Social graphs'), 'Open Graph',
     tagNoIcon('NoSQL'), 'PostgreSQL', 'MySQL', 'Oracle',
     tagNoIcon('HMR - Hot Module Replacement'),
     tagNoIcon('RxJS'), tagNoIcon('RxJava'), 'ReactiveX',
     tagNoIcon('Angular Material'), tagNoIcon('AngularFire'), /* Note: versions will be specified separately, thus not "AngularFire2" */
-    'SVG', tag('WordPress', 'wordpress-icon'), 'Drupal', 'Joomla', tagLogoTipo('jQuery'),
+    'SVG', tag('WordPress', 'wordpress-icon'), 'Drupal', 'Joomla', tagLogoTipo('jQuery'), 'jQuery Mobile',
     'PouchDB', tagNoIcon('CloudBoost'), 'Spring', tagLogoTipo('Vaadin'), 'Yarn',
     'Heroku', 'Jenkins', 'Vagrant', tag('Kubernetes', 'kubernets' /* they have a typo*/),
     tag('Vue.js', 'vue'),
-    tag('Linux', 'tux'), 'Debian', 'Ubuntu', tag('SUSE Linux', 'suse'), tag('RedHat Linux', 'redhat'),
-    tag('Fedora', 'fedora'), tagLogoTipo('CentOS'), tagNoIcon('Gentoo Linux'), tag('Arch Linux', 'archlinux'),
+    tag('Linux', 'tux'), tag('Debian Linux', 'debian'), tag('Ubuntu Linux', 'ubuntu') , tag('SUSE Linux', 'suse'),
+    tag('RedHat Linux', 'redhat'),
+    tag('Fedora Linux' /* Officially just "Fedora", but better for filtering*/, 'fedora'), tagLogoTipo('CentOS Linux', 'centos'),
+    tagNoIcon('Gentoo Linux'), tag('Arch Linux', 'archlinux'),
     'FreeBSD',
     'Redis', 'CouchBase', 'CouchDB', tagLogoTipo('MongoDB'), 'Memcached',
     'PrestaShop', 'WooCommerce', tagNoIcon('osCommerce'), 'Magento', 'Shopify', tagNoIcon('BigCommerce'),
@@ -82,7 +84,7 @@ export class TopicsService {
     'Ansible',
     'Perl',
     'Polymer', tag('Web Components', 'webcomponents'),
-    'Bootstrap',
+    'Bootstrap', tagNoIcon('Clarity Design System') /* https://vmware.github.io/clarity/ */ ,
     'Capistrano', 'Chef', 'Puppet',
     'Clojure', 'CoffeeScript',
     'Electron',
@@ -94,6 +96,29 @@ export class TopicsService {
     tagLogoTipo('Express'), 'Socket.IO',
     'Sinatra',
     tagNoIcon('ngrx' /* I've also seen different capitalizations: NgRx, ngRx etc */),
+    'Flask', tagNoIcon('Pylons'), tagNoIcon('Zope'),
+    tagNoIcon('UX'), tagNoIcon('UI'), tagNoIcon('Usability'), tagNoIcon('Accessibility'),
+    'GraphQL', 'Grunt', tag('Browserify', 'browserify-icon'),
+    'Hibernate', tagNoIcon('NHibernate'), 'MariaDB', 'Material-UI',
+    tagNoIcon('FinTech'), tagNoIcon('PropTech'), tagNoIcon('Startups'), tagNoIcon('SEO'), tagNoIcon('JBoss'),
+    tagNoIcon('Marketing'), tagNoIcon('Functional Programming'), tag('EC2', 'aws-ec2'), tagNoIcon('GCP'),
+    'CocoaPods',
+    tagLogoTipo('ArangoDB'),
+    'Auth0',
+    'Mapbox',
+    tag('GitHub', 'github-icon')
+    // Mark: OData, PowerBI, SignalR
+    // Frontend
+    // Mapbox Studio
+    // TODO: check Malaga meetup topics
+    // FIWARE, Smart City, Green Tech, IoT, IoE
+    // Neural Networks, Machine Learning, 'Deep Learning', 'Deep Mind', '
+    // web3, Truffle Framework, Distributed Ledger Technology, Attention Economy, Ethlance, Steem,
+    // remix, mist, DApp
+    // Smart contracts, Solidity, Private coin,
+
+
+
   ]);
 
 

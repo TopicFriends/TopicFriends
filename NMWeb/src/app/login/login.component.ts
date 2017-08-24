@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../user-profile/auth.service'
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.authService.user.subscribe(user => {
+      if ( user ) {
+        this.router.navigateByUrl('/profile')
+      }
+    })
+  }
 
   ngOnInit() {
+  }
+
+  logInViaGoogle() {
+    this.authService.loginViaGoogle()
+  }
+
+  logInViaLinkedin() {
+    window.open('assets/login/popup.html', 'name', 'height=585,width=400');
   }
 
 }
