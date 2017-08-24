@@ -23,18 +23,33 @@ export class UsersMapComponent implements OnInit {
 
   usersCoords: UserCoords[] = [
     {
-      geoCoords: {latitude: 36.723, longitude: -4.476}
+      user: {
+        displayName: 'David'
+      },
+      geoCoords: {latitude: 36.723, longitude: -4.476},
     },
     {
+      user: {
+        displayName: 'Rubén'
+      },
       geoCoords: {latitude: 36.726, longitude: -4.476}
     },
     {
+      user: {
+        displayName: 'Anna'
+      },
       geoCoords: {latitude: 36.727, longitude: -4.475}
     },
     {
+      user: {
+        displayName: 'Pablo'
+      },
       geoCoords: {latitude: 36.7275, longitude: -4.4755}
     },
     {
+      user: {
+        displayName: 'Karol XYZ',
+      },
       geoCoords: {latitude: 36.7265, longitude: -4.4745}
     },
   ]

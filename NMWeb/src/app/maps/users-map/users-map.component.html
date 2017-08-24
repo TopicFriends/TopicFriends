@@ -24,6 +24,7 @@
           <agm-marker *ngFor="let userCoords of usersCoords"
             [latitude]="userCoords.geoCoords.latitude"
             [longitude]="userCoords.geoCoords.longitude"
+            [label]="userCoords.user.displayName"
             >
           </agm-marker>
 
