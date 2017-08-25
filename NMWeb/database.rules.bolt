@@ -1,0 +1,38 @@
+// https://github.com/firebase/bolt/blob/master/docs/guide.md
+
+path /TPProd/UserData {
+  read() { true }
+}
+
+path /TPProd/UserData/UserProfile/{userId} {
+  read() { true }
+  write() { isCurrentUser(userId) }
+}
+
+path /TPProd/UserData/UserProfile/{userId} {
+  read() { true }
+  write() { isCurrentUser(userId) }
+}
+
+path /TPProd/UserData/OtherProfiles/{userId} {
+  read() { true }
+  write() { isCurrentUser(userId) }
+}
+
+path /TPProd/UserData/UserInterests/{userId} {
+  read() { true }
+  write() { isCurrentUser(userId) }
+}
+
+path /TPProd/Meetings {
+  read() { true }
+}
+
+path /TPProd/Meetings/MeetingAttendanceByUser/{meetingId}/{userId} {
+  read() { true }
+  write() { isCurrentUser(userId) }
+}
+
+// Define isCurrentUser() function to test if the given user id
+// matches the currently signed-in user.
+isCurrentUser(uid) { auth != null && auth.uid == uid }
