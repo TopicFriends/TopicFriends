@@ -1,11 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UserListService} from '../../user-list/user-list.service';
-import {ActivatedRoute} from '@angular/router';
 import {
-  MeetingAttendanceByUser, MeetingAttendanceByUserWithUserData,
+  MeetingAttendanceByUserWithUserData,
   MeetingAttendanceService,
 } from '../meeting-attendance.service';
-import {AuthService} from '../../user-profile/auth.service';
 import {DbListReadOnly} from '../../db.service';
 
 @Component({
@@ -18,7 +15,6 @@ export class MeetingAttendanceUserListComponent implements OnInit {
   userList: DbListReadOnly<MeetingAttendanceByUserWithUserData>;
 
   @Input() meetingId: string;
-
 
   constructor(private meetingAttendanceService: MeetingAttendanceService,) {
   }

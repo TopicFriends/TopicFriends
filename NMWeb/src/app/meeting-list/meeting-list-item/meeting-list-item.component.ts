@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meeting-attendance.service';
 import {Meeting} from '../../shared/meetings.service';
 import {AuthService} from '../../user-profile/auth.service';

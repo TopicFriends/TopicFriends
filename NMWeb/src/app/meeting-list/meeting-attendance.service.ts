@@ -56,7 +56,7 @@ export class MeetingAttendanceService {
   retrieveAllAttendeesStatuses(meetingId: string): DbList<MeetingAttendanceByUser> {
     const path = this.buildAllUsersMeetingAttendancePath(meetingId);
     let dbList: DbList<MeetingAttendanceByUser> = this.db.list(path);
-    let mock: DbList<MeetingAttendanceByUser> = Observable.of([{$key: 'qwertyuio', going: true}, {$key: 'qwertyui', going: false}]);
+    // let mock: DbList<MeetingAttendanceByUser> = Observable.of([{$key: 'qwertyuio', going: true}, {$key: 'qwertyui', going: false}]);
     return dbList;
     // return mock;
   }
@@ -67,7 +67,6 @@ export class MeetingAttendanceService {
     return dbObject;
   }
 
-  //TODO: Move to existing user attendance service
   fetchMeetingAttendanceByUserWithUserData(meetingId: string): Observable<MeetingAttendanceByUserWithUserData[]>  {
     let listOfMeetingAttendanceByUser: DbList<MeetingAttendanceByUser> =
       this.retrieveAllAttendeesStatuses(meetingId);
@@ -76,7 +75,7 @@ export class MeetingAttendanceService {
     // consider switchMap
     return listOfMeetingAttendanceByUser.map((meetingAttendanceByUserArray: MeetingAttendanceByUser[]) => {
       console.log("listOfMeetingAttendanceByUser.map", meetingAttendanceByUserArray)
-      //TODO: attendees może być null or undefined
+      //TODO: attendees might be null or undefined
       return meetingAttendanceByUserArray.filter(
         (meetingAttendanceByUser: MeetingAttendanceByUser) => {
           return meetingAttendanceByUser.going === true
