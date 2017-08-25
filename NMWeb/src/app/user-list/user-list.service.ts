@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
-import {UserDataFetched, UserProfile} from 'app/user-profile/user-profile.service';
+import {UserDataFetched, UserDataWithDetails, UserProfile} from 'app/user-profile/user-profile.service';
 import {Observable} from 'rxjs/Observable'
 import {DomainDbService} from '../domain-db.service'
 
@@ -52,7 +52,7 @@ export class UserListService {
   //
   // }
 
-  public listUserDataWithDetails(): Observable<UserDataFetched[]> {
+  public listUserDataWithDetails(): Observable<UserDataWithDetails[]> {
     return this.domainDbService.listUserDataWithDetails();
   }
 

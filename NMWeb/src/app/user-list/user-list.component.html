@@ -1,4 +1,7 @@
 <h1>User List</h1>
+<ng-template [ngIf]="userListSaved">
+  <p>{{ potentialConnectionsCount() }} potential connections between people!</p>
+</ng-template>
 
 <nw-user-template *ngFor="let user of (userList | async); trackBy: trackByKey" [userProfile]="user"></nw-user-template>
 <div style="height: 100px;"></div>

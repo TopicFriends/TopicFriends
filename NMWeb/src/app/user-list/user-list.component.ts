@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfile } from 'app/user-profile/user-profile.service';
+import {UserDataFetched, UserDataWithDetails, UserProfile} from 'app/user-profile/user-profile.service';
 import { UserListService } from "app/user-list/user-list.service";
 
 @Component({
@@ -10,6 +10,7 @@ import { UserListService } from "app/user-list/user-list.service";
 export class UserListComponent implements OnInit {
 
   userList; // = [];// = this.userListService.getUserList();
+  userListSaved: UserDataWithDetails[];
 
   constructor(
     private userListService: UserListService
@@ -19,10 +20,19 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.userList = this.userListService.listUserDataWithDetails();
+    this.userList.subscribe(list => {
+      this.userListSaved = list;
+    })
   }
 
   trackByKey(idx, val) {
     return val.$key
+  }
+
+  public potentialConnectionsCount() {
+    let n = this.userListSaved && this.userListSaved.length
+    // window.alert('count'+ count)
+    return  n * n / 2 - n / 2
   }
 
 }
