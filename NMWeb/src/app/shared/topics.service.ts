@@ -106,7 +106,9 @@ export class TopicsService {
     tagLogoTipo('ArangoDB'),
     'Auth0',
     'Mapbox',
-    tag('GitHub', 'github-icon')
+    tag('GitHub', 'github-icon'),
+    tagNoIcon('Stencil') /* Ionic */
+    // Voice interfaces, Alexa etc (O. Carracedo)
     // Mark: OData, PowerBI, SignalR
     // Frontend
     // Mapbox Studio
@@ -114,10 +116,10 @@ export class TopicsService {
     // FIWARE, Smart City, Green Tech, IoT, IoE
     // Neural Networks, Machine Learning, 'Deep Learning', 'Deep Mind', '
     // web3, Truffle Framework, Distributed Ledger Technology, Attention Economy, Ethlance, Steem,
-    // remix, mist, DApp
+    // remix, mist, DApp, DAO, TheDao
     // Smart contracts, Solidity, Private coin,
-
-
+    // Ionic Creator, Bootstrap Studio
+    // Hybris
 
   ]);
 
