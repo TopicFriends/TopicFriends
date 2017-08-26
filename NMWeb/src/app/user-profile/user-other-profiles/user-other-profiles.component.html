@@ -6,21 +6,34 @@
   <ng-template [ngIf]="! otherProfiles" >Loading external profiles...</ng-template>
   <md-input-container id="linkedinLink">
     <md-placeholder>
-      <md-icon>person</md-icon><b>LinkedIn</b> Profile (optional, user name is enough)
+      <md-icon>person</md-icon><b>LinkedIn</b> Profile <span class="input-remark">(optional, user name is enough)</span>
     </md-placeholder>
     <span mdPrefix><i class="icon ion-social-linkedin"></i> linkedin.com/in/</span>
 
     <input mdInput
            [formControl]="otherProfileLinkedIn">
   </md-input-container> <!-- ngModel variable is missing due to code crashing -->
+
+
   <md-input-container>
     <md-placeholder>
-      <md-icon>person</md-icon><b>GitHub</b> Profile (optional, user name is enough)
+      <md-icon>person</md-icon><b>GitHub</b> Profile <span class="input-remark">(optional, user name is enough)</span>
     </md-placeholder>
     <span mdPrefix><i class="icon ion-social-github"></i> github.com/</span>
 
     <input mdInput
            [formControl]="otherProfileGitHub">
+  </md-input-container> <!-- ngModel variable is missing due to code crashing -->
+
+
+  <md-input-container>
+    <md-placeholder>
+      <md-icon>person</md-icon><b>Stack Overflow</b> Profile <span class="input-remark">(optional, user id and name are enough)</span>
+    </md-placeholder>
+    <span mdPrefix>stackoverflow.com/users/</span>
+
+    <input mdInput
+           [formControl]="otherProfileStackOverflow">
   </md-input-container> <!-- ngModel variable is missing due to code crashing -->
 
 </form>
