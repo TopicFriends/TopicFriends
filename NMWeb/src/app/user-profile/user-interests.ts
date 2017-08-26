@@ -54,7 +54,9 @@ export class SymmetricInteractions {
   // todo? "I'm actively using" ?
   /** General exchange of knowledge/skills and brainstorming, pair programming */
   exchange?: WantedTopics;
-  pairProgramming?: WantedTopics;
+  pairProgramming?: WantedTopics; /*
+   TODO: pair programming supply-demand (as "follower/leader" / join pair programming of existing code
+   vs have the existing code) */
   /** play together, e.g. soccer, chess */
   play?: WantedTopics;
   /** Watch together (/screening). E.g. watch Silicon Valley together, wink, wink :) */
