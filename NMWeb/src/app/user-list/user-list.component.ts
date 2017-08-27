@@ -12,6 +12,8 @@ export class UserListComponent implements OnInit {
 
   userList: DbListReadOnly<UserData>; // = [];// = this.userListService.getUserList();
 
+  userListSaved;  //: UserDataWithDetails[];
+
   constructor(
     private userListService: UserListService
   ) {
@@ -20,10 +22,19 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.userList = this.userListService.listUserData();
+    this.userList.subscribe(list => {
+      this.userListSaved = list;
+    })
   }
 
   trackByKey(idx, val) {
     return val.$key
+  }
+
+  public potentialConnectionsCount() {
+    let n = this.userListSaved && this.userListSaved.length
+    // window.alert('count'+ count)
+    return  n * n / 2 - n / 2
   }
 
 }

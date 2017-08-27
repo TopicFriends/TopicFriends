@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {UserData, UserProfile} from 'app/user-profile/user-profile.service';
+import {UserData} from 'app/user-profile/user-profile.service';
+import {UserProfile} from 'app/user-profile/user-profile.service';
 import {DomainDbService} from '../domain-db.service'
 import {DbListReadOnly} from '../db.service';
 

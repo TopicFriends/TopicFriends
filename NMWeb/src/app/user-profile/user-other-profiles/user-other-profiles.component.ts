@@ -26,6 +26,7 @@ export class UserOtherProfilesComponent implements OnInit {
 
   public otherProfileLinkedIn = new FormControl()
   public otherProfileGitHub = new FormControl()
+  public otherProfileStackOverflow = new FormControl()
 
   private otherProfiles: UserOtherProfiles
 
@@ -37,6 +38,7 @@ export class UserOtherProfilesComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       otherProfileLinkedIn: this.otherProfileLinkedIn,
       otherProfileGitHub: this.otherProfileGitHub,
+      otherProfileStackOverflow: this.otherProfileStackOverflow,
     })
   }
 
@@ -53,6 +55,8 @@ export class UserOtherProfilesComponent implements OnInit {
               getOtherProfileName(otherProfiles.linkedIn),
             otherProfileGitHub:
               getOtherProfileName(otherProfiles.gitHub),
+            otherProfileStackOverflow:
+              getOtherProfileName(otherProfiles.stackOverflow),
           })
         }
 
@@ -67,6 +71,9 @@ export class UserOtherProfilesComponent implements OnInit {
       },
       gitHub: {
         userName: otherProfileUserName(this.otherProfileGitHub),
+      },
+      stackOverflow: {
+        userName: otherProfileUserName(this.otherProfileStackOverflow),
       },
     };
   }

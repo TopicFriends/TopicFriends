@@ -26,9 +26,9 @@ import {SharedModule} from './shared/shared.module';
 import { NgforTrackbyComponent } from './experiments/ngfor-trackby/ngfor-trackby.component';
 import { NgforParentComponent } from './experiments/ngfor-parent/ngfor-parent.component';
 // import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
-import { TopicsAllComponent } from './topics-all/topics-all.component'
+import { TopicsAllComponent } from './topics-all/topics-all.component';
+import {MapsModule} from './maps/maps.module'
 import {CheckFirebaseQueryComponent} from './experiments/check-firebase-query/check-firebase-query.component';
-
 
 // import {
 //   AngularFireModule,
@@ -87,6 +87,8 @@ const appRoutes: Routes = [
     SharedModule,
     MeetingsModule,
     UserProfileModule,
+    MapsModule,
+    // ----
     RouterModule.forRoot(appRoutes),
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     AngularFireModule.initializeApp(environment.firebase),

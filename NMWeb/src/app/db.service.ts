@@ -30,7 +30,7 @@ export class DbService {
 
   // DB_PREFIX = 'PMProd';
   // DB_PREFIX = 'PMProd';
-  DB_PREFIX = 'TPProd'; // PRODUCTION
+  DB_PREFIX = 'TPProd'; // PRODUCTION // FIXME: TopicPeople/Prod
   // DB_PREFIX = 'TPTests';
   // DB_PREFIX = 'TPEmpty';
 
