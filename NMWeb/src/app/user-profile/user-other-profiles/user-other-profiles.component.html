@@ -36,6 +36,27 @@
            [formControl]="otherProfileStackOverflow">
   </md-input-container> <!-- ngModel variable is missing due to code crashing -->
 
+
+  <md-input-container>
+    <md-placeholder>
+      <md-icon>person</md-icon><b>Twitter</b> Profile <span class="input-remark">(optional, user name is enough)</span>
+    </md-placeholder>
+    <span mdPrefix><i class="icon ion-social-twitter"></i> twitter.com/</span>
+
+    <input mdInput
+           [formControl]="otherProfileTwitter">
+  </md-input-container> <!-- ngModel variable is missing due to code crashing -->
+
+  <md-input-container>
+    <md-placeholder>
+      <md-icon>person</md-icon><b>Facebook</b> Profile <span class="input-remark">(optional, user name is enough)</span>
+    </md-placeholder>
+    <span mdPrefix><i class="icon ion-social-facebook"></i> facebook.com/</span>
+
+    <input mdInput
+           [formControl]="otherProfileFacebook">
+  </md-input-container> <!-- ngModel variable is missing due to code crashing -->
+
 </form>
 
 </md-card-content>

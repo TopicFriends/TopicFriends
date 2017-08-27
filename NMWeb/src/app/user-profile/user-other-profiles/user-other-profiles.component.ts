@@ -10,7 +10,8 @@ function getOtherProfileName(otherProfile: OtherProfile) {
 }
 
 function otherProfileUserName(formControl: FormControl) {
-  return formControl.value || "" // || "" to prevent firebase complaining about undefined
+  // return formControl.value || "" // || "" to prevent firebase complaining about undefined
+  return formControl.value || null // || "" to prevent firebase complaining about undefined
 }
 
 @Component({
@@ -27,6 +28,8 @@ export class UserOtherProfilesComponent implements OnInit {
   public otherProfileLinkedIn = new FormControl()
   public otherProfileGitHub = new FormControl()
   public otherProfileStackOverflow = new FormControl()
+  public otherProfileTwitter = new FormControl()
+  public otherProfileFacebook = new FormControl()
 
   private otherProfiles: UserOtherProfiles
 
@@ -39,6 +42,8 @@ export class UserOtherProfilesComponent implements OnInit {
       otherProfileLinkedIn: this.otherProfileLinkedIn,
       otherProfileGitHub: this.otherProfileGitHub,
       otherProfileStackOverflow: this.otherProfileStackOverflow,
+      otherProfileTwitter: this.otherProfileTwitter,
+      otherProfileFacebook: this.otherProfileFacebook,
     })
   }
 
@@ -50,6 +55,8 @@ export class UserOtherProfilesComponent implements OnInit {
         console.log('userOtherProfilesObservable.subscribe', otherProfiles);
         this.otherProfiles = otherProfiles;
         if ( otherProfiles ) {
+          // FIXME: setValue instead of patchValue (because some might be undefined)
+          // this.formGroup.setValue({
           this.formGroup.patchValue({
             otherProfileLinkedIn:
               getOtherProfileName(otherProfiles.linkedIn),
@@ -57,6 +64,10 @@ export class UserOtherProfilesComponent implements OnInit {
               getOtherProfileName(otherProfiles.gitHub),
             otherProfileStackOverflow:
               getOtherProfileName(otherProfiles.stackOverflow),
+            otherProfileTwitter:
+              getOtherProfileName(otherProfiles.twitter),
+            otherProfileFacebook:
+              getOtherProfileName(otherProfiles.facebook),
           })
         }
 
@@ -74,6 +85,12 @@ export class UserOtherProfilesComponent implements OnInit {
       },
       stackOverflow: {
         userName: otherProfileUserName(this.otherProfileStackOverflow),
+      },
+      twitter: {
+        userName: otherProfileUserName(this.otherProfileTwitter),
+      },
+      facebook: {
+        userName: otherProfileUserName(this.otherProfileFacebook),
       },
     };
   }
