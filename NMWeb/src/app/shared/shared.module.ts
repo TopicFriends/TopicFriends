@@ -12,7 +12,8 @@ import {TopicTagListComponent} from './topic-tag-list/topic-tag-list.component'
 import {UserTemplateComponent} from '../user-list/user-template/user-template.component';
 import {UserInterestsModeViewComponent} from '../user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
 import {SnackBarComponent} from './snackbar/snackbar.component'
-import {GeolocationService} from './geolocation.service'
+import {GeoLocationService} from './geo-location.service'
+import {UserGeoLocationsService} from './user-geo-locations.service'
 
 @NgModule({
   imports: [
@@ -42,14 +43,14 @@ import {GeolocationService} from './geolocation.service'
     TopicTagListComponent,
     UserTemplateComponent,
     UserInterestsModeViewComponent,
-    SnackBarComponent
+    SnackBarComponent,
   ],
   providers: [
     SnackBarComponent,
     MdSnackBar,
     MdButtonModule,
-    // GeolocationService,
-    GeolocationService,
+    GeoLocationService,
+    UserGeoLocationsService,
   ]
 
 })

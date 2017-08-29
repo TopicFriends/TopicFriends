@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
-export class GeolocationService {
+export class GeoLocationService {
 
   coordinates: any;
 

@@ -25,10 +25,15 @@
             [latitude]="coordinates.latitude"
             [longitude]="coordinates.longitude"
             [label]="'Draggable'"
-            [markerDraggable]="true"
-            (dragEnd)="markerDragEnd($event)"
             >
           </agm-marker>
+          <ng-template ngFor let-userLocation [ngForOf]="allUsersGeoLocationsFlattened">
+            <agm-marker
+              [latitude]="userLocation.latitude"
+              [longitude]="userLocation.longitude"
+              [label]="'User'"
+            ></agm-marker>
+          </ng-template>
           <!--<agm-marker *ngFor="let userCoords of usersCoords"-->
             <!--[latitude]="userCoords.geoCoords.latitude"-->
             <!--[longitude]="userCoords.geoCoords.longitude"-->

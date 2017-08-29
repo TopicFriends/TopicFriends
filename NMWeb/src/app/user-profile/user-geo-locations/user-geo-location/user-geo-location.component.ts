@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
-import {GeolocationService} from '../../../shared/geolocation.service'
+import {GeoLocationService} from '../../../shared/geo-location.service'
 import {UserPickLocationDialogParams, UserPickLocationComponent} from '../../../maps/user-pick-location/user-pick-location.component'
 import {MdDialog} from '@angular/material'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
@@ -27,7 +27,7 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
   @ViewChild('latitudeLongitude') latitudeLongitudeControl
 
   constructor(
-    public geoLocationService: GeolocationService,
+    public geoLocationService: GeoLocationService,
     public dialog: MdDialog
   ) { }
 
