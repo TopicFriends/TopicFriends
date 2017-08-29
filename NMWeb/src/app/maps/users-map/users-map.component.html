@@ -21,12 +21,7 @@
           [latitude]="coordinates.latitude"
           [longitude]="coordinates.longitude"
           [zoom]="15">
-          <agm-marker
-            [latitude]="coordinates.latitude"
-            [longitude]="coordinates.longitude"
-            [label]="'Draggable'"
-            >
-          </agm-marker>
+
           <ng-template ngFor let-userLocation [ngForOf]="allUsersGeoLocationsFlattened">
             <agm-marker
               [latitude]="userLocation.latitude"
@@ -34,6 +29,7 @@
               [label]="'User'"
             ></agm-marker>
           </ng-template>
+
           <!--<agm-marker *ngFor="let userCoords of usersCoords"-->
             <!--[latitude]="userCoords.geoCoords.latitude"-->
             <!--[longitude]="userCoords.geoCoords.longitude"-->
