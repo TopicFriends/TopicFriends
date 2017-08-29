@@ -25,7 +25,6 @@ export class MeetingDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.retrieveMeetingDetails(this.meetingId); // fixme: misnomer
     this.retrieveCurrentUserMeetingAttendance(this.meetingId);
   }

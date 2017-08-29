@@ -22,14 +22,12 @@ export class SupplyDemandTemplate{
 })
 export class UserTemplateComponent implements OnInit {
 
-  @Input('userProfile') _userPublicProfile: UserData
-
-  basicProfileInfo: UserProfile
+  @Input('userProfile') _userPublicProfile: UserData;
   // @Input('userProfile') _userPublicProfile: UserProfile = new UserProfile();
-
 
   _whatUserWants: SupplyDemandTemplate[] = [];
   userInterests: UserInterests;
+  profileBasicInfo: UserProfile;
   _expand: boolean;
 
   constructor() { }
@@ -41,7 +39,7 @@ export class UserTemplateComponent implements OnInit {
       console.log('userPublicProfile.interests.subscribe', it)
     });
     this._userPublicProfile.profile.subscribe(it => {
-      this.basicProfileInfo = it
+      this.profileBasicInfo = it
     })
   }
 

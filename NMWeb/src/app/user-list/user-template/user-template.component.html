@@ -1,46 +1,52 @@
 <md-card class="user-item" style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
-    <md-card-header>
-        <div md-card-avatar class="card-avatar"></div>
-        <md-card-title>{{basicProfileInfo?.displayName || basicProfileInfo?.name}}</md-card-title>
-        <md-card-subtitle>
-            {{basicProfileInfo?.role}}
-            <span *ngIf="basicProfileInfo?.company">
+  <md-card-header>
+    <!--<div md-card-avatar class="card-avatar"></div>-->
+    <img md-card-avatar style="vertical-align:middle" src="{{profileBasicInfo?.photoUrl}}"/>
+    <md-card-title style="vertical-align:middle">
+      {{profileBasicInfo?.displayName || profileBasicInfo?.name}}
+    </md-card-title>
+    <md-card-subtitle>
+      {{profileBasicInfo?.role}}
+      <span *ngIf="profileBasicInfo?.company">
                 at
-                <span style="font-weight: bold;">{{' ' + basicProfileInfo?.company}}</span>
+                <span style="font-weight: bold;">{{' ' + profileBasicInfo?.company}}</span>
             </span>
-        </md-card-subtitle>
-    </md-card-header>
+    </md-card-subtitle>
+  </md-card-header>
 
-    <md-card-content>
-        <div *ngIf="_whatUserWants.length > 0" style="padding-bottom: 0.5em;">
-            {{_whatUserWants[0].desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}
-            <span style="font-weight: bold; color: #666666">{{_whatUserWants[0].topics}}</span>
-            <span *ngIf="_whatUserWants.length > 1"
-                  style="display: inline-block; margin-left: 1em; font-size: 0.8em; color: #116633; cursor: pointer;"
-                  (click)="_expand = !_expand">{{_expand ? 'less' : 'more'}}</span>
-        </div>
-        <div *ngIf="_expand">
-            <div *ngFor="let supplyDemand of _getWhatUserWants(); let i = index">
-                <div *ngIf="i > 0" style="padding-bottom: 0.5em;">
-                    {{supplyDemand.desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}
-                    <span style="font-weight: bold; color: #666666">{{supplyDemand.topics}}</span>
-                </div>
-            </div>
-        </div>
-      <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.exchange">
-        Would like to exchange knowledge on:
-      </app-user-interests-mode-view>
-      <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.pairProgramming">
-        Would like to do pair programming on:
-      </app-user-interests-mode-view>
-      <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.hackathon">
-        Would like to do hackathon on:
-      </app-user-interests-mode-view>
-    </md-card-content>
-    <md-card-actions>
-        <button md-raised-button>MEET</button>
-        <button md-raised-button>SHARE</button>
-    </md-card-actions>
+  <md-card-content>
+    <!--<div *ngIf="_whatUserWants.length > 0" style="padding-bottom: 0.5em;">-->
+    <!--{{_whatUserWants[0].desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}-->
+    <!--<span style="font-weight: bold; color: #666666">{{_whatUserWants[0].topics}}</span>-->
+    <!--<span *ngIf="_whatUserWants.length > 1"-->
+          <!--style="display: inline-block; margin-left: 1em; font-size: 0.8em; color: #116633; cursor: pointer;"-->
+          <!--(click)="_expand = !_expand">{{_expand ? 'less' : 'more'}}</span>-->
+    <!--</div>-->
+    <!--<div *ngIf="_expand">-->
+      <!--<div *ngFor="let supplyDemand of _getWhatUserWants(); let i = index">-->
+        <!--<div *ngIf="i > 0" style="padding-bottom: 0.5em;">-->
+          <!--{{supplyDemand.desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}-->
+          <!--<span style="font-weight: bold; color: #666666">{{supplyDemand.topics}}</span>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.exchange">
+      Would like to exchange knowledge on:
+    </app-user-interests-mode-view>
+    <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.pairProgramming">
+      Would like to do pair programming on:
+    </app-user-interests-mode-view>
+    <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.hackathon">
+      Would like to do hackathon on:
+    </app-user-interests-mode-view>
+    <!--</md-card-content>-->
+  </md-card-content>
+  <md-card-actions>
+    <!--<div>-->
+    <button md-raised-button>MEET</button>
+    <button md-raised-button>SHARE</button>
+    <!--</div>-->
+  </md-card-actions>
 </md-card>
 <!--
 <md-grid-list

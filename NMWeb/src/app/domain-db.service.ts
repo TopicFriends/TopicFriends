@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {DbObject, DbList, DbService} from './db.service'
 import {UserOtherProfiles, UserProfile, UserData, UserGeoLocations} from './user-profile/user-profile.service'
 import {Observable} from 'rxjs/Observable'
-import 'rxjs/add/observable/of'
+import "rxjs/add/observable/of"
 
 import {UserInterests} from './user-profile/user-interests'
 import {combineLatest} from 'rxjs/operator/combineLatest'
@@ -44,8 +44,8 @@ export class DomainDbService {
           const id = (profile as any).$key;
           const mapped: UserData = new UserData(
             Observable.of(profile),
-            this.otherProfilesById(id),
             this.userInterestsById(id),
+            this.otherProfilesById(id),
           )
           return mapped;
         }
