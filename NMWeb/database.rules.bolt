@@ -1,5 +1,10 @@
 // https://github.com/firebase/bolt/blob/master/docs/guide.md
 
+path /TPTests {
+  read() { true }
+  write() { true }
+}
+
 path /TPProd/UserData {
   read() { true }
 }

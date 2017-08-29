@@ -1,5 +1,9 @@
 {
   "rules": {
+    "TPTests": {
+      ".read": "true",
+      ".write": "true"
+    },
     "TPProd": {
       "UserData": {
         ".read": "true",
