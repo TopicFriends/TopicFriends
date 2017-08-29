@@ -9,22 +9,7 @@ path /TPProd/UserData {
   read() { true }
 }
 
-path /TPProd/UserData/UserProfile/{userId} {
-  read() { true }
-  write() { isCurrentUser(userId) }
-}
-
-path /TPProd/UserData/UserProfile/{userId} {
-  read() { true }
-  write() { isCurrentUser(userId) }
-}
-
-path /TPProd/UserData/OtherProfiles/{userId} {
-  read() { true }
-  write() { isCurrentUser(userId) }
-}
-
-path /TPProd/UserData/UserInterests/{userId} {
+path /TPProd/UserData/{anything}/{userId} {
   read() { true }
   write() { isCurrentUser(userId) }
 }

@@ -7,19 +7,7 @@
     "TPProd": {
       "UserData": {
         ".read": "true",
-        "UserProfile": {
-          "$userId": {
-            ".read": "true",
-            ".write": "auth != null && auth.uid == $userId && (auth != null && auth.uid == $userId)"
-          }
-        },
-        "OtherProfiles": {
-          "$userId": {
-            ".read": "true",
-            ".write": "auth != null && auth.uid == $userId"
-          }
-        },
-        "UserInterests": {
+        "$anything": {
           "$userId": {
             ".read": "true",
             ".write": "auth != null && auth.uid == $userId"
