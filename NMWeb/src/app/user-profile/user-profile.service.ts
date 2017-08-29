@@ -4,6 +4,7 @@ import {AuthService} from './auth.service';
 import {DbObject} from '../db.service'
 import {DomainDbService} from '../domain-db.service'
 import {TopicInterest, UserInterests} from './user-interests'
+import {DbHistory, HasDbHistory} from '../util/history'
 
 export function createTopicsDictionary(topics: TopicInterest[]) {
   let ret = {};
@@ -37,10 +38,27 @@ export class UserOtherProfiles {
 
 }
 
+export class GeoLocation {
+  latitude: number
+  longitude: number
+}
+
+export class UserGeoLocations {
+  whereIWork?: GeoLocation // Todo: multiple (dictionary)
+  whereILive?: GeoLocation
+  whereIStudy?: GeoLocation
+  // where I have lunch
+  // where I party
+  // where I hang out
+  // things like Javier going to Fuengirola...
+  // home town / where I grew up
+  // where I have a beer/tapas/etc / chill out
+}
+
 /* Rename to UserBasicInfo or UserBasicProfile
 * and rename UserData to UserProfile */
-export class UserProfile {
-  displayName: string;
+export class UserProfile implements HasDbHistory {
+  displayName?: string;
   /** old name, for compatibility */
   name?: string;
   photoUrl?: string;
@@ -55,8 +73,12 @@ export class UserData {
     public profile: DbObject<UserProfile>,
     public interests: DbObject<UserInterests>,
     public otherProfiles: DbObject<UserOtherProfiles>,
+    public geoLocations?: DbObject<UserGeoLocations>,
   ) {}
+
+  history?: DbHistory
 }
+
 
 // export class UserDataWithDetails {
 //   profile: UserProfile; // user UserData class and replace this by ScalarObservaable<UserProfile> to unify
@@ -74,6 +96,9 @@ export class UserData {
 @Injectable()
 export class UserProfileService {
 
+  fakeUser = 'fakeUser'
+
+
   // userId = '-KnIHsSBYiDR08YnJog5';
   userId;
 
@@ -86,6 +111,7 @@ export class UserProfileService {
     authService.user.subscribe(user => {
       console.log('authService.user.subscribe user', user);
       this.userId = user && user.uid;
+      // this.userId = this.fakeUser;
       this.myUserData = this.db.userDataById(this.userId);
     })
 
@@ -102,14 +128,21 @@ export class UserProfileService {
     userProfile: UserProfile,
     interests: UserInterests,
     otherProfiles: UserOtherProfiles,
+    userGeoLocations: any,
   ) {
+// <<<<<<< Updated upstream
     userProfile.lastSaved = new Date();
     this.myUserData.profile.update(userProfile); // fixme: use service method
+// =======
+//     userProfile.history ; // FIXME
+// >>>>>>> Stashed changes
+
 
     /* NOTE: this will be hopefully wrapped in some OOP objects in TS,
      to make it work nicely with other services/components
      */
-    const userId = this.userId;
+    const userId = this.fakeUser;
+    // const userId = this.userId;
     // this.userProfiles.update(userId, {
     //   displayName: this.authService.userSaved.displayName,
     // }); // FIXME: nasty crude quick stub
@@ -156,6 +189,7 @@ export class UserProfileService {
     // });
     this.myUserData.interests.update(interests);
     this.myUserData.otherProfiles.update(otherProfiles);
+    this.myUserData.geoLocations.update(userGeoLocations);
   }
 
   getProfile(): Observable<UserProfile> {
@@ -168,6 +202,10 @@ export class UserProfileService {
 
   getUserInterests(): Observable<UserInterests> {
     return this.myUserData.interests
+  }
+
+  getUserGeoLocations(): Observable<UserGeoLocations> {
+    return this.myUserData.geoLocations
   }
 
   getWhatUsersWant(): Observable<UserInterests[]> {

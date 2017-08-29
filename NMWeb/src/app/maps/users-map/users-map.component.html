@@ -21,12 +21,20 @@
           [latitude]="coordinates.latitude"
           [longitude]="coordinates.longitude"
           [zoom]="15">
-          <agm-marker *ngFor="let userCoords of usersCoords"
-            [latitude]="userCoords.geoCoords.latitude"
-            [longitude]="userCoords.geoCoords.longitude"
-            [label]="userCoords.user.displayName"
+          <agm-marker
+            [latitude]="coordinates.latitude"
+            [longitude]="coordinates.longitude"
+            [label]="'Draggable'"
+            [markerDraggable]="true"
+            (dragEnd)="markerDragEnd($event)"
             >
           </agm-marker>
+          <!--<agm-marker *ngFor="let userCoords of usersCoords"-->
+            <!--[latitude]="userCoords.geoCoords.latitude"-->
+            <!--[longitude]="userCoords.geoCoords.longitude"-->
+            <!--[label]="userCoords.user.displayName"-->
+            <!--&gt;-->
+          <!--</agm-marker>-->
 
           <!--<agm-circle-->
             <!--[latitude]="coordinates.latitude"-->

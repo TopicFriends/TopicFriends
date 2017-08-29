@@ -47,7 +47,7 @@ export class UserProfileBasicInfoComponent implements OnInit {
         this.formGroup.patchValue(userProfile)
         // this.whatUserWants = this.;
         console.log('new user profile!', userProfile);
-        // FIXME
+        // FIXME:
         if (!(<any>userProfile).whatUserWants) {
           this.userProfile = new UserProfile();
         }

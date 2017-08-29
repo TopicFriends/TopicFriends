@@ -1,0 +1,41 @@
+<h3 md-dialog-title>Please pick location for "{{locationName}}"</h3>
+
+<md-dialog-content>
+<agm-map
+  [latitude]="coordinates.latitude"
+  [longitude]="coordinates.longitude"
+  [zoom]="15">
+  <agm-marker
+    [latitude]="coordinates.latitude"
+    [longitude]="coordinates.longitude"
+    [label]="'Draggable'"
+    [markerDraggable]="true"
+    (dragEnd)="markerDragEnd($event)"
+  >
+  </agm-marker>
+  <!--<agm-marker *ngFor="let userCoords of usersCoords"-->
+  <!--[latitude]="userCoords.geoCoords.latitude"-->
+  <!--[longitude]="userCoords.geoCoords.longitude"-->
+  <!--[label]="userCoords.user.displayName"-->
+  <!--&gt;-->
+  <!--</agm-marker>-->
+
+  <!--<agm-circle-->
+  <!--[latitude]="coordinates.latitude"-->
+  <!--[longitude]="coordinates.longitude"-->
+  <!--[radius]="300"-->
+  <!--fillColor="#4885ed"-->
+  <!--&gt;</agm-circle>-->
+</agm-map>
+
+</md-dialog-content>
+
+<md-dialog-actions>
+  <button md-button md-raised-button
+          color="primary"
+          style="margin-top: 5px; padding-right: 3em; padding-left: 3em"
+          (click)="acceptAndClose()"
+  >
+    Accept</button>
+
+</md-dialog-actions>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {GeolocationService} from '../geolocation.service'
 import {UserProfile} from '../../user-profile/user-profile.service'
+import {GeolocationService} from '../../shared/geolocation.service'
 
 export class UserCoords {
   user?: UserProfile
@@ -66,6 +66,10 @@ export class UsersMapComponent implements OnInit {
         };
       }
     );
+  }
+
+  markerDragEnd(event) {
+    window.alert('markerDragEnd ' + JSON.stringify(event))
   }
 
 }

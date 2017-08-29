@@ -109,7 +109,9 @@ export class UserInterests {
       presentation?: SupplyDemand,      /** I'm interested in making/attending presentation */
 
       /* Krzysztof Falkowicz: find presenter / be presenter */
+
       workshop?: SupplyDemand,
+      // TODO: code review (kinda similar to pair programming)
     }
   };
 

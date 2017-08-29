@@ -120,6 +120,7 @@ export class TopicsService {
     // Smart contracts, Solidity, Private coin,
     // Ionic Creator, Bootstrap Studio
     // Hybris
+    // Internationalization (i18n), localization (l11n), translations
 
   ]);
 

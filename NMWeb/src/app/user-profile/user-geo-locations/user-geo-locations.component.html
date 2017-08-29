@@ -1,0 +1,39 @@
+<md-card style="margin-bottom: 10px">
+  <md-card-title>Geo-Locations (optional)</md-card-title>
+
+  <md-card-content>
+
+    <form
+      [formGroup]="formGroup"
+      #form="ngForm"
+      >
+
+      <app-user-geo-location
+        ngDefaultControl
+        formControlName="geoLocationControlWhereILive"
+        ngModel
+        [formControl]="geoLocationControlWhereILive"
+        locationName="Where I live">
+      </app-user-geo-location>
+
+      <app-user-geo-location
+        ngDefaultControl
+        formControlName="geoLocationControlWhereIWork"
+        ngModel
+        [formControl]="geoLocationControlWhereIWork"
+        locationName="Where I work">
+      </app-user-geo-location>
+
+      <app-user-geo-location
+        ngDefaultControl
+        formControlName="geoLocationControlWhereIStudy"
+        ngModel
+        [formControl]="geoLocationControlWhereIStudy"
+        locationName="Where I study">
+      </app-user-geo-location>
+
+    </form>
+
+  </md-card-content>
+
+</md-card>

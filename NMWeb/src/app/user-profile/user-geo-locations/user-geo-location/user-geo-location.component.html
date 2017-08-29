@@ -1,0 +1,43 @@
+<div>
+<!--  // City
+  // Postal Code
+  // Country-->
+
+<!--
+  <ng-content></ng-content>
+-->
+  <div style="display: inline-block; width: 7em">
+    {{locationName}}: &nbsp;
+  </div>
+
+  <!--<md-input-container id="postalCode">
+
+    <md-placeholder>
+      Postal code (optional)
+    </md-placeholder>
+
+  </md-input-container>-->
+
+  <md-input-container >
+
+    <md-placeholder>
+      Latitude, Longitude
+    </md-placeholder>
+
+    <input mdInput #latitudeLongitude
+           >
+
+  </md-input-container>
+
+<!--
+  <button md-button md-raised-button (click)="useCurrentLocation()">Use current location</button>
+-->
+  <button md-button md-raised-button
+          (click)="openLocationPicker()">
+    <i class="ion-ios-location" ></i> Pick
+  </button>
+
+  <button md-button md-raised-button
+          (click)="clear()">Clear</button>
+
+</div>
