@@ -39,20 +39,28 @@ export class UserOtherProfiles {
 }
 
 export class GeoLocation {
-  latitude: number
-  longitude: number
+  constructor(
+    public latitude: number,
+    public longitude: number,
+  ) {}
+}
+
+export type GeoLocationsDictionary = {
+  [geoLocationId: number]: GeoLocation
 }
 
 export class UserGeoLocations {
-  whereIWork?: GeoLocation // Todo: multiple (dictionary)
-  whereILive?: GeoLocation
-  whereIStudy?: GeoLocation
-  // where I have lunch
-  // where I party
-  // where I hang out
-  // things like Javier going to Fuengirola...
-  // home town / where I grew up
-  // where I have a beer/tapas/etc / chill out
+  geoLocations: {
+    whereIWork?: GeoLocationsDictionary // Todo: multiple (dictionary)
+    whereILive?: GeoLocationsDictionary
+    whereIStudy?: GeoLocationsDictionary
+    // where I have lunch
+    // where I party
+    // where I hang out
+    // things like Javier going to Fuengirola...
+    // home town / where I grew up
+    // where I have a beer/tapas/etc / chill out
+  }
 }
 
 /* Rename to UserBasicInfo or UserBasicProfile
