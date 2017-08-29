@@ -3,27 +3,13 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {AuthService} from '../auth.service'
 import {GeoLocation, UserGeoLocations, UserProfileService} from '../user-profile.service'
 
-
-function parseGeoString(geoString: string): GeoLocation {
-  if ( geoString && geoString.trim().length > 0 ) {
-    const split = geoString.split(',')
-
-    const lat = parseFloat(split[0].trim())
-    const lng = parseFloat(split[1].trim())
-    return new GeoLocation(lat, lng)
-  } else {
-    return null
-  }
-}
-
-
 function transformIntoLocationDictionaries(values: any) {
   let returnVal = {}
 
   for (let keyName of Object.keys(values)) {
     const geoString = values[keyName]
 
-    const parsedGeoLocation: GeoLocation = parseGeoString(geoString)
+    const parsedGeoLocation: GeoLocation = GeoLocation.parseGeoString(geoString)
     returnVal[keyName] = [ parsedGeoLocation ]
     // later we might have more geoLocations of a given type (e.g. study/work in multiple places)
   }

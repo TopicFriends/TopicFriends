@@ -1,6 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {GeoCoords} from '../users-map/users-map.component'
 import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material'
+import {GeoLocation} from '../../user-profile/user-profile.service'
+
+export class UserPickLocationDialogParams {
+  locationName: string
+  geoLocationString: string
+}
 
 @Component({
   selector: 'app-user-pick-location',
@@ -9,7 +14,7 @@ import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material'
 })
 export class UserPickLocationComponent implements OnInit {
 
-  coordinates: GeoCoords = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
+  coordinates: GeoLocation
   private coords
 
   public locationName: string
@@ -17,9 +22,10 @@ export class UserPickLocationComponent implements OnInit {
 
   constructor(
     public dialogRef: MdDialogRef<UserPickLocationComponent>,
-    @Inject(MD_DIALOG_DATA) public data: any
+    @Inject(MD_DIALOG_DATA) public data: UserPickLocationDialogParams
   ) {
     this.locationName = data.locationName
+    this.coordinates = GeoLocation.parseGeoString(data.geoLocationString) || new GeoLocation(36.726, -4.476)
   }
 
   ngOnInit() {

@@ -52,7 +52,7 @@ export class UserProfileComponent implements OnInit {
       otherProfiles,
       userGeoLocations,
     );
-    this.snackBarComponent.showSnackBar('Profile sent')
+    this.snackBarComponent.showSnackBar('Profile sent. Thank you!')
   }
 
   onKeyUpKarol($event: KeyboardEvent): void {

@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {UserProfile} from '../../user-profile/user-profile.service'
+import {GeoLocation, UserProfile} from '../../user-profile/user-profile.service'
 import {GeolocationService} from '../../shared/geolocation.service'
 
 export class UserCoords {
   user?: UserProfile
-  geoCoords: GeoCoords
-}
-
-export class GeoCoords {
-  latitude: number
-  longitude: number
+  geoCoords: GeoLocation
 }
 
 @Component({
@@ -19,7 +14,7 @@ export class GeoCoords {
 })
 export class UsersMapComponent implements OnInit {
 
-  coordinates: GeoCoords = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
+  coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
 
   usersCoords: UserCoords[] = [
     {

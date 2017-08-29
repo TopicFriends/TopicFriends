@@ -1,6 +1,6 @@
 import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
 import {GeolocationService} from '../../../shared/geolocation.service'
-import {UserPickLocationComponent} from '../../../maps/user-pick-location/user-pick-location.component'
+import {UserPickLocationDialogParams, UserPickLocationComponent} from '../../../maps/user-pick-location/user-pick-location.component'
 import {MdDialog} from '@angular/material'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
 
@@ -48,15 +48,18 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
   }
 
   openLocationPicker() {
+    const dialogParams: UserPickLocationDialogParams = {
+      locationName: this.locationName,
+      geoLocationString: this.latitudeLongitudeControl.nativeElement.value
+    }
     let dialogRef = this.dialog.open(UserPickLocationComponent, {
       height: '400px',
       width: '600px',
-      data: {
-        locationName: this.locationName
-      }
+      data: dialogParams
     }).afterClosed().subscribe(returnVal => {
       if ( returnVal ) {
-        this.setInputText(returnVal.lat.toFixed(4) + ', ' + returnVal.lng.toFixed(4))
+        const fractionDigits = 4
+        this.setInputText(returnVal.lat.toFixed(fractionDigits) + ', ' + returnVal.lng.toFixed(fractionDigits))
       }
     })
   }

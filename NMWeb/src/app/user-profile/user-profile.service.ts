@@ -43,6 +43,19 @@ export class GeoLocation {
     public latitude: number,
     public longitude: number,
   ) {}
+
+  static parseGeoString(geoString: string): GeoLocation {
+    if ( geoString && geoString.trim().length > 0 ) {
+      const split = geoString.split(',')
+
+      const lat = parseFloat(split[0].trim())
+      const lng = parseFloat(split[1].trim())
+      return new GeoLocation(lat, lng)
+    } else {
+      return null
+    }
+  }
+
 }
 
 export type GeoLocationsDictionary = {
@@ -60,6 +73,7 @@ export class UserGeoLocations {
     // things like Javier going to Fuengirola...
     // home town / where I grew up
     // where I have a beer/tapas/etc / chill out
+    // where I am right now (e.g. on a conference)
   }
 }
 
