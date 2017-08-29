@@ -1,22 +1,20 @@
 import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
 import {GeolocationService} from '../../../shared/geolocation.service'
-import {UserProfileComponent} from '../../user-profile.component'
 import {UserPickLocationComponent} from '../../../maps/user-pick-location/user-pick-location.component'
 import {MdDialog} from '@angular/material'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
-
-
-export const USER_GEO_LOCATION_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => UserGeoLocationComponent),
-  multi: true,
-};
 
 @Component({
   selector: 'app-user-geo-location',
   templateUrl: './user-geo-location.component.html',
   styleUrls: ['./user-geo-location.component.scss'],
-  providers: [USER_GEO_LOCATION_VALUE_ACCESSOR],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => UserGeoLocationComponent),
+      multi: true,
+    }
+  ],
 })
 export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
 
