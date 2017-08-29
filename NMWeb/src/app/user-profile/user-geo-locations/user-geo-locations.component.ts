@@ -13,19 +13,15 @@ export class UserGeoLocationsComponent implements OnInit {
 
   public formGroup: FormGroup;
 
-  public geoLocationControlWhereILive = new FormControl()
-  public geoLocationControlWhereIWork = new FormControl()
-  public geoLocationControlWhereIStudy = new FormControl()
-
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private userProfileService: UserProfileService,
   ) {
     this.formGroup = this.formBuilder.group({
-      geoLocationControlWhereILive: this.geoLocationControlWhereILive,
-      geoLocationControlWhereIWork: this.geoLocationControlWhereIWork,
-      geoLocationControlWhereIStudy: this.geoLocationControlWhereIStudy,
+      whereILive: '',
+      whereIWork: '',
+      whereIStudy: '',
     })
   }
 
@@ -33,16 +29,12 @@ export class UserGeoLocationsComponent implements OnInit {
     this.authService.user.subscribe(user => {
       console.log('UserGeoLocationsComponent: authService.user.subscribe user', user);
       this.userProfileService.getUserGeoLocations().subscribe((geoLocations) => {
-          this.formGroup.setValue({
-            geoLocationControlWhereILive:
-              (<any>geoLocations).geoLocationControlWhereILive,
-            geoLocationControlWhereIWork:
-              (<any>geoLocations).geoLocationControlWhereIWork,
-            geoLocationControlWhereIStudy:
-              (<any>geoLocations).geoLocationControlWhereIStudy,
-          })
-        })
+        if ( geoLocations ) {
+          // this.formGroup.setValue(geoLocations)
+          this.formGroup.patchValue(geoLocations)
+        }
       })
+    })
   }
 
   public getValue() {

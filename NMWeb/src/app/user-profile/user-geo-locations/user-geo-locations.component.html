@@ -3,29 +3,20 @@
 
   <md-card-content>
 
-    <form
-      [formGroup]="formGroup"
-      #form="ngForm"
-      >
+    <form [formGroup]="formGroup">
 
       <app-user-geo-location
-        formControlName="geoLocationControlWhereILive"
-        ngModel
-        [formControl]="geoLocationControlWhereILive"
+        formControlName="whereILive"
         locationName="Where I live">
       </app-user-geo-location>
 
       <app-user-geo-location
-        formControlName="geoLocationControlWhereIWork"
-        ngModel
-        [formControl]="geoLocationControlWhereIWork"
+        formControlName="whereIWork"
         locationName="Where I work">
       </app-user-geo-location>
 
       <app-user-geo-location
-        formControlName="geoLocationControlWhereIStudy"
-        ngModel
-        [formControl]="geoLocationControlWhereIStudy"
+        formControlName="whereIStudy"
         locationName="Where I study">
       </app-user-geo-location>
 
