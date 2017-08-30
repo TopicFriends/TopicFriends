@@ -1,6 +1,16 @@
 <h3 md-dialog-title>Please pick location for "{{locationName}}"</h3>
 
 <md-dialog-content>
+
+  <md-input-container>
+    <md-placeholder>
+      <md-icon>map</md-icon> Select your location:
+    </md-placeholder>
+
+    <input mdInput
+           #search> <!-- ngModel variable is missing due to code crashing -->
+  </md-input-container>
+
 <agm-map
   [latitude]="coordinates.latitude"
   [longitude]="coordinates.longitude"

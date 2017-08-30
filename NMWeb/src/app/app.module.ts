@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA, NgZone} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -29,6 +29,7 @@ import { NgforParentComponent } from './experiments/ngfor-parent/ngfor-parent.co
 import { TopicsAllComponent } from './topics-all/topics-all.component';
 import {MapsModule} from './maps/maps.module'
 import {CheckFirebaseQueryComponent} from './experiments/check-firebase-query/check-firebase-query.component';
+import {AgmCoreModule, MapsAPILoader} from '@agm/core';
 
 // import {
 //   AngularFireModule,
@@ -88,6 +89,10 @@ const appRoutes: Routes = [
     MeetingsModule,
     UserProfileModule,
     MapsModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyB8eJ4NjIFWy0tABOEasmykdAj8e7aenL0",
+      libraries: ["places"]
+    }),
     // ----
     RouterModule.forRoot(appRoutes),
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
@@ -106,7 +111,7 @@ const appRoutes: Routes = [
     UserListService,
     UserMatcherService,
     MeetingsService,
-    TopicsService,
+    TopicsService
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent],

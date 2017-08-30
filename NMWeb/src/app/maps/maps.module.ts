@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router'
 import {AgmCoreModule} from '@agm/core'
 import {UserProfileModule} from '../user-profile/user-profile.module';
 import { UserPickLocationComponent } from './user-pick-location/user-pick-location.component'
-import {MdButtonModule, MdDialogModule} from '@angular/material'
+import {MdButtonModule, MdDialogModule, MdIconModule, MdInputModule} from '@angular/material'
 import {SharedModule} from '../shared/shared.module'
 
 
@@ -22,6 +22,8 @@ const meetingRoutes: Routes = [
     }),
     SharedModule,
     MdButtonModule,
+    MdInputModule,
+    MdIconModule
   ],
   declarations: [
     UsersMapComponent,
