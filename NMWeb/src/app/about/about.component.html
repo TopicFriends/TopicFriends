@@ -1,26 +1,15 @@
 <h1>About PeopleMatcher</h1>
 
-<p>Powered by
-  <app-topic-tag [tag]="angular"></app-topic-tag>
-  <app-topic-tag [tag]="angularMaterial"></app-topic-tag>
-  <app-topic-tag [tag]="materialDesign"></app-topic-tag>
-  <app-topic-tag [tag]="angularFire"></app-topic-tag>
-  <app-topic-tag [tag]="typeScript"></app-topic-tag>
-  <app-topic-tag [tag]="rxJs"></app-topic-tag>
-  <app-topic-tag [tag]="reactiveX"></app-topic-tag>
-  <app-topic-tag [tag]="firebase"></app-topic-tag>.
-</p>
-
-This app connects people based on
+This app connects people based on:
 <ul>
   <li>Actionable interests (e.g.: would like to do pair programming on
     <app-topic-tag [tag]="angular"></app-topic-tag>
     <app-topic-tag [tag]="ionic"></app-topic-tag>
-    <app-topic-tag [tag]="firebase"></app-topic-tag>)
+    <app-topic-tag [tag]="firebase"></app-topic-tag>). <a routerLink="/topics">See list of topics</a>
+    which you can add to your <a routerLink="/profile">User Profile</a>
   </li>
-  <!-- TODO: makes those topics look like tags -->
-  <li>Geo-locations</li>
-  <li>Meetings/meetups attendance</li>
+  <li>Geo-locations (<a routerLink="/users-map">see Users Map</a>)</li>
+  <li>Meetings/meetups attendance (<a routerLink="/meeting-list">see Meetings List</a>)</li>
 </ul>
 
 <p>A community project.</p>
@@ -28,16 +17,48 @@ This app connects people based on
   Open-Source: <a href="https://github.com/karol-depka/NetworkingMatcher">github.com/karol-depka/NetworkingMatcher</a>
 </p>
 
-<h2>Contributors (random order) :</h2>
+<h2>Powered by:</h2>
+<md-chip-list>
+  <app-topic-tag [tag]="angular"></app-topic-tag>
+  <app-topic-tag [tag]="angularMaterial"></app-topic-tag>
+  <app-topic-tag [tag]="angularFlexLayout"></app-topic-tag>
+  <app-topic-tag [tag]="materialDesign"></app-topic-tag>
+  <app-topic-tag [tag]="angularFire"></app-topic-tag>
+  <app-topic-tag [tag]="typeScript"></app-topic-tag>
+  <app-topic-tag [tag]="rxJs"></app-topic-tag>
+  <app-topic-tag [tag]="reactiveX"></app-topic-tag>
+  <app-topic-tag [tag]="firebase"></app-topic-tag>
+  <app-topic-tag [tag]="protractor"></app-topic-tag>
+  <app-topic-tag [tag]="karma"></app-topic-tag>
+  <app-topic-tag [tag]="jasmine"></app-topic-tag>
+  <app-topic-tag [tag]="webpack"></app-topic-tag>
+  <app-topic-tag [tag]="npm"></app-topic-tag>
+  <app-topic-tag [tag]="sass"></app-topic-tag>
+</md-chip-list>
+
+<h2>Contributors and People who attended PeopleMatcher Hackathon (random order) :</h2>
 
 <ul>
   <li>Pablo Ortuño (<a href="https://willimbu.com/">Willimbu</a>)</li>
   <li>Rubén Triviño (<a href="https://willimbu.com/">Willimbu</a>)</li>
+  <li>Enrique Arrabal (<a href="https://willimbu.com/">Willimbu</a>)</li>
   <li>Luis José Sánchez (<a href="https://espiral.io/">Espiral</a>)</li>
-  <li>David Ponce Martínez</li>
+  <li>Alfredo Martinez (<a href="https://espiral.io/">Espiral</a>)</li>
+  <li>Francisco Durán Navarro</li>
+  <li>Adrian Lopez</li>
+  <li>Antonio David Ponce</li>
   <li>Luis Podadera</li>
+  <li>David Bernal Guerrero</li>
+  <li>Javier Bernal Guerrero</li>
+  <li>Javier Molina</li>
   <li>Anna Niedzialek</li>
   <li>Karol Depka Pradzinski</li>
 </ul>
+
+<h2>News</h2>
+
+<p>2017-08-29 - User geo locations and map (thanks to Antonio David Ponce for the initial prototype)</p>
+<p>2017-08-30 - About box</p>
+<p>2017-08-30 - Search box in location picker (thanks to Antonio David Ponce)</p>
 
 
