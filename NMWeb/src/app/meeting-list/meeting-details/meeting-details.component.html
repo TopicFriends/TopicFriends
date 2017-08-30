@@ -13,7 +13,8 @@
   <md-card-content>
     <p><em>{{meeting.date}}</em> at <b>{{meeting.place}}</b></p>
     <a href="{{meeting.meetupLink}}">Meetup link</a>
-    <p>{{meeting.description}}</p>
+    <div style="padding-top: 1em; pading-bottom: 1em" [innerHtml]="meeting.description"></div>
+    <p>Joining us for this meetup:</p>
     <app-meeting-attendance-user-list
       [meetingId]="meetingId">
     </app-meeting-attendance-user-list>
