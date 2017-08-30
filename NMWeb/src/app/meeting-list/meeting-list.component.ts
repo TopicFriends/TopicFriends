@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FirebaseListObservable} from 'angularfire2/database';
-import {DbObject, DbService} from '../db.service';
-import {Meeting} from '../shared/meetings.service';
+import {DbService} from '../db.service';
+import {MeetingsService} from '../shared/meetings.service'
 
 @Component({
   selector: 'app-meeting-list',
@@ -12,8 +11,8 @@ export class MeetingListComponent implements OnInit {
 
   items: any;
 
-  constructor(private db: DbService) {
-    this.items = db.list('Meetings/Meeting');
+  constructor(private meetingsService: MeetingsService) {
+    this.items = this.meetingsService.retrieveAllMeetings();
   }
 
   ngOnInit() {

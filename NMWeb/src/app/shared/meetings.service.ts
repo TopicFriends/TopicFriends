@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {DbService} from '../db.service';
+import {DbList, DbObject, DbService} from '../db.service';
 
- export class Meeting {
+export class Meeting {
   $key: string; // note: $key might be more handy in Firebase
   title: string;
   description: string;
@@ -12,15 +12,15 @@ import {DbService} from '../db.service';
 
 @Injectable()
 export class MeetingsService {
+  MEETINGS_PATH = 'Meetings/Meeting/';
 
   constructor(private db: DbService) { }
 
-  retrieveMeetingDetails(meetingId: string): Meeting {
-    let meetingDetails;
-    this.db.objectByPath('Meetings/Meeting/' + meetingId).subscribe((meeting: Meeting) => {
-      meetingDetails = meeting;
-      console.log('retrieveMeetingDetails: ', meeting)
-    });
-    return meetingDetails;
+  retrieveMeetingDetails(meetingId: string): DbObject<Meeting> {
+    return this.db.objectByPath(this.MEETINGS_PATH + meetingId);
+  }
+
+  retrieveAllMeetings(): DbList<Meeting> {
+    return this.db.list(this.MEETINGS_PATH);
   }
 }
