@@ -4,7 +4,7 @@
                        class="mat-progress-spinner"></md-progress-spinner>
 </button>
 
-<button md-raised-button color="primary" (click)="updateUserMeetingAttendance(false)"
+<button md-raised-button style="background-color: mediumseagreen; color: white" (click)="updateUserMeetingAttendance(false)"
         *ngIf="meetingAttendanceByUser?.going === true">I'm going
   <i class="ion-checkmark-circled going-button-icon"></i>
 </button>
@@ -14,7 +14,7 @@
   <i class="ion-help-circled going-button-icon"></i>
 </button>
 
-<button md-raised-button (click)="updateUserMeetingAttendance(true)"
+<button md-raised-button style="background-color: indianred" (click)="updateUserMeetingAttendance(true)"
         *ngIf="meetingAttendanceByUser?.going === false">I'm not going
   <i class="ion-close-round going-button-icon"></i>
 </button>
