@@ -10,9 +10,9 @@
     </md-card-title>
   </md-card-title-group>
   <md-card-content>
-    <p>{{meeting.description}}</p>
-    <p>{{meeting.date}} at {{meeting.place}}</p>
+    <p><em>{{meeting.date}}</em> at <b>{{meeting.place}}</b></p>
     <a href="{{meeting.meetupLink}}">Meetup link</a>
+    <p>{{meeting.description}}</p>
     <app-meeting-attendance-user-list
       [meetingId]="meetingId">
     </app-meeting-attendance-user-list>
