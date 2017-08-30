@@ -1,5 +1,5 @@
 <md-toolbar>
-    <span><img src="assets/images/logo_xs.png" height="18px"></span>
+  <span><img src="assets/images/logo_xs.png" height="18px"></span><span style="color: white">Alpha</span>
     <span class="toolbar-spacer"></span>
     <button *ngIf="!(authService.user | async)?.displayName" md-button routerLink="/login">Log in</button>
     <button *ngIf="(authService.user | async)?.displayName" md-button [mdMenuTriggerFor]="menu">{{ (authService.user | async)?.displayName }}</button>
