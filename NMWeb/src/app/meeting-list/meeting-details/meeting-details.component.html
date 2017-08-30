@@ -4,7 +4,8 @@
 
 <md-card *ngIf="meeting !== undefined">
   <md-card-title-group>
-    <md-card-title>{{meeting.title}}
+    <md-card-title>
+      {{meeting.title}}
       <app-going-button style="margin-left: 3em" [meeting]="meeting"
                         [meetingAttendanceByUser]="meetingAttendanceByUser"></app-going-button>
     </md-card-title>
