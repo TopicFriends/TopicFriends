@@ -18,7 +18,8 @@ const meetingRoutes: Routes = [
     CommonModule,
     RouterModule.forChild(meetingRoutes),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB8eJ4NjIFWy0tABOEasmykdAj8e7aenL0'
+      apiKey: 'AIzaSyB8eJ4NjIFWy0tABOEasmykdAj8e7aenL0',
+      libraries: ["places"]
     }),
     SharedModule,
     MdButtonModule,

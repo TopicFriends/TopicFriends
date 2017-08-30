@@ -4,6 +4,7 @@ import {GeoLocation} from '../../user-profile/user-profile.service'
 import {FormControl} from '@angular/forms';
 import {MapsAPILoader} from '@agm/core';
 import { } from 'googlemaps';
+import LatLng = google.maps.LatLng;
 
 
 export class UserPickLocationDialogParams {
@@ -19,7 +20,7 @@ export class UserPickLocationDialogParams {
 export class UserPickLocationComponent implements OnInit {
 
   coordinates: GeoLocation
-  private coords;
+  private coords: any;
 
   public locationName: string
   public searchControl: FormControl;
@@ -38,6 +39,7 @@ export class UserPickLocationComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]
@@ -51,17 +53,18 @@ export class UserPickLocationComponent implements OnInit {
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
-
-          //set latitude, longitude and zoom
+          //Update markers and coords
           this.coordinates.longitude = place.geometry.location.lng();
           this.coordinates.latitude = place.geometry.location.lat();
+          this.coords = {lat: this.coordinates.longitude, lng: this.coordinates.latitude};
         });
       });
     });
   }
 
   markerDragEnd(event) {
-    this.coords = event.coords
+    this.coords = event.coords;
+
     // window.alert('markerDragEnd ' + JSON.stringify(event))
   }
 

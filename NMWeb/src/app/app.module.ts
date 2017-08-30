@@ -89,10 +89,6 @@ const appRoutes: Routes = [
     MeetingsModule,
     UserProfileModule,
     MapsModule,
-    AgmCoreModule.forRoot({
-      apiKey: "AIzaSyB8eJ4NjIFWy0tABOEasmykdAj8e7aenL0",
-      libraries: ["places"]
-    }),
     // ----
     RouterModule.forRoot(appRoutes),
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
