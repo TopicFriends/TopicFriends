@@ -5,7 +5,7 @@
     <a href="{{meeting.meetupLink}}">Meetup link</a>
   </md-card-content>
   <md-card-actions>
-    <button md-button md-raised-button color="secondary"
+    <button md-button md-raised-button color="secondary" style="margin-right: 1em; margin-left: 1em"
                           routerLink="/meeting-details/{{meeting.$key}}">Details</button>
     <app-going-button [meeting]="meeting" [meetingAttendanceByUser]="meetingAttendanceByUser"></app-going-button>
   </md-card-actions>
