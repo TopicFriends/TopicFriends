@@ -1,0 +1,35 @@
+@keyframes ChipAnimation {
+  0% {
+    opacity: 0.0;
+    transform: scale(0) rotateZ(0deg); // rotateY(0)
+  }
+  50% {
+    transform: scale(1.2) rotateZ(10deg); // rotateY(45deg)
+  }
+  100% {
+    opacity: 1.0;
+    transform: scale(1) rotateZ(0deg); // rotateY(0)
+  }
+}
+
+//.tag-chip {
+.mat-chip {
+  transition: all 0.5s ease-in-out;
+  animation: ChipAnimation 0.5s ease-in-out;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+
+  height: 18px !important;
+  vertical-align: middle !important;
+  margin-bottom: 8px !important;
+  margin-right: 6px !important;
+  margin-left: 0 !important;
+  // margin is overwritten by:
+  // >.mat-chip:not(.mat-basic-chip)+.mat-chip:not(.mat-basic-chip) {
+  // > margin: 0 0 0 3px;
+  // >}
+  //transform-style: preserve-3d;
+}
+
+.tag-chip:hover {
+  transform: scale(1.2);
+}

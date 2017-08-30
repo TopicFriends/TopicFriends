@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-topic-tag',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./topic-tag.component.scss']
 })
 export class TopicTagComponent implements OnInit {
+
+  @Input() tag;
+  @Input() editable;
+  @Input() tagListModel;
 
   constructor() { }
 

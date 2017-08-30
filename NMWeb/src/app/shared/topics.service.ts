@@ -15,6 +15,17 @@ function tagLogoTipo(name: string, logo?: string) {
 }
 
 
+
+export const angular = tag('Angular')
+export const firebase = tag('Firebase')
+export const angularMaterial = tagNoIcon('Angular Material')
+export const angularFire = tagNoIcon('AngularFire')
+export const rxJs = tagNoIcon('RxJS')
+export const materialDesign = tag('Material Design', null/** TODO: has icon: https://material.io */ )
+export const typeScript = tag('TypeScript')
+export const ionic = tag('Ionic')
+export const reactiveX = tag('ReactiveX')
+
 @Injectable()
 export class TopicsService {
 
@@ -24,9 +35,9 @@ export class TopicsService {
   // @Input() public inputTagList: TagEntry[] = [tag('Angular'), tag('Ionic'), tag('Firebase')];
   /** I moved it here, because @Input stopped working for some reason and I am to distracted to troubleshoot it :-\ */
   public topics: TagEntry[] = this.transformTags([
-    tag('Angular'), tagNoIcon('AngularJS'), tag('Ionic'), tag('Firebase'),
+    angular, tagNoIcon('AngularJS'), ionic, firebase,
     tag('Protractor'), tag('Karma'), tag('Jasmine'),
-    tag('PHP'), tag('Material Design', null/** TODO: has icon: https://material.io */ ), tag('TypeScript'),
+    tag('PHP'), materialDesign, typeScript,
     tag('Django'), tag('Python'), tag('Ruby'), tagLogoTipo('Ruby On Rails'),
     tag('PeopleMatcher'),
     tag('UAP', null),
@@ -56,8 +67,8 @@ export class TopicsService {
     tagNoIcon('Social graphs'), 'Open Graph',
     tagNoIcon('NoSQL'), 'PostgreSQL', 'MySQL', 'Oracle',
     tagNoIcon('HMR - Hot Module Replacement'),
-    tagNoIcon('RxJS'), tagNoIcon('RxJava'), 'ReactiveX',
-    tagNoIcon('Angular Material'), tagNoIcon('AngularFire'), /* Note: versions will be specified separately, thus not "AngularFire2" */
+    rxJs, tagNoIcon('RxJava'), reactiveX,
+    angularMaterial, angularFire, /* Note: versions will be specified separately, thus not "AngularFire2" */
     'SVG', tag('WordPress', 'wordpress-icon'), 'Drupal', 'Joomla', tagLogoTipo('jQuery'), 'jQuery Mobile',
     'PouchDB', tagNoIcon('CloudBoost'), 'Spring', tagLogoTipo('Vaadin'), 'Yarn',
     'Heroku', 'Jenkins', 'Vagrant', tag('Kubernetes', 'kubernets' /* they have a typo*/),
