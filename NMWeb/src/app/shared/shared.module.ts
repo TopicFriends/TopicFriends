@@ -14,6 +14,7 @@ import {UserInterestsModeViewComponent} from '../user-list/user-template/user-in
 import {SnackBarComponent} from './snackbar/snackbar.component'
 import {GeoLocationService} from './geo-location.service'
 import {UserGeoLocationsService} from './user-geo-locations.service'
+import {RouterModule} from '@angular/router'
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import {UserGeoLocationsService} from './user-geo-locations.service'
     MdIconModule,
     MdSnackBarModule,
     MdDialogModule,
+    RouterModule,
   ],
   declarations: [
     TopicTagComponent,
@@ -44,6 +46,7 @@ import {UserGeoLocationsService} from './user-geo-locations.service'
     UserTemplateComponent,
     UserInterestsModeViewComponent,
     SnackBarComponent,
+    MdInputModule,
   ],
   providers: [
     SnackBarComponent,

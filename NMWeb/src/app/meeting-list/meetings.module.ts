@@ -19,7 +19,8 @@ import {SharedModule} from '../shared/shared.module';
 
 const meetingRoutes: Routes = [
   { path: 'meeting-list',  component: MeetingListComponent },
-  { path: 'meeting-details/:meetingId', component: MeetingDetailsComponent }
+  { path: 'meeting-details/:meetingId', component: MeetingDetailsComponent }, /* old */
+  { path: 'meeting/:meetingId', component: MeetingDetailsComponent },
 ];
 
 @NgModule({
