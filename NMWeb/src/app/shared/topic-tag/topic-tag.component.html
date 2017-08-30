@@ -15,8 +15,9 @@
 
     <!--<div style="vertical-align: middle; display: inline; height: 100%">-->
     <span style="display: inline; height: 100%; vertical-align: middle">
-          {{tag.tagEntry.name}}&nbsp;
-        </span>
+      <a [routerLink]="'/topic/'+tag.tagEntry.id">{{tag.tagEntry.name}}</a>
+      &nbsp;
+    </span>
     <i *ngIf="editable"
        class="ion-close-circled"
        style="vertical-align: middle; cursor:pointer; color: rgba(0, 0, 0, 0.30); font-size: 18px"

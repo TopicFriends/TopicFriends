@@ -6,12 +6,14 @@ function escapeRegexp(s) {
 /* TODO rename to Topic */
 export class TagEntry {
   logo: string;
+  id: string
 
   constructor(
     public name: string,
     // public topicId?,
     logo?: string
   ) {
+    this.id = name
     if ( logo === null ) {
       this.logo = null;
     } else if ( logo === undefined ) {

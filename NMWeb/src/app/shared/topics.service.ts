@@ -5,7 +5,7 @@ function tag(name: string, logo?: string) {
   return new TagEntry(name, logo);
 }
 
-function tagNoIcon(name: string) {
+function tagNoIcon(name: string, gitHubLink?: string) {
   return new TagEntry(name, null);
 }
 
@@ -25,6 +25,15 @@ export const materialDesign = tag('Material Design', null/** TODO: has icon: htt
 export const typeScript = tag('TypeScript')
 export const ionic = tag('Ionic')
 export const reactiveX = tag('ReactiveX')
+export const angularFlexLayout = tagNoIcon('Angular Flex-Layout', 'https://github.com/angular/flex-layout')
+export const angularFlexLayoutResponsiveApi = tagNoIcon(
+  'Angular Flex-Layout Responsive API', 'https://github.com/angular/flex-layout/wiki/Responsive-API')
+export const  protractor = tag('Protractor')
+export const sass = tagLogoTipo('Sass')
+export const npm = tagLogoTipo('NPM')
+export const karma = tag('Karma')
+export const jasmine = tag('Jasmine')
+export const webPack = tag('Webpack')
 
 @Injectable()
 export class TopicsService {
@@ -36,7 +45,7 @@ export class TopicsService {
   /** I moved it here, because @Input stopped working for some reason and I am to distracted to troubleshoot it :-\ */
   public topics: TagEntry[] = this.transformTags([
     angular, tagNoIcon('AngularJS'), ionic, firebase,
-    tag('Protractor'), tag('Karma'), tag('Jasmine'),
+    protractor, karma, jasmine,
     tag('PHP'), materialDesign, typeScript,
     tag('Django'), tag('Python'), tag('Ruby'), tagLogoTipo('Ruby On Rails'),
     tag('PeopleMatcher'),
@@ -45,7 +54,7 @@ export class TopicsService {
     tagNoIcon('C#'), tagNoIcon('ASP.NET'), tagNoIcon('ASP.NET MVC'), tagNoIcon('ASP.NET Core MVC') /* https://github.com/aspnet/Mvc */,
     tag('iOS'), tag('Swift'), tag('Objective-C', null),
     tag('D3'),
-    tag('Angular DI', null), tag('Angular Modules', null), tag('Angular Router', null), 'Webpack',
+    tag('Angular DI', null), tag('Angular Modules', null), tag('Angular Router', null), webPack,
     tagNoIcon('Web Development'), tagNoIcon('CMS'), tagNoIcon('Selenium'), tagNoIcon('Blog Software'),
     tagNoIcon('VR'),
     'JavaScript', tag('ECMAScript', 'es6'),
@@ -58,8 +67,8 @@ export class TopicsService {
     'Laravel', 'CakePHP', 'Zend Framework', 'CodeIgniter', 'Symfony',
     tag('CSS3', 'css-3'), tag('Responsive Design', null), tag('HTML5', 'html-5'),
     tag('PWA', null), tagNoIcon('SPA'), tag('REST', null), tag('HTTP', null), tag('WebSocket'), 'WebRTC', tagLogoTipo('Upwork'),
-    tagLogoTipo('NodeJS'), tagLogoTipo('NPM'),
-    tagLogoTipo('Sass'), tagLogoTipo('Stylus'), tagLogoTipo('Less'),
+    tagLogoTipo('NodeJS'), npm,
+    sass, tagLogoTipo('Stylus'), tagLogoTipo('Less'),
     'Bitcoin', 'Ethereum', 'Steemit', 'Monero',
     tagNoIcon('Cryptocurrency'), tagNoIcon('Blockchain'), tagNoIcon('Cryptography'),
     'Cordova', 'PhoneGap',
@@ -118,7 +127,8 @@ export class TopicsService {
     'Auth0',
     'Mapbox',
     tag('GitHub', 'github-icon'),
-    tagNoIcon('Stencil') /* Ionic */
+    tagNoIcon('Stencil'), /* Ionic */
+    angularFlexLayout, angularFlexLayoutResponsiveApi
     // Voice interfaces, Alexa etc (O. Carracedo)
     // Mark: OData, PowerBI, SignalR
     // Frontend
@@ -146,4 +156,9 @@ export class TopicsService {
     })
   }
 
+  getTopicById(topicId: string): TagEntry {
+    const retVal = this.topics.find(it => it.name === topicId)
+    console.log('getTopicById', topicId, retVal)
+    return retVal
+  }
 }

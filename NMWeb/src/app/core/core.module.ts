@@ -9,6 +9,7 @@ import {MdMenuModule} from '@angular/material';
 import {SharedModule} from '../shared/shared.module'
 import {UserProfileModule} from '../user-profile/user-profile.module'
 import {MeetingsModule} from '../meeting-list/meetings.module'
+import {TopicsModule} from '../topics/topics.module'
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {MeetingsModule} from '../meeting-list/meetings.module'
     FlexLayoutModule,
     UserProfileModule,
     MeetingsModule,
+    TopicsModule,
     MdIconModule,
     MdMenuModule,
     MdButtonModule,

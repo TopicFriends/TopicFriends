@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCardModule} from '@angular/material';
+import {MdButtonModule, MdCardModule, MdChipsModule} from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -30,6 +30,7 @@ import { TopicsAllComponent } from './topics-all/topics-all.component';
 import {MapsModule} from './maps/maps.module'
 import {CheckFirebaseQueryComponent} from './experiments/check-firebase-query/check-firebase-query.component';
 import { AboutComponent } from './about/about.component';
+import {TopicsModule} from './topics/topics.module'
 
 // import {
 //   AngularFireModule,
@@ -102,6 +103,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     MdButtonModule,
     MdCardModule,
+    MdChipsModule,
     // FlexLayoutModule,
   ],
   providers: [
@@ -115,6 +117,9 @@ const appRoutes: Routes = [
     TopicsService,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  bootstrap: [AppComponent],
+  bootstrap: [
+    AppComponent,
+    // provide(PLATFORM_DIRECTIVES, {useValue: [ROUTER_DIRECTIVES], multi: true}),
+  ],
 })
 export class AppModule { }
