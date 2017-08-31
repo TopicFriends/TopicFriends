@@ -23,12 +23,9 @@ import {TopicsService} from './shared/topics.service';
 import {UserProfileModule} from './user-profile/user-profile.module'
 import {CoreModule} from 'app/core/core.module';
 import {SharedModule} from './shared/shared.module';
-import { NgforTrackbyComponent } from './experiments/ngfor-trackby/ngfor-trackby.component';
-import { NgforParentComponent } from './experiments/ngfor-parent/ngfor-parent.component';
 // import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
 import { TopicsAllComponent } from './topics-all/topics-all.component';
 import {MapsModule} from './maps/maps.module'
-import {CheckFirebaseQueryComponent} from './experiments/check-firebase-query/check-firebase-query.component';
 import { AboutComponent } from './about/about.component';
 import {TopicsModule} from './topics/topics.module'
 
@@ -60,10 +57,6 @@ const appRoutes: Routes = [
     component: TopicsAllComponent,
   },
   {
-    path: 'check-queries',
-    component: CheckFirebaseQueryComponent,
-  },
-  {
     path: 'about',
     component: AboutComponent,
   },
@@ -80,11 +73,8 @@ const appRoutes: Routes = [
     UserListComponent,
     LoginComponent,
     // UserTemplateComponent,
-    NgforTrackbyComponent,
-    NgforParentComponent,
     // UserInterestsModeViewComponent,
     TopicsAllComponent,
-    CheckFirebaseQueryComponent,
     AboutComponent,
   ],
   imports: [

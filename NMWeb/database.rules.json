@@ -25,15 +25,6 @@
           }
         }
       }
-    },
-    "Experiments": {
-      "CheckFirebaseQuery": {
-        "List": {
-          ".indexOn": [
-            "history/created/something/when"
-          ]
-        }
-      }
     }
   }
 }
