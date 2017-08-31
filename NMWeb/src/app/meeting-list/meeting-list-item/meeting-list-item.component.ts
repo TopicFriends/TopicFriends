@@ -11,7 +11,9 @@ import {AuthService} from '../../user-profile/auth.service';
 export class MeetingListItemComponent implements OnInit {
 
   @Input() meeting: Meeting;
+
   meetingAttendanceByUser: MeetingAttendanceByUser;
+  attendeesCount: number = 0;
 
   constructor(
     private meetingAttendanceService: MeetingAttendanceService,
@@ -27,5 +29,10 @@ export class MeetingListItemComponent implements OnInit {
         });
     })
     console.log('meeting', this.meeting)
+
+    this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meeting.$key)
+      .subscribe(list => {
+        this.attendeesCount = list.length;
+      });
   }
 }
