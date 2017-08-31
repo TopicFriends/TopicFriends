@@ -14,8 +14,6 @@
     <p><em>{{meeting.date}}</em> at <b>{{meeting.place}}</b></p>
     <a href="{{meeting.meetupLink}}">Meetup link</a>
     <div style="padding-top: 0.5em; pading-bottom: 1em" [innerHtml]="meeting.description"></div>
-    <hr>
-    <h3 style="margin-left: 7px; margin-top: 1em">Joining us for this meeting:</h3>  <!--7px - find a way for aligning with meeting attendance user list in a better way-->
     <app-meeting-attendance-user-list
       [meetingId]="meetingId">
     </app-meeting-attendance-user-list>

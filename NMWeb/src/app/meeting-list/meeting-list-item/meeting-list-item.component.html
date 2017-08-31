@@ -1,7 +1,9 @@
 <md-card style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
   <md-card-title routerLink="/meeting-details/{{meeting.$key}}">
     <span>{{meeting.title}}</span>
-    <md-card-subtitle><ng-template [ngIf]="attendeesCount>0"> already {{attendeesCount}} comming!</ng-template></md-card-subtitle>
+    <md-card-subtitle>
+      <ng-template [ngIf]="attendeesCount>0"> already {{attendeesCount}} comming!</ng-template>
+    </md-card-subtitle>
   </md-card-title>
   <md-card-content>
     <p>{{meeting.date}} at {{meeting.place}}</p>
