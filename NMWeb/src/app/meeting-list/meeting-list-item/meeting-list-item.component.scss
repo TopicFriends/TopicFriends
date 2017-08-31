@@ -1,0 +1,14 @@
+md-card-title {
+  cursor: pointer;
+}
+
+md-card-title>span:active {
+  background: linear-gradient(white, #e6e6e6, white);
+}
+
+md-card-title:active,
+md-card-title:focus {
+  outline:0;
+  border:none;
+  -moz-outline-style: none;
+}

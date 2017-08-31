@@ -1,12 +1,23 @@
 <md-card style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
-  <md-card-title>{{meeting.title}}</md-card-title>
+  <md-card-title routerLink="/meeting-details/{{meeting.$key}}">
+    <span>{{meeting.title}}</span>
+    <md-card-subtitle>
+      <ng-template [ngIf]="attendeesCount>0"> already {{attendeesCount}} comming!</ng-template>
+    </md-card-subtitle>
+  </md-card-title>
   <md-card-content>
     <p>{{meeting.date}} at {{meeting.place}}</p>
     <a href="{{meeting.meetupLink}}">Meetup link</a>
   </md-card-content>
   <md-card-actions>
+    
     <button md-button md-raised-button color="secondary"
-                          routerLink="/meeting/{{meeting.$key}}">Details</button>
+            style="margin-right: 1em; margin-left: 1em"
+            routerLink="/meeting/{{meeting.$key}}"
+    >
+      Details
+    </button>
+
     <app-going-button [meeting]="meeting" [meetingAttendanceByUser]="meetingAttendanceByUser"></app-going-button>
   </md-card-actions>
 </md-card>

@@ -13,6 +13,7 @@ import {DbListReadOnly} from '../../db.service';
 export class MeetingAttendanceUserListComponent implements OnInit {
 
   userList: DbListReadOnly<MeetingAttendanceByUserWithUserData>;
+  attendeesCount: number = 0;
 
   @Input() meetingId: string;
 
@@ -20,13 +21,13 @@ export class MeetingAttendanceUserListComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.userList =
       this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meetingId);
 
     this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meetingId)
       .subscribe(list => {
-      console.log('fetchMeetingAttendanceByUserWithUserData subscribed: ', list);
+        this.attendeesCount = list.length;
+        console.log('fetchMeetingAttendanceByUserWithUserData subscribed: ', list);
     });
   }
 

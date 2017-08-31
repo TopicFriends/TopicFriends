@@ -40,6 +40,8 @@ export class MeetingDetailsComponent implements OnInit {
   }
 
   private retrieveMeetingDetails(meetingId: string) {
-    this.meeting = this.meetingsService.retrieveMeetingDetails(meetingId);
+    this.meetingsService.retrieveMeetingDetails(meetingId).subscribe((meeting: Meeting) => {
+      this.meeting = meeting;
+    });
   }
 }
