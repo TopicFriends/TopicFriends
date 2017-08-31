@@ -128,10 +128,10 @@ export class TopicsService {
     'Mapbox',
     tag('GitHub', 'github-icon'),
     tagNoIcon('Stencil'), /* Ionic */
-    angularFlexLayout, angularFlexLayoutResponsiveApi
+    'OData', tagNoIcon('PowerBI'), tagNoIcon('SignalR'), // Mark S.
+    angularFlexLayout, angularFlexLayoutResponsiveApi,
     // Voice interfaces, Alexa etc (O. Carracedo)
-    // Mark: OData, PowerBI, SignalR
-    // Frontend
+    tagNoIcon('Frontend'),
     // Mapbox Studio
     // TODO: check Malaga meetup topics
     // FIWARE, Smart City, Green Tech, IoT, IoE
@@ -142,7 +142,8 @@ export class TopicsService {
     // Ionic Creator, Bootstrap Studio
     // Hybris
     // Internationalization (i18n), localization (l11n), translations
-
+    // English / Spanish language practice / interchange
+    // CSS View Encapsulation, Shadow DOM
   ]);
 
 
