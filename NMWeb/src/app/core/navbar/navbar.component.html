@@ -2,7 +2,7 @@
  <div fxFlexOrder="1" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==0)}" (click)="selectedTab = 0">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/meeting-list" routerLinkActive="active">
          <div class="nav-bar-centerd-items">
-            <md-icon>format_list_numbered</md-icon>
+            <md-icon>event</md-icon>
             <p>Meetings</p>
          </div>
     </div>
@@ -11,8 +11,8 @@
  <div fxFlexOrder="2" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==1)}"  (click)="selectedTab = 1">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/people-list" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
-            <md-icon>search</md-icon>
-            <p>Search</p>
+            <md-icon>people</md-icon>
+            <p>People</p>
         </div>
     </div>
  </div>
