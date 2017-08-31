@@ -1,0 +1,26 @@
+<form
+  [formGroup]="formGroup"
+>
+
+  <md-input-container>
+    <textarea
+      mdInput
+      [rows]="2"
+      [formGroup]="formGroup"
+      formControlName="description"
+      mdTextareaAutosize
+      placeholder="My description"
+    ></textarea>
+  </md-input-container>
+
+  <md-input-container>
+    <textarea
+      mdInput
+      [rows]="2"
+      formControlName="whatDoYouExpectFromTheApp"
+      mdTextareaAutosize
+      placeholder="What do you hope to accomplish in this app?"
+    ></textarea>
+  </md-input-container>
+
+</form>

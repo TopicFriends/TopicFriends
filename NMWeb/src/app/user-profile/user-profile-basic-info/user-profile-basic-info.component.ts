@@ -27,6 +27,7 @@ export class UserProfileBasicInfoComponent implements OnInit {
   ) {
     this.formGroup = this.formBuilder.group({
       displayName: this.displayName,
+      // tagLine: '', // oneLineDescription
     })
   }
 

@@ -10,6 +10,7 @@ import {UserProfileBasicInfoComponent} from './user-profile-basic-info/user-prof
 import {UserInterestsComponent} from './user-interests/user-interests.component'
 import {SnackBarComponent} from '../shared/snackbar/snackbar.component'
 import {UserGeoLocationsComponent} from './user-geo-locations/user-geo-locations.component'
+import {UserDescriptionsComponent} from './user-descriptions/user-descriptions.component'
 
 @Component({
   selector: 'app-user-profile',
@@ -22,6 +23,7 @@ export class UserProfileComponent implements OnInit {
   @ViewChild('basicInfo') basicInfo: UserProfileBasicInfoComponent
   @ViewChild('userInterests') userInterests: UserInterestsComponent
   @ViewChild('userGeoLocations') userGeoLocations: UserGeoLocationsComponent
+  @ViewChild('userDescriptions') userDescriptions: UserDescriptionsComponent
 
 
   constructor(
@@ -42,6 +44,7 @@ export class UserProfileComponent implements OnInit {
     const userInterests = this.userInterests.getUserInterests()
     const userProfile: UserProfile = this.basicInfo.getUserBasicInfo()
     const userGeoLocations = this.userGeoLocations.getValue()
+    const userDescriptions = this.userDescriptions.getValue()
     console.log('userGeoLocations', userGeoLocations)
     // TODO: photo
     console.log('save()', userInterests)
@@ -51,6 +54,7 @@ export class UserProfileComponent implements OnInit {
       userInterests,
       otherProfiles,
       userGeoLocations,
+      userDescriptions,
     );
     this.snackBarComponent.showSnackBar('Profile sent. Thank you!')
   }

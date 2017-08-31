@@ -11,6 +11,7 @@ export class MeetingAttendanceByUser {
   $key?: string;
   going: boolean;
   user?: UserData
+  whatDoYouExpectFromThisMeeting?: string // FIXME: move to MeetingAttendanceByUserDetails because it can be a long text
 }
 
 export class MeetingAttendanceByUserWithUserData {
