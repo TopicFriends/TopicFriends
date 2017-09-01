@@ -12,6 +12,18 @@
         <p>Latitude: {{coordinates.latitude}}</p>
         <p>Longitude: {{coordinates.longitude}}</p>
       </div>
+      <hr>
+
+        <md-slider
+          min="100"
+          max="10000"
+          step="200"
+          value="1000"
+          tickInterval="3"
+          [(ngModel)]="radiusSearch"
+          (change)="onRadiusSearchChange()"></md-slider>
+
+      <p>There are <b>{{ numberOfNearUsers }}</b> users within {{ radiusSearch | distance }}.</p>
     </div>
   </div>
   <div class="row">

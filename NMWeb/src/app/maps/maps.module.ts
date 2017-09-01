@@ -5,8 +5,10 @@ import {RouterModule, Routes} from '@angular/router'
 import {AgmCoreModule} from '@agm/core'
 import {UserProfileModule} from '../user-profile/user-profile.module';
 import { UserPickLocationComponent } from './user-pick-location/user-pick-location.component'
-import {MdButtonModule, MdDialogModule, MdIconModule, MdInputModule} from '@angular/material'
+import {MdButtonModule, MdDialogModule, MdIconModule, MdInputModule, MdSliderModule} from '@angular/material'
 import {SharedModule} from '../shared/shared.module'
+import {FormsModule} from '@angular/forms';
+import { DistancePipe } from './users-map/distance.pipe'
 
 
 const meetingRoutes: Routes = [
@@ -19,16 +21,22 @@ const meetingRoutes: Routes = [
     RouterModule.forChild(meetingRoutes),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB8eJ4NjIFWy0tABOEasmykdAj8e7aenL0',
-      libraries: ["places"]
+      libraries: [
+        "places",
+        "geometry"
+      ]
     }),
     SharedModule,
     MdButtonModule,
     MdInputModule,
-    MdIconModule
+    MdIconModule,
+    MdSliderModule,
+    FormsModule
   ],
   declarations: [
     UsersMapComponent,
     UserPickLocationComponent,
+    DistancePipe,
   ],
   exports: [
     UserPickLocationComponent,
