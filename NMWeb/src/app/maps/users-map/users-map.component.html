@@ -5,23 +5,25 @@
   <h1>
     Users Map
   </h1>
-  <div fxHide class="row">
+  <div
+    class="row"
+  >
     <div class="col-xs-12">
       <h2>This is your current location: </h2>
       <div *ngIf="coordinates">
         <p>Latitude: {{coordinates.latitude}}</p>
         <p>Longitude: {{coordinates.longitude}}</p>
       </div>
-      <hr>
 
         <md-slider
           min="100"
-          max="10000"
+          max="50000"
           step="200"
           value="1000"
           tickInterval="3"
           [(ngModel)]="radiusSearch"
-          (change)="onRadiusSearchChange()"></md-slider>
+          (change)="onRadiusSearchChange()"
+        ></md-slider>
 
       <p>There are <b>{{ numberOfNearUsers }}</b> users within {{ radiusSearch | distance }}.</p>
     </div>
