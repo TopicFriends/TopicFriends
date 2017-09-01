@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {GeoLocation, GeoLocationsDictionary, UserGeoLocations, UserProfile} from '../../user-profile/user-profile.service'
 import {GeoLocationService} from '../../shared/geo-location.service'
 import {UserGeoLocationsService} from '../../shared/user-geo-locations.service'
+
+import { } from 'googlemaps';
 
 export class UserCoords {
   user?: UserProfile
@@ -15,22 +17,26 @@ export class UserCoords {
 })
 export class UsersMapComponent implements OnInit {
 
-  allUsersGeoLocationsFlattened: GeoLocation[]
+  @ViewChild('slider') slider: ElementRef;
 
+  allUsersGeoLocationsFlattened: GeoLocation[]
+  radiusSearch = 300;
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
+  numberOfNearUsers = 0;
+
 
   usersCoords: UserCoords[] = [
     {
       user: {
         displayName: 'David'
       },
-      geoCoords: {latitude: 36.723, longitude: -4.476},
+      geoCoords: {latitude: 36.544, longitude: -4.65},
     },
     {
       user: {
         displayName: 'Rubén'
       },
-      geoCoords: {latitude: 36.726, longitude: -4.476}
+      geoCoords: {latitude: 36.546, longitude:  -4.65015}
     },
     {
       user: {
@@ -60,9 +66,12 @@ export class UsersMapComponent implements OnInit {
     this.geoLocationService.getPosition().subscribe(
       (pos: Position) => {
         this.coordinates = {
-          latitude:  +(pos.coords.latitude.toFixed(3)),
-          longitude: +(pos.coords.longitude.toFixed(3))
+          latitude:  +(pos.coords.latitude.toFixed(5)),
+          longitude: +(pos.coords.longitude.toFixed(5))
         };
+        if(this.allUsersGeoLocationsFlattened) {
+          this.updateNearUsers(this.coordinates);
+        }
       }
     );
 
@@ -80,7 +89,6 @@ export class UsersMapComponent implements OnInit {
                 if ( subLocationMulti ) {
                   allUsersGeoLocationsFlattened.push(subLocationMulti)
                 }
-
               }
             }
           }
@@ -93,11 +101,36 @@ export class UsersMapComponent implements OnInit {
       //   {latitude: 36.721, longitude: -4.479},
       // )
       this.allUsersGeoLocationsFlattened = allUsersGeoLocationsFlattened
+      if(this.allUsersGeoLocationsFlattened) {
+        this.updateNearUsers(this.coordinates);
+      }
     })
   }
 
   markerDragEnd(event) {
     window.alert('markerDragEnd ' + JSON.stringify(event))
+  }
+
+  onRadiusSearchChange() {
+    if(this.allUsersGeoLocationsFlattened) {
+      this.updateNearUsers(this.coordinates);
+    }
+  }
+
+  updateNearUsers(position: GeoLocation) {
+    const nearUsers:any[] = [];
+    let coords = this.createLatLng(position.latitude, position.longitude);
+    for (const user of this.allUsersGeoLocationsFlattened) {
+      let userCoords = this.createLatLng(user.latitude, user.longitude);
+      if (this.userGeoLocationsService.calculateDistance(coords, userCoords) <= this.radiusSearch) {
+        nearUsers.push(user);
+      }
+    }
+    this.numberOfNearUsers = nearUsers.length;
+  }
+
+  createLatLng(latitude, longitude) {
+    return new google.maps.LatLng(latitude, longitude);
   }
 
 }

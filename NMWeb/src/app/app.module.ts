@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA, NgZone} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -27,7 +27,6 @@ import {SharedModule} from './shared/shared.module';
 import { TopicsAllComponent } from './topics-all/topics-all.component';
 import {MapsModule} from './maps/maps.module'
 import { AboutComponent } from './about/about.component';
-import {TopicsModule} from './topics/topics.module'
 
 // import {
 //   AngularFireModule,
@@ -104,7 +103,7 @@ const appRoutes: Routes = [
     UserListService,
     UserMatcherService,
     MeetingsService,
-    TopicsService,
+    TopicsService
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [
