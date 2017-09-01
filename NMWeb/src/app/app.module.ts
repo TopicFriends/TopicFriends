@@ -35,7 +35,7 @@ import { AboutComponent } from './about/about.component';
 //   AuthProviders} from 'angularfire2';
 
 
-// import 'hammerjs';
+import 'hammerjs';
 
 const appRoutes: Routes = [
   {
