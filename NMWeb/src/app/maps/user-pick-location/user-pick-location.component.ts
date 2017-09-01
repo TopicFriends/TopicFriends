@@ -54,7 +54,10 @@ export class UserPickLocationComponent implements OnInit {
           //Update markers and coords
           this.coordinates.longitude = place.geometry.location.lng();
           this.coordinates.latitude = place.geometry.location.lat();
-          this.coords = {lat: this.coordinates.longitude, lng: this.coordinates.latitude};
+          this.coords = {
+            lat: this.coordinates.latitude,
+            lng: this.coordinates.longitude
+          };
         });
       });
     });
