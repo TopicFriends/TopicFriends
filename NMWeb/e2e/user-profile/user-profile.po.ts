@@ -4,7 +4,7 @@ export class UserProfilePage {
   saveProfileButton = $('#saveProfile');   //by click and by ENTER
   userProfileSelector = 'app-user-profile';
   userProfile = $(this.userProfileSelector);
-  // public googleAccountName = $('');
+  pleaseLogInButtonSelector = this.userProfileSelector + ' button';
 
   linkedInLink = $('#linkedinLink input');
   profileForm = $('form');
@@ -13,8 +13,6 @@ export class UserProfilePage {
   topicsPairProgramming = $('#topicsPairProgramming input');
 
   private ec = ExpectedConditions;
-
-  // displayName = ;
 
   navigateTo() {
     browser.get('/profile');

@@ -15,23 +15,24 @@ describe('LoginPage page: User', () => {
 
   it('can log in', (done) => {
     page.navigateTo();
-    browser.wait(ec.presenceOf(page.loginButton)).then(() => {
-      var isUserSignedIn = page.logInDefaultTestUser(done);
+    browser.wait(ec.presenceOf(page.loginMenuButton)).then(() => {
+      let isUserSignedIn = page.logInDefaultTestUser(done);
       expect(isUserSignedIn).toBeTruthy();
     })
   });
 
   it('stays logged in when returning to the app', (done) => {
     browser.get('http://www.google.com');
-    browser.wait(ec.presenceOf($('input.gsfi')));   //google search page
+    let googleSearchInput = $('input.gsfi')
+    browser.wait(ec.presenceOf(googleSearchInput));
     browser.get('/');
-    browser.wait(ec.presenceOf(page.loginButton));
+    browser.wait(ec.presenceOf(page.loginMenuButton));
 
     expect(page.confirmUserLoggedIn(done)).toBeTruthy();
   });
 
   it('can logout', () => {
     page.logoutUser();
-    expect(page.confirmUserLoggedOut()).toBeTruthy();
+    page.confirmUserLoggedOut();
   });
 });

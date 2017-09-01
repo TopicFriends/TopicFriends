@@ -1,43 +1,47 @@
-import {$, browser, by, element, ExpectedConditions} from 'protractor';
-import * as environment from '../../src/environments/environment.qa';
+import {$, browser, by, element, ElementFinder} from 'protractor';
 import {CommonUtils} from '../common-utils';
 
 let firebase = require("firebase");
 require("firebase/auth");
 
 export class LoginPage {
-  private defaultSleep = 1000;
   private utils = new CommonUtils();
 
   userEmail = 'peoplematchertest@gmail.com';
   userPassword = '@ngul@rAppT3st!ng';
   testUserName = 'People Matcher';
-
   private menuButtonSelector = 'md-toolbar button';
-  loginMenuButton = $(this.menuButtonSelector);
-  loginButton = element(by.cssContainingText(this.menuButtonSelector, 'Login via Google'));
-  logoutButton = element(by.cssContainingText('button.mat-menu-item', 'Logout'));
-  usernameField = $('#identifierId');
-  passwordField = $('#password input');
-  googleIdNextButton = $('#identifierNext');
-  googlePasswordNextButton = $('#passwordNext');
+
+  loginMenuButton: ElementFinder = $(this.menuButtonSelector);
+  logoutButton: ElementFinder =
+    element(by.cssContainingText('button.mat-menu-item', 'Log out'));
+  logInViaGoogle: ElementFinder =
+    element(by.cssContainingText('app-login button>span', 'Log in via Google'));
+  loginButtonWithUserName: ElementFinder =
+    element(by.cssContainingText(this.menuButtonSelector, this.testUserName));
+  usernameField: ElementFinder = $('#identifierId');
+  passwordField: ElementFinder = $('#password input');
+  googleIdNextButton: ElementFinder = $('#identifierNext');
+  googlePasswordNextButton: ElementFinder = $('#passwordNext');
 
   navigateTo() {
     browser.get('/');
   }
 
-  logInDefaultTestUser(done) {   //TODO: refactor
-    this.loginButton.click();
+  logInDefaultTestUser(done) {
+    let defaultSleep = 1000;
+    this.loginMenuButton.click();
+    this.logInViaGoogle.click();
 
     this.utils.switchTabs(1);
 
     this.utils.waitForElement(this.usernameField);
     this.usernameField.sendKeys(this.userEmail);
     this.utils.waitForElement(this.googleIdNextButton);
-    browser.sleep(this.defaultSleep);
+    browser.sleep(defaultSleep);
     this.googleIdNextButton.click();
 
-    browser.sleep(this.defaultSleep);
+    browser.sleep(defaultSleep);
     this.utils.waitForElement(this.passwordField);
     this.passwordField.sendKeys(this.userPassword);
     this.utils.waitForElement(this.googlePasswordNextButton);
@@ -49,8 +53,7 @@ export class LoginPage {
   }
 
   confirmUserLoggedIn(done): any {
-    this.utils.waitForElement(this.loginMenuButton);   //the button is shown at all
-    this.utils.waitForElementNotPresent(this.loginButton);  //the button does NOT say to log in
+    this.utils.waitForElement(element(by.cssContainingText(this.menuButtonSelector, this.testUserName)));
     this.utils.takeScreenshot('LoginPage');
     return element(by.cssContainingText(this.menuButtonSelector, this.testUserName)).isPresent().then(
       (isPresent) => {
@@ -68,6 +71,7 @@ export class LoginPage {
   }
 
   confirmUserLoggedOut() {
-    return this.utils.waitForElement(this.loginButton);
+    this.utils.waitForElement(this.loginMenuButton);
+    expect(this.utils.waitForElementNotPresent(this.loginButtonWithUserName)).toBeTruthy();
   }
 }
