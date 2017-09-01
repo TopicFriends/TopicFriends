@@ -20,7 +20,7 @@ export class UsersMapComponent implements OnInit {
   @ViewChild('slider') slider: ElementRef;
 
   allUsersGeoLocationsFlattened: GeoLocation[]
-  radiusSearch = 300;
+  radiusSearch = 3000;
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
   numberOfNearUsers = 0;
 
