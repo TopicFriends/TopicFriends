@@ -23,10 +23,4 @@ path /TPProd/Meetings/MeetingAttendanceByUser/{meetingId}/{userId} {
   write() { isCurrentUser(userId) }
 }
 
-path /Experiments/CheckFirebaseQuery/List {
-  index() { [ 'history/created/something/when' ] }
-}
-
-// Define isCurrentUser() function to test if the given user id
-// matches the currently signed-in user.
 isCurrentUser(uid) { auth != null && auth.uid == uid }

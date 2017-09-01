@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {DbObject, DbList, DbService} from './db.service'
-import {UserOtherProfiles, UserProfile, UserData, UserGeoLocations} from './user-profile/user-profile.service'
+import {UserOtherProfiles, UserProfile, UserData, UserGeoLocations, UserDescriptions} from './user-profile/user-profile.service'
 import {Observable} from 'rxjs/Observable'
 import "rxjs/add/observable/of"
 
@@ -17,6 +17,7 @@ export class DomainDbService {
     USER_INTERESTS: this.USER_DATA + 'UserInterests',
     OTHER_PROFILES: this.USER_DATA + 'OtherProfiles',
     GEO_LOCATIONS: this.USER_DATA + 'GeoLocations',
+    DESCRIPTIONS: this.USER_DATA + 'Descriptions',
   }
 
   constructor(
@@ -69,13 +70,18 @@ export class DomainDbService {
     return this.db.objectById(this.PATHS.GEO_LOCATIONS, userId);
   }
 
+  userDescriptionsById(userId: string): DbObject<UserDescriptions> {
+    return this.db.objectById(this.PATHS.DESCRIPTIONS, userId);
+  }
+
   userDataById(userId: string): UserData {
-    return {
-      profile: this.userProfileById(userId),
-      otherProfiles: this.otherProfilesById(userId),
-      interests: this.userInterestsById(userId),
-      geoLocations: this.userGeoLocationsById(userId),
-    }
+    return new UserData(
+      this.userProfileById(userId),
+      this.userInterestsById(userId),
+      this.otherProfilesById(userId),
+      this.userGeoLocationsById(userId),
+      this.userDescriptionsById(userId),
+    )
   }
 
 }

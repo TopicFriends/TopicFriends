@@ -22,7 +22,7 @@
       true,
       "spaces"
     ],
-    "interface-over-type-literal": true,
+    "interface-over-type-literal": true, /* https://github.com/palantir/tslint/issues/2662 */
     "label-position": true,
     "max-line-length": [
       true,

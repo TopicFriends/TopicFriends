@@ -15,6 +15,7 @@ import {SnackBarComponent} from './snackbar/snackbar.component'
 import {GeoLocationService} from './geo-location.service'
 import {UserGeoLocationsService} from './user-geo-locations.service'
 import {RouterModule} from '@angular/router'
+import {UserDescriptionsService} from './user-profile/user-descriptions.service'
 
 @NgModule({
   imports: [
@@ -54,6 +55,7 @@ import {RouterModule} from '@angular/router'
     MdButtonModule,
     GeoLocationService,
     UserGeoLocationsService,
+    UserDescriptionsService,
   ]
 
 })

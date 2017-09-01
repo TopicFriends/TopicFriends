@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CheckFirebaseQueryComponent } from './check-firebase-query.component';
+import { UserDescriptionsComponent } from './user-descriptions.component';
 
-describe('CheckFirebaseQueryComponent', () => {
-  let component: CheckFirebaseQueryComponent;
-  let fixture: ComponentFixture<CheckFirebaseQueryComponent>;
+describe('UserDescriptionComponent', () => {
+  let component: UserDescriptionsComponent;
+  let fixture: ComponentFixture<UserDescriptionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckFirebaseQueryComponent ]
+      declarations: [ UserDescriptionsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckFirebaseQueryComponent);
+    fixture = TestBed.createComponent(UserDescriptionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

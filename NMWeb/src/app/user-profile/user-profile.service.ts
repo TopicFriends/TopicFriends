@@ -22,6 +22,13 @@ export class OtherProfile {
   show?: boolean;
 }
 
+export class UserDescriptions {
+  descriptions: {
+    description: string,
+    whatDoYouExpectFromTheApp: string,
+  }
+}
+
 export class UserOtherProfiles {
 
   linkedIn?: OtherProfile;
@@ -58,7 +65,7 @@ export class GeoLocation {
 
 }
 
-export type GeoLocationsDictionary = {
+export interface GeoLocationsDictionary {
   [geoLocationId: number]: GeoLocation
 }
 
@@ -74,6 +81,8 @@ export class UserGeoLocations {
     // home town / where I grew up
     // where I have a beer/tapas/etc / chill out
     // where I am right now (e.g. on a conference)
+    // where I travel/visit
+    // where I give talks/workshops
   }
 }
 
@@ -96,6 +105,7 @@ export class UserData {
     public interests: DbObject<UserInterests>,
     public otherProfiles: DbObject<UserOtherProfiles>,
     public geoLocations?: DbObject<UserGeoLocations>,
+    public descriptions?: DbObject<UserDescriptions>,
   ) {}
 
   history?: DbHistory
@@ -150,7 +160,8 @@ export class UserProfileService {
     userProfile: UserProfile,
     interests: UserInterests,
     otherProfiles: UserOtherProfiles,
-    userGeoLocations: any,
+    userGeoLocations: UserGeoLocations,
+    userDescriptions: UserDescriptions,
   ) {
 // <<<<<<< Updated upstream
     userProfile.lastSaved = new Date();
@@ -212,6 +223,7 @@ export class UserProfileService {
     this.myUserData.interests.update(interests);
     this.myUserData.otherProfiles.update(otherProfiles);
     this.myUserData.geoLocations.update(userGeoLocations);
+    this.myUserData.descriptions.update(userDescriptions);
   }
 
   getProfile(): Observable<UserProfile> {
