@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DbService} from '../db.service';
-import {MeetingsService} from '../shared/meetings.service'
+import {DbList} from '../db.service';
+import {Meeting, MeetingsService} from '../shared/meetings.service'
 
 @Component({
   selector: 'app-meeting-list',
@@ -9,7 +9,7 @@ import {MeetingsService} from '../shared/meetings.service'
 })
 export class MeetingListComponent implements OnInit {
 
-  items: any;
+  items: DbList<Meeting>;
 
   constructor(private meetingsService: MeetingsService) {
     this.items = this.meetingsService.retrieveAllMeetings();

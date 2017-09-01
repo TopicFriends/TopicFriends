@@ -1,4 +1,5 @@
 import {browser, ElementFinder, ExpectedConditions} from 'protractor';
+import {timeout} from 'rxjs/operator/timeout'
 let fs_extra = require('fs-extra');
 
 export class CommonUtils {
@@ -30,7 +31,7 @@ export class CommonUtils {
   }
 
   waitForElement(element: ElementFinder) {
-    return browser.wait(this.ec.presenceOf(element));
+    return browser.wait((this.ec.presenceOf(element)), 10000, 'false');   //TODO: use default timeout
   }
 
   waitForElementNotPresent(element: ElementFinder) {

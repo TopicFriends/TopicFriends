@@ -1,12 +1,11 @@
 import {UserProfilePage} from './user-profile.po';
-import {$, browser, by, element, ExpectedConditions, protractor} from 'protractor';
+import {browser, by, element, ExpectedConditions} from 'protractor';
 import {CommonUtils} from '../common-utils';
 import {LoginPage} from '../login/login.po';
-import {isSuccess} from '@angular/http/src/http_utils';
 
 browser.waitForAngularEnabled(false);
 
-describe('Profile page: User', () => {
+fdescribe('Profile page: User', () => {
   let page: UserProfilePage;
   let loginPage: LoginPage;
   let ec = ExpectedConditions;
@@ -18,12 +17,12 @@ describe('Profile page: User', () => {
     loginPage = new LoginPage();
   });
 
-  it('can see text "Please log in, to access your profile" when not logged in', () => {
+  it('can see button with text "Please log in, to access your profile" when not logged in', () => {
     page.navigateTo();
 
     browser.wait(ec.presenceOf(page.userProfile)).then(() => {
       expect(
-        element(by.cssContainingText(page.userProfileSelector,
+        element(by.cssContainingText(page.pleaseLogInButtonSelector,
           'Please log in, to access your profile')).isPresent())
         .toBeTruthy();
       expect(page.profileForm.isPresent()).toBeFalsy();
