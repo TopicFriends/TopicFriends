@@ -50,7 +50,9 @@ export class UserDescriptionsComponent implements OnInit {
 
   private autoResizeTextAreas() {
     this.textAreas.forEach(area => {
-      // http://plnkr.co/edit/gdZ6jOmQyzj2gg7ori44?p=preview
+      // https://github.com/angular/material2/issues/5247
+      // -> http://plnkr.co/edit/gdZ6jOmQyzj2gg7ori44?p=preview
+      // -> https://github.com/angular/material2/issues/4657 (closed Jul 20)
       area.resizeToFitContent()
     })
   }
