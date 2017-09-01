@@ -132,6 +132,7 @@ export class TopicsService {
     angularFlexLayout, angularFlexLayoutResponsiveApi,
     // Voice interfaces, Alexa etc (O. Carracedo)
     tagNoIcon('Frontend'),
+    'Markdown',
     // Mapbox Studio
     // TODO: check Malaga meetup topics
     // FIWARE, Smart City, Green Tech, IoT, IoE
