@@ -1,20 +1,52 @@
-import {$, browser, by, element, ExpectedConditions} from 'protractor';
+import {$, $$, browser, ElementFinder, ExpectedConditions, protractor} from 'protractor';
 
 export class UserProfilePage {
-  saveProfileButton = $('#saveProfile');   //by click and by ENTER
   userProfileSelector = 'app-user-profile';
-  userProfile = $(this.userProfileSelector);
+  userProfile: ElementFinder = $(this.userProfileSelector);
+  saveProfileButton = $('#saveProfile');
   pleaseLogInButtonSelector = this.userProfileSelector + ' button';
 
-  linkedInLink = $('#linkedinLink input');
-  profileForm = $('form');
-  topicsExchange = $('#topicsExchange input');
-  topicsHackathon = $('#topicsHackathon input');
-  topicsPairProgramming = $('#topicsPairProgramming input');
+  linkedInLinkInput = $('#linkedinLink input');
 
   private ec = ExpectedConditions;
 
   navigateTo() {
-    browser.get('/profile');
+    return browser.get('profile');
+  }
+
+  saveProfileWithKeyboard() {
+    this.userProfile.sendKeys(protractor.Key.chord(protractor.Key.CONTROL, 'S'));
   }
 }
+
+export class HackathonTopicsSelection {
+  topicsSelector = '#topicsHackathon';
+  topicsInput = $(this.topicsSelector + ' input');
+
+  allSelectedTags() {
+    return $$(this.topicsSelector + ' app-topic-tag span>a');
+  }
+}
+
+export class PairProgrammingTopicsSelection {
+  topicsSelector = '#topicsPairProgramming ';
+  topicsInput = $(this.topicsSelector + ' input');
+
+  allSelectedTags() {
+    return $$(this.topicsSelector + ' app-topic-tag span>a');
+  }
+}
+
+export class ExchangeTopicsSelection {
+  topicsSelector = '#topicsExchange';
+  topicsInput = $(this.topicsSelector + ' input');
+
+  allSelectedTags() {
+    return $$(this.topicsSelector + ' app-topic-tag span>a');
+  }
+
+  addTopic(topic) {
+    this.topicsInput.sendKeys(topic);
+  }
+}
+
