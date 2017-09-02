@@ -1,32 +1,20 @@
-<!--(keyup.command.s)="save()"-->
-<!--(keyup.command.u)="save()"-->
-<!--(keyup.control.u)="save()"-->
-<!--(keyup.control.s)="save()"-->
-<!--(keyup.meta.u)="save()"-->
-<!--(keyup.meta.s)="save()"-->
-<!--(keydown)="onKeyUp($event)"-->
 
 <div
   (window:keydown.meta.s)="keyDownSave($event)"
   (window:keydown.control.s)="keyDownSave($event)"
 >
-<!--<div-->
-  <!--(keydown)="onKeyUp($event)"-->
-<!--&gt;-->
+
 <h2>
   My Profile
 </h2>
-<!--<p>userProfileService.userId: {{ userProfileService.userId }}</p>-->
+
 <ng-template [ngIf]="! userProfileService.userId" >
   <button md-raised-button routerLink="/login">
     Please log in, to access your profile
   </button>
 </ng-template>
-<!--<ng-template [ngIf]="userProfileService.userId && userProfile">-->
-<ng-template [ngIf]="userProfileService.userId">
 
-  <!--Input <input   (keydown)="onKeyUp($event)"-->
-  <!--/>-->
+<ng-template [ngIf]="userProfileService.userId">
 
   <app-user-profile-basic-info #basicInfo>
   </app-user-profile-basic-info>
@@ -43,15 +31,21 @@
   <app-user-interests #userInterests>
   </app-user-interests>
 
-
-
-
   <br />
   <br />
 
   <p>
-    <button id="saveProfile" style="width:100%" md-button md-raised-button (click)="save()">Save <i>(Cmd/Ctrl+S)</i></button>
-
+    <button
+      id="saveProfile"
+      style="
+        width:100%
+      "
+      md-button
+      md-raised-button
+      (click)="save()"
+    >
+      Save <i>(Cmd/Ctrl+S)</i>
+    </button>
   </p>
 
 </ng-template>

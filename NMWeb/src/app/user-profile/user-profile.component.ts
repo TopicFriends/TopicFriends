@@ -1,5 +1,4 @@
-///<reference path="./user-profile.service.ts"/>
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {AuthService} from './auth.service';
 import {Observable} from 'rxjs/Observable';
@@ -29,15 +28,13 @@ export class UserProfileComponent implements OnInit {
   constructor(
     protected userProfileService: UserProfileService,
     public authService: AuthService,
-    public snackBarComponent: SnackBarComponent,
-  ) {
+    public snackBarComponent: SnackBarComponent,) {
   }
 
   ngOnInit() {
   }
 
   save() {
-    // window.alert('save')
     // FIXME this.userProfile.displayName = this.displayName.value;
 
     const otherProfiles = this.userOtherProfilesComponent.getOtherProfiles()
@@ -46,7 +43,6 @@ export class UserProfileComponent implements OnInit {
     const userGeoLocations = this.userGeoLocations.getValue()
     const userDescriptions = this.userDescriptions.getValue()
     console.log('userGeoLocations', userGeoLocations)
-    // TODO: photo
     console.log('save()', userInterests)
     // this.userProfileObservable =
     this.userProfileService.saveUserProfile(
@@ -57,29 +53,6 @@ export class UserProfileComponent implements OnInit {
       userDescriptions,
     );
     this.snackBarComponent.showSnackBar('Profile sent. Thank you!')
-  }
-
-  onKeyUpKarol($event: KeyboardEvent): void {
-    let charCode = String.fromCharCode($event.which).toLowerCase();
-    window.alert('metaKey: ' + $event.metaKey + ', ctrl: ' + $event.ctrlKey);
-    // if ($event.ctrlKey && charCode === 'e') {
-    //   // Perform your Save action here
-    //   this.save();
-    // }
-    if (($event.ctrlKey || $event.metaKey) && charCode === 's') {
-      // Perform your Save action here
-      this.save();
-    }
-  }
-
-  onKeyUp($event): void {
-    $event.preventDefault();
-    let charCode = String.fromCharCode($event.which).toLowerCase();
-    if (($event.ctrlKey || $event.metaKey) && charCode === 's') {
-      window.alert('cmd/ctrl s')
-      // Perform your Save action here
-      this.save();
-    }
   }
 
   keyDownSave(event) {
