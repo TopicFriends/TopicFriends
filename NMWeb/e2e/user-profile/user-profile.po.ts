@@ -26,6 +26,10 @@ export class HackathonTopicsSelection {
   allSelectedTags() {
     return $$(this.topicsSelector + ' app-topic-tag span>a');
   }
+
+  inputTopic(topic) {
+    this.topicsInput.sendKeys(topic);
+  }
 }
 
 export class PairProgrammingTopicsSelection {
@@ -34,6 +38,10 @@ export class PairProgrammingTopicsSelection {
 
   allSelectedTags() {
     return $$(this.topicsSelector + ' app-topic-tag span>a');
+  }
+
+  inputTopic(topic) {
+    this.topicsInput.sendKeys(topic);
   }
 }
 
@@ -45,7 +53,7 @@ export class ExchangeTopicsSelection {
     return $$(this.topicsSelector + ' app-topic-tag span>a');
   }
 
-  addTopic(topic) {
+  inputTopic(topic) {
     this.topicsInput.sendKeys(topic);
   }
 }
