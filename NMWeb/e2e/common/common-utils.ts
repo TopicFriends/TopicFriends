@@ -30,14 +30,6 @@ export class CommonUtils {
     });
   }
 
-  waitForElement(element: ElementFinder) {
-    return browser.wait((this.ec.presenceOf(element)), 10000, 'false');   //TODO: use default timeout
-  }
-
-  waitForElementNotPresent(element: ElementFinder) {
-    return browser.wait(this.ec.not(this.ec.presenceOf(element)));
-  }
-
   switchTabs(tab: number) {
     browser.getAllWindowHandles().then(function (handles) {
       browser.driver.switchTo().window(handles[tab]);

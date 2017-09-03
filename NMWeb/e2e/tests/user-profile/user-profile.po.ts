@@ -1,14 +1,13 @@
-import {$, $$, browser, ElementFinder, ExpectedConditions, protractor} from 'protractor';
+import {$, $$, browser, ElementFinder, protractor} from 'protractor'
 
 export class UserProfilePage {
-  userProfileSelector = 'app-user-profile';
-  userProfile: ElementFinder = $(this.userProfileSelector);
-  saveProfileButton = $('#saveProfile');
-  pleaseLogInButtonSelector = this.userProfileSelector + ' button';
-
-  linkedInLinkInput = $('#linkedinLink input');
-
-  private ec = ExpectedConditions;
+  userProfileSelector = 'app-user-profile'
+  userProfile: ElementFinder = $(this.userProfileSelector)
+  pleaseLogInButtonSelector = this.userProfileSelector + ' button'
+  userProfileBasicInfo: ElementFinder = $('app-user-profile-basic-info')
+  saveProfileButton: ElementFinder = $('#saveProfile')
+  markedTopicFromSelectList: ElementFinder = $('md-option.mat-active')
+  linkedInLinkInput: ElementFinder = $('#linkedinLink input')
 
   navigateTo() {
     return browser.get('profile');
@@ -16,6 +15,13 @@ export class UserProfilePage {
 
   saveProfileWithKeyboard() {
     this.userProfile.sendKeys(protractor.Key.chord(protractor.Key.CONTROL, 'S'));
+  }
+
+  expectTopicTagSelected(tag?: ElementFinder) { // FIXME
+    if(tag) {
+      return true
+    }
+    return false
   }
 }
 
