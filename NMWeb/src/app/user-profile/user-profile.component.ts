@@ -75,7 +75,7 @@ export class UserProfileComponent implements OnInit {
   @HostListener('window:beforeunload', ['$event'])
   handleBeforeUnload($event) {
     if ( this.formGroup.dirty ) {
-      $event.returnValue = 'Your data will be lost!';
+      // $event.returnValue = 'Your data will be lost!';
     }
   }
 
