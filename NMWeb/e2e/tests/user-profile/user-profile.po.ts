@@ -26,6 +26,14 @@ export class UserProfilePage {
     }
     return false
   }
+
+  selectFirstSuggestedTag(element: ElementFinder): Promise<string> {
+    element.sendKeys(protractor.Key.ARROW_DOWN);
+    let optionSelected = this.markedTopicFromSelectList.getText();
+    element.sendKeys(protractor.Key.ENTER);
+
+    return optionSelected;
+  }
 }
 
 export class HackathonTopicsSelection {

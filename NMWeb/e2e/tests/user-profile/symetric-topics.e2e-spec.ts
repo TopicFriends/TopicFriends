@@ -37,54 +37,80 @@ describe('UserProfile: Symmetric topics: User', () => {
     });
   });
 
-  it('hackathon topics by full topic name: Ionic', () => {
+  it('can select topic by full topic name: Ionic', () => {
     let topic = 'Ionic';
     exchange.inputTopic(topic);
 
-    let selectedTopic = selectFirstSuggestedTag(exchange.topicsInput);
+    let selectedTopic = page.selectFirstSuggestedTag(exchange.topicsInput);
     let expectedTopic = exchange.allSelectedTags();
 
-    assert.topicsToMatch(expectedTopic, selectedTopic);
+    assert.topicsToMatch(selectedTopic, expectedTopic);
   });
 
-  it('topics exchange by topic name fragment: ion', () => {
+  it('can select topic by topic name fragment: ion', () => {
     let topic = 'ion';
     hackathon.inputTopic(topic);
 
-    let selectedTopic = selectFirstSuggestedTag(hackathon.topicsInput);
+    let selectedTopic = page.selectFirstSuggestedTag(hackathon.topicsInput);
     let expectedTopic = hackathon.allSelectedTags();
 
-    assert.topicsToMatch(expectedTopic, selectedTopic);
+    assert.topicsToMatch(selectedTopic, expectedTopic);
+  });
+
+  it('can select topic by topic non-alphanumeric name: C#', () => {
+    let topic = 'C#';
+    hackathon.inputTopic(topic);
+
+    let selectedTopic = page.selectFirstSuggestedTag(hackathon.topicsInput);
+    let expectedTopic = hackathon.allSelectedTags();
+
+   assert.topicsToMatch(selectedTopic, expectedTopic);
+    // expect(selectedTopic).toEqual(' ' + expectedTopic);
+  });
+
+  it('can select topic by topic non-alphanumeric name fragment: .NET', () => {
+    let topic = '.NET';
+    hackathon.inputTopic(topic);
+
+    let selectedTopic = page.selectFirstSuggestedTag(hackathon.topicsInput);
+    let expectedTopic = hackathon.allSelectedTags();
+
+    assert.topicsToMatch(selectedTopic, expectedTopic);
+    // expect(selectedTopic).toEqual(' ' + expectedTopic);
   });
 
   it('can fill in profile with autocomplete by keyboard', () => {
     let topic = 'Kar';
     pairProgramming.inputTopic(topic);
 
-    let selectedTopic = selectFirstSuggestedTag(pairProgramming.topicsInput);
+    let selectedTopic = page.selectFirstSuggestedTag(pairProgramming.topicsInput);
     let expectedTopic = pairProgramming.allSelectedTags();
 
-    assert.topicsToMatch(expectedTopic, selectedTopic);
+    assert.topicsToMatch(selectedTopic, expectedTopic);
   });
 
   it('can enter first topic from list without searching', () => {
-    let selectedTopic = selectFirstSuggestedTag(pairProgramming.topicsInput);
+    let selectedTopic = page.selectFirstSuggestedTag(pairProgramming.topicsInput);
     let expectedTopic = pairProgramming.allSelectedTags();
 
-    assert.topicsToMatch(expectedTopic, selectedTopic);
+    assert.topicsToMatch(selectedTopic, expectedTopic);
   });
 
-//it('test saving with clicking save', () => {
-//  }
-// );
+  // it('can select multiple topics by topic name fragment: Angular, .NET, Protractor', () => {
+  //
+  // });
 
-  function selectFirstSuggestedTag(element: ElementFinder): Promise<string> {
-    element.sendKeys(protractor.Key.ARROW_DOWN);
-    let optionSelected = page.markedTopicFromSelectList.getText();
-    element.sendKeys(protractor.Key.ENTER);
+  // it('can save profile by clicking save', () => {
+//Ionic, Karma,
+    //first field 2 tags, second 4 tags, third 1 tag
 
-    return optionSelected;
-  }
+    // }
+  // );
+
+  // it('can save profile by pressing CTRL+S', () => {
+
+    // }
+  // );
 
   afterEach(() => {
     page.navigateTo().then(() => {
