@@ -63,6 +63,7 @@ export class UserProfileComponent implements OnInit {
       userGeoLocations,
       userDescriptions,
     );
+    this.formGroup.markAsPristine()
     this.snackBarComponent.showSnackBar('Profile sent. Thank you!')
   }
 
@@ -73,7 +74,9 @@ export class UserProfileComponent implements OnInit {
 
   @HostListener('window:beforeunload', ['$event'])
   handleBeforeUnload($event) {
-    // $event.returnValue = 'Your data will be lost!';
+    if ( this.formGroup.dirty ) {
+      $event.returnValue = 'Your data will be lost!';
+    }
   }
 
 }
