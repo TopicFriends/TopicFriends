@@ -1,6 +1,9 @@
-<h2>
-  <ng-content select="[supply-demand-label]"></ng-content>
-</h2>
+<div
+  [formGroup]="parentFormGroup"
+>
+  <h2>
+    <ng-content select="[supply-demand-label]"></ng-content>
+  </h2>
 <!--
 <md-card formGroupName="mentor">
   <md-card-title>
@@ -8,14 +11,24 @@
   </md-card-title>
   <md-card-content>
 -->
+<!--formGroupName="supplyDemand"-->
 
-    <app-topic-group-card>
+  <div [formGroupName]="nestedFormGroupName">
+
+    <app-topic-group-card
+      formControlName="supply"
+    >
       <ng-content select="[supply-label]"></ng-content>
     </app-topic-group-card>
 
-    <app-topic-group-card>
+    <app-topic-group-card
+      formControlName="demand"
+    >
       <ng-content select="[demand-label]"></ng-content>
     </app-topic-group-card>
+  </div>
+
+</div>
 
 <!--
   </md-card-content>

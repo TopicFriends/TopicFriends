@@ -26,6 +26,7 @@ export class UserDescriptions {
   descriptions: {
     description: string,
     whatDoYouExpectFromTheApp: string,
+    // TODO: advice on contacting me
   }
 }
 

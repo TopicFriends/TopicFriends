@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms'
 
 @Component({
   selector: 'app-topic-group-supply-demand-card',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopicGroupSupplyDemandCardComponent implements OnInit {
 
+  @Input() parentFormGroup: FormGroup
+  @Input() nestedFormGroupName: string
+
   constructor() { }
 
   ngOnInit() {
+    // console.log('TopicGroupSupplyDemandCardComponent, parentFormGroup, nestedFormGroupName',
+    //   this.parentFormGroup, this.nestedFormGroupName)
   }
 
 }

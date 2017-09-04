@@ -23,19 +23,28 @@
       </div>
 
       <div formGroupName="supplyDemand">
-        <app-topic-group-supply-demand-card formGroupName="mentor">
+        <app-topic-group-supply-demand-card
+          [parentFormGroup]="formGroup.get('byInteractionMode').get('supplyDemand')"
+          [nestedFormGroupName]="'mentor'"
+        >
           <div supply-demand-label>Mentoring</div>
           <div supply-label>I would like to <b>become a mentor</b> for topics</div>
           <div demand-label>I would like to <b>find a mentor</b> for topics</div>
         </app-topic-group-supply-demand-card>
 
-        <app-topic-group-supply-demand-card formGroupName="intern">
+        <app-topic-group-supply-demand-card
+          [parentFormGroup]="formGroup.get('byInteractionMode').get('supplyDemand')"
+          [nestedFormGroupName]="'intern'"
+        >
           <div supply-demand-label>Internship</div>
           <div supply-label>I would like to <b>become an intern</b> for topics</div>
           <div demand-label>I would like to <b>find an intern</b> for topics</div>
         </app-topic-group-supply-demand-card>
 
-        <app-topic-group-supply-demand-card formGroupName="freelance">
+        <app-topic-group-supply-demand-card
+          [parentFormGroup]="formGroup.get('byInteractionMode').get('supplyDemand')"
+          [nestedFormGroupName]="'freelance'"
+        >
           <div supply-demand-label>Freelance/Consulting</div>
           <div supply-label>I would like to <b>do freelance/consulting</b> for topics/skills</div>
           <div demand-label>I would like to <b>find a freelancer/consultant</b> for topics/skills</div>
