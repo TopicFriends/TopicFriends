@@ -27,45 +27,34 @@ export class LoginPage {
   passwordField: ElementFinder = $('#password input');
   googleIdNextButton: ElementFinder = $('#identifierNext');
   googlePasswordNextButton: ElementFinder = $('#passwordNext');
-  googleAccountSelectionText = 'Selecciona una cuenta'
 
   navigateTo() {
     browser.get('/');
   }
 
-  loginIfNeeded(done) {
+  loginWhenAlreadySignedInToGoogle() {
+    this.wait.forElement(this.loginMenuButton)
     this.loginMenuButton.click();
     this.logInViaGoogle.click();
-
-    let tabsCount
-    browser.getAllWindowHandles().then(handles => {
-      tabsCount = handles.length
-      if(tabsCount>1) {
-        this.logInDefaultTestUser(done)
-      }
-    })
+    this.wait.forElement(this.userProfilePage.userProfileBasicInfo)
   }
 
-  logInDefaultTestUser(done) {
+  logInDefaultTestUser() {
     let defaultSleep = 1000;
 
     this.utils.switchTabs(1);
     this.enterGoogleUsername(defaultSleep)
     this.enterGooglePassword(defaultSleep)
-    this.utils.switchTabs(0)
-
-    return this.confirmUserLoggedIn(done)
+    this.utils.switchTabs(0).then(() => {
+      expect(this.confirmUserLoggedIn()).toBeTruthy()
+    })
   }
 
-  confirmUserLoggedIn(done): any {    //rethink approach
+  confirmUserLoggedIn() {
     this.wait.forElement(this.userProfilePage.userProfileBasicInfo)
     this.utils.takeScreenshot('LoginPage')
-    return element(by.cssContainingText(this.menuButtonSelector, this.testUserName)).isPresent().then(
-      (isPresent) => {
-        done()
-        return isPresent
-      }
-    );
+    return element(by.cssContainingText(this.menuButtonSelector, this.testUserName)).isPresent()
+
   }
 
   logoutUser() {
@@ -77,7 +66,7 @@ export class LoginPage {
 
   confirmUserLoggedOut() {
     this.wait.forElement(this.loginMenuButton);
-    expect(this.wait.forElementNotPresent(this.loginButtonWithUserName)).toBeTruthy();
+    expect(this.loginButtonWithUserName.isPresent()).toBeFalsy();
   }
 
   private enterGooglePassword(defaultSleep: number) {

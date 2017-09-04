@@ -2,7 +2,7 @@ import {
   UserProfilePage, ExchangeTopicsSelection, HackathonTopicsSelection,
   PairProgrammingTopicsSelection,
 } from './user-profile.po'
-import {browser, ElementFinder, ExpectedConditions, protractor} from 'protractor'
+import {ElementFinder, ExpectedConditions, protractor} from 'protractor'
 import {LoginPage} from '../login/login.po'
 import {promise,} from 'selenium-webdriver'
 import Promise = promise.Promise
@@ -23,7 +23,7 @@ describe('Page: User can fill in profile with autocomplete by keyboard: ', () =>
   let wait: TestWaits
   let ec = ExpectedConditions
 
-  beforeAll((done) => { //TODO: refactor me
+  beforeAll(() => { //TODO: refactor me
     loginPage = new LoginPage()
     page = new UserProfilePage()
     exchange = new ExchangeTopicsSelection()
@@ -34,9 +34,7 @@ describe('Page: User can fill in profile with autocomplete by keyboard: ', () =>
     wait = new TestWaits()
 
     page.navigateTo().then(() => {
-     wait.forElement(loginPage.loginMenuButton).then(() => {
-        loginPage.loginIfNeeded(done)
-      })
+      loginPage.loginWhenAlreadySignedInToGoogle()
     });
   });
 
