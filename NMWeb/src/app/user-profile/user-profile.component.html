@@ -16,20 +16,29 @@
 
 <ng-template [ngIf]="userProfileService.userId">
 
-  <app-user-profile-basic-info #basicInfo>
-  </app-user-profile-basic-info>
+  <form>
 
-  <app-user-description #userDescriptions>
-  </app-user-description>
+    <app-user-profile-basic-info #basicInfo>
+    </app-user-profile-basic-info>
 
-  <app-user-geo-locations #userGeoLocations>
-  </app-user-geo-locations>
+    <app-user-description #userDescriptions>
+    </app-user-description>
 
-  <app-user-other-profiles #userOtherProfiles>
-  </app-user-other-profiles>
+    <app-user-geo-locations #userGeoLocations>
+    </app-user-geo-locations>
 
-  <app-user-interests #userInterests>
-  </app-user-interests>
+    <app-user-other-profiles #userOtherProfiles>
+    </app-user-other-profiles>
+
+    <app-user-interests
+      #userInterests
+      [parentFormGroup]="formGroup"
+      [formGroup]="userInterestsFormGroup"
+    >
+    </app-user-interests>
+
+  </form>
+
 
   <br />
   <br />

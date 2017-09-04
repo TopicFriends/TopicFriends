@@ -105,7 +105,9 @@ const appRoutes: Routes = [
     MeetingsService,
     TopicsService
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [
+    // CUSTOM_ELEMENTS_SCHEMA
+  ],
   bootstrap: [
     AppComponent,
     // provide(PLATFORM_DIRECTIVES, {useValue: [ROUTER_DIRECTIVES], multi: true}),

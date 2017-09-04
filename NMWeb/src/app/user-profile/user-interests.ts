@@ -92,7 +92,7 @@ export class UserInterests {
       mentor?: SupplyDemand,
       freelance?: SupplyDemand,
 
-      /** Code/architecture review */
+      /** Code/architecture/database review */
       review?: SupplyDemand,
       job?: SupplyDemand,
       advising?: SupplyDemand,

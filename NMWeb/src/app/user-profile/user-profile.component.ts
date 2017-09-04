@@ -24,11 +24,22 @@ export class UserProfileComponent implements OnInit {
   @ViewChild('userGeoLocations') userGeoLocations: UserGeoLocationsComponent
   @ViewChild('userDescriptions') userDescriptions: UserDescriptionsComponent
 
+  formGroup: FormGroup
+
+  userInterestsFormGroup: FormGroup
 
   constructor(
     protected userProfileService: UserProfileService,
     public authService: AuthService,
-    public snackBarComponent: SnackBarComponent,) {
+    public snackBarComponent: SnackBarComponent,
+    private formBuilder: FormBuilder,
+  ) {
+    this.userInterestsFormGroup = UserInterestsComponent.buildFormGroup(this.formBuilder)
+    this.formGroup = this.formBuilder.group({
+      userInterests:
+        this.userInterestsFormGroup
+    })
+
   }
 
   ngOnInit() {
@@ -58,6 +69,11 @@ export class UserProfileComponent implements OnInit {
   keyDownSave(event) {
     event.preventDefault()
     this.save()
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  handleBeforeUnload($event) {
+    // $event.returnValue = 'Your data will be lost!';
   }
 
 }

@@ -1,0 +1,23 @@
+<h2>
+  <ng-content select="[supply-demand-label]"></ng-content>
+</h2>
+<!--
+<md-card formGroupName="mentor">
+  <md-card-title>
+    <ng-content select="[supply-demand-label]"></ng-content>
+  </md-card-title>
+  <md-card-content>
+-->
+
+    <app-topic-group-card>
+      <ng-content select="[supply-label]"></ng-content>
+    </app-topic-group-card>
+
+    <app-topic-group-card>
+      <ng-content select="[demand-label]"></ng-content>
+    </app-topic-group-card>
+
+<!--
+  </md-card-content>
+</md-card>
+-->

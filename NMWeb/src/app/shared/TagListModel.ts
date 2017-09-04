@@ -5,6 +5,10 @@ import {EventEmitter} from '@angular/core'
  * Created by kd on 2017-08-02.
  */
 
+export class TagListModelEvent {
+  tagList: TopicInterest[]
+}
+
 export class TagListModel {
 
   public valueWasSet = false
@@ -17,7 +21,7 @@ export class TagListModel {
     }
   }
 
-  public outputTagList = new EventEmitter<{tagList: TopicInterest[]}>();
+  public outputTagList = new EventEmitter<TagListModelEvent>();
 
   addTag(tagEntry: TagEntry) {
     // const tagEntry = this.inputTagList.find(el => el.name === tag)

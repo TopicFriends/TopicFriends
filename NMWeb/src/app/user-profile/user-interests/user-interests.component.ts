@@ -1,9 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {SymmetricInteractions, TopicInterest, UserInterests} from '../user-interests'
 import {Observable} from 'rxjs/Observable'
 import {createTopicsDictionary, UserProfileService} from '../user-profile.service'
 import {AuthService} from '../auth.service'
 import {ItemListInputComponent} from '../item-list-input/item-list-input.component'
+import {FormBuilder, FormGroup} from '@angular/forms'
 
 @Component({
   selector: 'app-user-interests',
@@ -14,6 +15,9 @@ export class UserInterestsComponent implements OnInit {
 
   whatUserWants = UserInterests.fromJson({});
 
+  @Input() parentFormGroup: FormGroup
+  @Input() formGroup: FormGroup
+
   @ViewChild('topicsExchangeComponent') topicsExchangeComponent: ItemListInputComponent;
   @ViewChild('topicsHackathonComponent') topicsHackathonComponent: ItemListInputComponent;
   @ViewChild('topicsPairProgrammingComponent') topicsPairProgrammingComponent: ItemListInputComponent;
@@ -22,7 +26,6 @@ export class UserInterestsComponent implements OnInit {
   userInterestsObservable: Observable<UserInterests>;
   userInterests: UserInterests
 
-  showSupplyDemand = false;
 
   constructor(
     protected userProfileService: UserProfileService,
@@ -35,52 +38,49 @@ export class UserInterestsComponent implements OnInit {
       this.userInterestsObservable = this.userProfileService.getUserInterests();
       this.userInterestsObservable.subscribe((userInterests: UserInterests) => {
         this.userInterests = userInterests
+        this.formGroup.patchValue(userInterests) // FIXME: use setValue with filled-in missing values
+        // this.formGroup.setValue(userInterests)
       });
       // this.userId = user && user.uid;
       // this.myUserData = this.db.userDataById(this.userId);
     })
   }
 
-  updateWantExchange(event: {tagList: TopicInterest[]}) {
-    // // console.log('updateWantExchange', meeting);
-    // console.log('updateWantExchange', meeting);
-    // console.log('updateWantExchange', this.whatUserWants);
-    // // this.whatUserWants.byInteractionMode.symmetric.exchange.topics = {};
-    // this.symmetricInteractions.exchange = {
-    //   topics: createTopicsDictionary(meeting.tagList),
+  getUserInterests(): UserInterests {
+    return this.formGroup.value
+    // const symmetricInteractions = new SymmetricInteractions();
+    // symmetricInteractions.exchange = {
+    //   topics: createTopicsDictionary(this.topicsExchangeComponent.tagListModel.tags),
     // };
-
+    // symmetricInteractions.hackathon = {
+    //   topics: createTopicsDictionary(this.topicsHackathonComponent.tagListModel.tags),
+    // };
+    // symmetricInteractions.pairProgramming = {
+    //   topics: createTopicsDictionary(this.topicsPairProgrammingComponent.tagListModel.tags),
+    // };
+    //
+    // return UserInterests.fromJson({
+    //   byInteractionMode: {
+    //     symmetric: symmetricInteractions,
+    //   }
+    // })
   }
 
-  updateWantHackathon(event: {tagList: TopicInterest[]}) {
-    // this.symmetricInteractions.hackathon = {
-    //   topics: createTopicsDictionary(meeting.tagList),
-    // };
-  }
-
-  updateWantPairProgramming(event: {tagList: TopicInterest[]}) {
-    // this.symmetricInteractions.pairProgramming = {
-    //   topics: createTopicsDictionary(meeting.tagList),
-    // };
-  }
-
-
-  getUserInterests() {
-    const symmetricInteractions = new SymmetricInteractions();
-    symmetricInteractions.exchange = {
-      topics: createTopicsDictionary(this.topicsExchangeComponent.tagListModel.tags),
-    };
-    symmetricInteractions.hackathon = {
-      topics: createTopicsDictionary(this.topicsHackathonComponent.tagListModel.tags),
-    };
-    symmetricInteractions.pairProgramming = {
-      topics: createTopicsDictionary(this.topicsPairProgrammingComponent.tagListModel.tags),
-    };
-
-    return UserInterests.fromJson({
-      byInteractionMode: {
-        symmetric: symmetricInteractions,
-      }
+  static buildFormGroup(formBuilder: FormBuilder) {
+    // userInterests?.byInteractionMode?.symmetric?.exchange?.topics
+    return formBuilder.group({
+      byInteractionMode: formBuilder.group({
+        symmetric: formBuilder.group({
+          exchange: {},
+          pairProgramming: {},
+          hackathon: {},
+        }),
+        supplyDemand: formBuilder.group({
+          intern: { /* supply, demand */ /* topics - within custom form control */},
+          mentor: { },
+          freelance: { }
+        })
+      })
     })
   }
 }

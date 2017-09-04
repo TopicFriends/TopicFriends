@@ -1,0 +1,19 @@
+<md-card
+  style="margin-bottom: 0.5em"
+>
+
+  <md-card-title>
+
+    <ng-content></ng-content>
+
+  </md-card-title>
+
+  <md-card-content>
+
+    <app-item-list-input
+      (outputTagList)="onOutputTagListChanged($event)"
+    ></app-item-list-input>
+
+  </md-card-content>
+
+</md-card>

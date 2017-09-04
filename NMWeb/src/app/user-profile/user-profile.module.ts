@@ -12,7 +12,9 @@ import { UserInterestsComponent } from './user-interests/user-interests.componen
 import { UserGeoLocationsComponent } from './user-geo-locations/user-geo-locations.component';
 import { UserGeoLocationComponent } from './user-geo-locations/user-geo-location/user-geo-location.component'
 import {MapsModule} from '../maps/maps.module';
-import { UserDescriptionsComponent } from './user-descriptions/user-descriptions.component'
+import { UserDescriptionsComponent } from './user-descriptions/user-descriptions.component';
+import { TopicGroupCardComponent } from './user-interests/topic-group-card/topic-group-card.component';
+import { TopicGroupSupplyDemandCardComponent } from './user-interests/topic-group-supply-demand-card/topic-group-supply-demand-card.component'
 
 
 const userProfileRoutes: Routes = [
@@ -45,9 +47,13 @@ const userProfileRoutes: Routes = [
     UserGeoLocationsComponent,
     UserGeoLocationComponent,
     UserDescriptionsComponent,
+    TopicGroupCardComponent,
+    TopicGroupSupplyDemandCardComponent,
   ],
   exports: [
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [
+    // CUSTOM_ELEMENTS_SCHEMA
+  ],
 })
 export class UserProfileModule { }

@@ -29,9 +29,6 @@ export class ItemListInputComponent implements OnInit {
     this.reFilter()
   }
 
-  @Input() public formGroup1: FormGroup;
-
-
 
   // rename: chosen Tag list
   // public tagList: TopicInterest[] = this.exampleTags;

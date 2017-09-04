@@ -1,93 +1,53 @@
-<md-card style="margin-bottom: 0.5em">
-  <md-content>
-    <app-item-list-input id="topicsExchange" #topicsExchangeComponent
-                         [chosenTags]="userInterests?.byInteractionMode?.symmetric?.exchange?.topics"
-                         (outputTagList)="updateWantExchange($event)"
-    ><app-item-list-input-title>
-        <md-icon>build</md-icon>I would like to <b>exchange knowledge</b> on topics
-      </app-item-list-input-title>
-    </app-item-list-input>
-  </md-content>
-</md-card>
+<div
+  [formGroup]="parentFormGroup"
+>
 
-<md-card style="margin-bottom: 0.5em">
-  <md-content>
-    <app-item-list-input id="topicsHackathon" #topicsHackathonComponent
-                         [chosenTags]="userInterests?.byInteractionMode?.symmetric?.hackathon?.topics"
-                         (outputTagList)="updateWantHackathon($event)"
-    ><app-item-list-input-title>
-        <md-icon>build</md-icon>I would like to do <b>hackathon</b> on topics
-      </app-item-list-input-title>
-    </app-item-list-input>
+  <div formGroupName="userInterests">
+    <div formGroupName="byInteractionMode">
+      <div formGroupName="symmetric">
 
-  </md-content>
-</md-card>
+        <app-topic-group-card formControlName="exchange">
+          I would like to <b>exchange knowledge</b> on topics
+        </app-topic-group-card>
 
-<md-card style="margin-bottom: 0.5em">
-  <md-content>
-    <app-item-list-input id="topicsPairProgramming" #topicsPairProgrammingComponent
-                         [chosenTags]="userInterests?.byInteractionMode?.symmetric?.pairProgramming?.topics"
-                         (outputTagList)="updateWantPairProgramming($event)"
-    ><app-item-list-input-title>
-        <md-icon>build</md-icon>I would like to do <b>pair programming</b> on topics
-      </app-item-list-input-title>
-    </app-item-list-input>
-  </md-content>
-</md-card>
+        <app-topic-group-card formControlName="hackathon">
+          I would like to do a <b>hackathon</b> on topics
+        </app-topic-group-card>
 
+        <app-topic-group-card
+          formControlName="pairProgramming"
+        >
+          I would like to do <b>pair programming</b> on topics
+        </app-topic-group-card>
 
-<ng-template *ngIf="showSupplyDemand" >
+      </div>
 
-  <!--<md-input-container>-->
-  <!--<md-placeholder>-->
-  <!--<md-icon>build</md-icon> I would like to <b><u>be hired</u> as freelance</b> with skills-->
-  <!--</md-placeholder>-->
-  <!--<input mdInput type="text"-->
-  <!--formControlName="wantToBeFreelance" [mdAutocomplete]="auto">-->
-  <!--</md-input-container> &lt;!&ndash; ngModel variable is missing due to code crashing &ndash;&gt;-->
-  <!--<md-autocomplete #auto="mdAutocomplete">-->
-  <!--<md-option *ngFor="let option of options" [value]="option">-->
-  <!--{{ option }}-->
-  <!--</md-option>-->
-  <!--</md-autocomplete>-->
-  <!-- [(ngModel)]="userProfile?.whatUserWants?.freelance?.supply?.topics" -->
+      <div formGroupName="supplyDemand">
+        <app-topic-group-supply-demand-card formGroupName="mentor">
+          <div supply-demand-label>Mentoring</div>
+          <div supply-label>I would like to <b>become a mentor</b> for topics</div>
+          <div demand-label>I would like to <b>find a mentor</b> for topics</div>
+        </app-topic-group-supply-demand-card>
 
-  <br />
-  <md-input-container>
-    <md-placeholder>
-      <md-icon>build</md-icon> I would like to <b><u>hire</u> freelance</b> with skills:
-    </md-placeholder>
+        <app-topic-group-supply-demand-card formGroupName="intern">
+          <div supply-demand-label>Internship</div>
+          <div supply-label>I would like to <b>become an intern</b> for topics</div>
+          <div demand-label>I would like to <b>find an intern</b> for topics</div>
+        </app-topic-group-supply-demand-card>
 
-    <input mdInput
-           formControlName="wantToHireFreelance"> <!-- ngModel variable is missing due to code crashing -->
-  </md-input-container>
+        <app-topic-group-supply-demand-card formGroupName="freelance">
+          <div supply-demand-label>Freelance/Consulting</div>
+          <div supply-label>I would like to <b>do freelance/consulting</b> for topics/skills</div>
+          <div demand-label>I would like to <b>find a freelancer/consultant</b> for topics/skills</div>
+        </app-topic-group-supply-demand-card>
 
-  <br />
-  <md-input-container>
-    <md-placeholder>
-      <md-icon>build</md-icon> I would like to <b><u>find</u> a mentor</b> with skills:
-    </md-placeholder>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <input mdInput
-           formControlName="wantToFindMentor"> <!-- ngModel variable is missing due to code crashing -->
-  </md-input-container>
-
-  <br />
-  <md-input-container>
-    <input mdInput
-           formControlName="wantToBecomeMentor"> <!-- ngModel variable is missing due to code crashing -->
-    <md-placeholder>
-      <md-icon>build</md-icon> I would like to <b><u>become</u> a mentor</b> with skills:
-    </md-placeholder>
-
+<!-- Consider some slogans like this:
     <md-hint>
       <md-icon>favorite</md-icon> Be a hero and help others learn! The good karma will come back to you.
     </md-hint>
-    <!--<md-hint>-->
-    <!--I also <md-icon>home</md-icon> <i>italic</i> hint labels-->
-    <!--</md-hint>-->
-
-
-  </md-input-container>
-
-</ng-template>
+-->
