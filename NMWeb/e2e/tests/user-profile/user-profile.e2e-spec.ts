@@ -1,30 +1,24 @@
 import {UserProfilePage} from './user-profile.po'
-import {by, element} from 'protractor'
-import {TestCleanUp} from '../../common/clean-up'
-import {TestWaits} from '../../common/wait'
-import {LoginPage} from '../login/login.po'
+import {TestCleanUp} from '../../test-support/clean-up'
+import {TestWaits} from '../../test-support/wait'
+import {TestAssertions} from '../../test-support/assertions'
 
-describe('Profile page: User', () => {
+fdescribe('Profile page: User', () => {
   let page: UserProfilePage
-  let login: LoginPage
   let cleanUp: TestCleanUp
   let wait: TestWaits
+  let assert: TestAssertions
 
   beforeAll(() => {
     page = new UserProfilePage()
-    login = new LoginPage()
     cleanUp = new TestCleanUp()
     wait = new TestWaits()
+    assert = new TestAssertions()
   });
 
   it('can see button with text "Please log in, to access your profile" when not logged in', () => {
-    page.navigateTo();
-
-    wait.forElement(login.loginMenuButton).then(() => {
-      expect(
-        element(by.cssContainingText(page.pleaseLogInButtonSelector,
-          'Please log in, to access your profile')).isPresent())
-        .toBeTruthy();
+    page.navigateTo().then(() => {
+      assert.elementContainingText(page.pleaseLogInButton, 'Please log in, to access your profile')
       expect(page.userProfileBasicInfo.isPresent()).toBeFalsy();   //TODO
     });
   });
@@ -38,8 +32,8 @@ describe('Profile page: User', () => {
   //
   // });
 
-  afterAll(() => {
-      cleanUp.cleanUpAfterTests()
-    },
-  );
+  // afterAll(() => {
+  //     cleanUp.cleanUpAfterTests()
+  //   },
+  // );
 });

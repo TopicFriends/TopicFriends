@@ -2,26 +2,25 @@ import {
   UserProfilePage, ExchangeTopicsSelection, HackathonTopicsSelection,
   PairProgrammingTopicsSelection,
 } from './user-profile.po'
-import {ElementFinder, ExpectedConditions, protractor} from 'protractor'
+import {ElementFinder, protractor} from 'protractor'
 import {LoginPage} from '../login/login.po'
-import {promise,} from 'selenium-webdriver'
+import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
-import {TestAssertions} from '../../common/assertions'
-import {TestCleanUp} from '../../common/clean-up'
-import {TestWaits} from '../../common/wait'
+import {TestAssertions} from '../../test-support/assertions'
+import {TestCleanUp} from '../../test-support/clean-up'
+import {TestWaits} from '../../test-support/wait'
 
 // TODO: after all go to firebase and remove interests branch for test user
 
-describe('Page: User can fill in profile with autocomplete by keyboard: ', () => {
+describe('UserProfile: Symmetric topics: User', () => {
   let loginPage: LoginPage
   let page: UserProfilePage
   let exchange: ExchangeTopicsSelection
   let hackathon: HackathonTopicsSelection
   let pairProgramming: PairProgrammingTopicsSelection
-  let expect: TestAssertions
+  let assert: TestAssertions
   let cleanUp: TestCleanUp
   let wait: TestWaits
-  let ec = ExpectedConditions
 
   beforeAll(() => { //TODO: refactor me
     loginPage = new LoginPage()
@@ -29,7 +28,7 @@ describe('Page: User can fill in profile with autocomplete by keyboard: ', () =>
     exchange = new ExchangeTopicsSelection()
     hackathon = new HackathonTopicsSelection()
     pairProgramming = new PairProgrammingTopicsSelection()
-    expect = new TestAssertions()
+    assert = new TestAssertions()
     cleanUp = new TestCleanUp()
     wait = new TestWaits()
 
@@ -45,7 +44,7 @@ describe('Page: User can fill in profile with autocomplete by keyboard: ', () =>
     let selectedTopic = selectFirstSuggestedTag(exchange.topicsInput);
     let expectedTopic = exchange.allSelectedTags();
 
-    expect.expectTopicsToMatch(expectedTopic, selectedTopic);
+    assert.topicsToMatch(expectedTopic, selectedTopic);
   });
 
   it('topics exchange by topic name fragment: ion', () => {
@@ -55,7 +54,7 @@ describe('Page: User can fill in profile with autocomplete by keyboard: ', () =>
     let selectedTopic = selectFirstSuggestedTag(hackathon.topicsInput);
     let expectedTopic = hackathon.allSelectedTags();
 
-    expect.expectTopicsToMatch(expectedTopic, selectedTopic);
+    assert.topicsToMatch(expectedTopic, selectedTopic);
   });
 
   it('can fill in profile with autocomplete by keyboard', () => {
@@ -65,16 +64,14 @@ describe('Page: User can fill in profile with autocomplete by keyboard: ', () =>
     let selectedTopic = selectFirstSuggestedTag(pairProgramming.topicsInput);
     let expectedTopic = pairProgramming.allSelectedTags();
 
-    expect.expectTopicsToMatch(expectedTopic, selectedTopic);
+    assert.topicsToMatch(expectedTopic, selectedTopic);
   });
 
   it('can enter first topic from list without searching', () => {
     let selectedTopic = selectFirstSuggestedTag(pairProgramming.topicsInput);
     let expectedTopic = pairProgramming.allSelectedTags();
 
-    selectedTopic.then(topic => {
-      page.expectTopicTagSelected();
-    });
+    assert.topicsToMatch(expectedTopic, selectedTopic);
   });
 
 //it('test saving with clicking save', () => {
@@ -89,7 +86,13 @@ describe('Page: User can fill in profile with autocomplete by keyboard: ', () =>
     return optionSelected;
   }
 
+  afterEach(() => {
+    page.navigateTo().then(() => {
+      wait.forElement(page.userProfileBasicInfo)
+    })
+  })
+
   afterAll(() => {
-    cleanUp.cleanUpAfterTests();
+    cleanUp.cleanUpAfterTests()
   })
 });
