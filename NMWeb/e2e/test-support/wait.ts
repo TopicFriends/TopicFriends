@@ -1,6 +1,6 @@
 import {browser, ElementArrayFinder, ElementFinder, ExpectedConditions} from 'protractor'
 
-export class TestWaits {
+export class TestWait {
   ec = ExpectedConditions
   defaultWaitTimeout = browser.params.allScriptsTimeout - 5000
 

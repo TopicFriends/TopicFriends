@@ -1,6 +1,6 @@
 import {$, browser, by, element, ElementFinder} from 'protractor'
 import {CommonUtils} from '../../test-support/common-utils'
-import {TestWaits} from '../../test-support/wait'
+import {TestWait} from '../../test-support/wait'
 import {UserProfilePage} from '../user-profile/user-profile.po'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
@@ -10,7 +10,7 @@ require("firebase/auth");
 
 export class LoginPage {
   private utils = new CommonUtils()
-  private wait = new TestWaits()
+  private wait = new TestWait()
   private userProfilePage = new UserProfilePage()
 
   private defaultSleep = 1000

@@ -1,18 +1,15 @@
 import {UserProfilePage} from './user-profile.po'
 import {TestCleanUp} from '../../test-support/clean-up'
-import {TestWaits} from '../../test-support/wait'
 import {TestAssertions} from '../../test-support/assertions'
 
-fdescribe('Profile page: User', () => {
+describe('Profile page: User', () => {
   let page: UserProfilePage
   let cleanUp: TestCleanUp
-  let wait: TestWaits
   let assert: TestAssertions
 
   beforeAll(() => {
     page = new UserProfilePage()
     cleanUp = new TestCleanUp()
-    wait = new TestWaits()
     assert = new TestAssertions()
   });
 
@@ -29,6 +26,7 @@ fdescribe('Profile page: User', () => {
   // });
   //
   // it('can save all profile information', () => {
+  // fill in everything, build array with all the selected and filled in information and check one by one $$.each with i++?
   //
   // });
 

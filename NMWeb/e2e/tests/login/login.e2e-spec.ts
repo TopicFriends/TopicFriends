@@ -1,17 +1,17 @@
 import {LoginPage} from './login.po'
 import {browser} from 'protractor'
 import {TestCleanUp} from '../../test-support/clean-up'
-import {TestWaits} from '../../test-support/wait'
+import {TestWait} from '../../test-support/wait'
 
 describe('LoginPage page: User', () => {
   let page: LoginPage
   let cleanUp: TestCleanUp
-  let wait: TestWaits
+  let wait: TestWait
 
   beforeAll(() => {
     page = new LoginPage()
     cleanUp = new TestCleanUp()
-    wait = new TestWaits()
+    wait = new TestWait()
   });
 
   it('can log in', () => {

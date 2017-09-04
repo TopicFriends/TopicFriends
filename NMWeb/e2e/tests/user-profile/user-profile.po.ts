@@ -1,6 +1,7 @@
 import {$, $$, browser, ElementArrayFinder, ElementFinder, protractor} from 'protractor'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
+import {TestWait} from '../../test-support/wait'
 
 export class UserProfilePage {
   userProfileSelector = 'app-user-profile'
@@ -41,10 +42,13 @@ export class HackathonTopicsSelection {
 }
 
 export class PairProgrammingTopicsSelection {
+  private wait: TestWait = new TestWait()
+
   topicsSelector = '#topicsPairProgramming ';
   topicsInput = $(this.topicsSelector + ' input');
 
   allSelectedTags(): ElementArrayFinder {
+    this.wait.forElement($(this.topicsSelector))
     return $$(this.topicsSelector + ' app-topic-tag span>a');
   }
 

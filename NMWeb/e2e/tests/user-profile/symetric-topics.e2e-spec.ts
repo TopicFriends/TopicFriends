@@ -8,7 +8,7 @@ import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
 import {TestAssertions} from '../../test-support/assertions'
 import {TestCleanUp} from '../../test-support/clean-up'
-import {TestWaits} from '../../test-support/wait'
+import {TestWait} from '../../test-support/wait'
 
 // TODO: after all go to firebase and remove interests branch for test user
 
@@ -20,7 +20,7 @@ describe('UserProfile: Symmetric topics: User', () => {
   let pairProgramming: PairProgrammingTopicsSelection
   let assert: TestAssertions
   let cleanUp: TestCleanUp
-  let wait: TestWaits
+  let wait: TestWait
 
   beforeAll(() => { //TODO: refactor me
     loginPage = new LoginPage()
@@ -30,7 +30,7 @@ describe('UserProfile: Symmetric topics: User', () => {
     pairProgramming = new PairProgrammingTopicsSelection()
     assert = new TestAssertions()
     cleanUp = new TestCleanUp()
-    wait = new TestWaits()
+    wait = new TestWait()
 
     page.navigateTo().then(() => {
       loginPage.loginWhenAlreadySignedInToGoogle()
