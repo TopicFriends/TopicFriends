@@ -1,12 +1,16 @@
 <md-toolbar>
-  <span><img src="assets/images/logo_xs.png" height="18px"></span><span style="color: white">Alpha</span>
-    <span class="toolbar-spacer"></span>
-    <button *ngIf="!(authService.user | async)?.displayName" md-button routerLink="/login">Log in</button>
-    <button *ngIf="(authService.user | async)?.displayName" md-button [mdMenuTriggerFor]="menu">{{ (authService.user | async)?.displayName }}</button>
-    <md-menu #menu="mdMenu">
-      <button md-menu-item routerLink="/profile" routerLinkActive="active">Profile</button>
-      <button md-menu-item (click)="authService.logout()">Log out</button>
-    </md-menu>
+  <span><img src="assets/images/logo_xs.png" height="18px"></span>
+  <span
+    style="color: white; font-family: serif">
+    α
+  </span>
+  <span class="toolbar-spacer"></span>
+  <button *ngIf="!(authService.user | async)?.displayName" md-button routerLink="/login">Log in</button>
+  <button *ngIf="(authService.user | async)?.displayName" md-button [mdMenuTriggerFor]="menu">{{ (authService.user | async)?.displayName }}</button>
+  <md-menu #menu="mdMenu">
+    <button md-menu-item routerLink="/profile" routerLinkActive="active">Profile</button>
+    <button md-menu-item (click)="authService.logout()">Log out</button>
+  </md-menu>
 </md-toolbar>
 
 
