@@ -1,4 +1,4 @@
-import {browser, ElementFinder, ExpectedConditions} from 'protractor'
+import {browser, ElementArrayFinder, ElementFinder, ExpectedConditions} from 'protractor'
 
 export class TestWaits {
   ec = ExpectedConditions
@@ -10,5 +10,20 @@ export class TestWaits {
 
   forElementNotPresent(element: ElementFinder) {
     return browser.wait(this.ec.not(this.ec.presenceOf(element)))
+  }
+
+  forElementCount(elementArray: ElementArrayFinder, expectedCount: number) {
+    return browser.wait(() =>
+      elementArray.count().then((actualCount) => {
+        return expectedCount === actualCount;
+      }));
+  }
+
+  forTextPresent(element: ElementFinder, text: string) {
+    return this.forElementText(element, text);
+  }
+
+  forElementText(element: ElementFinder, text: string) {
+    return browser.wait(this.ec.textToBePresentInElement(element, text));
   }
 }
