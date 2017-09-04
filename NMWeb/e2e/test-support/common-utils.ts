@@ -1,5 +1,4 @@
-import {browser, ElementFinder, ExpectedConditions} from 'protractor';
-import {timeout} from 'rxjs/operator/timeout'
+import {browser, ExpectedConditions} from 'protractor';
 let fs_extra = require('fs-extra');
 
 export class CommonUtils {
@@ -22,7 +21,7 @@ export class CommonUtils {
       filePath = this.TMP_FOLDER_PATH
     }
 
-    browser.takeScreenshot().then(function (png) {
+    browser.takeScreenshot().then((png) => {
       let filename = prefix + '-' + new Date().getTime();
       let stream = fs_extra.createWriteStream(filePath + '/' + filename + '.png');
       stream.write(new Buffer(png, 'base64'));
@@ -30,17 +29,9 @@ export class CommonUtils {
     });
   }
 
-  waitForElement(element: ElementFinder) {
-    return browser.wait((this.ec.presenceOf(element)), 10000, 'false');   //TODO: use default timeout
-  }
-
-  waitForElementNotPresent(element: ElementFinder) {
-    return browser.wait(this.ec.not(this.ec.presenceOf(element)));
-  }
-
   switchTabs(tab: number) {
-    browser.getAllWindowHandles().then(function (handles) {
-      browser.driver.switchTo().window(handles[tab]);
+    return browser.getAllWindowHandles().then((handles) => {
+      browser.switchTo().window(handles[tab]);
     });
   }
 
