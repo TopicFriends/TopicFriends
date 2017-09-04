@@ -26,6 +26,8 @@ Before running the tests make sure you are serving the app via `ng serve`.
 Here is an example for WebStorm Run/Debug Config:
 <img src="src/assets/images/WebStorm_run-debug_protractor_config.png" alt="Protractor">
 
+Before running your first test, please run `webdriver-manager update`.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
