@@ -20,8 +20,11 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+You can setup [Protractor](http://www.protractortest.org/) to run from your IDE.
 Before running the tests make sure you are serving the app via `ng serve`.
+
+Here is an example for WebStorm Run/Debug Config:
+<img src="src/assets/images/WebStorm_run-debug_protractor_config.png" alt="Protractor">
 
 ## Further help
 
