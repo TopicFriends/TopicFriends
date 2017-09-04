@@ -142,7 +142,6 @@ export class UserProfileService {
     private authService: AuthService,
   ) {
     authService.user.subscribe(user => {
-      console.log('authService.user.subscribe user', user);
       this.userId = user && user.uid;
       // this.userId = this.fakeUser;
       this.myUserData = this.db.userDataById(this.userId);

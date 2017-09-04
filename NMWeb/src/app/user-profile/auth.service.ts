@@ -17,7 +17,6 @@ export class AuthService {
     this.user.subscribe(user => {
       this.userSaved = user;
     });
-    console.log('AuthService constructor')
   }
 
   loginViaGoogle() {

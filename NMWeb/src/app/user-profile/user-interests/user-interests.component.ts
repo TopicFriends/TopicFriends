@@ -42,7 +42,6 @@ export class UserInterestsComponent implements OnInit {
 
     this.authService.user.subscribe(user => {
       if ( user ) {
-        console.log('authService.user.subscribe user', user);
         this.userInterestsObservable = this.userProfileService.getUserInterests();
         this.userInterestsObservable.subscribe((userInterests: UserInterests) => {
           this.userInterests = userInterests

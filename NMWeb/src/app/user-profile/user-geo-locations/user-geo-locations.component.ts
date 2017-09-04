@@ -49,7 +49,6 @@ export class UserGeoLocationsComponent implements OnInit {
 
   ngOnInit() {
     this.authService.user.subscribe(user => {
-      console.log('UserGeoLocationsComponent: authService.user.subscribe user', user);
       this.userProfileService.getUserGeoLocations().subscribe(
           (geoLocationsFromDb: UserGeoLocations) => {
         this.applyFromDb(geoLocationsFromDb)
@@ -60,7 +59,6 @@ export class UserGeoLocationsComponent implements OnInit {
   applyFromDb(geoLocationsFromDb: UserGeoLocations) {
     if (geoLocationsFromDb && geoLocationsFromDb.geoLocations) {
       const geoSubKeys = geoLocationsFromDb.geoLocations
-      console.log('geoSubKeys', geoSubKeys)
       let geoLocationsTransformed = {}
       for (const keyName of Object.keys(this.formDefinition)) {
         const subKey = geoSubKeys[keyName]
@@ -70,7 +68,6 @@ export class UserGeoLocationsComponent implements OnInit {
           geoLocationsTransformed[keyName] = ''
         }
       }
-      console.log('this.formGroup', this.formGroup)
       this.formGroup.setValue(geoLocationsTransformed)
       // this.formGroup.patchValue(geoLocationsTransformed)
     }

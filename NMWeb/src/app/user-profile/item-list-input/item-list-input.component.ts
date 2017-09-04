@@ -69,7 +69,7 @@ export class ItemListInputComponent implements OnInit {
         this.reFilter()
     });
     this.reFilter() // force initial list
-    console.log('this.lastFilteredOptions.length', this.lastFilteredOptions.length)
+    // console.log('this.lastFilteredOptions.length', this.lastFilteredOptions.length)
   }
 
   private createFilteredOptions() {

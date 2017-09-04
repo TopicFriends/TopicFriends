@@ -49,10 +49,8 @@ export class UserOtherProfilesComponent implements OnInit {
 
   ngOnInit() {
     this.authService.user.subscribe(user => {
-      console.log('UserOtherProfilesComponent: authService.user.subscribe user', user);
       this.userOtherProfilesObservable = this.userProfileService.getUserOtherProfiles();
       this.userOtherProfilesObservable.subscribe((otherProfiles: UserOtherProfiles) => {
-        console.log('userOtherProfilesObservable.subscribe', otherProfiles);
         this.otherProfiles = otherProfiles;
         if ( otherProfiles ) {
           // FIXME: setValue instead of patchValue (because some might be undefined)

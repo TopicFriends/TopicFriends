@@ -14,8 +14,6 @@ export class TopicGroupSupplyDemandCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // console.log('TopicGroupSupplyDemandCardComponent, parentFormGroup, nestedFormGroupName',
-    //   this.parentFormGroup, this.nestedFormGroupName)
   }
 
 }

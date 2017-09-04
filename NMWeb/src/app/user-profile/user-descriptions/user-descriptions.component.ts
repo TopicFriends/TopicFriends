@@ -41,7 +41,6 @@ export class UserDescriptionsComponent implements OnInit {
   }
 
   private applyFromDb(userDescriptions: UserDescriptions) {
-    console.log('userDescriptions', userDescriptions)
     if ( userDescriptions && userDescriptions.descriptions ) {
       this.formGroup.setValue(userDescriptions.descriptions)
     }

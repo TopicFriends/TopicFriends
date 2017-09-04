@@ -15,7 +15,6 @@ export class TopicTagListComponent implements OnInit {
   @Input() tagListModel: TagListModel;
 
   @Input() set tagList(tagList: TagInclusions) {
-    console.log('set tagList', tagList)
     // if ( tagList ) {
       this.tagListModel = new TagListModel(getDictionaryValuesAsArray(tagList))
     // }
@@ -26,7 +25,6 @@ export class TopicTagListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('TopicTagListComponent ngOnInit')
   }
 
   trackByKey(index, val) {
