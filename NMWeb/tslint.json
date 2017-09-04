@@ -48,7 +48,7 @@
     "no-debugger": true,
     "no-duplicate-super": true,
     "no-empty": false,
-    "no-empty-interface": true,
+    "no-empty-interface": false, // it is ok to use an interface as alias, for a future facade
     "no-eval": true,
     "no-inferrable-types": [
       true,
