@@ -14,8 +14,6 @@ function tagLogoTipo(name: string, logo?: string) {
   return tag(name, logo); // pass visual hint later
 }
 
-
-
 export const angular = tag('Angular')
 export const firebase = tag('Firebase')
 export const angularMaterial = tagNoIcon('Angular Material')
@@ -143,6 +141,11 @@ export class TopicsService {
     tagNoIcon('Telerik UI'),
     tagNoIcon('Kendo UI'),
     'NativeScript',
+    tagNoIcon('SOAP'),
+    tagNoIcon('Microsoft SQL Server'),
+    tagNoIcon('Testing'),
+    tagNoIcon('Quality Assurance'),
+    tagNoIcon('Quality Engineering'),
     'Markdown',
     tagNoIcon('English Language'), tagNoIcon('Spanish Language'),
     tagNoIcon('French Language'), tagNoIcon('Portuguese Language'), tagNoIcon('German Language'),
@@ -166,7 +169,6 @@ export class TopicsService {
     tagNoIcon('Big Data'),
     tagNoIcon('Data Mining'),
     tagNoIcon('Data Warehousing'),
-    // Microsoft SQL Server
     //
     // Mapbox Studio
     // TODO: check Malaga meetup topics
