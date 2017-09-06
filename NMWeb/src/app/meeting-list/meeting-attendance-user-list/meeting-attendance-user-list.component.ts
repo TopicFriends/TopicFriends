@@ -24,14 +24,13 @@ export class MeetingAttendanceUserListComponent implements OnInit {
     this.userList =
       this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meetingId);
 
-    this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meetingId)
-      .subscribe(list => {
+    this.userList.subscribe(list => {
         this.attendeesCount = list.length;
         console.log('fetchMeetingAttendanceByUserWithUserData subscribed: ', list);
     });
   }
 
-  trackByKey(idx, val) {
-    return val.$key
+  trackByKey(idx, val: MeetingAttendanceByUserWithUserData) {
+    return val.meetingAttendanceByUser.$key
   }
 }
