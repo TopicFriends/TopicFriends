@@ -25,8 +25,8 @@ export class MeetingAttendanceUserListComponent implements OnInit {
       this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meetingId);
 
     this.userList.subscribe(list => {
-        this.attendeesCount = list.length;
-        console.log('fetchMeetingAttendanceByUserWithUserData subscribed: ', list);
+      this.attendeesCount = list.length;
+      console.log('fetchMeetingAttendanceByUserWithUserData subscribed: ', list);
     });
   }
 
