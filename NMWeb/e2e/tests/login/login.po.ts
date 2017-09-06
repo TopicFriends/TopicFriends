@@ -16,7 +16,7 @@ export class LoginPage {
   private defaultSleep = 1000
 
   userEmail = 'peoplematchertest@gmail.com'
-  userPassword = '@ngul@rAppT3st!ng'
+  userPassword = '@ngul@rAppT3st!n'
   testUserName = 'People Matcher'
 
   private menuButtonSelector = 'md-toolbar button'
