@@ -1,7 +1,7 @@
 import {browser, ExpectedConditions} from 'protractor';
 let fs_extra = require('fs-extra');
 
-export class CommonUtils {
+export class TestSupport {
   TMP_FOLDER_PATH = '/tmp/protractor';
   private ec = ExpectedConditions;
 

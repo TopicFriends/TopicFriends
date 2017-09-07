@@ -1,5 +1,5 @@
 import {$, browser, by, element, ElementFinder} from 'protractor'
-import {CommonUtils} from '../../test-support/common-utils'
+import {TestSupport} from '../../test-support/test-support'
 import {TestWait} from '../../test-support/wait'
 import {UserProfilePage} from '../user-profile/user-profile.po'
 import {promise} from 'selenium-webdriver'
@@ -9,7 +9,7 @@ let firebase = require("firebase");
 require("firebase/auth");
 
 export class LoginPage {
-  private utils = new CommonUtils()
+  private utils = new TestSupport()
   private wait = new TestWait()
   private userProfilePage = new UserProfilePage()
 

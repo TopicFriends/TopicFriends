@@ -1,97 +1,79 @@
 import {
-  UserProfilePage, ExchangeTopicsSelection, HackathonTopicsSelection,
-  PairProgrammingTopicsSelection,
+  UserProfilePage, TopicsSelection
 } from './user-profile.po'
-import {ElementFinder, protractor} from 'protractor'
 import {LoginPage} from '../login/login.po'
-import {promise} from 'selenium-webdriver'
-import Promise = promise.Promise
 import {TestAssertions} from '../../test-support/assertions'
 import {TestCleanUp} from '../../test-support/clean-up'
 import {TestWait} from '../../test-support/wait'
+import {TestSupport} from '../../test-support/test-support'
 
 // TODO: after all go to firebase and remove interests branch for test user
 
 describe('UserProfile: Symmetric topics: User', () => {
   let loginPage: LoginPage
   let page: UserProfilePage
-  let exchange: ExchangeTopicsSelection
-  let hackathon: HackathonTopicsSelection
-  let pairProgramming: PairProgrammingTopicsSelection
+  let topicSelection: TopicsSelection
   let assert: TestAssertions
   let cleanUp: TestCleanUp
   let wait: TestWait
+  let support: TestSupport
 
   beforeAll(() => { //TODO: refactor me
     loginPage = new LoginPage()
     page = new UserProfilePage()
-    exchange = new ExchangeTopicsSelection()
-    hackathon = new HackathonTopicsSelection()
-    pairProgramming = new PairProgrammingTopicsSelection()
+    topicSelection = new TopicsSelection()
     assert = new TestAssertions()
     cleanUp = new TestCleanUp()
     wait = new TestWait()
+    support = new TestSupport()
 
     page.navigateTo().then(() => {
       loginPage.loginWhenAlreadySignedInToGoogle()
     });
   });
 
+  function testTopicTagCanBeAdded(topic: string) {
+    let exchange = topicSelection.exchangeSelector
+    topicSelection.inputTopic(exchange, topic)
+
+    let selectedTopic = page.selectFirstSuggestedTag(topicSelection.assembleTopicInputLocator(exchange))
+    let expectedTopic = topicSelection.allSelectedTags(exchange)
+
+    support.takeScreenshot(topic)
+
+    assert.topicsToMatch(selectedTopic, expectedTopic)
+  }
+
   it('can select topic by full topic name: Ionic', () => {
-    let topic = 'Ionic';
-    exchange.inputTopic(topic);
-
-    let selectedTopic = page.selectFirstSuggestedTag(exchange.topicsInput);
-    let expectedTopic = exchange.allSelectedTags();
-
-    assert.topicsToMatch(selectedTopic, expectedTopic);
+    let topic = 'Ionic'
+    testTopicTagCanBeAdded(topic)
   });
 
   it('can select topic by topic name fragment: ion', () => {
-    let topic = 'ion';
-    hackathon.inputTopic(topic);
-
-    let selectedTopic = page.selectFirstSuggestedTag(hackathon.topicsInput);
-    let expectedTopic = hackathon.allSelectedTags();
-
-    assert.topicsToMatch(selectedTopic, expectedTopic);
+    let topic = 'ion'
+    testTopicTagCanBeAdded(topic)
   });
 
   it('can select topic by topic non-alphanumeric name: C#', () => {
-    let topic = 'C#';
-    hackathon.inputTopic(topic);
-
-    let selectedTopic = page.selectFirstSuggestedTag(hackathon.topicsInput);
-    let expectedTopic = hackathon.allSelectedTags();
-
-   assert.topicsToMatch(selectedTopic, expectedTopic);
-    // expect(selectedTopic).toEqual(' ' + expectedTopic);
+    let topic = 'C#'
+    testTopicTagCanBeAdded(topic)
   });
 
   it('can select topic by topic non-alphanumeric name fragment: .NET', () => {
-    let topic = '.NET';
-    hackathon.inputTopic(topic);
-
-    let selectedTopic = page.selectFirstSuggestedTag(hackathon.topicsInput);
-    let expectedTopic = hackathon.allSelectedTags();
-
-    assert.topicsToMatch(selectedTopic, expectedTopic);
-    // expect(selectedTopic).toEqual(' ' + expectedTopic);
+    let topic = '.NET'
+    testTopicTagCanBeAdded(topic)
   });
 
   it('can fill in profile with autocomplete by keyboard', () => {
-    let topic = 'Kar';
-    pairProgramming.inputTopic(topic);
-
-    let selectedTopic = page.selectFirstSuggestedTag(pairProgramming.topicsInput);
-    let expectedTopic = pairProgramming.allSelectedTags();
-
-    assert.topicsToMatch(selectedTopic, expectedTopic);
+    let topic = 'Kar'
+    testTopicTagCanBeAdded(topic)
   });
 
   it('can enter first topic from list without searching', () => {
-    let selectedTopic = page.selectFirstSuggestedTag(pairProgramming.topicsInput);
-    let expectedTopic = pairProgramming.allSelectedTags();
+    let selectedTopic = page.selectFirstSuggestedTag(
+      topicSelection.assembleTopicInputLocator(topicSelection.pairProgrammingSelector))
+
+    let expectedTopic = topicSelection.allSelectedTags(topicSelection.pairProgrammingSelector)
 
     assert.topicsToMatch(selectedTopic, expectedTopic);
   });
