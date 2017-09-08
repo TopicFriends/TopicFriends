@@ -1,4 +1,4 @@
-import {$, browser, ElementArrayFinder, ElementFinder} from 'protractor'
+import {$, ElementArrayFinder, ElementFinder} from 'protractor'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
 import {TestWait} from './wait'
@@ -18,8 +18,7 @@ export class TestAssertions
   }
 
   sectionTagsMatch(topicsSection: string, selectedTopics: Array<string>) {
-    this.wait.forElementPresent($(this.topicSections.tagSelector)).then(() => {
-      browser.sleep(1000)    //TODO: remove me
+    this.wait.forElementPresent($(this.topicSections.tagCloseIconSelector)).then(() => {
       let expectedTopics: ElementArrayFinder = this.topicSections.returnSelectedSectionTags(topicsSection)
       this.allTopicsToMatch(selectedTopics, expectedTopics)
     })

@@ -15,11 +15,11 @@ export class LoginPage {
 
   private defaultSleep = 1000
 
-  readonly userEmail = 'peoplematchertest@gmail.com'
+  private readonly menuButtonSelector = 'md-toolbar button'
+
+  readonly userEmail    = 'peoplematchertest@gmail.com'
   readonly userPassword = '@ngul@rAppT3st!n'
   readonly testUserName = 'People Matcher'
-
-  private readonly menuButtonSelector = 'md-toolbar button'
 
   loginMenuButton: ElementFinder = $(this.menuButtonSelector)
   logoutButton: ElementFinder =

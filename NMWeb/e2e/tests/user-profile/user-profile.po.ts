@@ -6,16 +6,16 @@ import {TestWait} from '../../test-support/wait'
 export class UserProfilePage {
   private wait: TestWait = new TestWait()
 
-  userProfileSelector = 'app-user-profile'
-  userProfile: ElementFinder = $(this.userProfileSelector)
-  userProfileBasicInfo: ElementFinder = $('app-user-profile-basic-info')
-  userProfileDescription = $('textarea[formControlName="description"]')
-  userProfileWhatYouExpect = $('textarea[formControlName="whatDoYouExpectFromTheApp"]')
+  userProfileSelector                      = 'app-user-profile'
+  userProfile: ElementFinder               = $(this.userProfileSelector)
+  userProfileBasicInfo: ElementFinder      = $('app-user-profile-basic-info')
+  userProfileDescription: ElementFinder    = $('textarea[formControlName="description"]')
+  userProfileWhatYouExpect: ElementFinder  = $('textarea[formControlName="whatDoYouExpectFromTheApp"]')
 
-  pleaseLogInButton: ElementFinder = $(this.userProfileSelector + ' button')
-  saveProfileButton: ElementFinder = $('#saveProfile')
+  pleaseLogInButton: ElementFinder         = $(this.userProfileSelector + ' button')
+  saveProfileButton: ElementFinder         = $('#saveProfile')
 
-  linkedInLinkInput: ElementFinder = $('#linkedinLink input')
+  linkedInLinkInput: ElementFinder         = $('#linkedinLink input')
 
   //TOPICS
   markedTopicFromSelectList: ElementFinder = $('md-option.mat-active')
@@ -23,8 +23,8 @@ export class UserProfilePage {
   //ENDOF: TOPICS
 
   // GEOLOCATION
-  whereILive = $('textarea[formControlName="whereILive"]')
-  whereIWork = $('textarea[formControlName="whereIWork"]')
+  whereILive  = $('textarea[formControlName="whereILive"]')
+  whereIWork  = $('textarea[formControlName="whereIWork"]')
   whereIStudy = $('textarea[formControlName="whereIStudy"]')
     //pick (for each)
     //clear (for each)

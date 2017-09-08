@@ -10,7 +10,7 @@ export class TopicSections {
   readonly pairProgrammingSectionSelector = 'app-topic-group-card[formcontrolname="pairProgramming"]'
   readonly exchangeSectionSelector        = 'app-topic-group-card[formcontrolname="exchange"]'
   readonly tagSelector                    = 'app-topic-tag'
-  readonly allTagsCloseIconSelector       = this.tagSelector + ' i.ion-close-circled'
+  readonly tagCloseIconSelector           = this.tagSelector + ' i.ion-close-circled'
 
   assembleTopicInputLocator(topicSectionSelector: string): ElementFinder {
     return $(topicSectionSelector + ' input')
@@ -26,7 +26,7 @@ export class TopicSections {
   }
 
   allTagsClosings() {
-    return $$(this.allTagsCloseIconSelector)
+    return $$(this.tagCloseIconSelector)
   }
 
   inputMultipleTagsInOneSection(topicsSection: string, topics: Array<string>): Array<string> {

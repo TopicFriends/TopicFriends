@@ -101,6 +101,7 @@ describe('UserProfile: Symmetric topics: User', () => {
     let topicsExchange = ['SQL']
     let topicsSectionExchange = topicSections.exchangeSectionSelector
     let selectedTopicsExchange = topicSections.inputMultipleTagsInOneSection(topicsSectionExchange, topicsExchange)
+    console.log(selectedTopicsExchange.length)
     assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
 
     page.saveProfileButton.click()
