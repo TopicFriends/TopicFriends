@@ -29,6 +29,7 @@ export class UserTemplateComponent implements OnInit {
   userInterests: UserInterests;
   profileBasicInfo: UserProfile;
   _expand: boolean;
+  supplyDemand
 
   constructor() { }
 
@@ -37,6 +38,10 @@ export class UserTemplateComponent implements OnInit {
     this._userPublicProfile.interests.subscribe(it => {
       this.userInterests = it;
       console.log('userPublicProfile.interests.subscribe', it)
+      this.supplyDemand =
+        this.userInterests &&
+        this.userInterests.byInteractionMode &&
+        this.userInterests.byInteractionMode.supplyDemand
     });
     this._userPublicProfile.profile.subscribe(it => {
       this.profileBasicInfo = it
