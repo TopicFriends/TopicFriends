@@ -63,5 +63,9 @@ export class UserProfileBasicInfoComponent implements OnInit {
     }
   }
 
+  copyUserId() {
+
+  }
+
 
 }

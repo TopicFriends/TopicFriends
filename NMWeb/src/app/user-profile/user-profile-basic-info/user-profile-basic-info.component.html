@@ -1,10 +1,21 @@
 <ng-template [ngIf]="! userProfile" >Loading User profile basic info...<br/></ng-template>
 
-<img style="width: 100px" src="{{(authService.user | async)?.photoURL}}" />
-<span style="color: grey">Log-in Account Name: </span>{{ (authService.user | async)?.displayName }}
+<img style="width: 100px; margin-top: 5px" src="{{(authService.user | async)?.photoURL}}" />
+<p>
+  <span class="grayed-label">Log-in Account Name: </span>{{ (authService.user | async)?.displayName }}
+</p>
+<p>
+  <span class="grayed-label">Your User Id: </span>User_{{(authService.user | async)?.uid}}_
+</p>
 
-<br />
-<br />
+
+<!--<button-->
+  <!--md-button-->
+  <!--md-raised-button-->
+  <!--(click)="copyUserId()"-->
+<!--&gt;-->
+  <!--Copy-->
+<!--</button>-->
 
 <!-- TODO: [position] at [organization] -->
 <!-- TODO: save creation date-->
