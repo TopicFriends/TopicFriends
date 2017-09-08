@@ -46,7 +46,6 @@ export class UserProfilePage {
   }
 
   selectFirstSuggestedTag(element: ElementFinder): Promise<string> {
-    this.wait.forElement(element)
     element.sendKeys(protractor.Key.ARROW_DOWN)
     let optionSelected = this.markedTopicFromSelectList.getText()
     element.sendKeys(protractor.Key.ENTER)
@@ -55,28 +54,59 @@ export class UserProfilePage {
   }
 }
 
-export class TopicsSelection {
-// export class HackathonTopicsSelection {
-  private wait: TestWait = new TestWait()
+export class TopicSections {
+  private wait = new TestWait()
+  private profilePage = new UserProfilePage()
 
-  hackathonTopicsSelector = 'app-topic-group-card[formcontrolname="hackathon"]'
-  pairProgrammingSelector = 'app-topic-group-card[formcontrolname="pairProgramming"]'
-  exchangeSelector = 'app-topic-group-card[formcontrolname="exchange"]'
+  readonly hackathonSectionSelector       = 'app-topic-group-card[formcontrolname="hackathon"]'
+  readonly pairProgrammingSectionSelector = 'app-topic-group-card[formcontrolname="pairProgramming"]'
+  readonly exchangeSectionSelector        = 'app-topic-group-card[formcontrolname="exchange"]'
+  readonly tagSelector                    = 'app-topic-tag'
+  readonly allTagsCloseIconSelector       = this.tagSelector + ' i.ion-close-circled'
 
-  assembleTopicInputLocator(topicSelector: string) {
-    return $(topicSelector + ' input')
+  assembleTopicInputLocator(topicSectionSelector: string): ElementFinder {
+    return $(topicSectionSelector + ' input')
   }
 
-  allSelectedTags(topicSelector: string): ElementArrayFinder {
-    this.wait.forElement($(topicSelector))
-    return this.catchAllTopicTagsSelected(topicSelector)
+  returnSelectedSectionTags(topicSectionSelector: string): ElementArrayFinder {
+    this.wait.forElement($(topicSectionSelector))
+    return this.returnAllSelectedTopicTags(topicSectionSelector)
   }
 
-  inputTopic(topicSelector: string, topic: string) {
-    this.assembleTopicInputLocator(topicSelector).sendKeys(topic)
+  inputTopic(topicSectionSelector: string, topic: string) {
+    this.assembleTopicInputLocator(topicSectionSelector).sendKeys(topic)
   }
 
-  private catchAllTopicTagsSelected(topicSelector: string) {
-    return $$(topicSelector + ' app-topic-tag span>a')
+  allTagsClosings() {
+    return $$(this.allTagsCloseIconSelector)
+  }
+
+  inputMultipleTagsInOneSection(topicsSection: string, topics: Array<string>): Array<string> {
+    let selectedTopics: Array<string> = []
+    let topicInput = this.assembleTopicInputLocator(topicsSection)
+
+    topics.forEach(topic => {
+      this.inputTopic(topicsSection, topic)
+      this.profilePage.selectFirstSuggestedTag(topicInput).then(tag => {
+        selectedTopics.push(tag)
+      }).then(() => { topicInput.clear() })
+    })
+
+    return selectedTopics
+  }
+
+  removeAllTags() {
+    this.allTagsClosings().count().then((count) => {
+      let i = count;
+      while (i >= 0) {
+        this.allTagsClosings().first().click()
+        browser.sleep(100)
+        i--;
+      }
+    });
+  }
+
+  private returnAllSelectedTopicTags(topicSectionSelector: string): ElementArrayFinder {
+   return $$(topicSectionSelector + ' ' + this.tagSelector + ' span>a')
   }
 }

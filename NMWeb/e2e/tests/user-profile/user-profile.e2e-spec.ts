@@ -15,7 +15,7 @@ describe('Profile page: User', () => {
 
   it('can see button with text "Please log in, to access your profile" when not logged in', () => {
     page.navigateTo().then(() => {
-      assert.elementContainingText(page.pleaseLogInButton, 'Please log in, to access your profile')
+      assert.elementIsContainingText(page.pleaseLogInButton, 'Please log in, to access your profile')
       expect(page.userProfileBasicInfo.isPresent()).toBeFalsy();   //TODO
     });
   });

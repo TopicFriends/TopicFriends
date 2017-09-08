@@ -15,11 +15,12 @@ export class LoginPage {
 
   private defaultSleep = 1000
 
-  userEmail = 'peoplematchertest@gmail.com'
-  userPassword = '@ngul@rAppT3st!n'
-  testUserName = 'People Matcher'
+  readonly userEmail = 'peoplematchertest@gmail.com'
+  readonly userPassword = '@ngul@rAppT3st!n'
+  readonly testUserName = 'People Matcher'
 
-  private menuButtonSelector = 'md-toolbar button'
+  private readonly menuButtonSelector = 'md-toolbar button'
+
   loginMenuButton: ElementFinder = $(this.menuButtonSelector)
   logoutButton: ElementFinder =
     element(by.cssContainingText('button.mat-menu-item', 'Log out'))
@@ -55,7 +56,6 @@ export class LoginPage {
 
   confirmUserLoggedIn(): Promise<boolean>  {
     this.wait.forElement(this.userProfilePage.userProfileBasicInfo)
-    this.utils.takeScreenshot('LoginPage')
     return element(by.cssContainingText(this.menuButtonSelector, this.testUserName)).isPresent()
   }
 

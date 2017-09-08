@@ -1,18 +1,17 @@
 import {
-  UserProfilePage, TopicsSelection
+  UserProfilePage, TopicSections,
 } from './user-profile.po'
 import {LoginPage} from '../login/login.po'
 import {TestAssertions} from '../../test-support/assertions'
 import {TestCleanUp} from '../../test-support/clean-up'
 import {TestWait} from '../../test-support/wait'
 import {TestSupport} from '../../test-support/test-support'
-
-// TODO: after all go to firebase and remove interests branch for test user
+import {$, browser} from 'protractor'
 
 describe('UserProfile: Symmetric topics: User', () => {
   let loginPage: LoginPage
   let page: UserProfilePage
-  let topicSelection: TopicsSelection
+  let topicSections: TopicSections
   let assert: TestAssertions
   let cleanUp: TestCleanUp
   let wait: TestWait
@@ -21,7 +20,7 @@ describe('UserProfile: Symmetric topics: User', () => {
   beforeAll(() => { //TODO: refactor me
     loginPage = new LoginPage()
     page = new UserProfilePage()
-    topicSelection = new TopicsSelection()
+    topicSections = new TopicSections()
     assert = new TestAssertions()
     cleanUp = new TestCleanUp()
     wait = new TestWait()
@@ -33,15 +32,14 @@ describe('UserProfile: Symmetric topics: User', () => {
   });
 
   function testTopicTagCanBeAdded(topic: string) {
-    let exchange = topicSelection.exchangeSelector
-    topicSelection.inputTopic(exchange, topic)
+    let exchange = topicSections.exchangeSectionSelector
+    topicSections.inputTopic(exchange, topic)
+    let selectedTopic = page.selectFirstSuggestedTag(topicSections.assembleTopicInputLocator(exchange))
+    let expectedTopic = topicSections.returnSelectedSectionTags(exchange)
 
-    let selectedTopic = page.selectFirstSuggestedTag(topicSelection.assembleTopicInputLocator(exchange))
-    let expectedTopic = topicSelection.allSelectedTags(exchange)
+    // support.takeScreenshot(topic)
 
-    support.takeScreenshot(topic)
-
-    assert.topicsToMatch(selectedTopic, expectedTopic)
+    assert.tagMatch(selectedTopic, expectedTopic)
   }
 
   it('can select topic by full topic name: Ionic', () => {
@@ -54,12 +52,12 @@ describe('UserProfile: Symmetric topics: User', () => {
     testTopicTagCanBeAdded(topic)
   });
 
-  it('can select topic by topic non-alphanumeric name: C#', () => {
+  it('can select topic by topic non-alphanumeric in name: C#', () => {
     let topic = 'C#'
     testTopicTagCanBeAdded(topic)
   });
 
-  it('can select topic by topic non-alphanumeric name fragment: .NET', () => {
+  it('can select topic by topic non-alphanumeric in name fragment: .NET', () => {
     let topic = '.NET'
     testTopicTagCanBeAdded(topic)
   });
@@ -71,28 +69,72 @@ describe('UserProfile: Symmetric topics: User', () => {
 
   it('can enter first topic from list without searching', () => {
     let selectedTopic = page.selectFirstSuggestedTag(
-      topicSelection.assembleTopicInputLocator(topicSelection.pairProgrammingSelector))
+      topicSections.assembleTopicInputLocator(topicSections.pairProgrammingSectionSelector))
 
-    let expectedTopic = topicSelection.allSelectedTags(topicSelection.pairProgrammingSelector)
+    let expectedTopic = topicSections.returnSelectedSectionTags(topicSections.pairProgrammingSectionSelector)
 
-    assert.topicsToMatch(selectedTopic, expectedTopic);
+    assert.tagMatch(selectedTopic, expectedTopic);
   });
 
-  // it('can select multiple topics by topic name fragment: Angular, .NET, Protractor', () => {
-  //
+  // it('nothing selected when no value entered', () => {
+    // TODO
   // });
 
-  // it('can save profile by clicking save', () => {
-//Ionic, Karma,
-    //first field 2 tags, second 4 tags, third 1 tag
+  it('can select multiple topics: Angular, .NET, angular universal', () => {
+    let topics = ['Angular', '.NET', 'angular universal']
+    let hackathon = topicSections.hackathonSectionSelector
 
-    // }
+    let selectedTopics = topicSections.inputMultipleTagsInOneSection(hackathon, topics)
+    assert.sectionTagsMatch(hackathon, selectedTopics)
+  });
+
+  it('can save profile by clicking save', () => {
+    let topicsHackathon = ['c', 'angular universal']
+    let topicsSectionHackathon = topicSections.hackathonSectionSelector
+    wait.forElement($(topicsSectionHackathon))
+    let selectedTopicsHackathon = topicSections.inputMultipleTagsInOneSection(topicsSectionHackathon, topicsHackathon)
+    assert.sectionTagsMatch(topicsSectionHackathon, selectedTopicsHackathon)
+
+    let topicsPairProgramming = ['Java', 'unity', 'ui', 'Protractor']
+    let topicsSectionPairProgramming = topicSections.pairProgrammingSectionSelector
+    let selectedTopicsPairProgramming = topicSections.inputMultipleTagsInOneSection(topicsSectionPairProgramming, topicsPairProgramming)
+    assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
+
+    let topicsExchange = ['SQL']
+    let topicsSectionExchange = topicSections.exchangeSectionSelector
+    let selectedTopicsExchange = topicSections.inputMultipleTagsInOneSection(topicsSectionExchange, topicsExchange)
+    assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
+
+    page.saveProfileButton.click()
+    page.navigateTo().then(() => {
+      wait.forElement($(topicSections.tagSelector)).then(() => {
+        assert.sectionTagsMatch(topicsSectionHackathon, selectedTopicsHackathon)
+        assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
+        assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
+      })
+    })
+  });
+
+  // it('can change all selected topics', () => {
+  //remove topics from all sections, don't reload the page, select new topics, save, reload page and assert new topics
+  // }
   // );
+
+  it('remove all topics from profile', () => {
+    wait.forElement($(topicSections.tagSelector))
+    topicSections.removeAllTags()
+
+    page.saveProfileButton.click()
+    page.navigateTo().then(() => {
+      wait.forElement(page.userProfileBasicInfo).then(() => {
+        browser.sleep(5000)
+        expect(topicSections.allTagsClosings()).toEqual([])    //TODO
+      })
+    })
+  });
 
   // it('can save profile by pressing CTRL+S', () => {
-
-    // }
-  // );
+  // });
 
   afterEach(() => {
     page.navigateTo().then(() => {
