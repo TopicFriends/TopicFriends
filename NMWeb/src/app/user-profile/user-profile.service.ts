@@ -85,6 +85,8 @@ export class UserGeoLocations {
     whereIWork?: GeoLocationsDictionary // Todo: multiple (dictionary)
     whereILive?: GeoLocationsDictionary
     whereIStudy?: GeoLocationsDictionary
+    whereIVisit?: GeoLocationsDictionary
+    homeTown?: GeoLocationsDictionary
     // where I have lunch
     // where I party
     // where I hang out
