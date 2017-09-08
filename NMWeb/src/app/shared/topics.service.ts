@@ -42,7 +42,7 @@ export class TopicsService {
   // @Input() public inputTagList: TagEntry[] = [tag('Angular'), tag('Ionic'), tag('Firebase')];
   /** I moved it here, because @Input stopped working for some reason and I am to distracted to troubleshoot it :-\ */
   public topics: TagEntry[] = this.transformTags([
-    angular, 'Angular Universal', tagNoIcon('AngularJS'), tagNoIcon('PrimeNG'), ionic, firebase,
+    angular, tagNoIcon('Angular Universal'), tagNoIcon('AngularJS'), tagNoIcon('PrimeNG'), ionic, firebase,
     protractor, karma, jasmine,
     tagNoIcon('PrimeFaces'),
     tag('PHP'), materialDesign, typeScript,
@@ -143,6 +143,7 @@ export class TopicsService {
     'NativeScript',
     tagNoIcon('SOAP'),
     tagNoIcon('Microsoft SQL Server'),
+    tagNoIcon('Microservices'),
     tagNoIcon('Testing'),
     tagNoIcon('Quality Assurance'),
     tagNoIcon('Quality Engineering'),
