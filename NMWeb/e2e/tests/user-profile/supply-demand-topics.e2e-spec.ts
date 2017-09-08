@@ -41,12 +41,12 @@ describe('UserProfile: Symmetric topics: User', () => {
 
     support.takeScreenshot(topic)
 
-    assert.tagMatch(selectedTopic, expectedTopic)
+    assert.tagsMatch(selectedTopic, expectedTopic)
   }
 
   afterEach(() => {
     page.navigateTo().then(() => {
-      wait.forElement(page.userProfileBasicInfo)
+      wait.forElementPresent(page.userProfileBasicInfo)
     })
   })
 

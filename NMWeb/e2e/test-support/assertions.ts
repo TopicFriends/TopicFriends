@@ -8,14 +8,16 @@ export class TestAssertions {
   private wait = new TestWait()
   private topicSections = new TopicSections()
 
-  tagMatch(selectedTopic: Promise<string>, expectedTopic: ElementArrayFinder) {
-    expectedTopic.first().getText().then(expected => {
-      expect(selectedTopic).toEqual(' ' + expected)
-    });
+  tagsMatch(selectedTopic: Promise<string>, expectedTopic: ElementArrayFinder) {
+    let topics = []
+    selectedTopic.then(topic => {
+      topics.push(topic)
+      this.allTopicsToMatch(topics, expectedTopic)
+    })
   }
 
   sectionTagsMatch(topicsSection: string, selectedTopics: Array<string>) {
-    this.wait.forElement($(this.topicSections.tagSelector)).then(() => {
+    this.wait.forElementPresent($(this.topicSections.tagSelector)).then(() => {
       browser.sleep(1000)    //TODO: remove me
       let expectedTopics: ElementArrayFinder = this.topicSections.returnSelectedSectionTags(topicsSection)
       this.allTopicsToMatch(selectedTopics, expectedTopics)

@@ -10,7 +10,7 @@ export class UserProfilePage {
   userProfile: ElementFinder = $(this.userProfileSelector)
   userProfileBasicInfo: ElementFinder = $('app-user-profile-basic-info')
   userProfileDescription = $('textarea[formControlName="description"]')
-  whatUserExpects = $('textarea[formControlName="whatDoYouExpectFromTheApp"]')
+  userProfileWhatYouExpect = $('textarea[formControlName="whatDoYouExpectFromTheApp"]')
 
   pleaseLogInButton: ElementFinder = $(this.userProfileSelector + ' button')
   saveProfileButton: ElementFinder = $('#saveProfile')
@@ -69,7 +69,7 @@ export class TopicSections {
   }
 
   returnSelectedSectionTags(topicSectionSelector: string): ElementArrayFinder {
-    this.wait.forElement($(topicSectionSelector))
+    this.wait.forElementPresent($(topicSectionSelector))
     return this.returnAllSelectedTopicTags(topicSectionSelector)
   }
 
@@ -96,14 +96,20 @@ export class TopicSections {
   }
 
   removeAllTags() {
-    this.allTagsClosings().count().then((count) => {
-      let i = count;
-      while (i >= 0) {
-        this.allTagsClosings().first().click()
-        browser.sleep(100)
-        i--;
-      }
-    });
+    return this.wait.forElementPresent($(this.tagSelector)).then(() => {
+      this.allTagsClosings().count().then((count) => {
+        while (count > 0) {
+         // console.log('elementsFound: ' + count)
+          this.allTagsClosings().first().click()
+          browser.sleep(300)
+          count--;
+        }
+
+        this.allTagsClosings().count().then(countTags => {
+          console.log('count elements after removal: ' + countTags)
+        })
+      });
+    })
   }
 
   private returnAllSelectedTopicTags(topicSectionSelector: string): ElementArrayFinder {

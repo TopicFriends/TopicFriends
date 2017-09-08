@@ -4,7 +4,7 @@ export class TestWait {
   ec = ExpectedConditions
   defaultWaitTimeout = browser.params.allScriptsTimeout - 5000
 
-  forElement(element: ElementFinder) {
+  forElementPresent(element: ElementFinder) {
     return browser.wait((this.ec.presenceOf(element)), this.defaultWaitTimeout, 'false')
   }
 
