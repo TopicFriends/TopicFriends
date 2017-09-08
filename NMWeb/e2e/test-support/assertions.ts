@@ -2,9 +2,10 @@ import {$, browser, ElementArrayFinder, ElementFinder} from 'protractor'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
 import {TestWait} from './wait'
-import {TopicSections} from '../tests/user-profile/user-profile.po'
+import {TopicSections} from '../tests/user-profile/topic-sections.po'
 
-export class TestAssertions {
+export class TestAssertions
+{
   private wait = new TestWait()
   private topicSections = new TopicSections()
 
@@ -31,6 +32,7 @@ export class TestAssertions {
   private allTopicsToMatch(selectedTopics: Array<string>, expectedTopics: ElementArrayFinder) {
     expectedTopics.then((expTopics: ElementFinder[]) => {
       expect(selectedTopics.length).toEqual(expTopics.length)
+      // console.log(selectedTopics.length, expTopics.length)
 
       expTopics.forEach(topicPromise => {
         topicPromise.getText().then(topic => {
