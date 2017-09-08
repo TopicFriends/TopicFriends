@@ -16,7 +16,7 @@ describe('LoginPage page: User', () => {
 
   it('can log in', () => {
     page.navigateTo()
-    wait.forElement(page.loginMenuButton).then(() => {
+    wait.forElementPresent(page.loginMenuButton).then(() => {
       page.loginMenuButton.click()
       page.logInViaGoogle.click()
       page.logInDefaultTestUser()
@@ -25,9 +25,9 @@ describe('LoginPage page: User', () => {
 
   it('stays logged in when returning to the app', () => {
     browser.get('http://www.google.com')
-    wait.forElement(page.googleSearchInput)
+    wait.forElementPresent(page.googleSearchInput)
     page.navigateTo()
-    wait.forElement(page.loginMenuButton)
+    wait.forElementPresent(page.loginMenuButton)
 
     expect(page.confirmUserLoggedIn()).toBeTruthy()
   });

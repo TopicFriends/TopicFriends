@@ -39,7 +39,7 @@ describe('UserProfile: Symmetric topics: User', () => {
 
     // support.takeScreenshot(topic)
 
-    assert.tagMatch(selectedTopic, expectedTopic)
+    assert.tagsMatch(selectedTopic, expectedTopic)
   }
 
   it('can select topic by full topic name: Ionic', () => {
@@ -73,7 +73,7 @@ describe('UserProfile: Symmetric topics: User', () => {
 
     let expectedTopic = topicSections.returnSelectedSectionTags(topicSections.pairProgrammingSectionSelector)
 
-    assert.tagMatch(selectedTopic, expectedTopic);
+    assert.tagsMatch(selectedTopic, expectedTopic);
   });
 
   // it('nothing selected when no value entered', () => {
@@ -83,6 +83,7 @@ describe('UserProfile: Symmetric topics: User', () => {
   it('can select multiple topics: Angular, .NET, angular universal', () => {
     let topics = ['Angular', '.NET', 'angular universal']
     let hackathon = topicSections.hackathonSectionSelector
+    wait.forElementPresent($(hackathon))
 
     let selectedTopics = topicSections.inputMultipleTagsInOneSection(hackathon, topics)
     assert.sectionTagsMatch(hackathon, selectedTopics)
@@ -91,7 +92,7 @@ describe('UserProfile: Symmetric topics: User', () => {
   it('can save profile by clicking save', () => {
     let topicsHackathon = ['c', 'angular universal']
     let topicsSectionHackathon = topicSections.hackathonSectionSelector
-    wait.forElement($(topicsSectionHackathon))
+    wait.forElementPresent($(topicsSectionHackathon))
     let selectedTopicsHackathon = topicSections.inputMultipleTagsInOneSection(topicsSectionHackathon, topicsHackathon)
     assert.sectionTagsMatch(topicsSectionHackathon, selectedTopicsHackathon)
 
@@ -107,7 +108,7 @@ describe('UserProfile: Symmetric topics: User', () => {
 
     page.saveProfileButton.click()
     page.navigateTo().then(() => {
-      wait.forElement($(topicSections.tagSelector)).then(() => {
+      wait.forElementPresent($(topicSections.tagSelector)).then(() => {
         assert.sectionTagsMatch(topicsSectionHackathon, selectedTopicsHackathon)
         assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
         assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
@@ -120,15 +121,15 @@ describe('UserProfile: Symmetric topics: User', () => {
   // }
   // );
 
-  it('remove all topics from profile', () => {
-    wait.forElement($(topicSections.tagSelector))
+  it('can remove all topics from profile', () => {
+    wait.forElementPresent($(topicSections.tagSelector))
     topicSections.removeAllTags()
 
     page.saveProfileButton.click()
     page.navigateTo().then(() => {
-      wait.forElement(page.userProfileBasicInfo).then(() => {
-        browser.sleep(5000)
-        expect(topicSections.allTagsClosings()).toEqual([])    //TODO
+      wait.forElementPresent(page.userProfileBasicInfo).then(() => {
+        browser.sleep(3000)
+        expect(topicSections.allTagsClosings().count()).toEqual(0)
       })
     })
   });
@@ -138,7 +139,7 @@ describe('UserProfile: Symmetric topics: User', () => {
 
   afterEach(() => {
     page.navigateTo().then(() => {
-      wait.forElement(page.userProfileBasicInfo)
+      wait.forElementPresent(page.userProfileBasicInfo)
     })
   })
 

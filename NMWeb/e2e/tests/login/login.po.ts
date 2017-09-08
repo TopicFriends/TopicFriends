@@ -39,10 +39,10 @@ export class LoginPage {
   }
 
   loginWhenAlreadySignedInToGoogle() {
-    this.wait.forElement(this.loginMenuButton)
+    this.wait.forElementPresent(this.loginMenuButton)
     this.loginMenuButton.click()
     this.logInViaGoogle.click()
-    this.wait.forElement(this.userProfilePage.userProfileBasicInfo)
+    this.wait.forElementPresent(this.userProfilePage.userProfileBasicInfo)
   }
 
   logInDefaultTestUser() {
@@ -55,34 +55,34 @@ export class LoginPage {
   }
 
   confirmUserLoggedIn(): Promise<boolean>  {
-    this.wait.forElement(this.userProfilePage.userProfileBasicInfo)
+    this.wait.forElementPresent(this.userProfilePage.userProfileBasicInfo)
     return element(by.cssContainingText(this.menuButtonSelector, this.testUserName)).isPresent()
   }
 
   logoutUser() {
-    this.wait.forElement(this.loginMenuButton)
+    this.wait.forElementPresent(this.loginMenuButton)
     this.loginMenuButton.click()
-    this.wait.forElement(this.logoutButton)
+    this.wait.forElementPresent(this.logoutButton)
     this.logoutButton.click()
   }
 
   confirmUserLoggedOut() {
-    this.wait.forElement(this.loginMenuButton);
+    this.wait.forElementPresent(this.loginMenuButton);
     expect(this.loginButtonWithUserName.isPresent()).toBeFalsy();
   }
 
   private enterGooglePassword() {
     browser.sleep(this.defaultSleep);
-    this.wait.forElement(this.passwordField);
+    this.wait.forElementPresent(this.passwordField);
     this.passwordField.sendKeys(this.userPassword);
-    this.wait.forElement(this.googlePasswordNextButton);
+    this.wait.forElementPresent(this.googlePasswordNextButton);
     this.googlePasswordNextButton.click();
   }
 
   private enterGoogleUsername() {
-    this.wait.forElement(this.usernameField);
+    this.wait.forElementPresent(this.usernameField);
     this.usernameField.sendKeys(this.userEmail);
-    this.wait.forElement(this.googleIdNextButton);
+    this.wait.forElementPresent(this.googleIdNextButton);
     browser.sleep(this.defaultSleep);
     this.googleIdNextButton.click();
   }
