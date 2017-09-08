@@ -10,6 +10,23 @@ import {UserInterestsComponent} from './user-interests/user-interests.component'
 import {SnackBarComponent} from '../shared/snackbar/snackbar.component'
 import {UserGeoLocationsComponent} from './user-geo-locations/user-geo-locations.component'
 import {UserDescriptionsComponent} from './user-descriptions/user-descriptions.component'
+import {ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot} from '@angular/router'
+
+export class CanDeactivateUserProfileGuard implements CanDeactivate<UserProfileComponent> {
+
+  canDeactivate(
+    component: UserProfileComponent,
+    currentRoute: ActivatedRouteSnapshot,
+    currentState: RouterStateSnapshot,
+    nextState: RouterStateSnapshot
+  ): Observable<boolean>|Promise<boolean>|boolean {
+    let canDeactivate = component.canDeactivate()
+    if ( ! canDeactivate ) {
+      window.alert('You have unsaved changes.')
+    }
+    return canDeactivate
+  }
+}
 
 @Component({
   selector: 'app-user-profile',
@@ -27,6 +44,7 @@ export class UserProfileComponent implements OnInit {
   formGroup: FormGroup
 
   userInterestsFormGroup: FormGroup
+  userDescriptionsFormGroup: FormGroup
 
   constructor(
     protected userProfileService: UserProfileService,
@@ -35,9 +53,12 @@ export class UserProfileComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) {
     this.userInterestsFormGroup = UserInterestsComponent.buildFormGroup(this.formBuilder)
+    this.userDescriptionsFormGroup = UserDescriptionsComponent.buildFormGroup(this.formBuilder)
     this.formGroup = this.formBuilder.group({
       userInterests:
-        this.userInterestsFormGroup
+        this.userInterestsFormGroup,
+      descriptions:
+        this.userDescriptionsFormGroup
     })
 
   }
@@ -74,9 +95,19 @@ export class UserProfileComponent implements OnInit {
 
   @HostListener('window:beforeunload', ['$event'])
   handleBeforeUnload($event) {
-    if ( this.formGroup.dirty ) {
-      // $event.returnValue = 'Your data will be lost!';
+    if ( ! this.canDeactivate() ) {
+      console.log('this.formGroup...', this.formGroup.value)
+      $event.returnValue = 'Your data will be lost!';
     }
+  }
+
+  public canDeactivate() {
+    return ! this.hasUnsavedChanges()
+    // return true // ! this.formGroup.dirty
+  }
+
+  hasUnsavedChanges() {
+    return false // this.formGroup.dirty
   }
 
 }

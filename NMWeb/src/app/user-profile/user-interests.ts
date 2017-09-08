@@ -81,6 +81,7 @@ export class UserInterests {
 
   byInteractionMode?: {
     symmetric?: SymmetricInteractions,
+    /* Refactor: extract SupplyDemandInteractions */
     supplyDemand?: {    // The more heavy something is, the more it should be in supplyDemand
       //  as opposed to symmetric, because it might require organizers, e.g. hackathon, workshop, presentation,
       /** though, hackathon is a special case in which it could work with or without organizers, meaning
@@ -97,7 +98,7 @@ export class UserInterests {
       job?: SupplyDemand,
       advising?: SupplyDemand,
       sponsorEvents?: SupplyDemand,
-      /** co-founder / business partner */
+      /** co-founder / business partner; rename to just coFounder for consistency */
       coFounderSpecializingIn?: SupplyDemand,
       // work on hobby project together,
       /** Work on open-source together; probably move to symmetric */

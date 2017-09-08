@@ -56,7 +56,7 @@ export class UserInterestsComponent implements OnInit {
     return this.formGroup.value
   }
 
-  static buildFormGroup(formBuilder: FormBuilder) {
+  static buildFormGroup(formBuilder: FormBuilder): FormGroup {
     // userInterests?.byInteractionMode?.symmetric?.exchange?.topics
     return formBuilder.group({
       byInteractionMode: formBuilder.group({

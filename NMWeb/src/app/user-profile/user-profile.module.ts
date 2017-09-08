@@ -1,7 +1,7 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserProfileBasicInfoComponent } from './user-profile-basic-info/user-profile-basic-info.component';
-import {UserProfileComponent} from './user-profile.component'
+import {CanDeactivateUserProfileGuard, UserProfileComponent} from './user-profile.component'
 import {Routes, RouterModule} from '@angular/router'
 import {SharedModule} from '../shared/shared.module'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
@@ -14,13 +14,15 @@ import { UserGeoLocationComponent } from './user-geo-locations/user-geo-location
 import {MapsModule} from '../maps/maps.module';
 import { UserDescriptionsComponent } from './user-descriptions/user-descriptions.component';
 import { TopicGroupCardComponent } from './user-interests/topic-group-card/topic-group-card.component';
-import { TopicGroupSupplyDemandCardComponent } from './user-interests/topic-group-supply-demand-card/topic-group-supply-demand-card.component'
+import { TopicGroupSupplyDemandCardComponent } from './user-interests/topic-group-supply-demand-card/topic-group-supply-demand-card.component';
+import { TextAreaComponent } from './user-descriptions/text-area/text-area.component'
 
 
 const userProfileRoutes: Routes = [
   {
     path: 'profile',
     component: UserProfileComponent,
+    canDeactivate: [CanDeactivateUserProfileGuard]
   },
 ];
 
@@ -49,6 +51,10 @@ const userProfileRoutes: Routes = [
     UserDescriptionsComponent,
     TopicGroupCardComponent,
     TopicGroupSupplyDemandCardComponent,
+    TextAreaComponent,
+  ],
+  providers: [
+    CanDeactivateUserProfileGuard
   ],
   exports: [
   ],
