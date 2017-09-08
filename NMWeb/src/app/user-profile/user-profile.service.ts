@@ -22,11 +22,21 @@ export class OtherProfile {
   show?: boolean;
 }
 
+
+export class UserDescription {
+  text: string
+}
+
 export class UserDescriptions {
-  descriptions: {
-    description: string,
-    whatDoYouExpectFromTheApp: string,
-    // TODO: advice on contacting me
+  descriptions: { /* or textDescriptions. For future: ask myself, what other descriptions can there be apart from textual?
+    graphics? That would probably go into another firebase node...
+    What graphics? Background? User map pin? This is not a description.
+    TODO: rename the whole Firebase list-root-node to UserTextDescriptions ?
+  */
+    myDescription: UserDescription, /* or userDescription? */
+    whatDoYouExpectFromTheApp: UserDescription,
+    adviceOnContactingMe: UserDescription, /* TODO: contacting / meeting */
+    howDidYouFindThisCommunity: UserDescription, /* TODO: standardize this/the, app/community -> this community */
   }
 }
 
@@ -84,10 +94,12 @@ export class UserGeoLocations {
     // where I am right now (e.g. on a conference)
     // where I travel/visit
     // where I give talks/workshops
+    // where I go biking
+    // where I go to the gym/sports
   }
 }
 
-/* Rename to UserBasicInfo or UserBasicProfile
+/* Rename to UserBasicInfo(not: too vague: info, like data; I shall avoid vague names) or *UserBasicProfile*
 * and rename UserData to UserProfile */
 export class UserProfile implements HasDbHistory {
   displayName?: string;

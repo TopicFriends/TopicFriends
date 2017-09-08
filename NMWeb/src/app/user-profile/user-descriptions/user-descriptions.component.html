@@ -1,26 +1,38 @@
-<form
-  [formGroup]="formGroup"
+
+<div
+  [formGroup]="thisFormGroup"
 >
+  <div
+    formGroupName="descriptions"
+  > <!-- TODO: descriptions -> textDescriptions ? -->
 
-  <md-input-container>
-    <textarea
-      mdInput
+    <app-text-area
+      [parentFormGroup]="getDescriptionsFormGroup()"
+      [thisFormGroupName]="'myDescription'"
+      [placeholder]="'My description'"
       [rows]="2"
-      [formGroup]="formGroup"
-      formControlName="description"
-      mdTextareaAutosize
-      placeholder="My description"
-    ></textarea>
-  </md-input-container>
+    ></app-text-area>
 
-  <md-input-container>
-    <textarea
-      mdInput
-      [rows]="2"
-      formControlName="whatDoYouExpectFromTheApp"
-      mdTextareaAutosize
-      placeholder="What do you hope to accomplish in this app?"
-    ></textarea>
-  </md-input-container>
+    <app-text-area
+      [parentFormGroup]="getDescriptionsFormGroup()"
+      [thisFormGroupName]="'whatDoYouExpectFromTheApp'"
+      [placeholder]="'What do you hope to accomplish in this app?'"
+      [rows]="1"
+    ></app-text-area>
 
-</form>
+    <app-text-area
+      [parentFormGroup]="getDescriptionsFormGroup()"
+      [thisFormGroupName]="'adviceOnContactingMe'"
+      [placeholder]="'Advice on contacting / meeting me'"
+      [rows]="1"
+    ></app-text-area>
+
+    <app-text-area
+      [parentFormGroup]="getDescriptionsFormGroup()"
+      [thisFormGroupName]="'howDidYouFindThisCommunity'"
+      [placeholder]="'How did you find this community?'"
+      [rows]="1"
+    ></app-text-area>
+
+  </div>
+</div>

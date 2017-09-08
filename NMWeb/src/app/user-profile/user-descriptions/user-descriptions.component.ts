@@ -1,14 +1,11 @@
-import {Component, OnInit, ViewChildren} from '@angular/core';
+import {Component, Input, OnInit, ViewChildren} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms'
 import {UserDescriptionsService} from '../../shared/user-profile/user-descriptions.service'
 import {UserDescriptions} from '../user-profile.service'
 import {MdTextareaAutosize} from '@angular/material'
+import {TextAreaComponent} from './text-area/text-area.component'
 
 
-const formDefinition = {
-  description: '',
-  whatDoYouExpectFromTheApp: '',
-}
 
 @Component({
   selector: 'app-user-description',
@@ -17,8 +14,11 @@ const formDefinition = {
 })
 export class UserDescriptionsComponent implements OnInit {
 
-  formGroup: FormGroup
-  @ViewChildren(MdTextareaAutosize) textAreas
+
+  @Input() thisFormGroup: FormGroup
+  // @Input() parentFormGroup: FormGroup
+
+  @ViewChildren(TextAreaComponent) textAreas
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,33 +27,40 @@ export class UserDescriptionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formGroup = this.formBuilder.group(formDefinition)
     this.userDescriptionsService.subscribeToCurrentUserDescriptions(userDescriptions => {
       this.applyFromDb(userDescriptions)
     })
   }
 
   getValue(): UserDescriptions {
-    return {
-      descriptions:
-        this.formGroup.value
-    }
+    return this.thisFormGroup.value
   }
 
   private applyFromDb(userDescriptions: UserDescriptions) {
-    if ( userDescriptions && userDescriptions.descriptions ) {
-      this.formGroup.setValue(userDescriptions.descriptions)
+    if ( userDescriptions ) {
+      // this.formGroup.setValue(userDescriptions.descriptions)
+      // FIXME: fill missing values and use setValue
+      this.thisFormGroup.patchValue(userDescriptions)
+      this.textAreas.forEach((t: TextAreaComponent) => {
+        t.autoResizeTextArea()
+      })
     }
-    this.autoResizeTextAreas()
   }
 
-  private autoResizeTextAreas() {
-    this.textAreas.forEach(area => {
-      // https://github.com/angular/material2/issues/5247
-      // -> http://plnkr.co/edit/gdZ6jOmQyzj2gg7ori44?p=preview
-      // -> https://github.com/angular/material2/issues/4657 (closed Jul 20)
-      area.resizeToFitContent()
+
+  static buildFormGroup(formBuilder: FormBuilder): FormGroup {
+    return formBuilder.group({
+      descriptions: /* -> textDescriptions */ formBuilder.group({
+        myDescription: TextAreaComponent.buildFormGroup(formBuilder),
+        whatDoYouExpectFromTheApp: TextAreaComponent.buildFormGroup(formBuilder),
+        adviceOnContactingMe: TextAreaComponent.buildFormGroup(formBuilder),
+        howDidYouFindThisCommunity: TextAreaComponent.buildFormGroup(formBuilder),
+      })
     })
+  }
+
+  getDescriptionsFormGroup() {
+    return this.thisFormGroup.get('descriptions')
   }
 
 }

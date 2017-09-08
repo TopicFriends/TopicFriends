@@ -1,0 +1,16 @@
+<div
+  [formGroup]="parentFormGroup"
+>
+  <md-input-container
+    [formGroupName]="thisFormGroupName"
+  >
+  <textarea
+    mdInput
+    [rows]="rows"
+    formControlName="text"
+    mdTextareaAutosize
+    placeholder="{{placeholder}}"
+    (change)="onChange($event)"
+  ></textarea>
+  </md-input-container>
+</div>
