@@ -72,7 +72,9 @@ export class UserGeoLocationsComponent implements OnInit {
         }
       }
       console.log('geoLocationsTransformed', geoLocationsTransformed)
-      this.geoLocationsFormGroup.setValue(geoLocationsTransformed)
+      // this.geoLocationsFormGroup.setValue(geoLocationsTransformed)
+      this.parentFormGroup.setValue({geoLocations: geoLocationsTransformed})
+      this.parentFormGroup.markAsPristine()
       // this.formGroup.patchValue(geoLocationsTransformed)
     }
   }
