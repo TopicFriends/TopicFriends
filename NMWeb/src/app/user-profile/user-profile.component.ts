@@ -71,6 +71,10 @@ export class UserProfileComponent implements OnInit {
   }
 
   save() {
+    if ( ! this.hasUnsavedChanges() ) {
+      this.snackBarComponent.showSnackBar('There are no unsaved changes')
+      return
+    }
     // FIXME this.userProfile.displayName = this.displayName.value;
 
     const otherProfiles = this.userOtherProfilesComponent.getOtherProfiles()
