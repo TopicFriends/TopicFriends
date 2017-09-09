@@ -3,6 +3,8 @@ import {GeoLocationService} from '../../../shared/geo-location.service'
 import {UserPickLocationDialogParams, UserPickLocationComponent} from '../../../maps/user-pick-location/user-pick-location.component'
 import {MdDialog} from '@angular/material'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
+import {GeoLocation} from '../../user-profile.service'
+import {geoLocationToString} from '../user-geo-locations.component'
 
 @Component({
   selector: 'app-user-geo-location',
@@ -66,15 +68,20 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
 
   private setInputText(s: string) {
     this.latitudeLongitudeControl.nativeElement.value = s
-    this.propagateChange(s);
+    this.doPropagateChange(s)
+  }
+
+  private doPropagateChange(s: string) {
+    this.propagateChange(GeoLocation.parseGeoString(s))
+    console.log('doPropagateChange', s)
   }
 
   clear() {
     this.setInputText('')
   }
 
-  writeValue(value: any) {
-    this.setInputText(value)
+  writeValue(value: GeoLocation) {
+    this.setInputText(geoLocationToString(value))
   }
 
   registerOnTouched() {}

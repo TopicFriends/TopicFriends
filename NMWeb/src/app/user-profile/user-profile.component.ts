@@ -45,6 +45,7 @@ export class UserProfileComponent implements OnInit {
 
   userInterestsFormGroup: FormGroup
   userDescriptionsFormGroup: FormGroup
+  userGeoLocationsFormGroup: FormGroup
 
   constructor(
     protected userProfileService: UserProfileService,
@@ -54,11 +55,14 @@ export class UserProfileComponent implements OnInit {
   ) {
     this.userInterestsFormGroup = UserInterestsComponent.buildFormGroup(this.formBuilder)
     this.userDescriptionsFormGroup = UserDescriptionsComponent.buildFormGroup(this.formBuilder)
+    this.userGeoLocationsFormGroup = UserGeoLocationsComponent.buildFormGroup(this.formBuilder)
     this.formGroup = this.formBuilder.group({
       userInterests:
         this.userInterestsFormGroup,
       descriptions:
-        this.userDescriptionsFormGroup
+        this.userDescriptionsFormGroup,
+      geoLocations:
+        this.userGeoLocationsFormGroup
     })
 
   }
@@ -103,11 +107,11 @@ export class UserProfileComponent implements OnInit {
 
   public canDeactivate() {
     return ! this.hasUnsavedChanges()
-    // return true // ! this.formGroup.dirty
   }
 
   hasUnsavedChanges() {
-    return false // this.formGroup.dirty
+    // return false
+    return this.formGroup.dirty
   }
 
 }

@@ -18,19 +18,23 @@
 
   <form>
 
-    <app-user-profile-basic-info #basicInfo>
-    </app-user-profile-basic-info>
+    <app-user-profile-basic-info
+      #basicInfo
+    ></app-user-profile-basic-info>
 
     <app-user-description
       #userDescriptions
       [thisFormGroup]="userDescriptionsFormGroup"
     ></app-user-description>
 
-    <app-user-geo-locations #userGeoLocations>
-    </app-user-geo-locations>
+    <app-user-geo-locations
+      #userGeoLocations
+      [parentFormGroup]="userGeoLocationsFormGroup"
+    ></app-user-geo-locations>
 
-    <app-user-other-profiles #userOtherProfiles>
-    </app-user-other-profiles>
+    <app-user-other-profiles
+      #userOtherProfiles
+    ></app-user-other-profiles>
 
     <app-user-interests
       #userInterests
@@ -50,7 +54,7 @@
       md-raised-button
       color="primary"
       (click)="save()"
-      [disabled]="hasUnsavedChanges()"
+      [disabled]="! hasUnsavedChanges()"
     >
       Save <i>(Cmd/Ctrl+S)</i>
     </button>

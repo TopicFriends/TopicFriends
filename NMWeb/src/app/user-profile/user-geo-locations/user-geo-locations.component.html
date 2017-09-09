@@ -1,34 +1,41 @@
-<md-card style="margin-bottom: 10px">
+<md-card
+  [formGroup]="parentFormGroup"
+  style="margin-bottom: 10px"
+>
   <md-card-title>Geo-Locations (optional)</md-card-title>
 
   <md-card-content>
 
-    <form [formGroup]="formGroup">
+    <div
+      formGroupName="geoLocations"
+    >
 
       <app-user-geo-location
         formControlName="whereILive"
-        locationName="Where I live">
-      </app-user-geo-location>
+        locationName="Where I live"
+      ></app-user-geo-location>
 
       <app-user-geo-location
         formControlName="whereIWork"
-        locationName="Where I work">
-      </app-user-geo-location>
+        locationName="Where I work"
+      ></app-user-geo-location>
 
       <app-user-geo-location
         formControlName="whereIStudy"
-        locationName="Where I study">
-      </app-user-geo-location>
+        locationName="Where I study"
+      ></app-user-geo-location>
+
       <app-user-geo-location
         formControlName="whereIVisit"
-        locationName="Where I visit">
-      </app-user-geo-location>
+        locationName="Where I visit"
+      ></app-user-geo-location>
+
       <app-user-geo-location
         formControlName="homeTown"
-        locationName="Hometown">
-      </app-user-geo-location>
+        locationName="Hometown"
+      ></app-user-geo-location>
 
-    </form>
+    </div>
 
   </md-card-content>
 

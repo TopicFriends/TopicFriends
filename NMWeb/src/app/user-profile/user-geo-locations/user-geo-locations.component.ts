@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {AuthService} from '../auth.service'
 import {GeoLocation, UserGeoLocations, UserProfileService} from '../user-profile.service'
@@ -9,18 +9,26 @@ function transformIntoLocationDictionaries(values: any) {
   for (let keyName of Object.keys(values)) {
     const geoString = values[keyName]
 
-    const parsedGeoLocation: GeoLocation = GeoLocation.parseGeoString(geoString)
+    const parsedGeoLocation: GeoLocation = geoString
     returnVal[keyName] = [ parsedGeoLocation ]
     // later we might have more geoLocations of a given type (e.g. study/work in multiple places)
   }
   return returnVal
 }
 
-function geoLocationToString(g: GeoLocation) {
+export function geoLocationToString(g: GeoLocation) {
   if ( ! g ) {
     return ''
   }
   return g.latitude + ', ' + g.longitude
+}
+
+const formDefinition = {
+  whereILive: '',
+  whereIWork: '',
+  whereIStudy: '',
+  whereIVisit: '',
+  homeTown: '',
 }
 
 @Component({
@@ -30,56 +38,56 @@ function geoLocationToString(g: GeoLocation) {
 })
 export class UserGeoLocationsComponent implements OnInit {
 
-
-  public formGroup: FormGroup;
-
-  private formDefinition = {
-    whereILive: '',
-    whereIWork: '',
-    whereIStudy: '',
-    whereIVisit: '',
-    homeTown: '',
-  }
+  @Input() public parentFormGroup: FormGroup;
+  public geoLocationsFormGroup: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private userProfileService: UserProfileService,
   ) {
-    this.formGroup = this.formBuilder.group(this.formDefinition)
   }
 
   ngOnInit() {
+    console.log('UserGeoLocationsComponent: parentFormGroup', this.parentFormGroup)
     this.authService.user.subscribe(user => {
       this.userProfileService.getUserGeoLocations().subscribe(
           (geoLocationsFromDb: UserGeoLocations) => {
         this.applyFromDb(geoLocationsFromDb)
       })
     })
+    this.geoLocationsFormGroup = <FormGroup>this.parentFormGroup.get('geoLocations')
   }
 
   applyFromDb(geoLocationsFromDb: UserGeoLocations) {
     if (geoLocationsFromDb && geoLocationsFromDb.geoLocations) {
       const geoSubKeys = geoLocationsFromDb.geoLocations
       let geoLocationsTransformed = {}
-      for (const keyName of Object.keys(this.formDefinition)) {
+      for (const keyName of Object.keys(formDefinition)) {
         const subKey = geoSubKeys[keyName]
         if ( subKey ) {
-          geoLocationsTransformed[keyName] = geoLocationToString(subKey[0])
+          geoLocationsTransformed[keyName] = subKey[0]
         } else {
-          geoLocationsTransformed[keyName] = ''
+          geoLocationsTransformed[keyName] = null
         }
       }
-      this.formGroup.setValue(geoLocationsTransformed)
+      console.log('geoLocationsTransformed', geoLocationsTransformed)
+      this.geoLocationsFormGroup.setValue(geoLocationsTransformed)
       // this.formGroup.patchValue(geoLocationsTransformed)
     }
   }
 
-
   public getValue(): UserGeoLocations {
     return {
-      geoLocations: transformIntoLocationDictionaries(this.formGroup.value),
+      geoLocations: transformIntoLocationDictionaries(this.geoLocationsFormGroup.value)
     }
+  }
+
+  static buildFormGroup(formBuilder: FormBuilder): FormGroup {
+    // userInterests?.byInteractionMode?.symmetric?.exchange?.topics
+    return formBuilder.group({
+      geoLocations: formBuilder.group(formDefinition)
+    })
   }
 
 }
