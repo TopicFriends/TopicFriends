@@ -41,6 +41,7 @@ export class UserDescriptionsComponent implements OnInit {
       // this.formGroup.setValue(userDescriptions.descriptions)
       // FIXME: fill missing values and use setValue
       this.thisFormGroup.patchValue(userDescriptions)
+      this.thisFormGroup.markAsPristine()
       this.textAreas.forEach((t: TextAreaComponent) => {
         t.autoResizeTextArea()
       })
