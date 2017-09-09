@@ -53,6 +53,7 @@ export class UserInterestsComponent implements OnInit {
   private applyFromDb(userInterests: UserInterests) {
     this.thisFormGroup.patchValue(userInterests) // FIXME: use setValue with filled-in missing values
     // this.formGroup.setValue(userInterests)
+    this.thisFormGroup.markAsPristine()
   }
 
   getUserInterests(): UserInterests {
