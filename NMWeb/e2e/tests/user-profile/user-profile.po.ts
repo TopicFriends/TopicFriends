@@ -1,4 +1,4 @@
-import {$, $$, browser, ElementArrayFinder, ElementFinder, protractor} from 'protractor'
+import {$, browser, ElementFinder, protractor} from 'protractor'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
 import {TestWait} from '../../test-support/wait'
@@ -6,16 +6,16 @@ import {TestWait} from '../../test-support/wait'
 export class UserProfilePage {
   private wait: TestWait = new TestWait()
 
-  userProfileSelector = 'app-user-profile'
-  userProfile: ElementFinder = $(this.userProfileSelector)
-  userProfileBasicInfo: ElementFinder = $('app-user-profile-basic-info')
-  userProfileDescription = $('textarea[formControlName="description"]')
-  userProfileWhatYouExpect = $('textarea[formControlName="whatDoYouExpectFromTheApp"]')
+  userProfileSelector                      = 'app-user-profile'
+  userProfile: ElementFinder               = $(this.userProfileSelector)
+  userProfileBasicInfo: ElementFinder      = $('app-user-profile-basic-info')
+  userProfileDescription: ElementFinder    = $('textarea[formControlName="description"]')
+  userProfileWhatYouExpect: ElementFinder  = $('textarea[formControlName="whatDoYouExpectFromTheApp"]')
 
-  pleaseLogInButton: ElementFinder = $(this.userProfileSelector + ' button')
-  saveProfileButton: ElementFinder = $('#saveProfile')
+  pleaseLogInButton: ElementFinder         = $(this.userProfileSelector + ' button')
+  saveProfileButton: ElementFinder         = $('#saveProfile')
 
-  linkedInLinkInput: ElementFinder = $('#linkedinLink input')
+  linkedInLinkInput: ElementFinder         = $('#linkedinLink input')
 
   //TOPICS
   markedTopicFromSelectList: ElementFinder = $('md-option.mat-active')
@@ -23,8 +23,8 @@ export class UserProfilePage {
   //ENDOF: TOPICS
 
   // GEOLOCATION
-  whereILive = $('textarea[formControlName="whereILive"]')
-  whereIWork = $('textarea[formControlName="whereIWork"]')
+  whereILive  = $('textarea[formControlName="whereILive"]')
+  whereIWork  = $('textarea[formControlName="whereIWork"]')
   whereIStudy = $('textarea[formControlName="whereIStudy"]')
     //pick (for each)
     //clear (for each)
@@ -46,73 +46,12 @@ export class UserProfilePage {
   }
 
   selectFirstSuggestedTag(element: ElementFinder): Promise<string> {
+    let optionSelected
     element.sendKeys(protractor.Key.ARROW_DOWN)
-    let optionSelected = this.markedTopicFromSelectList.getText()
+    this.wait.forElementPresent(this.markedTopicFromSelectList)
+    optionSelected = this.markedTopicFromSelectList.getText()
     element.sendKeys(protractor.Key.ENTER)
 
     return optionSelected
-  }
-}
-
-export class TopicSections {
-  private wait = new TestWait()
-  private profilePage = new UserProfilePage()
-
-  readonly hackathonSectionSelector       = 'app-topic-group-card[formcontrolname="hackathon"]'
-  readonly pairProgrammingSectionSelector = 'app-topic-group-card[formcontrolname="pairProgramming"]'
-  readonly exchangeSectionSelector        = 'app-topic-group-card[formcontrolname="exchange"]'
-  readonly tagSelector                    = 'app-topic-tag'
-  readonly allTagsCloseIconSelector       = this.tagSelector + ' i.ion-close-circled'
-
-  assembleTopicInputLocator(topicSectionSelector: string): ElementFinder {
-    return $(topicSectionSelector + ' input')
-  }
-
-  returnSelectedSectionTags(topicSectionSelector: string): ElementArrayFinder {
-    this.wait.forElementPresent($(topicSectionSelector))
-    return this.returnAllSelectedTopicTags(topicSectionSelector)
-  }
-
-  inputTopic(topicSectionSelector: string, topic: string) {
-    this.assembleTopicInputLocator(topicSectionSelector).sendKeys(topic)
-  }
-
-  allTagsClosings() {
-    return $$(this.allTagsCloseIconSelector)
-  }
-
-  inputMultipleTagsInOneSection(topicsSection: string, topics: Array<string>): Array<string> {
-    let selectedTopics: Array<string> = []
-    let topicInput = this.assembleTopicInputLocator(topicsSection)
-
-    topics.forEach(topic => {
-      this.inputTopic(topicsSection, topic)
-      this.profilePage.selectFirstSuggestedTag(topicInput).then(tag => {
-        selectedTopics.push(tag)
-      }).then(() => { topicInput.clear() })
-    })
-
-    return selectedTopics
-  }
-
-  removeAllTags() {
-    return this.wait.forElementPresent($(this.tagSelector)).then(() => {
-      this.allTagsClosings().count().then((count) => {
-        while (count > 0) {
-         // console.log('elementsFound: ' + count)
-          this.allTagsClosings().first().click()
-          browser.sleep(300)
-          count--;
-        }
-
-        this.allTagsClosings().count().then(countTags => {
-          console.log('count elements after removal: ' + countTags)
-        })
-      });
-    })
-  }
-
-  private returnAllSelectedTopicTags(topicSectionSelector: string): ElementArrayFinder {
-   return $$(topicSectionSelector + ' ' + this.tagSelector + ' span>a')
   }
 }

@@ -1,6 +1,5 @@
-import {
-  UserProfilePage, TopicSections,
-} from './user-profile.po'
+import {UserProfilePage} from './user-profile.po'
+import {TopicSections} from './topic-sections.po'
 import {LoginPage} from '../login/login.po'
 import {TestAssertions} from '../../test-support/assertions'
 import {TestCleanUp} from '../../test-support/clean-up'
@@ -36,8 +35,6 @@ describe('UserProfile: Symmetric topics: User', () => {
     topicSections.inputTopic(exchange, topic)
     let selectedTopic = page.selectFirstSuggestedTag(topicSections.assembleTopicInputLocator(exchange))
     let expectedTopic = topicSections.returnSelectedSectionTags(exchange)
-
-    // support.takeScreenshot(topic)
 
     assert.tagsMatch(selectedTopic, expectedTopic)
   }
@@ -104,6 +101,7 @@ describe('UserProfile: Symmetric topics: User', () => {
     let topicsExchange = ['SQL']
     let topicsSectionExchange = topicSections.exchangeSectionSelector
     let selectedTopicsExchange = topicSections.inputMultipleTagsInOneSection(topicsSectionExchange, topicsExchange)
+    console.log(selectedTopicsExchange.length)
     assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
 
     page.saveProfileButton.click()

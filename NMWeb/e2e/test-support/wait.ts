@@ -4,26 +4,29 @@ export class TestWait {
   ec = ExpectedConditions
   defaultWaitTimeout = browser.params.allScriptsTimeout - 5000
 
-  forElementPresent(element: ElementFinder) {
-    return browser.wait((this.ec.presenceOf(element)), this.defaultWaitTimeout, 'false')
+  forElementPresent(element: ElementFinder): any {
+    return browser.wait((this.ec.presenceOf(element)),
+      this.defaultWaitTimeout, 'false')
   }
 
   forElementNotPresent(element: ElementFinder): any {
-    return browser.wait(this.ec.not(this.ec.presenceOf(element)))
+    return browser.wait(this.ec.not(this.ec.presenceOf(element)),
+      this.defaultWaitTimeout, 'false')
   }
 
   forElementCount(elementArray: ElementArrayFinder, expectedCount: number): any {
     return browser.wait(() =>
       elementArray.count().then((actualCount) => {
-        return expectedCount === actualCount;
-      }));
+        return expectedCount === actualCount
+      }), this.defaultWaitTimeout, 'false')
   }
 
   forElementText(element: ElementFinder, text: string): any {
-    return browser.wait(this.ec.textToBePresentInElement(element, text));
+    return browser.wait(this.ec.textToBePresentInElement(element, text),
+      this.defaultWaitTimeout, 'false')
   }
 
   forTextPresent(element: ElementFinder, text: string): any {
-    return this.forElementText(element, text);
+    return this.forElementText(element, text)
   }
 }
