@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {AuthService} from '../auth.service'
-import {GeoLocation, UserGeoLocations, UserProfileService} from '../user-profile.service'
+import {GeoLocation, GeoLocations, UserGeoLocations, UserProfileService} from '../user-profile.service'
 
 function transformIntoLocationDictionaries(values: any) {
   let returnVal = {}
@@ -60,23 +60,26 @@ export class UserGeoLocationsComponent implements OnInit {
   }
 
   applyFromDb(geoLocationsFromDb: UserGeoLocations) {
+    let geoSubKeys: GeoLocations
     if (geoLocationsFromDb && geoLocationsFromDb.geoLocations) {
-      const geoSubKeys = geoLocationsFromDb.geoLocations
-      let geoLocationsTransformed = {}
-      for (const keyName of Object.keys(formDefinition)) {
-        const subKey = geoSubKeys[keyName]
-        if ( subKey ) {
-          geoLocationsTransformed[keyName] = subKey[0]
-        } else {
-          geoLocationsTransformed[keyName] = null
-        }
-      }
-      console.log('geoLocationsTransformed', geoLocationsTransformed)
-      // this.geoLocationsFormGroup.setValue(geoLocationsTransformed)
-      this.parentFormGroup.setValue({geoLocations: geoLocationsTransformed})
-      this.parentFormGroup.markAsPristine()
-      // this.formGroup.patchValue(geoLocationsTransformed)
+      geoSubKeys = geoLocationsFromDb.geoLocations
+    } else {
+      geoSubKeys = {}
     }
+    let geoLocationsTransformed = {}
+    for (const keyName of Object.keys(formDefinition)) {
+      const subKey = geoSubKeys[keyName]
+      if ( subKey ) {
+        geoLocationsTransformed[keyName] = subKey[0]
+      } else {
+        geoLocationsTransformed[keyName] = null
+      }
+    }
+    console.log('geoLocationsTransformed', geoLocationsTransformed)
+    // this.geoLocationsFormGroup.setValue(geoLocationsTransformed)
+    this.parentFormGroup.setValue({geoLocations: geoLocationsTransformed})
+    this.parentFormGroup.markAsPristine()
+    // this.formGroup.patchValue(geoLocationsTransformed)
   }
 
   public getValue(): UserGeoLocations {
