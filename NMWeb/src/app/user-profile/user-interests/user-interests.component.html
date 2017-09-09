@@ -1,61 +1,58 @@
-<div
-  [formGroup]="parentFormGroup"
->
 
-  <div formGroupName="userInterests">
-    <div formGroupName="byInteractionMode">
-      <div formGroupName="symmetric">
+<div [formGroup]="thisFormGroup">
+  <div formGroupName="byInteractionMode">
+    <div formGroupName="symmetric">
 
 
-        <app-topic-group-card id=topicsExchange formControlName="exchange">
-          I would like to <b>exchange knowledge</b> on topics
-        </app-topic-group-card>
+      <app-topic-group-card id=topicsExchange formControlName="exchange">
+        I would like to <b>exchange knowledge</b> on topics
+      </app-topic-group-card>
 
-        <app-topic-group-card id=topicsHackathon formControlName="hackathon">
-          I would like to do a <b>hackathon</b> on topics
-        </app-topic-group-card>
+      <app-topic-group-card id=topicsHackathon formControlName="hackathon">
+        I would like to do a <b>hackathon</b> on topics
+      </app-topic-group-card>
 
-        <app-topic-group-card id=topicsPairProgramming formControlName="pairProgramming">
-          I would like to do <b>pair programming</b> on topics
-        </app-topic-group-card>
+      <app-topic-group-card id=topicsPairProgramming formControlName="pairProgramming">
+        I would like to do <b>pair programming</b> on topics
+      </app-topic-group-card>
 
-      </div>
+    </div>
 
-      <div formGroupName="supplyDemand">
-        <app-topic-group-supply-demand-card
-          [parentFormGroup]="formGroup.get('byInteractionMode').get('supplyDemand')"
-          [nestedFormGroupName]="'mentor'"
-        >
-          <div supply-demand-label>Mentoring</div>
-          <div supply-label>I would like to <b><u>become</u> a mentor</b> for topics</div>
-          <div demand-label>I would like to <b><u>find</u> a mentor</b> for topics</div>
-        </app-topic-group-supply-demand-card>
+    <div formGroupName="supplyDemand">
+      <app-topic-group-supply-demand-card
+        [parentFormGroup]="supplyDemandFormGroup"
+        [nestedFormGroupName]="'mentor'"
+      >
+        <div supply-demand-label>Mentoring</div>
+        <div supply-label>I would like to <b><u>become</u> a mentor</b> for topics</div>
+        <div demand-label>I would like to <b><u>find</u> a mentor</b> for topics</div>
+      </app-topic-group-supply-demand-card>
 
-        <app-topic-group-supply-demand-card
-          [parentFormGroup]="formGroup.get('byInteractionMode').get('supplyDemand')"
-          [nestedFormGroupName]="'intern'"
-        >
-          <div supply-demand-label>Internships</div>
-          <div supply-label>I would like to <b><u>become</u> an intern</b> for topics</div>
-          <div demand-label>I would like to <b><u>find</u> an intern</b> for topics</div>
-        </app-topic-group-supply-demand-card>
+      <app-topic-group-supply-demand-card
+        [parentFormGroup]="supplyDemandFormGroup"
+        [nestedFormGroupName]="'intern'"
+      >
+        <div supply-demand-label>Internships</div>
+        <div supply-label>I would like to <b><u>become</u> an intern</b> for topics</div>
+        <div demand-label>I would like to <b><u>find</u> an intern</b> for topics</div>
+      </app-topic-group-supply-demand-card>
 
-        <app-topic-group-supply-demand-card
-          [parentFormGroup]="formGroup.get('byInteractionMode').get('supplyDemand')"
-          [nestedFormGroupName]="'freelance'"
-        >
-          <div supply-demand-label>Freelance/Consulting</div>
-          <div supply-label>I would like to <b><u>do</u> freelance/consulting</b> for topics/skills</div>
-          <div demand-label>I would like to <b><u>find</u> a freelancer/consultant</b> for topics/skills</div>
-        </app-topic-group-supply-demand-card>
+      <app-topic-group-supply-demand-card
+        [parentFormGroup]="supplyDemandFormGroup"
+        [nestedFormGroupName]="'freelance'"
+      >
+        <div supply-demand-label>Freelance/Consulting</div>
+        <div supply-label>I would like to <b><u>do</u> freelance/consulting</b> for topics/skills</div>
+        <div demand-label>I would like to <b><u>find</u> a freelancer/consultant</b> for topics/skills</div>
+      </app-topic-group-supply-demand-card>
 
-      </div>
     </div>
   </div>
 </div>
 
+
 <!-- Consider some slogans like this:
-    <md-hint>
-      <md-icon>favorite</md-icon> Be a hero and help others learn! The good karma will come back to you.
-    </md-hint>
+  <md-hint>
+    <md-icon>favorite</md-icon> Be a hero and help others learn! The good karma will come back to you.
+  </md-hint>
 -->

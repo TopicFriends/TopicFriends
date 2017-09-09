@@ -27,11 +27,10 @@ export class UserInterestsComponent implements OnInit {
 
   whatUserWants = UserInterests.fromJson({});
 
-  @Input() parentFormGroup: FormGroup
-  @Input() formGroup: FormGroup
+  @Input() thisFormGroup: FormGroup
+  supplyDemandFormGroup: FormGroup
 
   userInterestsObservable: Observable<UserInterests>;
-  userInterests: UserInterests
 
   constructor(
     protected userProfileService: UserProfileService,
@@ -39,21 +38,25 @@ export class UserInterestsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.supplyDemandFormGroup = <FormGroup> this.thisFormGroup.get('byInteractionMode').get('supplyDemand')
 
     this.authService.user.subscribe(user => {
       if ( user ) {
         this.userInterestsObservable = this.userProfileService.getUserInterests();
         this.userInterestsObservable.subscribe((userInterests: UserInterests) => {
-          this.userInterests = userInterests
-          this.formGroup.patchValue(userInterests) // FIXME: use setValue with filled-in missing values
-          // this.formGroup.setValue(userInterests)
+          this.applyFromDb(userInterests)
         });
       }
     })
   }
 
+  private applyFromDb(userInterests: UserInterests) {
+    this.thisFormGroup.patchValue(userInterests) // FIXME: use setValue with filled-in missing values
+    // this.formGroup.setValue(userInterests)
+  }
+
   getUserInterests(): UserInterests {
-    return this.formGroup.value
+    return this.thisFormGroup.value
   }
 
   static buildFormGroup(formBuilder: FormBuilder): FormGroup {
