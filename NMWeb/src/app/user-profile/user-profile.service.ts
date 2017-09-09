@@ -80,8 +80,8 @@ export interface GeoLocationsDictionary {
   [geoLocationId: number]: GeoLocation
 }
 
-export class UserGeoLocations {
-  geoLocations: {
+
+export class GeoLocations {
     whereIWork?: GeoLocationsDictionary // Todo: multiple (dictionary)
     whereILive?: GeoLocationsDictionary
     whereIStudy?: GeoLocationsDictionary
@@ -98,7 +98,10 @@ export class UserGeoLocations {
     // where I give talks/workshops
     // where I go biking
     // where I go to the gym/sports
-  }
+}
+
+export class UserGeoLocations {
+  geoLocations: GeoLocations
 }
 
 /* Rename to UserBasicInfo(not: too vague: info, like data; I shall avoid vague names) or *UserBasicProfile*
