@@ -73,6 +73,7 @@ export class UserInterestsComponent implements OnInit {
           intern: buildSupplyDemandSubForm(formBuilder),
           mentor: buildSupplyDemandSubForm(formBuilder),
           freelance: buildSupplyDemandSubForm(formBuilder),
+          review: buildSupplyDemandSubForm(formBuilder),
         })
       })
     })

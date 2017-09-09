@@ -18,6 +18,15 @@
 
     </div>
 
+    <app-topic-group-supply-demand-card
+      [parentFormGroup]="supplyDemandFormGroup"
+      [nestedFormGroupName]="'review'"
+    >
+      <div supply-demand-label>Code/architecture/database Review</div>
+      <div supply-label>I would like to <b><u>do</u> review</b> for topics/skills</div>
+      <div demand-label>I would like to <b><u>find</u> someone to do review</b> for topics/skills</div>
+    </app-topic-group-supply-demand-card>
+
     <div formGroupName="supplyDemand">
       <app-topic-group-supply-demand-card
         [parentFormGroup]="supplyDemandFormGroup"
