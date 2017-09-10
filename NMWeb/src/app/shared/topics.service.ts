@@ -174,6 +174,11 @@ export class TopicsService {
     tagNoIcon('System Administration'),
     tagNoIcon('Open Source'),
     tagNoIcon('Augmented Reality'),
+    tagNoIcon('Photography'),
+    tagNoIcon('Video Editing'),
+    tagNoIcon('YouTube'),
+    tagNoIcon('Explainer Videos'),
+    // Adobe photoshop, Adobe illustrator, Adobe After Effects
     // calabash
     // GitHub. Jira. GitLab.
     // Mapbox Studio
