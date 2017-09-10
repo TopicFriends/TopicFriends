@@ -55,6 +55,24 @@
         <div demand-label>I would like to <b><u>find</u> a freelancer/consultant</b> for topics/skills</div>
       </app-topic-group-supply-demand-card>
 
+      <app-topic-group-supply-demand-card
+        [parentFormGroup]="supplyDemandFormGroup"
+        [nestedFormGroupName]="'coFounder'"
+      >
+        <div supply-demand-label>Co-Founder</div>
+        <div supply-label>I would like to <b><u>become</u> a co-founder</b> using those skills</div>
+        <div demand-label>I would like to <b><u>find</u> a co-founder</b> with those skills</div>
+      </app-topic-group-supply-demand-card>
+
+      <app-topic-group-supply-demand-card
+        [parentFormGroup]="supplyDemandFormGroup"
+        [nestedFormGroupName]="'businessPartner'"
+      >
+        <div supply-demand-label>Business Partner</div>
+        <div supply-label>I would like to <b><u>become</u> a business partner</b> using those skills</div>
+        <div demand-label>I would like to <b><u>find</u> a business partner</b> with those skills</div>
+      </app-topic-group-supply-demand-card>
+
     </div>
   </div>
 </div>

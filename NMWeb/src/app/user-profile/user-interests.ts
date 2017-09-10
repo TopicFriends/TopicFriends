@@ -44,6 +44,8 @@ export class SupplyDemand {
   // we can add more metadata, like time period
 }
 
+// Cool idea: calculate count / show: all matches between all users
+// and all matches from current user to other users
 export class MatchResults {
   matchScore: number;
   topicMatches: TopicInterest[];
@@ -96,10 +98,12 @@ export class UserInterests {
       /** Code/architecture/database review */
       review?: SupplyDemand,
       job?: SupplyDemand,
-      advising?: SupplyDemand,
+      // advising?: SupplyDemand,
       sponsorEvents?: SupplyDemand,
+      coFounder?: SupplyDemand,
+      businessPartner?: SupplyDemand,
       /** co-founder / business partner; rename to just coFounder for consistency */
-      coFounderSpecializingIn?: SupplyDemand,
+      // coFounderSpecializingIn?: SupplyDemand,
       // work on hobby project together,
       /** Work on open-source together; probably move to symmetric */
       contributeToOpenSource?: SupplyDemand,
