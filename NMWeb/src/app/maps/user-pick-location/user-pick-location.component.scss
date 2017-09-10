@@ -6,3 +6,7 @@ agm-map {
 md-input-container {
   width: 100%;
 }
+
+.pac-container {
+  position: fixed !important; // Fix the position for scrolling
+}
