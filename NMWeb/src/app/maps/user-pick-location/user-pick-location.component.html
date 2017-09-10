@@ -2,18 +2,21 @@
 
 <md-dialog-content>
 
-  <md-input-container>
+  <md-input-container
+    id=searchInputFieldContainer
+  >
     <md-placeholder>
       <md-icon>map</md-icon> Search for location:
     </md-placeholder>
 
     <input
       mdInput
-      #search
+      #searchInputField
     />
   </md-input-container>
 
 <agm-map
+  id=pickLocationMap
   [latitude]="coordinates.latitude"
   [longitude]="coordinates.longitude"
   [zoom]="15">

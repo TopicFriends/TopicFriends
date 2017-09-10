@@ -25,7 +25,7 @@ export class UserPickLocationComponent implements OnInit {
   public locationName: string
   public searchControl: FormControl;
 
-  @ViewChild("search")
+  @ViewChild("searchInputField")
   public searchElementRef: ElementRef;
 
   constructor(
