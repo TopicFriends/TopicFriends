@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject, NgZone, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, NgZone, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material'
 import {GeoLocation} from '../../user-profile/user-profile.service'
 import {FormControl} from '@angular/forms';
@@ -14,7 +14,8 @@ export class UserPickLocationDialogParams {
 @Component({
   selector: 'app-user-pick-location',
   templateUrl: './user-pick-location.component.html',
-  styleUrls: ['./user-pick-location.component.scss']
+  styleUrls: ['./user-pick-location.component.scss'],
+  encapsulation: ViewEncapsulation.None /* to fix geo-location completion list */,
 })
 export class UserPickLocationComponent implements OnInit {
 
@@ -46,6 +47,11 @@ export class UserPickLocationComponent implements OnInit {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]
       });
+      // setTimeout(function() {
+      // // failed attempt to fix the vertical position of the autocomplete list:
+      //   google.maps.event.trigger(window, 'resize');
+      //   console.log('setTimeout')
+      // }, 2000);
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           //get the place result
