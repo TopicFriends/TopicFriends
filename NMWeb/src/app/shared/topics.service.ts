@@ -157,7 +157,7 @@ export class TopicsService {
     tagNoIcon('Venture Capital'), tagNoIcon('Seed Funding'), tagNoIcon('Angel Investment'), tagNoIcon('Bootstrapping'),
     tagNoIcon('Social Media'),
     tagNoIcon('Internet Business'), tagNoIcon('Business'),
-    tagNoIcon('Entrepreneurship'), tagNoIcon('Business Development'), tagNoIcon('Small Business'),
+    tagNoIcon('Entrepreneurship'), tagNoIcon('Business Development'), tagNoIcon('Small Business'), tagNoIcon('Business Administration'),
     tagNoIcon('Mobile apps'),
     tagNoIcon('Neuroscience'),
     tagNoIcon('Ecopreneurship'),
@@ -170,8 +170,15 @@ export class TopicsService {
     tagNoIcon('Big Data'),
     tagNoIcon('Data Mining'),
     tagNoIcon('Data Warehousing'),
-    //
+    tagNoIcon('DevOps'),
+    tagNoIcon('System Administration'),
+    tagNoIcon('Open Source'),
+    tagNoIcon('Augmented Reality'),
+    // calabash
+    // GitHub. Jira. GitLab.
     // Mapbox Studio
+    // json, oauth
+    // saucelabs, waffle, Sketch
     // TODO: check Malaga meetup topics
     // FIWARE, Smart City, Green Tech, IoT, IoE
     // web3, Truffle Framework, Distributed Ledger Technology, Attention Economy, Ethlance, Steem,
