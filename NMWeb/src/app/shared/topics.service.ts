@@ -178,6 +178,8 @@ export class TopicsService {
     tagNoIcon('Video Editing'),
     tagNoIcon('YouTube'),
     tagNoIcon('Explainer Videos'),
+    'Semantic UI',
+    'Foundation',
     // Adobe photoshop, Adobe illustrator, Adobe After Effects
     // calabash
     // GitHub. Jira. GitLab.
