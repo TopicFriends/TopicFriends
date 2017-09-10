@@ -1,5 +1,6 @@
 .navbar-container{
-    position: fixed;
+  user-select: none;
+  position: fixed;
     left: 0px;
     top:0px;
     background-color: rgba(255, 255, 255, 0.90);
@@ -13,6 +14,7 @@
 
 }
 .navbar-container-mobile{
+    user-select: none;
     position: fixed;
     z-index: 9;
     left: 0px;
