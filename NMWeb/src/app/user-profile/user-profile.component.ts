@@ -35,14 +35,15 @@ export class CanDeactivateUserProfileGuard implements CanDeactivate<UserProfileC
 })
 export class UserProfileComponent implements OnInit {
 
-  @ViewChild('userOtherProfiles') userOtherProfilesComponent: UserOtherProfilesComponent
   @ViewChild('basicInfo') basicInfo: UserProfileBasicInfoComponent
+  @ViewChild('userDescriptions') userDescriptions: UserDescriptionsComponent
+  @ViewChild('userOtherProfiles') userOtherProfilesComponent: UserOtherProfilesComponent
   @ViewChild('userInterests') userInterests: UserInterestsComponent
   @ViewChild('userGeoLocations') userGeoLocations: UserGeoLocationsComponent
-  @ViewChild('userDescriptions') userDescriptions: UserDescriptionsComponent
 
   formGroup: FormGroup
 
+  userProfileBasicInfoFormGroup: FormGroup
   userInterestsFormGroup: FormGroup
   userDescriptionsFormGroup: FormGroup
   userGeoLocationsFormGroup: FormGroup
@@ -53,10 +54,13 @@ export class UserProfileComponent implements OnInit {
     public snackBarComponent: SnackBarComponent,
     private formBuilder: FormBuilder,
   ) {
-    this.userInterestsFormGroup = UserInterestsComponent.buildFormGroup(this.formBuilder)
+    this.userProfileBasicInfoFormGroup = UserProfileBasicInfoComponent.buildFormGroup(this.formBuilder)
     this.userDescriptionsFormGroup = UserDescriptionsComponent.buildFormGroup(this.formBuilder)
+    this.userInterestsFormGroup = UserInterestsComponent.buildFormGroup(this.formBuilder)
     this.userGeoLocationsFormGroup = UserGeoLocationsComponent.buildFormGroup(this.formBuilder)
     this.formGroup = this.formBuilder.group({
+      userProfileBasicInfo:
+        this.userProfileBasicInfoFormGroup,
       userInterests:
         this.userInterestsFormGroup,
       descriptions:

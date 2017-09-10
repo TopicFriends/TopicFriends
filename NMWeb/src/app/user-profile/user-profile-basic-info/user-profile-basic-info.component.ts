@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {AuthService} from '../auth.service'
 import {UserProfile, UserProfileService} from '../user-profile.service'
@@ -11,27 +11,26 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 })
 export class UserProfileBasicInfoComponent implements OnInit {
 
-  userProfile: UserProfile;
   userProfileObservable: Observable<UserProfile>;
-
-  public formGroup: FormGroup;
 
   public displayName = new FormControl()
   public photoUrl: string
+  userProfileReceived = false
 
+  @Input() thisFormGroup: FormGroup
 
   constructor(
-    private formBuilder: FormBuilder,
     public authService: AuthService,
     private userProfileService: UserProfileService,
   ) {
-    this.formGroup = this.formBuilder.group({
-      displayName: this.displayName,
-      // tagLine: '', // oneLineDescription
-    })
+    // this.formGroup = this.formBuilder.group({
+    //   displayName: this.displayName,
+    //   // tagLine: '', // oneLineDescription
+    // })
   }
 
   ngOnInit() {
+    this.displayName = <FormControl>this.thisFormGroup.get('displayName')
 
     this.authService.user.subscribe((user) => {
       if ( user ) {
@@ -43,16 +42,16 @@ export class UserProfileBasicInfoComponent implements OnInit {
     this.authService.user.subscribe(user => {
       this.userProfileObservable = this.userProfileService.getProfile();
       this.userProfileObservable.subscribe((userProfile: UserProfile) => {
-        this.userProfile = userProfile;
-        this.formGroup.patchValue(userProfile)
-        // this.whatUserWants = this.;
-        // FIXME:
-        if (!(<any>userProfile).whatUserWants) {
-          this.userProfile = new UserProfile();
-        }
+        this.applyFromDb(userProfile)
       });
     });
 
+  }
+
+  private applyFromDb(userProfile: UserProfile) {
+    this.thisFormGroup.patchValue(userProfile)
+    this.thisFormGroup.markAsPristine()
+    this.userProfileReceived = true
   }
 
   public getUserBasicInfo() {
@@ -67,5 +66,10 @@ export class UserProfileBasicInfoComponent implements OnInit {
 
   }
 
+  static buildFormGroup(formBuilder: FormBuilder): FormGroup {
+    return formBuilder.group({
+      displayName: ''
+    })
+  }
 
 }
