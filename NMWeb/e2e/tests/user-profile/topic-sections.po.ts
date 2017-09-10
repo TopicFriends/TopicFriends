@@ -2,7 +2,7 @@ import {TestWait} from '../../test-support/wait'
 import {UserProfilePage} from './user-profile.po'
 import {$, $$, browser, ElementArrayFinder, ElementFinder} from 'protractor'
 
-export class TopicSections {
+export class TopicsSections {
   private wait = new TestWait()
   private profilePage = new UserProfilePage()
 

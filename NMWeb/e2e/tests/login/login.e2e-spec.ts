@@ -3,7 +3,7 @@ import {browser} from 'protractor'
 import {TestCleanUp} from '../../test-support/clean-up'
 import {TestWait} from '../../test-support/wait'
 
-describe('LoginPage page: User', () => {
+describe('Login page: User', () => {
   let page: LoginPage
   let cleanUp: TestCleanUp
   let wait: TestWait

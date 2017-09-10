@@ -1,5 +1,5 @@
 import {UserProfilePage} from './user-profile.po'
-import {TopicSections} from './topic-sections.po'
+import {TopicsSections} from './topic-sections.po'
 import {LoginPage} from '../login/login.po'
 import {TestAssertions} from '../../test-support/assertions'
 import {TestCleanUp} from '../../test-support/clean-up'
@@ -8,10 +8,10 @@ import {TestSupport} from '../../test-support/test-support'
 
 // TODO: after all go to firebase and remove interests branch for test user
 
-describe('UserProfile: Symmetric topics: User', () => {
+describe('UserProfile: Supply-demand topics: User', () => {
   let loginPage: LoginPage
   let page: UserProfilePage
-  let topicSelection: TopicSections
+  let topicSelection: TopicsSections
   let assert: TestAssertions
   let cleanUp: TestCleanUp
   let wait: TestWait
@@ -20,7 +20,7 @@ describe('UserProfile: Symmetric topics: User', () => {
   beforeAll(() => { //TODO: refactor me
     loginPage = new LoginPage()
     page = new UserProfilePage()
-    topicSelection = new TopicSections()
+    topicSelection = new TopicsSections()
     assert = new TestAssertions()
     cleanUp = new TestCleanUp()
     wait = new TestWait()

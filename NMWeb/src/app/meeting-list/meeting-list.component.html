@@ -2,6 +2,6 @@
 
 <ng-template md-list ngFor let-item [ngForOf]="items | async" >
     <md-list-item>
-      <app-meeting-list-item md-list-item [meeting]="item"></app-meeting-list-item>
+      <app-meeting-list-item md-list-item [meeting]="item" formcontrolname="meeting"></app-meeting-list-item>
     </md-list-item>
 </ng-template>

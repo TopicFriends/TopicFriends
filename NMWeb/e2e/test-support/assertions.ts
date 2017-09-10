@@ -2,12 +2,12 @@ import {$, ElementArrayFinder, ElementFinder} from 'protractor'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
 import {TestWait} from './wait'
-import {TopicSections} from '../tests/user-profile/topic-sections.po'
+import {TopicsSections} from '../tests/user-profile/topic-sections.po'
 
 export class TestAssertions
 {
   private wait = new TestWait()
-  private topicSections = new TopicSections()
+  private topicSections = new TopicsSections()
 
   tagsMatch(selectedTopic: Promise<string>, expectedTopic: ElementArrayFinder) {
     let topics = []

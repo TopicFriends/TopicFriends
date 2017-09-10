@@ -1,25 +1,26 @@
 import {UserProfilePage} from './user-profile.po'
-import {TopicSections} from './topic-sections.po'
+import {TopicsSections} from './topic-sections.po'
 import {LoginPage} from '../login/login.po'
 import {TestAssertions} from '../../test-support/assertions'
 import {TestCleanUp} from '../../test-support/clean-up'
 import {TestWait} from '../../test-support/wait'
 import {TestSupport} from '../../test-support/test-support'
-import {$, browser} from 'protractor'
+import {$, browser, element, ExpectedConditions, protractor} from 'protractor'
 
-describe('UserProfile: Symmetric topics: User', () => {
+describe('Symmetric topics on Profile page: User', () => {
   let loginPage: LoginPage
   let page: UserProfilePage
-  let topicSections: TopicSections
+  let topicSections: TopicsSections
   let assert: TestAssertions
   let cleanUp: TestCleanUp
   let wait: TestWait
   let support: TestSupport
+  let ec = ExpectedConditions
 
   beforeAll(() => { //TODO: refactor me
     loginPage = new LoginPage()
     page = new UserProfilePage()
-    topicSections = new TopicSections()
+    topicSections = new TopicsSections()
     assert = new TestAssertions()
     cleanUp = new TestCleanUp()
     wait = new TestWait()
@@ -101,7 +102,6 @@ describe('UserProfile: Symmetric topics: User', () => {
     let topicsExchange = ['SQL']
     let topicsSectionExchange = topicSections.exchangeSectionSelector
     let selectedTopicsExchange = topicSections.inputMultipleTagsInOneSection(topicsSectionExchange, topicsExchange)
-    console.log(selectedTopicsExchange.length)
     assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
 
     page.saveProfileButton.click()
@@ -137,6 +137,13 @@ describe('UserProfile: Symmetric topics: User', () => {
 
   afterEach(() => {
     page.navigateTo().then(() => {
+      browser.driver.switchTo().alert().then(
+        function (alert) {
+          alert.accept();
+        },
+        function (error) {
+        }
+      )
       wait.forElementPresent(page.userProfileBasicInfo)
     })
   })

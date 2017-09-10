@@ -1,4 +1,4 @@
-describe('Page: User', () => {
+describe('Geo-location: User', () => {
 
     let page;
 
