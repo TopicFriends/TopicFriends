@@ -42,7 +42,14 @@ export class TopicsService {
   // @Input() public inputTagList: TagEntry[] = [tag('Angular'), tag('Ionic'), tag('Firebase')];
   /** I moved it here, because @Input stopped working for some reason and I am to distracted to troubleshoot it :-\ */
   public topics: TagEntry[] = this.transformTags([
-    angular, tagNoIcon('Angular Universal'), tagNoIcon('AngularJS'), tagNoIcon('PrimeNG'), ionic, firebase,
+    angular, tagNoIcon('Angular Change Detection'), tagNoIcon('Angular Universal'), tagNoIcon('AngularJS'),
+    tagNoIcon('PrimeNG'), ionic, firebase,
+    tagNoIcon('Web Performance Optimizations'),
+    tagNoIcon('Google Maps'),
+    'Facebook',
+    'Twitter',
+    'LinkedIn',
+    'Google Plus',
     protractor, karma, jasmine,
     tagNoIcon('PrimeFaces'),
     tag('PHP'), materialDesign, typeScript,
@@ -153,7 +160,7 @@ export class TopicsService {
     tagNoIcon('Italian Language'), tagNoIcon('Polish Language'),
     tagNoIcon('Russian Language'), tagNoIcon('Chinese Language'), tagNoIcon('Japanese Language'),
     tagNoIcon('Arabic Language'), tagNoIcon('Hindi Language'), tagNoIcon('Turkish Language'),
-    tagNoIcon('Bioinformatics'), tagNoIcon('Layouts'), tagNoIcon('Graphic Design'),
+    tagNoIcon('Bioinformatics'), tagNoIcon('Layouts'), tagNoIcon('Graphic Design'), tagNoIcon('Logo Design'),
     tagNoIcon('Venture Capital'), tagNoIcon('Seed Funding'), tagNoIcon('Angel Investment'), tagNoIcon('Bootstrapping'),
     tagNoIcon('Social Media'),
     tagNoIcon('Internet Business'), tagNoIcon('Business'),
