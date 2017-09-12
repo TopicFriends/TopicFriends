@@ -35,6 +35,16 @@ export class TestSupport {
     });
   }
 
+  acceptAlertIfAppears() {
+    browser.driver.switchTo().alert().then(
+      function (alert) {
+        alert.accept();
+      },
+      function (error) {
+      }
+    )
+  }
+
   private createDirectoryRecursively(path: string) {
     fs_extra.mkdirp(path, function (err) {
       if (err) {

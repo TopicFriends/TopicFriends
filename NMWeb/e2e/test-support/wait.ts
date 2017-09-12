@@ -26,6 +26,11 @@ export class TestWait {
       this.defaultWaitTimeout, 'false')
   }
 
+  forElementWithoutText(element: ElementFinder, text: string): any {
+    return browser.wait(this.ec.not(this.ec.textToBePresentInElement(element, text)),
+      this.defaultWaitTimeout, 'false')
+  }
+
   forTextPresent(element: ElementFinder, text: string): any {
     return this.forElementText(element, text)
   }
