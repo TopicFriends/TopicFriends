@@ -1,16 +1,21 @@
 <md-card class="user-item" style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
   <md-card-header>
     <!--<div md-card-avatar class="card-avatar"></div>-->
-    <img *ngIf="profileBasicInfo?.photoUrl" md-card-avatar style="vertical-align:middle" src="{{profileBasicInfo?.photoUrl}}"/>
-    <md-card-title style="vertical-align:middle">
-      {{profileBasicInfo?.displayName || profileBasicInfo?.name}}
+    <img md-card-avatar *ngIf="profileBasicInfo?.photoUrl" md-card-avatar style="vertical-align:middle" src="{{profileBasicInfo?.photoUrl}}"/>
+    <md-card-title
+      style="vertical-align:middle"
+    >
+      <!--<h3>-->
+        {{profileBasicInfo?.displayName || profileBasicInfo?.name}}
+      <!--</h3>-->
     </md-card-title>
     <md-card-subtitle>
-      {{profileBasicInfo?.role}}
-      <span *ngIf="profileBasicInfo?.company">
-                at
-                <span style="font-weight: bold;">{{' ' + profileBasicInfo?.company}}</span>
-            </span>
+      {{userDescriptions?.descriptions?.myDescription?.text}}
+      <!--{{profileBasicInfo?.role}}-->
+      <!--<span *ngIf="profileBasicInfo?.company">-->
+                <!--at-->
+                <!--<span style="font-weight: bold;">{{' ' + profileBasicInfo?.company}}</span>-->
+            <!--</span>-->
     </md-card-subtitle>
   </md-card-header>
 

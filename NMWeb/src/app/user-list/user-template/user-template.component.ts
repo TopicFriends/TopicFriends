@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {UserData, UserProfile} from 'app/user-profile/user-profile.service';
+import {UserData, UserDescriptions, UserProfile} from 'app/user-profile/user-profile.service';
 import {TopicInterest, UserInterests} from '../../user-profile/user-interests'
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
@@ -27,6 +27,7 @@ export class UserTemplateComponent implements OnInit {
 
   _whatUserWants: SupplyDemandTemplate[] = [];
   userInterests: UserInterests;
+  userDescriptions: UserDescriptions;
   profileBasicInfo: UserProfile;
   _expand: boolean;
   supplyDemand
@@ -35,6 +36,9 @@ export class UserTemplateComponent implements OnInit {
 
   ngOnInit() {
     this._whatUserWants = this._getWhatUserWants();
+    this._userPublicProfile.descriptions.subscribe(it => {
+      this.userDescriptions = it
+    })
     this._userPublicProfile.interests.subscribe(it => {
       this.userInterests = it;
       console.log('userPublicProfile.interests.subscribe', it)

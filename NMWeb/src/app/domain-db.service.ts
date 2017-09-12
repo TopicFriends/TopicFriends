@@ -47,6 +47,8 @@ export class DomainDbService {
             Observable.of(profile),
             this.userInterestsById(id),
             this.otherProfilesById(id),
+            this.userGeoLocationsById(id),
+            this.userDescriptionsById(id),
           )
           return mapped;
         }
