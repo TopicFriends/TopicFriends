@@ -10,6 +10,7 @@ $scriptDir/compileFirebaseRules.sh
 
 #   && cp -r assets dist \
 
-ng build \
+#ng build \
+ng build --prod --aot \
   && firebase deploy
 

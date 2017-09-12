@@ -50,7 +50,7 @@ export class UserProfileComponent implements OnInit {
   userGeoLocationsFormGroup: FormGroup
 
   constructor(
-    protected userProfileService: UserProfileService,
+    public userProfileService: UserProfileService,
     public authService: AuthService,
     public snackBarComponent: SnackBarComponent,
     private formBuilder: FormBuilder,

@@ -32,7 +32,7 @@ export class UserOtherProfilesComponent implements OnInit {
   public otherProfileTwitter = new FormControl()
   public otherProfileFacebook = new FormControl()
 
-  private otherProfiles: UserOtherProfiles
+  public otherProfiles: UserOtherProfiles
 
   constructor(
     private formBuilder: FormBuilder,

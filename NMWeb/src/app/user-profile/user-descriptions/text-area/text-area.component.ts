@@ -22,7 +22,7 @@ export class TextAreaComponent implements OnInit {
   ngOnInit() {
   }
 
-  onChange() {
+  onChange(event) {
     // this.autoResizeTextArea()
   }
 
