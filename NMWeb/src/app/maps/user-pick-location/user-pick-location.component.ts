@@ -29,8 +29,8 @@ export class UserPickLocationComponent implements OnInit {
   public searchElementRef: ElementRef;
 
   constructor(
-    public dialogRef: MdDialogRef<UserPickLocationComponent>,
-    @Inject(MD_DIALOG_DATA) public data: UserPickLocationDialogParams,
+    // public dialogRef: MdDialogRef<UserPickLocationComponent>,
+    /*@Inject(MD_DIALOG_DATA)*/ public data: UserPickLocationDialogParams,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {
@@ -39,7 +39,7 @@ export class UserPickLocationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initSearchBar()
+    // this.initSearchBar()
   }
 
   private initSearchBar() {
@@ -79,7 +79,7 @@ export class UserPickLocationComponent implements OnInit {
   }
 
   acceptAndClose() {
-    this.dialogRef.close(this.coords);
+    // this.dialogRef.close(this.coords);
   }
 
 }
