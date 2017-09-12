@@ -41,6 +41,7 @@ export class UserProfileComponent implements OnInit {
   @ViewChild('userInterests') userInterests: UserInterestsComponent
   @ViewChild('userGeoLocations') userGeoLocations: UserGeoLocationsComponent
 
+  /* Rename to rootFormGroup */
   formGroup: FormGroup
 
   userProfileBasicInfoFormGroup: FormGroup
