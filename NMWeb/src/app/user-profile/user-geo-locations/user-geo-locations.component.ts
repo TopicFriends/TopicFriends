@@ -60,6 +60,10 @@ export class UserGeoLocationsComponent implements OnInit {
   }
 
   applyFromDb(geoLocationsFromDb: UserGeoLocations) {
+    /* this should overwrite all locations, even if null, though remember,
+    that if locations have not changed on the saving side, firebase will not trigger a change
+    (because saved value is equal)
+    */
     let geoSubKeys: GeoLocations
     if (geoLocationsFromDb && geoLocationsFromDb.geoLocations) {
       geoSubKeys = geoLocationsFromDb.geoLocations
