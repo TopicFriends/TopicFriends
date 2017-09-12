@@ -5,7 +5,7 @@ import {TestAssertions} from '../../test-support/assertions'
 import {TestCleanUp} from '../../test-support/clean-up'
 import {TestWait} from '../../test-support/wait'
 import {TestSupport} from '../../test-support/test-support'
-import {$, browser, element, ExpectedConditions, protractor} from 'protractor'
+import {$, browser, ExpectedConditions} from 'protractor'
 
 describe('Symmetric topics on Profile page: User', () => {
   let loginPage: LoginPage
@@ -15,7 +15,6 @@ describe('Symmetric topics on Profile page: User', () => {
   let cleanUp: TestCleanUp
   let wait: TestWait
   let support: TestSupport
-  let ec = ExpectedConditions
 
   beforeAll(() => { //TODO: refactor me
     loginPage = new LoginPage()
@@ -114,10 +113,27 @@ describe('Symmetric topics on Profile page: User', () => {
     })
   });
 
-  // it('can change all selected topics', () => {
-  //remove topics from all sections, don't reload the page, select new topics, save, reload page and assert new topics
-  // }
-  // );
+  it('can change selected topics', () => {
+    wait.forElementPresent($(topicSections.tagSelector))
+    topicSections.removeAllTags()
+
+    let topicsHackathon = ['micros', 'seed f']
+    let topicsSectionExchange = topicSections.exchangeSectionSelector
+    wait.forElementPresent($(topicsSectionExchange))
+    let selectedTopicsExchange = topicSections.inputMultipleTagsInOneSection(topicsSectionExchange, topicsHackathon)
+
+    let topicsPairProgramming = ['coffee', 'express', 'capistr']
+    let topicsSectionPairProgramming = topicSections.pairProgrammingSectionSelector
+    let selectedTopicsPairProgramming = topicSections.inputMultipleTagsInOneSection(topicsSectionPairProgramming, topicsPairProgramming)
+
+    page.saveProfileButton.click()
+    page.navigateTo().then(() => {
+      wait.forElementPresent($(topicSections.tagSelector)).then(() => {
+        assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
+        assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
+      })
+    })
+  });
 
   it('can remove all topics from profile', () => {
     wait.forElementPresent($(topicSections.tagSelector))
@@ -137,13 +153,7 @@ describe('Symmetric topics on Profile page: User', () => {
 
   afterEach(() => {
     page.navigateTo().then(() => {
-      browser.driver.switchTo().alert().then(
-        function (alert) {
-          alert.accept();
-        },
-        function (error) {
-        }
-      )
+      support.acceptAlertIfAppears()
       wait.forElementPresent(page.userProfileBasicInfo)
     })
   })
