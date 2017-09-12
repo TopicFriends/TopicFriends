@@ -6,11 +6,13 @@
       style="vertical-align:middle"
     >
       <!--<h3>-->
+      <div class="user-display-name">
         {{profileBasicInfo?.displayName || profileBasicInfo?.name}}
+      </div>
       <!--</h3>-->
     </md-card-title>
     <md-card-subtitle>
-      {{userDescriptions?.descriptions?.myDescription?.text}}
+      {{userDescriptions?.descriptions?.myDescription?.text || 'No Description Yet'}}
       <!--{{profileBasicInfo?.role}}-->
       <!--<span *ngIf="profileBasicInfo?.company">-->
                 <!--at-->
