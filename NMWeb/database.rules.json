@@ -4,6 +4,22 @@
       ".read": "true",
       ".write": "true"
     },
+    "TPTests1": {
+      ".read": "true",
+      ".write": "true"
+    },
+    "TPTests2": {
+      ".read": "true",
+      ".write": "true"
+    },
+    "TPTests3": {
+      ".read": "true",
+      ".write": "true"
+    },
+    "TPTests4": {
+      ".read": "true",
+      ".write": "true"
+    },
     "TPProd": {
       "UserData": {
         ".read": "true",

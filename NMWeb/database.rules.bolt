@@ -5,6 +5,26 @@ path /TPTests {
   write() { true }
 }
 
+path /TPTests1 {
+  read() { true }
+  write() { true }
+}
+
+path /TPTests2 {
+  read() { true }
+  write() { true }
+}
+
+path /TPTests3 {
+  read() { true }
+  write() { true }
+}
+
+path /TPTests4 {
+  read() { true }
+  write() { true }
+}
+
 path /TPProd/UserData {
   read() { true }
 }
