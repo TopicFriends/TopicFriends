@@ -178,6 +178,9 @@ export class TopicsService {
     tagNoIcon('Video Editing'),
     tagNoIcon('YouTube'),
     tagNoIcon('Explainer Videos'),
+    tagNoIcon('Geomarketing'),
+    tag('R Language', 'r-lang'),
+    // TopTal, Freelance, Freelance Platforms, freelancer.com, elance
     'Semantic UI',
     'Foundation',
     // Adobe photoshop, Adobe illustrator, Adobe After Effects
