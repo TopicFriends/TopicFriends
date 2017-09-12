@@ -15,33 +15,33 @@
     />
   </md-input-container>
 
-<!--<agm-map-->
-  <!--id=pickLocationMap-->
-  <!--[latitude]="coordinates.latitude"-->
-  <!--[longitude]="coordinates.longitude"-->
-  <!--[zoom]="15">-->
-  <!--<agm-marker-->
-    <!--[latitude]="coordinates.latitude"-->
-    <!--[longitude]="coordinates.longitude"-->
-    <!--[label]="'Drag Me'"-->
-    <!--[markerDraggable]="true"-->
-    <!--(dragEnd)="markerDragEnd($event)"-->
+<agm-map
+  id=pickLocationMap
+  [latitude]="coordinates.latitude"
+  [longitude]="coordinates.longitude"
+  [zoom]="15">
+  <agm-marker
+    [latitude]="coordinates.latitude"
+    [longitude]="coordinates.longitude"
+    [label]="'Drag Me'"
+    [markerDraggable]="true"
+    (dragEnd)="markerDragEnd($event)"
+  >
+  </agm-marker>
+  <!--<agm-marker *ngFor="let userCoords of usersCoords"-->
+  <!--[latitude]="userCoords.geoCoords.latitude"-->
+  <!--[longitude]="userCoords.geoCoords.longitude"-->
+  <!--[label]="userCoords.user.displayName"-->
   <!--&gt;-->
   <!--</agm-marker>-->
-  <!--&lt;!&ndash;<agm-marker *ngFor="let userCoords of usersCoords"&ndash;&gt;-->
-  <!--&lt;!&ndash;[latitude]="userCoords.geoCoords.latitude"&ndash;&gt;-->
-  <!--&lt;!&ndash;[longitude]="userCoords.geoCoords.longitude"&ndash;&gt;-->
-  <!--&lt;!&ndash;[label]="userCoords.user.displayName"&ndash;&gt;-->
-  <!--&lt;!&ndash;&gt;&ndash;&gt;-->
-  <!--&lt;!&ndash;</agm-marker>&ndash;&gt;-->
 
-  <!--&lt;!&ndash;<agm-circle&ndash;&gt;-->
-  <!--&lt;!&ndash;[latitude]="coordinates.latitude"&ndash;&gt;-->
-  <!--&lt;!&ndash;[longitude]="coordinates.longitude"&ndash;&gt;-->
-  <!--&lt;!&ndash;[radius]="300"&ndash;&gt;-->
-  <!--&lt;!&ndash;fillColor="#4885ed"&ndash;&gt;-->
-  <!--&lt;!&ndash;&gt;</agm-circle>&ndash;&gt;-->
-<!--</agm-map>-->
+  <!--<agm-circle-->
+  <!--[latitude]="coordinates.latitude"-->
+  <!--[longitude]="coordinates.longitude"-->
+  <!--[radius]="300"-->
+  <!--fillColor="#4885ed"-->
+  <!--&gt;</agm-circle>-->
+</agm-map>
 
 </md-dialog-content>
 
