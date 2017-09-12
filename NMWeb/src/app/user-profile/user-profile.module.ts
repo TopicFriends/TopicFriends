@@ -15,7 +15,9 @@ import {MapsModule} from '../maps/maps.module';
 import { UserDescriptionsComponent } from './user-descriptions/user-descriptions.component';
 import { TopicGroupCardComponent } from './user-interests/topic-group-card/topic-group-card.component';
 import { TopicGroupSupplyDemandCardComponent } from './user-interests/topic-group-supply-demand-card/topic-group-supply-demand-card.component';
-import { TextAreaComponent } from './user-descriptions/text-area/text-area.component'
+import { TextAreaComponent } from './user-descriptions/text-area/text-area.component';
+import { OtherProfileUserNameComponent } from './user-other-profiles/other-profile-user-name/other-profile-user-name.component';
+import { UserWebsiteComponent } from './user-other-profiles/user-website/user-website.component'
 
 
 const userProfileRoutes: Routes = [
@@ -52,6 +54,8 @@ const userProfileRoutes: Routes = [
     TopicGroupCardComponent,
     TopicGroupSupplyDemandCardComponent,
     TextAreaComponent,
+    OtherProfileUserNameComponent,
+    UserWebsiteComponent,
   ],
   providers: [
     CanDeactivateUserProfileGuard
