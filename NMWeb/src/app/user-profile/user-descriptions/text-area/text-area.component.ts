@@ -23,7 +23,7 @@ export class TextAreaComponent implements OnInit {
   }
 
   onChange() {
-    this.autoResizeTextArea()
+    // this.autoResizeTextArea()
   }
 
   public autoResizeTextArea() {
