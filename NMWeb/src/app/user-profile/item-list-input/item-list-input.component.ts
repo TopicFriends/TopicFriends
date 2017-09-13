@@ -11,6 +11,8 @@ import {TagInclusions} from '../../shared/TagInclusions'
 import {getDictionaryValuesAsArray} from '../../shared/utils'
 import {Subject} from 'rxjs/Subject'
 
+declare var require: any
+const Sifter = require("sifter")
 
 @Component({
   selector: 'app-item-list-input',
@@ -18,6 +20,8 @@ import {Subject} from 'rxjs/Subject'
   styleUrls: ['./item-list-input.component.scss'],
 })
 export class ItemListInputComponent implements OnInit {
+
+  sifter
 
   /** rename: all *possible* tags */
   @Input() public inputTagList: TagEntry[]
@@ -50,6 +54,7 @@ export class ItemListInputComponent implements OnInit {
     public topicsService: TopicsService
   ) {
     this.inputTagList = this.topicsService.topics;
+    this.sifter = new Sifter(this.inputTagList)
 
     this.stateCtrl = new FormControl();
     this.stateCtrl.valueChanges
@@ -87,10 +92,23 @@ export class ItemListInputComponent implements OnInit {
   }
 
   filter(filterString: string) {
-    return this.inputTagList.filter(
-      option => option.matchesTextFilter(filterString)
-      && ! this.tagListModel.tagExists(option)
-    );
+    let sifterResults = this.sifter.search(filterString, {
+      fields: ['name'],
+      sort: [{field: 'name', direction: 'asc'}],
+      limit: 50
+    });
+    // console.log('sifterr', sifterResults)
+    let fullResults = []
+    for ( let result of sifterResults.items ) {
+      fullResults.push(this.inputTagList[result.id])
+    }
+    // console.log('full', fullResults)
+    return fullResults
+
+    // return this.inputTagList.filter(
+    //   option => option.matchesTextFilter(filterString)
+    //   && ! this.tagListModel.tagExists(option)
+    // );
   }
 
   addTag(tagEntry: TagEntry) {
