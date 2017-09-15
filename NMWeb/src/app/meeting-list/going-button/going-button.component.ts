@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meeting-attendance.service';
 import {Meeting} from '../../shared/meetings.service';
+import {UserProfileService} from '../../user-profile/user-profile.service'
 
 @Component({
   selector: 'app-going-button',
@@ -12,7 +13,10 @@ export class GoingButtonComponent implements OnInit {
   @Input() meeting: Meeting;
   @Input() meetingAttendanceByUser: MeetingAttendanceByUser;
 
-  constructor(private meetingAttendanceService: MeetingAttendanceService) {
+  constructor(
+    public userProfileService: UserProfileService,
+    private meetingAttendanceService: MeetingAttendanceService
+    ) {
   }
 
   ngOnInit() {
