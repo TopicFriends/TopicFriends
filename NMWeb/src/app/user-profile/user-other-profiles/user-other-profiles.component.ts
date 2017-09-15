@@ -5,6 +5,7 @@ import {AuthService} from 'app/user-profile/auth.service';
 import {Observable} from 'rxjs/Observable'
 import {DomainDbService} from '../../domain-db.service'
 import {UserProfileInputs} from '../user-profile.component'
+import {setFormControlEnabled} from '../../shared/utils'
 
 
 function getOtherProfileName(otherProfile: OtherProfile) {
@@ -54,6 +55,7 @@ export class UserOtherProfilesComponent implements OnInit {
     this.domainDbService.otherProfilesById(this.userProfileInputs.userId).subscribe((otherProfiles: UserOtherProfiles) => {
       this.applyFromDb(otherProfiles)
     });
+    setFormControlEnabled(this.formGroup, this.userProfileInputs.isEditable)
   }
 
   private applyFromDb(otherProfiles: UserOtherProfiles) {
