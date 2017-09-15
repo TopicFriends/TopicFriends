@@ -4,12 +4,12 @@
 
   <ng-template [ngIf]="! userProfileReceived" >Loading User profile basic info...<br/></ng-template>
 
-  <img style="width: 100px; margin-top: 5px" src="{{(authService.user | async)?.photoURL}}" />
-  <p>
+  <img style="width: 100px; margin-top: 5px" src="{{photoUrl}}" />
+  <p *ngIf="! userProfileInputs.isUserIdFromRouter">
     <span class="grayed-label">Log-in Account Name: </span>{{ (authService.user | async)?.displayName }}
   </p>
   <p>
-    <span class="grayed-label">Your User Id: </span>[User_{{(authService.user | async)?.uid}}]
+    <span class="grayed-label">User Id: </span>[User_{{userProfileInputs.userId}}]
   </p>
 
 

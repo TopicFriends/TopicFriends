@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewChildren} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms'
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {MdTextareaAutosize} from '@angular/material'
+import {setFormControlEnabled} from '../../../shared/utils'
 
 @Component({
   selector: 'app-text-area',
@@ -13,6 +14,7 @@ export class TextAreaComponent implements OnInit {
   @Input() parentFormGroup: FormGroup
   @Input() placeholder: string
   @Input() rows: number
+  @Input() isEditable: boolean
 
   @ViewChildren(MdTextareaAutosize) textAreas
 
@@ -20,6 +22,8 @@ export class TextAreaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    let textFormControl = <FormControl>this.parentFormGroup.get(this.thisFormGroupName).get('text')
+    setFormControlEnabled(textFormControl, this.isEditable)
   }
 
   onChange(event) {

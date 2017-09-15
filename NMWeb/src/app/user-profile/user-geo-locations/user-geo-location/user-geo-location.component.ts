@@ -5,6 +5,7 @@ import {MdDialog} from '@angular/material'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
 import {GeoLocation} from '../../user-profile.service'
 import {geoLocationToString} from '../user-geo-locations.component'
+import {UserProfileInputs} from '../../user-profile.component'
 
 @Component({
   selector: 'app-user-geo-location',
@@ -22,6 +23,7 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
 
   position: Position
   @Input() locationName: string
+  @Input() public userProfileInputs: UserProfileInputs
 
   propagateChange = (_: any) => {};
 
@@ -31,7 +33,7 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
   constructor(
     public geoLocationService: GeoLocationService,
     public dialog: MdDialog
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.geoLocationService.getPosition().subscribe((position: Position) => {
@@ -73,7 +75,7 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
 
   private doPropagateChange(s: string) {
     this.propagateChange(GeoLocation.parseGeoString(s))
-    console.log('doPropagateChange', s)
+    // console.log('doPropagateChange', s)
   }
 
   clear() {

@@ -4,7 +4,8 @@ import {UserDescriptionsService} from '../../shared/user-profile/user-descriptio
 import {UserDescriptions} from '../user-profile.service'
 import {MdTextareaAutosize} from '@angular/material'
 import {TextAreaComponent} from './text-area/text-area.component'
-
+import {UserProfileInputs} from '../user-profile.component'
+import {DomainDbService} from '../../domain-db.service'
 
 
 @Component({
@@ -16,18 +17,19 @@ export class UserDescriptionsComponent implements OnInit {
 
 
   @Input() thisFormGroup: FormGroup
-  // @Input() parentFormGroup: FormGroup
+  @Input() userProfileInputs: UserProfileInputs
 
   @ViewChildren(TextAreaComponent) textAreas
 
   constructor(
     private formBuilder: FormBuilder,
     private userDescriptionsService: UserDescriptionsService,
+    private domainDbService: DomainDbService,
   ) {
   }
 
   ngOnInit() {
-    this.userDescriptionsService.subscribeToCurrentUserDescriptions(userDescriptions => {
+    this.domainDbService.userDescriptionsById(this.userProfileInputs.userId).subscribe(userDescriptions => {
       this.applyFromDb(userDescriptions)
     })
   }
@@ -42,9 +44,11 @@ export class UserDescriptionsComponent implements OnInit {
       // FIXME: fill missing values and use setValue
       this.thisFormGroup.patchValue(userDescriptions)
       this.thisFormGroup.markAsPristine()
-      this.textAreas.forEach((t: TextAreaComponent) => {
-        t.autoResizeTextArea()
-      })
+      if ( this.textAreas ) {
+        this.textAreas.forEach((t: TextAreaComponent) => {
+          t.autoResizeTextArea()
+        })
+      }
     }
   }
 

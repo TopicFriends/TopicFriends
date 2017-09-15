@@ -5,6 +5,8 @@ import {createTopicsDictionary, UserProfileService} from '../user-profile.servic
 import {AuthService} from '../auth.service'
 import {ItemListInputComponent} from '../item-list-input/item-list-input.component'
 import {FormBuilder, FormGroup} from '@angular/forms'
+import {UserProfileInputs} from '../user-profile.component'
+import {DomainDbService} from '../../domain-db.service'
 
 const INITIAL_WANTED_TOPICS: WantedTopics = {
   active: true,
@@ -25,29 +27,24 @@ function buildSupplyDemandSubForm(formBuilder: FormBuilder) {
 })
 export class UserInterestsComponent implements OnInit {
 
-  whatUserWants = UserInterests.fromJson({});
-
   @Input() thisFormGroup: FormGroup
+  @Input() public userProfileInputs: UserProfileInputs
+
   supplyDemandFormGroup: FormGroup
 
   userInterestsObservable: Observable<UserInterests>;
 
   constructor(
     protected userProfileService: UserProfileService,
-    private authService: AuthService,
+    private domainDbService: DomainDbService,
   ) { }
 
   ngOnInit() {
     this.supplyDemandFormGroup = <FormGroup> this.thisFormGroup.get('byInteractionMode').get('supplyDemand')
 
-    this.authService.user.subscribe(user => {
-      if ( user ) {
-        this.userInterestsObservable = this.userProfileService.getUserInterests();
-        this.userInterestsObservable.subscribe((userInterests: UserInterests) => {
-          this.applyFromDb(userInterests)
-        });
-      }
-    })
+    this.domainDbService.userInterestsById(this.userProfileInputs.userId).subscribe((userInterests: UserInterests) => {
+      this.applyFromDb(userInterests)
+    });
   }
 
   private applyFromDb(userInterests: UserInterests) {

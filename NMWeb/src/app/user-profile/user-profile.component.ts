@@ -10,7 +10,8 @@ import {UserInterestsComponent} from './user-interests/user-interests.component'
 import {SnackBarComponent} from '../shared/snackbar/snackbar.component'
 import {UserGeoLocationsComponent} from './user-geo-locations/user-geo-locations.component'
 import {UserDescriptionsComponent} from './user-descriptions/user-descriptions.component'
-import {ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot} from '@angular/router'
+import {ActivatedRoute, ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot} from '@angular/router'
+import {USER_PROFILE_ID_PARAM_NO_COLON} from './user-profile.module'
 
 export class CanDeactivateUserProfileGuard implements CanDeactivate<UserProfileComponent> {
 
@@ -25,6 +26,15 @@ export class CanDeactivateUserProfileGuard implements CanDeactivate<UserProfileC
       window.alert('You have unsaved changes.')
     }
     return canDeactivate
+  }
+}
+
+export class UserProfileInputs {
+  constructor(
+    public userId: string,
+    public isEditable: boolean,
+    public isUserIdFromRouter: boolean,
+  ) {
   }
 }
 
@@ -49,12 +59,28 @@ export class UserProfileComponent implements OnInit {
   userDescriptionsFormGroup: FormGroup
   userGeoLocationsFormGroup: FormGroup
 
+  userProfileInputs: UserProfileInputs
+
   constructor(
     public userProfileService: UserProfileService,
     public authService: AuthService,
     public snackBarComponent: SnackBarComponent,
     private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute,
   ) {
+    console.log('UserProfileComponent constructor')
+    let userIdFromRouter = this.activatedRoute.snapshot.params[USER_PROFILE_ID_PARAM_NO_COLON];
+    if ( userIdFromRouter ) {
+      this.userProfileInputs = new UserProfileInputs(userIdFromRouter, false /* Unless we are admin */, true)
+    } else {
+      this.authService.user.subscribe(loggedUser => {
+        let loggedUserId = loggedUser && loggedUser.uid
+        if ( loggedUserId ) {
+          this.userProfileInputs = new UserProfileInputs(loggedUserId, true, false)
+        }
+      })
+    }
+
     this.userProfileBasicInfoFormGroup = UserProfileBasicInfoComponent.buildFormGroup(this.formBuilder)
     this.userDescriptionsFormGroup = UserDescriptionsComponent.buildFormGroup(this.formBuilder)
     this.userInterestsFormGroup = UserInterestsComponent.buildFormGroup(this.formBuilder)
@@ -73,9 +99,14 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('UserProfileComponent ngOnInit')
   }
 
   save() {
+    if ( ! this.userProfileInputs.isEditable ) {
+      window.alert('User Profile not editable. Unable to save!')
+      return;
+    }
     if ( ! this.hasUnsavedChanges() ) {
       this.snackBarComponent.showSnackBar('There are no unsaved changes')
       return

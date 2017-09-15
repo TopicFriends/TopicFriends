@@ -38,7 +38,13 @@
     <i class="ion-ios-location" ></i> Pick
   </button>
 
-  <button md-button md-raised-button
-          (click)="clear()">Clear</button>
+  <button
+    *ngIf="userProfileInputs.isEditable"
+    md-button
+    md-raised-button
+    (click)="clear()"
+  >
+    Clear
+  </button>
 
 </div>

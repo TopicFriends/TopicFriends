@@ -41,9 +41,11 @@ export class DomainDbService {
 
   listUserDataWithDetails(): Observable<UserData[]> {
     return this.listUserProfile().map(list => {
+      console.log('list', list)
       return list.map(profile => {
           const id = (profile as any).$key;
           const mapped: UserData = new UserData(
+            id,
             Observable.of(profile),
             this.userInterestsById(id),
             this.otherProfilesById(id),
@@ -78,6 +80,7 @@ export class DomainDbService {
 
   userDataById(userId: string): UserData {
     return new UserData(
+      userId,
       this.userProfileById(userId),
       this.userInterestsById(userId),
       this.otherProfilesById(userId),

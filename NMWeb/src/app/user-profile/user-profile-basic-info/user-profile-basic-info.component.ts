@@ -3,6 +3,9 @@ import {Observable} from 'rxjs/Observable';
 import {AuthService} from '../auth.service'
 import {UserProfile, UserProfileService} from '../user-profile.service'
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
+import {DomainDbService} from '../../domain-db.service'
+import {UserProfileInputs} from '../user-profile.component'
+import {setFormControlEnabled} from '../../shared/utils'
 
 @Component({
   selector: 'app-user-profile-basic-info',
@@ -11,17 +14,17 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 })
 export class UserProfileBasicInfoComponent implements OnInit {
 
-  userProfileObservable: Observable<UserProfile>;
-
   public displayName = new FormControl()
   public photoUrl: string
   userProfileReceived = false
 
   @Input() thisFormGroup: FormGroup
+  @Input() userProfileInputs: UserProfileInputs
 
   constructor(
     public authService: AuthService,
     private userProfileService: UserProfileService,
+    private domainDbService: DomainDbService,
   ) {
     // this.formGroup = this.formBuilder.group({
     //   displayName: this.displayName,
@@ -31,24 +34,29 @@ export class UserProfileBasicInfoComponent implements OnInit {
 
   ngOnInit() {
     this.displayName = <FormControl>this.thisFormGroup.get('displayName')
+    setFormControlEnabled(this.displayName, this.userProfileInputs.isEditable)
 
-    this.authService.user.subscribe((user) => {
-      if ( user ) {
-        this.displayName.setValue(user.displayName);
-        this.photoUrl = user.photoURL;
-      }
-    });
-
-    this.authService.user.subscribe(user => {
-      this.userProfileObservable = this.userProfileService.getProfile();
-      this.userProfileObservable.subscribe((userProfile: UserProfile) => {
-        this.applyFromDb(userProfile)
+    // fixme: only if not form router usr id
+    if ( ! this.userProfileInputs.isUserIdFromRouter ) {
+      this.authService.user.subscribe((user) => {
+        if ( user ) {
+          this.displayName.setValue(user.displayName);
+          this.photoUrl = user.photoURL;
+          // FIXME: only do this if userId not from router
+        }
       });
+    }
+
+    this.domainDbService.userProfileById(this.userProfileInputs.userId).subscribe((userProfile: UserProfile) => {
+      this.applyFromDb(userProfile)
     });
 
   }
 
   private applyFromDb(userProfile: UserProfile) {
+    if (userProfile.photoUrl && !this.photoUrl ) {
+      this.photoUrl = userProfile.photoUrl
+    }
     this.thisFormGroup.patchValue(userProfile)
     this.thisFormGroup.markAsPristine()
     this.userProfileReceived = true

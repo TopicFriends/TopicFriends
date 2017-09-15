@@ -3,5 +3,9 @@
   <p>{{ potentialConnectionsCount() }} potential connections between people!</p>
 </ng-template>
 
-<nw-user-template *ngFor="let user of (userList | async); trackBy: trackByKey" [userProfile]="user"></nw-user-template>
+<nw-user-template
+  *ngFor="let user of (userList | async); trackBy: trackByKey"
+  [userProfile]="user"
+  [userId]="user.userId"
+></nw-user-template>
 <div style="height: 100px;"></div>

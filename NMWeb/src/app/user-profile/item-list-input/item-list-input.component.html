@@ -3,7 +3,7 @@
 
 <app-topic-tag-list
   [tagListModel]="tagListModel"
-  [editable]="true"
+  [editable]="isEditable"
 ></app-topic-tag-list>
 
 <br>
@@ -11,7 +11,10 @@
 <!--
     (keydown.enter)="addTag(currentFilteredOptions[0])"
 -->
-<md-input-container style="width:100%">
+<md-input-container
+  *ngIf="isEditable"
+  style="width:100%"
+>
   <input
     mdInput
     [mdAutocomplete]="auto"
@@ -55,7 +58,11 @@ https://github.com/angular/material2/pull/1999
 
 
 <!--[value]="option.name"-->
-<md-autocomplete #auto="mdAutocomplete">
+<md-autocomplete
+  #auto="mdAutocomplete"
+>
+<!--   *ngIf="isEditable"
+-->
   <md-option
     *ngFor="let option of lastFilteredOptions"
 

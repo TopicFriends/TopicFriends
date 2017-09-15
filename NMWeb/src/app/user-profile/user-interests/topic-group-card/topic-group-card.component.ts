@@ -4,6 +4,7 @@ import {WantedTopics} from '../../user-interests'
 import {ItemListInputComponent} from '../../item-list-input/item-list-input.component'
 import {TagListModelEvent} from '../../../shared/TagListModel'
 import {createTopicsDictionary} from '../../user-profile.service'
+import {UserProfileInputs} from '../../user-profile.component'
 
 @Component({
   selector: 'app-topic-group-card',
@@ -18,6 +19,8 @@ import {createTopicsDictionary} from '../../user-profile.service'
   ],
 })
 export class TopicGroupCardComponent implements OnInit, ControlValueAccessor {
+
+  @Input() userProfileInputs: UserProfileInputs
 
   @ViewChild(ItemListInputComponent) itemListInputComponent: ItemListInputComponent
 

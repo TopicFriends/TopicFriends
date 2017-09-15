@@ -11,6 +11,7 @@
   <md-card-content>
 
     <app-item-list-input
+      [isEditable]="userProfileInputs.isEditable"
       (outputTagList)="onOutputTagListChanged($event)"
     ></app-item-list-input>
 

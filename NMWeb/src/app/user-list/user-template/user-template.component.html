@@ -7,7 +7,7 @@
     >
       <!--<h3>-->
       <div class="user-display-name">
-        {{profileBasicInfo?.displayName || profileBasicInfo?.name}}
+        <a routerLink="/user/{{userId}}">{{profileBasicInfo?.displayName || profileBasicInfo?.name}}</a>
       </div>
       <!--</h3>-->
     </md-card-title>

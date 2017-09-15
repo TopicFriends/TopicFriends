@@ -23,6 +23,7 @@ export class SupplyDemandTemplate{
 export class UserTemplateComponent implements OnInit {
 
   @Input('userProfile') _userPublicProfile: UserData;
+  @Input() userId
   // @Input('userProfile') _userPublicProfile: UserProfile = new UserProfile();
 
   _whatUserWants: SupplyDemandTemplate[] = [];
@@ -41,7 +42,7 @@ export class UserTemplateComponent implements OnInit {
     })
     this._userPublicProfile.interests.subscribe(it => {
       this.userInterests = it;
-      console.log('userPublicProfile.interests.subscribe', it)
+      // console.log('userPublicProfile.interests.subscribe', it)
       this.supplyDemand =
         this.userInterests &&
         this.userInterests.byInteractionMode &&

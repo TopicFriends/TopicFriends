@@ -34,7 +34,8 @@ export class UserListComponent implements OnInit {
   public potentialConnectionsCount() {
     let n = this.userListSaved && this.userListSaved.length
     // window.alert('count'+ count)
-    return  n * n / 2 - n / 2
+    // return  n * n / 2 - n / 2
+    return  n * n - n  // n^2 - n, because interactions can go in both directions
   }
 
 }

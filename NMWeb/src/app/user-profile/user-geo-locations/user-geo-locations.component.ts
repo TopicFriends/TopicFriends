@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {AuthService} from '../auth.service'
 import {GeoLocation, GeoLocations, UserGeoLocations, UserProfileService} from '../user-profile.service'
+import {DomainDbService} from '../../domain-db.service'
+import {UserProfileInputs} from '../user-profile.component'
 
 function transformIntoLocationDictionaries(values: any) {
   let returnVal = {}
@@ -39,22 +41,22 @@ const formDefinition = {
 export class UserGeoLocationsComponent implements OnInit {
 
   @Input() public parentFormGroup: FormGroup;
+
   public geoLocationsFormGroup: FormGroup;
+  @Input() public userProfileInputs: UserProfileInputs
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
     private userProfileService: UserProfileService,
+    private domainDbService: DomainDbService,
   ) {
   }
 
   ngOnInit() {
     console.log('UserGeoLocationsComponent: parentFormGroup', this.parentFormGroup)
-    this.authService.user.subscribe(user => {
-      this.userProfileService.getUserGeoLocations().subscribe(
-          (geoLocationsFromDb: UserGeoLocations) => {
-        this.applyFromDb(geoLocationsFromDb)
-      })
+    this.domainDbService.userGeoLocationsById(this.userProfileInputs.userId).subscribe(
+        (geoLocationsFromDb: UserGeoLocations) => {
+      this.applyFromDb(geoLocationsFromDb)
     })
     this.geoLocationsFormGroup = <FormGroup>this.parentFormGroup.get('geoLocations')
   }

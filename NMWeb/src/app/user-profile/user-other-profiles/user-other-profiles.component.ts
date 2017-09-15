@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {OtherProfile, UserOtherProfiles, UserProfileService} from '../user-profile.service'
 import {AuthService} from 'app/user-profile/auth.service';
 import {Observable} from 'rxjs/Observable'
+import {DomainDbService} from '../../domain-db.service'
+import {UserProfileInputs} from '../user-profile.component'
 
 
 function getOtherProfileName(otherProfile: OtherProfile) {
@@ -21,9 +23,8 @@ function otherProfileUserName(formControl: FormControl) {
 })
 export class UserOtherProfilesComponent implements OnInit {
 
-  userOtherProfilesObservable: Observable<UserOtherProfiles>;
-
   @Input() public parentFormGroup: FormGroup;
+  @Input() public userProfileInputs: UserProfileInputs
   public formGroup: FormGroup;
 
   public otherProfileLinkedIn = new FormControl()
@@ -36,8 +37,7 @@ export class UserOtherProfilesComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userProfileService: UserProfileService,
-    private authService: AuthService,
+    private domainDbService: DomainDbService,
   ) {
     this.formGroup = this.formBuilder.group({
       otherProfileLinkedIn: this.otherProfileLinkedIn,
@@ -51,14 +51,9 @@ export class UserOtherProfilesComponent implements OnInit {
   ngOnInit() {
     this.parentFormGroup.addControl('UserOtherProfiles', this.formGroup)
     // new approach: adding to parent form group instead of constructing the whole form structure at once
-
-    this.authService.user.subscribe(user => {
-      this.userOtherProfilesObservable = this.userProfileService.getUserOtherProfiles();
-      this.userOtherProfilesObservable.subscribe((otherProfiles: UserOtherProfiles) => {
-        this.applyFromDb(otherProfiles)
-
-      });
-    })
+    this.domainDbService.otherProfilesById(this.userProfileInputs.userId).subscribe((otherProfiles: UserOtherProfiles) => {
+      this.applyFromDb(otherProfiles)
+    });
   }
 
   private applyFromDb(otherProfiles: UserOtherProfiles) {

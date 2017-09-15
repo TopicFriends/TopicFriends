@@ -17,12 +17,14 @@
 
     <app-topic-group-card
       formControlName="supply"
+      [userProfileInputs]="userProfileInputs"
     >
       <ng-content select="[supply-label]"></ng-content>
     </app-topic-group-card>
 
     <app-topic-group-card
       formControlName="demand"
+      [userProfileInputs]="userProfileInputs"
     >
       <ng-content select="[demand-label]"></ng-content>
     </app-topic-group-card>

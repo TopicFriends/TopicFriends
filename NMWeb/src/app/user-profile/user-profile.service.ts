@@ -60,7 +60,12 @@ export class GeoLocation {
   constructor(
     public latitude: number,
     public longitude: number,
-  ) {}
+    public title?: Observable<string>,
+  ) {
+    if ( this.title === undefined ) {
+      this.title = null; // for firebase
+    }
+  }
 
   static parseGeoString(geoString: string): GeoLocation {
     if ( geoString && geoString.trim().length > 0 ) {
@@ -82,9 +87,10 @@ export interface GeoLocationsDictionary {
 
 
 export class GeoLocations {
-    whereIWork?: GeoLocationsDictionary // Todo: multiple (dictionary)
+    whereIWork?: GeoLocationsDictionary
     whereILive?: GeoLocationsDictionary
     whereIStudy?: GeoLocationsDictionary
+    whereIStudied?: GeoLocationsDictionary // TODO / universityTown
     whereIVisit?: GeoLocationsDictionary
     homeTown?: GeoLocationsDictionary
     // where I have lunch
@@ -119,6 +125,7 @@ export class UserProfile implements HasDbHistory {
 
 export class UserData {
   public constructor(
+    public userId,
     public profile: DbObject<UserProfile>,
     public interests: DbObject<UserInterests>,
     public otherProfiles: DbObject<UserOtherProfiles>,

@@ -1,3 +1,14 @@
+
+import {AbstractControl, FormControl} from '@angular/forms'
+
+export function setFormControlEnabled(formControl: AbstractControl, enable: boolean) {
+  if ( enable ) {
+    formControl.enable()
+  } else {
+    formControl.disable()
+  }
+}
+
 /**
  * Created by kd on 2017-08-01.
  */

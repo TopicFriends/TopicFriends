@@ -25,6 +25,7 @@ export class ItemListInputComponent implements OnInit {
 
   /** rename: all *possible* tags */
   @Input() public inputTagList: TagEntry[]
+  @Input() public isEditable: boolean
 
   @Input() public set chosenTags(val: TagInclusions) {
     const tagList = getDictionaryValuesAsArray(val);

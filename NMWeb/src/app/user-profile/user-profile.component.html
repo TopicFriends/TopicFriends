@@ -1,11 +1,12 @@
 
 <div
+  *ngIf="userProfileInputs?.isEditable"
   (window:keydown.meta.s)="keyDownSave($event)"
   (window:keydown.control.s)="keyDownSave($event)"
->
+></div>
 
 <h2>
-  My Public Profile
+  Public Profile
 </h2>
 
 <ng-template [ngIf]="! userProfileService.userId" >
@@ -14,40 +15,47 @@
   </button>
 </ng-template>
 
-<ng-template [ngIf]="userProfileService.userId">
+<ng-template [ngIf]="userProfileInputs">
 
   <form>
 
     <app-user-profile-basic-info
+      [userProfileInputs]="userProfileInputs"
       #basicInfo
       [thisFormGroup]="userProfileBasicInfoFormGroup"
     ></app-user-profile-basic-info>
 
     <app-user-description
+      [userProfileInputs]="userProfileInputs"
       #userDescriptions
       [thisFormGroup]="userDescriptionsFormGroup"
     ></app-user-description>
 
     <app-user-geo-locations
+      [userProfileInputs]="userProfileInputs"
       #userGeoLocations
       [parentFormGroup]="userGeoLocationsFormGroup"
     ></app-user-geo-locations>
 
     <app-user-other-profiles
+      [userProfileInputs]="userProfileInputs"
       #userOtherProfiles
       [parentFormGroup]="formGroup"
     ></app-user-other-profiles>
 
-    <h2>Actionable interests</h2>
+    <h2 id="actionable-interests">Actionable interests</h2>
 
     <app-user-interests
+      [userProfileInputs]="userProfileInputs"
       #userInterests
       [thisFormGroup]="userInterestsFormGroup"
     ></app-user-interests>
 
   </form>
 
-  <p>
+  <p
+    *ngIf="userProfileInputs.isEditable"
+  >
     <button
       id="saveProfile"
       style="
@@ -64,4 +72,4 @@
   </p>
 
 </ng-template>
-</div>
+

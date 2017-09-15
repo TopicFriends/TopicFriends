@@ -7,6 +7,7 @@
   > <!-- TODO: descriptions -> textDescriptions ? -->
 
     <app-text-area
+      [isEditable]="userProfileInputs.isEditable"
       [parentFormGroup]="getDescriptionsFormGroup()"
       [thisFormGroupName]="'myDescription'"
       [placeholder]="'My description'"
@@ -14,6 +15,7 @@
     ></app-text-area>
 
     <app-text-area
+      [isEditable]="userProfileInputs.isEditable"
       [parentFormGroup]="getDescriptionsFormGroup()"
       [thisFormGroupName]="'whatDoYouExpectFromTheApp'"
       [placeholder]="'What do you hope to accomplish in this app?'"
@@ -21,6 +23,7 @@
     ></app-text-area>
 
     <app-text-area
+      [isEditable]="userProfileInputs.isEditable"
       [parentFormGroup]="getDescriptionsFormGroup()"
       [thisFormGroupName]="'adviceOnContactingMe'"
       [placeholder]="'Advice on contacting / meeting me'"
@@ -28,6 +31,7 @@
     ></app-text-area>
 
     <app-text-area
+      [isEditable]="userProfileInputs.isEditable"
       [parentFormGroup]="getDescriptionsFormGroup()"
       [thisFormGroupName]="'howDidYouFindThisCommunity'"
       [placeholder]="'How did you find this community?'"
