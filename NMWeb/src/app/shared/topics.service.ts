@@ -190,11 +190,15 @@ export class TopicsService {
     // TopTal, Freelance, Freelance Platforms, freelancer.com, elance
     'Semantic UI',
     'Foundation',
+    // Email Deliverability,
+    tagNoIcon('LXD'),
     // Adobe photoshop, Adobe illustrator, Adobe After Effects
     // calabash
     // GitHub. Jira. GitLab.
     // Mapbox Studio
     // json, oauth
+    // Ag Grid
+    // SendGrid. MailChimp
     // saucelabs, waffle, Sketch
     // TODO: check Malaga meetup topics
     // FIWARE, Smart City, Green Tech, IoT, IoE
@@ -206,6 +210,7 @@ export class TopicsService {
     // Internationalization (i18n), localization (l11n), translations
     // English / Spanish language practice / interchange
     // CSS View Encapsulation, Shadow DOM
+    // Celery
   ]);
 
 
