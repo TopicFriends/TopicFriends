@@ -3,6 +3,7 @@
 <md-dialog-content>
 
   <md-input-container
+    *ngIf="isEditable"
     id=searchInputFieldContainer
   >
     <md-placeholder>
@@ -16,6 +17,7 @@
   </md-input-container>
 
 <agm-map
+  [ngClass]="isEditable ? 'editable-map' : 'non-editable-map'"
   id=pickLocationMap
   [latitude]="coordinates.latitude"
   [longitude]="coordinates.longitude"
@@ -23,8 +25,8 @@
   <agm-marker
     [latitude]="coordinates.latitude"
     [longitude]="coordinates.longitude"
-    [label]="'Drag Me'"
-    [markerDraggable]="true"
+    [label]="isEditable ? 'Drag Me' : null"
+    [markerDraggable]="isEditable"
     (dragEnd)="markerDragEnd($event)"
   >
   </agm-marker>
@@ -46,11 +48,15 @@
 </md-dialog-content>
 
 <md-dialog-actions>
-  <button md-button md-raised-button
-          color="primary"
-          style="margin-top: 5px; padding-right: 3em; padding-left: 3em"
-          (click)="acceptAndClose()"
+
+  <button
+    class="map-dialog-button"
+    md-button
+    md-raised-button
+    color="primary"
+    (click)="close()"
   >
-    Accept</button>
+    {{isEditable ? 'Accept' : 'Close'}}
+  </button>
 
 </md-dialog-actions>

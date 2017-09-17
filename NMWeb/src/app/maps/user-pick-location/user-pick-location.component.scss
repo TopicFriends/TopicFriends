@@ -1,6 +1,13 @@
 #pickLocationMap {
-  height: 250px;
   width: 100%;
+}
+
+.editable-map {
+  height: 250px;
+}
+
+.non-editable-map {
+  height: 300px;
 }
 
 #searchInputFieldContainer {
@@ -9,4 +16,9 @@
 
 .pac-container {
   position: fixed !important; // Fix the position for scrolling
+}
+
+.map-dialog-button {
+  width: 100%;
+  margin-top: 10px;
 }

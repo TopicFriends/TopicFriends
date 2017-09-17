@@ -4,9 +4,11 @@ import {GeoLocation} from '../../user-profile/user-profile.service'
 import {FormControl} from '@angular/forms';
 import {MapsAPILoader} from '@agm/core';
 import { } from 'googlemaps';
+import {UserProfileInputs} from '../../user-profile/user-profile.component'
 
 
 export class UserPickLocationDialogParams {
+  userProfileInputs: UserProfileInputs
   locationName: string
   geoLocationString: string
 }
@@ -24,6 +26,9 @@ export class UserPickLocationComponent implements OnInit {
 
   public locationName: string
   public searchControl: FormControl;
+  public isEditable: boolean
+
+  static instance: UserPickLocationComponent
 
   @ViewChild("searchInputField")
   public searchElementRef: ElementRef;
@@ -34,12 +39,22 @@ export class UserPickLocationComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {
+    if ( UserPickLocationComponent.instance ) {
+      console.log('UserPickLocationComponent ctor')
+      // return UserPickLocationComponent.instance
+    }
+    this.isEditable = data.userProfileInputs.isEditable
     this.locationName = data.locationName
     this.coordinates = GeoLocation.parseGeoString(data.geoLocationString) || new GeoLocation(36.726, -4.476)
+    UserPickLocationComponent.instance = this
+
   }
 
   ngOnInit() {
-    this.initSearchBar()
+    console.log('UserPickLocationComponent ngOnInit')
+    if ( this.isEditable ) {
+      this.initSearchBar()
+    }
   }
 
   private initSearchBar() {
@@ -78,8 +93,9 @@ export class UserPickLocationComponent implements OnInit {
     // window.alert('markerDragEnd ' + JSON.stringify(event))
   }
 
-  acceptAndClose() {
-    this.dialogRef.close(this.coords);
+  close() {
+    let dialogResult = this.isEditable ? this.coords : undefined
+    this.dialogRef.close(dialogResult);
   }
 
 }

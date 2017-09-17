@@ -35,7 +35,9 @@
 -->
   <button md-button md-raised-button
           (click)="openLocationPicker()">
-    <i class="ion-ios-location" ></i> Pick
+    <i class="ion-ios-location" ></i>&nbsp;
+    <span *ngIf="userProfileInputs.isEditable">Pick</span>
+    <span *ngIf="! userProfileInputs.isEditable">View</span>
   </button>
 
   <button

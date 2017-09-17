@@ -53,6 +53,7 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
 
   openLocationPicker() {
     const dialogParams: UserPickLocationDialogParams = {
+      userProfileInputs: this.userProfileInputs,
       locationName: this.locationName,
       geoLocationString: this.latitudeLongitudeControl.nativeElement.value
     }
