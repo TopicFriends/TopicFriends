@@ -7,7 +7,7 @@ import { AuthService } from "app/user-profile/auth.service";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public title = 'PeopleMatcher';
+  public title = 'TopicFriends';
 
 
   constructor(

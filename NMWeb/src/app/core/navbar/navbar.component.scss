@@ -7,7 +7,6 @@
     width: 70px;
     height: 100vh;
     padding-top: 64px;
-    z-index: -9;
     box-shadow: 3px 0 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
     //margin-top: 64px
 
@@ -16,7 +15,6 @@
 .navbar-container-mobile{
     user-select: none;
     position: fixed;
-    z-index: 9;
     left: 0px;
     top:inherit;
     padding-top: inherit;
