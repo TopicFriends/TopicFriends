@@ -1,5 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {GeoLocation, GeoLocationsDictionary, UserGeoLocations, UserProfile} from '../../user-profile/user-profile.service'
+import {
+  GeoLocation, GeoLocationsDictionary, UserGeoLocations, UserProfile,
+  UserProfileService,
+} from '../../user-profile/user-profile.service'
 import {GeoLocationService} from '../../shared/geo-location.service'
 import {UserGeoLocationsService} from '../../shared/user-geo-locations.service'
 
@@ -24,43 +27,10 @@ export class UsersMapComponent implements OnInit {
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
   numberOfNearUsers = 0;
 
-
-  usersCoords: UserCoords[] = [
-    {
-      user: {
-        displayName: 'David'
-      },
-      geoCoords: {latitude: 36.544, longitude: -4.65},
-    },
-    {
-      user: {
-        displayName: 'Rubén'
-      },
-      geoCoords: {latitude: 36.546, longitude:  -4.65015}
-    },
-    {
-      user: {
-        displayName: 'Anna'
-      },
-      geoCoords: {latitude: 36.727, longitude: -4.475}
-    },
-    {
-      user: {
-        displayName: 'Pablo'
-      },
-      geoCoords: {latitude: 36.7275, longitude: -4.4755}
-    },
-    {
-      user: {
-        displayName: 'Karol XYZ',
-      },
-      geoCoords: {latitude: 36.7265, longitude: -4.4745}
-    },
-  ]
-
   constructor(
     private geoLocationService: GeoLocationService,
     private userGeoLocationsService: UserGeoLocationsService,
+    private userProfileService: UserProfileService,
   ) {}
   ngOnInit() {
     this.geoLocationService.getPosition().subscribe(
@@ -82,11 +52,14 @@ export class UsersMapComponent implements OnInit {
           if ( userLocation && userLocation.geoLocations) {
             for ( let subLocationKey of Object.keys(userLocation.geoLocations) ) {
               const subLocation: GeoLocationsDictionary = userLocation.geoLocations[subLocationKey]
-              console.log('getAllUserGeoLocations: subLocation', subLocation)
+              // console.log('getAllUserGeoLocations: subLocation', subLocation)
               for ( let subLocationMultiKey of Object.keys(subLocation) ) {
                 const subLocationMulti: GeoLocation = subLocation[subLocationMultiKey]
-                console.log('getAllUserGeoLocations: subLocationMulti', subLocationMulti)
+                // console.log('getAllUserGeoLocations: subLocationMulti', subLocationMulti)
                 if ( subLocationMulti ) {
+                  subLocationMulti.title = this.userProfileService.userDataById((<any>userLocation).$key).profile.map((it: UserProfile) => {
+                    return it.displayName
+                  })
                   allUsersGeoLocationsFlattened.push(subLocationMulti)
                 }
               }

@@ -40,7 +40,7 @@
             <agm-marker
               [latitude]="userLocation.latitude"
               [longitude]="userLocation.longitude"
-              [label]="'User'"
+              [label]="userLocation.title | async"
             ></agm-marker>
           </ng-template>
 
