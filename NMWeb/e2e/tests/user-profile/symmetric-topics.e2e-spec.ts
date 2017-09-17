@@ -33,6 +33,7 @@ describe('Symmetric topics on Profile page: User', () => {
   function testTopicTagCanBeAdded(topic: string) {
     let exchange = topicSections.exchangeSectionSelector
     topicSections.inputTopic(exchange, topic)
+    browser.sleep(300)
     let selectedTopic = page.selectFirstSuggestedTag(topicSections.assembleTopicInputLocator(exchange))
     let expectedTopic = topicSections.returnSelectedSectionTags(exchange)
 
@@ -44,8 +45,8 @@ describe('Symmetric topics on Profile page: User', () => {
     testTopicTagCanBeAdded(topic)
   });
 
-  it('can select topic by topic name fragment: ion', () => {
-    let topic = 'ion'
+  it('can select topic by topic name fragment: pro', () => {
+    let topic = 'pro'
     testTopicTagCanBeAdded(topic)
   });
 
@@ -77,8 +78,8 @@ describe('Symmetric topics on Profile page: User', () => {
     // TODO
   // });
 
-  it('can select multiple topics: Angular, .NET, angular universal', () => {
-    let topics = ['Angular', '.NET', 'angular universal']
+  it('can select multiple topics: Typescript, .NET, universal', () => {
+    let topics = ['Typescript', '.NET', 'universal']
     let hackathon = topicSections.hackathonSectionSelector
     wait.forElementPresent($(hackathon))
 
@@ -87,7 +88,7 @@ describe('Symmetric topics on Profile page: User', () => {
   });
 
   it('can save profile by clicking save', () => {
-    let topicsHackathon = ['c', 'angular universal']
+    let topicsHackathon = ['c', 'universal']
     let topicsSectionHackathon = topicSections.hackathonSectionSelector
     wait.forElementPresent($(topicsSectionHackathon))
     let selectedTopicsHackathon = topicSections.inputMultipleTagsInOneSection(topicsSectionHackathon, topicsHackathon)
@@ -154,7 +155,7 @@ describe('Symmetric topics on Profile page: User', () => {
   afterEach(() => {
     page.navigateTo().then(() => {
       support.acceptAlertIfAppears()
-      wait.forElementPresent(page.userProfileBasicInfo)
+      wait.forElementPresent($(topicSections.hackathonSectionSelector))
     })
   })
 

@@ -17,7 +17,7 @@ export class TopicsSections {
   }
 
   returnSelectedSectionTags(topicSectionSelector: string): ElementArrayFinder {
-    this.wait.forElementPresent($(topicSectionSelector))
+    this.wait.forElementPresent($(this.tagSelector))
     return this.returnAllSelectedTopicTags(topicSectionSelector)
   }
 
@@ -35,6 +35,7 @@ export class TopicsSections {
 
     topics.forEach(topic => {
       this.inputTopic(topicsSection, topic)
+      browser.sleep(200)
       this.profilePage.selectFirstSuggestedTag(topicInput).then(tag => {
         selectedTopics.push(tag)
       }).then(() => { topicInput.clear() })
