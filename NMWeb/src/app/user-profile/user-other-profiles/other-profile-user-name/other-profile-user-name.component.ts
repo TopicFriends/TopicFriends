@@ -16,9 +16,20 @@ export class OtherProfileUserNameComponent implements OnInit {
 
   @Input() userProfileInputs: UserProfileInputs
 
+  urlNoProtocol: string
+  fullUrl: string
+  userName: string
+
   constructor() { }
 
   ngOnInit() {
+    if ( ! this.userProfileInputs.isEditable ) {
+      this.thisFormControl.valueChanges.subscribe(values => {
+        this.userName = this.thisFormControl.value
+        this.urlNoProtocol = this.userName && this.descriptor.urlPrefix + this.userName
+        this.fullUrl = this.userName && ('https://' + this.urlNoProtocol)
+      })
+    }
   }
 
 }

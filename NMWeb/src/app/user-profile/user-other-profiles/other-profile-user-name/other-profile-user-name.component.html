@@ -2,7 +2,7 @@
   [formGroup]="parentFormGroup"
 >
 
-  <md-input-container>
+  <md-input-container *ngIf="userProfileInputs.isEditable">
     <md-placeholder>
       <md-icon>person</md-icon>
       <b>{{descriptor.websiteName}}</b>
@@ -22,5 +22,24 @@
       [formControl]="thisFormControl"
     >
   </md-input-container>
+
+
+  <p
+    *ngIf="fullUrl"
+  >
+    <span
+      class="other-profile-icon-container"
+    >
+      <i class="icon {{descriptor.iconClass}}"></i>
+    </span>
+    <a
+      *ngIf="fullUrl"
+      href="{{fullUrl}}"
+    >
+      {{urlNoProtocol}}
+    </a>
+  </p>
+
+  <!--</p>-->
 
 </div>
