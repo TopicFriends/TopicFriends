@@ -4,58 +4,15 @@
 <div [formGroup]="formGroup">
 
   <ng-template [ngIf]="! otherProfiles" >Loading external profiles...</ng-template>
-  <md-input-container id="linkedinLink">
-    <md-placeholder>
-      <md-icon>person</md-icon><b>LinkedIn</b> Profile <span class="input-remark">(optional, user name is enough)</span>
-    </md-placeholder>
-    <span mdPrefix><i class="icon ion-social-linkedin"></i> linkedin.com/in/</span>
 
-    <input mdInput
-           [formControl]="otherProfileLinkedIn">
-  </md-input-container>
+  <app-other-profile-user-name
+    *ngFor="let descriptor of descriptorsList"
+    [descriptor]="descriptor"
+    [parentFormGroup]="formGroup"
+    [thisFormControl]="formControls[descriptor.id]"
+    [userProfileInputs]="userProfileInputs"
+  ></app-other-profile-user-name>
 
-
-  <md-input-container>
-    <md-placeholder>
-      <md-icon>person</md-icon><b>GitHub</b> Profile <span class="input-remark">(optional, user name is enough)</span>
-    </md-placeholder>
-    <span mdPrefix><i class="icon ion-social-github"></i> github.com/</span>
-
-    <input mdInput
-           [formControl]="otherProfileGitHub">
-  </md-input-container>
-
-
-  <md-input-container>
-    <md-placeholder>
-      <md-icon>person</md-icon><b>Stack Overflow</b> Profile <span class="input-remark">(optional, user id and name are enough)</span>
-    </md-placeholder>
-    <span mdPrefix>stackoverflow.com/users/</span>
-
-    <input mdInput
-           [formControl]="otherProfileStackOverflow">
-  </md-input-container>
-
-
-  <md-input-container>
-    <md-placeholder>
-      <md-icon>person</md-icon><b>Twitter</b> Profile <span class="input-remark">(optional, user name is enough)</span>
-    </md-placeholder>
-    <span mdPrefix><i class="icon ion-social-twitter"></i> twitter.com/</span>
-
-    <input mdInput
-           [formControl]="otherProfileTwitter">
-  </md-input-container>
-
-  <md-input-container>
-    <md-placeholder>
-      <md-icon>person</md-icon><b>Facebook</b> Profile <span class="input-remark">(optional, user name is enough)</span>
-    </md-placeholder>
-    <span mdPrefix><i class="icon ion-social-facebook"></i> facebook.com/</span>
-
-    <input mdInput
-           [formControl]="otherProfileFacebook">
-  </md-input-container>
 
   <md-input-container *ngIf="false">
     <md-placeholder>

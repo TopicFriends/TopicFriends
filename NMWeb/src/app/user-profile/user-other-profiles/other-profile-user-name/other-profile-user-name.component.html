@@ -1,9 +1,26 @@
-<md-input-container>
-  <md-placeholder>
-    <md-icon>person</md-icon><b>Twitter</b> Profile <span class="input-remark">(optional, user name is enough)</span>
-  </md-placeholder>
-  <span mdPrefix><i class="icon ion-social-twitter"></i> twitter.com/</span>
+<div
+  [formGroup]="parentFormGroup"
+>
 
-  <!--<input mdInput-->
-         <!--[formControl]="otherProfileTwitter">-->
-</md-input-container>
+  <md-input-container>
+    <md-placeholder>
+      <md-icon>person</md-icon>
+      <b>{{descriptor.websiteName}}</b>
+      &nbsp;Profile
+      <span class="input-remark">
+        (optional, {{descriptor.whatIsEnough}} enough)
+      </span>
+    </md-placeholder>
+    <span mdPrefix>
+      <i class="icon {{descriptor.iconClass}}"></i>
+      &nbsp;
+      {{descriptor.urlPrefix}}
+    </span>
+
+    <input
+      mdInput
+      [formControl]="thisFormControl"
+    >
+  </md-input-container>
+
+</div>

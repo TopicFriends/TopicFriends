@@ -1,8 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {OtherProfile, UserOtherProfiles, UserProfileService} from '../user-profile.service'
-import {AuthService} from 'app/user-profile/auth.service';
-import {Observable} from 'rxjs/Observable'
 import {DomainDbService} from '../../domain-db.service'
 import {UserProfileInputs} from '../user-profile.component'
 import {setFormControlEnabled} from '../../shared/utils'
@@ -17,6 +15,29 @@ function otherProfileUserName(formControl: FormControl) {
   return formControl.value || null // || "" to prevent firebase complaining about undefined
 }
 
+export class UserOtherProfileDescriptor {
+  websiteName: string
+  urlPrefix: string
+  whatIsEnough?: string
+  iconClass: string
+  id?: string
+
+  constructor(initFrom: UserOtherProfileDescriptor) {
+    Object.assign(this, initFrom)
+    if ( ! this.whatIsEnough ) {
+      this.whatIsEnough = 'user name is'
+    }
+  }
+}
+
+export class UserOtherProfilesDescriptors<T> {
+  twitter: T;
+  linkedIn: T;
+  gitHub: T;
+  stackOverflow: T;
+  facebook: T;
+}
+
 @Component({
   selector: 'app-user-other-profiles',
   templateUrl: './user-other-profiles.component.html',
@@ -24,15 +45,59 @@ function otherProfileUserName(formControl: FormControl) {
 })
 export class UserOtherProfilesComponent implements OnInit {
 
+  // descriptors: UserOtherProfilesDescriptors<UserOtherProfileDescriptor> = [
+  descriptorsMap = {
+    twitter: new UserOtherProfileDescriptor({
+      websiteName: 'Twitter',
+      urlPrefix: 'twitter.com/',
+      iconClass: 'ion-social-twitter',
+    }),
+    linkedIn: new UserOtherProfileDescriptor({
+      websiteName: 'LinkedIn',
+      urlPrefix: 'linkedin.com/in/',
+      iconClass: 'ion-social-linkedin',
+    }),
+    facebook: new UserOtherProfileDescriptor({
+      websiteName: 'Facebook',
+      urlPrefix: 'facebook.com/',
+      iconClass: 'ion-social-facebook',
+    }),
+    gitHub: new UserOtherProfileDescriptor({
+      websiteName: 'GitHub',
+      urlPrefix: 'github.com/',
+      iconClass: 'ion-social-github',
+    }),
+    stackOverflow: new UserOtherProfileDescriptor({
+      websiteName: 'StackOverflow',
+      urlPrefix: 'stackoverflow.com/users/',
+      iconClass: null,
+      whatIsEnough: 'user id and name are'
+    }),
+  }
+
+  formControls: UserOtherProfilesDescriptors<FormControl>
+
+  descriptorsList = this.prepareDescriptorsList()
+
+  private prepareDescriptorsList() {
+    this.formControls = <any> {}
+    let ret = []
+    for ( let key in this.descriptorsMap ) {
+      if (this.descriptorsMap.hasOwnProperty(key)) {
+        console.log('key: ', key)
+        let descriptor = this.descriptorsMap[key]
+        descriptor.id = key
+        ret.push(descriptor)
+        this.formControls[key] = new FormControl()
+      }
+    }
+    return ret
+  }
+
   @Input() public parentFormGroup: FormGroup;
   @Input() public userProfileInputs: UserProfileInputs
   public formGroup: FormGroup;
 
-  public otherProfileLinkedIn = new FormControl()
-  public otherProfileGitHub = new FormControl()
-  public otherProfileStackOverflow = new FormControl()
-  public otherProfileTwitter = new FormControl()
-  public otherProfileFacebook = new FormControl()
 
   public otherProfiles: UserOtherProfiles
 
@@ -40,13 +105,7 @@ export class UserOtherProfilesComponent implements OnInit {
     private formBuilder: FormBuilder,
     private domainDbService: DomainDbService,
   ) {
-    this.formGroup = this.formBuilder.group({
-      otherProfileLinkedIn: this.otherProfileLinkedIn,
-      otherProfileGitHub: this.otherProfileGitHub,
-      otherProfileStackOverflow: this.otherProfileStackOverflow,
-      otherProfileTwitter: this.otherProfileTwitter,
-      otherProfileFacebook: this.otherProfileFacebook,
-    })
+    this.formGroup = this.formBuilder.group(this.formControls)
   }
 
   ngOnInit() {
@@ -64,11 +123,11 @@ export class UserOtherProfilesComponent implements OnInit {
       // FIXME: setValue instead of patchValue (because some might be undefined)
       // this.formGroup.setValue({
       this.formGroup.patchValue({
-        otherProfileLinkedIn: getOtherProfileName(otherProfiles.linkedIn),
-        otherProfileGitHub: getOtherProfileName(otherProfiles.gitHub),
-        otherProfileStackOverflow: getOtherProfileName(otherProfiles.stackOverflow),
-        otherProfileTwitter: getOtherProfileName(otherProfiles.twitter),
-        otherProfileFacebook: getOtherProfileName(otherProfiles.facebook),
+        linkedIn: getOtherProfileName(otherProfiles.linkedIn),
+        gitHub: getOtherProfileName(otherProfiles.gitHub),
+        stackOverflow: getOtherProfileName(otherProfiles.stackOverflow),
+        twitter: getOtherProfileName(otherProfiles.twitter),
+        facebook: getOtherProfileName(otherProfiles.facebook),
       })
     }
     this.formGroup.markAsPristine()
@@ -77,19 +136,19 @@ export class UserOtherProfilesComponent implements OnInit {
   getOtherProfiles(): UserOtherProfiles {
     return {
       linkedIn: {
-        userName: otherProfileUserName(this.otherProfileLinkedIn),
+        userName: otherProfileUserName(this.formControls.linkedIn),
       },
       gitHub: {
-        userName: otherProfileUserName(this.otherProfileGitHub),
+        userName: otherProfileUserName(this.formControls.gitHub),
       },
       stackOverflow: {
-        userName: otherProfileUserName(this.otherProfileStackOverflow),
+        userName: otherProfileUserName(this.formControls.stackOverflow),
       },
       twitter: {
-        userName: otherProfileUserName(this.otherProfileTwitter),
+        userName: otherProfileUserName(this.formControls.twitter),
       },
       facebook: {
-        userName: otherProfileUserName(this.otherProfileFacebook),
+        userName: otherProfileUserName(this.formControls.facebook),
       },
     };
   }
