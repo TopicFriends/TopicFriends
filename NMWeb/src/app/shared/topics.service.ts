@@ -51,13 +51,16 @@ export class TopicsService {
     'LinkedIn',
     'Google Plus',
     protractor, karma, jasmine,
+    // Cucumber
     tagNoIcon('PrimeFaces'),
     tag('PHP'), materialDesign, typeScript,
     tag('Django'), tag('Python'), tag('Ruby'), tagLogoTipo('Ruby On Rails'),
     tag('PeopleMatcher'),
+    tag('TopicFriends', 'PeopleMatcher'),
     tag('UAP', null),
     tag('Android'), tag('Kotlin'), tag('KotlinJS', null), tag('Java'), tagNoIcon('Java EE'), 'C++', 'C',
     tagNoIcon('C#'), tagNoIcon('ASP.NET'), tagNoIcon('ASP.NET MVC'), tagNoIcon('ASP.NET Core MVC') /* https://github.com/aspnet/Mvc */,
+    tag('F#', 'fsharp'), 'JRuby',
     tag('iOS'), tag('Swift'), tag('Objective-C', null),
     tag('D3'),
     tag('Angular DI', null), tag('Angular Modules', null), tag('Angular Router', null),
@@ -82,7 +85,7 @@ export class TopicsService {
     'Cordova', 'PhoneGap',
     tagNoIcon('Geolocation'),
     tagNoIcon('Social graphs'), 'Open Graph',
-    tagNoIcon('NoSQL'), 'PostgreSQL', 'MySQL', 'Oracle',
+    tagNoIcon('NoSQL'), 'PostgreSQL', 'MySQL', 'Oracle', // TODO: sqlite
     tagNoIcon('HMR - Hot Module Replacement'),
     rxJs, tagNoIcon('RxJava'), reactiveX,
     angularMaterial, angularFire, /* Note: versions will be specified separately, thus not "AngularFire2" */
@@ -114,7 +117,7 @@ export class TopicsService {
     'Polymer', tag('Web Components', 'webcomponents'),
     'Bootstrap', tagNoIcon('Clarity Design System') /* https://vmware.github.io/clarity/ */ ,
     'Capistrano', 'Chef', 'Puppet',
-    'Clojure', 'CoffeeScript',
+    'Clojure',  'CoffeeScript', /* TODO ClojureScript */
     'Electron',
     'Gradle', 'Grails',
     'Neo4j', 'Hadoop',
@@ -129,9 +132,9 @@ export class TopicsService {
     tagNoIcon('UX'), tagNoIcon('UI'), tagNoIcon('Usability'), tagNoIcon('Accessibility'),
     'GraphQL', 'Grunt', tag('Browserify', 'browserify-icon'),
     'Hibernate', tagNoIcon('NHibernate'), 'MariaDB', 'Material-UI',
-    tagNoIcon('FinTech'), tagNoIcon('PropTech'), tagNoIcon('Startups'),
+    tagNoIcon('FinTech'), tagNoIcon('PropTech'), tagNoIcon('Startups'), tagNoIcon('Startup Financing'),
     tagNoIcon('Finance'), tagNoIcon('Financing'),
-    tagNoIcon('Law'),
+    tagNoIcon('Law'), tagNoIcon('LOPD'),
     tagNoIcon('SEO'), tagNoIcon('JBoss'),
     tagNoIcon('Marketing'), tagNoIcon('Advertising'),
     tagNoIcon('Functional Programming'), tag('EC2', 'aws-ec2'), tagNoIcon('GCP'),
@@ -143,7 +146,9 @@ export class TopicsService {
     tagNoIcon('Stencil'), /* Ionic */
     'OData', tagNoIcon('PowerBI'), tagNoIcon('SignalR'), // Mark S.
     angularFlexLayout, angularFlexLayoutResponsiveApi,
-    // Voice interfaces, Alexa etc (O. Carracedo)
+    // Voice interfaces, Alexa etc (O. Carracedo), Cortana
+    // Google Docs (for integrations, etc.)
+    // Google AdWords, Google Analytics
     tagNoIcon('Frontend'),
     tagNoIcon('Telerik UI'),
     tagNoIcon('Kendo UI'),
@@ -186,14 +191,28 @@ export class TopicsService {
     tagNoIcon('YouTube'),
     tagNoIcon('Explainer Videos'),
     tagNoIcon('Geomarketing'),
+    tagNoIcon('MEAN Stack'),
+    tagNoIcon('LAMP Stack'),
+    tagNoIcon('Cyber Security'),
+    tagNoIcon('Chart.js'),
     tag('R Language', 'r-lang'),
+    // TODO: Nginx
+    'WebAssembly',
+    'Struts',
+    'Yammer',
+    // Office 365 / OneDrive
+    // Algorithms, Data Structures, Computer Networks
+    // Green Economy?
+    // Management, Project Management
+    // Windows Forms
+    // Windows Phone
     // TopTal, Freelance, Freelance Platforms, freelancer.com, elance
     'Semantic UI',
     'Foundation',
     // Email Deliverability,
     tagNoIcon('LXD'),
     // Adobe photoshop, Adobe illustrator, Adobe After Effects
-    // calabash
+    // calabash, Calabash-android, calabash-ios
     // GitHub. Jira. GitLab.
     // Mapbox Studio
     // json, oauth
@@ -204,7 +223,7 @@ export class TopicsService {
     // FIWARE, Smart City, Green Tech, IoT, IoE
     // web3, Truffle Framework, Distributed Ledger Technology, Attention Economy, Ethlance, Steem,
     // remix, mist, DApp, DAO, TheDao
-    // Smart contracts, Solidity, Private coin,
+      // Smart contracts, Solidity, Private coin,
     // Ionic Creator, Bootstrap Studio
     // Hybris
     // Internationalization (i18n), localization (l11n), translations
@@ -212,6 +231,21 @@ export class TopicsService {
     // CSS View Encapsulation, Shadow DOM
     // Celery
     // RhoMobile
+    /* Mark:                       Just created a profile on there. It's looking very good 👍
+     A couple of things for you to add to the list:
+     Protobuf
+     OAuth/OpenID Connect */
+    // thrift
+    // Hubert: Security, Computer Security, Computer Network Security
+    /* hibernate
+     Hibernate envers - Adam Warski
+     Liquibase / Flyway - wersjonowanie SQL
+     Spring Boot / Dropwizard / JHipster */
+
+    // algolia
+    // angellist
+    // self-driving cars/vehicles
+    // Electric vehicles
   ]);
 
 
