@@ -1,4 +1,4 @@
-import {Injectable, Input} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {TagEntry} from '../user-profile/tag-entry'
 
 function tag(name: string, logo?: string) {
@@ -83,6 +83,7 @@ export class TopicsService {
     'Bitcoin', 'Ethereum', 'Steemit', 'Monero',
     tagNoIcon('Cryptocurrency'), tagNoIcon('Blockchain'), tagNoIcon('Cryptography'),
     'Cordova', 'PhoneGap',
+    tagNoIcon('Trabajador Autónomo (Spain)'),
     tagNoIcon('Geolocation'),
     tagNoIcon('Social graphs'), 'Open Graph',
     tagNoIcon('NoSQL'), 'PostgreSQL', 'MySQL', 'Oracle', // TODO: sqlite
@@ -195,6 +196,8 @@ export class TopicsService {
     tagNoIcon('LAMP Stack'),
     tagNoIcon('Cyber Security'),
     tagNoIcon('Chart.js'),
+    tagNoIcon('Robotics'),
+    tagNoIcon('Lego Mindstorms'),
     tag('R Language', 'r-lang'),
     // TODO: Nginx
     'WebAssembly',
@@ -264,4 +267,5 @@ export class TopicsService {
     console.log('getTopicById', topicId, retVal)
     return retVal
   }
+
 }
