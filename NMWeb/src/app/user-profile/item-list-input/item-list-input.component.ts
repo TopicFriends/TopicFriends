@@ -26,7 +26,18 @@ export class ItemListInputComponent implements OnInit {
   sifter
 
   /** rename: all *possible* tags */
-  @Input() public inputTagList: TagEntry[]
+  public _inputTagList: TagEntry[]
+
+  @Input() set inputTagList(l: TagEntry[]) {
+    this._inputTagList = l
+    this.createSifter()
+    this.reFilter()
+  }
+
+  get inputTagList(): TagEntry[] {
+    return this._inputTagList
+  }
+
   @Input() public isEditable: boolean
 
   @Input() public set chosenTags(val: TagInclusions) {
@@ -61,10 +72,7 @@ export class ItemListInputComponent implements OnInit {
     this.userTopicsService.observeUserTopics().subscribe(topics => {
       this.inputTagList = this.topicsService.topics.concat(topics)
       // console.log('observeUserTopics', this.inputTagList)
-      this.createSifter() // consider making inputTagList setter which will force those operations...
-      this.reFilter()
     })
-    this.createSifter()
 
     this.stateCtrl = new FormControl();
     this.stateCtrl.valueChanges
@@ -83,7 +91,6 @@ export class ItemListInputComponent implements OnInit {
         this.lastFilterText = textFilter
         this.reFilter()
     });
-    this.reFilter() // force initial list
     // console.log('this.lastFilteredOptions.length', this.lastFilteredOptions.length)
   }
 
