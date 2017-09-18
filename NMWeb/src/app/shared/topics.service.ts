@@ -198,6 +198,8 @@ export class TopicsService {
     tagNoIcon('Chart.js'),
     tagNoIcon('Robotics'),
     tagNoIcon('Lego Mindstorms'),
+    tagNoIcon('CSS Flexbox'),
+    tagNoIcon('CSS Grid Layout'),
     tag('R Language', 'r-lang'),
     // TODO: Nginx
     'WebAssembly',
