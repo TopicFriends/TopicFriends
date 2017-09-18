@@ -29,6 +29,7 @@ const formDefinition = {
   whereILive: '',
   whereIWork: '',
   whereIStudy: '',
+  whereIStudied: '',
   whereIVisit: '',
   homeTown: '',
 }

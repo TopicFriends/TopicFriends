@@ -6,7 +6,7 @@
 <!--
   <ng-content></ng-content>
 -->
-  <div style="display: inline-block; width: 7em">
+  <div style="display: inline-block; width: 8em">
     {{locationName}}: &nbsp;
   </div>
 
@@ -33,9 +33,14 @@
 <!--
   <button md-button md-raised-button (click)="useCurrentLocation()">Use current location</button>
 -->
-  <button md-button md-raised-button
-          (click)="openLocationPicker()">
-    <i class="ion-ios-location" ></i>&nbsp;
+  <button
+    md-button
+    md-raised-button
+    (click)="openLocationPicker()"
+    color="primary"
+  >
+    <i class="ion-ios-location" ></i>
+    &nbsp;
     <span *ngIf="userProfileInputs.isEditable">Pick</span>
     <span *ngIf="! userProfileInputs.isEditable">View</span>
   </button>
