@@ -18,7 +18,8 @@ import { TopicGroupSupplyDemandCardComponent } from './user-interests/topic-grou
 import { TextAreaComponent } from './user-descriptions/text-area/text-area.component';
 import { OtherProfileUserNameComponent } from './user-other-profiles/other-profile-user-name/other-profile-user-name.component';
 import { UserWebsiteComponent } from './user-other-profiles/user-website/user-website.component'
-import {DefaultRouteReuseStrategy} from '@angular/router/src/route_reuse_strategy'
+import {DefaultRouteReuseStrategy} from '@angular/router/src/route_reuse_strategy';
+import { CreateTopicComponent } from './user-interests/create-topic/create-topic.component'
 
 export const USER_PROFILE_ID_PARAM_NO_COLON = 'userId'
 
@@ -88,6 +89,7 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     TextAreaComponent,
     OtherProfileUserNameComponent,
     UserWebsiteComponent,
+    CreateTopicComponent,
   ],
   providers: [
     CanDeactivateUserProfileGuard,

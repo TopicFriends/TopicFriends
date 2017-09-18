@@ -10,6 +10,8 @@ import {TagListModel} from '../../shared/TagListModel'
 import {TagInclusions} from '../../shared/TagInclusions'
 import {getDictionaryValuesAsArray} from '../../shared/utils'
 import {Subject} from 'rxjs/Subject'
+import {UserTopicsService} from '../../shared/user-topics.service'
+import {DbList} from '../../db.service'
 
 declare var require: any
 const Sifter = require("sifter")
@@ -52,10 +54,17 @@ export class ItemListInputComponent implements OnInit {
   lastAddedOption: TagEntry
 
   constructor(
-    public topicsService: TopicsService
+    public topicsService: TopicsService,
+    private userTopicsService: UserTopicsService,
   ) {
     this.inputTagList = this.topicsService.topics;
-    this.sifter = new Sifter(this.inputTagList)
+    this.userTopicsService.observeUserTopics().subscribe(topics => {
+      this.inputTagList = this.topicsService.topics.concat(topics)
+      // console.log('observeUserTopics', this.inputTagList)
+      this.createSifter() // consider making inputTagList setter which will force those operations...
+      this.reFilter()
+    })
+    this.createSifter()
 
     this.stateCtrl = new FormControl();
     this.stateCtrl.valueChanges
@@ -78,6 +87,10 @@ export class ItemListInputComponent implements OnInit {
     // console.log('this.lastFilteredOptions.length', this.lastFilteredOptions.length)
   }
 
+  private createSifter() {
+    this.sifter = new Sifter(this.inputTagList)
+  }
+
   private createFilteredOptions() {
     return this.filter(this.lastFilterText)
   }
@@ -98,10 +111,13 @@ export class ItemListInputComponent implements OnInit {
       sort: [{field: 'name', direction: 'asc'}],
       limit: 50
     });
-    // console.log('sifterr', sifterResults)
+    console.log('sifterr', sifterResults)
     let fullResults = []
     for ( let result of sifterResults.items ) {
-      fullResults.push(this.inputTagList[result.id])
+      let resultById = this.inputTagList[result.id]
+      if ( ! this.tagListModel.tagExists(resultById) ) {
+        fullResults.push(resultById)
+      } // else prevent duplicate
     }
     // console.log('full', fullResults)
     return fullResults
@@ -127,4 +143,15 @@ export class ItemListInputComponent implements OnInit {
     this.filteredOptions.next(this.lastFilteredOptions)
   }
 
+  createTopic() {
+    this.openCreateTopicDialog(this.lastFilterText.trim());
+    this.userTopicsService.addTopic(this.lastFilterText.trim())
+    // TODO: confirmation dialog
+    // TODO: trim
+    // TODO:
+  }
+
+  private openCreateTopicDialog(topicName: string) {
+
+  }
 }

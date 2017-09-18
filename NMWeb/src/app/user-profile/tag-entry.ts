@@ -20,7 +20,7 @@ export class TagEntry {
     // public topicId?,
     logo?: string
   ) {
-    this.id = name
+    this.id = name // TODO escape e.g. + (For c++)
     if ( logo === null ) {
       this.logo = null;
     } else if ( logo === undefined ) {

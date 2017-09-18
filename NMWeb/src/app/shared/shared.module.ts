@@ -16,6 +16,7 @@ import {GeoLocationService} from './geo-location.service'
 import {UserGeoLocationsService} from './user-geo-locations.service'
 import {RouterModule} from '@angular/router'
 import {UserDescriptionsService} from './user-profile/user-descriptions.service'
+import {UserTopicsService} from './user-topics.service'
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import {UserDescriptionsService} from './user-profile/user-descriptions.service'
     GeoLocationService,
     UserGeoLocationsService,
     UserDescriptionsService,
+    UserTopicsService,
   ]
 
 })

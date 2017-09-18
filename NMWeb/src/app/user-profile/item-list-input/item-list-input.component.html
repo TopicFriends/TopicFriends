@@ -11,6 +11,14 @@
 <!--
     (keydown.enter)="addTag(currentFilteredOptions[0])"
 -->
+<div
+  style="
+    display: flex;
+    flex-direction: row;
+  "
+
+>
+
 <md-input-container
   *ngIf="isEditable"
   style="width:100%"
@@ -25,6 +33,16 @@
     Filter topics
   </md-placeholder>
 </md-input-container>
+
+<button
+  md-button
+  color="primary"
+  (click)="createTopic()"
+  >
+  Create
+</button>
+</div>
+
 
 <!-- UX NOTE: autocomplete is not really what we want, because it has too many assumptions that are not good for us:
 - filling text with just-selected option (circumvented by me in an ugly way)
