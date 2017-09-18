@@ -4,6 +4,7 @@ import {TestWait} from '../../test-support/wait'
 import {UserProfilePage} from '../user-profile/user-profile.po'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
+import {ProtractorWrapper} from '../../test-support/protractor-wrapper'
 
 let firebase = require("firebase");
 require("firebase/auth");
@@ -12,6 +13,7 @@ export class LoginPage {
   private utils = new TestSupport()
   private wait = new TestWait()
   private userProfilePage = new UserProfilePage()
+  private ptor = new ProtractorWrapper()
 
   private defaultSleep = 1000
 
@@ -39,9 +41,8 @@ export class LoginPage {
   }
 
   loginWhenAlreadySignedInToGoogle() {
-    this.wait.forElementPresent(this.loginMenuButton)
-    this.loginMenuButton.click()
-    this.logInViaGoogle.click()
+    this.ptor.click(this.loginMenuButton)
+    this.ptor.click(this.logInViaGoogle)
     this.wait.forElementPresent(this.userProfilePage.userProfileBasicInfo)
   }
 
@@ -60,10 +61,8 @@ export class LoginPage {
   }
 
   logoutUser() {
-    this.wait.forElementPresent(this.loginMenuButton)
-    this.loginMenuButton.click()
-    this.wait.forElementPresent(this.logoutButton)
-    this.logoutButton.click()
+    this.ptor.click(this.loginMenuButton)
+    this.ptor.click(this.logoutButton)
   }
 
   confirmUserLoggedOut() {
@@ -72,18 +71,13 @@ export class LoginPage {
   }
 
   private enterGooglePassword() {
-    browser.sleep(this.defaultSleep);
-    this.wait.forElementPresent(this.passwordField);
-    this.passwordField.sendKeys(this.userPassword);
-    this.wait.forElementPresent(this.googlePasswordNextButton);
-    this.googlePasswordNextButton.click();
+    browser.sleep(this.defaultSleep)
+    this.ptor.sendKeys(this.passwordField, this.userPassword)
+    this.ptor.click(this.googlePasswordNextButton)
   }
 
   private enterGoogleUsername() {
-    this.wait.forElementPresent(this.usernameField);
-    this.usernameField.sendKeys(this.userEmail);
-    this.wait.forElementPresent(this.googleIdNextButton);
-    browser.sleep(this.defaultSleep);
-    this.googleIdNextButton.click();
+    this.ptor.sendKeys(this.usernameField, this.userEmail)
+    this.ptor.click(this.googleIdNextButton);
   }
 }

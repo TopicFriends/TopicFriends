@@ -6,6 +6,7 @@ import {TestCleanUp} from '../../test-support/clean-up'
 import {TestWait} from '../../test-support/wait'
 import {TestSupport} from '../../test-support/test-support'
 import {$, browser, ExpectedConditions} from 'protractor'
+import {ProtractorWrapper} from '../../test-support/protractor-wrapper'
 
 describe('Symmetric topics on Profile page: User', () => {
   let loginPage: LoginPage
@@ -15,6 +16,7 @@ describe('Symmetric topics on Profile page: User', () => {
   let cleanUp: TestCleanUp
   let wait: TestWait
   let support: TestSupport
+  let ptor: ProtractorWrapper
 
   beforeAll(() => { //TODO: refactor me
     loginPage = new LoginPage()
@@ -24,6 +26,7 @@ describe('Symmetric topics on Profile page: User', () => {
     cleanUp = new TestCleanUp()
     wait = new TestWait()
     support = new TestSupport()
+    ptor = new ProtractorWrapper()
 
     page.navigateTo().then(() => {
       loginPage.loginWhenAlreadySignedInToGoogle()
@@ -104,8 +107,9 @@ describe('Symmetric topics on Profile page: User', () => {
     let selectedTopicsExchange = topicSections.inputMultipleTagsInOneSection(topicsSectionExchange, topicsExchange)
     assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
 
-    page.saveProfileButton.click()
+    ptor.click(page.saveProfileButton)
     page.navigateTo().then(() => {
+      browser.sleep(3000)
       wait.forElementPresent($(topicSections.tagSelector)).then(() => {
         assert.sectionTagsMatch(topicsSectionHackathon, selectedTopicsHackathon)
         assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
@@ -127,6 +131,7 @@ describe('Symmetric topics on Profile page: User', () => {
     let topicsSectionPairProgramming = topicSections.pairProgrammingSectionSelector
     let selectedTopicsPairProgramming = topicSections.inputMultipleTagsInOneSection(topicsSectionPairProgramming, topicsPairProgramming)
 
+
     page.saveProfileButton.click()
     page.navigateTo().then(() => {
       wait.forElementPresent($(topicSections.tagSelector)).then(() => {
@@ -140,7 +145,7 @@ describe('Symmetric topics on Profile page: User', () => {
     wait.forElementPresent($(topicSections.tagSelector))
     topicSections.removeAllTags()
 
-    page.saveProfileButton.click()
+    ptor.click(page.saveProfileButton)
     page.navigateTo().then(() => {
       wait.forElementPresent(page.userProfileBasicInfo).then(() => {
         browser.sleep(3000)

@@ -2,7 +2,7 @@ import {browser, ElementArrayFinder, ElementFinder, ExpectedConditions} from 'pr
 
 export class TestWait {
   ec = ExpectedConditions
-  defaultWaitTimeout = browser.params.allScriptsTimeout - 5000
+  defaultWaitTimeout = Math.floor(browser.params.allScriptsTimeout/3)
 
   forElementPresent(element: ElementFinder): any {
     return browser.wait((this.ec.presenceOf(element)),
@@ -19,6 +19,11 @@ export class TestWait {
       elementArray.count().then((actualCount) => {
         return expectedCount === actualCount
       }), this.defaultWaitTimeout, 'false')
+  }
+
+  forElementClickable(element: ElementFinder) {
+    return browser.wait(this.ec.elementToBeClickable(element),
+      this.defaultWaitTimeout, 'false')
   }
 
   forElementText(element: ElementFinder, text: string): any {
