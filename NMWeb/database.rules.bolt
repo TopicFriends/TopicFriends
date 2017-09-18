@@ -29,6 +29,10 @@ path /TPProd/UserData {
   read() { true }
 }
 
+path /TPProd/Topics {
+  read() { true }
+}
+
 path /TPProd/UserData/{anything}/{userId} {
   read() { true }
   write() { isCurrentUser(userId) }

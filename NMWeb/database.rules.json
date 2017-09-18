@@ -30,6 +30,9 @@
           }
         }
       },
+      "Topics": {
+        ".read": "true"
+      },
       "Meetings": {
         ".read": "true",
         "MeetingAttendanceByUser": {
