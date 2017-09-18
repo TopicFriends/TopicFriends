@@ -21,7 +21,12 @@ export class UserTopicsService {
   }
 
   addTopic(name: string) {
-    let newTopic = new TagEntry(name, null)
+    let newTopic = new TagEntry(name, null) // TODO: escape
+    // Paths must be non-empty strings and can't contain ".", "#", "$", "[", or "]"
+    // AND /
+    // Though " (double quote) works
+    // idea: escape . as ,
+    // idea:
     this.userTopics.update(newTopic.id, newTopic)
   }
 
