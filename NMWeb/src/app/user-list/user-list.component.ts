@@ -27,8 +27,9 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  trackByKey(idx, val) {
-    return val.$key
+  trackByKey(idx, val: UserData) {
+    // console.log('trackByKey: ', val)
+    return val.userId
   }
 
   public potentialConnectionsCount() {
