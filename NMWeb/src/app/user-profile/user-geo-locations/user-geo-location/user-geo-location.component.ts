@@ -29,6 +29,7 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
 
 
   @ViewChild('latitudeLongitude') latitudeLongitudeControl
+  value: GeoLocation
 
   constructor(
     public geoLocationService: GeoLocationService,
@@ -84,6 +85,7 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(value: GeoLocation) {
+    this.value = value
     this.setInputText(geoLocationToString(value))
   }
 

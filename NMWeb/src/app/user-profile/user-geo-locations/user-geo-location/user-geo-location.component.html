@@ -18,7 +18,9 @@
 
   </md-input-container>-->
 
-  <md-input-container >
+  <md-input-container
+  >
+    <!-- style="display: none" -->
 
     <md-placeholder>
       Latitude, Longitude
@@ -38,6 +40,7 @@
     md-raised-button
     (click)="openLocationPicker()"
     color="primary"
+    [disabled]="! value"
   >
     <i class="ion-ios-location" ></i>
     &nbsp;
