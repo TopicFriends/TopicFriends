@@ -50,10 +50,10 @@
     "no-empty": false,
     "no-empty-interface": false, // it is ok to use an interface as alias, for a future facade
     "no-eval": true,
-    "no-inferrable-types": [
-      true,
-      "ignore-params"
-    ],
+//    "no-inferrable-types": [
+//      true,
+//      "ignore-params"
+//    ],
     "no-misused-new": true,
     "no-non-null-assertion": true,
     "no-shadowed-variable": true,
