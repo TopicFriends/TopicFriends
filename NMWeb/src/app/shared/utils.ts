@@ -22,3 +22,13 @@ export function getDictionaryValuesAsArray<T>(dictionary: { [p: string]: T }): T
   }
   return values;
 }
+
+export function isNullOrUndefinedOrWhiteSpace(s: string) {
+  if ( ! s ) {
+    return true
+  }
+  if ( s.trim() === '' ) {
+    return true
+  }
+  return false
+}
