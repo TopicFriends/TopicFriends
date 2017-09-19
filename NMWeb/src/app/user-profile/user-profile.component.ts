@@ -150,8 +150,9 @@ export class UserProfileComponent implements OnInit {
   }
 
   hasUnsavedChanges() {
+    console.log('hasUnsavedChanges, userProfileInputs:', this.userProfileInputs)
     // return false
-    return this.formGroup.dirty
+    return this.userProfileInputs && this.userProfileInputs.isEditable && this.formGroup.dirty
   }
 
 }
