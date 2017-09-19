@@ -67,6 +67,7 @@ export class TopicsService {
     tagNoIcon('Angular Reactive Forms'), tagNoIcon('Angular Template-Driven Forms'),
     webPack,
     tagNoIcon('Web Development'), tagNoIcon('CMS'), tagNoIcon('Selenium'), tagNoIcon('Blog Software'),
+    tagNoIcon('Blogging'),
     tagNoIcon('VR'),
     'JavaScript', tag('ECMAScript', 'es6'),
     'Elm', 'Scala', tag('.NET', 'dotnet'), tag('.NET Core', null), 'Docker', 'ElasticSearch',
@@ -84,6 +85,8 @@ export class TopicsService {
     tagNoIcon('Cryptocurrency'), tagNoIcon('Blockchain'), tagNoIcon('Cryptography'),
     'Cordova', 'PhoneGap',
     tagNoIcon('Trabajador Autónomo (Spain)'),
+    tagNoIcon('Game Design'),
+    tagNoIcon('Game Development'),
     tagNoIcon('Geolocation'),
     tagNoIcon('Social graphs'), 'Open Graph',
     tagNoIcon('NoSQL'), 'PostgreSQL', 'MySQL', 'Oracle', // TODO: sqlite
