@@ -40,7 +40,7 @@
     md-raised-button
     (click)="openLocationPicker()"
     color="primary"
-    [disabled]="! value"
+    [disabled]="(! value) && (! userProfileInputs.isEditable)"
   >
     <i class="ion-ios-location" ></i>
     &nbsp;
