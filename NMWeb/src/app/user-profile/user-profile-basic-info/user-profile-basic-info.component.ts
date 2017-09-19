@@ -41,7 +41,8 @@ export class UserProfileBasicInfoComponent implements OnInit {
         if ( user ) {
           if ( ! this.wasNameSetByUser() ) {
             this.displayName.setValue(user.displayName);
-            this.thisFormGroup.markAsDirty(); // should encourage new users to save to create profile
+            // we cannot decide if unsaved, because firebase data might have not yet arrived:
+            // this.thisFormGroup.markAsDirty(); // should encourage new users to save to create profile
           }
           this.photoUrl = user.photoURL;
           // FIXME: only do this if userId not from router
@@ -63,11 +64,12 @@ export class UserProfileBasicInfoComponent implements OnInit {
 
   private applyFromDb(userProfile: UserProfile) {
     if ( userProfile ) {
+
       if (userProfile.photoUrl && !this.photoUrl ) {
         this.photoUrl = userProfile.photoUrl
       }
       this.thisFormGroup.patchValue(userProfile)
-      if ( ! userProfile.displayName ) {
+      if ( ! userProfile.displayName ) { // consider: if ( ! userProfile.exists() ) {
         this.thisFormGroup.markAsDirty() // User has not yet provided name; we can prompt that about unsaved to prevent leaving
       } else {
         this.thisFormGroup.markAsPristine()
