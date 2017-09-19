@@ -118,7 +118,7 @@ export class ItemListInputComponent implements OnInit {
       sort: [{field: 'name', direction: 'asc'}],
       limit: 50
     });
-    console.log('sifterr', sifterResults)
+    // console.log('sifterr', sifterResults)
     let fullResults = []
     for ( let result of sifterResults.items ) {
       let resultById = this.inputTagList[result.id]

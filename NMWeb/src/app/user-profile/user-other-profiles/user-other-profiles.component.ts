@@ -84,7 +84,7 @@ export class UserOtherProfilesComponent implements OnInit {
     let ret = []
     for ( let key in this.descriptorsMap ) {
       if (this.descriptorsMap.hasOwnProperty(key)) {
-        console.log('key: ', key)
+        // console.log('key: ', key)
         let descriptor = this.descriptorsMap[key]
         descriptor.id = key
         ret.push(descriptor)

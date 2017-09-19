@@ -41,7 +41,7 @@ export class DomainDbService {
 
   listUserDataWithDetails(): Observable<UserData[]> {
     return this.listUserProfile().map(list => {
-      console.log('list', list)
+      // console.log('list', list)
       return list.map(profile => {
           const id = (profile as any).$key;
           const mapped: UserData = new UserData(
