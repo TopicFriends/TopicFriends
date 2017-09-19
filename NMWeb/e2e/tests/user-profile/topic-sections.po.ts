@@ -1,10 +1,12 @@
 import {TestWait} from '../../test-support/wait'
 import {UserProfilePage} from './user-profile.po'
 import {$, $$, browser, ElementArrayFinder, ElementFinder} from 'protractor'
+import {ProtractorWrapper} from '../../test-support/protractor-wrapper'
 
 export class TopicsSections {
   private wait = new TestWait()
   private profilePage = new UserProfilePage()
+  private ptor = new ProtractorWrapper()
 
   readonly hackathonSectionSelector       = 'app-topic-group-card[formcontrolname="hackathon"]'
   readonly pairProgrammingSectionSelector = 'app-topic-group-card[formcontrolname="pairProgramming"]'
@@ -22,6 +24,7 @@ export class TopicsSections {
   }
 
   inputTopic(topicSectionSelector: string, topic: string) {
+    this.wait.forElementClickable($(topicSectionSelector))
     return this.assembleTopicInputLocator(topicSectionSelector).sendKeys(topic)
   }
 
@@ -32,14 +35,18 @@ export class TopicsSections {
   inputMultipleTagsInOneSection(topicsSection: string, topics: Array<string>): Array<string> {
     let selectedTopics: Array<string> = []
     let topicInput = this.assembleTopicInputLocator(topicsSection)
+    this.wait.forElementPresent($(topicsSection))
 
     topics.forEach(topic => {
       this.inputTopic(topicsSection, topic)
       browser.sleep(200)
       this.profilePage.selectFirstSuggestedTag(topicInput).then(tag => {
         selectedTopics.push(tag)
-      }).then(() => { topicInput.clear() })
+        topicInput.clear()
+      })
     })
+
+    this.wait.forElementCount(this.returnAllSelectedTopicTags(topicsSection), topics.length)
 
     return selectedTopics
   }
@@ -50,7 +57,7 @@ export class TopicsSections {
       this.allTagsClosings().count().then((count) => {
         while (count > 0) {
 
-          this.allTagsClosings().first().click()
+          this.ptor.click(this.allTagsClosings().first())
           browser.sleep(200)
           count--
         }

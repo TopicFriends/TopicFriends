@@ -84,7 +84,6 @@ describe('Symmetric topics on Profile page: User', () => {
   it('can select multiple topics: Typescript, .NET, universal', () => {
     let topics = ['Typescript', '.NET', 'universal']
     let hackathon = topicSections.hackathonSectionSelector
-    wait.forElementPresent($(hackathon))
 
     let selectedTopics = topicSections.inputMultipleTagsInOneSection(hackathon, topics)
     assert.sectionTagsMatch(hackathon, selectedTopics)

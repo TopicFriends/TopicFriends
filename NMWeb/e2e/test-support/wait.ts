@@ -15,10 +15,8 @@ export class TestWait {
   }
 
   forElementCount(elementArray: ElementArrayFinder, expectedCount: number): any {
-    return browser.wait(() =>
-      elementArray.count().then((actualCount) => {
-        return expectedCount === actualCount
-      }), this.defaultWaitTimeout, 'false')
+    return browser.wait(this.needTrue(elementArray, expectedCount),
+      this.defaultWaitTimeout, 'false');
   }
 
   forElementClickable(element: ElementFinder) {
@@ -39,4 +37,11 @@ export class TestWait {
   forTextPresent(element: ElementFinder, text: string): any {
     return this.forElementText(element, text)
   }
+
+  private needTrue(element: ElementArrayFinder, expectedCount: number){
+    return element.count().then((elementCount) => {
+      return elementCount >= expectedCount;
+    });
+  };
+
 }

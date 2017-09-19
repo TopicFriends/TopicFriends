@@ -9,7 +9,7 @@ export class UserProfilePage {
   userProfileSelector                      = 'app-user-profile'
   userProfile: ElementFinder               = $(this.userProfileSelector)
   userProfileBasicInfo: ElementFinder      = $('app-user-profile-basic-info')
-  userProfileDescription: ElementFinder    = $('textarea[formControlName="description"]')
+  userProfileDescription: ElementFinder    = $('textarea[placeholder="My Description"]')
   userProfileWhatYouExpect: ElementFinder  = $('textarea[formControlName="whatDoYouExpectFromTheApp"]')
 
   pleaseLogInButton: ElementFinder         = $(this.userProfileSelector + ' button')

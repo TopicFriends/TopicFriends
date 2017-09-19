@@ -2,18 +2,21 @@ import {UserProfilePage} from './user-profile.po'
 import {TestCleanUp} from '../../test-support/clean-up'
 import {TestAssertions} from '../../test-support/assertions'
 import {LoginPage} from '../login/login.po'
+import {ProtractorWrapper} from '../../test-support/protractor-wrapper'
 
 describe('Profile page: User', () => {
   let page: UserProfilePage
   let loginPage: LoginPage
   let cleanUp: TestCleanUp
   let assert: TestAssertions
+  let ptor: ProtractorWrapper
 
   beforeAll(() => {
     page = new UserProfilePage()
     loginPage = new LoginPage()
     cleanUp = new TestCleanUp()
     assert = new TestAssertions()
+    ptor = new ProtractorWrapper()
   });
 
   it('can see button with text "Please log in, to access your profile" when not logged in', () => {
@@ -24,17 +27,17 @@ describe('Profile page: User', () => {
   });
 
   // it('can fill and save all text fields in profile', () => {
-  //   // page.navigateTo().then(() => {
-  //   //   loginPage.loginWhenAlreadySignedInToGoogle()
-  //   // });
+  //   page.navigateTo().then(() => {
+  //     loginPage.loginWhenAlreadySignedInToGoogle()
+  //   });
   //
   //   let description = 'This is my test description'
   //   let userExpects = 'This is test of what I expect from the app'
   //   let linkedInLink = 'justAText123'
   //
-  //   // page.userProfileDescription.sendKeys(description)
-  //   // page.userProfileWhatYouExpect.sendKeys(userExpects)
-  //   // page.linkedInLinkInput.sendKeys(linkedInLink);
+  //   ptor.sendKeys(page.userProfileDescription, description)
+  //   ptor.sendKeys(page.userProfileWhatYouExpect, userExpects)
+  //   ptor.sendKeys(page.linkedInLinkInput, linkedInLink)
   //
   //   page.saveProfileWithKeyboard()
   //   page.navigateTo().then(() => {
