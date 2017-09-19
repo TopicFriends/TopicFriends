@@ -5,7 +5,7 @@ import {UserProfile, UserProfileService} from '../user-profile.service'
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {DomainDbService} from '../../domain-db.service'
 import {UserProfileInputs} from '../user-profile.component'
-import {setFormControlEnabled} from '../../shared/utils'
+import {isNullOrUndefinedOrWhiteSpace, setFormControlEnabled} from '../../shared/utils'
 
 @Component({
   selector: 'app-user-profile-basic-info',
@@ -36,11 +36,13 @@ export class UserProfileBasicInfoComponent implements OnInit {
     this.displayName = <FormControl>this.thisFormGroup.get('displayName')
     setFormControlEnabled(this.displayName, this.userProfileInputs.isEditable)
 
-    // fixme: only if not form router usr id
     if ( ! this.userProfileInputs.isUserIdFromRouter ) {
       this.authService.user.subscribe((user) => {
         if ( user ) {
-          this.displayName.setValue(user.displayName);
+          if ( ! this.wasNameSetByUser() ) {
+            this.displayName.setValue(user.displayName);
+            this.thisFormGroup.markAsDirty(); // should encourage new users to save to create profile
+          }
           this.photoUrl = user.photoURL;
           // FIXME: only do this if userId not from router
         }
@@ -48,17 +50,31 @@ export class UserProfileBasicInfoComponent implements OnInit {
     }
 
     this.domainDbService.userProfileById(this.userProfileInputs.userId).subscribe((userProfile: UserProfile) => {
+      console.log('userProfileById: ', userProfile)
       this.applyFromDb(userProfile)
     });
 
   }
 
+  private wasNameSetByUser() {
+    // return false; // FIXME
+    return ! isNullOrUndefinedOrWhiteSpace( this.displayName.value );
+  }
+
   private applyFromDb(userProfile: UserProfile) {
-    if (userProfile.photoUrl && !this.photoUrl ) {
-      this.photoUrl = userProfile.photoUrl
+    if ( userProfile ) {
+      if (userProfile.photoUrl && !this.photoUrl ) {
+        this.photoUrl = userProfile.photoUrl
+      }
+      this.thisFormGroup.patchValue(userProfile)
+      if ( ! userProfile.displayName ) {
+        this.thisFormGroup.markAsDirty() // User has not yet provided name; we can prompt that about unsaved to prevent leaving
+      } else {
+        this.thisFormGroup.markAsPristine()
+      }
+    } else {
+      this.thisFormGroup.markAsDirty() // User has not yet provided anything, we can prompt unsaved to prevent leaving
     }
-    this.thisFormGroup.patchValue(userProfile)
-    this.thisFormGroup.markAsPristine()
     this.userProfileReceived = true
   }
 
