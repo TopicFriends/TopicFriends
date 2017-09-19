@@ -23,7 +23,7 @@ export class SupplyDemandTemplate{
 export class UserTemplateComponent implements OnInit {
 
   @Input('userProfile') _userPublicProfile: UserData;
-  @Input() userId
+  userId
   // @Input('userProfile') _userPublicProfile: UserProfile = new UserProfile();
 
   _whatUserWants: SupplyDemandTemplate[] = [];
@@ -36,6 +36,7 @@ export class UserTemplateComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.userId = this._userPublicProfile.userId
     this._whatUserWants = this._getWhatUserWants();
     this._userPublicProfile.descriptions.subscribe(it => {
       this.userDescriptions = it

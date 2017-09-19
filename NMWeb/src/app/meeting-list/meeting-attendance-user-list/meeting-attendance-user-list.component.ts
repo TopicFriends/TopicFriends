@@ -12,7 +12,8 @@ import {DbListReadOnly} from '../../db.service';
 })
 export class MeetingAttendanceUserListComponent implements OnInit {
 
-  userList: DbListReadOnly<MeetingAttendanceByUserWithUserData>;
+  userListObs: DbListReadOnly<MeetingAttendanceByUserWithUserData>;
+  userList: MeetingAttendanceByUserWithUserData[];
   attendeesCount: number = 0;
 
   @Input() meetingId: string;
@@ -21,16 +22,18 @@ export class MeetingAttendanceUserListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userList =
+    this.userListObs =
       this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meetingId);
 
-    this.userList.subscribe(list => {
+    this.userListObs.subscribe(list => {
       this.attendeesCount = list.length;
+      this.userList = list
       console.log('fetchMeetingAttendanceByUserWithUserData subscribed: ', list);
     });
   }
 
   trackByKey(idx, val: MeetingAttendanceByUserWithUserData) {
     return val.meetingAttendanceByUser.$key
+    // TODO: change to val.userData.userId
   }
 }
