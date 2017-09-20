@@ -61,6 +61,7 @@ export class GeoLocation {
     public latitude: number,
     public longitude: number,
     public title?: Observable<string>,
+    public id?: string,
   ) {
     if ( this.title === undefined ) {
       this.title = null; // for firebase

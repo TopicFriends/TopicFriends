@@ -38,6 +38,8 @@
 
           <ng-template ngFor let-userLocation [ngForOf]="allUsersGeoLocationsFlattened">
             <agm-marker
+              [markerClickable]="true"
+              (markerClick)="onMarkerClick(userLocation)"
               [latitude]="userLocation.latitude"
               [longitude]="userLocation.longitude"
               [label]="userLocation.title | async"

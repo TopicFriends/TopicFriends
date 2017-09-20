@@ -7,6 +7,8 @@ import {GeoLocationService} from '../../shared/geo-location.service'
 import {UserGeoLocationsService} from '../../shared/user-geo-locations.service'
 
 import { } from 'googlemaps';
+import {Router} from '@angular/router'
+import {USER_ROUTE_WITH_TRAILING_SLASH} from '../../user-profile/user-profile.module'
 
 export class UserCoords {
   user?: UserProfile
@@ -31,6 +33,7 @@ export class UsersMapComponent implements OnInit {
     private geoLocationService: GeoLocationService,
     private userGeoLocationsService: UserGeoLocationsService,
     private userProfileService: UserProfileService,
+    private router: Router,
   ) {}
   ngOnInit() {
     this.geoLocationService.getPosition().subscribe(
@@ -57,9 +60,11 @@ export class UsersMapComponent implements OnInit {
                 const subLocationMulti: GeoLocation = subLocation[subLocationMultiKey]
                 // console.log('getAllUserGeoLocations: subLocationMulti', subLocationMulti)
                 if ( subLocationMulti ) {
-                  subLocationMulti.title = this.userProfileService.userDataById((<any>userLocation).$key).profile.map((it: UserProfile) => {
+                  let userId = (<any>userLocation).$key
+                  subLocationMulti.title = this.userProfileService.userDataById(userId).profile.map((it: UserProfile) => {
                     return it.displayName
                   })
+                  subLocationMulti.id = userId
                   allUsersGeoLocationsFlattened.push(subLocationMulti)
                 }
               }
@@ -104,6 +109,13 @@ export class UsersMapComponent implements OnInit {
 
   createLatLng(latitude, longitude) {
     return new google.maps.LatLng(latitude, longitude);
+  }
+
+  onMarkerClick(marker: GeoLocation) {
+    // window.alert('Click ' + JSON.stringify(marker))
+    console.log('click', marker)
+    // window.alert('Click ' + marker)
+    this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.id])
   }
 
 }
