@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {UserData, UserDescriptions, UserProfile} from 'app/user-profile/user-profile.service';
-import {TopicInterest, UserInterests} from '../../user-profile/user-interests'
+import {UserData, UserDescriptions, UserProfile, UserProfileService} from 'app/user-profile/user-profile.service';
+import {MatchResults, TopicInterest, UserInterests} from '../../user-profile/user-interests'
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
 import {TagInclusions} from '../../shared/TagInclusions'
@@ -27,15 +27,23 @@ export class UserTemplateComponent implements OnInit {
   // @Input('userProfile') _userPublicProfile: UserProfile = new UserProfile();
 
   _whatUserWants: SupplyDemandTemplate[] = [];
+  loggedUserInterests: UserInterests;
   userInterests: UserInterests;
   userDescriptions: UserDescriptions;
   profileBasicInfo: UserProfile;
   _expand: boolean;
   supplyDemand
+  matchResults: MatchResults
 
-  constructor() { }
+  constructor(
+    private userProfileService: UserProfileService
+  ) { }
 
   ngOnInit() {
+    this.userProfileService.getUserInterestsOnceLoggedIn().subscribe(interests => {
+      this.loggedUserInterests = UserInterests.fromJson(interests)
+      this.calculateMatchScoreIfPossible()
+    })
     this.userId = this._userPublicProfile.userId
     this._whatUserWants = this._getWhatUserWants();
     this._userPublicProfile.descriptions.subscribe(it => {
@@ -43,15 +51,24 @@ export class UserTemplateComponent implements OnInit {
     })
     this._userPublicProfile.interests.subscribe(it => {
       this.userInterests = it;
+      this.calculateMatchScoreIfPossible()
       // console.log('userPublicProfile.interests.subscribe', it)
       this.supplyDemand =
         this.userInterests &&
         this.userInterests.byInteractionMode &&
         this.userInterests.byInteractionMode.supplyDemand
+
+
     });
     this._userPublicProfile.profile.subscribe(it => {
       this.profileBasicInfo = it
     })
+  }
+
+  private calculateMatchScoreIfPossible() {
+    if ( this.loggedUserInterests && this.userInterests ) {
+      this.matchResults = this.loggedUserInterests.getInterestsMatchWith(this.userInterests)
+    }
   }
 
   extractTags(dictionary: TagInclusions): TopicInterest[] {

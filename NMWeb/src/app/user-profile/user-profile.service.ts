@@ -5,6 +5,7 @@ import {DbObject} from '../db.service'
 import {DomainDbService} from '../domain-db.service'
 import {TopicInterest, UserInterests} from './user-interests'
 import {DbHistory, HasDbHistory} from '../util/history'
+import 'rxjs/add/observable/never'
 
 export function createTopicsDictionary(topics: TopicInterest[]) {
   let ret = {};
@@ -299,4 +300,13 @@ export class UserProfileService {
     return this.db.userDataById(userId)
   }
 
+  getUserInterestsOnceLoggedIn() {
+    return this.authService.user.switchMap(user => {
+      if ( user ) {
+        return this.getUserInterests()
+      } else {
+        return <any>Observable.never
+      }
+    })
+  }
 }

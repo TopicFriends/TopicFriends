@@ -8,11 +8,13 @@
       <!--<h3>-->
       <div class="user-display-name">
         <a routerLink="/user/{{userId}}">{{profileBasicInfo?.displayName || profileBasicInfo?.name}}</a>
+        &nbsp; MatchScore: {{matchResults ? matchResults?.matchScore : '(Please Log In to see MatchScore)'}}
       </div>
       <!--</h3>-->
     </md-card-title>
     <md-card-subtitle>
       {{userDescriptions?.descriptions?.myDescription?.text || 'No description yet'}}
+
       <!--{{profileBasicInfo?.role}}-->
       <!--<span *ngIf="profileBasicInfo?.company">-->
                 <!--at-->
