@@ -39,7 +39,7 @@ export class UserProfileBasicInfoComponent implements OnInit {
     if ( ! this.userProfileInputs.isUserIdFromRouter ) {
       this.authService.user.subscribe((user) => {
         if ( user ) {
-          if ( ! this.wasNameSetByUser() ) {
+          if ( ! this.isDisplayNameFormControlFilled() /* this check prevents overwriting of user-entered name by the default */ ) {
             this.displayName.setValue(user.displayName);
             // we cannot decide if unsaved, because firebase data might have not yet arrived:
             // this.thisFormGroup.markAsDirty(); // should encourage new users to save to create profile
@@ -57,7 +57,7 @@ export class UserProfileBasicInfoComponent implements OnInit {
 
   }
 
-  private wasNameSetByUser() {
+  private isDisplayNameFormControlFilled() {
     // return false; // FIXME
     return ! isNullOrUndefinedOrWhiteSpace( this.displayName.value );
   }
@@ -65,7 +65,7 @@ export class UserProfileBasicInfoComponent implements OnInit {
   private applyFromDb(userProfile: UserProfile) {
     if ( userProfile ) {
 
-      if (userProfile.photoUrl && !this.photoUrl ) {
+      if ( userProfile.photoUrl && !this.photoUrl ) {
         this.photoUrl = userProfile.photoUrl
       }
       this.thisFormGroup.patchValue(userProfile)
