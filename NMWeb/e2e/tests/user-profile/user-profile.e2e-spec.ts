@@ -36,19 +36,16 @@ describe('Profile page: User', () => {
   //   });
   //
   //   let description = 'This is my test description'
-  //   let userExpects = 'This is test of what I expect from the app'
   //   let linkedInLink = 'justAText123'
   //
   //   ptor.sendKeys(page.userProfileDescription, description)
-  //   ptor.sendKeys(page.userProfileWhatYouExpect, userExpects)
   //   ptor.sendKeys(page.linkedInLinkInput, linkedInLink)
   //
   //   page.saveProfileWithKeyboard()
-  //   page.navigateTo().then(() => {
-  //     // expect(page.userProfileDescription.getText()).toEqual(description)
-  //     // expect(page.userProfileWhatYouExpect.getText()).toEqual(userExpects)
-  //     // expect(page.linkedInLinkInput.getText()).toEqual(linkedInLink)
-  //   })
+  //   // page.navigateTo().then(() => {
+  //   //   // expect(page.userProfileDescription.getText()).toEqual(description)
+  //   //   // expect(page.linkedInLinkInput.getText()).toEqual(linkedInLink)
+  //   // })
   // });
 
   // afterAll(() => {

@@ -1,4 +1,4 @@
-import {$, browser, ElementFinder, protractor} from 'protractor'
+import {$, browser, by, element, ElementFinder, protractor} from 'protractor'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
 import {TestWait} from '../../test-support/wait'
@@ -9,13 +9,14 @@ export class UserProfilePage {
   userProfileSelector                      = 'app-user-profile'
   userProfile: ElementFinder               = $(this.userProfileSelector)
   userProfileBasicInfo: ElementFinder      = $('app-user-profile-basic-info')
-  userProfileDescription: ElementFinder    = $('textarea[placeholder="My Description"]')
+  userProfileDescription: ElementFinder    = $('textarea[id="md-input-3"]')
   userProfileWhatYouExpect: ElementFinder  = $('textarea[formControlName="whatDoYouExpectFromTheApp"]')
 
   pleaseLogInButton: ElementFinder         = $(this.userProfileSelector + ' button')
   saveProfileButton: ElementFinder         = $('#saveProfile')
 
-  linkedInLinkInput: ElementFinder         = $('#linkedinLink input')
+  linkedInLinkInput: ElementFinder         = $('i[class="icon ion-social-linkedin"]').
+                                             element(by.xpath('ancestor::md-input-container/descendant::input'))
 
   //TOPICS
   markedTopicFromSelectList: ElementFinder = $('md-option.mat-active')
@@ -35,7 +36,8 @@ export class UserProfilePage {
   }
 
   saveProfileWithKeyboard() {
-    this.userProfile.sendKeys(protractor.Key.chord(protractor.Key.CONTROL, 'S'))
+    this.userProfileDescription.click()
+    this.userProfileBasicInfo.sendKeys(protractor.Key.chord(protractor.Key.CONTROL, 'S'))
   }
 
   expectTopicTagSelected(tag?: ElementFinder) { // FIXME
@@ -47,6 +49,7 @@ export class UserProfilePage {
 
   selectFirstSuggestedTag(element: ElementFinder): Promise<string> {
     let optionSelected
+    this.wait.forElementPresent(element)
     element.sendKeys(protractor.Key.ARROW_DOWN)
     this.wait.forElementPresent(this.markedTopicFromSelectList)
     optionSelected = this.markedTopicFromSelectList.getText()

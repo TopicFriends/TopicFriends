@@ -5,7 +5,7 @@ import {TestAssertions} from '../../test-support/assertions'
 import {TestCleanUp} from '../../test-support/clean-up'
 import {TestWait} from '../../test-support/wait'
 import {TestSupport} from '../../test-support/test-support'
-import {$, browser, ExpectedConditions} from 'protractor'
+import {$, $$, browser, ExpectedConditions} from 'protractor'
 import {ProtractorWrapper} from '../../test-support/protractor-wrapper'
 
 describe('Symmetric topics on Profile page: User', () => {
@@ -108,8 +108,8 @@ describe('Symmetric topics on Profile page: User', () => {
 
     ptor.click(page.saveProfileButton)
     page.navigateTo().then(() => {
-      browser.sleep(3000)
-      wait.forElementPresent($(topicSections.tagSelector)).then(() => {
+      // browser.sleep(3000)
+      wait.forElementCount($$(topicSections.tagSelector),5).then(() => {
         assert.sectionTagsMatch(topicsSectionHackathon, selectedTopicsHackathon)
         assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
         assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
@@ -130,10 +130,9 @@ describe('Symmetric topics on Profile page: User', () => {
     let topicsSectionPairProgramming = topicSections.pairProgrammingSectionSelector
     let selectedTopicsPairProgramming = topicSections.inputMultipleTagsInOneSection(topicsSectionPairProgramming, topicsPairProgramming)
 
-
-    page.saveProfileButton.click()
+    ptor.click(page.saveProfileButton)
     page.navigateTo().then(() => {
-      wait.forElementPresent($(topicSections.tagSelector)).then(() => {
+      wait.forElementCount($$(topicSections.tagSelector),5).then(() => {
         assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
         assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
       })
