@@ -36,7 +36,7 @@ describe('Symmetric topics on Profile page: User', () => {
   function testTopicTagCanBeAdded(topic: string) {
     let exchange = topicSections.exchangeSectionSelector
     topicSections.inputTopic(exchange, topic)
-    browser.sleep(300)
+    browser.sleep(500)
     let selectedTopic = page.selectFirstSuggestedTag(topicSections.assembleTopicInputLocator(exchange))
     let expectedTopic = topicSections.returnSelectedSectionTags(exchange)
 
@@ -107,9 +107,10 @@ describe('Symmetric topics on Profile page: User', () => {
     assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
 
     ptor.click(page.saveProfileButton)
+    let tagsCount = topicsHackathon.length + topicsPairProgramming.length + topicsExchange.length
     page.navigateTo().then(() => {
       // browser.sleep(3000)
-      wait.forElementCount($$(topicSections.tagSelector),5).then(() => {
+      wait.forElementCount($$(topicSections.tagSelector),tagsCount).then(() => {
         assert.sectionTagsMatch(topicsSectionHackathon, selectedTopicsHackathon)
         assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
         assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
@@ -131,8 +132,9 @@ describe('Symmetric topics on Profile page: User', () => {
     let selectedTopicsPairProgramming = topicSections.inputMultipleTagsInOneSection(topicsSectionPairProgramming, topicsPairProgramming)
 
     ptor.click(page.saveProfileButton)
+    let tagsCount = topicsHackathon.length + topicsPairProgramming.length
     page.navigateTo().then(() => {
-      wait.forElementCount($$(topicSections.tagSelector),5).then(() => {
+      wait.forElementCount($$(topicSections.tagSelector),tagsCount).then(() => {
         assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
         assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
       })
