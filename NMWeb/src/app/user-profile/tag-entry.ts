@@ -18,7 +18,8 @@ export class TagEntry {
   constructor(
     public name: string,
     // public topicId?,
-    logo?: string
+    logo?: string,
+    public website?: string,
   ) {
     this.id = name // TODO escape e.g. + (For c++)
     if ( logo === null ) {
