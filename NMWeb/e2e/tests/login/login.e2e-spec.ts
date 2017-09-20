@@ -30,7 +30,8 @@ describe('Login page: User', () => {
     page.navigateTo()
     wait.forElementPresent(page.loginMenuButton)
 
-    expect(page.confirmUserLoggedIn()).toBeTruthy()
+    expect(page.confirmUserLoggedIn()).toBeTruthy(
+      'User not logged in')
   });
 
   it('can logout', () => {

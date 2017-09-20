@@ -1,6 +1,5 @@
 import {LoginPage} from '../login/login.po'
 import {EventsPage} from './events.po'
-import {$$} from 'protractor'
 import {TestWait} from '../../test-support/wait'
 import {TestAssertions} from '../../test-support/assertions'
 
@@ -24,7 +23,8 @@ describe('Events: User', () => {
   it('can see events list with at least one event', () => {
     page.navigateTo().then(() => {
       wait.forElementPresent(page.eventItem)
-      expect($$(page.eventSelector).count()).toBeGreaterThanOrEqual(1)
+      expect(page.allEvents().count()).toBeGreaterThanOrEqual(1,
+        'No events found')
     })
   })
 

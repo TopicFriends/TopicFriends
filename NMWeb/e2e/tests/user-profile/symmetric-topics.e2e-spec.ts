@@ -40,6 +40,7 @@ describe('Symmetric topics on Profile page: User', () => {
     let selectedTopic = page.selectFirstSuggestedTag(topicSections.assembleTopicInputLocator(exchange))
     let expectedTopic = topicSections.returnSelectedSectionTags(exchange)
 
+    console.log('section: exchange')
     assert.tagsMatch(selectedTopic, expectedTopic)
   }
 
@@ -74,6 +75,7 @@ describe('Symmetric topics on Profile page: User', () => {
 
     let expectedTopic = topicSections.returnSelectedSectionTags(topicSections.pairProgrammingSectionSelector)
 
+    console.log('section: pairProgramming')
     assert.tagsMatch(selectedTopic, expectedTopic);
   });
 
@@ -86,6 +88,8 @@ describe('Symmetric topics on Profile page: User', () => {
     let hackathon = topicSections.hackathonSectionSelector
 
     let selectedTopics = topicSections.inputMultipleTagsInOneSection(hackathon, topics)
+
+    console.log('section: hackathon')
     assert.sectionTagsMatch(hackathon, selectedTopics)
   });
 
@@ -94,23 +98,27 @@ describe('Symmetric topics on Profile page: User', () => {
     let topicsSectionHackathon = topicSections.hackathonSectionSelector
     wait.forElementPresent($(topicsSectionHackathon))
     let selectedTopicsHackathon = topicSections.inputMultipleTagsInOneSection(topicsSectionHackathon, topicsHackathon)
+    console.log('section: hackathon')
     assert.sectionTagsMatch(topicsSectionHackathon, selectedTopicsHackathon)
 
     let topicsPairProgramming = ['Java', 'unity', 'ui', 'Protractor']
     let topicsSectionPairProgramming = topicSections.pairProgrammingSectionSelector
     let selectedTopicsPairProgramming = topicSections.inputMultipleTagsInOneSection(topicsSectionPairProgramming, topicsPairProgramming)
+    console.log('section: pairProgramming')
     assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
 
     let topicsExchange = ['SQL']
     let topicsSectionExchange = topicSections.exchangeSectionSelector
     let selectedTopicsExchange = topicSections.inputMultipleTagsInOneSection(topicsSectionExchange, topicsExchange)
+
+    console.log('section: exchange')
     assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
 
     ptor.click(page.saveProfileButton)
-    let tagsCount = topicsHackathon.length + topicsPairProgramming.length + topicsExchange.length
+    let expectedTagsCount = topicsHackathon.length + topicsPairProgramming.length + topicsExchange.length
     page.navigateTo().then(() => {
       // browser.sleep(3000)
-      wait.forElementCount($$(topicSections.tagSelector),tagsCount).then(() => {
+      wait.forElementCount($$(topicSections.tagSelector), expectedTagsCount).then(() => {
         assert.sectionTagsMatch(topicsSectionHackathon, selectedTopicsHackathon)
         assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
         assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
@@ -132,10 +140,13 @@ describe('Symmetric topics on Profile page: User', () => {
     let selectedTopicsPairProgramming = topicSections.inputMultipleTagsInOneSection(topicsSectionPairProgramming, topicsPairProgramming)
 
     ptor.click(page.saveProfileButton)
-    let tagsCount = topicsHackathon.length + topicsPairProgramming.length
+    let expectedTagsCount = topicsHackathon.length + topicsPairProgramming.length
     page.navigateTo().then(() => {
-      wait.forElementCount($$(topicSections.tagSelector),tagsCount).then(() => {
+      wait.forElementCount($$(topicSections.tagSelector), expectedTagsCount).then(() => {
+        console.log('section: pairProgramming')
         assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
+
+        console.log('section: exchange')
         assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
       })
     })
@@ -149,7 +160,8 @@ describe('Symmetric topics on Profile page: User', () => {
     page.navigateTo().then(() => {
       wait.forElementPresent(page.userProfileBasicInfo).then(() => {
         browser.sleep(3000)
-        expect(topicSections.allTagsClosings().count()).toEqual(0)
+        expect(topicSections.allTagsClosings().count()).toBe(0,
+          'Not all tags removed')
       })
     })
   });

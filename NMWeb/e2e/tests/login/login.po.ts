@@ -51,7 +51,7 @@ export class LoginPage {
     this.enterGoogleUsername()
     this.enterGooglePassword()
     this.utils.switchTabs(0).then(() => {
-      expect(this.confirmUserLoggedIn()).toBeTruthy()
+      expect(this.confirmUserLoggedIn()).toBeTruthy('User not logged in')
     })
   }
 
@@ -67,7 +67,7 @@ export class LoginPage {
 
   confirmUserLoggedOut() {
     this.wait.forElementPresent(this.loginMenuButton);
-    expect(this.loginButtonWithUserName.isPresent()).toBeFalsy();
+    expect(this.loginButtonWithUserName.isPresent()).toBeFalsy('User not logged out');
   }
 
   private enterGooglePassword() {

@@ -13,4 +13,8 @@ export class EventsPage {
   navigateTo(): Promise<any> {
     return browser.get('meeting-list')
   }
+
+  allEvents() {
+    return $$(this.eventSelector)
+  }
 }
