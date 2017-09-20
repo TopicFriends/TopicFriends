@@ -26,7 +26,8 @@ describe('Profile page: User', () => {
     page.navigateTo().then(() => {
       support.acceptAlertIfAppears()
       assert.elementIsContainingText(page.pleaseLogInButton, 'Please log in, to access your profile')
-      expect(page.userProfileBasicInfo.isPresent()).toBeFalsy();   //TODO
+      expect(page.userProfileBasicInfo.isPresent()).toBeFalsy(
+        'User profile page didn\'t load.');
     });
   });
 

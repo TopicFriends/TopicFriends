@@ -23,14 +23,6 @@ export class UserProfilePage {
     // add supply/demand
   //ENDOF: TOPICS
 
-  // GEOLOCATION
-  whereILive  = $('textarea[formControlName="whereILive"]')
-  whereIWork  = $('textarea[formControlName="whereIWork"]')
-  whereIStudy = $('textarea[formControlName="whereIStudy"]')
-    //pick (for each)
-    //clear (for each)
-  // ENDOF: GEOLOCATION
-
   navigateTo(): Promise<any> {
     return browser.get('profile')
   }
@@ -48,11 +40,10 @@ export class UserProfilePage {
   }
 
   selectFirstSuggestedTag(element: ElementFinder): Promise<string> {
-    let optionSelected
     this.wait.forElementPresent(element)
     element.sendKeys(protractor.Key.ARROW_DOWN)
     this.wait.forElementPresent(this.markedTopicFromSelectList)
-    optionSelected = this.markedTopicFromSelectList.getText()
+    let optionSelected = this.markedTopicFromSelectList.getText()
     element.sendKeys(protractor.Key.ENTER)
 
     return optionSelected

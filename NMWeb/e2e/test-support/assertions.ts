@@ -1,12 +1,14 @@
-import {$, $$, ElementArrayFinder, ElementFinder} from 'protractor'
+import {$$, ElementArrayFinder, ElementFinder} from 'protractor'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
 import {TestWait} from './wait'
 import {TopicsSections} from '../tests/user-profile/topic-sections.po'
+import {TestSupport} from './test-support'
 
 export class TestAssertions
 {
   private wait = new TestWait()
+  private support = new TestSupport()
   private topicSections = new TopicsSections()
 
   tagsMatch(selectedTopic: Promise<string>, expectedTopic: ElementArrayFinder) {
@@ -22,22 +24,33 @@ export class TestAssertions
 
     this.wait.forElementCount(tagClosings, selectedTopics.length).then(() => {
       let expectedTopics: ElementArrayFinder = this.topicSections.returnSelectedSectionTags(topicsSection)
+      console.log('section: ' + topicsSection)
       this.allTopicsToMatch(selectedTopics, expectedTopics)
     })
   }
 
   elementIsContainingText(element: ElementFinder, text: string) {
-    expect(element.getText()).toEqual(text)
+    expect(element.getText()).toEqual(text, 'Element doesn\'t contain text: ' + text)
   }
 
   private allTopicsToMatch(selectedTopics: Array<string>, expectedTopics: ElementArrayFinder) {
+    // for(let i=0; i<selectedTopics.length; i++) {
+    //   console.log('Selected topic:' + selectedTopics[i])
+    // }
+
     expectedTopics.then((expTopics: ElementFinder[]) => {
-      expect(selectedTopics.length).toEqual(expTopics.length)
-      // console.log(selectedTopics.length, expTopics.length)
+      let selectedTopicsCount = selectedTopics.length
+      let expectedTopicsCount = expTopics.length
+      expect(selectedTopicsCount).toBe(expectedTopicsCount,
+        'Failed: ' + selectedTopicsCount + ' topics selected but ' + expectedTopicsCount + ' topics expected')
+      // console.log('selectedTopics.length, expTopics.length: ' + selectedTopics.length, expTopics.length)
 
       expTopics.forEach(topicPromise => {
         topicPromise.getText().then(topic => {
-          expect(selectedTopics.indexOf(' ' + topic) > -1).toBeTruthy()
+          console.log('Expected Topic: ' + topic)
+          // this.support.takeScreenshot('topic_' + topic)
+          expect(selectedTopics.indexOf(' ' + topic) > -1).toBe(true,
+            'Expected topic \'' + topic + '\' wasn\'t found in tags')
         })
       })
     })

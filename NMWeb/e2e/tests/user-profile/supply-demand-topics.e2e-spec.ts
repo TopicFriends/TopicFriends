@@ -40,6 +40,7 @@ describe('UserProfile: Supply-demand topics: User', () => {
 
     support.takeScreenshot(topic)
 
+    console.log('section: exchange')
     assert.tagsMatch(selectedTopic, expectedTopic)
   }
 
