@@ -4,7 +4,7 @@
 const { SpecReporter } = require('jasmine-spec-reporter');
 
 exports.config = {
-  allScriptsTimeout: 30000,
+  allScriptsTimeout: 60000,
   specs: [
     './e2e/**/login.e2e-spec.ts',
     './e2e/**/user-profile.e2e-spec.ts',
@@ -24,7 +24,7 @@ exports.config = {
     showColors: true,
     isVerbose: true,
     includeStackTrace: true,
-    defaultTimeoutInterval: 60000,
+    defaultTimeoutInterval: 30000,
     print: function() {}
   },
   onPrepare: function() {
@@ -37,6 +37,8 @@ exports.config = {
       })
     };
     browser.addMockModule('disableNgAnimate', disableNgAnimate);
+
+    browser.driver.manage().window().maximize();
 
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
