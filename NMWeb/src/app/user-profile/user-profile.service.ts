@@ -66,6 +66,9 @@ export class GeoLocation {
     if ( this.title === undefined ) {
       this.title = null; // for firebase
     }
+    if ( this.id === undefined ) {
+      this.id = null; // for firebase
+    }
   }
 
   static parseGeoString(geoString: string): GeoLocation {
