@@ -11,16 +11,20 @@
       <w>coords</w>
       <w>cyber</w>
       <w>decl</w>
+      <w>deliverability</w>
       <w>dotnet</w>
       <w>ecopreneurship</w>
       <w>eofline</w>
       <w>explainer</w>
+      <w>fiware</w>
       <w>forin</w>
       <w>geomarketing</w>
       <w>googleapis</w>
       <w>hoodie</w>
       <w>inferrable</w>
       <w>ionicons</w>
+      <w>jira</w>
+      <w>jspm</w>
       <w>kendo</w>
       <w>laravel</w>
       <w>mapbox</w>
@@ -28,9 +32,11 @@
       <w>mindstorms</w>
       <w>nginx</w>
       <w>nospace</w>
+      <w>photoshop</w>
       <w>quotemark</w>
       <w>roboto</w>
       <w>rxjs</w>
+      <w>saucelabs</w>
       <w>scss</w>
       <w>telerik</w>
     </words>

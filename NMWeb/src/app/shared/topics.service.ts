@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {TagEntry} from '../user-profile/tag-entry'
 
-function tag(name: string, logo?: string) {
+function tag(name: string, logo?: string, webSite?: string) {
   return new TagEntry(name, logo);
 }
 
@@ -150,9 +150,16 @@ export class TopicsService {
     tagNoIcon('Stencil'), /* Ionic */
     'OData', tagNoIcon('PowerBI'), tagNoIcon('SignalR'), // Mark S.
     angularFlexLayout, angularFlexLayoutResponsiveApi,
-    // Voice interfaces, Alexa etc (O. Carracedo), Cortana
-    // Google Docs (for integrations, etc.)
-    // Google AdWords, Google Analytics
+    tagNoIcon('Stencil'),
+    tagNoIcon('Voice Interfaces'),
+    tagNoIcon('Amazon Alexa'),
+    tagNoIcon('Amazon Echo'),
+    tagNoIcon('Google Home'),
+    tagNoIcon('Cortana'),
+    tagNoIcon('Google Docs'),
+    tagNoIcon('Google AdWords'),
+    tagNoIcon('Google AdSense'),
+    tagNoIcon('Google Analytics'),
     tagNoIcon('Frontend'),
     tagNoIcon('Telerik UI'),
     tagNoIcon('Kendo UI'),
@@ -182,7 +189,7 @@ export class TopicsService {
     tagNoIcon('Machine Learning'),
     tagNoIcon('Artificial Intelligence'),
     tagNoIcon('Deep Learning'),
-    tagNoIcon('Deep Mind'),
+    tagNoIcon('DeepMind'),
     tagNoIcon('Big Data'),
     tagNoIcon('Data Mining'),
     tagNoIcon('Data Warehousing'),
@@ -203,32 +210,69 @@ export class TopicsService {
     tagNoIcon('Lego Mindstorms'),
     tagNoIcon('CSS Flexbox'),
     tagNoIcon('CSS Grid Layout'),
+    tagNoIcon('Economy'),
     tag('R Language', 'r-lang'),
-    // TODO: Nginx
+    'nginx',
     'WebAssembly',
     'Struts',
     'Yammer',
-    // Office 365 / OneDrive
-    // Algorithms, Data Structures, Computer Networks
-    // Green Economy?
-    // Management, Project Management
-    // Windows Forms
-    // Windows Phone
-    // TopTal, Freelance, Freelance Platforms, freelancer.com, elance
+    tagNoIcon('Office 365'),
+    tagNoIcon('OneDrive'),
+    tagNoIcon('Algorithms'),
+    tagNoIcon('Data Structures'),
+    tagNoIcon('Computer Networks'),
+    tagNoIcon('Green Economy'),
+    tagNoIcon('Management'),
+    tagNoIcon('Project Management'),
+    tagNoIcon('Windows Phone'),
+    tagNoIcon('Windows Forms'),
+    tagNoIcon('Wearable Computing'),
+    tagNoIcon('iWatch'),
+    tagNoIcon('Toptal'),
+    tagNoIcon('Freelance'),
+    tagNoIcon('Freelance Platforms'),
+    tagNoIcon('Freelancer.com'),
     'Semantic UI',
     'Foundation',
-    // Email Deliverability,
+    tagNoIcon('Email Deliverability'),
     tagNoIcon('LXD'),
-    // Adobe photoshop, Adobe illustrator, Adobe After Effects
-    // calabash, Calabash-android, calabash-ios
-    // GitHub. Jira. GitLab.
-    // Mapbox Studio
-    // json, oauth
-    // Ag Grid
-    // SendGrid. MailChimp
-    // saucelabs, waffle, Sketch
-    // TODO: check Malaga meetup topics
-    // FIWARE, Smart City, Green Tech, IoT, IoE
+    tagNoIcon('Adobe Photoshop'),
+    tagNoIcon('Adobe Illustrator'),
+    tagNoIcon('Adobe After Effects'),
+    tagNoIcon('Calabash'),
+    tagNoIcon('Calabash iOS'),
+    tagNoIcon('Calabash Android'),
+    'Jira',
+    'GitLab',
+    tagNoIcon('Mapbox Studio'),
+    tagNoIcon('SystemJS'),
+    'json',
+    'OAuth',
+    'jspm',
+    tagNoIcon('ag-Grid'),
+    'SendGrid',
+    'MailChimp',
+    tag('Sauce Labs', 'saucelabs'),
+    tag('Waffle'),
+    tag('Protocol Buffers', null, 'https://developers.google.com/protocol-buffers/'),
+    tag('Sketch'),
+    tag('FIWARE', null, 'https://www.fiware.org/'),
+    tag('Smart City', null),
+    tag('Sustainable Development', null),
+    tag('Apache Thrift', null, 'https://thrift.apache.org/'),
+    tag('OpenID', null, 'http://openid.net/'),
+    tag('OpenID Connect', null, 'http://openid.net/connect/'),
+    tag('Hibernate Envers', null, 'http://hibernate.org/orm/envers/'),
+    tag('Liquibase', null, 'http://www.liquibase.org/'),
+    tag('Flyway', null, 'https://flywaydb.org/'),
+    tag('Spring Boot', null, 'https://projects.spring.io/spring-boot/'),
+    tag('Dropwizard', null, 'http://www.dropwizard.io/'),
+    tag('Algolia', undefined, 'https://www.algolia.com/'),
+    // tag('', null, ''),
+    // tag('', null, ''),
+    // tag('', null, ''),
+
+    //, Green Tech, IoT, IoE
     // web3, Truffle Framework, Distributed Ledger Technology, Attention Economy, Ethlance, Steem,
     // remix, mist, DApp, DAO, TheDao
       // Smart contracts, Solidity, Private coin,
@@ -241,19 +285,21 @@ export class TopicsService {
     // RhoMobile
     /* Mark:                       Just created a profile on there. It's looking very good 👍
      A couple of things for you to add to the list:
-     Protobuf
-     OAuth/OpenID Connect */
-    // thrift
-    // Hubert: Security, Computer Security, Computer Network Security
-    /* hibernate
-     Hibernate envers - Adam Warski
-     Liquibase / Flyway - wersjonowanie SQL
-     Spring Boot / Dropwizard / JHipster */
+     // DONE: ProtoBuf, OpenID Connect */
+    tagNoIcon('Security'),
+    tagNoIcon('Computer Security'),
+    tagNoIcon('Computer Network Security'),
+    /* DONE: hibernate
+     DONE: Hibernate envers - Adam Warski
+     DONE: Liquibase / Flyway - wersjonowanie SQL
+     DONE: Spring Boot / Dropwizard / JHipster */
 
-    // algolia
+    // DONE: algolia
     // angellist
     // self-driving cars/vehicles
     // Electric vehicles
+    // TODO: check Malaga meetup topics
+
   ]);
 
 
