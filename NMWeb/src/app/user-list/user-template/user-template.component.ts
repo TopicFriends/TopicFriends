@@ -40,11 +40,14 @@ export class UserTemplateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.userId = this._userPublicProfile.userId
+    this.userProfileService.userDataByIdCombined(this.userId).subscribe(x => {
+      console.log('userDataByIdCombined', this.userId, x)
+    })
     this.userProfileService.getUserInterestsOnceLoggedIn().subscribe(interests => {
       this.loggedUserInterests = UserInterests.fromJson(interests)
       this.calculateMatchScoreIfPossible()
     })
-    this.userId = this._userPublicProfile.userId
     this._whatUserWants = this._getWhatUserWants();
     this._userPublicProfile.descriptions.subscribe(it => {
       this.userDescriptions = it
@@ -57,8 +60,6 @@ export class UserTemplateComponent implements OnInit {
         this.userInterests &&
         this.userInterests.byInteractionMode &&
         this.userInterests.byInteractionMode.supplyDemand
-
-
     });
     this._userPublicProfile.profile.subscribe(it => {
       this.profileBasicInfo = it
@@ -67,7 +68,7 @@ export class UserTemplateComponent implements OnInit {
 
   private calculateMatchScoreIfPossible() {
     if ( this.loggedUserInterests && this.userInterests ) {
-      this.matchResults = this.loggedUserInterests.getInterestsMatchWith(this.userInterests)
+      this.matchResults = UserInterests.getInterestsMatchWith(this.loggedUserInterests, this.userInterests)
     }
   }
 

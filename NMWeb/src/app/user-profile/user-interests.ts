@@ -134,13 +134,13 @@ export class UserInterests {
   }
 
   /** getSymmetricExchangeInterestsMatchWith */
-  public getInterestsMatchWith?(other: UserInterests): MatchResults {
+  public static getInterestsMatchWith(interests1: UserInterests, other: UserInterests): MatchResults {
     let topicMatches = UserInterests.getTopicMatchesWithinInteractionMode(
       getDictionaryValuesAsArray(
-        this.byInteractionMode &&
-        this.byInteractionMode.symmetric &&
-        this.byInteractionMode.symmetric.exchange &&
-        this.byInteractionMode.symmetric.exchange.topics),
+        interests1.byInteractionMode &&
+        interests1.byInteractionMode.symmetric &&
+        interests1.byInteractionMode.symmetric.exchange &&
+        interests1.byInteractionMode.symmetric.exchange.topics),
       getDictionaryValuesAsArray(
         other.byInteractionMode &&
         other.byInteractionMode.symmetric &&
@@ -149,10 +149,10 @@ export class UserInterests {
     )
     const topicMatches2 = UserInterests.getTopicMatchesWithinInteractionMode(
       getDictionaryValuesAsArray(
-        this.byInteractionMode &&
-        this.byInteractionMode.symmetric &&
-        this.byInteractionMode.symmetric.pairProgramming &&
-        this.byInteractionMode.symmetric.pairProgramming.topics),
+        interests1.byInteractionMode &&
+        interests1.byInteractionMode.symmetric &&
+        interests1.byInteractionMode.symmetric.pairProgramming &&
+        interests1.byInteractionMode.symmetric.pairProgramming.topics),
       getDictionaryValuesAsArray(
         other.byInteractionMode &&
         other.byInteractionMode.symmetric &&
@@ -161,10 +161,10 @@ export class UserInterests {
     )
     const topicMatches3 = UserInterests.getTopicMatchesWithinInteractionMode(
       getDictionaryValuesAsArray(
-        this.byInteractionMode &&
-        this.byInteractionMode.symmetric &&
-        this.byInteractionMode.symmetric.hackathon &&
-        this.byInteractionMode.symmetric.hackathon.topics),
+        interests1.byInteractionMode &&
+        interests1.byInteractionMode.symmetric &&
+        interests1.byInteractionMode.symmetric.hackathon &&
+        interests1.byInteractionMode.symmetric.hackathon.topics),
       getDictionaryValuesAsArray(
         other.byInteractionMode &&
         other.byInteractionMode.symmetric &&

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserData } from 'app/user-profile/user-profile.service';
+import {UserData, UserDataCombined} from 'app/user-profile/user-profile.service';
 import { UserListService } from "app/user-list/user-list.service";
 import { DbListReadOnly } from '../db.service';
+import {Observable} from 'rxjs/Observable'
+import {UserMatched, UserMatcherService} from '../user-matcher.service'
 
 @Component({
   selector: 'app-user-list',
@@ -11,11 +13,14 @@ import { DbListReadOnly } from '../db.service';
 export class UserListComponent implements OnInit {
 
   userList: DbListReadOnly<UserData>; // = [];// = this.userListService.getUserList();
+  userListCombinedSorted: Array<UserDataCombined> // = [];// = this.userListService.getUserList();
+  userListCombinedSorted2: Array<UserMatched> // = [];// = this.userListService.getUserList();
 
   userListSaved;  //: UserDataWithDetails[];
 
   constructor(
-    private userListService: UserListService
+    private userListService: UserListService,
+    private userMatcherService: UserMatcherService,
   ) {
 
   }
@@ -24,6 +29,19 @@ export class UserListComponent implements OnInit {
     this.userList = this.userListService.listUserData();
     this.userList.subscribe(list => {
       this.userListSaved = list;
+    })
+    this.userListService.listUserDataCombined().subscribe(list=> {
+      this.userListCombinedSorted = list.sort((el1, el2) => {
+        if ( ! el1.profile.displayName ) {
+          return 0
+        }
+        return el1.profile.displayName.localeCompare(
+          el2.profile.displayName
+        )
+      })
+    })
+    this.userMatcherService.listUsersSortedByMatchScoreAndFilteredByMaxDistance().subscribe(l => {
+      this.userListCombinedSorted2 = l
     })
   }
 

@@ -6,6 +6,8 @@ import {DomainDbService} from '../domain-db.service'
 import {TopicInterest, UserInterests} from './user-interests'
 import {DbHistory, HasDbHistory} from '../util/history'
 import 'rxjs/add/observable/never'
+import {combineLatest} from 'rxjs/observable/combineLatest'
+import 'rxjs/add/observable/empty'
 
 export function createTopicsDictionary(topics: TopicInterest[]) {
   let ret = {};
@@ -138,7 +140,41 @@ export class UserData {
     public descriptions?: DbObject<UserDescriptions>,
   ) {}
 
+  public combineLatest(): Observable<UserDataCombined> {
+    let userData = this
+    return combineLatest(
+      userData.profile,
+      userData.interests,
+      userData.otherProfiles,
+      userData.geoLocations,
+      userData.descriptions,
+      (profile, interests, otherProfiles, geoLocations, descriptions) => {
+        console.log('combineFunction', profile, interests, otherProfiles, geoLocations, descriptions)
+        return new UserDataCombined(
+          userData.userId,
+          profile,
+          interests,
+          otherProfiles,
+          geoLocations,
+          descriptions,
+        )
+      }
+    )
+  }
+
   history?: DbHistory
+}
+
+export class UserDataCombined {
+  public constructor(
+    public userId,
+    public profile: UserProfile,
+    public interests: UserInterests,
+    public otherProfiles: UserOtherProfiles,
+    public geoLocations: UserGeoLocations,
+    public descriptions: UserDescriptions,
+  ) {}
+
 }
 
 
@@ -300,12 +336,27 @@ export class UserProfileService {
     return this.db.userDataById(userId)
   }
 
+  userDataByIdCombined(userId: string): Observable<UserDataCombined> {
+    const userData = this.userDataById(userId)
+    return userData.combineLatest()
+  }
+
   getUserInterestsOnceLoggedIn() {
     return this.authService.user.switchMap(user => {
       if ( user ) {
         return this.getUserInterests()
       } else {
-        return <any>Observable.never
+        return <any>Observable.never // consider Observable.empty
+      }
+    })
+  }
+
+  observeLoggedUserProfile(): Observable<UserDataCombined> {
+    return this.authService.user.switchMap(user => {
+      if ( user ) {
+        return this.userDataByIdCombined(user.uid)
+      } else {
+        return Observable.of(null) // consider Observable.empty / never
       }
     })
   }

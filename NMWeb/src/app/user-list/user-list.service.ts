@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import {UserData} from 'app/user-profile/user-profile.service';
+import {UserData, UserDataCombined} from 'app/user-profile/user-profile.service';
 import {UserProfile} from 'app/user-profile/user-profile.service';
 import {DomainDbService} from '../domain-db.service'
 import {DbListReadOnly} from '../db.service';
+import {combineLatest} from 'rxjs/observable/combineLatest'
+import {Observable} from 'rxjs/Observable'
+import {arrayOfObservablesToObservableOfArray} from '../shared/utils'
 
 @Injectable()
 export class UserListService {
@@ -56,5 +59,32 @@ export class UserListService {
     let listUserDataWithDetails: DbListReadOnly<UserData> = this.domainDbService.listUserDataWithDetails();
     return listUserDataWithDetails;
   }
+
+  public listUserDataCombined(): Observable<Array<UserDataCombined>> {
+    let listUserDataWithDetails: DbListReadOnly<UserData> = this.domainDbService.listUserDataWithDetails();
+
+    let obsOfArrayOfObsUDC = listUserDataWithDetails.map((arrayOfUserData: Array<UserData>) => {
+      return arrayOfUserData.map(ud => {
+        return ud.combineLatest()
+      })
+    })
+
+    const switchMap: Observable<Array<UserDataCombined>> = obsOfArrayOfObsUDC.switchMap((arr: Array<Observable<UserDataCombined>>) => {
+      let observableOfArray: Observable<Array<UserDataCombined>> = arrayOfObservablesToObservableOfArray<UserDataCombined>(arr)
+      return observableOfArray
+    })
+    return switchMap
+
+
+    // let elementsAsCombined: Observable<Array<UserDataCombined>> = listUserDataWithDetails.map((els: UserData[]) => {
+    //   let x: UserDataCombined[] = els.map((el: UserData) => {
+    //     return el.combineLatest()
+    //   })
+    //   return combineLatest(x)
+    // })
+    // return elementsAsCombined
+  }
+
+
 
 }
