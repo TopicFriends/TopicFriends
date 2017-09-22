@@ -10,6 +10,7 @@ exports.config = {
     './e2e/**/user-profile.e2e-spec.ts',
     './e2e/**/symmetric-topics.e2e-spec.ts',
     './e2e/**/events.e2e-spec.ts',
+    // './e2e/**/geo-location.e2e-spec.ts'
   ],
   capabilities: {
     'browserName': 'chrome',
