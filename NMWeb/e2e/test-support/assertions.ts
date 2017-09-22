@@ -3,12 +3,9 @@ import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
 import {TestWait} from './wait'
 import {TopicsSections} from '../tests/user-profile/topic-sections.po'
-import {TestSupport} from './test-support'
 
-export class TestAssertions
-{
+export class TestAssertions {
   private wait = new TestWait()
-  private support = new TestSupport()
   private topicSections = new TopicsSections()
 
   tagsMatch(selectedTopic: Promise<string>, expectedTopic: ElementArrayFinder) {
@@ -20,17 +17,22 @@ export class TestAssertions
   }
 
   sectionTagsMatch(topicsSection: string, selectedTopics: Array<string>) {
-    let tagClosings = $$(this.topicSections.tagCloseIconSelector)
+    let tagClosings = this.topicSections.allTagsClosings()
 
     this.wait.forElementCount(tagClosings, selectedTopics.length).then(() => {
       let expectedTopics: ElementArrayFinder = this.topicSections.returnSelectedSectionTags(topicsSection)
-      console.log('section: ' + topicsSection)
+      console.log('assert section: ' + topicsSection)
       this.allTopicsToMatch(selectedTopics, expectedTopics)
     })
   }
 
   elementIsContainingText(element: ElementFinder, text: string) {
     expect(element.getText()).toEqual(text, 'Element doesn\'t contain text: ' + text)
+  }
+
+  saveNotificationAppears(saveElement: ElementFinder) {
+    return expect(this.wait.forElementPresent(saveElement))
+      .toBeTruthy('Notification for successful \'Save\' didn\'t appear')
   }
 
   private allTopicsToMatch(selectedTopics: Array<string>, expectedTopics: ElementArrayFinder) {

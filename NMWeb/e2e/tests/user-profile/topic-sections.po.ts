@@ -1,11 +1,11 @@
 import {TestWait} from '../../test-support/wait'
-import {UserProfilePage} from './user-profile.po'
-import {$, $$, browser, ElementArrayFinder, ElementFinder} from 'protractor'
+import {$, $$, browser, ElementArrayFinder, ElementFinder, protractor} from 'protractor'
 import {ProtractorWrapper} from '../../test-support/protractor-wrapper'
+import {promise} from 'selenium-webdriver'
+import Promise = promise.Promise
 
 export class TopicsSections {
   private wait = new TestWait()
-  private profilePage = new UserProfilePage()
   private ptor = new ProtractorWrapper()
 
   readonly hackathonSectionSelector       = 'app-topic-group-card[formcontrolname="hackathon"]'
@@ -40,7 +40,7 @@ export class TopicsSections {
     topics.forEach(topic => {
       this.inputTopic(topicsSection, topic)
       browser.sleep(200)
-      this.profilePage.selectFirstSuggestedTag(topicInput).then(tag => {
+      this.selectFirstSuggestedTag(topicInput).then(tag => {
         selectedTopics.push(tag)
         topicInput.clear()
       })
@@ -63,6 +63,17 @@ export class TopicsSections {
         }
       })
     })
+  }
+
+  selectFirstSuggestedTag(element: ElementFinder): Promise<string> {
+    let markedTopicFromSelectList = $('md-option.mat-active')
+    this.wait.forElementClickable(element)
+    element.sendKeys(protractor.Key.ARROW_DOWN)
+    this.wait.forElementClickable(markedTopicFromSelectList)
+    let optionSelected = markedTopicFromSelectList.getText()
+    element.sendKeys(protractor.Key.ENTER)
+
+    return optionSelected
   }
 
   private returnAllSelectedTopicTags(topicSectionSelector: string): ElementArrayFinder {

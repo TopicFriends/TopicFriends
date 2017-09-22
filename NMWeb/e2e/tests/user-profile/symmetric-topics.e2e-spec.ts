@@ -5,8 +5,10 @@ import {TestAssertions} from '../../test-support/assertions'
 import {TestCleanUp} from '../../test-support/clean-up'
 import {TestWait} from '../../test-support/wait'
 import {TestSupport} from '../../test-support/test-support'
-import {$, $$, browser, ExpectedConditions} from 'protractor'
+import {$, $$, browser} from 'protractor'
 import {ProtractorWrapper} from '../../test-support/protractor-wrapper'
+import {promise} from 'selenium-webdriver'
+import Promise = promise.Promise
 
 describe('Symmetric topics on Profile page: User', () => {
   let loginPage: LoginPage
@@ -37,7 +39,7 @@ describe('Symmetric topics on Profile page: User', () => {
     let exchange = topicSections.exchangeSectionSelector
     topicSections.inputTopic(exchange, topic)
     browser.sleep(500)
-    let selectedTopic = page.selectFirstSuggestedTag(topicSections.assembleTopicInputLocator(exchange))
+    let selectedTopic = topicSections.selectFirstSuggestedTag(topicSections.assembleTopicInputLocator(exchange))
     let expectedTopic = topicSections.returnSelectedSectionTags(exchange)
 
     console.log('section: exchange')
@@ -70,7 +72,7 @@ describe('Symmetric topics on Profile page: User', () => {
   });
 
   it('can enter first topic from list without searching', () => {
-    let selectedTopic = page.selectFirstSuggestedTag(
+    let selectedTopic = topicSections.selectFirstSuggestedTag(
       topicSections.assembleTopicInputLocator(topicSections.pairProgrammingSectionSelector))
 
     let expectedTopic = topicSections.returnSelectedSectionTags(topicSections.pairProgrammingSectionSelector)
@@ -114,10 +116,9 @@ describe('Symmetric topics on Profile page: User', () => {
     console.log('section: exchange')
     assert.sectionTagsMatch(topicsSectionExchange, selectedTopicsExchange)
 
-    ptor.click(page.saveProfileButton)
+    page.saveProfileByClickingSaveButton()
     let expectedTagsCount = topicsHackathon.length + topicsPairProgramming.length + topicsExchange.length
     page.navigateTo().then(() => {
-      // browser.sleep(3000)
       wait.forElementCount($$(topicSections.tagSelector), expectedTagsCount).then(() => {
         assert.sectionTagsMatch(topicsSectionHackathon, selectedTopicsHackathon)
         assert.sectionTagsMatch(topicsSectionPairProgramming, selectedTopicsPairProgramming)
@@ -139,7 +140,7 @@ describe('Symmetric topics on Profile page: User', () => {
     let topicsSectionPairProgramming = topicSections.pairProgrammingSectionSelector
     let selectedTopicsPairProgramming = topicSections.inputMultipleTagsInOneSection(topicsSectionPairProgramming, topicsPairProgramming)
 
-    ptor.click(page.saveProfileButton)
+    page.saveProfileByClickingSaveButton()
     let expectedTagsCount = topicsHackathon.length + topicsPairProgramming.length
     page.navigateTo().then(() => {
       wait.forElementCount($$(topicSections.tagSelector), expectedTagsCount).then(() => {
@@ -156,7 +157,7 @@ describe('Symmetric topics on Profile page: User', () => {
     wait.forElementPresent($(topicSections.tagSelector))
     topicSections.removeAllTags()
 
-    ptor.click(page.saveProfileButton)
+    page.saveProfileByClickingSaveButton()
     page.navigateTo().then(() => {
       wait.forElementPresent(page.userProfileBasicInfo).then(() => {
         browser.sleep(3000)

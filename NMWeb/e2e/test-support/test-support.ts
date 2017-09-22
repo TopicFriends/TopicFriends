@@ -1,9 +1,8 @@
-import {browser, ExpectedConditions} from 'protractor';
+import {browser} from 'protractor';
 let fs_extra = require('fs-extra');
 
 export class TestSupport {
   TMP_FOLDER_PATH = '/tmp/protractor';
-  private ec = ExpectedConditions;
 
   constructor() {
     let fs = require('fs');
@@ -41,6 +40,7 @@ export class TestSupport {
         alert.accept();
       },
       function (error) {
+        console.log('No alert visible')
       }
     )
   }

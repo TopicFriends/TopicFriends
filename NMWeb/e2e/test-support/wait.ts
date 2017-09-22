@@ -43,5 +43,4 @@ export class TestWait {
       return elementCount >= expectedCount;
     });
   };
-
 }

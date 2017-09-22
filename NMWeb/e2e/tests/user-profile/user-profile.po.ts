@@ -1,10 +1,12 @@
 import {$, browser, by, element, ElementFinder, protractor} from 'protractor'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
-import {TestWait} from '../../test-support/wait'
+import {ProtractorWrapper} from '../../test-support/protractor-wrapper'
+import {TestAssertions} from '../../test-support/assertions'
 
 export class UserProfilePage {
-  private wait: TestWait = new TestWait()
+  private ptor = new ProtractorWrapper()
+  private assert = new TestAssertions()
 
   userProfileSelector                      = 'app-user-profile'
   userProfile: ElementFinder               = $(this.userProfileSelector)
@@ -18,10 +20,9 @@ export class UserProfilePage {
   linkedInLinkInput: ElementFinder         = $('i[class="icon ion-social-linkedin"]').
                                              element(by.xpath('ancestor::md-input-container/descendant::input'))
 
-  //TOPICS
-  markedTopicFromSelectList: ElementFinder = $('md-option.mat-active')
-    // add supply/demand
-  //ENDOF: TOPICS
+  saveConfirmationNotification             = element(by.cssContainingText('div.cdk-overlay-container>div',
+                                              'Profile sent. Thank you!'))
+
 
   navigateTo(): Promise<any> {
     return browser.get('profile')
@@ -32,20 +33,15 @@ export class UserProfilePage {
     this.userProfileBasicInfo.sendKeys(protractor.Key.chord(protractor.Key.CONTROL, 'S'))
   }
 
+  saveProfileByClickingSaveButton() {
+    this.ptor.click(this.saveProfileButton)
+    this.assert.saveNotificationAppears(this.saveConfirmationNotification)
+  }
+
   expectTopicTagSelected(tag?: ElementFinder) { // FIXME
     if(tag) {
       return true
     }
     return false
-  }
-
-  selectFirstSuggestedTag(element: ElementFinder): Promise<string> {
-    this.wait.forElementClickable(element)
-    element.sendKeys(protractor.Key.ARROW_DOWN)
-    this.wait.forElementClickable(this.markedTopicFromSelectList)
-    let optionSelected = this.markedTopicFromSelectList.getText()
-    element.sendKeys(protractor.Key.ENTER)
-
-    return optionSelected
   }
 }
