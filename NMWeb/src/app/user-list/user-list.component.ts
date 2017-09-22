@@ -4,6 +4,7 @@ import { UserListService } from "app/user-list/user-list.service";
 import { DbListReadOnly } from '../db.service';
 import {Observable} from 'rxjs/Observable'
 import {UserMatched, UserMatcherService} from '../user-matcher.service'
+import {MdSliderChange} from '@angular/material'
 
 @Component({
   selector: 'app-user-list',
@@ -62,8 +63,9 @@ export class UserListComponent implements OnInit {
     return  n * n - n  // n^2 - n, because interactions can go in both directions
   }
 
-  maxDistanceChange() {
-    // TODO
+  maxDistanceChange(event: MdSliderChange) {
+    // console.log(event)
+    this.maxDistance = event.value
   }
 
 }

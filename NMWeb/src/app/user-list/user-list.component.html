@@ -11,6 +11,7 @@
     tickInterval="3"
     [(ngModel)]="maxDistance"
     (change)="maxDistanceChange()"
+    (input)="maxDistanceChange($event)"
   ></md-slider>
   {{ maxDistance | distance }}
 
