@@ -40,9 +40,9 @@ export class UserProfilePage {
   }
 
   selectFirstSuggestedTag(element: ElementFinder): Promise<string> {
-    this.wait.forElementPresent(element)
+    this.wait.forElementClickable(element)
     element.sendKeys(protractor.Key.ARROW_DOWN)
-    this.wait.forElementPresent(this.markedTopicFromSelectList)
+    this.wait.forElementClickable(this.markedTopicFromSelectList)
     let optionSelected = this.markedTopicFromSelectList.getText()
     element.sendKeys(protractor.Key.ENTER)
 
