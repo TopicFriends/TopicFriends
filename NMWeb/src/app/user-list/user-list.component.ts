@@ -40,7 +40,7 @@ export class UserListComponent implements OnInit {
         )
       })
     })
-    this.userMatcherService.listUsersSortedByMatchScoreAndFilteredByMaxDistance().subscribe(l => {
+    this.userMatcherService.listUsersSortedByLastModified().subscribe(l => {
       this.userListCombinedSorted2 = l
     })
   }

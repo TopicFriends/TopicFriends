@@ -19,7 +19,9 @@ Matched Users:
 <div
   *ngFor="let user of userListCombinedSorted2"
 >
-  Person: {{user.userDataCombined.profile.displayName}}, MatchScore: {{user.matchResults?.matchScore}}
+  Person: {{user.userDataCombined.profile.displayName}},
+  MatchScore: {{user.matchResults?.matchScore}},
+  LastSaved: {{user.userDataCombined.profile.lastSaved}}
 </div>
 
 
