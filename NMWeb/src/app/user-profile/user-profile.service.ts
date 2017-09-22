@@ -151,6 +151,7 @@ export class UserData {
       (profile, interests, otherProfiles, geoLocations, descriptions) => {
         console.log('combineFunction', profile, interests, otherProfiles, geoLocations, descriptions)
         return new UserDataCombined(
+          this,
           userData.userId,
           profile,
           interests,
@@ -167,6 +168,7 @@ export class UserData {
 
 export class UserDataCombined {
   public constructor(
+    public userData: UserData,
     public userId,
     public profile: UserProfile,
     public interests: UserInterests,
