@@ -34,8 +34,8 @@ export class TestWait {
       this.defaultWaitTimeout, 'false')
   }
 
-  forTextPresent(element: ElementFinder, text: string): any {
-    return this.forElementText(element, text)
+  forElementVisible(element: ElementFinder) {
+    return browser.wait(this.ec.visibilityOf(element), this.defaultWaitTimeout, 'false')
   }
 
   private needTrue(element: ElementArrayFinder, expectedCount: number){

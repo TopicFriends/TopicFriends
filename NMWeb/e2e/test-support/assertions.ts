@@ -2,7 +2,7 @@ import {$$, ElementArrayFinder, ElementFinder} from 'protractor'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
 import {TestWait} from './wait'
-import {TopicsSections} from '../tests/user-profile/topic-sections.po'
+import {TopicsSections} from '../tests/user-profile/topics/topic-sections.po'
 
 export class TestAssertions {
   private wait = new TestWait()

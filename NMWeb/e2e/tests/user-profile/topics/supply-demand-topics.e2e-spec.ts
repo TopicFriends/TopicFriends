@@ -1,10 +1,10 @@
-import {UserProfilePage} from './user-profile.po'
+import {UserProfilePage} from '../user-profile.po'
 import {TopicsSections} from './topic-sections.po'
-import {LoginPage} from '../login/login.po'
-import {TestAssertions} from '../../test-support/assertions'
-import {TestCleanUp} from '../../test-support/clean-up'
-import {TestWait} from '../../test-support/wait'
-import {TestSupport} from '../../test-support/test-support'
+import {LoginPage} from '../../login/login.po'
+import {TestAssertions} from '../../../test-support/assertions'
+import {TestCleanUp} from '../../../test-support/clean-up'
+import {TestWait} from '../../../test-support/wait'
+import {TestSupport} from '../../../test-support/test-support'
 
 // TODO: after all go to firebase and remove interests branch for test user
 

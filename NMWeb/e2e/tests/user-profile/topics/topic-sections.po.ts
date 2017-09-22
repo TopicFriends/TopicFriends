@@ -1,6 +1,6 @@
-import {TestWait} from '../../test-support/wait'
+import {TestWait} from '../../../test-support/wait'
 import {$, $$, browser, ElementArrayFinder, ElementFinder, protractor} from 'protractor'
-import {ProtractorWrapper} from '../../test-support/protractor-wrapper'
+import {ProtractorWrapper} from '../../../test-support/protractor-wrapper'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
 
@@ -14,13 +14,13 @@ export class TopicsSections {
   readonly tagSelector                    = 'app-topic-tag'
   readonly tagCloseIconSelector           = this.tagSelector + ' i.ion-close-circled'
 
-  assembleTopicInputLocator(topicSectionSelector: string): ElementFinder {
-    return $(topicSectionSelector + ' input')
-  }
-
   returnSelectedSectionTags(topicSectionSelector: string): ElementArrayFinder {
     this.wait.forElementPresent($(this.tagSelector))
     return this.returnAllSelectedTopicTags(topicSectionSelector)
+  }
+
+  assembleTopicInputLocator(topicSectionSelector: string): ElementFinder {
+    return $(topicSectionSelector + ' input')
   }
 
   inputTopic(topicSectionSelector: string, topic: string) {
