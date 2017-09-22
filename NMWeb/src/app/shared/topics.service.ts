@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {TagEntry} from '../user-profile/tag-entry'
 
 function tag(name: string, logo?: string, webSite?: string) {
-  return new TagEntry(name, logo);
+  return new TagEntry(name, logo, webSite);
 }
 
 function tagNoIcon(name: string, gitHubLink?: string) {
@@ -211,6 +211,7 @@ export class TopicsService {
     tagNoIcon('CSS Flexbox'),
     tagNoIcon('CSS Grid Layout'),
     tagNoIcon('Economy'),
+    tagNoIcon('Economics'),
     tag('R Language', 'r-lang'),
     'nginx',
     'WebAssembly',
@@ -268,8 +269,8 @@ export class TopicsService {
     tag('Spring Boot', null, 'https://projects.spring.io/spring-boot/'),
     tag('Dropwizard', null, 'http://www.dropwizard.io/'),
     tag('Algolia', undefined, 'https://www.algolia.com/'),
-    // tag('', null, ''),
-    // tag('', null, ''),
+    tag('Digital Marketing', null),
+    tag('Django Rest Framework', null, 'http://www.django-rest-framework.org/'),
     // tag('', null, ''),
 
     //, Green Tech, IoT, IoE
