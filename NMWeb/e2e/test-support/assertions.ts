@@ -43,7 +43,6 @@ export class TestAssertions
       let expectedTopicsCount = expTopics.length
       expect(selectedTopicsCount).toBe(expectedTopicsCount,
         'Failed: ' + selectedTopicsCount + ' topics selected but ' + expectedTopicsCount + ' topics expected')
-      // console.log('selectedTopics.length, expTopics.length: ' + selectedTopics.length, expTopics.length)
 
       expTopics.forEach(topicPromise => {
         topicPromise.getText().then(topic => {

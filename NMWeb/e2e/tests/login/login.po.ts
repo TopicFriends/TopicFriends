@@ -47,6 +47,7 @@ export class LoginPage {
   }
 
   logInDefaultTestUser() {
+    browser.sleep(this.defaultSleep)
     this.utils.switchTabs(1);
     this.enterGoogleUsername()
     this.enterGooglePassword()
@@ -70,14 +71,16 @@ export class LoginPage {
     expect(this.loginButtonWithUserName.isPresent()).toBeFalsy('User not logged out');
   }
 
-  private enterGooglePassword() {
-    browser.sleep(this.defaultSleep)
-    this.ptor.sendKeys(this.passwordField, this.userPassword)
-    this.ptor.click(this.googlePasswordNextButton)
-  }
-
   private enterGoogleUsername() {
+    this.wait.forElementClickable(this.usernameField)
     this.ptor.sendKeys(this.usernameField, this.userEmail)
     this.ptor.click(this.googleIdNextButton);
+  }
+
+  private enterGooglePassword() {
+    browser.sleep(this.defaultSleep)
+    this.wait.forElementClickable(this.passwordField)
+    this.ptor.sendKeys(this.passwordField, this.userPassword)
+    this.ptor.click(this.googlePasswordNextButton)
   }
 }
