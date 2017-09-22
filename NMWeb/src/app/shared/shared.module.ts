@@ -17,6 +17,8 @@ import {UserGeoLocationsService} from './user-geo-locations.service'
 import {RouterModule} from '@angular/router'
 import {UserDescriptionsService} from './user-profile/user-descriptions.service'
 import {UserTopicsService} from './user-topics.service'
+import {DistancePipe} from '../maps/users-map/distance.pipe'
+
 
 @NgModule({
   imports: [
@@ -40,6 +42,7 @@ import {UserTopicsService} from './user-topics.service'
     UserTemplateComponent,
     UserInterestsModeViewComponent,
     SnackBarComponent,
+    DistancePipe,
     // GeolocationService,
   ],
   exports: [
@@ -49,6 +52,7 @@ import {UserTopicsService} from './user-topics.service'
     UserInterestsModeViewComponent,
     SnackBarComponent,
     MdInputModule,
+    DistancePipe,
   ],
   providers: [
     SnackBarComponent,

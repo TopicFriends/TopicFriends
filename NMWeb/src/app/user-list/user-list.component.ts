@@ -18,6 +18,8 @@ export class UserListComponent implements OnInit {
 
   userListSaved;  //: UserDataWithDetails[];
 
+  maxDistance
+
   constructor(
     private userListService: UserListService,
     private userMatcherService: UserMatcherService,
@@ -58,6 +60,10 @@ export class UserListComponent implements OnInit {
     // window.alert('count'+ count)
     // return  n * n / 2 - n / 2
     return  n * n - n  // n^2 - n, because interactions can go in both directions
+  }
+
+  maxDistanceChange() {
+    // TODO 
   }
 
 }

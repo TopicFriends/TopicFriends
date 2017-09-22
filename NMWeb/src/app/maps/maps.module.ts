@@ -8,7 +8,6 @@ import {MdButtonModule, MdDialogModule, MdIconModule, MdInputModule, MdSliderMod
 import {SharedModule} from '../shared/shared.module'
 import {FlexLayoutModule} from '@angular/flex-layout'
 import {FormsModule} from '@angular/forms';
-import { DistancePipe } from './users-map/distance.pipe'
 
 
 const mapsRoutes: Routes = [
@@ -37,7 +36,6 @@ const mapsRoutes: Routes = [
   declarations: [
     UsersMapComponent,
     UserPickLocationComponent,
-    DistancePipe,
   ],
   exports: [
     UserPickLocationComponent,

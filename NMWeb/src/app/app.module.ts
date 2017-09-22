@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCardModule, MdChipsModule} from '@angular/material';
+import {MdButtonModule, MdCardModule, MdChipsModule, MdSliderModule} from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -36,6 +36,7 @@ import { AboutComponent } from './about/about.component';
 
 
 import 'hammerjs';
+import {FormsModule} from '@angular/forms'
 
 const appRoutes: Routes = [
   {
@@ -93,6 +94,8 @@ const appRoutes: Routes = [
     MdButtonModule,
     MdCardModule,
     MdChipsModule,
+    MdSliderModule,
+    FormsModule,
     // FlexLayoutModule,
   ],
   providers: [

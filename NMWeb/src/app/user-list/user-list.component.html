@@ -1,6 +1,19 @@
 <h1>User List</h1>
+
 <ng-template [ngIf]="userListSaved">
   <p>{{ potentialConnectionsCount() }} potential connections between people!</p>
+
+  Max distance from me:
+  <md-slider
+    min="100"
+    max="50000"
+    step="200"
+    tickInterval="3"
+    [(ngModel)]="maxDistance"
+    (change)="maxDistanceChange()"
+  ></md-slider>
+  {{ maxDistance | distance }}
+
 </ng-template>
 
 <nw-user-template
