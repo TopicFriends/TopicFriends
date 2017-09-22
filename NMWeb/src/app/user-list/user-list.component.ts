@@ -13,7 +13,7 @@ import {UserMatched, UserMatcherService} from '../user-matcher.service'
 export class UserListComponent implements OnInit {
 
   userList: DbListReadOnly<UserData>; // = [];// = this.userListService.getUserList();
-  userListCombinedSorted: Array<UserDataCombined> // = [];// = this.userListService.getUserList();
+  userListCombinedSorted: Array<UserMatched> // = [];// = this.userListService.getUserList();
   userListCombinedSorted2: Array<UserMatched> // = [];// = this.userListService.getUserList();
 
   userListSaved;  //: UserDataWithDetails[];
@@ -30,18 +30,21 @@ export class UserListComponent implements OnInit {
     this.userList.subscribe(list => {
       this.userListSaved = list;
     })
-    this.userListService.listUserDataCombined().subscribe(list=> {
-      this.userListCombinedSorted = list.sort((el1, el2) => {
-        if ( ! el1.profile.displayName ) {
-          return 0
-        }
-        return el1.profile.displayName.localeCompare(
-          el2.profile.displayName
-        )
-      })
-    })
+    // this.userListService.listUserDataCombined().subscribe(list=> {
+    //   this.userListCombinedSortedByName = list.sort((el1, el2) => {
+    //     if ( ! el1.profile.displayName || ! el2.profile.displayName) {
+    //       return 0
+    //     }
+    //     return el1.profile.displayName.localeCompare(
+    //       el2.profile.displayName
+    //     )
+    //   })
+    // })
     this.userMatcherService.listUsersSortedByLastModified().subscribe(l => {
       this.userListCombinedSorted2 = l
+    })
+    this.userMatcherService.listUsersSortedByMatchScoreAndFilteredByMaxDistance().subscribe(l => {
+      this.userListCombinedSorted = l
     })
   }
 

@@ -52,13 +52,7 @@ export class UserMatcherService {
   }
 
   public listUsersSortedByMatchScoreAndFilteredByMaxDistance(maxDistance?: number): Observable<Array<UserMatched>> {
-    let sortFunc = (u1: UserMatched, u2: UserMatched) => {
-      if ( u1.matchResults && u2.matchResults ) {
-        return u2.matchResults.matchScore - u1.matchResults.matchScore
-      } else {
-        return 0
-      }
-    }
+    let sortFunc = sortUserByMatchScore
     return this.listUsersSortedFiltered(sortFunc)
   }
 
