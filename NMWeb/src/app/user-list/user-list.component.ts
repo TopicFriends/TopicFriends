@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit {
 
   userListSaved;  //: UserDataWithDetails[];
 
-  maxDistance
+  maxDistance = 5000
 
   constructor(
     private userListService: UserListService,
@@ -63,7 +63,7 @@ export class UserListComponent implements OnInit {
   }
 
   maxDistanceChange() {
-    // TODO 
+    // TODO
   }
 
 }
