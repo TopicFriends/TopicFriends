@@ -29,6 +29,9 @@ export class TagEntry {
     } else {
       this.logo = this.getLogoPath(logo);
     }
+    if ( this.website === undefined ) {
+      this.website = null // for firebase, because it does not allow to save undefined
+    }
   }
 
   public getLogoPath(tag: string){
