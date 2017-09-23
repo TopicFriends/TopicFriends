@@ -1,6 +1,13 @@
 agm-map {
   height: 700px;
   width: 100%;
+  text-shadow:
+    4px 4px 0 #fff,
+    -2px -2px 0 #fff,
+    2px -2px 0 #fff,
+    -2px 2px 0 #fff,
+    2px 2px 0 #fff;
+  font-weight: bold;
 }
 
 md-slider {
