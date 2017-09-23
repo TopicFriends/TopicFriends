@@ -9,6 +9,7 @@ import {UserGeoLocationsService} from '../../shared/user-geo-locations.service'
 import { } from 'googlemaps';
 import {Router} from '@angular/router'
 import {USER_ROUTE_WITH_TRAILING_SLASH} from '../../user-profile/user-profile.module'
+import {MdCheckbox} from '@angular/material'
 
 export class UserCoords {
   user?: UserProfile
@@ -28,6 +29,7 @@ export class UsersMapComponent implements OnInit {
   radiusSearch = 3000;
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
   numberOfNearUsers = 0;
+  showLabelsOverMarker = true;
 
   constructor(
     private geoLocationService: GeoLocationService,
@@ -35,6 +37,7 @@ export class UsersMapComponent implements OnInit {
     private userProfileService: UserProfileService,
     private router: Router,
   ) {}
+
   ngOnInit() {
     this.geoLocationService.getPosition().subscribe(
       (pos: Position) => {
@@ -116,6 +119,10 @@ export class UsersMapComponent implements OnInit {
     console.log('click', marker)
     // window.alert('Click ' + marker)
     this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.id])
+  }
+
+  changeShowLabelOverMark() {
+    this.showLabelsOverMarker = !this.showLabelsOverMarker
   }
 
 }
