@@ -31,8 +31,14 @@ describe('Geo-location: User', () => {
 
     page.selectPlaceOnMap(page.whereILivePick)
     ptor.click(profilePage.saveProfileButton)
+    //assert
 
     page.navigateTo()
+    wait.forElementClickable(page.whereILivePick)
+    ptor.click(page.whereILivePick)
+    wait.forElementVisible(page.pickerModal)
+    page.catchGeoLocationFromMap()
+    //assert
   })
 
   // it('can pick a point on a map for: Where I work', () => {

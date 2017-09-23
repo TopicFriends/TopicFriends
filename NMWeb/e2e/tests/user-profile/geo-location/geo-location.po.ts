@@ -10,37 +10,37 @@ export class GeoLocationSection {
 
   whereILive = element(by.cssContainingText('app-user-geo-location', 'Where I live:'))
   whereILiveInput = this.whereILive.$('input')
-  whereILivePick = this.whereILive.element(by.cssContainingText('button', 'Pick'))
-  whereILiveClear = this.whereILive.element(by.cssContainingText('button', 'Clear'))
+  whereILivePick = this.whereILive.element(by.xpath('..')).element(by.cssContainingText('button span', 'Pick'))
+  whereILiveClear = this.whereILive.element(by.cssContainingText('button span', 'Clear'))
 
   whereIWork = element(by.cssContainingText('app-user-geo-location', 'Where I work:'))
   whereIWorkInput = this.whereIWork.$('input')
-  whereIWorkPick = this.whereIWork.element(by.cssContainingText('button', 'Pick'))
-  whereIWorkClear = this.whereIWork.element(by.cssContainingText('button', 'Clear'))
+  whereIWorkPick = this.whereIWork.element(by.cssContainingText('button span', 'Pick'))
+  whereIWorkClear = this.whereIWork.element(by.cssContainingText('button span', 'Clear'))
 
   whereIStudy = element(by.cssContainingText('app-user-geo-location', 'Where I study:'))
   whereIStudyInput = this.whereIStudy.$('input')
-  whereIStudyPick = this.whereIStudy.element(by.cssContainingText('button', 'Pick'))
-  whereIStudyClear = this.whereIStudy.element(by.cssContainingText('button', 'Clear'))
+  whereIStudyPick = this.whereIStudy.element(by.cssContainingText('button span', 'Pick'))
+  whereIStudyClear = this.whereIStudy.element(by.cssContainingText('button span', 'Clear'))
 
   whereIStudied = element(by.cssContainingText('app-user-geo-location', 'Where I studied:'))
   whereIStudiedInput = this.whereIStudied.$('input')
-  whereIStudiedPick = this.whereIStudied.element(by.cssContainingText('button', 'Pick'))
-  whereIStudiedClear = this.whereIStudied.element(by.cssContainingText('button', 'Clear'))
+  whereIStudiedPick = this.whereIStudied.element(by.cssContainingText('button span', 'Pick'))
+  whereIStudiedClear = this.whereIStudied.element(by.cssContainingText('button span', 'Clear'))
 
   whereIVisit = element(by.cssContainingText('app-user-geo-location', 'Where I visit:'))
   whereIVisitInput = this.whereIVisit.$('input')
-  whereIVisitPick = this.whereIVisit.element(by.cssContainingText('button', 'Pick'))
-  whereIVisitClear = this.whereIVisit.element(by.cssContainingText('button', 'Clear'))
+  whereIVisitPick = this.whereIVisit.element(by.cssContainingText('button span', 'Pick'))
+  whereIVisitClear = this.whereIVisit.element(by.cssContainingText('button span', 'Clear'))
 
   hometown = element(by.cssContainingText('app-user-geo-location', 'Hometown:'))
   hometownInput = this.hometown.$('input')
-  hometownPick = this.hometown.element(by.cssContainingText('button', 'Pick'))
-  hometownClear = this.hometown.element(by.cssContainingText('button', 'Clear'))
+  hometownPick = this.hometown.element(by.cssContainingText('button span', 'Pick'))
+  hometownClear = this.hometown.element(by.cssContainingText('button span', 'Clear'))
 
   pickerModal = $('app-user-pick-location')
   searchTermInput = this.pickerModal.$('input')
-  modalAccept = this.pickerModal.element(by.cssContainingText('button', 'Accept'))
+  modalAccept = this.pickerModal.element(by.cssContainingText('button span', 'Accept'))
 
   navigateTo(): Promise<any> {
     return browser.get('profile')
@@ -50,12 +50,13 @@ export class GeoLocationSection {
     return browser.get('user/sSV63l8KnIPCVaDUUm2XPPe1sVD2')
   }
 
-  selectPlaceOnMap(element: ElementFinder) {
-    this.wait.forElementClickable(element)
-    element.click()
+  selectPlaceOnMap(elementPicker: ElementFinder) {
+    this.wait.forElementClickable(elementPicker)
+    elementPicker.click()
     this.wait.forElementVisible(this.pickerModal)
     let searchTerm = new Date().getMilliseconds().toPrecision(3)
     this.searchTermInput.sendKeys(searchTerm)
+    console.log('search term: ' + searchTerm)
     this.selectFirstSuggestedAddress()
     browser.sleep(500)
     this.modalAccept.click()
@@ -65,8 +66,19 @@ export class GeoLocationSection {
   //
   // }
 
+  catchGeoLocationFromMap() {
+    let longitude = $('agm-map#pickLocationMap').getAttribute('ng-reflect-longitude')
+    longitude.then(lon => {
+      console.log(lon)
+    })
+    let latitude = $('agm-map#pickLocationMap').getAttribute('ng-reflect-latitude')
+    latitude.then(lat => {
+      console.log(lat)
+    })
+  }
+
   selectFirstSuggestedAddress() {//: Promise<string> {
-    this.wait.forElementClickable(this.searchTermInput)
+    this.wait.forElementPresent(this.searchTermInput)
     this.searchTermInput.sendKeys(protractor.Key.ARROW_DOWN)
     browser.sleep(500)
     // let optionSelected = markedTopicFromSelectList.getText()
