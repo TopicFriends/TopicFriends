@@ -60,7 +60,7 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
     }
     let dialogRef = this.dialog.open(UserPickLocationComponent, {
       height: '470px',
-      width: '80%',
+      width: '90%',
       data: dialogParams
     }).afterClosed().subscribe(returnVal => {
       if ( returnVal ) {
