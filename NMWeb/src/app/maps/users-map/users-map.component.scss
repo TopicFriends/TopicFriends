@@ -1,12 +1,16 @@
+//$names: #ff9535;
+//$names: #ffff0c;
+$names: #fff;
+
 agm-map {
   height: 700px;
   width: 100%;
   text-shadow:
-    2px 2px 3px #f9ff0d,
-    -1px -1px 3px #f9ff0d,
-    1px -1px 3px #f9ff0d,
-    -1px 1px 3px #f9ff0d,
-    1px 1px 3px #f9ff0d;
+    2px 2px 3px $names,
+    -1px -1px 3px $names,
+    1px -1px 3px $names,
+    -1px 1px 3px $names,
+    1px 1px 3px $names;
   font-size: large;
 }
 
