@@ -41,13 +41,13 @@ export class UsersMapComponent implements OnInit {
   ngOnInit() {
     this.geoLocationService.getPosition().subscribe(
       (pos: Position) => {
-        this.coordinates = {
-          latitude:  +(pos.coords.latitude.toFixed(5)),
-          longitude: +(pos.coords.longitude.toFixed(5))
-        };
-        if(this.allUsersGeoLocationsFlattened) {
-          this.updateNearUsers(this.coordinates);
-        }
+        // this.coordinates = {
+        //   latitude:  +(pos.coords.latitude.toFixed(5)),
+        //   longitude: +(pos.coords.longitude.toFixed(5))
+        // };
+        // if(this.allUsersGeoLocationsFlattened) {
+        //   this.updateNearUsers(this.coordinates);
+        // }
       }
     );
 
