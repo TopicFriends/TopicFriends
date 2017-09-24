@@ -1,7 +1,7 @@
 <h1>User List</h1>
 
 <ng-template [ngIf]="userListSaved">
-  <p>{{ potentialConnectionsCount() }} potential connections between people!</p>
+  <p>{{userListSaved.length}} People. {{ potentialConnectionsCount() }} potential connections between people!</p>
 
   Max distance from me:
   <md-slider
