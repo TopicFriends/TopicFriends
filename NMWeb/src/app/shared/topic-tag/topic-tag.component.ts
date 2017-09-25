@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {TagEntry} from '../../user-profile/tag-entry'
+import {TopicInterest} from '../../user-profile/user-interests'
 
 @Component({
   selector: 'app-topic-tag',
@@ -7,13 +9,19 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TopicTagComponent implements OnInit {
 
-  @Input() tag;
+  @Input() tag: TopicInterest;
   @Input() editable;
   @Input() tagListModel;
+  @Input() loggedUserSymmetricTagListModel;
+  // @Input() loggedUserMatchingTagListModel;
+  // @Input() loggedUserSameTagListModel;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  shouldHighlightSymmetric() {
+    return this.loggedUserSymmetricTagListModel.tagExists(this.tag.tagEntry)
+  }
 }

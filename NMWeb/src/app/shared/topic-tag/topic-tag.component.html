@@ -1,4 +1,9 @@
-<md-chip class="tag-chip">
+<md-chip
+  [ngClass]="{
+    'tag-chip': true,
+    'tag-chip-highlight-symmetric': shouldHighlightSymmetric()
+  }"
+>
   <div style="display:table-cell; vertical-align: middle">
     <ng-template [ngIf]="tag.tagEntry.logo" >
       <img style="width: 18px; height: 18px; vertical-align: middle"
@@ -17,6 +22,7 @@
     <span style="display: inline; height: 100%; vertical-align: middle">
       <a [routerLink]="'/topic/'+tag.tagEntry.id">{{tag.tagEntry.name}}</a>
       &nbsp;
+      <!--<span *ngIf="shouldHighlightSymmetric()">SYM_MATCH</span>-->
     </span>
     <i *ngIf="editable"
        class="ion-close-circled"

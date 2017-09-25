@@ -34,6 +34,14 @@ export class WantedTopics {
   public subGroups?: {
     [groupId: string]: WantedTopics
   } = {}
+
+  static extractTags(dictionary: WantedTopics): TopicInterest[] {
+    if ( ! dictionary ) {
+      return []
+    }
+    return getDictionaryValuesAsArray(dictionary.topics);
+  }
+
 }
 
 /** Other potential names: GiveReceive, PassiveActive, FindAndBecome */
@@ -185,18 +193,24 @@ export class UserInterests {
     const allSupplyDemandOfOther =
       other.byInteractionMode &&
       other.byInteractionMode.supplyDemand;
-    if ( allSupplyDemandOfOther && this.byInteractionMode && this.byInteractionMode.supplyDemand ) {
+    const allSupplyDemandOfMe =
+      this.byInteractionMode &&
+      this.byInteractionMode.supplyDemand
+    if ( allSupplyDemandOfOther && allSupplyDemandOfMe ) {
       for (const interactionModeKey in allSupplyDemandOfOther) {
-        const supplyDemandOfOther2: SupplyDemand = allSupplyDemandOfOther[interactionModeKey]; // e.g. mentor
-        const ourSupplyDemand = this.byInteractionMode.supplyDemand[interactionModeKey];
-        const ourTopics = ourSupplyDemand && ourSupplyDemand.extractTags;
-        if ( ourTopics ) {
+        const currentSupplyDemandOfOther: SupplyDemand = allSupplyDemandOfOther[interactionModeKey]; // e.g. mentor
+        const currentSupplyDemandOfMe: SupplyDemand = allSupplyDemandOfMe[interactionModeKey];
+        // currentSupplyDemandOfOther.supply.
+        // getTopicMatchesWithinInteractionMode
+        // const ourTopics = WantedTopics.extractTags(ourSupplyDemand);
+
+        // if ( ourTopics ) {
           // for (const topicInclusionId in supplyDemandPerMode) {
           // supplyDemandPerMode[topicInclusionId];
           // matchScore += UserInterests.getTopicMatchesWithinInteractionMode().length;
           // }
           // supplyDemandOfOther2.name;
-        }
+        // }
       }
     }
     return {

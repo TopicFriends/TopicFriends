@@ -39,31 +39,54 @@
         <!--</div>-->
       <!--</div>-->
     <!--</div>-->
-    <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.exchange">
+    <app-user-interests-mode-view
+      [topicGroup]="userInterests?.byInteractionMode?.symmetric?.exchange"
+      [loggedUserTopicGroupSymmetric]="loggedUserInterests?.byInteractionMode?.symmetric?.exchange"
+    >
       Would like to exchange knowledge on:
     </app-user-interests-mode-view>
-    <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.pairProgramming">
+    <app-user-interests-mode-view
+      [topicGroup]="userInterests?.byInteractionMode?.symmetric?.pairProgramming"
+      [loggedUserTopicGroupSymmetric]="loggedUserInterests?.byInteractionMode?.symmetric?.pairProgramming"
+    >
       Would like to do pair programming on:
     </app-user-interests-mode-view>
-    <app-user-interests-mode-view [topicGroup]="userInterests?.byInteractionMode?.symmetric?.hackathon">
+    <app-user-interests-mode-view
+      [topicGroup]="userInterests?.byInteractionMode?.symmetric?.hackathon"
+      [loggedUserTopicGroupSymmetric]="loggedUserInterests?.byInteractionMode?.symmetric?.hackathon"
+    >
       Would like to do hackathon on:
     </app-user-interests-mode-view>
-    <app-user-interests-mode-view [topicGroup]="supplyDemand?.freelance?.demand">
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.freelance?.demand"
+      [loggedUserTopicGroupSupplyDemandSame]="loggedUserInterestsSymmetric?.hackathon.demand"
+      [loggedUserTopicGroupSupplyDemandMatching]="loggedUserInterestsSymmetric?.hackathon.supply"
+    >
       Would like to find a freelancer for:
     </app-user-interests-mode-view>
-    <app-user-interests-mode-view [topicGroup]="supplyDemand?.freelance?.supply">
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.freelance?.supply"
+    >
       Would like to work as a freelancer for:
     </app-user-interests-mode-view>
-    <app-user-interests-mode-view [topicGroup]="supplyDemand?.intern?.demand">
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.intern?.demand"
+    >
       Would like to find an intern for:
     </app-user-interests-mode-view>
-    <app-user-interests-mode-view [topicGroup]="supplyDemand?.intern?.supply">
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.intern?.supply"
+    >
       Would like to become an intern for:
     </app-user-interests-mode-view>
-    <app-user-interests-mode-view [topicGroup]="supplyDemand?.mentor?.demand">
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.mentor?.demand"
+    >
       Would like to find a mentor for:
     </app-user-interests-mode-view>
-    <app-user-interests-mode-view [topicGroup]="supplyDemand?.mentor?.supply">
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.mentor?.supply"
+    >
       Would like to become a mentor for:
     </app-user-interests-mode-view>
     <!--</md-card-content>-->

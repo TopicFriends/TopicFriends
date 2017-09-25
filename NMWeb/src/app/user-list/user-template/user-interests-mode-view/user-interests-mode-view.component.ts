@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {WantedTopics} from '../../../user-profile/user-interests'
 
 @Component({
   selector: 'app-user-interests-mode-view',
@@ -7,7 +8,12 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class UserInterestsModeViewComponent implements OnInit {
 
-  @Input() topicGroup;
+  @Input() topicGroup: WantedTopics;
+
+  @Input() loggedUserTopicGroupSymmetric: WantedTopics;
+
+  @Input() loggedUserTopicGroupSupplyDemandSame: WantedTopics;
+  @Input() loggedUserTopicGroupSupplyDemandMatching: WantedTopics;
 
   constructor() { }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {UserData, UserDescriptions, UserProfile, UserProfileService} from 'app/user-profile/user-profile.service';
-import {MatchResults, TopicInterest, UserInterests} from '../../user-profile/user-interests'
+import {MatchResults, SymmetricInteractions, TopicInterest, UserInterests} from '../../user-profile/user-interests'
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
 import {TagInclusions} from '../../shared/TagInclusions'
@@ -28,6 +28,7 @@ export class UserTemplateComponent implements OnInit {
 
   _whatUserWants: SupplyDemandTemplate[] = [];
   loggedUserInterests: UserInterests;
+  loggedUserInterestsSymmetric: SymmetricInteractions;
   userInterests: UserInterests;
   userDescriptions: UserDescriptions;
   profileBasicInfo: UserProfile;
@@ -46,6 +47,10 @@ export class UserTemplateComponent implements OnInit {
     })
     this.userProfileService.getUserInterestsOnceLoggedIn().subscribe(interests => {
       this.loggedUserInterests = UserInterests.fromJson(interests)
+      this.loggedUserInterestsSymmetric =
+        this.loggedUserInterests &&
+        this.loggedUserInterests.byInteractionMode &&
+        this.loggedUserInterests.byInteractionMode.symmetric
       this.calculateMatchScoreIfPossible()
     })
     this._whatUserWants = this._getWhatUserWants();
@@ -70,10 +75,6 @@ export class UserTemplateComponent implements OnInit {
     if ( this.loggedUserInterests && this.userInterests ) {
       this.matchResults = UserInterests.getInterestsMatchWith(this.loggedUserInterests, this.userInterests)
     }
-  }
-
-  extractTags(dictionary: TagInclusions): TopicInterest[] {
-    return getDictionaryValuesAsArray(dictionary);
   }
 
   private _getWhatUserWants(){

@@ -13,10 +13,23 @@ import {TagInclusions} from 'app/shared/TagInclusions';
 export class TopicTagListComponent implements OnInit {
 
   @Input() tagListModel: TagListModel;
+  loggedUserTagListModel: TagListModel
+
+  // @Input() loggedUserTopicGroupSupplyDemandSame: WantedTopics;
+  // @Input() loggedUserTopicGroupSupplyDemandMatching: WantedTopics;
 
   @Input() set tagList(tagList: TagInclusions) {
     // if ( tagList ) {
       this.tagListModel = new TagListModel(getDictionaryValuesAsArray(tagList))
+    // }
+  }
+
+  _loggedUserTagList: TagInclusions
+
+  @Input() set loggedUserTagList(tagList: TagInclusions) {
+    this.loggedUserTagListModel = new TagListModel(getDictionaryValuesAsArray(tagList))
+    // if ( tagList ) {
+    //   this.tagListModel = new TagListModel(getDictionaryValuesAsArray(tagList))
     // }
   }
   @Input() editable: boolean;
