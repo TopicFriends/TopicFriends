@@ -60,7 +60,7 @@ export class UserPickLocationComponent implements OnInit {
   private initSearchBar() {
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
+        // types: ["address"] // https://developers.google.com/places/web-service/autocomplete#place_types
       });
       // setTimeout(function() {
       // // failed attempt to fix the vertical position of the autocomplete list:
