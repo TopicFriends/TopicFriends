@@ -18,6 +18,7 @@ import {RouterModule} from '@angular/router'
 import {UserDescriptionsService} from './user-profile/user-descriptions.service'
 import {UserTopicsService} from './user-topics.service'
 import {DistancePipe} from '../maps/users-map/distance.pipe'
+import {PoiService} from './poi.service'
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import {DistancePipe} from '../maps/users-map/distance.pipe'
     UserGeoLocationsService,
     UserDescriptionsService,
     UserTopicsService,
+    PoiService,
   ]
 
 })

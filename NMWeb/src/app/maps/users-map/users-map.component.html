@@ -52,6 +52,15 @@
               [label]="(showLabelsOverMarker ? userLocation.title : '' ) | async"
             ></agm-marker>
           </ng-template>
+          <agm-marker
+            *ngFor="let location of pois"
+            [markerClickable]="true"
+            [iconUrl]="'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'"
+            (markerClick)="onMarkerClick(userLocation)"
+            [latitude]="location.geoLocation.latitude"
+            [longitude]="location.geoLocation.longitude"
+            [label]="location.title"
+          ></agm-marker>
 
           <!--<agm-marker *ngFor="let userCoords of usersCoords"-->
             <!--[latitude]="userCoords.geoCoords.latitude"-->

@@ -10,6 +10,7 @@ import { } from 'googlemaps';
 import {Router} from '@angular/router'
 import {USER_ROUTE_WITH_TRAILING_SLASH} from '../../user-profile/user-profile.module'
 import {MdCheckbox} from '@angular/material'
+import {Poi, PoiService} from '../../shared/poi.service'
 
 export class UserCoords {
   user?: UserProfile
@@ -31,14 +32,20 @@ export class UsersMapComponent implements OnInit {
   numberOfNearUsers = 0;
   showLabelsOverMarker = true;
 
+  pois: Array<Poi>
+
   constructor(
     private geoLocationService: GeoLocationService,
     private userGeoLocationsService: UserGeoLocationsService,
     private userProfileService: UserProfileService,
+    private poiService: PoiService,
     private router: Router,
   ) {}
 
   ngOnInit() {
+    this.poiService.observePois().subscribe(pois => {
+      this.pois = pois
+    })
     this.geoLocationService.getPosition().subscribe(
       (pos: Position) => {
         // this.coordinates = {
