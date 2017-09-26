@@ -36,7 +36,9 @@ import { AboutComponent } from './about/about.component';
 
 
 import 'hammerjs';
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
+import { UserGroupsComponent } from './user-groups/user-groups.component'
+import {UserGroupService} from './shared/user-group.service'
 
 const appRoutes: Routes = [
   {
@@ -55,6 +57,10 @@ const appRoutes: Routes = [
   {
     path: 'topics',
     component: TopicsAllComponent,
+  },
+  {
+    path: 'groups',
+    component: UserGroupsComponent,
   },
   {
     path: 'about',
@@ -76,6 +82,7 @@ const appRoutes: Routes = [
     // UserInterestsModeViewComponent,
     TopicsAllComponent,
     AboutComponent,
+    UserGroupsComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,7 +113,8 @@ const appRoutes: Routes = [
     UserListService,
     UserMatcherService,
     MeetingsService,
-    TopicsService
+    TopicsService,
+    UserGroupService,
   ],
   schemas: [
     // CUSTOM_ELEMENTS_SCHEMA
