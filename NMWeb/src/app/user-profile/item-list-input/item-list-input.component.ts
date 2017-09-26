@@ -23,6 +23,8 @@ const Sifter = require("sifter")
 })
 export class ItemListInputComponent implements OnInit {
 
+  enableAddingTopics = false
+
   sifter
 
   /** rename: all *possible* tags */
