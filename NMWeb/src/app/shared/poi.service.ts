@@ -23,6 +23,12 @@ export class PoiService {
       new Poi('Green Ray', new GeoLocation(36.7185311,-4.4969805)),
       new Poi('La Térmica', new GeoLocation(36.6898667,-4.4452127)),
       new Poi('La Noria', new GeoLocation(36.7288361,-4.4312157)),
+      new Poi('BeWorking', new GeoLocation(36.6964859,-4.4443957)),
+      new Poi('Coworking ElCentro', new GeoLocation(36.7149315,-4.425144)),
+      new Poi('Bunker CoWorking', new GeoLocation(36.7172594,-4.429016)),
+      new Poi('La Workería', new GeoLocation(36.7168117,-4.4237665)),
+      new Poi('Malaca XXI Coworking', new GeoLocation(36.7168117,-4.4237665)),
+      new Poi('Centro de Recursos Participativos', new GeoLocation(36.7133099,-4.4514274)),
     ])
   }
 
