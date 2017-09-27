@@ -6,7 +6,9 @@
 <!--
   <ng-content></ng-content>
 -->
-  <div style="display: inline-block; width: 8em">
+  <div
+    style="display: inline-block; width: 8em"
+  >
     {{locationName}}: &nbsp;
   </div>
 
@@ -26,9 +28,13 @@
       Latitude, Longitude
     </md-placeholder>
 
-    <input mdInput #latitudeLongitude
-           disabled
-           >
+    <input
+      mdInput
+      #latitudeLongitude
+      readonly
+      (click)="openLocationPicker()"
+      [disabled]="(! value) && (! userProfileInputs.isEditable)"
+    >
 
   </md-input-container>
 
