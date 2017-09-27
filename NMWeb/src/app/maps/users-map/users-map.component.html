@@ -9,19 +9,12 @@
     class="row"
   >
     <div class="col-xs-12">
-      <h2>This is your current location: </h2>
-      <div *ngIf="coordinates">
-        <p>Latitude: {{coordinates.latitude}}</p>
-        <p>Longitude: {{coordinates.longitude}}</p>
-      </div>
-
-      <div>Show labels over markers
-        <md-checkbox
-          checked="showLabelsOverMarker"
-          (change)="changeShowLabelOverMark()">
-        </md-checkbox>
-      </div>
-
+      <ng-template [ngIf]="false">
+        <h2>This is your current location: </h2>
+        <div *ngIf="coordinates">
+          <p>Latitude: {{coordinates.latitude}}</p>
+          <p>Longitude: {{coordinates.longitude}}</p>
+        </div>
         <md-slider
           min="100"
           max="50000"
@@ -31,7 +24,24 @@
           (change)="onRadiusSearchChange()"
         ></md-slider>
 
-      <p>There are <b>{{ numberOfNearUsers }}</b> map points within {{ radiusSearch | distance }}.</p>
+        <p>There are <b>{{ numberOfNearUsers }}</b> map points within {{ radiusSearch | distance }}.</p>
+      </ng-template>
+
+      <div>
+        <md-checkbox
+          checked="showLabelsOverMarker"
+          (change)="changeShowLabelOverMark()"
+        >
+          Show Labels &nbsp;
+        </md-checkbox>
+        <md-checkbox
+          checked="showPeople"
+          (change)="changeShowPeople()"
+        >
+          Show People
+        </md-checkbox>
+      </div>
+
     </div>
   </div>
   <p>There are currently {{allUsersGeoLocationsFlattened?.length}} points on the map</p>
@@ -43,15 +53,18 @@
           [longitude]="coordinates.longitude"
           [zoom]="10">
 
-          <ng-template ngFor let-userLocation [ngForOf]="allUsersGeoLocationsFlattened">
-            <agm-marker
-              [markerClickable]="true"
-              (markerClick)="onMarkerClick(userLocation)"
-              [latitude]="userLocation.latitude"
-              [longitude]="userLocation.longitude"
-              [label]="(showLabelsOverMarker ? userLocation.title : '' ) | async"
-            ></agm-marker>
+          <ng-template [ngIf]="showPeople">
+            <ng-template ngFor let-userLocation [ngForOf]="allUsersGeoLocationsFlattened">
+              <agm-marker
+                [markerClickable]="true"
+                (markerClick)="onMarkerClick(userLocation)"
+                [latitude]="userLocation.latitude"
+                [longitude]="userLocation.longitude"
+                [label]="(showLabelsOverMarker ? userLocation.title : '' ) | async"
+              ></agm-marker>
+            </ng-template>
           </ng-template>
+
           <agm-marker
             *ngFor="let location of pois"
             [markerClickable]="true"
@@ -59,7 +72,7 @@
             (markerClick)="onMarkerClick(userLocation)"
             [latitude]="location.geoLocation.latitude"
             [longitude]="location.geoLocation.longitude"
-            [label]="location.title"
+            [label]="(showLabelsOverMarker ? location.title : '' )"
           ></agm-marker>
 
           <!--<agm-marker *ngFor="let userCoords of usersCoords"-->

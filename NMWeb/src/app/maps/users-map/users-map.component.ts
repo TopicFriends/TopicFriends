@@ -31,6 +31,7 @@ export class UsersMapComponent implements OnInit {
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
   numberOfNearUsers = 0;
   showLabelsOverMarker = true;
+  showPeople = true;
 
   pois: Array<Poi>
 
@@ -130,6 +131,10 @@ export class UsersMapComponent implements OnInit {
 
   changeShowLabelOverMark() {
     this.showLabelsOverMarker = !this.showLabelsOverMarker
+  }
+
+  changeShowPeople() {
+    this.showPeople = !this.showPeople
   }
 
 }
