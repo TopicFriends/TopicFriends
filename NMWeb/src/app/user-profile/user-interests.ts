@@ -82,6 +82,43 @@ export class SymmetricInteractions {
   // TODO: discussOverBreakfast, discussOverLunch, discussOverDinner, discussOverWalking|Hiking|Bicycle
 }
 
+export class SupplyDemandInteractions {
+  // The more heavy something is, the more it should be in supplyDemand
+  //  as opposed to symmetric, because it might require organizers, e.g. hackathon, workshop, presentation,
+  /** though, hackathon is a special case in which it could work with or without organizers, meaning
+   *  the matching algorithm should have a mode in which it will also match in a case where, let's say everyone
+   *  wants to organize, or everyone just wants to participate.
+   For now we are doing only symmetric for hackathon */
+  intern?: SupplyDemand;
+  /** Mentor / advisor (should advisor be separate from mentor?) */
+  mentor?: SupplyDemand;
+  freelance?: SupplyDemand;
+
+  /** Code/architecture/database review */
+  review?: SupplyDemand;
+  job?: SupplyDemand;
+  // advising?: SupplyDemand,
+  sponsorEvents?: SupplyDemand;
+  coFounder?: SupplyDemand;
+  businessPartner?: SupplyDemand;
+  /** co-founder / business partner; rename to just coFounder for consistency */
+  // coFounderSpecializingIn?: SupplyDemand,
+  // work on hobby project together,
+  /** Work on open-source together; probably move to symmetric */
+  contributeToOpenSource?: SupplyDemand;
+  /** probably move to symmetric */
+  organizeHackathon?: SupplyDemand;
+  /** I would like to organize/participate */ /** For hackathon in supplyDemand we could
+ have a stronger wording: "I would like to organize hackathon."
+ / "I would like to participate in an **organized** hackathon" */
+  presentation?: SupplyDemand;      /** I'm interested in making/attending presentation */
+
+  /* Krzysztof Falkowicz: find presenter / be presenter */
+
+  workshop?: SupplyDemand;
+  // TODO: code review (kinda similar to pair programming)
+}
+
 /* Other names:
  UserInterestedIn
  UserInterests
@@ -91,42 +128,7 @@ export class UserInterests {
 
   byInteractionMode?: {
     symmetric?: SymmetricInteractions,
-    /* Refactor: extract SupplyDemandInteractions */
-    supplyDemand?: {    // The more heavy something is, the more it should be in supplyDemand
-      //  as opposed to symmetric, because it might require organizers, e.g. hackathon, workshop, presentation,
-      /** though, hackathon is a special case in which it could work with or without organizers, meaning
-       *  the matching algorithm should have a mode in which it will also match in a case where, let's say everyone
-       *  wants to organize, or everyone just wants to participate.
-       For now we are doing only symmetric for hackathon */
-      intern?: SupplyDemand,
-      /** Mentor / advisor (should advisor be separate from mentor?) */
-      mentor?: SupplyDemand,
-      freelance?: SupplyDemand,
-
-      /** Code/architecture/database review */
-      review?: SupplyDemand,
-      job?: SupplyDemand,
-      // advising?: SupplyDemand,
-      sponsorEvents?: SupplyDemand,
-      coFounder?: SupplyDemand,
-      businessPartner?: SupplyDemand,
-      /** co-founder / business partner; rename to just coFounder for consistency */
-      // coFounderSpecializingIn?: SupplyDemand,
-      // work on hobby project together,
-      /** Work on open-source together; probably move to symmetric */
-      contributeToOpenSource?: SupplyDemand,
-      /** probably move to symmetric */
-      organizeHackathon?: SupplyDemand,
-      /** I would like to organize/participate */ /** For hackathon in supplyDemand we could
-       have a stronger wording: "I would like to organize hackathon."
-       / "I would like to participate in an **organized** hackathon" */
-      presentation?: SupplyDemand,      /** I'm interested in making/attending presentation */
-
-      /* Krzysztof Falkowicz: find presenter / be presenter */
-
-      workshop?: SupplyDemand,
-      // TODO: code review (kinda similar to pair programming)
-    }
+    supplyDemand?: SupplyDemandInteractions
   };
 
   public static getTopicMatchesWithinInteractionMode(
