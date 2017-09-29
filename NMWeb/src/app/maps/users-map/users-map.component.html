@@ -38,13 +38,12 @@
           checked="showPeople"
           (change)="changeShowPeople()"
         >
-          Show People
+          Show People ({{allUsersGeoLocationsFlattened?.length}})
         </md-checkbox>
       </div>
 
     </div>
   </div>
-  <p>There are currently {{allUsersGeoLocationsFlattened?.length}} points on the map</p>
   <div class="row">
     <div class="col-xs-12">
       <div *ngIf="coordinates">
@@ -69,7 +68,6 @@
             *ngFor="let location of pois"
             [markerClickable]="true"
             [iconUrl]="'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'"
-            (markerClick)="onMarkerClick(userLocation)"
             [latitude]="location.geoLocation.latitude"
             [longitude]="location.geoLocation.longitude"
             [label]="(showLabelsOverMarker ? location.title : '' )"
