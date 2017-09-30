@@ -71,6 +71,7 @@ export class TopicsService {
     tagNoIcon('VR'),
     'JavaScript', tag('ECMAScript', 'es6'),
     'Elm', 'Scala', tag('.NET', 'dotnet'), tag('.NET Core', null), 'Docker', 'ElasticSearch',
+    tagNoIcon('Akka'),
     tagLogoTipo('Ember'), 'React', 'Redux', 'MobX', tagNoIcon('React Native'), 'Xamarin', tagNoIcon('Xamarin.Forms'),
     'Git',
     tag('TensorFlow', null), 'OpenCV',
@@ -191,6 +192,15 @@ export class TopicsService {
     tagNoIcon('Deep Learning'),
     tagNoIcon('DeepMind'),
     tagNoIcon('Big Data'),
+    tagNoIcon('MapReduce'),
+    tagNoIcon('Apache Mahout'),
+    tagNoIcon('Google Bigtable'),
+    tag('Apache HBase', 'hbase'),
+    tag('Apache Mesos', 'mesos'),
+    tag('Apache Drill', null),
+    tag('Apache ZooKeeper', null),
+    tagNoIcon('Data Science'),
+    tagNoIcon('Data Analytics'),
     tagNoIcon('Data Mining'),
     tagNoIcon('Data Warehousing'),
     tagNoIcon('DevOps'),
@@ -271,6 +281,8 @@ export class TopicsService {
     tag('Algolia', undefined, 'https://www.algolia.com/'),
     tag('Digital Marketing', null),
     tag('Django Rest Framework', null, 'http://www.django-rest-framework.org/'),
+    tag('Python pandas', null, 'http://pandas.pydata.org/'),
+    tag('NumPy', null, 'http://www.numpy.org/'),
     // tag('', null, ''),
 
     //, Green Tech, IoT, IoE
@@ -295,12 +307,20 @@ export class TopicsService {
      DONE: Liquibase / Flyway - wersjonowanie SQL
      DONE: Spring Boot / Dropwizard / JHipster */
 
+    // Alex Moron:
+    // Deployment
+    // Web Hosting
+    // Debugging
+    // Adobe Premiere
+
     // DONE: algolia
     // angellist
     // self-driving cars/vehicles
     // Electric vehicles
     // TODO: check Malaga meetup topics
 
+
+    // LoDash, Underscore.js, Ramda
   ]);
 
 
