@@ -4,7 +4,7 @@
   fxLayout="column"
   fxLayout.xs="row"
 >
-
+<div>
  <div fxFlexOrder="1" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==0)}" (click)="selectedTab = 0">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/meeting-list" routerLinkActive="active">
          <div class="nav-bar-centerd-items">
@@ -57,14 +57,14 @@
 
  </div>
 
-  <div fxFlexOrder="6" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==5)}"  (click)="selectedTab = 5">
-    <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/groups" routerLinkActive="active">
-      <div class="nav-bar-centerd-items">
-        <md-icon>people_outline</md-icon>
-        <p>Groups</p>
-      </div>
-    </div>
-  </div>
+  <!--<div fxFlexOrder="6" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==5)}"  (click)="selectedTab = 5">-->
+    <!--<div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/groups" routerLinkActive="active">-->
+      <!--<div class="nav-bar-centerd-items">-->
+        <!--<md-icon>people_outline</md-icon>-->
+        <!--<p>Groups</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
   <div fxFlexOrder="7" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==6)}"  (click)="selectedTab = 6">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/about" routerLinkActive="active">
@@ -78,7 +78,7 @@
  <div [fxHide.xs]="true" fxFlexOrder="8" fxFlex="1 .4 100%"></div>
 </div>
 
-
+</div>
 
 <!--
      <nav>
