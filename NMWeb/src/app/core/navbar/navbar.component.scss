@@ -17,6 +17,9 @@
 
 }
 .navbar-container-mobile{
+    .navbar-container-inner {
+      display: flex
+    }
     user-select: none;
     position: fixed;
     left: 0px;
