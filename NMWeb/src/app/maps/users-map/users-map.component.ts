@@ -6,7 +6,7 @@ import {
 import {GeoLocationService} from '../../shared/geo-location.service'
 import {UserGeoLocationsService} from '../../shared/user-geo-locations.service'
 
-import { } from 'googlemaps';
+// import { } from 'googlemaps';
 import {Router} from '@angular/router'
 import {USER_ROUTE_WITH_TRAILING_SLASH} from '../../user-profile/user-profile.module'
 import {MdCheckbox} from '@angular/material'
@@ -91,7 +91,7 @@ export class UsersMapComponent implements OnInit {
       // )
       this.allUsersGeoLocationsFlattened = allUsersGeoLocationsFlattened
       if(this.allUsersGeoLocationsFlattened) {
-        this.updateNearUsers(this.coordinates);
+        // this.updateNearUsers(this.coordinates);
       }
     })
   }
