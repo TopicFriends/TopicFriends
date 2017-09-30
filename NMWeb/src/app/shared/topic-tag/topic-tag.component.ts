@@ -10,7 +10,7 @@ import {TopicInterest} from '../../user-profile/user-interests'
 export class TopicTagComponent implements OnInit {
 
   @Input() tag: TopicInterest;
-  @Input() editable;
+  @Input() editable: boolean;
   @Input() tagListModel;
   @Input() loggedUserSymmetricTagListModel;
   // @Input() loggedUserMatchingTagListModel;
@@ -22,6 +22,9 @@ export class TopicTagComponent implements OnInit {
   }
 
   shouldHighlightSymmetric() {
-    return this.loggedUserSymmetricTagListModel.tagExists(this.tag.tagEntry)
+    return (
+      this.loggedUserSymmetricTagListModel &&
+      this.loggedUserSymmetricTagListModel.tagExists(this.tag.tagEntry)
+    )
   }
 }

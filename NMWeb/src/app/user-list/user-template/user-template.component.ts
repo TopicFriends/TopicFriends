@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {UserData, UserDescriptions, UserProfile, UserProfileService} from 'app/user-profile/user-profile.service';
-import {MatchResults, SymmetricInteractions, TopicInterest, UserInterests} from '../../user-profile/user-interests'
+import {
+  MatchResults, SupplyDemandInteractions, SymmetricInteractions, TopicInterest,
+  UserInterests,
+} from '../../user-profile/user-interests'
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
 import {TagInclusions} from '../../shared/TagInclusions'
@@ -29,6 +32,8 @@ export class UserTemplateComponent implements OnInit {
   _whatUserWants: SupplyDemandTemplate[] = [];
   loggedUserInterests: UserInterests;
   loggedUserInterestsSymmetric: SymmetricInteractions;
+  loggedUserInterestsSupplyDemand: SupplyDemandInteractions;
+
   userInterests: UserInterests;
   userDescriptions: UserDescriptions;
   profileBasicInfo: UserProfile;
@@ -43,7 +48,7 @@ export class UserTemplateComponent implements OnInit {
   ngOnInit() {
     this.userId = this._userPublicProfile.userId
     this.userProfileService.userDataByIdCombined(this.userId).subscribe(x => {
-      console.log('userDataByIdCombined', this.userId, x)
+      // console.log('userDataByIdCombined', this.userId, x)
     })
     this.userProfileService.getUserInterestsOnceLoggedIn().subscribe(interests => {
       this.loggedUserInterests = UserInterests.fromJson(interests)
@@ -51,6 +56,10 @@ export class UserTemplateComponent implements OnInit {
         this.loggedUserInterests &&
         this.loggedUserInterests.byInteractionMode &&
         this.loggedUserInterests.byInteractionMode.symmetric
+      this.loggedUserInterestsSupplyDemand =
+        this.loggedUserInterests &&
+        this.loggedUserInterests.byInteractionMode &&
+        this.loggedUserInterests.byInteractionMode.supplyDemand
       this.calculateMatchScoreIfPossible()
     })
     this._whatUserWants = this._getWhatUserWants();
