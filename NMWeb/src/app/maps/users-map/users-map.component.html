@@ -2,9 +2,9 @@
 <!-- Quick "port" to PeopleMatcher codebase. No bootstrap though -->
 
 <div class="container">
-  <h1>
-    Users Map
-  </h1>
+  <!--<h3>-->
+    <!--Users Map-->
+  <!--</h3>-->
   <div
     class="row"
   >
@@ -27,7 +27,9 @@
         <p>There are <b>{{ numberOfNearUsers }}</b> map points within {{ radiusSearch | distance }}.</p>
       </ng-template>
 
-      <div>
+      <div
+        style="margin-bottom: 5px"
+      >
         <md-checkbox
           checked="showLabelsOverMarker"
           (change)="changeShowLabelOverMark()"
