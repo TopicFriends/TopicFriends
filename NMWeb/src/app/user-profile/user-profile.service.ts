@@ -149,7 +149,7 @@ export class UserData {
       userData.geoLocations,
       userData.descriptions,
       (profile, interests, otherProfiles, geoLocations, descriptions) => {
-        console.log('combineFunction', profile, interests, otherProfiles, geoLocations, descriptions)
+        // console.log('combineFunction', profile, interests, otherProfiles, geoLocations, descriptions)
         return new UserDataCombined(
           this,
           userData.userId,
