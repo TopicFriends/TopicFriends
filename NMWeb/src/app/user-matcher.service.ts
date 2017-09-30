@@ -1,9 +1,28 @@
 import { Injectable } from '@angular/core';
 import {UserDataCombined, UserProfileService} from './user-profile/user-profile.service'
-import {MatchResults, UserInterests} from './user-profile/user-interests'
+import {MatchResults, UserInterests, WantedTopics} from './user-profile/user-interests'
 import {UserListService} from './user-list/user-list.service'
 import {Observable} from 'rxjs/Observable'
+import {TagListModel} from './shared/TagListModel'
 
+export class RelatedTopicLists {
+
+  symmetric: TagListModel
+  supplyDemandSame: TagListModel
+  supplyDemandMatch: TagListModel
+
+  constructor(
+    symmetric: WantedTopics,
+    supplyDemandSame: WantedTopics,
+    supplyDemandMatch: WantedTopics,
+  ) {
+    this.symmetric = TagListModel.from(symmetric)
+    this.supplyDemandSame = TagListModel.from(supplyDemandSame)
+    this.supplyDemandMatch = TagListModel.from(supplyDemandMatch)
+
+    console.log('RelatedTopicLists, symmetric', symmetric, supplyDemandSame, supplyDemandMatch)
+  }
+}
 
 export function sortUserByMatchScore (u1: UserMatched, u2: UserMatched) {
   if ( u1.matchResults && u2.matchResults ) {

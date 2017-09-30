@@ -1,6 +1,7 @@
-import {TopicInterest} from '../user-profile/user-interests'
+import {TopicInterest, WantedTopics} from '../user-profile/user-interests'
 import {TagEntry} from '../user-profile/tag-entry'
 import {EventEmitter} from '@angular/core'
+import {getDictionaryValuesAsArray} from './utils'
 /**
  * Created by kd on 2017-08-02.
  */
@@ -58,5 +59,9 @@ export class TagListModel {
     this.tags = chosenTags
     this.valueWasSet = true
 
+  }
+
+  static from(x: WantedTopics) {
+    return new TagListModel(WantedTopics.extractTags(x))
   }
 }

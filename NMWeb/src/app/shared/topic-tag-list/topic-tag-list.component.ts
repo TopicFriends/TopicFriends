@@ -4,6 +4,7 @@ import {getDictionaryValuesAsArray} from '../utils'
 import {TagEntry} from '../../user-profile/tag-entry'
 import {TagListModel} from '../TagListModel'
 import {TagInclusions} from 'app/shared/TagInclusions';
+import {RelatedTopicLists} from '../../user-matcher.service'
 
 @Component({
   selector: 'app-topic-tag-list',
@@ -13,10 +14,7 @@ import {TagInclusions} from 'app/shared/TagInclusions';
 export class TopicTagListComponent implements OnInit {
 
   @Input() tagListModel: TagListModel;
-  loggedUserTagListModel: TagListModel
-
-  // @Input() loggedUserTopicGroupSupplyDemandSame: WantedTopics;
-  // @Input() loggedUserTopicGroupSupplyDemandMatching: WantedTopics;
+  _relatedTopicLists: RelatedTopicLists
 
   @Input() set tagList(tagList: TagInclusions) {
     // if ( tagList ) {
@@ -24,10 +22,12 @@ export class TopicTagListComponent implements OnInit {
     // }
   }
 
-  _loggedUserTagList: TagInclusions
+  get relatedTopicLists(): RelatedTopicLists {
+    return this._relatedTopicLists
+  }
 
-  @Input() set loggedUserTagList(tagList: TagInclusions) {
-    this.loggedUserTagListModel = new TagListModel(getDictionaryValuesAsArray(tagList))
+  @Input() set relatedTopicLists(lists: RelatedTopicLists) {
+    this._relatedTopicLists = lists
     // if ( tagList ) {
     //   this.tagListModel = new TagListModel(getDictionaryValuesAsArray(tagList))
     // }

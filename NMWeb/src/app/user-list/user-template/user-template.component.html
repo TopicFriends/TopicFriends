@@ -41,19 +41,19 @@
     <!--</div>-->
     <app-user-interests-mode-view
       [topicGroup]="userInterests?.byInteractionMode?.symmetric?.exchange"
-      [loggedUserTopicGroupSymmetric]="loggedUserInterests?.byInteractionMode?.symmetric?.exchange"
+      [loggedUserTopicGroupSymmetric]="loggedUserInterestsSymmetric?.exchange"
     >
       Would like to exchange knowledge on:
     </app-user-interests-mode-view>
     <app-user-interests-mode-view
       [topicGroup]="userInterests?.byInteractionMode?.symmetric?.pairProgramming"
-      [loggedUserTopicGroupSymmetric]="loggedUserInterests?.byInteractionMode?.symmetric?.pairProgramming"
+      [loggedUserTopicGroupSymmetric]="loggedUserInterestsSymmetric?.pairProgramming"
     >
       Would like to do pair programming on:
     </app-user-interests-mode-view>
     <app-user-interests-mode-view
       [topicGroup]="userInterests?.byInteractionMode?.symmetric?.hackathon"
-      [loggedUserTopicGroupSymmetric]="loggedUserInterests?.byInteractionMode?.symmetric?.hackathon"
+      [loggedUserTopicGroupSymmetric]="loggedUserInterestsSymmetric?.hackathon"
     >
       Would like to do hackathon on:
     </app-user-interests-mode-view>

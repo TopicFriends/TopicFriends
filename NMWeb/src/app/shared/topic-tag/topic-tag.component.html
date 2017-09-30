@@ -1,7 +1,9 @@
 <md-chip
   [ngClass]="{
     'tag-chip': true,
-    'tag-chip-highlight-symmetric': shouldHighlightSymmetric()
+    'tag-chip-highlight-symmetric': shouldHighlightSymmetric(),
+    'tag-chip-highlight-supplyDemandSame': shouldHighlightSupplyDemandSame(),
+    'tag-chip-highlight-supplyDemandMatch': shouldHighlightSupplyDemandMatch()
   }"
 >
   <div style="display:table-cell; vertical-align: middle">
