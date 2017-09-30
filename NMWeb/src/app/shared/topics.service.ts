@@ -283,6 +283,9 @@ export class TopicsService {
     tag('Django Rest Framework', null, 'http://www.django-rest-framework.org/'),
     tag('Python pandas', null, 'http://pandas.pydata.org/'),
     tag('NumPy', null, 'http://www.numpy.org/'),
+    tag('Payment Processing', null),
+    tag('Digital Payments', null),
+    tag('Mobile Payments', null),
     // tag('', null, ''),
 
     //, Green Tech, IoT, IoE
