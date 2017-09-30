@@ -6,7 +6,8 @@ export class Poi {
   constructor(
     public title: string,
     public geoLocation: GeoLocation,
-
+    public url?: string,
+    public icon?: string,
   ) {}
 }
 
@@ -18,7 +19,8 @@ export class PoiService {
   observePois() {
     return Observable.of([
       new Poi('Polo Digital', new GeoLocation(36.6989071,-4.4391211)),
-      new Poi('GrowWorking', new GeoLocation(36.704939, -4.441062)),
+      new Poi('GrowWorking', new GeoLocation(36.704939, -4.441062), 'https://growworking.com/',
+        'assets/images/partners/GrowWorking_Icon.svg', ),
       new Poi('Karismatia', new GeoLocation(36.7212875,-4.492133)),
       new Poi('Green Ray', new GeoLocation(36.7185311,-4.4969805)),
       new Poi('La Térmica', new GeoLocation(36.689476, -4.445295)),

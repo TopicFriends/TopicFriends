@@ -69,7 +69,7 @@
           <agm-marker
             *ngFor="let location of pois"
             [markerClickable]="true"
-            [iconUrl]="'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'"
+            [iconUrl]="(location.icon || 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png')"
             [latitude]="location.geoLocation.latitude"
             [longitude]="location.geoLocation.longitude"
             [label]="(showLabelsOverMarker ? location.title : '' )"
