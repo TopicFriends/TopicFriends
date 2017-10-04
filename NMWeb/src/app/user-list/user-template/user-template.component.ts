@@ -82,6 +82,7 @@ export class UserTemplateComponent implements OnInit {
   }
 
   private calculateMatchScoreIfPossible() {
+    // TODO: use observeMatchResultsOnceLoggedInWithAnotherUserById
     if ( this.loggedUserInterests && this.userInterests ) {
       this.matchResults = UserInterests.getInterestsMatchWith(this.loggedUserInterests, this.userInterests)
     }

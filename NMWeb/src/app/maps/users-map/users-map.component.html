@@ -61,7 +61,11 @@
                 (markerClick)="onMarkerClick(userLocation)"
                 [latitude]="userLocation.latitude"
                 [longitude]="userLocation.longitude"
-                [label]="(showLabelsOverMarker ? userLocation.title : '' ) | async"
+                [label]="showLabelsOverMarker ? (
+                  (userLocation.title | async)
+                  + ' ' +
+                  (((userLocation.matchResults | async)?.matchScore) || '')
+                  ) : ''"
               ></agm-marker>
             </ng-template>
           </ng-template>

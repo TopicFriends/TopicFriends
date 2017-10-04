@@ -91,4 +91,19 @@ export class UserMatcherService {
     })
   }
 
+  /** Potential rename: drop the OnceLoggedIn, as it could be implied, that we need to be logged in to calculate MatchResults */
+  observeMatchResultsWithAnotherUserByIdOnceLoggedIn(userId: string): Observable<MatchResults> {
+    console.log('observeMatchResultsWithAnotherUserByIdOnceLoggedIn: ', userId)
+    return this.userProfileService.getUserInterestsOnceLoggedIn().switchMap(loggedUserInterests => {
+      console.log('getUserInterestsOnceLoggedIn: ', loggedUserInterests)
+
+      const mapFun = (otherUserInterests: UserInterests) => {
+        console.log('getInterestsMatchWith: ', loggedUserInterests, otherUserInterests)
+        return UserInterests.getInterestsMatchWith(loggedUserInterests, otherUserInterests)
+      }
+      return this.userProfileService.userDataById(userId).interests.map(mapFun)
+
+    })
+  }
+
 }

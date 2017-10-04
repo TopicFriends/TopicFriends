@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {AuthService} from './auth.service';
 import {DbObject} from '../db.service'
 import {DomainDbService} from '../domain-db.service'
-import {TopicInterest, UserInterests} from './user-interests'
+import {MatchResults, TopicInterest, UserInterests} from './user-interests'
 import {DbHistory, HasDbHistory} from '../util/history'
 import 'rxjs/add/observable/never'
 import {combineLatest} from 'rxjs/observable/combineLatest'
@@ -65,6 +65,7 @@ export class GeoLocation {
     public longitude: number,
     public title?: Observable<string>,
     public id?: string,
+    public matchResults?: Observable<MatchResults>,
   ) {
     if ( this.title === undefined ) {
       this.title = null; // for firebase
@@ -343,9 +344,10 @@ export class UserProfileService {
     return userData.combineLatest()
   }
 
-  getUserInterestsOnceLoggedIn() {
+  /* Potential rename: observeLoggedUserInterests */
+  getUserInterestsOnceLoggedIn(): Observable<UserInterests> {
     return this.authService.user.switchMap(user => {
-      if ( user ) {
+      if (user) {
         return this.getUserInterests()
       } else {
         return <any>Observable.never // consider Observable.empty

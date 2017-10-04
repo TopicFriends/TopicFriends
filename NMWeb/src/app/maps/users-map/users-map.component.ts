@@ -11,6 +11,8 @@ import {Router} from '@angular/router'
 import {USER_ROUTE_WITH_TRAILING_SLASH} from '../../user-profile/user-profile.module'
 import {MdCheckbox} from '@angular/material'
 import {Poi, PoiService} from '../../shared/poi.service'
+import {UserListService} from '../../user-list/user-list.service'
+import {UserMatcherService} from '../../user-matcher.service'
 
 export class UserCoords {
   user?: UserProfile
@@ -39,6 +41,8 @@ export class UsersMapComponent implements OnInit {
     private geoLocationService: GeoLocationService,
     private userGeoLocationsService: UserGeoLocationsService,
     private userProfileService: UserProfileService,
+    private userMatcherService: UserMatcherService,
+    private userListService: UserListService,
     private poiService: PoiService,
     private router: Router,
   ) {}
@@ -69,9 +73,11 @@ export class UsersMapComponent implements OnInit {
               // console.log('getAllUserGeoLocations: subLocation', subLocation)
               for ( let subLocationMultiKey of Object.keys(subLocation) ) {
                 const subLocationMulti: GeoLocation = subLocation[subLocationMultiKey]
+
                 // console.log('getAllUserGeoLocations: subLocationMulti', subLocationMulti)
                 if ( subLocationMulti ) {
                   let userId = (<any>userLocation).$key
+                  subLocationMulti.matchResults = this.userMatcherService.observeMatchResultsWithAnotherUserByIdOnceLoggedIn(userId)
                   subLocationMulti.title = this.userProfileService.userDataById(userId).profile.map((it: UserProfile) => {
                     return it.displayName
                   })
