@@ -39,14 +39,21 @@ a {
   color: black;
 }
 
+@mixin highlight-border {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
 .tag-chip-highlight-symmetric {
   background-color: #ffd530;
+  @include highlight-border;
 }
 
 .tag-chip-highlight-supplyDemandSame {
   background-color: #30ff30;
+  @include highlight-border;
 }
 
 .tag-chip-highlight-supplyDemandMatch {
   background-color: #b0b0FF;
+  @include highlight-border;
 }
