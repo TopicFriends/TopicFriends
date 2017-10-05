@@ -73,6 +73,9 @@ export class GeoLocation {
     if ( this.id === undefined ) {
       this.id = null; // for firebase
     }
+    if ( this.matchResults === undefined ) {
+      this.matchResults = null; // for firebase
+    }
   }
 
   static parseGeoString(geoString: string): GeoLocation {
@@ -85,6 +88,16 @@ export class GeoLocation {
     } else {
       return null
     }
+  }
+
+  static clone(it: GeoLocation): GeoLocation {
+    return new GeoLocation(
+      it.latitude,
+      it.longitude,
+      it.title,
+      it.id,
+      it.matchResults
+    )
   }
 
 }

@@ -17,7 +17,7 @@
 </ng-template>
 
 <nw-user-template
-  *ngFor="let user of userListCombinedSorted"
+  *ngFor="let user of userListCombinedSorted; trackBy: trackByKey"
   [userProfile]="user.userDataCombined.userData"
 ></nw-user-template>
 <!-- TODO: pass UserMatched instead -->

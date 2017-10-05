@@ -25,7 +25,7 @@ export class SupplyDemandTemplate{
 })
 export class UserTemplateComponent implements OnInit {
 
-  @Input('userProfile') _userPublicProfile: UserData;
+  @Input('userProfile') _userPublicProfile: UserData
   userId
   // @Input('userProfile') _userPublicProfile: UserProfile = new UserProfile();
 

@@ -72,10 +72,11 @@ export class UsersMapComponent implements OnInit {
               const subLocation: GeoLocationsDictionary = userLocation.geoLocations[subLocationKey]
               // console.log('getAllUserGeoLocations: subLocation', subLocation)
               for ( let subLocationMultiKey of Object.keys(subLocation) ) {
-                const subLocationMulti: GeoLocation = subLocation[subLocationMultiKey]
+                let subLocationMulti: GeoLocation = subLocation[subLocationMultiKey]
 
                 // console.log('getAllUserGeoLocations: subLocationMulti', subLocationMulti)
                 if ( subLocationMulti ) {
+                  subLocationMulti = GeoLocation.clone(subLocationMulti)
                   let userId = (<any>userLocation).$key
                   subLocationMulti.matchResults = this.userMatcherService.observeMatchResultsWithAnotherUserByIdOnceLoggedIn(userId)
                   subLocationMulti.title = this.userProfileService.userDataById(userId).profile.map((it: UserProfile) => {
