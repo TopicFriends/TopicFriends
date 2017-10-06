@@ -6,13 +6,13 @@ agm-map {
   height: 700px;
   width: 100%;
   text-shadow:
-    2px 2px 3px $names,
-    -1px -1px 3px $names,
-    1px -1px 3px $names,
-    -1px 1px 3px $names,
-    1px 1px 3px $names;
-  font-size: large;
+    -1px 0 $names,
+    0 1px $names,
+    1px 0 $names,
+    0 -1px $names;
+
 }
+
 
 md-slider {
   width: 300px;
