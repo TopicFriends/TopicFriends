@@ -71,6 +71,7 @@
           </ng-template>
 
           <agm-marker
+            class="shadow-text"
             *ngFor="let location of pois"
             [markerClickable]="true"
             [iconUrl]="(location.icon || 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png')"
