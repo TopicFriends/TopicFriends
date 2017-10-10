@@ -145,7 +145,9 @@ export class TopicsService {
       'https://github.com/expressjs/express',
       'https://www.npmjs.com/package/express',
       'https://stackoverflow.com/questions/tagged/express',
-      'https://stackshare.io/expressjs', )
+      'https://stackshare.io/expressjs',
+      'https://twitter.com/expressjs',
+      )
     ),
     'Sinatra',
     tagNoIcon('ngrx' /* I've also seen different capitalizations: NgRx, ngRx etc */),

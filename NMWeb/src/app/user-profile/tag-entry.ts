@@ -9,6 +9,7 @@ export class TopicUrls {
     public npm,
     public stackOverFlow,
     public stackShare,
+    public twitter,
   ) {}
 }
 
@@ -47,7 +48,7 @@ export class TagEntry {
       this.related = null // for firebase, because it does not allow to save undefined
     }
     if ( this.urls === undefined ) {
-      this.urls = new TopicUrls(null, null, null, null, null) // for firebase, because it does not allow to save undefined
+      this.urls = new TopicUrls(null, null, null, null, null, null) // for firebase, because it does not allow to save undefined
     }
   }
 
