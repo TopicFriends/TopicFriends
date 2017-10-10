@@ -10,4 +10,11 @@
 
 <h2>Related Topics</h2>
 
+<md-chip-list>
+  <app-topic-tag
+    *ngFor='let topic of topic.related'
+    [tag]="createTopicInterest(topic)"
+  ></app-topic-tag>
+</md-chip-list>
+
 <h2>News for this topic</h2>

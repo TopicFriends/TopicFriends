@@ -22,10 +22,14 @@ export class TopicDetailsComponent implements OnInit {
     private topicsService: TopicsService,
   ) {
     this.topic = this.topicsService.getTopicById(this.topicId)
-    this.topicInterest = new TopicInterest(this.topic);
+    this.topicInterest = this.createTopicInterest(this.topic);
   }
 
   ngOnInit() {
+  }
+
+  createTopicInterest(topic) {
+    return new TopicInterest(topic)
   }
 
 }

@@ -1,17 +1,17 @@
 import {Injectable} from '@angular/core';
 import {TagEntry} from '../user-profile/tag-entry'
 
-function tag(name: string, logo?: string, webSite?: string) {
-  return new TagEntry(name, logo, webSite);
+function tag(name: string, logo?: string, webSite?: string, related?) {
+  return new TagEntry(name, logo, webSite, related);
 }
 
-function tagNoIcon(name: string, gitHubLink?: string) {
-  return new TagEntry(name, null);
+function tagNoIcon(name: string, gitHubLink?: string, related?) {
+  return new TagEntry(name, null, related);
 }
 
 /** Will cause double width for icon, because the logotipo's font otherwise is too tiny */
-function tagLogoTipo(name: string, logo?: string) {
-  return tag(name, logo); // pass visual hint later
+function tagLogoTipo(name: string, logo?: string, website?, related?) {
+  return tag(name, logo, website, related); // pass visual hint later
 }
 
 export const angular = tag('Angular')
@@ -131,7 +131,15 @@ export class TopicsService {
     // tagLogoTipo('Backbone.js', 'backbone-icon'),
     tag('Backbone.js', 'backbone-icon'),
     tagNoIcon('Backend'),
-    tagLogoTipo('Express'), 'Socket.IO',
+    'Socket.IO',
+    tagLogoTipo('Express', 'express', 'https://expressjs.com', [
+      tag('Kraken.js', 'krakenjs', 'http://krakenjs.com/', ['Express']),
+      tag('FeathersJS', 'feathersjs', 'https://feathersjs.com/', ['Express']),
+      tag('KeystoneJS', 'keystonejs', 'http://keystonejs.com/', ['Express']),
+      tag('LoopBack', 'loopback', 'https://loopback.io/', ['Express']),
+      tag('MEAN Stack', 'meanio', 'http://mean.io/', ['Express']),
+      tag('Sails', 'sails', 'http://sailsjs.com/', ['Express']),
+    ]),
     'Sinatra',
     tagNoIcon('ngrx' /* I've also seen different capitalizations: NgRx, ngRx etc */),
     'Flask', tagNoIcon('Pylons'), tagNoIcon('Zope'),
@@ -213,7 +221,6 @@ export class TopicsService {
     tagNoIcon('YouTube'),
     tagNoIcon('Explainer Videos'),
     tagNoIcon('Geomarketing'),
-    tagNoIcon('MEAN Stack'),
     tagNoIcon('LAMP Stack'),
     tagNoIcon('Cyber Security'),
     tagNoIcon('Chart.js'),
@@ -325,7 +332,6 @@ export class TopicsService {
     // Electric vehicles
     // TODO: check Malaga meetup topics
 
-    // TODO: Express frameworks: Feathers, Kraken
 
     // LoDash, Underscore.js, Ramda
   ]);
