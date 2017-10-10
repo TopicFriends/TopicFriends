@@ -4,6 +4,14 @@
   <app-topic-tag [tag]="topicInterest"></app-topic-tag>
 </md-chip-list>
 
+<h2>Related Topics</h2>
+
+<md-chip-list>
+  <app-topic-tag
+    *ngFor='let topic of topic.related'
+    [tag]="createTopicInterest(topic)"
+  ></app-topic-tag>
+</md-chip-list>
 
 <h2>Links</h2>
 <p><a href="https://topicfriends.org/{{topic.id}}">https://topicfriends.org/{{topic.id}}</a></p>
@@ -34,14 +42,5 @@
     <img class='url-icon' src="/assets/images/logos/twitter.svg"/>{{topic.urls.twitter}}
   </a>
 </div>
-
-<h2>Related Topics</h2>
-
-<md-chip-list>
-  <app-topic-tag
-    *ngFor='let topic of topic.related'
-    [tag]="createTopicInterest(topic)"
-  ></app-topic-tag>
-</md-chip-list>
 
 <h2>News for this topic</h2>
