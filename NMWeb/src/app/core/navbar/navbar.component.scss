@@ -1,4 +1,8 @@
 .navbar-container{
+  .navbar-container-inner {
+    display: flex;
+    flex-direction: column;
+  }
   user-select: none;
   position: fixed;
   display: flex;
@@ -18,7 +22,8 @@
 }
 .navbar-container-mobile{
     .navbar-container-inner {
-      display: flex
+      display: flex;
+      flex-direction: row;
     }
     user-select: none;
     position: fixed;
