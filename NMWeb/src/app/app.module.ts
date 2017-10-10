@@ -39,6 +39,7 @@ import 'hammerjs';
 import {FormsModule} from '@angular/forms';
 import { UserGroupsComponent } from './user-groups/user-groups.component'
 import {UserGroupService} from './shared/user-group.service'
+import {CookieLawModule} from 'angular2-cookie-law'
 
 const appRoutes: Routes = [
   {
@@ -103,6 +104,7 @@ const appRoutes: Routes = [
     MdChipsModule,
     MdSliderModule,
     FormsModule,
+    CookieLawModule,
     // FlexLayoutModule,
   ],
   providers: [
