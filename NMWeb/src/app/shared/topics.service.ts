@@ -133,12 +133,12 @@ export class TopicsService {
     tagNoIcon('Backend'),
     'Socket.IO',
     tagLogoTipo('Express', 'express', 'https://expressjs.com', [
-      tag('Kraken.js', 'krakenjs', 'http://krakenjs.com/', ['Express']),
-      tag('FeathersJS', 'feathersjs', 'https://feathersjs.com/', ['Express']),
-      tag('KeystoneJS', 'keystonejs', 'http://keystonejs.com/', ['Express']),
-      tag('LoopBack', 'loopback', 'https://loopback.io/', ['Express']),
-      tag('MEAN Stack', 'meanio', 'http://mean.io/', ['Express']),
-      tag('Sails', 'sails', 'http://sailsjs.com/', ['Express']),
+      tag('Kraken.js', 'krakenjs', 'http://krakenjs.com/'),
+      tag('FeathersJS', 'feathersjs', 'https://feathersjs.com/'),
+      tag('KeystoneJS', 'keystonejs', 'http://keystonejs.com/'),
+      tag('LoopBack', 'loopback', 'https://loopback.io/'),
+      tag('MEAN Stack', 'meanio', 'http://mean.io/'),
+      tag('Sails', 'sails', 'http://sailsjs.com/'),
     ]),
     'Sinatra',
     tagNoIcon('ngrx' /* I've also seen different capitalizations: NgRx, ngRx etc */),
@@ -338,13 +338,19 @@ export class TopicsService {
 
 
   private transformTags(inputList: (TagEntry|string)[]): TagEntry[] {
-    return inputList.map(el => {
+    let related = []
+    let ret = inputList.map(el => {
       if (el instanceof TagEntry) {
+        if ( el.related ) {
+          related = related.concat(el.related)
+        }
         return el;
       } else {
         return tag(el);
       }
     })
+    ret = ret.concat(related)
+    return ret
   }
 
   getTopicById(topicId: string): TagEntry {
