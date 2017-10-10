@@ -2,14 +2,16 @@
 //$names: #ffff0c;
 $names: #fff;
 
+$blur-radius: 1px;
+
 agm-map {
   height: 700px;
   width: 100%;
   text-shadow:
-    -1px 0 $names,
-    0 1px $names,
-    1px 0 $names,
-    0 -1px $names;
+    -1px 0 $blur-radius $names,
+    0 1px $blur-radius $names,
+    1px 0 $blur-radius $names,
+    0 -1px $blur-radius $names;
 
 }
 
