@@ -54,6 +54,17 @@
   </form>
 
   <p
+    style="color: #707070; font-style: italic"
+    *ngIf="userProfileInputs.isEditable"
+  >
+    <!-- http://portal.circe.es/es-ES/Herramientas/Paginas/ClausulaLOPD.aspx -->
+    Cláusula LOPD. En cumplimiento de lo dispuesto en la Ley Orgánica 15/1999 de Protección de Datos de Carácter Personal, le informamos que los datos de carácter personal obtenidos mediante la cumplimentación del presente formulario del perfil público de TopicFriends.org, van a ser tratados y quedarán incorporados a los ficheros responsabilidad de TopicFriends.org.
+    En este sentido, le informamos que la recogida y tratamiento de sus datos tienen como finalidad mantener la base de Usuarios de la Comunidad de TopicFriends.org para facilitar que los usuarios se conozcan mutuamente.
+    El hecho de utilizar el formulario del perfil público de TopicFriends.org implica que expresa su consentimiento para que los datos suministrados queden incorporados a un fichero automatizado titularidad de TopicFriends.org.
+    En todo caso, usted puede ejercitar los derechos de acceso, rectificación, cancelación y oposición, previstos por la Ley, dirigiendo un escrito a contact@topicfriends.org o Avenida Editor Angel Caffarena 15, 29010 Málaga.
+  </p>
+
+  <p
     *ngIf="userProfileInputs.isEditable"
   >
     <button
