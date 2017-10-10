@@ -5,8 +5,34 @@
 </md-chip-list>
 
 
-<h2>Website</h2>
-<a href="{{topic.website}}">{{topic.website}}</a>
+<h2>Links</h2>
+<p><a href="https://topicfriends.org/{{topic.id}}">https://topicfriends.org/{{topic.id}}</a></p>
+<p><a href="{{topic.website}}">{{topic.website}}</a></p>
+<p><a href="{{topic.urls.wikipedia}}">{{topic.urls.wikipedia}}</a></p>
+<div>
+  <a href="{{topic.urls.gitHub}}">
+    <img class='url-icon' src="/assets/images/logos/github.svg"/>
+    {{topic.urls.gitHub}}
+  </a>
+</div>
+<div>
+  <a href="{{topic.urls.npm}}">
+    <img class='url-icon' src="/assets/images/logos/npm.svg"/>
+    {{topic.urls.npm}}
+  </a>
+</div>
+<div>
+  <a href="{{topic.urls.stackOverFlow}}">
+    <img class='url-icon' src="/assets/images/logos/stackoverflow.svg"/>
+    {{topic.urls.stackOverFlow}}
+  </a>
+</div>
+<div>
+  <a href="{{topic.urls.stackShare}}">
+    <img class='url-icon' src="/assets/images/logos/stackshare.svg"/>
+    {{topic.urls.stackShare}}
+  </a>
+</div>
 
 <h2>Related Topics</h2>
 

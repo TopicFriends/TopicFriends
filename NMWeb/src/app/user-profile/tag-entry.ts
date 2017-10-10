@@ -1,6 +1,15 @@
-
 function escapeRegexp(s) {
   return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+
+export class TopicUrls {
+  constructor(
+    public wikipedia,
+    public gitHub,
+    public npm,
+    public stackOverFlow,
+    public stackShare,
+  ) {}
 }
 
 /* TODO rename to Topic */
@@ -21,6 +30,7 @@ export class TagEntry {
     logo?: string,
     public website?: string,
     public related?,
+    public urls?: TopicUrls,
   ) {
     this.id = name // TODO escape e.g. + (For c++)
     if ( logo === null ) {
@@ -32,6 +42,12 @@ export class TagEntry {
     }
     if ( this.website === undefined ) {
       this.website = null // for firebase, because it does not allow to save undefined
+    }
+    if ( this.related === undefined ) {
+      this.related = null // for firebase, because it does not allow to save undefined
+    }
+    if ( this.urls === undefined ) {
+      this.urls = new TopicUrls(null, null, null, null, null) // for firebase, because it does not allow to save undefined
     }
   }
 

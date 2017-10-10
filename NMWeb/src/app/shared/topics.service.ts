@@ -1,17 +1,18 @@
 import {Injectable} from '@angular/core';
-import {TagEntry} from '../user-profile/tag-entry'
+import {TagEntry, TopicUrls} from '../user-profile/tag-entry'
 
-function tag(name: string, logo?: string, webSite?: string, related?) {
-  return new TagEntry(name, logo, webSite, related);
+
+function tag(name: string, logo?: string, webSite?: string, related?, urls?: TopicUrls) {
+  return new TagEntry(name, logo, webSite, related, urls);
 }
 
-function tagNoIcon(name: string, gitHubLink?: string, related?) {
-  return new TagEntry(name, null, related);
+function tagNoIcon(name: string, gitHubLink?: string, related?, urls?: TopicUrls) {
+  return new TagEntry(name, null, related, urls);
 }
 
 /** Will cause double width for icon, because the logotipo's font otherwise is too tiny */
-function tagLogoTipo(name: string, logo?: string, website?, related?) {
-  return tag(name, logo, website, related); // pass visual hint later
+function tagLogoTipo(name: string, logo?: string, website?, related?, urls?: TopicUrls) {
+  return tag(name, logo, website, related, urls); // pass visual hint later
 }
 
 export const angular = tag('Angular')
@@ -139,7 +140,13 @@ export class TopicsService {
       tag('LoopBack', 'loopback', 'https://loopback.io/'),
       tag('MEAN Stack', 'meanio', 'http://mean.io/'),
       tag('Sails', 'sails', 'http://sailsjs.com/'),
-    ]),
+    ], new TopicUrls(
+      'https://en.wikipedia.org/wiki/Express.js',
+      'https://github.com/expressjs/express',
+      'https://www.npmjs.com/package/express',
+      'https://stackoverflow.com/questions/tagged/express',
+      'https://stackshare.io/expressjs', )
+    ),
     'Sinatra',
     tagNoIcon('ngrx' /* I've also seen different capitalizations: NgRx, ngRx etc */),
     'Flask', tagNoIcon('Pylons'), tagNoIcon('Zope'),
