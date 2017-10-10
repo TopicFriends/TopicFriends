@@ -3,16 +3,16 @@
 <ng-template [ngIf]="userListSaved">
   <p>{{userListSaved.length}} People. {{ potentialConnectionsCount() }} potential connections between people!</p>
 
-  Max distance from me:
-  <md-slider
-    min="100"
-    max="50000"
-    step="200"
-    tickInterval="3"
-    [(ngModel)]="maxDistance"
-    (input)="maxDistanceChange($event)"
-  ></md-slider>
-  {{ maxDistance | distance }}
+  <!--Max distance from me:-->
+  <!--<md-slider-->
+    <!--min="100"-->
+    <!--max="50000"-->
+    <!--step="200"-->
+    <!--tickInterval="3"-->
+    <!--[(ngModel)]="maxDistance"-->
+    <!--(input)="maxDistanceChange($event)"-->
+  <!--&gt;</md-slider>-->
+  <!--{{ maxDistance | distance }}-->
 
 </ng-template>
 
