@@ -1,3 +1,13 @@
 li {
   margin: 7px 0;
 }
+
+$partner-margin-top: 20px;
+
+.partners-container {
+  margin-top: -$partner-margin-top;
+}
+
+.partner-img {
+  margin-top: $partner-margin-top;
+}
