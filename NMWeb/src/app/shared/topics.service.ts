@@ -345,18 +345,17 @@ export class TopicsService {
 
 
   private transformTags(inputList: (TagEntry|string)[]): TagEntry[] {
-    let related = []
-    let ret = inputList.map(el => {
+    let ret = []
+    for ( let el of inputList ) {
       if (el instanceof TagEntry) {
+        ret.push(el)
         if ( el.related ) {
-          related = related.concat(el.related)
+          ret = ret.concat(el.related)
         }
-        return el;
       } else {
-        return tag(el);
+        ret.push(tag(el))
       }
-    })
-    ret = ret.concat(related)
+    }
     return ret
   }
 
