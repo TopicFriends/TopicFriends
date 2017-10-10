@@ -104,6 +104,7 @@ export class TopicsService {
     tagNoIcon('Gentoo Linux'), tag('Arch Linux', 'archlinux'),
     'FreeBSD',
     'Redis', 'CouchBase', 'CouchDB', tagLogoTipo('MongoDB'), 'Memcached',
+    tagNoIcon('Mongoose'),
     'PrestaShop', 'WooCommerce', tagNoIcon('osCommerce'), 'Magento', 'Shopify', tagNoIcon('BigCommerce'),
     'Travis CI',
     'Wix',
@@ -286,6 +287,8 @@ export class TopicsService {
     tag('Payment Processing', null),
     tag('Digital Payments', null),
     tag('Mobile Payments', null),
+    tag('Materialize', 'materializecss', 'http://materializecss.com/'),
+    tag('Browsersync', 'browsersync', 'https://www.browsersync.io/'),
     // tag('', null, ''),
 
     //, Green Tech, IoT, IoE
@@ -322,6 +325,7 @@ export class TopicsService {
     // Electric vehicles
     // TODO: check Malaga meetup topics
 
+    // TODO: Express frameworks: Feathers, Kraken
 
     // LoDash, Underscore.js, Ramda
   ]);
