@@ -1,3 +1,13 @@
+
+$h-margin: 15px;
+
+h2 {
+  padding-left: $h-margin;
+  margin-left: -$h-margin;
+  padding-right: $h-margin;
+  margin-right: -$h-margin;
+}
+
 li {
   margin: 7px 0;
 }
@@ -10,4 +20,25 @@ $partner-margin-top: 20px;
 
 .partner-img {
   margin-top: $partner-margin-top;
+}
+
+// ==== :target blink:
+
+$bg-target: #c0c0c0;
+
+@keyframes pulse {
+  0% {
+    background-color: $bg-target;
+  }
+  50% {
+    background-color: #e0e0e0;
+  }
+  100% {
+    background-color: $bg-target;
+  }
+}
+
+:target {
+  animation: pulse 1s infinite;
+  transition-timing-function: ease-in-out;
 }
