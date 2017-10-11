@@ -10,7 +10,12 @@ export class TopicUrls {
     public stackOverFlow,
     public stackShare,
     public twitter,
-  ) {}
+    public alternativeTo?,
+  ) {
+    if ( this.alternativeTo === undefined ) {
+      this.alternativeTo = null // for firebase
+    }
+  }
 }
 
 /* TODO rename to Topic */
@@ -30,7 +35,7 @@ export class TagEntry {
     // public topicId?,
     logo?: string,
     public website?: string,
-    public related?,
+    public related?: TagEntry[],
     public urls?: TopicUrls,
   ) {
     this.id = name // TODO escape e.g. + (For c++)

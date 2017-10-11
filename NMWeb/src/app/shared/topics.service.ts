@@ -2,16 +2,16 @@ import {Injectable} from '@angular/core';
 import {TagEntry, TopicUrls} from '../user-profile/tag-entry'
 
 
-function tag(name: string, logo?: string, webSite?: string, related?, urls?: TopicUrls) {
+function tag(name: string, logo?: string, webSite?: string, related?: TagEntry[], urls?: TopicUrls) {
   return new TagEntry(name, logo, webSite, related, urls);
 }
 
-function tagNoIcon(name: string, gitHubLink?: string, related?, urls?: TopicUrls) {
-  return new TagEntry(name, null, related, urls);
+function tagNoIcon(name: string, gitHubLink?: string, related?: TagEntry[], urls?: TopicUrls) {
+  return new TagEntry(name, null, null, related, urls);
 }
 
 /** Will cause double width for icon, because the logotipo's font otherwise is too tiny */
-function tagLogoTipo(name: string, logo?: string, website?, related?, urls?: TopicUrls) {
+function tagLogoTipo(name: string, logo?: string, website?, related?: TagEntry[], urls?: TopicUrls) {
   return tag(name, logo, website, related, urls); // pass visual hint later
 }
 
@@ -82,6 +82,17 @@ export class TopicsService {
     tag('CSS3', 'css-3'), tag('Responsive Design', null), tag('HTML5', 'html-5'),
     tag('PWA', null), tagNoIcon('SPA'), tag('REST', null), tag('HTTP', null), tag('WebSocket'), 'WebRTC', tagLogoTipo('Upwork'),
     tagLogoTipo('NodeJS'), npm,
+    tag('Seneca', 'seneca', 'http://senecajs.org/', [], new TopicUrls(
+      null,
+      'https://github.com/senecajs/seneca',
+      'https://www.npmjs.com/package/seneca',
+      'https://stackoverflow.com/questions/tagged/seneca',
+      'https://stackshare.io/seneca',
+      'https://twitter.com/senecajs',
+      null
+    )),
+    // TODO: Swagger
+
     sass, tagLogoTipo('Stylus'), tagLogoTipo('Less'),
     'Bitcoin', 'Ethereum', 'Steemit', 'Monero',
     tagNoIcon('Cryptocurrency'), tagNoIcon('Blockchain'), tagNoIcon('Cryptography'),
@@ -147,6 +158,7 @@ export class TopicsService {
       'https://stackoverflow.com/questions/tagged/express',
       'https://stackshare.io/expressjs',
       'https://twitter.com/expressjs',
+      // TOOD: 'https://alternativeto.net/software/expressjs/',
       )
     ),
     'Sinatra',
