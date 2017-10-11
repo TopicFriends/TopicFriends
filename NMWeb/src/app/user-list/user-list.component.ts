@@ -52,7 +52,7 @@ export class UserListComponent implements OnInit {
   }
 
   trackByKey(idx, val: UserMatched) {
-    console.log('trackByKey: ', val)
+    // console.log('trackByKey: ', val)
     return val.userId
   }
 

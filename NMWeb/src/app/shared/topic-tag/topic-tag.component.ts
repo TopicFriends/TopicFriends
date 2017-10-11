@@ -19,7 +19,7 @@ export class TopicTagComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('related tags', this.relatedTopicLists)
+    // console.log('related tags', this.relatedTopicLists)
   }
 
   shouldHighlightSymmetric() {

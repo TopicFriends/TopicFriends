@@ -46,7 +46,7 @@ export class UserInterestsModeViewComponent implements OnInit {
       this._loggedUserTopicGroupSupplyDemandSame,
       this._loggedUserTopicGroupSupplyDemandMatch,
     )
-    console.log('setRelatedTopicLists', this.relatedTopicLists)
+    // console.log('setRelatedTopicLists', this.relatedTopicLists)
   }
 
 }

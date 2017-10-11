@@ -56,7 +56,7 @@ export class UserTemplateComponent implements OnInit {
         this.loggedUserInterests &&
         this.loggedUserInterests.byInteractionMode &&
         this.loggedUserInterests.byInteractionMode.symmetric
-      console.log('loggedUserInterestsSymmetric', this.loggedUserInterestsSymmetric)
+      // console.log('loggedUserInterestsSymmetric', this.loggedUserInterestsSymmetric)
       this.loggedUserInterestsSupplyDemand =
         this.loggedUserInterests &&
         this.loggedUserInterests.byInteractionMode &&

@@ -20,7 +20,7 @@ export class RelatedTopicLists {
     this.supplyDemandSame = TagListModel.from(supplyDemandSame)
     this.supplyDemandMatch = TagListModel.from(supplyDemandMatch)
 
-    console.log('RelatedTopicLists, symmetric', symmetric, supplyDemandSame, supplyDemandMatch)
+    // console.log('RelatedTopicLists, symmetric', symmetric, supplyDemandSame, supplyDemandMatch)
   }
 }
 
