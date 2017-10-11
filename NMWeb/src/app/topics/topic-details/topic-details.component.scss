@@ -1,8 +1,12 @@
-$img-size: 55px;
+$img-size: 38px;
 
 .url-icon {
   height: $img-size;
   width: $img-size;
   margin: 0.5em;
   vertical-align: middle;
+}
+
+iframe {
+  vertical-align: middle
 }
