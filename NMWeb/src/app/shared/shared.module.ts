@@ -5,7 +5,7 @@ import {
   MdIconModule, MdInputModule,
   MdMenuModule,
   MdButtonModule, MdCheckboxModule, MdChipList, MdDialogModule,
-  MdSlideToggleModule, MdSnackBar, MdSnackBarModule,
+  MdSlideToggleModule, MdSnackBar, MdSnackBarModule, MdTabsModule,
 } from '@angular/material'
 import {TopicTagComponent} from './topic-tag/topic-tag.component'
 import {TopicTagListComponent} from './topic-tag-list/topic-tag-list.component'
@@ -19,6 +19,9 @@ import {UserDescriptionsService} from './user-profile/user-descriptions.service'
 import {UserTopicsService} from './user-topics.service'
 import {DistancePipe} from '../maps/users-map/distance.pipe'
 import {PoiService} from './poi.service'
+import {HttpClientModule} from '@angular/common/http'
+import {GitHubService} from './git-hub.service'
+import {StackOverflowService} from './stack-overflow.service'
 
 
 @NgModule({
@@ -31,11 +34,13 @@ import {PoiService} from './poi.service'
     MdCheckboxModule,
     MdIconModule,
     MdChipsModule,
+    MdTabsModule,
     MdCardModule,
     MdIconModule,
     MdSnackBarModule,
     MdDialogModule,
     RouterModule,
+    HttpClientModule,
   ],
   declarations: [
     TopicTagComponent,
@@ -54,6 +59,7 @@ import {PoiService} from './poi.service'
     SnackBarComponent,
     MdInputModule,
     DistancePipe,
+    MdTabsModule,
   ],
   providers: [
     SnackBarComponent,
@@ -64,6 +70,8 @@ import {PoiService} from './poi.service'
     UserDescriptionsService,
     UserTopicsService,
     PoiService,
+    GitHubService,
+    StackOverflowService,
   ]
 
 })
