@@ -91,7 +91,7 @@ export class TopicsService {
       'https://twitter.com/senecajs',
       null
     )),
-    // TODO: Swagger
+    'Swagger',
 
     sass, tagLogoTipo('Stylus'), tagLogoTipo('Less'),
     'Bitcoin', 'Ethereum', 'Steemit', 'Monero',
