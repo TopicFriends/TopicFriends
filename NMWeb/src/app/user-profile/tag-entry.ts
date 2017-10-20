@@ -11,9 +11,17 @@ export class TopicUrls {
     public stackShare,
     public twitter,
     public alternativeTo?,
+    public changeLog?,
+    public runKit?,
   ) {
     if ( this.alternativeTo === undefined ) {
       this.alternativeTo = null // for firebase
+    }
+    if ( this.changeLog === undefined ) {
+      this.changeLog = null // for firebase
+    }
+    if ( this.runKit === undefined ) {
+      this.runKit = null // for firebase
     }
   }
 }
