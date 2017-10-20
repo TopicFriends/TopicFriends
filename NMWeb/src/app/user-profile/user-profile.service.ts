@@ -56,6 +56,8 @@ export class UserOtherProfiles {
   // telegram (phone?)
   // google / hangouts
   // slack?
+  // TODO: companyWebsite
+  // blog
 
 }
 
