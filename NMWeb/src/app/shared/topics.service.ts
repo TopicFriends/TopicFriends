@@ -39,21 +39,18 @@ export class TopicsService {
 
   constructor() { }
 
-  // All possible tags
-  // @Input() public inputTagList: TagEntry[] = [tag('Angular'), tag('Ionic'), tag('Firebase')];
-  /** I moved it here, because @Input stopped working for some reason and I am to distracted to troubleshoot it :-\ */
   public topics: TagEntry[] = this.transformTags([
-    angular, tagNoIcon('Angular Change Detection'), tagNoIcon('Angular Universal'), 
+    angular, tagNoIcon('Angular Change Detection'), tagNoIcon('Angular Universal'),
     tagNoIcon('AngularJS', null, [],
-    new TopicUrls(
-      'https://en.wikipedia.org/wiki/AngularJS',
-      'https://github.com/angular/angular.js',
-       null,
-      'https://stackoverflow.com/questions/tagged/angularjs',
-      'https://stackshare.io/angularjs',
-       null,
-       )
-      ),
+      new TopicUrls(
+        'https://en.wikipedia.org/wiki/AngularJS',
+        'https://github.com/angular/angular.js',
+        null,
+        'https://stackoverflow.com/questions/tagged/angularjs',
+        'https://stackshare.io/angularjs',
+        null,
+        )
+    ),
     tagNoIcon('PrimeNG'), ionic, firebase,
     tagNoIcon('Web Performance Optimizations'),
     tagNoIcon('Google Maps'),
@@ -346,6 +343,17 @@ export class TopicsService {
     tagNoIcon('Security'),
     tagNoIcon('Computer Security'),
     tagNoIcon('Computer Network Security'),
+    tag('Moleculer', undefined, 'https://moleculer.services/', [], new TopicUrls(
+      null,
+      'https://github.com/ice-services/moleculer',
+      'https://www.npmjs.com/package/moleculer',
+      null,
+      null,
+      'https://twitter.com/MoleculerJS',
+      null,
+      'https://github.com/ice-services/moleculer/blob/master/CHANGELOG.md',
+      'https://runkit.com/icebob/moleculer-quick-start',
+    )),
     /* DONE: hibernate
      DONE: Hibernate envers - Adam Warski
      DONE: Liquibase / Flyway - wersjonowanie SQL
