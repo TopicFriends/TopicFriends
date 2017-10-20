@@ -4,4 +4,24 @@
 </div>
 
 <app-navbar></app-navbar>
-<cookie-law></cookie-law>
+
+<cookie-law
+  learnMore="about#Terms"
+>
+  <div style="display: flex; align-items: center; width: 100%">
+    <div style="flex-grow:1">
+      Utilizamos cookies propias y de terceros para mejorar su experiencia y nuestros servicios,
+      analizando la navegación en nuestro Sitio Web. Si continúa navegando, usted está aceptando su uso.
+      Puede obtener más información en nuestra <a href="/about#Terms">Política de Privacidad</a>.
+    </div>
+    &emsp;
+    <button
+      (click)="dismissCookieLaw()"
+      md-raised-button
+      color="primary"
+      style=""
+    >
+      Aceptar
+    </button>
+  </div>
+</cookie-law>
