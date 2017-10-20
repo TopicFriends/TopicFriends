@@ -4,6 +4,7 @@ import {TOPIC_ID_PARAM} from '../topics.module'
 import {TagEntry} from '../../user-profile/tag-entry'
 import {TopicsService} from '../../shared/topics.service'
 import {TopicInterest} from '../../user-profile/user-interests'
+import {GitHubService} from '../../shared/git-hub.service'
 
 @Component({
   selector: 'app-topic-details',
@@ -20,6 +21,7 @@ export class TopicDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private topicsService: TopicsService,
+    private gitHubService: GitHubService,
   ) {
     this.topic = this.topicsService.getTopicById(this.topicId)
     this.topicInterest = this.createTopicInterest(this.topic);

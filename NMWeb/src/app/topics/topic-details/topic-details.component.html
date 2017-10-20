@@ -14,15 +14,19 @@
 </md-chip-list>
 
 <h2>Links</h2>
-<p><a href="https://topicfriends.org/{{topic.id}}">https://topicfriends.org/{{topic.id}}</a></p>
+<p><a href="https://topicfriends.org/topic/{{topic.id}}">https://topicfriends.org/topic/{{topic.id}}</a></p>
 <p><a href="{{topic.website}}">{{topic.website}}</a></p>
 <p><a href="{{topic.urls.wikipedia}}">{{topic.urls.wikipedia}}</a></p>
 <div style="vertical-align: middle">
   <a href="{{topic.urls.gitHub}}">
     <img class='url-icon' src="/assets/images/logos/github.svg"/>{{topic.urls.gitHub}}</a>
-  <a *ngIf="topic.urls.gitHub"
+  <a
+    *ngIf="topic.urls.gitHub"
     style="vertical-align: middle"
-    class="github-button" href="{{topic.urls.gitHub}}" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+    class="github-button" href="{{topic.urls.gitHub}}" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star on GitHub"
+  > <!-- https://github.com/ntkme/github-buttons -->
+    Star
+  </a>
 </div>
 <div>
   <a href="{{topic.urls.npm}}">
@@ -31,7 +35,7 @@
 </div>
 <div>
   <a href="{{topic.urls.stackOverFlow}}">
-    <img class='url-icon' src="/assets/images/logos/stackoverflow.svg"/>{{topic.urls.stackOverFlow}}
+    <img class='url-icon' src="/assets/images/logos/stackoverflow_icon.svg"/>{{topic.urls.stackOverFlow}}
   </a>
 </div>
 <div>
@@ -46,5 +50,7 @@
 </div>
 
 <!-- TODO: alternativeTo-->
+<!-- TODO: changelog-->
+<!-- TODO: RunKit-->
 
 <h2>News for this topic</h2>
