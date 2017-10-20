@@ -6,6 +6,8 @@
 >
 <div
   class="navbar-container-inner"
+  fxLayout="column"
+  fxLayout.xs="row"
 >
  <div fxFlexOrder="1" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==0)}" (click)="selectedTab = 0">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/meeting-list" routerLinkActive="active">
