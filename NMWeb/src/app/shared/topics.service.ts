@@ -98,8 +98,17 @@ export class TopicsService {
       'https://twitter.com/senecajs',
       null
     )),
-    'Swagger',
-
+    tag('Swagger', 'swagger', 'https://swagger.io/', [], new TopicUrls(
+      'https://en.wikipedia.org/wiki/Swagger_(software)',
+      'https://github.com/swagger-api/swagger-core',
+      'https://www.npmjs.com/package/swagger',
+      'https://stackoverflow.com/questions/tagged/swagger',
+      'https://stackshare.io/swagger-ui' /* not really swagger itself */,
+      'https://twitter.com/swaggerapi',
+      'https://alternativeto.net/software/swagger-io',
+      'https://github.com/swagger-api/swagger-core/releases',
+      'https://npm.runkit.com/swagger',
+    )),
     sass, tagLogoTipo('Stylus'), tagLogoTipo('Less'),
     'Bitcoin', 'Ethereum', 'Steemit', 'Monero',
     tagNoIcon('Cryptocurrency'), tagNoIcon('Blockchain'), tagNoIcon('Cryptography'),
