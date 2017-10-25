@@ -65,7 +65,7 @@ export class TopicsService {
       new TopicUrls(
         'https://en.wikipedia.org/wiki/Google_Maps',
         'https://github.com/googlemaps/',
-        'https://www.npmjs.com/package/google-maps   https://www.npmjs.com/package/@google/maps',
+        'https://www.npmjs.com/package/google-maps',
         'https://stackoverflow.com/questions/tagged/google-maps',
         'https://stackoverflow.com/questions/tagged/google-maps',
         'https://twitter.com/googlemaps'
