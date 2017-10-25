@@ -49,11 +49,27 @@ export class TopicsService {
         'https://stackoverflow.com/questions/tagged/angularjs',
         'https://stackshare.io/angularjs',
         null,
-        )
-    ),
-    tagNoIcon('PrimeNG'), ionic, firebase,
+    )),
+    tagNoIcon('PrimeNG', null,[],
+      new TopicUrls(
+        null,
+        'https://github.com/primefaces/primeng',
+        'https://www.npmjs.com/package/primeng',
+        'https://stackoverflow.com/questions/tagged/primeng',
+        null,
+        'https://twitter.com/prime_ng'
+    )), 
+    ionic, firebase,
     tagNoIcon('Web Performance Optimizations'),
-    tagNoIcon('Google Maps'),
+    tagNoIcon('Google Maps',null, [],
+      new TopicUrls(
+        'https://en.wikipedia.org/wiki/Google_Maps',
+        'https://github.com/googlemaps/',
+        'https://www.npmjs.com/package/google-maps   https://www.npmjs.com/package/@google/maps',
+        'https://stackoverflow.com/questions/tagged/google-maps',
+        'https://stackoverflow.com/questions/tagged/google-maps',
+        'https://twitter.com/googlemaps'
+    )),
     'Facebook',
     'Twitter',
     'LinkedIn',
