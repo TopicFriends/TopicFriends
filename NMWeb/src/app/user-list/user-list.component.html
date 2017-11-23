@@ -16,6 +16,12 @@
 
 </ng-template>
 
+<div *ngIf="! userListCombinedSorted">
+  <md-spinner></md-spinner>
+  <p>Loading User List and calculating MatchScore-s…</p>
+</div>
+
+
 <nw-user-template
   *ngFor="let user of userListCombinedSorted; trackBy: trackByKey"
   [userProfile]="user.userDataCombined.userData"

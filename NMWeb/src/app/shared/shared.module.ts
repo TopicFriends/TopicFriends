@@ -5,7 +5,7 @@ import {
   MdIconModule, MdInputModule,
   MdMenuModule,
   MdButtonModule, MdCheckboxModule, MdChipList, MdDialogModule,
-  MdSlideToggleModule, MdSnackBar, MdSnackBarModule, MdTabsModule,
+  MdSlideToggleModule, MdSnackBar, MdSnackBarModule, MdTabsModule, MdProgressSpinnerModule,
 } from '@angular/material'
 import {TopicTagComponent} from './topic-tag/topic-tag.component'
 import {TopicTagListComponent} from './topic-tag-list/topic-tag-list.component'
@@ -39,6 +39,7 @@ import {StackOverflowService} from './stack-overflow.service'
     MdIconModule,
     MdSnackBarModule,
     MdDialogModule,
+    MdProgressSpinnerModule,
     RouterModule,
     HttpClientModule,
   ],
@@ -60,6 +61,7 @@ import {StackOverflowService} from './stack-overflow.service'
     MdInputModule,
     DistancePipe,
     MdTabsModule,
+    MdProgressSpinnerModule,
   ],
   providers: [
     SnackBarComponent,
