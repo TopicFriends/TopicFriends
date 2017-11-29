@@ -95,7 +95,25 @@ export class TopicsService {
         'https://twitter.com/php_net'
     )),
    materialDesign, typeScript,
-    tag('Django'), tag('Python'), tag('Ruby'), tagLogoTipo('Ruby On Rails'),
+    tag('Django', 'django', 'https://www.djangoproject.com/', [],
+      new TopicUrls(
+        'https://en.wikipedia.org/wiki/Django_(web_framework)',
+        'https://github.com/django/django',
+        null,
+        'https://stackoverflow.com/questions/tagged/django',
+        'https://stackoverflow.com/questions/tagged/django',
+        'https://twitter.com/djangoproject'
+      )), 
+    tag('Python', 'python', 'https://www.python.org/', [],
+      new TopicUrls(
+        'https://en.wikipedia.org/wiki/Python_(programming_language)',
+        'https://github.com/python',
+        null,
+        'https://stackoverflow.com/questions/tagged/python',
+        'https://stackshare.io/python',
+        'https://twitter.com/ThePSF'
+      )), 
+    tag('Ruby'), tagLogoTipo('Ruby On Rails'),
     tag('PeopleMatcher'),
     tag('TopicFriends', 'PeopleMatcher'),
     tag('UAP', null),
