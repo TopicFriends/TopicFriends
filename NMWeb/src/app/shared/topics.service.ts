@@ -49,20 +49,71 @@ export class TopicsService {
         'https://stackoverflow.com/questions/tagged/angularjs',
         'https://stackshare.io/angularjs',
         null,
-        )
-    ),
-    tagNoIcon('PrimeNG'), ionic, firebase,
+    )),
+    tagNoIcon('PrimeNG', null,[],
+      new TopicUrls(
+        null,
+        'https://github.com/primefaces/primeng',
+        'https://www.npmjs.com/package/primeng',
+        'https://stackoverflow.com/questions/tagged/primeng',
+        null,
+        'https://twitter.com/prime_ng'
+    )), 
+    ionic, firebase,
     tagNoIcon('Web Performance Optimizations'),
-    tagNoIcon('Google Maps'),
+    tagNoIcon('Google Maps',null, [],
+      new TopicUrls(
+        'https://en.wikipedia.org/wiki/Google_Maps',
+        'https://github.com/googlemaps/',
+        'https://www.npmjs.com/package/google-maps',
+        'https://stackoverflow.com/questions/tagged/google-maps',
+        'https://stackoverflow.com/questions/tagged/google-maps',
+        'https://twitter.com/googlemaps'
+    )),
     'Facebook',
     'Twitter',
     'LinkedIn',
     'Google Plus',
     protractor, karma, jasmine,
     // Cucumber
-    tagNoIcon('PrimeFaces'),
-    tag('PHP'), materialDesign, typeScript,
-    tag('Django'), tag('Python'), tag('Ruby'), tagLogoTipo('Ruby On Rails'),
+    tagNoIcon('PrimeFaces',null, [],
+      new TopicUrls(
+        'https://es.wikipedia.org/wiki/PrimeFaces',
+        'https://github.com/primefaces/primefaces',
+        null,
+        'https://stackoverflow.com/questions/tagged/primefaces',
+        null,
+        'https://twitter.com/primefaces'
+    )),
+    tag('PHP', 'php', 'http://www.php.net/', [],
+      new TopicUrls(
+        'https://en.wikipedia.org/wiki/PHP',
+        'https://github.com/php',
+        'https://www.npmjs.com/search?q=php&page=1&ranking=popularity',
+        'https://stackoverflow.com/questions/tagged/php',
+        'https://stackshare.io/php',
+        'https://twitter.com/php_net'
+    )),
+   materialDesign, typeScript,
+    tag('Django', 'django', 'https://www.djangoproject.com/', [],
+      new TopicUrls(
+        'https://en.wikipedia.org/wiki/Django_(web_framework)',
+        'https://github.com/django/django',
+        null,
+        'https://stackoverflow.com/questions/tagged/django',
+        'https://stackoverflow.com/questions/tagged/django',
+        'https://twitter.com/djangoproject'
+      )), 
+    tag('Python', 'python', 'https://www.python.org/', [],
+      new TopicUrls(
+        'https://en.wikipedia.org/wiki/Python_(programming_language)',
+        'https://github.com/python',
+        null,
+        'https://stackoverflow.com/questions/tagged/python',
+        'https://stackshare.io/python',
+        'https://twitter.com/ThePSF'
+      )), 
+    tag('Ruby'), tagLogoTipo('Ruby On Rails'),
     tag('PeopleMatcher'),
     tag('TopicFriends', 'PeopleMatcher'),
     tag('UAP', null),
