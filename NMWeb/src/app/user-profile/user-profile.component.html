@@ -43,13 +43,20 @@
       [parentFormGroup]="formGroup"
     ></app-user-other-profiles>
 
-    <h2 id="actionable-interests">Actionable interests</h2>
+
+    <app-user-skills
+
+    ></app-user-skills>
+
+    <h2 id="actionable-interests">Actionable Interests</h2>
 
     <app-user-interests
       [userProfileInputs]="userProfileInputs"
       #userInterests
       [thisFormGroup]="userInterestsFormGroup"
     ></app-user-interests>
+
+
 
   </form>
 
@@ -61,6 +68,7 @@
     En este sentido, le informamos que la recogida y tratamiento de sus datos tienen como finalidad mantener la base de Usuarios de la Comunidad de TopicFriends.org para facilitar que los usuarios se conozcan mutuamente.
     El hecho de utilizar el formulario del perfil público de TopicFriends.org implica que expresa su consentimiento para que los datos suministrados queden incorporados a un fichero automatizado titularidad de TopicFriends.org.
     En todo caso, usted puede ejercitar los derechos de acceso, rectificación, cancelación y oposición, previstos por la Ley, dirigiendo un escrito a contact@topicfriends.org o Avenida Editor Angel Caffarena 15, 29010 Málaga.
+    <a href="/about#Terms">Política de Privacidad</a>
   </p>
 
   <p

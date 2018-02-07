@@ -1,0 +1,37 @@
+
+
+<md-card style="margin-bottom: 10px">
+
+  <md-card-title>
+    Skill Levels
+
+    <md-input-container
+      style="width:100%"
+    >
+      <input
+        mdInput
+      >
+      <md-placeholder>
+        Filter Skills (TODO)
+      </md-placeholder>
+    </md-input-container>
+  </md-card-title>
+
+  <md-card-content>
+
+    <!--<ng-template -->
+    <app-user-skill
+      *ngFor="let tag of topicsService.topics"
+      [tag]="tag"
+    ></app-user-skill>
+    <!--</ng-template>-->
+
+    <!--<div [formGroup]="formGroup">-->
+
+
+      <!--<ng-template [ngIf]="! otherProfiles" >Loading external profiles...</ng-template>-->
+
+    <!--</div>-->
+
+  </md-card-content>
+</md-card>

@@ -19,7 +19,9 @@ import { TextAreaComponent } from './user-descriptions/text-area/text-area.compo
 import { OtherProfileUserNameComponent } from './user-other-profiles/other-profile-user-name/other-profile-user-name.component';
 import { UserWebsiteComponent } from './user-other-profiles/user-website/user-website.component'
 import {DefaultRouteReuseStrategy} from '@angular/router/src/route_reuse_strategy';
-import { CreateTopicComponent } from './user-interests/create-topic/create-topic.component'
+import { CreateTopicComponent } from './user-interests/create-topic/create-topic.component';
+import { UserSkillsComponent } from './user-skills/user-skills.component';
+import { UserSkillComponent } from './user-skills/user-skill/user-skill.component'
 
 export const USER_PROFILE_ID_PARAM_NO_COLON = 'userId'
 
@@ -92,6 +94,8 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     OtherProfileUserNameComponent,
     UserWebsiteComponent,
     CreateTopicComponent,
+    UserSkillsComponent,
+    UserSkillComponent,
   ],
   providers: [
     CanDeactivateUserProfileGuard,
