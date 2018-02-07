@@ -112,6 +112,7 @@ export class TopicsService {
     sass, tagLogoTipo('Stylus'), tagLogoTipo('Less'),
     'Bitcoin', 'Ethereum', 'Steemit', 'Monero',
     tagNoIcon('Cryptocurrency'), tagNoIcon('Blockchain'), tagNoIcon('Cryptography'),
+    // TODO: segregated witness (SegWit)
     'Cordova', 'PhoneGap',
     tagNoIcon('Trabajador Autónomo (Spain)'),
     tagNoIcon('Game Design'),
@@ -278,6 +279,7 @@ export class TopicsService {
     tagNoIcon('Data Structures'),
     tagNoIcon('Computer Networks'),
     tagNoIcon('Green Economy'),
+    tagNoIcon('CleanTech'),
     tagNoIcon('Management'),
     tagNoIcon('Project Management'),
     tagNoIcon('Windows Phone'),
@@ -333,6 +335,7 @@ export class TopicsService {
     tag('Mobile Payments', null),
     tag('Materialize', 'materializecss', 'http://materializecss.com/'),
     tag('Browsersync', 'browsersync', 'https://www.browsersync.io/'),
+    tag('NATS', null, 'https://nats.io/'),
     // tag('', null, ''),
 
     //, Green Tech, IoT, IoE
@@ -363,10 +366,17 @@ export class TopicsService {
       'https://github.com/ice-services/moleculer/blob/master/CHANGELOG.md',
       'https://runkit.com/icebob/moleculer-quick-start',
     )),
+    tag('Træfik'),
+    tag('Alpine Linux'),
+    // TODO: Accelerated Mobile Pages
+    // TODO: Business Intelligence
     /* DONE: hibernate
      DONE: Hibernate envers - Adam Warski
      DONE: Liquibase / Flyway - wersjonowanie SQL
      DONE: Spring Boot / Dropwizard / JHipster */
+
+    // TODO: Heilbronn:
+    // - Arduino, Raspberry Pi
 
     // Alex Moron:
     // Deployment
@@ -378,10 +388,17 @@ export class TopicsService {
     // angellist
     // self-driving cars/vehicles
     // Electric vehicles
+    // Tesla
+    // TODO: Hyperloop
     // TODO: check Malaga meetup topics
 
-
+    // TODO: Handlebars.js
     // LoDash, Underscore.js, Ramda
+
+    // PWA: AppShell, Workbox, Service Workers, HTTP Push,
+    // Firestore!!!
+
+    tagNoIcon('Electronic Voting'), tagNoIcon('Activism'), tagNoIcon('Volunteering'),
   ]);
 
 
