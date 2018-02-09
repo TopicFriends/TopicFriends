@@ -15,14 +15,30 @@ function tagLogoTipo(name: string, logo?: string, website?, related?: TagEntry[]
   return tag(name, logo, website, related, urls); // pass visual hint later
 }
 
-export const angular = tag('Angular')
+export const angular = tag ('Angular', 'angular', 'https://angular.io/', [],
+new TopicUrls(
+  'https://en.wikipedia.org/wiki/Angular_(application_platform)',
+  'https://github.com/angular/angular',
+  null,
+  'https://stackoverflow.com/questions/tagged/angular',
+  'https://stackshare.io/angular-2',
+  'https://twitter.com/angular'
+));
 export const firebase = tag('Firebase')
 export const angularMaterial = tagNoIcon('Angular Material')
 export const angularFire = tagNoIcon('AngularFire')
 export const rxJs = tagNoIcon('RxJS')
 export const materialDesign = tag('Material Design', null/** TODO: has icon: https://material.io */ )
 export const typeScript = tag('TypeScript')
-export const ionic = tag('Ionic')
+export const ionic = tag('Ionic', 'ionic', 'https://ionicframework.com/', [],
+new TopicUrls(
+  'https://en.wikipedia.org/wiki/Ionic_(mobile_app_framework)',
+  'https://github.com/ionic-team/ionic',
+  'https://www.npmjs.com/package/ionic',
+  'https://stackoverflow.com/questions/tagged/ionic-framework',
+  'https://stackshare.io/ionic',
+  'https://twitter.com/Ionicframework'
+));
 export const reactiveX = tag('ReactiveX')
 export const angularFlexLayout = tagNoIcon('Angular Flex-Layout', 'https://github.com/angular/flex-layout')
 export const angularFlexLayoutResponsiveApi = tagNoIcon(
@@ -67,7 +83,7 @@ export class TopicsService {
         'https://github.com/googlemaps/',
         'https://www.npmjs.com/package/google-maps',
         'https://stackoverflow.com/questions/tagged/google-maps',
-        'https://stackoverflow.com/questions/tagged/google-maps',
+        'https://stackshare.io/google-maps',
         'https://twitter.com/googlemaps'
     )),
     'Facebook',
