@@ -15,6 +15,7 @@ import {isNullOrUndefinedOrWhiteSpace, setFormControlEnabled} from '../../shared
 export class UserProfileBasicInfoComponent implements OnInit {
 
   public displayName = new FormControl()
+  public gender = new FormControl()
   public photoUrl: string
   userProfileReceived = false
 
@@ -34,7 +35,9 @@ export class UserProfileBasicInfoComponent implements OnInit {
 
   ngOnInit() {
     this.displayName = <FormControl>this.thisFormGroup.get('displayName')
+    this.gender = <FormControl>this.thisFormGroup.get('gender')
     setFormControlEnabled(this.displayName, this.userProfileInputs.isEditable)
+    setFormControlEnabled(this.gender, this.userProfileInputs.isEditable)
 
     if ( ! this.userProfileInputs.isUserIdFromRouter ) {
       this.authService.user.subscribe((user) => {
@@ -84,7 +87,8 @@ export class UserProfileBasicInfoComponent implements OnInit {
     // TODO: first created date
     return {
       displayName: this.displayName.value,
-      photoUrl: this.photoUrl
+      photoUrl: this.photoUrl,
+      gender: this.gender.value,
     }
   }
 
@@ -94,7 +98,8 @@ export class UserProfileBasicInfoComponent implements OnInit {
 
   static buildFormGroup(formBuilder: FormBuilder): FormGroup {
     return formBuilder.group({
-      displayName: ''
+      displayName: '',
+      gender: null,
     })
   }
 

@@ -74,7 +74,7 @@ export class TopicsService {
         'https://stackoverflow.com/questions/tagged/primeng',
         null,
         'https://twitter.com/prime_ng'
-    )), 
+    )),
     ionic, firebase,
     tagNoIcon('Web Performance Optimizations'),
     tagNoIcon('Google Maps',null, [],
@@ -119,7 +119,7 @@ export class TopicsService {
         'https://stackoverflow.com/questions/tagged/django',
         'https://stackoverflow.com/questions/tagged/django',
         'https://twitter.com/djangoproject'
-      )), 
+      )),
     tag('Python', 'python', 'https://www.python.org/', [],
       new TopicUrls(
         'https://en.wikipedia.org/wiki/Python_(programming_language)',
@@ -128,7 +128,7 @@ export class TopicsService {
         'https://stackoverflow.com/questions/tagged/python',
         'https://stackshare.io/python',
         'https://twitter.com/ThePSF'
-      )), 
+      )),
     tag('Ruby'), tagLogoTipo('Ruby On Rails'),
     tag('PeopleMatcher'),
     tag('TopicFriends', 'PeopleMatcher'),
@@ -433,8 +433,8 @@ export class TopicsService {
       'https://github.com/ice-services/moleculer/blob/master/CHANGELOG.md',
       'https://runkit.com/icebob/moleculer-quick-start',
     )),
-    tag('Træfik'),
-    tag('Alpine Linux'),
+    tagNoIcon('Træfik'),
+    tagNoIcon('Alpine Linux'),
     // TODO: Accelerated Mobile Pages
     // TODO: Business Intelligence
     /* DONE: hibernate
@@ -464,6 +464,8 @@ export class TopicsService {
 
     // PWA: AppShell, Workbox, Service Workers, HTTP Push,
     // Firestore!!!
+    // ANgular Lazy Loading
+    // ngx-bootstrap
 
     tagNoIcon('Electronic Voting'), tagNoIcon('Activism'), tagNoIcon('Volunteering'),
   ]);

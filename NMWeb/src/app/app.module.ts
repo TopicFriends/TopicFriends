@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCardModule, MdChipsModule, MdRadioModule, MdSliderModule} from '@angular/material';
+import {MdButtonModule, MdCardModule, MdChipsModule, MdRadioModule, MdSelectModule, MdSliderModule} from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -104,6 +104,7 @@ const appRoutes: Routes = [
     MdCardModule,
     MdChipsModule,
     MdSliderModule,
+    MdSelectModule,
     FormsModule,
     CookieLawModule,
     // FlexLayoutModule,

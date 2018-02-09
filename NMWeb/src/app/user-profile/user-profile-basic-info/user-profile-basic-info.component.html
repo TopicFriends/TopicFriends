@@ -9,7 +9,7 @@
     <span class="grayed-label">Log-in Account Name: </span>{{ (authService.user | async)?.displayName }}
   </p>
   <p>
-    <span class="grayed-label">User Id: </span>[User_{{userProfileInputs.userId}}]
+    <span class="grayed-label">User Id: [User_{{userProfileInputs.userId}}]</span>
   </p>
 
 
@@ -38,5 +38,12 @@
       [formControlName]="'displayName'"
     >
   </md-input-container>
+
+  <md-select [formControlName]="'gender'" style="margin-bottom: 10px"
+             placeholder="Gender">
+    <md-option value="female">Female</md-option>
+    <md-option value="male">Male</md-option>
+    <md-option value="other">Other</md-option>
+  </md-select>
 
 </div>

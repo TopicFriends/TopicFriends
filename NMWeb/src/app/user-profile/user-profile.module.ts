@@ -5,7 +5,10 @@ import {CanDeactivateUserProfileGuard, UserProfileComponent} from './user-profil
 import {Routes, RouterModule, ActivatedRouteSnapshot, RouteReuseStrategy, DetachedRouteHandle} from '@angular/router'
 import {SharedModule} from '../shared/shared.module'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import {MdAutocompleteModule, MdButtonModule, MdCardModule, MdIconModule, MdInputModule, MdTextareaAutosize} from '@angular/material'
+import {
+  MdAutocompleteModule, MdButtonModule, MdCardModule, MdIconModule, MdInputModule, MdSelectModule,
+  MdTextareaAutosize,
+} from '@angular/material'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {ItemListInputComponent} from './item-list-input/item-list-input.component'
 import { UserInterestsComponent } from './user-interests/user-interests.component'
@@ -77,6 +80,7 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     MdAutocompleteModule,
     MdButtonModule,
     MdCardModule,
+    MdSelectModule,
     MapsModule,
   ],
   declarations: [
