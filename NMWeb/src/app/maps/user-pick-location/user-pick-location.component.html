@@ -1,23 +1,23 @@
-<h3 md-dialog-title>
+<h3 matDialogTitle>
   <ng-template [ngIf]="isEditable">Please pick location for</ng-template>
   "{{locationName}}"
 </h3>
 
-<md-dialog-content>
+<mat-dialog-content>
 
-  <md-input-container
+  <mat-form-field
     *ngIf="isEditable"
     id=searchInputFieldContainer
   >
-    <md-placeholder>
-      <md-icon>map</md-icon> Search for location:
-    </md-placeholder>
+    <mat-placeholder>
+      <mat-icon>map</mat-icon> Search for location:
+    </mat-placeholder>
 
     <input
-      mdInput
+      matInput
       #searchInputField
     />
-  </md-input-container>
+  </mat-form-field>
 
 <agm-map
   [ngClass]="isEditable ? 'editable-map' : 'non-editable-map'"
@@ -48,18 +48,18 @@
   <!--&gt;</agm-circle>-->
 </agm-map>
 
-</md-dialog-content>
+</mat-dialog-content>
 
-<md-dialog-actions>
+<mat-dialog-actions>
 
   <button
     class="map-dialog-button"
-    md-button
-    md-raised-button
+    mat-button
+    mat-raised-button
     color="primary"
     (click)="close()"
   >
     {{isEditable ? 'Accept' : 'Close'}}
   </button>
 
-</md-dialog-actions>
+</mat-dialog-actions>

@@ -1,8 +1,8 @@
-<md-card style="margin-bottom: 10px">
+<mat-card style="margin-bottom: 10px">
 
-  <md-card-title>Other Profiles</md-card-title>
+  <mat-card-title>Other Profiles</mat-card-title>
 
-<md-card-content>
+<mat-card-content>
 
 <div [formGroup]="formGroup">
 
@@ -17,21 +17,21 @@
   ></app-other-profile-user-name>
 
 
-  <md-input-container *ngIf="false">
-    <md-placeholder>
+  <mat-form-field *ngIf="false">
+    <mat-placeholder>
       My Website URL
-    </md-placeholder>
-    <span mdPrefix>
-      <md-icon>languages</md-icon>
+    </mat-placeholder>
+    <span matPrefix>
+      <mat-icon>languages</mat-icon>
     </span>
 
     <input
-      mdInput
+      matInput
       [formControl]="otherProfileFacebook"
     >
-  </md-input-container>
+  </mat-form-field>
 
 </div>
 
-</md-card-content>
-</md-card>
+</mat-card-content>
+</mat-card>

@@ -15,14 +15,14 @@
           <p>Latitude: {{coordinates.latitude}}</p>
           <p>Longitude: {{coordinates.longitude}}</p>
         </div>
-        <md-slider
+        <mat-slider
           min="100"
           max="50000"
           step="200"
           tickInterval="3"
           [(ngModel)]="radiusSearch"
           (change)="onRadiusSearchChange()"
-        ></md-slider>
+        ></mat-slider>
 
         <p>There are <b>{{ numberOfNearUsers }}</b> map points within {{ radiusSearch | distance }}.</p>
       </ng-template>
@@ -30,18 +30,18 @@
       <div
         style="margin-bottom: 5px"
       >
-        <md-checkbox
+        <mat-checkbox
           checked="showLabelsOverMarker"
           (change)="changeShowLabelOverMark()"
         >
           Show Labels &nbsp;
-        </md-checkbox>
-        <md-checkbox
+        </mat-checkbox>
+        <mat-checkbox
           checked="showPeople"
           (change)="changeShowPeople()"
         >
           Show People ({{allUsersGeoLocationsFlattened?.length}})
-        </md-checkbox>
+        </mat-checkbox>
       </div>
 
     </div>

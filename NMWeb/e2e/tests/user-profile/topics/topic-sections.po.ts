@@ -66,7 +66,7 @@ export class TopicsSections {
   }
 
   selectFirstSuggestedTag(element: ElementFinder): Promise<string> {
-    let markedTopicFromSelectList = $('md-option.mat-active')
+    let markedTopicFromSelectList = $('mat-option.mat-active')
     this.wait.forElementClickable(element)
     element.sendKeys(protractor.Key.ARROW_DOWN)
     this.wait.forElementClickable(markedTopicFromSelectList)

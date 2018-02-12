@@ -6,8 +6,8 @@ import {Routes, RouterModule, ActivatedRouteSnapshot, RouteReuseStrategy, Detach
 import {SharedModule} from '../shared/shared.module'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {
-  MdAutocompleteModule, MdButtonModule, MdCardModule, MdIconModule, MdInputModule, MdSelectModule,
-  MdTextareaAutosize,
+  MatAutocompleteModule, MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatSelectModule,
+  MatTextareaAutosize,
 } from '@angular/material'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {ItemListInputComponent} from './item-list-input/item-list-input.component'
@@ -75,12 +75,12 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     RouterModule.forChild(userProfileRoutes),
     FormsModule,
     ReactiveFormsModule,
-    MdInputModule,
-    MdIconModule,
-    MdAutocompleteModule,
-    MdButtonModule,
-    MdCardModule,
-    MdSelectModule,
+    MatInputModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatCardModule,
+    MatSelectModule,
     MapsModule,
   ],
   declarations: [

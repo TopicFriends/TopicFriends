@@ -10,7 +10,7 @@
 </h2>
 
 <ng-template [ngIf]="! userProfileService.userId" >
-  <button md-raised-button routerLink="/login">
+  <button mat-raised-button routerLink="/login">
     Please log in, to access your profile
   </button>
 </ng-template>
@@ -79,8 +79,8 @@
       style="
         width:100%
       "
-      md-button
-      md-raised-button
+      mat-button
+      mat-raised-button
       color="primary"
       (click)="save()"
       [disabled]="! hasUnsavedChanges()"

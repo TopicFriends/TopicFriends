@@ -19,24 +19,24 @@
 
 >
 
-<md-input-container
+<mat-form-field
   *ngIf="isEditable"
   style="width:100%"
 >
   <input
-    mdInput
-    [mdAutocomplete]="auto"
+    matInput
+    [matAutocomplete]="auto"
     [formControl]="stateCtrl"
   > <!-- FIXME!!!: addTag(currentFilteredOptions[0]) : this should check if a specific item was selected by
       down-arrow instead of always forcing [0] -->
-  <md-placeholder>
+  <mat-placeholder>
     Filter topics
-  </md-placeholder>
-</md-input-container>
+  </mat-placeholder>
+</mat-form-field>
 
 <button
   *ngIf="enableAddingTopics"
-  md-button
+  mat-button
   color="primary"
   (click)="createTopic()"
   >
@@ -54,9 +54,9 @@ Replace with a filtered list, which could also be smarter
 - always visible-->
 <!--
 https://github.com/angular/material2/pull/1999
-"I wasn't aware that md-selection-list was a planned component. Closing in that case." -->
+"I wasn't aware that mat-selection-list was a planned component. Closing in that case." -->
 <!-- TODO: make generic filtered list component -->
-<!-- Other benefits of getting rid of the <md-autocomplete> completely:
+<!-- Other benefits of getting rid of the <mat-autocomplete> completely:
 - it has jittery scroll
 - don't know how to control its positioning
 - it covers the input field etc -->
@@ -68,21 +68,21 @@ https://github.com/angular/material2/pull/1999
 - 4: whole name equals filterText
 - ?: CMM -> CamelCaseMatch -->
 <div *ngIf="false" style="max-height: 200px; overflow: scroll">
-  <md-list  >
-    <md-list-item *ngFor="let option of lastFilteredOptions">
+  <mat-list  >
+    <mat-list-item *ngFor="let option of lastFilteredOptions">
       <h4><img src="{{option.logo}}" onerror="this.style.display='none';"/> {{ option.name }}</h4>
-    </md-list-item>
-  </md-list>
+    </mat-list-item>
+  </mat-list>
 </div>
 
 
 <!--[value]="option.name"-->
-<md-autocomplete
-  #auto="mdAutocomplete"
+<mat-autocomplete
+  #auto="matAutocomplete"
 >
 <!--   *ngIf="isEditable"
 -->
-  <md-option
+  <mat-option
     *ngFor="let option of lastFilteredOptions"
 
     (onSelectionChange)="addTag(option)"
@@ -92,7 +92,7 @@ https://github.com/angular/material2/pull/1999
       <img src="{{option.logo}}" onerror="this.style.display='none';"/>
     <!--</ng-template>-->
     &nbsp;{{ option.name }}
-  </md-option>
-</md-autocomplete>
+  </mat-option>
+</mat-autocomplete>
 
 <!-- https://github.com/angular/material2/tree/master/src/lib/autocomplete -->

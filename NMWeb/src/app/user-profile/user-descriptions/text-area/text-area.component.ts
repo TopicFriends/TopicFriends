@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewChildren} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
-import {MdTextareaAutosize} from '@angular/material'
+import {MatTextareaAutosize} from '@angular/material'
 import {setFormControlEnabled} from '../../../shared/utils'
 
 @Component({
@@ -16,7 +16,7 @@ export class TextAreaComponent implements OnInit {
   @Input() rows: number
   @Input() isEditable: boolean
 
-  @ViewChildren(MdTextareaAutosize) textAreas
+  @ViewChildren(MatTextareaAutosize) textAreas
 
 
   constructor() { }

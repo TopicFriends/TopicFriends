@@ -12,38 +12,38 @@
     {{locationName}}: &nbsp;
   </div>
 
-  <!--<md-input-container id="postalCode">
+  <!--<mat-form-field id="postalCode">
 
-    <md-placeholder>
+    <mat-placeholder>
       Postal code (optional)
-    </md-placeholder>
+    </mat-placeholder>
 
-  </md-input-container>-->
+  </mat-form-field>-->
 
-  <md-input-container
+  <mat-form-field
   >
     <!-- style="display: none" -->
 
-    <md-placeholder>
+    <mat-placeholder>
       Latitude, Longitude
-    </md-placeholder>
+    </mat-placeholder>
 
     <input
-      mdInput
+      matInput
       #latitudeLongitude
       readonly
       (click)="openLocationPicker()"
       [disabled]="(! value) && (! userProfileInputs.isEditable)"
     >
 
-  </md-input-container>
+  </mat-form-field>
 
 <!--
-  <button md-button md-raised-button (click)="useCurrentLocation()">Use current location</button>
+  <button mat-button mat-raised-button (click)="useCurrentLocation()">Use current location</button>
 -->
   <button
-    md-button
-    md-raised-button
+    mat-button
+    mat-raised-button
     (click)="openLocationPicker()"
     color="primary"
     [disabled]="(! value) && (! userProfileInputs.isEditable)"
@@ -56,8 +56,8 @@
 
   <button
     *ngIf="userProfileInputs.isEditable"
-    md-button
-    md-raised-button
+    mat-button
+    mat-raised-button
     (click)="clear()"
   >
     Clear

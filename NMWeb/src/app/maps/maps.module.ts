@@ -4,7 +4,7 @@ import { UsersMapComponent } from './users-map/users-map.component';
 import {RouterModule, Routes} from '@angular/router'
 import {AgmCoreModule} from '@agm/core'
 import { UserPickLocationComponent } from './user-pick-location/user-pick-location.component'
-import {MdButtonModule, MdCheckboxModule, MdDialogModule, MdIconModule, MdInputModule, MdSliderModule} from '@angular/material'
+import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatIconModule, MatInputModule, MatSliderModule} from '@angular/material'
 import {SharedModule} from '../shared/shared.module'
 import {FlexLayoutModule} from '@angular/flex-layout'
 import {FormsModule} from '@angular/forms';
@@ -26,13 +26,13 @@ const mapsRoutes: Routes = [
       ]
     }),
     SharedModule,
-    MdButtonModule,
+    MatButtonModule,
     FlexLayoutModule,
-    MdInputModule,
-    MdIconModule,
-    MdSliderModule,
+    MatInputModule,
+    MatIconModule,
+    MatSliderModule,
     FormsModule,
-    MdCheckboxModule,
+    MatCheckboxModule,
   ],
   declarations: [
     UsersMapComponent,

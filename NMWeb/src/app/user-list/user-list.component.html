@@ -4,20 +4,20 @@
   <p>{{userListSaved.length}} People. {{ potentialConnectionsCount() }} potential connections between people!</p>
 
   <!--Max distance from me:-->
-  <!--<md-slider-->
+  <!--<mat-slider-->
     <!--min="100"-->
     <!--max="50000"-->
     <!--step="200"-->
     <!--tickInterval="3"-->
     <!--[(ngModel)]="maxDistance"-->
     <!--(input)="maxDistanceChange($event)"-->
-  <!--&gt;</md-slider>-->
+  <!--&gt;</mat-slider>-->
   <!--{{ maxDistance | distance }}-->
 
 </ng-template>
 
 <div *ngIf="! userListCombinedSorted">
-  <md-spinner></md-spinner>
+  <mat-spinner></mat-spinner>
   <p>Loading User List and calculating MatchScore-s…</p>
 </div>
 

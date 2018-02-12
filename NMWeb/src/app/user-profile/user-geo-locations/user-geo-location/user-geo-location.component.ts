@@ -1,7 +1,7 @@
 import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
 import {GeoLocationService} from '../../../shared/geo-location.service'
 import {UserPickLocationDialogParams, UserPickLocationComponent} from '../../../maps/user-pick-location/user-pick-location.component'
-import {MdDialog} from '@angular/material'
+import {MatDialog} from '@angular/material'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
 import {GeoLocation} from '../../user-profile.service'
 import {geoLocationToString} from '../user-geo-locations.component'
@@ -33,7 +33,7 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
 
   constructor(
     public geoLocationService: GeoLocationService,
-    public dialog: MdDialog
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {

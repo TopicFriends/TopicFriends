@@ -1,5 +1,5 @@
 import {Component, ElementRef, Inject, NgZone, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material'
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
 import {GeoLocation} from '../../user-profile/user-profile.service'
 import {FormControl} from '@angular/forms';
 import {MapsAPILoader} from '@agm/core';
@@ -34,8 +34,8 @@ export class UserPickLocationComponent implements OnInit {
   public searchElementRef: ElementRef;
 
   constructor(
-    public dialogRef: MdDialogRef<UserPickLocationComponent>,
-    @Inject(MD_DIALOG_DATA) public data: UserPickLocationDialogParams,
+    public dialogRef: MatDialogRef<UserPickLocationComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: UserPickLocationDialogParams,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {

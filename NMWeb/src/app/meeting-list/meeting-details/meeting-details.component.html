@@ -2,23 +2,23 @@
         routerLink="/meeting-list">< Back to meetings list
 </button>
 
-<md-card *ngIf="meeting !== undefined">
-  <md-card-title-group>
-    <md-card-title>
+<mat-card *ngIf="meeting !== undefined">
+  <mat-card-title-group>
+    <mat-card-title>
       {{meeting.title}}
       <app-going-button [meeting]="meeting"
                         [meetingAttendanceByUser]="meetingAttendanceByUser"></app-going-button>
-    </md-card-title>
-  </md-card-title-group>
-  <md-card-content>
+    </mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content>
     <p><em>{{meeting.date}}</em> at <b>{{meeting.place}}</b></p>
     <a href="{{meeting.meetupLink}}">Meetup link</a>
     <div style="padding-top: 0.5em; pading-bottom: 1em" [innerHtml]="meeting.description"></div>
     <app-meeting-attendance-user-list
       [meetingId]="meetingId">
     </app-meeting-attendance-user-list>
-  </md-card-content>
-</md-card>
+  </mat-card-content>
+</mat-card>
 
 <button class="mat-button" style="font-size: 1em; margin-top: 0.5em;"
         routerLink="/meeting-list">< Back to meetings list

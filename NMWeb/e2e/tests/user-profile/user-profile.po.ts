@@ -18,7 +18,7 @@ export class UserProfilePage {
   saveProfileButton: ElementFinder         = $('#saveProfile')
 
   linkedInLinkInput: ElementFinder         = $('i[class="icon ion-social-linkedin"]').
-                                             element(by.xpath('ancestor::md-input-container/descendant::input'))
+                                             element(by.xpath('ancestor::mat-form-field/descendant::input'))
 
   saveConfirmationNotification             = element(by.cssContainingText('div.cdk-overlay-container>div',
                                               'Profile sent. Thank you!'))

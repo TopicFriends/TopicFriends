@@ -7,8 +7,8 @@ export class EventsPage {
   private wait = new TestWait()
 
   readonly eventSelector     = 'app-meeting-list-item[formcontrolname="meeting"]'
-  readonly eventItem         = $('md-list-item')
-  readonly goingButtonInList = $('md-card-actions app-going-button button')
+  readonly eventItem         = $('mat-list-item')
+  readonly goingButtonInList = $('mat-card-actions app-going-button button')
 
   navigateTo(): Promise<any> {
     return browser.get('meeting-list')

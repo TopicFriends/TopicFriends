@@ -2,7 +2,7 @@ import {Component, Input, OnInit, ViewChildren} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms'
 import {UserDescriptionsService} from '../../shared/user-profile/user-descriptions.service'
 import {UserDescriptions} from '../user-profile.service'
-import {MdTextareaAutosize} from '@angular/material'
+import {MatTextareaAutosize} from '@angular/material'
 import {TextAreaComponent} from './text-area/text-area.component'
 import {UserProfileInputs} from '../user-profile.component'
 import {DomainDbService} from '../../domain-db.service'

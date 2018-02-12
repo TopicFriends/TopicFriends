@@ -1,16 +1,16 @@
 <div
   [formGroup]="parentFormGroup"
 >
-  <md-input-container
+  <mat-form-field
     [formGroupName]="thisFormGroupName"
   >
   <textarea
-    mdInput
+    matInput
     [rows]="rows"
     formControlName="text"
-    mdTextareaAutosize
+    matTextareaAutosize
     placeholder="{{placeholder}}"
     (change)="onChange($event)"
   ></textarea>
-  </md-input-container>
+  </mat-form-field>
 </div>

@@ -1,8 +1,8 @@
-<md-card class="user-item" style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
-  <md-card-header>
-    <!--<div md-card-avatar class="card-avatar"></div>-->
-    <img md-card-avatar *ngIf="profileBasicInfo?.photoUrl" md-card-avatar style="vertical-align:middle" src="{{profileBasicInfo?.photoUrl}}"/>
-    <md-card-title
+<mat-card class="user-item" style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
+  <mat-card-header>
+    <!--<div mat-card-avatar class="card-avatar"></div>-->
+    <img mat-card-avatar *ngIf="profileBasicInfo?.photoUrl" mat-card-avatar style="vertical-align:middle" src="{{profileBasicInfo?.photoUrl}}"/>
+    <mat-card-title
       style="vertical-align:middle"
     >
       <!--<h3>-->
@@ -11,8 +11,8 @@
         &nbsp; MatchScore: {{matchResults ? matchResults?.matchScore : '(Please Log In to see MatchScore)'}}
       </div>
       <!--</h3>-->
-    </md-card-title>
-    <md-card-subtitle>
+    </mat-card-title>
+    <mat-card-subtitle>
       {{userDescriptions?.descriptions?.myDescription?.text || 'No description yet'}}
 
       <!--{{profileBasicInfo?.role}}-->
@@ -20,10 +20,10 @@
                 <!--at-->
                 <!--<span style="font-weight: bold;">{{' ' + profileBasicInfo?.company}}</span>-->
             <!--</span>-->
-    </md-card-subtitle>
-  </md-card-header>
+    </mat-card-subtitle>
+  </mat-card-header>
 
-  <md-card-content>
+  <mat-card-content>
     <!--<div *ngIf="_whatUserWants.length > 0" style="padding-bottom: 0.5em;">-->
     <!--{{_whatUserWants[0].desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}-->
     <!--<span style="font-weight: bold; color: #666666">{{_whatUserWants[0].topics}}</span>-->
@@ -99,23 +99,23 @@
     >
       Would like to become a mentor for:
     </app-user-interests-mode-view>
-    <!--</md-card-content>-->
-  </md-card-content>
-  <!--<md-card-actions>-->
+    <!--</mat-card-content>-->
+  </mat-card-content>
+  <!--<mat-card-actions>-->
     <!--&lt;!&ndash;<div>&ndash;&gt;-->
-    <!--<button md-raised-button>MEET</button>-->
-    <!--<button md-raised-button>SHARE</button>-->
+    <!--<button mat-raised-button>MEET</button>-->
+    <!--<button mat-raised-button>SHARE</button>-->
     <!--&lt;!&ndash;</div>&ndash;&gt;-->
-  <!--</md-card-actions>-->
-</md-card>
+  <!--</mat-card-actions>-->
+</mat-card>
 <!--
-<md-grid-list
+<mat-grid-list
     cols="12"
     rowHeight="20px"
     class="grid-element">
-    <md-grid-tile [colspan]=3 [rowspan]=6>{{_userPublicProfile?.name}}</md-grid-tile>
-    <md-grid-tile [colspan]=3 [rowspan]=6>Prueba</md-grid-tile>
-    <md-grid-tile [colspan]=3 [rowspan]=6>Prueba</md-grid-tile>
-    <md-grid-tile [colspan]=3 [rowspan]=6>Prueba</md-grid-tile>
-</md-grid-list>
+    <mat-grid-tile [colspan]=3 [rowspan]=6>{{_userPublicProfile?.name}}</mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=6>Prueba</mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=6>Prueba</mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=6>Prueba</mat-grid-tile>
+</mat-grid-list>
 -->

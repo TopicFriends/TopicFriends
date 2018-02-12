@@ -1,7 +1,7 @@
 <h2>Meetings</h2>
 
-<ng-template md-list ngFor let-item [ngForOf]="items | async" >
-    <md-list-item>
-      <app-meeting-list-item md-list-item [meeting]="item" formcontrolname="meeting"></app-meeting-list-item>
-    </md-list-item>
+<ng-template mat-list ngFor let-item [ngForOf]="items | async" >
+    <mat-list-item>
+      <app-meeting-list-item mat-list-item [meeting]="item" formcontrolname="meeting"></app-meeting-list-item>
+    </mat-list-item>
 </ng-template>

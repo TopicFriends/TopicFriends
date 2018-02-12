@@ -14,8 +14,8 @@
 
 
   <!--<button-->
-    <!--md-button-->
-    <!--md-raised-button-->
+    <!--mat-button-->
+    <!--mat-raised-button-->
     <!--(click)="copyUserId()"-->
   <!--&gt;-->
     <!--Copy-->
@@ -25,25 +25,25 @@
   <!-- TODO: save creation date-->
   <!-- TODO: save number of profile updates -->
 
-  <md-input-container
+  <mat-form-field
     style="width: 100%"
   >
-    <md-placeholder>
+    <mat-placeholder>
       Display Name
-    </md-placeholder>
+    </mat-placeholder>
 
-    <!--<input (keydown.meta.s)="save()" mdInput-->
+    <!--<input (keydown.meta.s)="save()" matInput-->
     <input
-      mdInput
+      matInput
       [formControlName]="'displayName'"
     >
-  </md-input-container>
+  </mat-form-field>
 
-  <md-select [formControlName]="'gender'" style="margin-bottom: 10px"
+  <mat-select [formControlName]="'gender'" style="margin-bottom: 10px"
              placeholder="Gender">
-    <md-option value="female">Female</md-option>
-    <md-option value="male">Male</md-option>
-    <md-option value="other">Other</md-option>
-  </md-select>
+    <mat-option value="female">Female</mat-option>
+    <mat-option value="male">Male</mat-option>
+    <mat-option value="other">Other</mat-option>
+  </mat-select>
 
 </div>

@@ -2,26 +2,26 @@
   [formGroup]="parentFormGroup"
 >
 
-  <md-input-container *ngIf="userProfileInputs.isEditable">
-    <md-placeholder>
-      <md-icon>person</md-icon>
+  <mat-form-field *ngIf="userProfileInputs.isEditable">
+    <mat-placeholder>
+      <mat-icon>person</mat-icon>
       <b>{{descriptor.websiteName}}</b>
       &nbsp;Profile
       <span class="input-remark">
         (optional, {{descriptor.whatIsEnough}} enough)
       </span>
-    </md-placeholder>
-    <span mdPrefix>
+    </mat-placeholder>
+    <span matPrefix>
       <i class="icon {{descriptor.iconClass}}"></i>
       &nbsp;
       {{descriptor.urlPrefix}}
     </span>
 
     <input
-      mdInput
+      matInput
       [formControl]="thisFormControl"
     >
-  </md-input-container>
+  </mat-form-field>
 
 
   <p

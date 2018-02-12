@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCardModule, MdChipsModule, MdRadioModule, MdSelectModule, MdSliderModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatChipsModule, MatRadioModule, MatSelectModule, MatSliderModule} from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -27,6 +27,7 @@ import {SharedModule} from './shared/shared.module';
 import { TopicsAllComponent } from './topics-all/topics-all.component';
 import {MapsModule} from './maps/maps.module'
 import { AboutComponent } from './about/about.component';
+import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
 
 // import {
 //   AngularFireModule,
@@ -99,12 +100,12 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    MdButtonModule,
-    MdRadioModule,
-    MdCardModule,
-    MdChipsModule,
-    MdSliderModule,
-    MdSelectModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatCardModule,
+    MatChipsModule,
+    MatSliderModule,
+    MatSelectModule,
     FormsModule,
     CookieLawModule,
     // FlexLayoutModule,
@@ -119,6 +120,7 @@ const appRoutes: Routes = [
     MeetingsService,
     TopicsService,
     UserGroupService,
+    {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}
   ],
   schemas: [
     // CUSTOM_ELEMENTS_SCHEMA

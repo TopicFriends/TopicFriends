@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 /** Not really a component but this is legacy code ;-) */
 @Component({
@@ -8,7 +8,7 @@ import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
 })
 export class SnackBarComponent implements OnInit {
 
-  constructor( public snackBar: MdSnackBar ) { }
+  constructor( public snackBar: MatSnackBar ) { }
 
   public showSnackBar(message) {
     let SnackBarRef = this.snackBar.open(message, "DISMISS");

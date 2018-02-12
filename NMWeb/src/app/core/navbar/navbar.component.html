@@ -12,7 +12,7 @@
  <div fxFlexOrder="1" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==0)}" (click)="selectedTab = 0">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/meeting-list" routerLinkActive="active">
          <div class="nav-bar-centerd-items">
-            <md-icon>event</md-icon>
+            <mat-icon>event</mat-icon>
             <p>Meetings</p>
          </div>
     </div>
@@ -21,7 +21,7 @@
  <div fxFlexOrder="2" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==1)}"  (click)="selectedTab = 1">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/people-list" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
-            <md-icon>people</md-icon>
+            <mat-icon>people</mat-icon>
             <p>People</p>
         </div>
     </div>
@@ -29,7 +29,7 @@
  <div fxFlexOrder="3" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==2)}"  (click)="selectedTab = 2">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/profile" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
-            <md-icon>person_pin</md-icon>
+            <mat-icon>person_pin</mat-icon>
             <p>Profile</p>
         </div>
     </div>
@@ -44,7 +44,7 @@
     >
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/topics" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
-            <md-icon>filter_vintage</md-icon>
+            <mat-icon>filter_vintage</mat-icon>
             <p>Topics</p>
         </div>
     </div>
@@ -54,7 +54,7 @@
   <div fxFlexOrder="5" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==4)}"  (click)="selectedTab = 4">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/users-map" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
-            <md-icon>map</md-icon>
+            <mat-icon>map</mat-icon>
             <p>Map</p>
         </div>
     </div>
@@ -64,7 +64,7 @@
   <!--<div fxFlexOrder="6" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==5)}"  (click)="selectedTab = 5">-->
     <!--<div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/groups" routerLinkActive="active">-->
       <!--<div class="nav-bar-centerd-items">-->
-        <!--<md-icon>people_outline</md-icon>-->
+        <!--<mat-icon>people_outline</mat-icon>-->
         <!--<p>Groups</p>-->
       <!--</div>-->
     <!--</div>-->
@@ -73,7 +73,7 @@
   <div fxFlexOrder="7" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==6)}"  (click)="selectedTab = 6">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/about" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
-            <md-icon>info</md-icon>
+            <mat-icon>info</mat-icon>
             <p>About</p>
         </div>
     </div>
@@ -86,8 +86,8 @@
 
 <!--
      <nav>
-  <button md-button md-raised-button><a routerLink="/meeting-list" routerLinkActive="active">Meeting list</a></button>
-  <button md-button md-raised-button><a routerLink="/meeting-details" routerLinkActive="active">Meeting details</a></button>
-  <button md-button md-raised-button><a routerLink="/people-list" routerLinkActive="active">People list</a></button>
-  <button md-button md-raised-button><a routerLink="/profile" routerLinkActive="active">Profile</a></button>
+  <button mat-button mat-raised-button><a routerLink="/meeting-list" routerLinkActive="active">Meeting list</a></button>
+  <button mat-button mat-raised-button><a routerLink="/meeting-details" routerLinkActive="active">Meeting details</a></button>
+  <button mat-button mat-raised-button><a routerLink="/people-list" routerLinkActive="active">People list</a></button>
+  <button mat-button mat-raised-button><a routerLink="/profile" routerLinkActive="active">Profile</a></button>
 </nav>-->
