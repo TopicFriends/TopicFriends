@@ -7,7 +7,7 @@ import {SharedModule} from '../shared/shared.module'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {
   MatAutocompleteModule, MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatSelectModule,
-  MatTextareaAutosize, MatDialogModule, MatButtonToggleModule
+  MatTextareaAutosize, MatDialogModule, MatButtonToggleModule, MatListModule
 } from '@angular/material'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {ItemListInputComponent} from './item-list-input/item-list-input.component'
@@ -84,7 +84,8 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     MatSelectModule,
     MapsModule,
     MatDialogModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatListModule
   ],
   declarations: [
     UserProfileComponent,

@@ -33,6 +33,7 @@ const mapsRoutes: Routes = [
     MatSliderModule,
     FormsModule,
     MatCheckboxModule,
+    MatDialogModule
   ],
   declarations: [
     UsersMapComponent,

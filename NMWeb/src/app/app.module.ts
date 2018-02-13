@@ -27,7 +27,6 @@ import {SharedModule} from './shared/shared.module';
 import { TopicsAllComponent } from './topics-all/topics-all.component';
 import {MapsModule} from './maps/maps.module'
 import { AboutComponent } from './about/about.component';
-import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
 
 // import {
 //   AngularFireModule,
@@ -119,8 +118,7 @@ const appRoutes: Routes = [
     UserMatcherService,
     MeetingsService,
     TopicsService,
-    UserGroupService,
-    {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}
+    UserGroupService
   ],
   schemas: [
     // CUSTOM_ELEMENTS_SCHEMA
