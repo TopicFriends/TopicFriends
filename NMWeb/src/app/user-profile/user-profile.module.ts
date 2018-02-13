@@ -7,7 +7,7 @@ import {SharedModule} from '../shared/shared.module'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {
   MatAutocompleteModule, MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatSelectModule,
-  MatTextareaAutosize,
+  MatTextareaAutosize, MatDialogModule, MatButtonToggleModule
 } from '@angular/material'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {ItemListInputComponent} from './item-list-input/item-list-input.component'
@@ -25,6 +25,7 @@ import {DefaultRouteReuseStrategy} from '@angular/router/src/route_reuse_strateg
 import { CreateTopicComponent } from './user-interests/create-topic/create-topic.component';
 import { UserSkillsComponent } from './user-skills/user-skills.component';
 import { UserSkillComponent } from './user-skills/user-skill/user-skill.component'
+import {SkillLevelPopoverComponent} from "./user-skills/skill-level-popover/skill-level-popover.component";
 
 export const USER_PROFILE_ID_PARAM_NO_COLON = 'userId'
 
@@ -82,6 +83,8 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     MatCardModule,
     MatSelectModule,
     MapsModule,
+    MatDialogModule,
+    MatButtonToggleModule
   ],
   declarations: [
     UserProfileComponent,
@@ -100,6 +103,7 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     CreateTopicComponent,
     UserSkillsComponent,
     UserSkillComponent,
+    SkillLevelPopoverComponent
   ],
   providers: [
     CanDeactivateUserProfileGuard,
@@ -108,6 +112,7 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     //   useClass: CustomRouteReuseStrategy
     // },
   ],
+  entryComponents: [ SkillLevelPopoverComponent ],
   exports: [
   ],
   schemas: [
