@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase, AngularFireObject, AngularFireList} from 'angularfire2/database'
+import {AngularFireDatabase} from 'angularfire2/database'
 import {Observable} from 'rxjs/Observable'
 
-export interface DbObject<T> extends AngularFireObject<T> {
-  set(value: T): any;
-  update(value: Object): any; // todo: partial<T>
-  remove(): any;
+export interface DbObject<T> extends Observable<T> {
+  set?(value: T): any;
+  update?(value: Object): any; // todo: partial<T>
+  remove?(): any;
 }
 
-export interface DbListReadOnly<T> extends AngularFireObject<T[]> {
+export interface DbListReadOnly<T> extends Observable<T[]> {
 
 }
 
-export interface DbList<T> extends AngularFireList<T> {
+export interface DbList<T> extends DbListReadOnly<T> {
   // $ref: QueryReference;
   // constructor($ref: QueryReference, subscribe?: <R>(subscriber: Subscriber<R>) => Subscription | Function | void);
   // lift<T, R>(operator: Operator<T, R>): Observable<R>;
@@ -21,8 +21,8 @@ export interface DbList<T> extends AngularFireList<T> {
   // remove(item?: FirebaseOperation): firebase.Promise<void>;
   // _checkOperationCases(item: FirebaseOperation, cases: FirebaseOperationCases): firebase.Promise<void>;
 
-  push(val: T): any;
-  update(id: any, value: T): any;
+  push?(val: T): any;
+  update?(id: any, value: T): any;
 }
 
 @Injectable()

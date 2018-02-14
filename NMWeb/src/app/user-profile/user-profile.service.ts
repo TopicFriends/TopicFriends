@@ -144,6 +144,7 @@ export class UserProfile implements HasDbHistory {
   role?: string;
   lastSaved?: Date;
   $key?: string;
+  history?: DbHistory;
 }
 
 export class UserData {
