@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AuthService} from '../user-profile/auth.service';
-import {DbList, DbObject, DbService} from '../db.service';
+import {DbList, DbListReadOnly, DbObject, DbService} from '../db.service';
 import {
   UserData,
   UserProfileService,
@@ -72,7 +72,7 @@ export class MeetingAttendanceService {
     let listOfMeetingAttendanceByUser: DbList<MeetingAttendanceByUser> =
       this.retrieveAllAttendeesStatuses(meetingId);
 
-    console.log('Before: listOfMeetingAttendanceByUser.map')
+    console.log('Before: listOfMeetingAttendanceByUser.map');
     // consider switchMap
     return listOfMeetingAttendanceByUser.map((meetingAttendanceByUserArray: MeetingAttendanceByUser[]) => {
       console.log("listOfMeetingAttendanceByUser.map", meetingAttendanceByUserArray)

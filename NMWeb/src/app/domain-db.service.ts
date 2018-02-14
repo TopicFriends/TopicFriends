@@ -26,15 +26,15 @@ export class DomainDbService {
 
   }
 
-  listUserProfile(): DbList<UserProfile> {
+  listUserProfile(): Observable<any[]> {
     return this.db.list(this.PATHS.USER_PROFILE)
   }
 
-  listOtherProfiles(): DbList<UserOtherProfiles> {
+  listOtherProfiles(): Observable<any[]> {
     return this.db.list(this.PATHS.OTHER_PROFILES);
   }
 
-  listUserInterests(): DbList<UserInterests> {
+  listUserInterests(): Observable<any[]> {
     return this.db.list(this.PATHS.USER_INTERESTS);
   }
 
@@ -58,23 +58,23 @@ export class DomainDbService {
     });
   }
 
-  userProfileById(id: string): DbObject<UserProfile> {
+  userProfileById(id: string): Observable<UserProfile> {
     return this.db.objectById(this.PATHS.USER_PROFILE, id);
   }
 
-  otherProfilesById(id: string): DbObject<UserOtherProfiles> {
+  otherProfilesById(id: string): Observable<UserOtherProfiles> {
     return this.db.objectById(this.PATHS.OTHER_PROFILES, id);
   }
 
-  userInterestsById(id: string): DbObject<UserInterests> {
+  userInterestsById(id: string): Observable<UserInterests> {
     return this.db.objectById(this.PATHS.USER_INTERESTS, id);
   }
 
-  userGeoLocationsById(userId: string): DbObject<UserGeoLocations> {
+  userGeoLocationsById(userId: string): Observable<UserGeoLocations> {
     return this.db.objectById(this.PATHS.GEO_LOCATIONS, userId);
   }
 
-  userDescriptionsById(userId: string): DbObject<UserDescriptions> {
+  userDescriptionsById(userId: string): Observable<UserDescriptions> {
     return this.db.objectById(this.PATHS.DESCRIPTIONS, userId);
   }
 
