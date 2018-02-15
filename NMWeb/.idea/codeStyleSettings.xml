@@ -6,9 +6,6 @@
         <JSON>
           <option name="REMOVE_TRAILING_COMMA" value="false" />
         </JSON>
-        <MarkdownNavigatorCodeStyleSettings>
-          <option name="RIGHT_MARGIN" value="72" />
-        </MarkdownNavigatorCodeStyleSettings>
         <TypeScriptCodeStyleSettings>
           <option name="USE_SEMICOLON_AFTER_STATEMENT" value="false" />
           <option name="USE_DOUBLE_QUOTES" value="false" />

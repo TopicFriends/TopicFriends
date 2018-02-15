@@ -2,7 +2,7 @@
     [tag]="tag2"
     [editable]="false"
   >
-    <span (click)="openDialog($event, tag2)">Set</span>
+    <app-skill-level-label (click)="openDialog($event, tag2)" [topic]="tag2"></app-skill-level-label>
   </app-topic-tag>
 
 
