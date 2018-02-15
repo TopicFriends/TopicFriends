@@ -3,25 +3,12 @@
 
   <div fxLayout="row" fxLayoutAlign="center center">
 
-    <div fxLayout="column" style="display:inline-block">
-      <h4>Have</h4>
-      <mat-button-toggle-group #want="matButtonToggleGroup" vertical value="?">
-        <mat-button-toggle value="{{level}}" *ngFor="let level of skillLevels">
-          <span>{{level | capitalizeFirst}}</span>
-        </mat-button-toggle>
-      </mat-button-toggle-group>
-    </div>
+    <app-skill-levels #have [levels]="skillLevels" header='have' isVertical=true></app-skill-levels>
+    <app-skill-levels #want [levels]="skillLevels" header='want' isVertical=true></app-skill-levels>
 
-    <div fxLayout="column" style="display:inline-block">
-      <h4>Want</h4>
-      <mat-button-toggle-group #desire="matButtonToggleGroup" vertical value="?">
-        <mat-button-toggle value="{{level}}" *ngFor="let level of skillLevels">
-          <span>{{level | capitalizeFirst}}</span>
-        </mat-button-toggle>
-      </mat-button-toggle-group>
-    </div>
+
   </div>
 
-  <button mat-button [mat-dialog-close]="[want.value, desire.value]" id="skill-dialog-btn">Save</button>
+  <button mat-button [mat-dialog-close]="[have.selectedValue, want.selectedValue]" id="skill-dialog-btn">Save</button>
 
 </div>
