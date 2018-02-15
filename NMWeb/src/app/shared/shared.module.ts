@@ -22,7 +22,7 @@ import {PoiService} from './poi.service'
 import {HttpClientModule} from '@angular/common/http'
 import {GitHubService} from './git-hub.service'
 import {StackOverflowService} from './stack-overflow.service'
-
+import {AngularFontAwesomeModule} from 'angular-font-awesome'
 
 @NgModule({
   imports: [
@@ -43,6 +43,7 @@ import {StackOverflowService} from './stack-overflow.service'
     MatSelectModule,
     RouterModule,
     HttpClientModule,
+    AngularFontAwesomeModule
   ],
   declarations: [
     TopicTagComponent,
@@ -63,6 +64,7 @@ import {StackOverflowService} from './stack-overflow.service'
     DistancePipe,
     MatTabsModule,
     MatProgressSpinnerModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     SnackBarComponent,
