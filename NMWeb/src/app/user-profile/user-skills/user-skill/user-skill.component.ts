@@ -14,6 +14,13 @@ export class UserSkillComponent implements OnInit {
   @Input() tag: TagEntry;
   tag2: TopicInterest;
 
+  public dialogSize = {
+    width: 300,
+    height: 400
+  }
+
+
+
   constructor(
     public dialog: MatDialog
   ) { }
@@ -27,27 +34,17 @@ export class UserSkillComponent implements OnInit {
 
   openDialog(e, topicInterest): void {
 
-    let positionX;
-    let positionY;
+    let positionY = e.clientY;
+    let positionX = e.clientX;
 
-
-    positionY = e.clientY;
-    positionX = e.clientX;
-
-    if(positionX+350 > window.innerWidth){
-      positionX = e.clientX-300;
-    }
-    if( positionY+400 > window.innerHeight){
-      positionY = e.clientY-400;
-    }
+    let mobileMaxWidth:number = 600;
 
     let name = topicInterest.tagEntry.name;
-    // var target = e.target || e.srcElement || e.currentTarget;
-    // var idAttr = target.attributes.id;
-    // var value = idAttr.nodeValue;
 
-    let dialogRef = this.dialog.open(SkillLevelPopoverComponent, {
+    let dialogConfig = {
       id: "skill-level-dialog",
+      width: `${this.dialogSize.width}`,
+      height: `${this.dialogSize.height}`,
       position: {
         top: `${positionY}px`,
         left: `${positionX}px`,
@@ -55,7 +52,29 @@ export class UserSkillComponent implements OnInit {
       data: {
         name: name
       }
-    });
+    }
+
+    if ( window.innerWidth < mobileMaxWidth ){
+      delete dialogConfig.position;
+    } else {
+      console.log("es mayor");
+      if( positionX + this.dialogSize.width > window.innerWidth ){
+       positionX -= this.dialogSize.width;
+       dialogConfig.position.left = `${positionX}px`;
+      }
+      if( positionY + this.dialogSize.height > window.innerHeight ){
+        positionY -= this.dialogSize.height;
+        dialogConfig.position.top = `${positionY}px`;
+      }
+    }
+
+
+    // var target = e.target || e.srcElement || e.currentTarget;
+    // var idAttr = target.attributes.id;
+    // var value = idAttr.nodeValue;
+
+
+    let dialogRef = this.dialog.open(SkillLevelPopoverComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was whatever', result);
