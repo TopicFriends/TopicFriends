@@ -13,11 +13,21 @@ export class SkillLevelLabelComponent implements OnInit {
   text:string = "set";
   public isTextVisible:boolean = true;
 
+  public skillsIcons = {
+    none:"battery-empy",
+    beginner:"battery-quarter",
+    intermediate:"battery-half",
+    advanced:"battery-three-quarters",
+    expert:"battery-full"
+  }
+
   constructor() {
     /// if(topic in userSkills){
       // text = level;
-      // icon = ICONS[ICONS.indexOf(level)];
-    ///}
+      // icon = skillsIcons.whatever;
+    ///} else {
+      this.icon = this.skillsIcons.none;
+      //}
   }
 
   ngOnInit() {
