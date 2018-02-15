@@ -26,6 +26,7 @@ import { CreateTopicComponent } from './user-interests/create-topic/create-topic
 import { UserSkillsComponent } from './user-skills/user-skills.component';
 import { UserSkillComponent } from './user-skills/user-skill/user-skill.component'
 import {SkillLevelPopoverComponent} from "./user-skills/skill-level-popover/skill-level-popover.component";
+import {CapitalizeFirstPipe} from "../shared/pipes/capitalize-first.pipe";
 
 export const USER_PROFILE_ID_PARAM_NO_COLON = 'userId'
 
@@ -85,7 +86,7 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     MapsModule,
     MatDialogModule,
     MatButtonToggleModule,
-    MatListModule
+    MatListModule,
   ],
   declarations: [
     UserProfileComponent,
@@ -104,7 +105,8 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     CreateTopicComponent,
     UserSkillsComponent,
     UserSkillComponent,
-    SkillLevelPopoverComponent
+    SkillLevelPopoverComponent,
+    CapitalizeFirstPipe
   ],
   providers: [
     CanDeactivateUserProfileGuard,

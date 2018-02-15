@@ -10,6 +10,15 @@ import {MAT_DIALOG_DATA} from '@angular/material';
 
 export class SkillLevelPopoverComponent implements OnInit {
 
+  public skillLevels:string[] = [
+      "?",
+      "none",
+      "beginner",
+      "intermediate",
+      "advanced",
+      "expert",
+  ];
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }

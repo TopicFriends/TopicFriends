@@ -57,7 +57,6 @@ export class UserSkillComponent implements OnInit {
     if ( window.innerWidth < mobileMaxWidth ){
       delete dialogConfig.position;
     } else {
-      console.log("es mayor");
       if( positionX + this.dialogSize.width > window.innerWidth ){
        positionX -= this.dialogSize.width;
        dialogConfig.position.left = `${positionX}px`;
@@ -67,12 +66,6 @@ export class UserSkillComponent implements OnInit {
         dialogConfig.position.top = `${positionY}px`;
       }
     }
-
-
-    // var target = e.target || e.srcElement || e.currentTarget;
-    // var idAttr = target.attributes.id;
-    // var value = idAttr.nodeValue;
-
 
     let dialogRef = this.dialog.open(SkillLevelPopoverComponent, dialogConfig);
 
