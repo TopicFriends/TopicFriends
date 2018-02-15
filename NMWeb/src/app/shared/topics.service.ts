@@ -190,7 +190,7 @@ export class TopicsService {
     tagNoIcon('HMR - Hot Module Replacement'),
     rxJs, tagNoIcon('RxJava'), reactiveX,
     angularMaterial, angularFire, /* Note: versions will be specified separately, thus not "AngularFire2" */
-    'SVG', tag('WordPress', 'wordpress-icon'), 'Drupal', 'Joomla', tagLogoTipo('jQuery'), 'jQuery Mobile',
+    'SVG', tag('WordPress', 'wordpress-icon'), 'Drupal', 'Joomla', tagLogoTipo('jQuery'), 'jQuery Mobile', tagNoIcon('jQuery UI'),
     'PouchDB', tagNoIcon('CloudBoost'), 'Spring', tagLogoTipo('Vaadin'), 'Yarn',
     'Heroku', 'Jenkins', 'Vagrant', tag('Kubernetes', 'kubernets' /* they have a typo*/),
     tag('Vue.js', 'vue'),
