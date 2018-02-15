@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {TagEntry} from '../user-profile/tag-entry'
 
 export class UserSkillLevel {
-  level: string
+  minLevel: string
+  maxLevel: string
 }
 
 export class UserSkillLevels {
