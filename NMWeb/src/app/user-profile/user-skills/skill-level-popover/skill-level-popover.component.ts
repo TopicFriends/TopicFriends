@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Inject} from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-dialog',
@@ -11,7 +11,6 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class SkillLevelPopoverComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<SkillLevelPopoverComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 

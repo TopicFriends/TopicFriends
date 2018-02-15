@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {TopicInterest} from 'app/user-profile/user-interests';
 import {TagEntry} from '../../tag-entry'
 import {MatDialog} from "@angular/material";
@@ -11,8 +11,8 @@ import {SkillLevelPopoverComponent} from "../skill-level-popover/skill-level-pop
 })
 export class UserSkillComponent implements OnInit {
 
-  @Input() tag: TagEntry
-  tag2: TopicInterest
+  @Input() tag: TagEntry;
+  tag2: TopicInterest;
 
   constructor(
     public dialog: MatDialog
@@ -26,8 +26,20 @@ export class UserSkillComponent implements OnInit {
   }
 
   openDialog(e, topicInterest): void {
-    let positionY = `${e.clientY}px`;
-    let positionX = `${e.clientX}px`;
+
+    let positionX;
+    let positionY;
+
+
+    positionY = e.clientY;
+    positionX = e.clientX;
+
+    if(positionX+350 > window.innerWidth){
+      positionX = e.clientX-300;
+    }
+    if( positionY+400 > window.innerHeight){
+      positionY = e.clientY-400;
+    }
 
     let name = topicInterest.tagEntry.name;
     // var target = e.target || e.srcElement || e.currentTarget;
@@ -35,9 +47,10 @@ export class UserSkillComponent implements OnInit {
     // var value = idAttr.nodeValue;
 
     let dialogRef = this.dialog.open(SkillLevelPopoverComponent, {
+      id: "skill-level-dialog",
       position: {
-        top: positionY,
-        left: positionX,
+        top: `${positionY}px`,
+        left: `${positionX}px`,
       },
       data: {
         name: name
