@@ -22,7 +22,8 @@ import {PoiService} from './poi.service'
 import {HttpClientModule} from '@angular/common/http'
 import {GitHubService} from './git-hub.service'
 import {StackOverflowService} from './stack-overflow.service'
-import {AngularFontAwesomeModule} from 'angular-font-awesome'
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import { CleanUrlPipe } from './pipes/clean-url.pipe'
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome'
     UserInterestsModeViewComponent,
     SnackBarComponent,
     DistancePipe,
+    CleanUrlPipe,
     // GeolocationService,
   ],
   exports: [
