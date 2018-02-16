@@ -14,7 +14,7 @@ export class SkillLevelLabelComponent implements OnInit {
   public isTextVisible:boolean = true;
 
   public skillsIcons = {
-    none:"battery-empy",
+    none:"battery-empty",
     beginner:"battery-quarter",
     intermediate:"battery-half",
     advanced:"battery-three-quarters",

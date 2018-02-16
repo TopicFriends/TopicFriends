@@ -4,7 +4,10 @@
                            [vertical]="isVertical"
                            (valueChange)="selectedValue = group.value">
     <mat-button-toggle value="{{level}}" *ngFor="let level of levels">
-      <span>{{level | capitalizeFirst}}</span>
+      <span>
+        {{level | capitalizeFirst}}
+        <fa name="{{skillsIcons[level]}}"></fa>
+      </span>
     </mat-button-toggle>
   </mat-button-toggle-group>
 </div>

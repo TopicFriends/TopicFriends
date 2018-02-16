@@ -14,6 +14,15 @@ export class SkillLevelsComponent implements OnInit {
   @Input() header:string;
   public selectedValue:string;
 
+
+  public skillsIcons = {
+    none:"battery-empty",
+    beginner:"battery-quarter",
+    intermediate:"battery-half",
+    advanced:"battery-three-quarters",
+    expert:"battery-full"
+  }
+
   constructor() { }
 
   ngOnInit() {
