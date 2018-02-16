@@ -1,6 +1,6 @@
 <div
-  class.xs="navbar-container-mobile"
-  class="navbar-container"
+  ngClass.xs="navbar-container-mobile"
+  ngClass.gt-xs="navbar-container"
   fxLayout="column"
   fxLayout.xs="row"
 >
@@ -9,7 +9,7 @@
   fxLayout="column"
   fxLayout.xs="row"
 >
- <div fxFlexOrder="1" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==0)}" (click)="selectedTab = 0">
+  <div fxFlexOrder="1" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==0)}" (click)="selectedTab = 0">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/meeting-list" routerLinkActive="active">
          <div class="nav-bar-centerd-items">
             <mat-icon>event</mat-icon>
@@ -17,16 +17,16 @@
          </div>
     </div>
 
- </div>
- <div fxFlexOrder="2" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==1)}"  (click)="selectedTab = 1">
+  </div>
+  <div fxFlexOrder="2" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==1)}"  (click)="selectedTab = 1">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/people-list" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
             <mat-icon>people</mat-icon>
             <p>People</p>
         </div>
     </div>
- </div>
- <div fxFlexOrder="3" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==2)}"  (click)="selectedTab = 2">
+  </div>
+  <div fxFlexOrder="3" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==2)}"  (click)="selectedTab = 2">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/profile" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
             <mat-icon>person_pin</mat-icon>
@@ -34,7 +34,7 @@
         </div>
     </div>
 
- </div>
+  </div>
   <!-- Do not show "topics" nav button on navbar for xs.
     ... because of limited horizontal space.
     It is accessible from About box as well.
@@ -49,7 +49,7 @@
         </div>
     </div>
 
- </div>
+  </div>
 
   <div fxFlexOrder="5" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==4)}"  (click)="selectedTab = 4">
     <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/users-map" routerLinkActive="active">
@@ -59,7 +59,7 @@
         </div>
     </div>
 
- </div>
+  </div>
 
   <!--<div fxFlexOrder="6" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==5)}"  (click)="selectedTab = 5">-->
     <!--<div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/groups" routerLinkActive="active">-->
@@ -79,8 +79,8 @@
     </div>
   </div>
 
- <div [fxHide.xs]="true" fxFlexOrder="8" fxFlex="1 .4 100%"></div>
-</div>
+  <div [fxHide.xs]="true" fxFlexOrder="8" fxFlex="1 .4 100%"></div>
+  </div>
 
 </div>
 
