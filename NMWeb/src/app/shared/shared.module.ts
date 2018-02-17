@@ -22,7 +22,7 @@ import {PoiService} from './poi.service'
 import {HttpClientModule} from '@angular/common/http'
 import {GitHubService} from './git-hub.service'
 import {StackOverflowService} from './stack-overflow.service'
-import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import { CleanUrlPipe } from './pipes/clean-url.pipe'
 
 @NgModule({
@@ -44,7 +44,7 @@ import { CleanUrlPipe } from './pipes/clean-url.pipe'
     MatSelectModule,
     RouterModule,
     HttpClientModule,
-    AngularFontAwesomeModule
+    Angular2FontawesomeModule
   ],
   declarations: [
     TopicTagComponent,
@@ -66,7 +66,7 @@ import { CleanUrlPipe } from './pipes/clean-url.pipe'
     DistancePipe,
     MatTabsModule,
     MatProgressSpinnerModule,
-    AngularFontAwesomeModule
+    Angular2FontawesomeModule
   ],
   providers: [
     SnackBarComponent,
