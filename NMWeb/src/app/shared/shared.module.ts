@@ -37,14 +37,13 @@ import { CleanUrlPipe } from './pipes/clean-url.pipe'
     MatChipsModule,
     MatTabsModule,
     MatCardModule,
-    MatIconModule,
     MatSnackBarModule,
     MatDialogModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     RouterModule,
     HttpClientModule,
-    Angular2FontawesomeModule
+    Angular2FontawesomeModule,
   ],
   declarations: [
     TopicTagComponent,
