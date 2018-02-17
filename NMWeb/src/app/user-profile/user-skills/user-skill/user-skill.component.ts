@@ -71,7 +71,7 @@ export class UserSkillComponent implements OnInit {
     let dialogRef = this.dialog.open(SkillLevelPopoverComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was whatever', result);
+      // Save selected data
     });
   }
 
