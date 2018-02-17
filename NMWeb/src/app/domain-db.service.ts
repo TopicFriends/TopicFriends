@@ -18,6 +18,7 @@ export class DomainDbService {
     OTHER_PROFILES: this.USER_DATA + 'OtherProfiles',
     GEO_LOCATIONS: this.USER_DATA + 'GeoLocations',
     DESCRIPTIONS: this.USER_DATA + 'Descriptions',
+    SKILL_LEVELS: this.USER_DATA + 'UserSkillLevels',
   }
 
   constructor(

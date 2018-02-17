@@ -9,6 +9,8 @@ import 'rxjs/add/observable/never'
 import {combineLatest} from 'rxjs/observable/combineLatest'
 import 'rxjs/add/observable/empty'
 
+// TODO: massive refactor and split it per separate features
+
 export function createTopicsDictionary(topics: TopicInterest[]) {
   let ret = {};
   let i = 0;
@@ -146,6 +148,8 @@ export class UserProfile implements HasDbHistory {
   $key?: string;
   history?: DbHistory;
 }
+
+
 
 export class UserData {
   public constructor(

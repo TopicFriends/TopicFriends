@@ -24,6 +24,7 @@ import {GitHubService} from './git-hub.service'
 import {StackOverflowService} from './stack-overflow.service'
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import { CleanUrlPipe } from './pipes/clean-url.pipe'
+import {UserSkillsService} from './user-skills.service'
 
 @NgModule({
   imports: [
@@ -74,6 +75,7 @@ import { CleanUrlPipe } from './pipes/clean-url.pipe'
     GeoLocationService,
     UserGeoLocationsService,
     UserDescriptionsService,
+    UserSkillsService,
     UserTopicsService,
     PoiService,
     GitHubService,

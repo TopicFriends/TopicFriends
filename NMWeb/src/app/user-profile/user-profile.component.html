@@ -45,7 +45,9 @@
 
 
     <app-user-skills
-
+      [userProfileInputs]="userProfileInputs"
+      #userSkillLevels
+      [parentFormGroup]="formGroup"
     ></app-user-skills>
 
     <h2 id="actionable-interests">Actionable Interests</h2>
