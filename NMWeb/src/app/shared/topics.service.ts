@@ -462,10 +462,16 @@ export class TopicsService {
     // TODO: Handlebars.js
     // LoDash, Underscore.js, Ramda
 
+    // Firebase: hosting, analytics, authentication, ...
+
     // PWA: AppShell, Workbox, Service Workers, HTTP Push,
     // Firestore!!!
     // ANgular Lazy Loading
     // ngx-bootstrap
+
+    // NestJS: A progressive Node.js framework for building efficient and scalable server-side applications on top of TypeScript & JavaScript (ES6 / ES7 / ES8) heavily inspired by Angular 😻🚀
+
+    // CI: Continous Integration, CD: Continuous Delivery
 
     tagNoIcon('Electronic Voting'), tagNoIcon('Activism'), tagNoIcon('Volunteering'),
   ]);
