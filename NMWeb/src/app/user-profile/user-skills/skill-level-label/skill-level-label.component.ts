@@ -10,7 +10,7 @@ export class SkillLevelLabelComponent implements OnInit {
 
   @Input() topic:TopicInterest;
   icon:string;
-  text:string = "set";
+  // text:string = "set";
   public isTextVisible:boolean = true;
 
   public skillsIcons = {

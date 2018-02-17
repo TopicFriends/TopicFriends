@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TagEntry} from '../../user-profile/tag-entry'
 import {TopicInterest} from '../../user-profile/user-interests'
 import {RelatedTopicLists} from '../../user-matcher.service'
@@ -15,6 +15,9 @@ export class TopicTagComponent implements OnInit {
   @Input() editable: boolean;
   @Input() tagListModel: TagListModel
   @Input() relatedTopicLists: RelatedTopicLists;
+  @Input() isCustomClick: boolean = false
+
+  @Output() clickTopic = new EventEmitter<any>()
 
   constructor() { }
 

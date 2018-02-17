@@ -1,4 +1,6 @@
 <mat-chip
+  (click)="clickTopic.emit($event)"
+  style="cursor: pointer"
   [ngClass]="{
     'tag-chip': true,
     'tag-chip-highlight-symmetric': shouldHighlightSymmetric(),
@@ -22,7 +24,8 @@
 
     <!--<div style="vertical-align: middle; display: inline; height: 100%">-->
     <span style="display: inline; height: 100%; vertical-align: middle">
-      <a [routerLink]="'/topic/'+tag.tagEntry.id">{{tag.tagEntry.name}}</a>
+      <a *ngIf="! isCustomClick" [routerLink]="'/topic/'+tag.tagEntry.id">{{tag.tagEntry.name}}</a>
+      <a *ngIf="isCustomClick">{{tag.tagEntry.name}}</a>
       &nbsp;
       <!--<span *ngIf="shouldHighlightSymmetric()">SYM_MATCH</span>-->
     </span>

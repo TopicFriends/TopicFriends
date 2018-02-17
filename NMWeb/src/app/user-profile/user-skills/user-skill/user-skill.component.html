@@ -1,6 +1,8 @@
   <app-topic-tag
     [tag]="tag2"
     [editable]="false"
+    [isCustomClick]="true"
+    (clickTopic)="openDialog($event, tag2)"
   >
     <app-skill-level-label (click)="openDialog($event, tag2)" [topic]="tag2"></app-skill-level-label>
   </app-topic-tag>
