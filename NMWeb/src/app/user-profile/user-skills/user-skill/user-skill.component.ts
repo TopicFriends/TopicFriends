@@ -45,6 +45,7 @@ export class UserSkillComponent implements OnInit {
       id: "skill-level-dialog",
       width: `${this.dialogSize.width}`,
       height: `${this.dialogSize.height}`,
+      maxWidth: '100vw',
       position: {
         top: `${positionY}px`,
         left: `${positionX}px`,
