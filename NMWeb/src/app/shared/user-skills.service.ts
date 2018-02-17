@@ -4,8 +4,10 @@ import {DbObject, DbService} from '../db.service'
 import {DomainDbService} from '../domain-db.service'
 
 
-export type UserSkillLevelEnum = undefined | 'none' | 'beginner' | 'intermediate' | 'advanced' | 'expert'
+export type UserSkillLevelEnum = undefined | 'none' | 'beginner' | 'intermediate' | 'advanced' | 'expert' // guru|coreContributor|Author
 
+
+/* Rename: UserSkillLevelPerTopic ? */
 export class UserSkillLevel {
   minLevel: UserSkillLevelEnum
   maxLevel: UserSkillLevelEnum
@@ -13,6 +15,11 @@ export class UserSkillLevel {
   // or, a custom syntax, in a single field `level`, like:
   // 'beginner..intermediate'
   // or just 'advanced'
+
+
+  // ==== Future:
+  // field `comments`, e.g. "Worked on projects X Y Z since 2015 while winning Annual Angular Award :)"
+  // this could augment/replace options like author/coreContributor
 }
 
 export class UserSkillLevels {
