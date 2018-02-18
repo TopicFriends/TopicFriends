@@ -1,6 +1,6 @@
 <app-user-skill
   *ngFor="let tag of topicsService.topics"
   [tag]="tag"
-  [skillLevels]="skillLevelsPerTopic[tag.id]?.skillLevels"
+  [skillLevels]="getSkillLevelsForTopicId(tag.id)"
   (levelsChanged)="onLevelsChanged($event, tag)"
 ></app-user-skill>

@@ -36,6 +36,7 @@ export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
   }
 
   /* override */ writeValue(value: SkillLevelsPerTopic) {
+    console.log('UserSkillsListComponent writeValue', value)
     this.skillLevelsPerTopic = value
   }
 
@@ -52,4 +53,12 @@ export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
     console.log('onLevelsChanged propagateChange', this.skillLevelsPerTopic)
   }
 
+  getSkillLevelsForTopicId(id: string) {
+    const skillLevelsPerTopic2 = this.skillLevelsPerTopic[id]
+    const ret = skillLevelsPerTopic2 && skillLevelsPerTopic2.skillLevels
+    if (ret) {
+      console.log('getSkillLevelsForTopicId ret', ret)
+    }
+    return ret
+  }
 }
