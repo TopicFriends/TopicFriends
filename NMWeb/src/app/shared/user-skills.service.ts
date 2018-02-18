@@ -28,8 +28,8 @@ export class UserSkillLevel {
 }
 
 export class UserSkillLevelsHaveWant {
-  have?: UserSkillLevel
-  want?: UserSkillLevel
+  have?: UserSkillLevel // FIXME: type should be `UserSkillLevel | UserSkillLevelEnum` (short-circuitable)
+  want?: UserSkillLevel // FIXME: type should be `UserSkillLevel | UserSkillLevelEnum` (short-circuitable)
 }
 
 export class UserSkill {

@@ -31,14 +31,14 @@ export class SkillLevelLabelComponent implements OnInit {
       this.icon = this.skillsIcons.none;
       //}
 
-    if ( this.skillLevels ) {
-      console.log('SkillLevelLabelComponent, skillLevels', this.skillLevels)
-      this.icon = this.skillLevels.have.minLevel
-      // todo; want
-    }
   }
 
   ngOnInit() {
+    if ( this.skillLevels ) {
+      console.log('SkillLevelLabelComponent, skillLevels', this.skillLevels)
+      this.icon = this.skillsIcons[this.skillLevels.have]
+      // todo; want
+    }
     // this.icon = this.skillIcons[skillLevels]
   }
 
