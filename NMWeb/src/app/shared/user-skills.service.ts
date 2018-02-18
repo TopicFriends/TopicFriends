@@ -20,6 +20,11 @@ export class UserSkillLevel {
   // ==== Future:
   // field `comments`, e.g. "Worked on projects X Y Z since 2015 while winning Annual Angular Award :)"
   // this could augment/replace options like author/coreContributor
+
+  // startYear
+  // currentlyWorkingWith / whenLastWorkedWith
+
+  // from Siemens screenshot: "Core Competency"
 }
 
 export class UserSkillLevels {
