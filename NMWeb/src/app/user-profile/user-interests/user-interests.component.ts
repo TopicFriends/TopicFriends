@@ -9,7 +9,7 @@ import {UserProfileInputs} from '../user-profile.component'
 import {DomainDbService} from '../../domain-db.service'
 
 const INITIAL_WANTED_TOPICS: WantedTopics = {
-  active: true,
+  // active: true,
   topics: {}
 }
 

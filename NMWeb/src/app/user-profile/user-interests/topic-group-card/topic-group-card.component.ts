@@ -47,7 +47,7 @@ export class TopicGroupCardComponent implements OnInit, ControlValueAccessor {
   onOutputTagListChanged(event: TagListModelEvent) {
     const wantedTopics: WantedTopics = {
       topics: createTopicsDictionary(event.tagList),
-      active: true
+      // active: true
     }
     this.propagateChange(wantedTopics)
   }
