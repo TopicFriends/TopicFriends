@@ -57,7 +57,7 @@ export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
     const skillLevelsPerTopic2 = this.skillLevelsPerTopic[id]
     const ret = skillLevelsPerTopic2 && skillLevelsPerTopic2.skillLevels
     if (ret) {
-      console.log('getSkillLevelsForTopicId ret', ret)
+      // console.log('getSkillLevelsForTopicId ret', ret)
     }
     return ret
   }
