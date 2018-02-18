@@ -42,13 +42,14 @@ export class UserSkillComponent implements OnInit {
     let name = topicInterest.tagEntry.name;
 
     let dialogConfig = {
-      id: "skill-level-dialog",
+      // id: "skill-level-dialog",
       width: `${this.dialogSize.width}`,
       height: `${this.dialogSize.height}`,
       maxWidth: '100vw',
       position: {
         top: `${positionY}px`,
         left: `${positionX}px`,
+        bottom:''
       },
       data: {
         name: name
@@ -63,8 +64,10 @@ export class UserSkillComponent implements OnInit {
        dialogConfig.position.left = `${positionX}px`;
       }
       if( positionY + this.dialogSize.height > window.innerHeight ){
-        positionY -= this.dialogSize.height;
-        dialogConfig.position.top = `${positionY}px`;
+        // positionY -= this.dialogSize.height;
+        // dialogConfig.position.top = `${positionY}px`;
+        delete dialogConfig.position.top;
+        dialogConfig.position.bottom = "0px";
       }
     }
 
