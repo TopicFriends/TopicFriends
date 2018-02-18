@@ -22,7 +22,7 @@ export class UserSkillComponent implements OnInit {
 
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
