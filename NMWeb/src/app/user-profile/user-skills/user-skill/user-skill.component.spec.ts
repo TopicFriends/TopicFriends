@@ -22,4 +22,9 @@ describe('UserSkillComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Dialog fits the window without repositioning', () => {
+  //
+  });
+
 });

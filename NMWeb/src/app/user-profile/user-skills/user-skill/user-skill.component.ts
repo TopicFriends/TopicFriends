@@ -15,7 +15,7 @@ export class UserSkillComponent implements OnInit {
   tag2: TopicInterest;
 
   public dialogSize = {
-    width: 300,
+    width: 360,
     height: 400
   }
 
@@ -60,14 +60,10 @@ export class UserSkillComponent implements OnInit {
       delete dialogConfig.position;
     } else {
       if( positionX + this.dialogSize.width > window.innerWidth ){
-       positionX -= this.dialogSize.width;
-       dialogConfig.position.left = `${positionX}px`;
+        this.repositionXCoordinate(positionX, dialogConfig, name);
       }
       if( positionY + this.dialogSize.height > window.innerHeight ){
-        // positionY -= this.dialogSize.height;
-        // dialogConfig.position.top = `${positionY}px`;
-        delete dialogConfig.position.top;
-        dialogConfig.position.bottom = "0px";
+        this.repositionYCoordinate(dialogConfig, name);
       }
     }
 
@@ -78,4 +74,15 @@ export class UserSkillComponent implements OnInit {
     });
   }
 
+  private repositionYCoordinate(dialogConfig, name: string) {
+    delete dialogConfig.position.top;
+    dialogConfig.position.bottom = "0px";
+    console.log("Repositioning dialog when it is outside of the window - height", name);
+  }
+
+  private repositionXCoordinate(positionX: number, dialogConfig, name: string) {
+    positionX -= this.dialogSize.width;
+    dialogConfig.position.left = `${positionX}px`;
+    console.log("Repositioning dialog when it is outside of the window - width", name);
+  }
 }
