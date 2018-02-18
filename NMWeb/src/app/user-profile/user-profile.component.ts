@@ -63,6 +63,7 @@ export class UserProfileComponent implements OnInit {
   userGeoLocationsFormGroup: FormGroup
 
   userProfileInputs: UserProfileInputs
+  checkPrivacityValue: boolean
 
   constructor(
     public userProfileService: UserProfileService,
@@ -106,11 +107,16 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     console.log('UserProfileComponent ngOnInit')
+    this.checkPrivacityValue = false
   }
 
   save() {
-    if ( ! this.userProfileInputs.isEditable ) {
+    if (!this.userProfileInputs.isEditable) {
       window.alert('User Profile not editable. Unable to save!')
+      return;
+    }
+    if (!this.checkPrivacityValue) {
+      this.snackBarComponent.showSnackBar('Privacy must be checked. Unable to save!')
       return;
     }
     if ( ! this.hasUnsavedChanges() ) {
@@ -160,7 +166,7 @@ export class UserProfileComponent implements OnInit {
   hasUnsavedChanges() {
     // console.log('hasUnsavedChanges, userProfileInputs:', this.userProfileInputs)
     // return false
-    return this.userProfileInputs && this.userProfileInputs.isEditable && this.formGroup.dirty
+    return this.userProfileInputs && this.userProfileInputs.isEditable && this.formGroup.dirty && this.checkPrivacityValue
   }
 
 }

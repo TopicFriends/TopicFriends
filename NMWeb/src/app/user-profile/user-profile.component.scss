@@ -2,3 +2,9 @@ mat-form-field {
   /*width: 300px;*/
   width: 100%;
 }
+.privacityLink{
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}

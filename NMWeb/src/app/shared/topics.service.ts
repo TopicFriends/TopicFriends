@@ -459,12 +459,13 @@ export class TopicsService {
     // TODO: Hyperloop
     // TODO: check Malaga meetup topics
 
-    // TODO: Handlebars.js
+    // TODO: Handlebars.js, Mustashe
     // LoDash, Underscore.js, Ramda
 
     // Firebase: hosting, analytics, authentication, ...
 
-    // PWA: AppShell, Workbox, Service Workers, HTTP Push,
+    // PWA: AppShell, Workbox, Service Workers, HTTP Push
+    // IndexedDB, LocalStorage
     // Firestore!!!
     // ANgular Lazy Loading
     // ngx-bootstrap
