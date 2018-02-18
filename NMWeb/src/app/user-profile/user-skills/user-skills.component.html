@@ -1,5 +1,4 @@
 
-
 <mat-card style="margin-bottom: 10px">
 
   <mat-card-title>
@@ -17,21 +16,11 @@
     </mat-form-field>
   </mat-card-title>
 
-  <mat-card-content>
+  <mat-card-content [formGroup]="thisFormGroup">
 
-    <!--<ng-template -->
-    <app-user-skill
-      *ngFor="let tag of topicsService.topics"
-      [tag]="tag"
-    ></app-user-skill>
-    <!--</ng-template>-->
-
-    <!--<div [formGroup]="formGroup">-->
-
-
-      <!--<ng-template [ngIf]="! otherProfiles" >Loading external profiles...</ng-template>-->
-
-    <!--</div>-->
+    <app-user-skills-list
+      formControlName="skillLevelsPerTopic"
+    ></app-user-skills-list>
 
   </mat-card-content>
 

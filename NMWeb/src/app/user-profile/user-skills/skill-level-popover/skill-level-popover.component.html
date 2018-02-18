@@ -9,6 +9,12 @@
 
   </div>
 
-  <button mat-raised-button color="primary" [mat-dialog-close]="[have.selectedValue, want.selectedValue]" id="skill-dialog-btn" >Save</button>
+  <button
+    mat-raised-button color="primary"
+    [mat-dialog-close]="{have: have.selectedValue, want: want.selectedValue}"
+    id="skill-dialog-btn"
+  >
+    Save
+  </button>
 
 </div>

@@ -8,6 +8,7 @@ import {DbHistory, HasDbHistory} from '../util/history'
 import 'rxjs/add/observable/never'
 import {combineLatest} from 'rxjs/observable/combineLatest'
 import 'rxjs/add/observable/empty'
+import {UserSkillLevelsPerUser} from '../shared/user-skills.service'
 
 // TODO: massive refactor and split it per separate features
 
@@ -156,6 +157,7 @@ export class UserData {
     public userId,
     public profile: DbObject<UserProfile>,
     public interests: DbObject<UserInterests>,
+    public skills: DbObject<UserSkillLevelsPerUser>,
     public otherProfiles: DbObject<UserOtherProfiles>,
     public geoLocations?: DbObject<UserGeoLocations>,
     public descriptions?: DbObject<UserDescriptions>,
@@ -166,6 +168,7 @@ export class UserData {
     return combineLatest(
       userData.profile,
       userData.interests,
+      // TODO: Skills
       userData.otherProfiles,
       userData.geoLocations,
       userData.descriptions,
@@ -247,6 +250,7 @@ export class UserProfileService {
   public saveUserProfile(
     userProfile: UserProfile,
     interests: UserInterests,
+    skills: UserInterests,
     otherProfiles: UserOtherProfiles,
     userGeoLocations: UserGeoLocations,
     userDescriptions: UserDescriptions,
@@ -309,6 +313,8 @@ export class UserProfileService {
     //   }
     // });
     this.myUserData.interests.update(interests);
+    this.myUserData.skills.update(skills);
+
     this.myUserData.otherProfiles.update(otherProfiles);
     this.myUserData.geoLocations.update(userGeoLocations);
     this.myUserData.descriptions.update(userDescriptions);

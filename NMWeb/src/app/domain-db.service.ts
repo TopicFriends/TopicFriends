@@ -6,6 +6,7 @@ import "rxjs/add/observable/of"
 
 import {UserInterests} from './user-profile/user-interests'
 import {combineLatest} from 'rxjs/operator/combineLatest'
+import {UserSkillLevelsPerUser} from './shared/user-skills.service'
 
 @Injectable()
 export class DomainDbService {
@@ -49,6 +50,7 @@ export class DomainDbService {
             id,
             Observable.of(profile),
             this.userInterestsById(id),
+            this.userSkillLevelsByUserId(id),
             this.otherProfilesById(id),
             this.userGeoLocationsById(id),
             this.userDescriptionsById(id),
@@ -79,11 +81,16 @@ export class DomainDbService {
     return this.db.objectById(this.PATHS.DESCRIPTIONS, userId);
   }
 
+  userSkillLevelsByUserId(userId: string): DbObject<UserSkillLevelsPerUser> {
+    return this.db.objectById(this.PATHS.SKILL_LEVELS, userId)
+  }
+
   userDataById(userId: string): UserData {
     return new UserData(
       userId,
       this.userProfileById(userId),
       this.userInterestsById(userId),
+      this.userSkillLevelsByUserId(userId),
       this.otherProfilesById(userId),
       this.userGeoLocationsById(userId),
       this.userDescriptionsById(userId),

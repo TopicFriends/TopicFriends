@@ -29,6 +29,7 @@ import {SkillLevelPopoverComponent} from "./user-skills/skill-level-popover/skil
 import {CapitalizeFirstPipe} from "../shared/pipes/capitalize-first.pipe";
 import { SkillLevelsComponent } from './user-skills/skill-levels/skill-levels.component';
 import { SkillLevelLabelComponent } from './user-skills/skill-level-label/skill-level-label.component';
+import { UserSkillsListComponent } from './user-skills/user-skills-list/user-skills-list.component';
 
 export const USER_PROFILE_ID_PARAM_NO_COLON = 'userId'
 
@@ -110,7 +111,8 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     SkillLevelPopoverComponent,
     CapitalizeFirstPipe,
     SkillLevelsComponent,
-    SkillLevelLabelComponent
+    SkillLevelLabelComponent,
+    UserSkillsListComponent
   ],
   providers: [
     CanDeactivateUserProfileGuard,

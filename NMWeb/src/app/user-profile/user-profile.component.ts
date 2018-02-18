@@ -12,6 +12,7 @@ import {UserGeoLocationsComponent} from './user-geo-locations/user-geo-locations
 import {UserDescriptionsComponent} from './user-descriptions/user-descriptions.component'
 import {ActivatedRoute, ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot} from '@angular/router'
 import {USER_PROFILE_ID_PARAM_NO_COLON} from './user-profile.module'
+import {UserSkillsComponent} from './user-skills/user-skills.component'
 
 export class CanDeactivateUserProfileGuard implements CanDeactivate<UserProfileComponent> {
 
@@ -49,6 +50,7 @@ export class UserProfileComponent implements OnInit {
   @ViewChild('userDescriptions') userDescriptions: UserDescriptionsComponent
   @ViewChild('userOtherProfiles') userOtherProfilesComponent: UserOtherProfilesComponent
   @ViewChild('userInterests') userInterests: UserInterestsComponent
+  @ViewChild('userSkills') userSkills: UserSkillsComponent
   @ViewChild('userGeoLocations') userGeoLocations: UserGeoLocationsComponent
 
   /* Rename to rootFormGroup */
@@ -56,6 +58,7 @@ export class UserProfileComponent implements OnInit {
 
   userProfileBasicInfoFormGroup: FormGroup
   userInterestsFormGroup: FormGroup
+  userSkillsFormGroup: FormGroup
   userDescriptionsFormGroup: FormGroup
   userGeoLocationsFormGroup: FormGroup
 
@@ -84,12 +87,15 @@ export class UserProfileComponent implements OnInit {
     this.userProfileBasicInfoFormGroup = UserProfileBasicInfoComponent.buildFormGroup(this.formBuilder)
     this.userDescriptionsFormGroup = UserDescriptionsComponent.buildFormGroup(this.formBuilder)
     this.userInterestsFormGroup = UserInterestsComponent.buildFormGroup(this.formBuilder)
+    this.userSkillsFormGroup = UserSkillsComponent.buildFormGroup(this.formBuilder)
     this.userGeoLocationsFormGroup = UserGeoLocationsComponent.buildFormGroup(this.formBuilder)
     this.formGroup = this.formBuilder.group({
       userProfileBasicInfo:
         this.userProfileBasicInfoFormGroup,
       userInterests:
         this.userInterestsFormGroup,
+      userSkills:
+        this.userSkillsFormGroup,
       descriptions:
         this.userDescriptionsFormGroup,
       geoLocations:
@@ -115,6 +121,7 @@ export class UserProfileComponent implements OnInit {
 
     const otherProfiles = this.userOtherProfilesComponent.getOtherProfiles()
     const userInterests = this.userInterests.getUserInterests()
+    const userSkills = this.userSkills.getValue()
     const userProfile: UserProfile = this.basicInfo.getUserBasicInfo()
     const userGeoLocations = this.userGeoLocations.getValue()
     const userDescriptions = this.userDescriptions.getValue()
@@ -124,6 +131,7 @@ export class UserProfileComponent implements OnInit {
     this.userProfileService.saveUserProfile(
       userProfile,
       userInterests,
+      userSkills,
       otherProfiles,
       userGeoLocations,
       userDescriptions,

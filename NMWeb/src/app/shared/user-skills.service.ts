@@ -27,14 +27,14 @@ export class UserSkillLevel {
   // from Siemens screenshot: "Core Competency"
 }
 
-export class UserSkillLevels {
+export class UserSkillLevelsHaveWant {
   have?: UserSkillLevel
   want?: UserSkillLevel
 }
 
 export class UserSkill {
   skillTopic: TagEntry // a bit of duplication, but maybe good for de-normalization/NoSQL
-  skillLevels: UserSkillLevels
+  skillLevels: UserSkillLevelsHaveWant
 }
 
 export interface SkillLevelsPerTopic {
@@ -69,11 +69,7 @@ export class UserSkillsService {
     private domainDb: DomainDbService,
   ) { }
 
-  userSkillLevelsByUserId(userId: string): DbObject<UserSkillLevelsPerUser> {
-    return this.db.objectById(this.domainDb.PATHS.SKILL_LEVELS, userId)
-  }
-
   saveExampleData() {
-    this.userSkillLevelsByUserId('ExampleUser').set(exampleData)
+    // this.userSkillLevelsByUserId('ExampleUser').set(exampleData)
   }
 }

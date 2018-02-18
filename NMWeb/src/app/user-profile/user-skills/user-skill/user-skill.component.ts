@@ -1,8 +1,9 @@
-import {Component, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef} from '@angular/core';
 import {TopicInterest} from 'app/user-profile/user-interests';
 import {TagEntry} from '../../tag-entry'
 import {MatDialog} from "@angular/material";
 import {SkillLevelPopoverComponent} from "../skill-level-popover/skill-level-popover.component";
+import {UserSkillLevelsHaveWant} from '../../../shared/user-skills.service'
 
 @Component({
   selector: 'app-user-skill',
@@ -13,6 +14,11 @@ export class UserSkillComponent implements OnInit {
 
   @Input() tag: TagEntry;
   tag2: TopicInterest;
+
+  @Output() levelsChanged = new EventEmitter<UserSkillLevelsHaveWant>()
+
+  @Input() skillLevels: UserSkillLevelsHaveWant
+
 
   public dialogSize = {
     width: 300,
@@ -71,6 +77,8 @@ export class UserSkillComponent implements OnInit {
     let dialogRef = this.dialog.open(SkillLevelPopoverComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log('skills popup afterClosed', result)
+      this.levelsChanged.emit(result)
       // Save selected data
     });
   }

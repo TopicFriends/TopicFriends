@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {TopicInterest} from 'app/user-profile/user-interests';
+import {UserSkillLevelsHaveWant} from '../../../shared/user-skills.service'
 
 @Component({
   selector: 'app-skill-level-label',
@@ -9,6 +10,7 @@ import {TopicInterest} from 'app/user-profile/user-interests';
 export class SkillLevelLabelComponent implements OnInit {
 
   @Input() topic:TopicInterest;
+  @Input() skillLevels: UserSkillLevelsHaveWant;
   icon:string;
   // text:string = "set";
   public isTextVisible:boolean = true;
@@ -28,6 +30,11 @@ export class SkillLevelLabelComponent implements OnInit {
     ///} else {
       this.icon = this.skillsIcons.none;
       //}
+
+    if ( this.skillLevels ) {
+      this.icon = this.skillLevels.have.minLevel
+      // todo; want
+    }
   }
 
   ngOnInit() {
