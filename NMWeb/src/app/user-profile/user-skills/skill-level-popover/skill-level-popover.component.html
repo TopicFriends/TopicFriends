@@ -11,7 +11,7 @@
 
   <button
     mat-raised-button color="primary"
-    [mat-dialog-close]="{have: have.selectedValue, want: want.selectedValue}"
+    [mat-dialog-close]="getDialogResult(have, want)"
     id="skill-dialog-btn"
   >
     Save
