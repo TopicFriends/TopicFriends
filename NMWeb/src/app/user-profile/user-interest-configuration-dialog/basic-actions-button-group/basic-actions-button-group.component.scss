@@ -1,0 +1,12 @@
+.button-container {
+
+  mat-button-toggle {
+    margin-top: 5px;
+  }
+  .mat-button-toggle-checked {
+    color: white;
+    background-color: #673ab7;
+  }
+
+  text-align: center;
+}

@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef} from '@angular/core';
 import {TopicInterest} from 'app/user-profile/user-interests';
-import {TagEntry} from '../../tag-entry'
+import {TagEntry} from '../../tag-entry';
 import {MatDialog} from "@angular/material";
 import {SkillLevelPopoverComponent} from "../skill-level-popover/skill-level-popover.component";
-import {UserSkillLevelsHaveWant} from '../../../shared/user-skills.service'
+import {UserInterestConfigurationDialogComponent} from "../../user-interest-configuration-dialog/user-interest-configuration-dialog.component";
+import {UserSkillLevelsHaveWant} from '../../../shared/user-skills.service';
 
 @Component({
   selector: 'app-user-skill',
@@ -15,17 +16,14 @@ export class UserSkillComponent implements OnInit {
   @Input() tag: TagEntry;
   tag2: TopicInterest;
 
-  @Output() levelsChanged = new EventEmitter<UserSkillLevelsHaveWant>()
+  @Output() levelsChanged = new EventEmitter<UserSkillLevelsHaveWant>();
 
-  @Input() skillLevels: UserSkillLevelsHaveWant
-
+  @Input() skillLevels: UserSkillLevelsHaveWant;
 
   public dialogSize = {
     width: 360,
     height: 400
   }
-
-
 
   constructor(
     public dialog: MatDialog,
@@ -54,14 +52,15 @@ export class UserSkillComponent implements OnInit {
       // id: "skill-level-dialog",
       width: `${this.dialogSize.width}`,
       height: `${this.dialogSize.height}`,
-      maxWidth: '100vw',
+      maxWidth: `${this.dialogSize.width}px`,
       position: {
         top: `${positionY}px`,
         left: `${positionX}px`,
         bottom:''
       },
       data: {
-        name: name
+        name: name,
+        tag2: this.tag2
       }
     }
 
@@ -76,10 +75,10 @@ export class UserSkillComponent implements OnInit {
       }
     }
 
-    let dialogRef = this.dialog.open(SkillLevelPopoverComponent, dialogConfig);
+    let dialogRef = this.dialog.open(UserInterestConfigurationDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('skills popup afterClosed', result)
+      console.log('skills popup afterClosed', result);
       this.levelsChanged.emit(result)
       // Save selected data
     });
