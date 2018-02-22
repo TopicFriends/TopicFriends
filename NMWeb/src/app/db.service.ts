@@ -35,7 +35,7 @@ export class DbService {
   // DB_PREFIX = 'TPEmpty';
 
   constructor(
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
   ) {
 
   }
@@ -50,12 +50,12 @@ export class DbService {
     return this.db.object(this.adaptPath(path));
   }
 
-  /** Idea: could add wrapping/mapping func here */
+  /** Idea: could add optional wrapping/mapping func here */
   list<T>(path: string): DbList<T> {
     return this.db.list(this.adaptPath(path));
   }
 
-  /** Idea: could add wrapping/mapping func here */
+  /** Idea: could add optional wrapping/mapping func here */
   listQueried<T>(path: string, query: any): DbList<T> {
     return this.db.list(this.adaptPath(path), query);
   }
