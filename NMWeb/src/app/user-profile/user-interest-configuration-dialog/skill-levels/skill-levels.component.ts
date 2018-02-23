@@ -1,4 +1,4 @@
-import {Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {MatButtonToggleGroup} from '@angular/material'
 
 @Component({
@@ -12,6 +12,8 @@ export class SkillLevelsComponent implements OnInit {
   @Input() isVertical:boolean;
   @Input() levels:string[];
   @Input() header:string;
+  @Input() actualValue:string;
+
   public selectedValue:string;
 
 

@@ -2,6 +2,7 @@
   <h4>{{header|capitalizeFirst}}</h4>
   <mat-button-toggle-group #group="matButtonToggleGroup"
                            [vertical]="isVertical"
+                           [value]="actualValue"
                            (valueChange)="selectedValue = group.value">
     <mat-button-toggle value="{{level}}" *ngFor="let level of levels">
       <span>

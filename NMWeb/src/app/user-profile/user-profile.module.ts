@@ -25,9 +25,9 @@ import {DefaultRouteReuseStrategy} from '@angular/router/src/route_reuse_strateg
 import { CreateTopicComponent } from './user-interests/create-topic/create-topic.component';
 import { UserSkillsComponent } from './user-skills/user-skills.component';
 import { UserSkillComponent } from './user-skills/user-skill/user-skill.component'
-import {SkillLevelPopoverComponent} from "./user-skills/skill-level-popover/skill-level-popover.component";
+import {SkillLevelPopoverComponent} from "./user-interest-configuration-dialog/skill-level-popover/skill-level-popover.component";
 import {CapitalizeFirstPipe} from "../shared/pipes/capitalize-first.pipe";
-import { SkillLevelsComponent } from './user-skills/skill-levels/skill-levels.component';
+import { SkillLevelsComponent } from './user-interest-configuration-dialog/skill-levels/skill-levels.component';
 import { SkillLevelLabelComponent } from './user-skills/skill-level-label/skill-level-label.component';
 import { UserSkillsListComponent } from './user-skills/user-skills-list/user-skills-list.component';
 import { UserInterestConfigurationDialogComponent } from './user-interest-configuration-dialog/user-interest-configuration-dialog.component';

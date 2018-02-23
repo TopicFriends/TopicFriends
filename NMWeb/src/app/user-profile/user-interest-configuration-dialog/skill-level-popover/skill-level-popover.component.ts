@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Inject} from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material';
 import {UserSkillLevelsHaveWant} from '../../../shared/user-skills.service'
 
@@ -21,10 +20,11 @@ export class SkillLevelPopoverComponent implements OnInit {
   ];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
   ngOnInit() {
+    console.log('UserSkillLevels', this.data);
   }
 
   getDialogResult(have, want): UserSkillLevelsHaveWant {

@@ -8,3 +8,18 @@ h2 {
 app-supply-demand-button-group {
   width: 100%;
 }
+.relative-position {
+  position: relative;
+}
+
+.floating-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 28px;
+}
+
+.fit-content {
+  min-width: fit-content;
+  max-width: fit-content;
+}

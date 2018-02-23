@@ -1,9 +1,10 @@
-import {Component, EventEmitter, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import {Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import {TagEntry} from "../tag-entry";
 import {TopicInterest} from "../user-interests";
-import {SkillLevelPopoverComponent} from "../user-skills/skill-level-popover/skill-level-popover.component";
+import {SkillLevelPopoverComponent} from "./skill-level-popover/skill-level-popover.component";
+import {UserSkillLevelsHaveWant} from '../../shared/user-skills.service';
 
 @Component({
   selector: 'app-user-interest-configuration-dialog',
@@ -19,14 +20,12 @@ export class UserInterestConfigurationDialogComponent implements OnInit {
 
   public tag2: TopicInterest;
 
-  // @Output() levelsChanged = new EventEmitter<UserSkillLevelsHaveWant>();
-
-  // @Input() skillLevels: UserSkillLevelsHaveWant;
-
+  @Output() levelsChanged = new EventEmitter<UserSkillLevelsHaveWant>();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     @Inject(MAT_DIALOG_DATA) public tag: TagEntry,
+    // @Inject(MAT_DIALOG_DATA) public skillLevels: UserSkillLevelsHaveWant,
     public dialog: MatDialog,
   ) {
     /// SETTING ADITIONAL DATA - IT SHOULD BE TAKEN FROM DB
@@ -83,13 +82,14 @@ export class UserInterestConfigurationDialogComponent implements OnInit {
 
   ngOnInit() {
     this.tag2 = new TopicInterest(this.tag);
+    console.log(this.data);
     // if ( this.skillLevels ) {
     //   console.log('UserSkillComponent, skillLevels', this.skillLevels)
     // }
   }
 
   openDialog(e, topicInterest = this.tag2): void {
-
+    //// OPEN DIALOG SKILL LEVEL DIALOG ////
     let positionY = e.clientY;
     let positionX = e.clientX;
 
@@ -110,6 +110,7 @@ export class UserInterestConfigurationDialogComponent implements OnInit {
       data: {
         name: name,
         userProfileInputs: this.data.userProfileInputs,
+        skillLevels: this.data.skillLevels
       }
     }
 
@@ -127,8 +128,10 @@ export class UserInterestConfigurationDialogComponent implements OnInit {
     let dialogRef = this.dialog.open(SkillLevelPopoverComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('skills popup afterClosed', result);
-      // this.levelsChanged.emit(result)
+      if (result){
+        this.data.skillLevels = result;
+        this.levelsChanged.emit(result);
+      }
       // Save selected data
     });
   }
