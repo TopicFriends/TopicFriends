@@ -12,7 +12,6 @@ import {SkillLevelPopoverComponent} from "../user-skills/skill-level-popover/ski
 })
 export class UserInterestConfigurationDialogComponent implements OnInit {
 
-
   public dialogSize = {
     width: 360,
     height: 400
@@ -109,7 +108,8 @@ export class UserInterestConfigurationDialogComponent implements OnInit {
         bottom:''
       },
       data: {
-        name: name
+        name: name,
+        userProfileInputs: this.data.userProfileInputs,
       }
     }
 
