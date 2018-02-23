@@ -475,6 +475,8 @@ export class TopicsService {
     // CI: Continous Integration, CD: Continuous Delivery
     // RethinkDB
 
+    'Jest',
+
     tagNoIcon('Electronic Voting'), tagNoIcon('Activism'), tagNoIcon('Volunteering'),
   ]);
 

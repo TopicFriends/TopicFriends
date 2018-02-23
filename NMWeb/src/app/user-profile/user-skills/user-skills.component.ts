@@ -25,13 +25,6 @@ export class UserSkillsComponent implements OnInit {
   @Input() public userProfileInputs: UserProfileInputs
   @Input() thisFormGroup: FormGroup
 
-  // public formGroup: FormGroup
-
-
-
-  public otherProfiles: UserSkillLevelsPerUser
-
-
   constructor(
     public topicsService: TopicsService,
     public userSkillsService: UserSkillsService,

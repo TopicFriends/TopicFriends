@@ -1,10 +1,11 @@
-import {Component, forwardRef, OnInit} from '@angular/core';
+import {Component, forwardRef, Input, OnInit} from '@angular/core';
 import {TopicsService} from '../../../shared/topics.service'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
 import {TopicGroupCardComponent} from '../../user-interests/topic-group-card/topic-group-card.component'
 import {UserInterests, WantedTopics} from '../../user-interests'
 import {SkillLevelsPerTopic, UserSkillLevelsHaveWant} from '../../../shared/user-skills.service'
 import {TagEntry} from '../../tag-entry'
+import {UserProfileInputs} from '../../user-profile.component'
 
 @Component({
   selector: 'app-user-skills-list',
@@ -21,6 +22,8 @@ import {TagEntry} from '../../tag-entry'
 export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
 
   skillLevelsPerTopic: SkillLevelsPerTopic = { }
+
+  @Input() userProfileInputs: UserProfileInputs
 
   constructor(
     public topicsService: TopicsService,
@@ -45,12 +48,15 @@ export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
   }
 
   onLevelsChanged(userSkillLevels: UserSkillLevelsHaveWant, tag: TagEntry) {
+    if ( ! userSkillLevels ) {
+      return;
+    }
     this.skillLevelsPerTopic[tag.id] = {
       skillTopic: tag,
       skillLevels: userSkillLevels,
     }
-    this.propagateChange(this.skillLevelsPerTopic)
     console.log('onLevelsChanged propagateChange', this.skillLevelsPerTopic)
+    this.propagateChange(this.skillLevelsPerTopic)
   }
 
   getSkillLevelsForTopicId(id: string) {
