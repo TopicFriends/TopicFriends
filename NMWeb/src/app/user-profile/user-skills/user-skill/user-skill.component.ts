@@ -4,6 +4,7 @@ import {TagEntry} from '../../tag-entry'
 import {MatDialog} from "@angular/material";
 import {SkillLevelPopoverComponent} from "../skill-level-popover/skill-level-popover.component";
 import {UserSkillLevelsHaveWant} from '../../../shared/user-skills.service'
+import {UserProfileInputs} from '../../user-profile.component'
 
 @Component({
   selector: 'app-user-skill',
@@ -14,6 +15,8 @@ export class UserSkillComponent implements OnInit {
 
   @Input() tag: TagEntry;
   tag2: TopicInterest;
+
+  @Input() userProfileInputs: UserProfileInputs
 
   @Output() levelsChanged = new EventEmitter<UserSkillLevelsHaveWant>()
 
@@ -61,7 +64,8 @@ export class UserSkillComponent implements OnInit {
         bottom:''
       },
       data: {
-        name: name
+        name: name,
+        userProfileInputs: this.userProfileInputs,
       }
     }
 

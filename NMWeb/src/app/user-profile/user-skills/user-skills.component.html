@@ -19,6 +19,7 @@
   <mat-card-content [formGroup]="thisFormGroup">
 
     <app-user-skills-list
+      [userProfileInputs]="userProfileInputs"
       formControlName="skillLevelsPerTopic"
     ></app-user-skills-list>
 

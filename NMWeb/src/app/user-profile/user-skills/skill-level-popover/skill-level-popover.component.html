@@ -10,6 +10,7 @@
   </div>
 
   <button
+    *ngIf="data.userProfileInputs.isEditable"
     mat-raised-button color="primary"
     [mat-dialog-close]="getDialogResult(have, want)"
     id="skill-dialog-btn"
