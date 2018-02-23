@@ -45,12 +45,15 @@ export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
   }
 
   onLevelsChanged(userSkillLevels: UserSkillLevelsHaveWant, tag: TagEntry) {
+    if ( ! userSkillLevels ) {
+      return;
+    }
     this.skillLevelsPerTopic[tag.id] = {
       skillTopic: tag,
       skillLevels: userSkillLevels,
     }
-    this.propagateChange(this.skillLevelsPerTopic)
     console.log('onLevelsChanged propagateChange', this.skillLevelsPerTopic)
+    this.propagateChange(this.skillLevelsPerTopic)
   }
 
   getSkillLevelsForTopicId(id: string) {
