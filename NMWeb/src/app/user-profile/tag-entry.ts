@@ -79,6 +79,11 @@ export class TagEntry {
     return this.name.toLowerCase().match(filterString.toLowerCase());
   }
 
+  setLogo(icon: string) {
+    this.logo = this.getLogoPath(icon)
+    return this
+  }
+
 
 
 }

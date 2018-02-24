@@ -15,15 +15,6 @@ function tagLogoTipo(name: string, logo?: string, website?, related?: TagEntry[]
   return tag(name, logo, website, related, urls); // pass visual hint later
 }
 
-export const angular = tag ('Angular', 'angular', 'https://angular.io/', [],
-new TopicUrls(
-  'https://en.wikipedia.org/wiki/Angular_(application_platform)',
-  'https://github.com/angular/angular',
-  null,
-  'https://stackoverflow.com/questions/tagged/angular',
-  'https://stackshare.io/angular-2',
-  'https://twitter.com/angular'
-));
 export const firebase = tag('Firebase')
 export const angularMaterial = tagNoIcon('Angular Material')
 export const angularFire = tagNoIcon('AngularFire')
@@ -40,15 +31,36 @@ new TopicUrls(
   'https://twitter.com/Ionicframework'
 ));
 export const reactiveX = tag('ReactiveX')
-export const angularFlexLayout = tagNoIcon('Angular Flex-Layout', 'https://github.com/angular/flex-layout')
+export const angularFlexLayout = tagNoIcon('Angular Flex-Layout', 'https://github.com/angular/flex-layout').setLogo('angular')
 export const angularFlexLayoutResponsiveApi = tagNoIcon(
-  'Angular Flex-Layout Responsive API', 'https://github.com/angular/flex-layout/wiki/Responsive-API')
-export const  protractor = tag('Protractor')
+  'Angular Flex-Layout Responsive API', 'https://github.com/angular/flex-layout/wiki/Responsive-API').setLogo('angular')
+export const protractor = tag('Protractor')
 export const sass = tagLogoTipo('Sass')
 export const npm = tagLogoTipo('NPM')
 export const karma = tag('Karma')
 export const jasmine = tag('Jasmine')
 export const webPack = tag('Webpack')
+
+export const angular = tag ('Angular', 'angular', 'https://angular.io/', [
+    tag('Angular Change Detection', 'angular'),
+    tag('Angular DI', 'angular'),
+    tag('Angular Modules', 'angular'),
+    tag('Angular Router', 'angular'),
+    tag('Angular Reactive Forms', 'angular'),
+    tag('Angular Template-Driven Forms', 'angular'),
+    angularFlexLayout,
+    angularFlexLayoutResponsiveApi,
+    tag('Angular Lazy Loading', 'angular'),
+  ],
+  new TopicUrls(
+    'https://en.wikipedia.org/wiki/Angular_(application_platform)',
+    'https://github.com/angular/angular',
+    null,
+    'https://stackoverflow.com/questions/tagged/angular',
+    'https://stackshare.io/angular-2',
+    'https://twitter.com/angular'
+  ));
+
 
 @Injectable()
 export class TopicsService {
@@ -56,7 +68,7 @@ export class TopicsService {
   constructor() { }
 
   public topics: TagEntry[] = this.transformTags([
-    angular, tagNoIcon('Angular Change Detection'), tagNoIcon('Angular Universal'),
+    angular, tagNoIcon('Angular Universal').setLogo('angular'),
     tagNoIcon('AngularJS', null, [],
       new TopicUrls(
         'https://en.wikipedia.org/wiki/AngularJS',
@@ -138,8 +150,7 @@ export class TopicsService {
     tag('F#', 'fsharp'), 'JRuby',
     tag('iOS'), tag('Swift'), tag('Objective-C', null),
     tag('D3'),
-    tag('Angular DI', null), tag('Angular Modules', null), tag('Angular Router', null),
-    tagNoIcon('Angular Reactive Forms'), tagNoIcon('Angular Template-Driven Forms'),
+
     webPack,
     tagNoIcon('Web Development'), tagNoIcon('CMS'), tagNoIcon('Selenium'), tagNoIcon('Blog Software'),
     tagNoIcon('Blogging'),
@@ -264,8 +275,6 @@ export class TopicsService {
     tag('GitHub', 'github-icon'),
     tagNoIcon('Stencil'), /* Ionic */
     'OData', tagNoIcon('PowerBI'), tagNoIcon('SignalR'), // Mark S.
-    angularFlexLayout, angularFlexLayoutResponsiveApi,
-    tagNoIcon('Stencil'),
     tagNoIcon('Voice Interfaces'),
     tagNoIcon('Amazon Alexa'),
     tagNoIcon('Amazon Echo'),
@@ -335,6 +344,7 @@ export class TopicsService {
     tagNoIcon('CSS Grid Layout'),
     tagNoIcon('Economy'),
     tagNoIcon('Economics'),
+    tagNoIcon('Underscore_Test'),
     tag('R Language', 'r-lang'),
     'nginx',
     'WebAssembly',
@@ -435,6 +445,8 @@ export class TopicsService {
     )),
     tagNoIcon('Træfik'),
     tagNoIcon('Alpine Linux'),
+    tagNoIcon('TCP/IP'), // NOTE: slash - special char for firebase
+    tagNoIcon('SQL'), // NOTE: slash - special char for firebase
     // TODO: Accelerated Mobile Pages
     // TODO: Business Intelligence
     /* DONE: hibernate
@@ -467,7 +479,6 @@ export class TopicsService {
     // PWA: AppShell, Workbox, Service Workers, HTTP Push
     // IndexedDB, LocalStorage
     // Firestore!!!
-    // ANgular Lazy Loading
     // ngx-bootstrap
 
     // NestJS: A progressive Node.js framework for building efficient and scalable server-side applications on top of TypeScript & JavaScript (ES6 / ES7 / ES8) heavily inspired by Angular 😻🚀
@@ -478,28 +489,61 @@ export class TopicsService {
     'Jest',
 
     tagNoIcon('Electronic Voting'), tagNoIcon('Activism'), tagNoIcon('Volunteering'),
+
+    tagNoIcon('Figma'),
+    tagNoIcon('Affinity Designer'),
+    tagNoIcon('Psychology'),
+    'Aurelia',
+    'Marionette',
   ]);
 
 
   private transformTags(inputList: (TagEntry|string)[]): TagEntry[] {
-    let ret = []
-    for ( let el of inputList ) {
-      if (el instanceof TagEntry) {
-        ret.push(el)
-        if ( el.related ) {
-          ret = ret.concat(el.related)
-        }
-      } else {
-        ret.push(tag(el))
-      }
+    let retTopicsArray = []
+    for ( let elTopic of inputList ) {
+      this.addTopic(elTopic, retTopicsArray)
     }
-    return ret
+    return retTopicsArray
   }
 
-  getTopicById(topicId: string): TagEntry {
-    const retVal = this.topics.find(it => it.name === topicId)
+  getTopicById(topicId: string, topicsArray?: TagEntry[]): TagEntry {
+    topicsArray = topicsArray || this.topics
+    const retVal = topicsArray.find(it => it.name === topicId)
     console.log('getTopicById', topicId, retVal)
     return retVal
+  }
+
+  addTopic(topic: TagEntry|string, topicsArray?: TagEntry[]) {
+    topicsArray = topicsArray || this.topics
+
+
+    let newTopic: TagEntry
+
+    if (topic instanceof TagEntry) {
+      newTopic = topic
+    } else {
+      newTopic = tag(topic)
+    }
+
+    if ( this.topicExistsById(newTopic.id, topicsArray) ) {
+      console.error('Duplicate topic: ', newTopic)
+      window.alert('Duplicate topic: ' + newTopic.id)
+      return null
+    }
+
+    topicsArray.push(newTopic)
+    if ( newTopic.related ) {
+      for ( let relatedTopic of newTopic.related ) {
+        this.addTopic(relatedTopic, topicsArray)
+      }
+      // topicsArray.splice(topicsArray.length, 0, ...newTopic.related)
+    }
+
+    return newTopic
+  }
+
+  topicExistsById(topicId: string, topicsArray?) {
+    return !! this.getTopicById(topicId, topicsArray)
   }
 
 }

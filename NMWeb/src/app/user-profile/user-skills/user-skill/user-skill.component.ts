@@ -37,7 +37,7 @@ export class UserSkillComponent implements OnInit {
   ngOnInit() {
     this.tag2 = new TopicInterest(this.tag);
     if ( this.skillLevels ) {
-      console.log('UserSkillComponent, skillLevels', this.skillLevels)
+      // console.log('UserSkillComponent, skillLevels', this.skillLevels)
     }
   }
 
