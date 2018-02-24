@@ -49,12 +49,18 @@ export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
     console.log('UserSkillsListComponent writeValue', value)
     this.skillLevelsPerTopic = value
 
-    // this.topics.sort((topic1: TagEntry, topic2: TagEntry) => {
-    //   const topic1Level = this.getHaveOrWantLevel(topic1.id)
-    //   const topic2Level = this.getHaveOrWantLevel(topic2.id)
-    //   return ((topic1Level && topic1Level.minLevel) || 'none' )
-    //     .localeCompare((topic2Level && topic2Level.minLevel) as string)
-    // })
+    this.topics.sort((topic1: TagEntry, topic2: TagEntry) => {
+      const topic1Level = this.getHaveOrWantLevelNumber(topic1.id)
+      if ( topic1Level ) {
+        // console.log('topic1Level', topic1Level)
+      }
+      const topic2Level = this.getHaveOrWantLevelNumber(topic2.id)
+      // const retComparison = ((topic1Level || 'none') as string)
+      //   .localeCompare((topic2Level) as string)
+      // // console.log('retComparison', retComparison)
+      const retComparison = topic2Level - topic1Level
+      return retComparison
+    })
   }
 
   /* override */ registerOnTouched(fn: any) {
@@ -82,13 +88,33 @@ export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
     return ret
   }
 
-  private getHaveOrWantLevel(topicId: string) {
+  private getHaveOrWantLevel(topicId: string): string {
     const topicLevels = this.skillLevelsPerTopic[topicId]
     const retLevel = topicLevels && (
       ( topicLevels.skillLevels && topicLevels.skillLevels.have )
       ||
       ( topicLevels.skillLevels && topicLevels.skillLevels.want )
     )
+    return retLevel as any
+  }
+
+  private getHaveOrWantLevelNumber(topicId: string): number {
+    const levelString = this.getHaveOrWantLevel(topicId)
+
+    const mapLevelStringToNumber = {
+      '?' : -1,
+      'none' : 0,
+      'beginner' : 1,
+      'intermediate': 2,
+      'advanced' : 3,
+      'expert' : 4,
+    }
+
+    let retLevel = mapLevelStringToNumber[levelString]
+
+    if ( retLevel == null ) {
+      return -1
+    }
     return retLevel
   }
 }
