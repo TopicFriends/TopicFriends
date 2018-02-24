@@ -25,9 +25,16 @@ export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
 
   @Input() userProfileInputs: UserProfileInputs
 
+  topics: TagEntry[]
+
   constructor(
     public topicsService: TopicsService,
-  ) { }
+  ) {
+    this.topics = topicsService.topics.concat() // clone
+    this.topics.sort((topic1: TagEntry, topic2: TagEntry) => {
+      return topic1.name.localeCompare(topic2.name)
+    })
+  }
 
   propagateChange = (_: SkillLevelsPerTopic) => { }
 
@@ -41,6 +48,13 @@ export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
   /* override */ writeValue(value: SkillLevelsPerTopic) {
     console.log('UserSkillsListComponent writeValue', value)
     this.skillLevelsPerTopic = value
+
+    // this.topics.sort((topic1: TagEntry, topic2: TagEntry) => {
+    //   const topic1Level = this.getHaveOrWantLevel(topic1.id)
+    //   const topic2Level = this.getHaveOrWantLevel(topic2.id)
+    //   return ((topic1Level && topic1Level.minLevel) || 'none' )
+    //     .localeCompare((topic2Level && topic2Level.minLevel) as string)
+    // })
   }
 
   /* override */ registerOnTouched(fn: any) {
@@ -66,5 +80,15 @@ export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
       // console.log('getSkillLevelsForTopicId ret', ret)
     }
     return ret
+  }
+
+  private getHaveOrWantLevel(topicId: string) {
+    const topicLevels = this.skillLevelsPerTopic[topicId]
+    const retLevel = topicLevels && (
+      ( topicLevels.skillLevels && topicLevels.skillLevels.have )
+      ||
+      ( topicLevels.skillLevels && topicLevels.skillLevels.want )
+    )
+    return retLevel
   }
 }

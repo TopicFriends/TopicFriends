@@ -509,7 +509,7 @@ export class TopicsService {
   getTopicById(topicId: string, topicsArray?: TagEntry[]): TagEntry {
     topicsArray = topicsArray || this.topics
     const retVal = topicsArray.find(it => it.name === topicId)
-    console.log('getTopicById', topicId, retVal)
+    // console.log('getTopicById', topicId, retVal)
     return retVal
   }
 
