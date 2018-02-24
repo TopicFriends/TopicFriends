@@ -7,6 +7,14 @@ import {DomainDbService} from '../domain-db.service'
 export type UserSkillLevelEnum = undefined | 'none' | 'beginner' | 'intermediate' | 'advanced' | 'expert' // guru|coreContributor|Author
 
 
+export type UserSkillLevelPerHaveWantCurrentHack = UserSkillLevelEnum
+
+// TODO: new
+export class UserSkillLevelPerHaveWant {
+  level: number
+
+}
+
 /* Rename: UserSkillLevelPerTopic ? */
 export class UserSkillLevel {
   minLevel: UserSkillLevelEnum
@@ -60,6 +68,24 @@ const exampleData: UserSkillLevelsPerUser = {
   }
 }
 
+const exampleData2: any = {
+  UserSkillLevels: {
+    "someUserID" : {
+      perTopic: {
+        Angular: {
+          have: {
+            level: 3,
+            //maxLevel: // that level existing code, which uses `level` will not break down
+          },
+          want: {
+            level: 4,
+            // Future: could be wanted hourly rate
+          }
+        }
+      }
+    }
+  }
+}
 
 @Injectable()
 export class UserSkillsService {
