@@ -16,7 +16,7 @@ export class UserSkillComponent implements OnInit {
 
   @Input() tag: TagEntry;
   tag2: TopicInterest;
-
+  public showInterestDialog = false;
   @Input() userProfileInputs: UserProfileInputs
 
   @Output() levelsChanged = new EventEmitter<UserSkillLevelsHaveWant>()
@@ -79,8 +79,12 @@ export class UserSkillComponent implements OnInit {
         this.repositionYCoordinate(dialogConfig, name);
       }
     }
-
-    let dialogRef = this.dialog.open(UserInterestConfigurationDialogComponent, dialogConfig);
+    let dialogRef;
+    if (this.showInterestDialog){
+      dialogRef = this.dialog.open(UserInterestConfigurationDialogComponent, dialogConfig);
+    } else {
+      dialogRef = this.dialog.open(SkillLevelPopoverComponent, dialogConfig);
+    }
 
     /// Catch Event of changes in Skills Levels Dialog
     dialogRef.componentInstance.levelsChanged.subscribe((skillsChange)=>{
