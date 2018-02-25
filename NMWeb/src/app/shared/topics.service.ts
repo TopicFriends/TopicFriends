@@ -461,6 +461,8 @@ export class TopicsService {
     tagNoIcon('Alpine Linux'),
     tagNoIcon('TCP/IP'), // NOTE: slash - special char for storing in firebase
     tagNoIcon('SQL'),
+    tagNoIcon('Remote Work'),
+    tagNoIcon('Consulting'),
     // TODO: Accelerated Mobile Pages
     // TODO: Business Intelligence
     /* DONE: hibernate
