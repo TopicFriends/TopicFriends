@@ -117,4 +117,9 @@ export class UserSkillsListComponent implements OnInit, ControlValueAccessor {
     }
     return retLevel
   }
+
+  trackTopicById(index, topic: TagEntry) {
+    return topic.id
+  }
+
 }
