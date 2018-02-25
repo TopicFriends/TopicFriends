@@ -6,8 +6,6 @@ import {TopicsService} from '../../shared/topics.service'
 import {TopicInterest} from '../../user-profile/user-interests'
 import {GitHubService} from '../../shared/git-hub.service'
 
-TESTING_ERROR
-
 @Component({
   selector: 'app-topic-details',
   templateUrl: './topic-details.component.html',
