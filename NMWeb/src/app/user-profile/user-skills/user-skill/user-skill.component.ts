@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef} from '@angular/core';
 import {TopicInterest} from 'app/user-profile/user-interests';
-import {TagEntry} from '../../tag-entry'
+import {TagEntry} from '../../tag-entry';
 import {MatDialog} from "@angular/material";
-import {SkillLevelPopoverComponent} from "../skill-level-popover/skill-level-popover.component";
+import {SkillLevelPopoverComponent} from "../../user-interest-configuration-dialog/skill-level-popover/skill-level-popover.component";
+import {UserInterestConfigurationDialogComponent} from "../../user-interest-configuration-dialog/user-interest-configuration-dialog.component";
 import {UserSkillLevelsHaveWant} from '../../../shared/user-skills.service'
 import {UserProfileInputs} from '../../user-profile.component'
 
@@ -22,13 +23,10 @@ export class UserSkillComponent implements OnInit {
 
   @Input() skillLevels: UserSkillLevelsHaveWant
 
-
   public dialogSize = {
     width: 360,
     height: 400
   }
-
-
 
   constructor(
     public dialog: MatDialog,
@@ -57,7 +55,7 @@ export class UserSkillComponent implements OnInit {
       // id: "skill-level-dialog",
       width: `${this.dialogSize.width}`,
       height: `${this.dialogSize.height}`,
-      maxWidth: '100vw',
+      maxWidth: `${this.dialogSize.width}px`,
       position: {
         top: `${positionY}px`,
         left: `${positionX}px`,
@@ -65,7 +63,9 @@ export class UserSkillComponent implements OnInit {
       },
       data: {
         name: name,
+        tag2: this.tag2,
         userProfileInputs: this.userProfileInputs,
+        skillLevels:this.skillLevels
       }
     }
 
@@ -80,10 +80,15 @@ export class UserSkillComponent implements OnInit {
       }
     }
 
-    let dialogRef = this.dialog.open(SkillLevelPopoverComponent, dialogConfig);
+    let dialogRef = this.dialog.open(UserInterestConfigurationDialogComponent, dialogConfig);
+
+    /// Catch Event of changes in Skills Levels Dialog
+    dialogRef.componentInstance.levelsChanged.subscribe((skillsChange)=>{
+      this.levelsChanged.emit(skillsChange);
+    })
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('skills popup afterClosed', result)
+      console.log('skills popup afterClosed', result);
       this.levelsChanged.emit(result)
       // Save selected data
     });

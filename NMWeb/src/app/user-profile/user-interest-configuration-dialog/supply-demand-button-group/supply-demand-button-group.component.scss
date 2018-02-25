@@ -1,0 +1,15 @@
+.text-right {
+  text-align: right;
+}
+mat-button-toggle{
+  font-weight: bold;
+}
+mat-button-toggle:first-child.mat-button-toggle-checked {
+  background-color: #673ab7;
+}
+mat-button-toggle:nth-child(2).mat-button-toggle-checked {
+  background-color: #FF3F80;
+}
+.mat-button-toggle-checked {
+  color: white;
+}

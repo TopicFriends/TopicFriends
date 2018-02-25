@@ -1,10 +1,9 @@
-<h2 mat-dialog-title>{{data.name}}</h2>
 <div fxLayout="column" fxLayoutAlign="center center">
 
   <div fxLayout="row" fxLayoutAlign="center center">
 
-    <app-skill-levels #have [levels]="skillLevels" header='have' isVertical=true></app-skill-levels>
-    <app-skill-levels #want [levels]="skillLevels" header='want' isVertical=true></app-skill-levels>
+    <app-skill-levels #have [levels]="skillLevels" [actualValue]="data.skillLevels?.have ||'?'" header='have' isVertical=true></app-skill-levels>
+    <app-skill-levels #want [levels]="skillLevels" [actualValue]="data.skillLevels?.want ||'?'" header='want' isVertical=true></app-skill-levels>
 
 
   </div>

@@ -7,7 +7,7 @@ import {SharedModule} from '../shared/shared.module'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {
   MatAutocompleteModule, MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatSelectModule,
-  MatTextareaAutosize, MatDialogModule, MatButtonToggleModule, MatListModule
+  MatTextareaAutosize, MatDialogModule, MatButtonToggleModule, MatListModule, MatExpansionModule
 } from '@angular/material'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {ItemListInputComponent} from './item-list-input/item-list-input.component'
@@ -25,11 +25,15 @@ import {DefaultRouteReuseStrategy} from '@angular/router/src/route_reuse_strateg
 import { CreateTopicComponent } from './user-interests/create-topic/create-topic.component';
 import { UserSkillsComponent } from './user-skills/user-skills.component';
 import { UserSkillComponent } from './user-skills/user-skill/user-skill.component'
-import {SkillLevelPopoverComponent} from "./user-skills/skill-level-popover/skill-level-popover.component";
+import {SkillLevelPopoverComponent} from "./user-interest-configuration-dialog/skill-level-popover/skill-level-popover.component";
 import {CapitalizeFirstPipe} from "../shared/pipes/capitalize-first.pipe";
-import { SkillLevelsComponent } from './user-skills/skill-levels/skill-levels.component';
+import { SkillLevelsComponent } from './user-interest-configuration-dialog/skill-levels/skill-levels.component';
 import { SkillLevelLabelComponent } from './user-skills/skill-level-label/skill-level-label.component';
 import { UserSkillsListComponent } from './user-skills/user-skills-list/user-skills-list.component';
+import { UserInterestConfigurationDialogComponent } from './user-interest-configuration-dialog/user-interest-configuration-dialog.component';
+import { BasicActionsButtonGroupComponent } from './user-interest-configuration-dialog/basic-actions-button-group/basic-actions-button-group.component';
+import { SupplyDemandButtonGroupComponent } from './user-interest-configuration-dialog/supply-demand-button-group/supply-demand-button-group.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 export const USER_PROFILE_ID_PARAM_NO_COLON = 'userId'
 
@@ -90,6 +94,8 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     MatDialogModule,
     MatButtonToggleModule,
     MatListModule,
+    MatExpansionModule,
+    FlexLayoutModule
   ],
   declarations: [
     UserProfileComponent,
@@ -112,7 +118,10 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     CapitalizeFirstPipe,
     SkillLevelsComponent,
     SkillLevelLabelComponent,
-    UserSkillsListComponent
+    UserSkillsListComponent,
+    UserInterestConfigurationDialogComponent,
+    BasicActionsButtonGroupComponent,
+    SupplyDemandButtonGroupComponent
   ],
   providers: [
     CanDeactivateUserProfileGuard,
@@ -121,7 +130,7 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     //   useClass: CustomRouteReuseStrategy
     // },
   ],
-  entryComponents: [ SkillLevelPopoverComponent ],
+  entryComponents: [ SkillLevelPopoverComponent, UserInterestConfigurationDialogComponent ],
   exports: [
   ],
   schemas: [
