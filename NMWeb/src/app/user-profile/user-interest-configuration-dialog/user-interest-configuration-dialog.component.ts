@@ -18,6 +18,7 @@ export class UserInterestConfigurationDialogComponent implements OnInit {
     height: 400
   }
 
+  public logo: String;
   public tag2: TopicInterest;
 
   @Output() levelsChanged = new EventEmitter<UserSkillLevelsHaveWant>();
@@ -28,6 +29,7 @@ export class UserInterestConfigurationDialogComponent implements OnInit {
     // @Inject(MAT_DIALOG_DATA) public skillLevels: UserSkillLevelsHaveWant,
     public dialog: MatDialog,
   ) {
+
     /// SETTING ADITIONAL DATA - IT SHOULD BE TAKEN FROM DB
     data.actions = [
       "exchange knowledge",
@@ -82,7 +84,8 @@ export class UserInterestConfigurationDialogComponent implements OnInit {
 
   ngOnInit() {
     this.tag2 = new TopicInterest(this.tag);
-    console.log(this.data);
+    this.logo = this.data.tag2.tagEntry.logo;
+    //console.log(this.data);
     // if ( this.skillLevels ) {
     //   console.log('UserSkillComponent, skillLevels', this.skillLevels)
     // }

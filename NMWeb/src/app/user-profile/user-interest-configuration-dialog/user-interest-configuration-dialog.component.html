@@ -1,5 +1,8 @@
 <div mat-dialog-title>
-  <span>{{data.name}}</span>
+  <span>
+    <img src="{{logo}}" alt="" style="width: 18px; height: 18px; margin-right: 5px;">
+    {{data.name}}
+  </span>
   <div>
     <app-skill-level-label
       [skillLevels]="data.skillLevels"
