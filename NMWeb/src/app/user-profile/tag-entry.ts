@@ -84,6 +84,11 @@ export class TagEntry {
     return this
   }
 
+  setRelated(...related) {
+    this.related = related
+    return this
+  }
+
 
 
 }

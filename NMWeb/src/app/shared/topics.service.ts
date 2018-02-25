@@ -15,7 +15,21 @@ function tagLogoTipo(name: string, logo?: string, website?, related?: TagEntry[]
   return tag(name, logo, website, related, urls); // pass visual hint later
 }
 
-export const firebase = tag('Firebase')
+export const firebase = tag('Firebase').setRelated(
+  // most are from firebase console left navbar:
+  tagNoIcon('Firebase Authentication').setLogo('Firebase'),
+  tagNoIcon('Firebase Realtime Database').setLogo('Firebase'),
+  tagNoIcon('Firebase Cloud Firestore').setLogo('Firebase'),
+  tagNoIcon('Firebase Storage').setLogo('Firebase'),
+  tagNoIcon('Firebase Hosting').setLogo('Firebase'),
+  tagNoIcon('Firebase Cloud Functions').setLogo('Firebase'),
+  tagNoIcon('Firebase Stability').setLogo('Firebase'),
+  tagNoIcon('Firebase Crashlytics').setLogo('Crashlytics'),
+  tagNoIcon('Firebase Analytics').setLogo('Firebase'),
+  tagNoIcon('Firebase Grow').setLogo('Firebase'),
+  // Firebase: hosting, analytics, authentication, ...
+
+)
 export const angularMaterial = tagNoIcon('Angular Material')
 export const angularFire = tagNoIcon('AngularFire')
 export const rxJs = tagNoIcon('RxJS')
@@ -166,7 +180,7 @@ export class TopicsService {
     'Laravel', 'CakePHP', 'Zend Framework', 'CodeIgniter', 'Symfony',
     tag('CSS3', 'css-3'), tag('Responsive Design', null), tag('HTML5', 'html-5'),
     tag('PWA', null), tagNoIcon('SPA'), tag('REST', null), tag('HTTP', null), tag('WebSocket'), 'WebRTC', tagLogoTipo('Upwork'),
-    tagLogoTipo('NodeJS'), npm,
+    tagLogoTipo('NodeJS') //** TODO: .setName('Node.JS') */, npm,
     tag('Seneca', 'seneca', 'http://senecajs.org/', [], new TopicUrls(
       null,
       'https://github.com/senecajs/seneca',
@@ -445,8 +459,8 @@ export class TopicsService {
     )),
     tagNoIcon('Træfik'),
     tagNoIcon('Alpine Linux'),
-    tagNoIcon('TCP/IP'), // NOTE: slash - special char for firebase
-    tagNoIcon('SQL'), // NOTE: slash - special char for firebase
+    tagNoIcon('TCP/IP'), // NOTE: slash - special char for storing in firebase
+    tagNoIcon('SQL'),
     // TODO: Accelerated Mobile Pages
     // TODO: Business Intelligence
     /* DONE: hibernate
@@ -474,11 +488,9 @@ export class TopicsService {
     // TODO: Handlebars.js, Mustashe
     // LoDash, Underscore.js, Ramda
 
-    // Firebase: hosting, analytics, authentication, ...
 
     // PWA: AppShell, Workbox, Service Workers, HTTP Push
     // IndexedDB, LocalStorage
-    // Firestore!!!
     // ngx-bootstrap
 
     // NestJS: A progressive Node.js framework for building efficient and scalable server-side applications on top of TypeScript & JavaScript (ES6 / ES7 / ES8) heavily inspired by Angular 😻🚀

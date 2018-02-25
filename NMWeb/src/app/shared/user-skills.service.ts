@@ -71,7 +71,8 @@ const exampleData: UserSkillLevelsPerUser = {
 const exampleData2: any = {
   UserSkillLevels: {
     "someUserID" : {
-      perTopic: {
+      /* byTopic: for consistency with perInteractionMode */
+      byTopic: {
         Angular: {
           have: {
             level: 3,
