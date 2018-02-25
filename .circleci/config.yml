@@ -1,12 +1,11 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/my-project
+    working_directory: ~/my-project/NMWeb
     docker:
       - image: circleci/node:8-browsers
     steps:
       - checkout
-      - run: cd NMWeb
       - restore_cache:
           key: my-project-{{ .Branch }}-{{ checksum "package.json" }}
       - run: npm install
