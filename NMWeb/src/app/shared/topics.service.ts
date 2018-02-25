@@ -180,7 +180,7 @@ export class TopicsService {
     'Laravel', 'CakePHP', 'Zend Framework', 'CodeIgniter', 'Symfony',
     tag('CSS3', 'css-3'), tag('Responsive Design', null), tag('HTML5', 'html-5'),
     tag('PWA', null), tagNoIcon('SPA'), tag('REST', null), tag('HTTP', null), tag('WebSocket'), 'WebRTC', tagLogoTipo('Upwork'),
-    tagLogoTipo('NodeJS') //** TODO: .setName('Node.JS') */, npm,
+    tagLogoTipo('NodeJS').setName('Node.JS'), npm,
     tag('Seneca', 'seneca', 'http://senecajs.org/', [], new TopicUrls(
       null,
       'https://github.com/senecajs/seneca',
@@ -520,7 +520,7 @@ export class TopicsService {
 
   getTopicById(topicId: string, topicsArray?: TagEntry[]): TagEntry {
     topicsArray = topicsArray || this.topics
-    const retVal = topicsArray.find(it => it.name === topicId)
+    const retVal = topicsArray.find(it => it.id === topicId)
     // console.log('getTopicById', topicId, retVal)
     return retVal
   }
@@ -537,7 +537,15 @@ export class TopicsService {
       newTopic = tag(topic)
     }
 
+    if ( newTopic.id.match(/\.|#|\$|\[|\]|\//) ) {
+      const message = 'Topic id contains illegal char: '
+      console.error(message, newTopic)
+      window.alert(message + newTopic.id)
+      return null
+    }
+
     if ( this.topicExistsById(newTopic.id, topicsArray) ) {
+      const message2 = 'Duplicate topic: '
       console.error('Duplicate topic: ', newTopic)
       window.alert('Duplicate topic: ' + newTopic.id)
       return null

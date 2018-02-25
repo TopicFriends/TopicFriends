@@ -46,7 +46,14 @@ export class TagEntry {
     public related?: TagEntry[],
     public urls?: TopicUrls,
   ) {
-    this.id = name // TODO escape e.g. + (For c++)
+    this.id = name
+      .replace('#', '_Sharp')
+      .replace(/^\./, 'Dot_')
+      .replace(/\./, '_Dot_')
+      .replace(/\//, '_Slash_')
+    if ( this.id !== name ) {
+      console.log('id mangled from name: ' + this.id)
+    }
     if ( logo === null ) {
       this.logo = null;
     } else if ( logo === undefined ) {
@@ -86,6 +93,16 @@ export class TagEntry {
 
   setRelated(...related) {
     this.related = related
+    return this
+  }
+
+  setId(id) {
+    this.id = id
+    return this
+  }
+
+  setName(name) {
+    this.name = name
     return this
   }
 
