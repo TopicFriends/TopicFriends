@@ -1,12 +1,14 @@
 <mat-toolbar>
-  <img
-    vertical-align="middle"
-    src="assets/images/TopicFriendsLogo4.svg" height="40px"
-  >
-  <span
-    style="color: white; font-family: serif">
-    &nbsp;β
-  </span>
+  <a routerLink="">
+    <img
+      vertical-align="middle"
+      src="assets/images/TopicFriendsLogo4.svg" height="40px"
+    >
+    <span
+      style="color: white; font-family: serif">
+      &nbsp;β
+    </span>
+  </a>
   <span class="toolbar-spacer"></span>
   <button *ngIf="!(authService.user | async)?.displayName" mat-button routerLink="/login">Log in</button>
   <button *ngIf="(authService.user | async)?.displayName" mat-button [matMenuTriggerFor]="menu">{{ (authService.user | async)?.displayName }}</button>
