@@ -19,4 +19,4 @@ jobs:
           paths:
             - "NMWeb/node_modules"
       - run: cd NMWeb && xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
-      - run: cd NMWeb && xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
+      # - run: cd NMWeb && xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
