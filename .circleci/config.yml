@@ -12,11 +12,11 @@ jobs:
       - run: pwd
       - run: ls -la
       - restore_cache:
-          key: my-project-{{ .Branch }}-{{ checksum "package.json" }}
-      - run: npm install
+          key: my-project-{{ .Branch }}-{{ checksum "NMWeb/package.json" }}
+      - run: cd NMWeb && npm install
       - save_cache:
-          key: my-project-{{ .Branch }}-{{ checksum "package.json" }}
+          key: my-project-{{ .Branch }}-{{ checksum "NMWeb/package.json" }}
           paths:
-            - "node_modules"
-      - run: xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
-      - run: xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
+            - "NMWeb/node_modules"
+      - run: cd NMWeb && xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
+      - run: cd NMWeb && xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
