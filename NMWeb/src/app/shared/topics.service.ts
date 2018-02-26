@@ -52,7 +52,7 @@ export const protractor = tag('Protractor')
 export const sass = tagLogoTipo('Sass')
 export const npm = tagLogoTipo('NPM')
 export const karma = tag('Karma')
-export const jasmine = tag('Jasmine', 'jasmine')
+export const jasmine = tag('Jasmine',)
 export const webPack = tag('Webpack',)
 
 export const angular = tag ('Angular', 'angular', 'https://angular.io/', [
