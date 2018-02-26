@@ -5,6 +5,7 @@ import {TagEntry} from '../../user-profile/tag-entry'
 import {TopicsService} from '../../shared/topics.service'
 import {TopicInterest} from '../../user-profile/user-interests'
 import {GitHubService} from '../../shared/git-hub.service'
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-topic-details',
@@ -22,12 +23,14 @@ export class TopicDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private topicsService: TopicsService,
     private gitHubService: GitHubService,
+    private titleService: Title
   ) {
     this.topic = this.topicsService.getTopicById(this.topicId)
     this.topicInterest = this.createTopicInterest(this.topic);
   }
 
   ngOnInit() {
+    this.titleService.setTitle( this.topic.name + ' - TopicFriends');
   }
 
   createTopicInterest(topic) {

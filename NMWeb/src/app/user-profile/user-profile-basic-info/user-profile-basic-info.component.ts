@@ -6,6 +6,7 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {DomainDbService} from '../../domain-db.service'
 import {UserProfileInputs} from '../user-profile.component'
 import {isNullOrUndefinedOrWhiteSpace, setFormControlEnabled} from '../../shared/utils'
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-user-profile-basic-info',
@@ -26,11 +27,14 @@ export class UserProfileBasicInfoComponent implements OnInit {
     public authService: AuthService,
     private userProfileService: UserProfileService,
     private domainDbService: DomainDbService,
+    private titleService: Title,
+
   ) {
     // this.formGroup = this.formBuilder.group({
     //   displayName: this.displayName,
     //   // tagLine: '', // oneLineDescription
     // })
+
   }
 
   ngOnInit() {
@@ -56,6 +60,7 @@ export class UserProfileBasicInfoComponent implements OnInit {
     this.domainDbService.userProfileById(this.userProfileInputs.userId).subscribe((userProfile: UserProfile) => {
       console.log('userProfileById: ', userProfile)
       this.applyFromDb(userProfile)
+      this.titleService.setTitle(`${userProfile.displayName} - Profile`);
     });
 
   }
