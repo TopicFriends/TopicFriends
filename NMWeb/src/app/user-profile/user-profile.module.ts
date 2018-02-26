@@ -34,6 +34,7 @@ import { UserInterestConfigurationDialogComponent } from './user-interest-config
 import { BasicActionsButtonGroupComponent } from './user-interest-configuration-dialog/basic-actions-button-group/basic-actions-button-group.component';
 import { SupplyDemandButtonGroupComponent } from './user-interest-configuration-dialog/supply-demand-button-group/supply-demand-button-group.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {TopicLogoComponent} from "../topic-logo/topic-logo.component";
 
 export const USER_PROFILE_ID_PARAM_NO_COLON = 'userId'
 
@@ -121,7 +122,8 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     UserSkillsListComponent,
     UserInterestConfigurationDialogComponent,
     BasicActionsButtonGroupComponent,
-    SupplyDemandButtonGroupComponent
+    SupplyDemandButtonGroupComponent,
+    TopicLogoComponent,
   ],
   providers: [
     CanDeactivateUserProfileGuard,

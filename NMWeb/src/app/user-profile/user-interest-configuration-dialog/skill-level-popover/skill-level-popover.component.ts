@@ -20,11 +20,13 @@ export class SkillLevelPopoverComponent implements OnInit, AfterViewInit {
   ];
 
   @Output() tellDialogWidth = new EventEmitter();
+  public logo: String;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public el: ElementRef,
   ) {
+    this.logo = this.data.tag2.tagEntry.logo;
   }
 
   ngOnInit() {

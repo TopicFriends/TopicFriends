@@ -14,7 +14,7 @@ import {UserProfileInputs} from '../../user-profile.component'
 })
 export class UserSkillComponent implements OnInit {
 
-  public showInterestDialog = true;
+  public showInterestDialog = false;
 
   @Input() tag: TagEntry;
   tag2: TopicInterest;

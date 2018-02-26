@@ -1,5 +1,8 @@
 <div fxLayout="column" fxLayoutAlign="center center">
-
+  <span fxLayoutAlign="center center">
+    <app-topic-logo url="{{logo}}"></app-topic-logo>
+    {{data.name}}
+  </span>
   <div fxLayout="row" fxLayoutAlign="center center">
 
     <app-skill-levels #have [levels]="skillLevels" [actualValue]="data.skillLevels?.have ||'?'" header='have' isVertical=true></app-skill-levels>
