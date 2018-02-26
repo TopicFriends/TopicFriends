@@ -53,7 +53,7 @@ export const sass = tagLogoTipo('Sass')
 export const npm = tagLogoTipo('NPM')
 export const karma = tag('Karma')
 export const jasmine = tag('Jasmine', 'jasmine')
-export const webPack = tag('Webpack','webpack')
+export const webPack = tag('Webpack',)
 
 export const angular = tag ('Angular', 'angular', 'https://angular.io/', [
     tag('Angular Change Detection', 'angular'),
