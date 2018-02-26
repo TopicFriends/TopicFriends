@@ -81,7 +81,7 @@ export class UserSkillComponent implements OnInit {
 
     this.checkInitialPositionAndUpdate(dialogRef, dialogConfig);
 
-    if( typeof dialogRef.componentInstance !== typeof UserInterestConfigurationDialogComponent){
+    if( dialogConfig.hasOwnProperty('minWidth') ){
       /// Catch Event of changes in Skills Levels Dialog
       dialogRef.componentInstance.levelsChanged.subscribe((skillsChange)=>{
         this.levelsChanged.emit(skillsChange);
