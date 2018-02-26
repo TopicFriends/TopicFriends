@@ -429,6 +429,8 @@ export class TopicsService {
     tag('Mobile Payments', null),
     tag('Materialize', 'materializecss', 'http://materializecss.com/'),
     tag('Browsersync', 'browsersync', 'https://www.browsersync.io/'),
+    tag('BrowserStack', 'browserstack', 'https://www.browserstack.com/'),
+    tag('Promises', 'promises',),
     tag('NATS', null, 'https://nats.io/'),
     // tag('', null, ''),
 
@@ -510,6 +512,7 @@ export class TopicsService {
     tagNoIcon('Figma'),
     tagNoIcon('Affinity Designer'),
     tagNoIcon('Psychology'),
+    tag('Dexie.js', 'dexie-js'),
     'Aurelia',
     'Marionette',
   ]);
