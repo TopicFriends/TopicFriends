@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BasicActionsButtonGroupComponent } from './basic-actions-button-group.component';
+import {MatButtonToggleModule} from '@angular/material'
+import {CapitalizeFirstPipe} from '../../../shared/pipes/capitalize-first.pipe'
 
 describe('BasicActionsButtonGroupComponent', () => {
   let component: BasicActionsButtonGroupComponent;
@@ -8,7 +10,13 @@ describe('BasicActionsButtonGroupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BasicActionsButtonGroupComponent ]
+      imports: [
+        MatButtonToggleModule,
+      ],
+      declarations: [
+        BasicActionsButtonGroupComponent,
+        CapitalizeFirstPipe,
+      ]
     })
     .compileComponents();
   }));
