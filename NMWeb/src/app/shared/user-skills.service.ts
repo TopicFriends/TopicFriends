@@ -74,6 +74,9 @@ const exampleData2: any = {
       /* byTopic: for consistency with perInteractionMode */
       byTopic: {
         Angular: {
+          whenStartedUsing: '2018-02-26',
+          whenLastUsed: '2018-02-26',
+          durationUsed: '2 years',
           comments: "Learned during studies. Using in dayjob.",
           have: {
             level: 3,
