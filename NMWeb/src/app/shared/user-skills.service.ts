@@ -74,12 +74,14 @@ const exampleData2: any = {
       /* byTopic: for consistency with perInteractionMode */
       byTopic: {
         Angular: {
+          comments: "Learned during studies. Using in dayjob.",
           have: {
             level: 3,
             //maxLevel: // that level existing code, which uses `level` will not break down
           },
           want: {
             level: 4,
+            comments: "Would like to get advanced to use it in my startup."
             // Future: could be wanted hourly rate
           }
         }
