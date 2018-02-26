@@ -19,8 +19,6 @@ export class TopicInterest {
   // potential in the future: where. E.g. play soccer where
 }
 
-
-TESTING_ERROR_AFTER_MOVING_REPO
 // TODO: split into what-user-wants-service
 
 
