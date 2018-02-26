@@ -63,7 +63,7 @@
 
 
 
-  <label for="checkPrivacity">
+  <label for="checkPrivacity" *ngIf="userProfileInputs.isEditable">
     <input class='form-control' type="checkbox" name="checkPrivacity" id="checkPrivacity" [(ngModel)]="checkPrivacityValue">
     He leido y acepto el <a routerLink="/about" class="privacityLink">Acuerdo de Privacidad</a>.
   </label>
