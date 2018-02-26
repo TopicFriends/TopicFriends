@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import {Component, EventEmitter, OnInit, Input, Output, AfterViewInit, ElementRef} from '@angular/core';
 import {Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import {TagEntry} from "../tag-entry";
@@ -11,12 +11,14 @@ import {UserSkillLevelsHaveWant} from '../../shared/user-skills.service';
   templateUrl: './user-interest-configuration-dialog.component.html',
   styleUrls: ['./user-interest-configuration-dialog.component.scss']
 })
-export class UserInterestConfigurationDialogComponent implements OnInit {
+export class UserInterestConfigurationDialogComponent implements OnInit, AfterViewInit {
 
   public dialogSize = {
     width: 360,
     height: 400
   }
+
+  @Output() tellDialogWidth = new EventEmitter();
 
   public logo: String;
   public tag2: TopicInterest;
@@ -28,6 +30,7 @@ export class UserInterestConfigurationDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public tag: TagEntry,
     // @Inject(MAT_DIALOG_DATA) public skillLevels: UserSkillLevelsHaveWant,
     public dialog: MatDialog,
+    public el: ElementRef,
   ) {
 
     /// SETTING ADITIONAL DATA - IT SHOULD BE TAKEN FROM DB
@@ -89,6 +92,10 @@ export class UserInterestConfigurationDialogComponent implements OnInit {
     // if ( this.skillLevels ) {
     //   console.log('UserSkillComponent, skillLevels', this.skillLevels)
     // }
+  }
+
+  ngAfterViewInit(){
+    this.tellDialogWidth.emit(this.el.nativeElement.getBoundingClientRect())
   }
 
   openDialog(e, topicInterest = this.tag2): void {

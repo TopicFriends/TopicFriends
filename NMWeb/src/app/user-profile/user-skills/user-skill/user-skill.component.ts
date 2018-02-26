@@ -14,9 +14,10 @@ import {UserProfileInputs} from '../../user-profile.component'
 })
 export class UserSkillComponent implements OnInit {
 
+  public showInterestDialog = true;
+
   @Input() tag: TagEntry;
   tag2: TopicInterest;
-  public showInterestDialog = false;
   @Input() userProfileInputs: UserProfileInputs
 
   @Output() levelsChanged = new EventEmitter<UserSkillLevelsHaveWant>()
@@ -39,9 +40,6 @@ export class UserSkillComponent implements OnInit {
     }
   }
 
-  setValue() {
-  }
-
   openDialog(e, topicInterest): void {
 
     let positionY = e.clientY;
@@ -52,14 +50,12 @@ export class UserSkillComponent implements OnInit {
     let name = topicInterest.tagEntry.name;
 
     let dialogConfig = {
-      // id: "skill-level-dialog",
-      width: `${this.dialogSize.width}`,
-      height: `${this.dialogSize.height}`,
-      maxWidth: `${this.dialogSize.width}px`,
       position: {
         top: `${positionY}px`,
         left: `${positionX}px`,
+        right:'',
         bottom:''
+        // bottom:''
       },
       data: {
         name: name,
@@ -71,42 +67,46 @@ export class UserSkillComponent implements OnInit {
 
     if ( window.innerWidth < mobileMaxWidth ){
       delete dialogConfig.position;
-    } else {
-      if( positionX + this.dialogSize.width > window.innerWidth ){
-        this.repositionXCoordinate(positionX, dialogConfig, name);
-      }
-      if( positionY + this.dialogSize.height > window.innerHeight ){
-        this.repositionYCoordinate(dialogConfig, name);
-      }
     }
+
     let dialogRef;
+
     if (this.showInterestDialog){
-      dialogRef = this.dialog.open(UserInterestConfigurationDialogComponent, dialogConfig);
+      dialogConfig['minWidth'] = "350px";
+      dialogConfig['maxWidth'] = "350px";
+      dialogRef = this.dialog.open(UserInterestConfigurationDialogComponent, dialogConfig)
     } else {
       dialogRef = this.dialog.open(SkillLevelPopoverComponent, dialogConfig);
     }
 
-    /// Catch Event of changes in Skills Levels Dialog
-    dialogRef.componentInstance.levelsChanged.subscribe((skillsChange)=>{
-      this.levelsChanged.emit(skillsChange);
-    })
+    this.checkInitialPositionAndUpdate(dialogRef, dialogConfig);
+
+    if( typeof dialogRef.componentInstance !== typeof UserInterestConfigurationDialogComponent){
+      /// Catch Event of changes in Skills Levels Dialog
+      dialogRef.componentInstance.levelsChanged.subscribe((skillsChange)=>{
+        this.levelsChanged.emit(skillsChange);
+      });
+    }
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('skills popup afterClosed', result);
       this.levelsChanged.emit(result)
       // Save selected data
     });
+
   }
 
-  private repositionYCoordinate(dialogConfig, name: string) {
-    delete dialogConfig.position.top;
-    dialogConfig.position.bottom = "0px";
-    console.log("Repositioning dialog when it is outside of the window - height", name);
-  }
-
-  private repositionXCoordinate(positionX: number, dialogConfig, name: string) {
-    positionX -= this.dialogSize.width;
-    dialogConfig.position.left = `${positionX}px`;
-    console.log("Repositioning dialog when it is outside of the window - width", name);
+  private checkInitialPositionAndUpdate(dialogRef, dialogConfig){
+    dialogRef.componentInstance.tellDialogWidth.subscribe(boundingClient => {
+      if( boundingClient.left + boundingClient.width > window.innerWidth){
+        dialogConfig.position.right = "0px";
+        delete dialogConfig.position.left;
+      }
+      if( boundingClient.top + boundingClient.height > window.innerHeight){
+        dialogConfig.position.bottom = "0px";
+        delete dialogConfig.position.top;
+      }
+      dialogRef.updatePosition(dialogConfig.position);
+    });
   }
 }

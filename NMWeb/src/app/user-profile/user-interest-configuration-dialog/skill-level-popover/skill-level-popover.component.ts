@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import {Component, OnInit, Inject, ElementRef, AfterViewInit, Output, EventEmitter} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material';
 import {UserSkillLevelsHaveWant} from '../../../shared/user-skills.service'
 
@@ -8,7 +8,7 @@ import {UserSkillLevelsHaveWant} from '../../../shared/user-skills.service'
   styleUrls: ['./skill-level-popover.component.css']
 })
 
-export class SkillLevelPopoverComponent implements OnInit {
+export class SkillLevelPopoverComponent implements OnInit, AfterViewInit {
 
   public skillLevels:string[] = [
       "?",
@@ -19,12 +19,20 @@ export class SkillLevelPopoverComponent implements OnInit {
       "expert",
   ];
 
+  @Output() tellDialogWidth = new EventEmitter();
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-  ) { }
+    public el: ElementRef,
+  ) {
+  }
 
   ngOnInit() {
     console.log('UserSkillLevels', this.data);
+  }
+
+  ngAfterViewInit(){
+    this.tellDialogWidth.emit(this.el.nativeElement.getBoundingClientRect())
   }
 
   getDialogResult(have, want): UserSkillLevelsHaveWant {
