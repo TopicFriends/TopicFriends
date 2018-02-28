@@ -49,6 +49,6 @@ mat-slider {
     margin-top: -5px;
     margin-left: -5px;
     width: 100%;
-    height: 87.3vh;
+    height: calc(100% - 52px);
   }
 }
