@@ -1,4 +1,12 @@
+.tf-icon {
+  height: 4vh;
+}
 
+.betta-icon {
+  color: white; 
+  font-family: serif; 
+  font-size:3vh;
+}
 
 .toolbar-icon {
   padding: 0 14px;
@@ -13,6 +21,7 @@
 }
 
 .mat-toolbar {
+    height: 5vh;
     user-select: none;
     //background: rgba(255, 255, 255, 0.75);
     background: rgba(0,0,0, 1);

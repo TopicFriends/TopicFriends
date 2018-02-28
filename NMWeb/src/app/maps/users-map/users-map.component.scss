@@ -4,9 +4,31 @@ $names: #fff;
 
 $blur-radius: 1px;
 
+:host {
+  height: 100%;
+  overflow: hidden;
+}
+
+.filter-buttons {
+  position: absolute;
+  z-index: 1;
+  margin-top: 10px;
+  margin-left: 6px;
+  padding: 5px;
+  border-radius: 5px;
+  background: rgba($color: #111111, $alpha: 0.2);
+  text-shadow:
+    -1px 0 $blur-radius $names,
+    0 1px $blur-radius $names,
+    1px 0 $blur-radius $names,
+    0 -1px $blur-radius $names;
+
+}
+
 agm-map {
-  height: 700px;
-  width: 100%;
+  position: absolute;
+  height: 92vh;
+  width: calc(100% - 45px);
   text-shadow:
     -1px 0 $blur-radius $names,
     0 1px $blur-radius $names,
