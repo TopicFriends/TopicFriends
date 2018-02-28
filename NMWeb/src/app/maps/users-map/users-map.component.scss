@@ -27,8 +27,10 @@ $blur-radius: 1px;
 
 agm-map {
   position: absolute;
-  height: 92vh;
-  width: calc(100% - 45px);
+  height: 94vh;
+  margin-top: -12px;
+  margin-left: -12px;
+  width: calc(100% - 33px);
   text-shadow:
     -1px 0 $blur-radius $names,
     0 1px $blur-radius $names,
