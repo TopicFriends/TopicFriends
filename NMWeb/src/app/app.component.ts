@@ -12,7 +12,7 @@ import {CookieLawComponent} from 'angular2-cookie-law'
 })
 export class AppComponent {
 
-  @ViewChild(CookieLawComponent) cookieLawComponent: CookieLawComponent
+    @ViewChild(CookieLawComponent) cookieLawComponent: CookieLawComponent
 
   dismissCookieLaw() {
     this.cookieLawComponent.dismiss()

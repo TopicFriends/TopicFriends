@@ -21,6 +21,12 @@ app-header {
     overflow-x: hidden;
 }
 
+app-footer{
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
 .cookie-law::ng-deep  {
   vertical-align: middle;
   //background-color: red;

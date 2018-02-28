@@ -12,6 +12,7 @@ import {MeetingsModule} from '../meeting-list/meetings.module'
 import {TopicsModule} from '../topics/topics.module'
 import {CapitalizeFirstPipe} from "../shared/pipes/capitalize-first.pipe";
 import {CleanUrlPipe} from "../shared/pipes/clean-url.pipe";
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -30,11 +31,13 @@ import {CleanUrlPipe} from "../shared/pipes/clean-url.pipe";
   declarations: [
     NavbarComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   exports: [
     NavbarComponent,
     HeaderComponent,
     FlexLayoutModule,
+    FooterComponent
   ],
   providers: [
     CleanUrlPipe,
