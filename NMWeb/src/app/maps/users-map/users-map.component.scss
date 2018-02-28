@@ -43,3 +43,12 @@ agm-map {
 mat-slider {
   width: 300px;
 }
+
+@media only screen and (max-width: 600px) {
+  agm-map {
+    margin-top: -5px;
+    margin-left: -5px;
+    width: 100%;
+    height: calc(100% - 52px);
+  }
+}
