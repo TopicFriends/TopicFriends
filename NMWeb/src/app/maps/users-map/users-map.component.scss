@@ -4,8 +4,22 @@ $names: #fff;
 
 $blur-radius: 1px;
 
+.filter-buttons {
+  position: absolute;
+  z-index: 1;
+  margin-top: 5px;
+  margin-left: 5px;
+  text-shadow:
+    -1px 0 $blur-radius $names,
+    0 1px $blur-radius $names,
+    1px 0 $blur-radius $names,
+    0 -1px $blur-radius $names;
+
+}
+
 agm-map {
-  height: 700px;
+  position: absolute;
+  height: 80vh;
   width: 100%;
   text-shadow:
     -1px 0 $blur-radius $names,
