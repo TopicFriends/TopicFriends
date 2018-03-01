@@ -4,6 +4,7 @@ import {SharedModule} from '../shared/shared.module'
 import {RouterModule, Routes} from '@angular/router';
 import { TopicDetailsComponent } from './topic-details/topic-details.component'
 import {MatChipsModule} from '@angular/material'
+import { MapsModule } from '../maps/maps.module';
 
 
 export const TOPIC_ID_PARAM = 'topicId'
@@ -19,6 +20,7 @@ const topicsRoutes: Routes = [
     SharedModule,
     RouterModule.forChild(topicsRoutes),
     MatChipsModule,
+    MapsModule
   ],
   declarations: [
     TopicDetailsComponent,

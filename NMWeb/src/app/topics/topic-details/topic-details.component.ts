@@ -6,6 +6,8 @@ import {TopicsService} from '../../shared/topics.service'
 import {TopicInterest} from '../../user-profile/user-interests'
 import {GitHubService} from '../../shared/git-hub.service'
 import {Title} from "@angular/platform-browser";
+import { GeoLocationService } from '../../shared/geo-location.service';
+import { GeoLocation } from '../../user-profile/user-profile.service';
 
 @Component({
   selector: 'app-topic-details',
@@ -15,7 +17,7 @@ import {Title} from "@angular/platform-browser";
 export class TopicDetailsComponent implements OnInit {
 
   topicId: string = this.route.snapshot.params[TOPIC_ID_PARAM];
-
+  coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
   topic: TagEntry
   topicInterest: TopicInterest
 
@@ -23,7 +25,8 @@ export class TopicDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private topicsService: TopicsService,
     private gitHubService: GitHubService,
-    private titleService: Title
+    private titleService: Title,
+    private geoLocationService: GeoLocationService
   ) {
     this.topic = this.topicsService.getTopicById(this.topicId)
     this.topicInterest = this.createTopicInterest(this.topic);
@@ -31,6 +34,14 @@ export class TopicDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle( this.topic.name + ' - TopicFriends');
+    this.geoLocationService.getPosition().subscribe(
+      (pos: Position) => {
+        // this.coordinates = {
+        //   latitude:  +(pos.coords.latitude.toFixed(5)),
+        //   longitude: +(pos.coords.longitude.toFixed(5))
+        // };
+      }
+    );
   }
 
   createTopicInterest(topic) {

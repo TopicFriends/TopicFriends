@@ -41,6 +41,7 @@ const mapsRoutes: Routes = [
   ],
   exports: [
     UserPickLocationComponent,
+    AgmCoreModule
   ],
   entryComponents: [
     UserPickLocationComponent,
