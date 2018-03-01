@@ -4,10 +4,14 @@
   (window:keydown.meta.s)="keyDownSave($event)"
   (window:keydown.control.s)="keyDownSave($event)"
 ></div>
-
-<h2>
-  Public Profile
-</h2>
+<div fxLayoutAlign="space-between center">
+  <h2>
+    Public Profile
+  </h2>
+  <button mat-button routerLink="/config" *ngIf="userProfileService.userId">
+    Config
+  </button>
+</div>
 
 <ng-template [ngIf]="! userProfileService.userId" >
   <button mat-raised-button routerLink="/login">
