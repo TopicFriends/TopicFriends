@@ -119,6 +119,7 @@ export class UserInterestConfigurationDialogComponent implements OnInit, AfterVi
       },
       data: {
         name: name,
+        tag2: this.tag2,
         userProfileInputs: this.data.userProfileInputs,
         skillLevels: this.data.skillLevels
       }

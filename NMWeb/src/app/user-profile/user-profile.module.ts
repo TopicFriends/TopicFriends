@@ -48,6 +48,10 @@ const userProfileRoutes: Routes = [
     // data: { reuse: false },
   },
   {
+    path: 'config',
+    loadChildren: '../user-config/user-config.module#UserConfigModule'
+  },
+  {
     path: USER_ROUTE_WITH_TRAILING_SLASH + ':' + USER_PROFILE_ID_PARAM_NO_COLON,
     component: UserProfileComponent,
     // data: { reuse: false },

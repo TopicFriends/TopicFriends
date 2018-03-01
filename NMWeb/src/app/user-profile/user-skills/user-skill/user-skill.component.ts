@@ -14,8 +14,6 @@ import {UserProfileInputs} from '../../user-profile.component'
 })
 export class UserSkillComponent implements OnInit {
 
-  public showInterestDialog = false;
-
   @Input() tag: TagEntry;
   tag2: TopicInterest;
   @Input() userProfileInputs: UserProfileInputs
@@ -70,8 +68,9 @@ export class UserSkillComponent implements OnInit {
     }
 
     let dialogRef;
+    const userConfig = JSON.parse(localStorage.getItem('userConfig'));
 
-    if (this.showInterestDialog){
+    if (userConfig && userConfig['show-interest-dialog']=== true){
       dialogConfig['minWidth'] = "350px";
       dialogConfig['maxWidth'] = "350px";
       dialogRef = this.dialog.open(UserInterestConfigurationDialogComponent, dialogConfig)
