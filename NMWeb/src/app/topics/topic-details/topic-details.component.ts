@@ -7,9 +7,12 @@ import {TopicInterest} from '../../user-profile/user-interests'
 import {GitHubService} from '../../shared/git-hub.service'
 import {Title} from "@angular/platform-browser";
 import { GeoLocationService } from '../../shared/geo-location.service';
-import { GeoLocation, GeoLocationsDictionary } from '../../user-profile/user-profile.service';
+import {GeoLocation, GeoLocationsDictionary, UserDataCombined} from '../../user-profile/user-profile.service';
 import { UserMatcherService } from '../../user-matcher.service';
 import { UserListService } from '../../user-list/user-list.service';
+import { TagInclusions } from '../../shared/TagInclusions';
+import {TopicsDetailsService} from '../topics-details.service'
+import {DbList} from '../../db.service'
 
 @Component({
   selector: 'app-topic-details',
@@ -28,9 +31,8 @@ export class TopicDetailsComponent implements OnInit {
     private topicsService: TopicsService,
     private gitHubService: GitHubService,
     private titleService: Title,
-    private geoLocationService: GeoLocationService, 
-    private userMatcherService: UserMatcherService,
-    private userListService: UserListService
+    private geoLocationService: GeoLocationService,
+    private topicDetailsService: TopicsDetailsService
   ) {
     this.topic = this.topicsService.getTopicById(this.topicId)
     this.topicInterest = this.createTopicInterest(this.topic);
@@ -47,43 +49,10 @@ export class TopicDetailsComponent implements OnInit {
       }
     );
 
-    this.userListService.listUserDataCombined().subscribe(users => {
-      console.log(users)
-      users.map(user => {
-        // user.userData.interests.subscribe(interests => {
-        //   if(interests.byInteractionMode) {
-        //     let topics = interests.byInteractionMode.symmetric.exchange;
-        //   }
-        // });
-        user.userData.skills.subscribe(skills => {
-          if(skills.skillLevelsPerTopic) {
-            console.log(skills.skillLevelsPerTopic);
-            let i = 0;
-            
-        }
-        });
-      });
-    });
-
-    // this.userMatcherService.listUsersSortedByLastModified().subscribe(users => {
-    //   users.map(user => {
-    //     if(user.userDataCombined.interests.byInteractionMode) {
-    //       let topics = user.userDataCombined.interests.byInteractionMode.symmetric.exchange.topics;
-    //       // console.log(topics);
-    //       if(topics) {
-    //         let i = 0;
-    //         while(topics[i]) {
-    //           if(topics[i].tagEntry.id == this.topic.id){
-    //             this.userCoordinates.push(user.userDataCombined.geoLocations.geoLocations.whereILive);
-    //             console.log(topics[i]);
-    //           }
-              
-    //           i++;
-    //         }
-    //       }          
-    //     }
-    //   });
-    // });
+    let usersWithTopic: DbList<UserDataCombined> = this.topicDetailsService.getUsersWithTopic(this.topicInterest.tagEntry.id)
+    usersWithTopic.subscribe(userList => {
+      console.log(userList);
+    })
   }
 
   createTopicInterest(topic) {

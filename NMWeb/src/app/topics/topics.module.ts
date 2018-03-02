@@ -5,6 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { TopicDetailsComponent } from './topic-details/topic-details.component'
 import {MatChipsModule} from '@angular/material'
 import { MapsModule } from '../maps/maps.module';
+import {TopicsDetailsService} from './topics-details.service'
 
 
 export const TOPIC_ID_PARAM = 'topicId'
@@ -25,5 +26,8 @@ const topicsRoutes: Routes = [
   declarations: [
     TopicDetailsComponent,
   ],
+  providers: [
+    TopicsDetailsService
+  ]
 })
 export class TopicsModule { }
