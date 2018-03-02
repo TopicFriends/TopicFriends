@@ -12,8 +12,7 @@ export class TopicsDetailsService {
   }
 
   getUsersWithTopic(topicId: string): DbList<UserDataCombined> {
-
-    return <DbList<UserDataCombined>><any>this.userListService.listUserDataCombined().map((users: Array<UserDataCombined>) => {
+    return this.userListService.listUserDataCombined().map((users: Array<UserDataCombined>) => {
       console.log(users)
       return users.filter((user: UserDataCombined) => {
         let interests = user.interests;
@@ -21,6 +20,4 @@ export class TopicsDetailsService {
       });
     });
   }
-
-
 }
