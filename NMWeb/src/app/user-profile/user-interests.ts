@@ -247,7 +247,6 @@ export class UserInterests {
     if(topicInclusions) {
       for(let key in topicInclusions) {
         if(topicInclusions.hasOwnProperty(key)) {
-          console.log(topicInclusions[key]);
           if(topicInclusions[key].tagEntry.id === topicId) {
             return true;
           }

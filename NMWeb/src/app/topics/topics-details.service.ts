@@ -13,7 +13,6 @@ export class TopicsDetailsService {
 
   getUsersWithTopic(topicId: string): DbList<UserDataCombined> {
     return this.userListService.listUserDataCombined().map((users: Array<UserDataCombined>) => {
-      console.log(users)
       return users.filter((user: UserDataCombined) => {
         let interests = user.interests;
         return UserInterests.hasTopicId(interests, topicId);

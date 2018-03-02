@@ -51,7 +51,7 @@ export class TopicDetailsComponent implements OnInit {
 
     let usersWithTopic: DbList<UserDataCombined> = this.topicDetailsService.getUsersWithTopic(this.topicInterest.tagEntry.id)
     usersWithTopic.subscribe(userList => {
-      console.log(userList);
+    //
     })
   }
 
