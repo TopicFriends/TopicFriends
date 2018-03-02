@@ -1,21 +1,24 @@
 <footer>
-  <mat-toolbar>
+  
     <div class="legal">
-      <mat-toolbar-row>
-        <a href="#">TÉRMINOS DE USO</a>
-        <span>|</span>
-        <a href="#">POLÍTICA DE PRIVACIDAD</a>
-      </mat-toolbar-row>
-      <mat-toolbar-row>
-        <p>&copy; 2018 - TopicFriends</p>
-      </mat-toolbar-row>
-
-    </div>
+      <span>
+        <a routerLink="/terms" routerLinkActive="active">TÉRMINOS DE USO</a>
+      </span>
+      <span>|</span>
+      <span>
+        <a routerLink="/privacy" routerLinkActive="active">POLÍTICA DE PRIVACIDAD</a>
+      </span>
+    </div>   
+    
     <div class="contact">
-      <span>&#9993; contact@topicfriends.org </span>
-      <a href="https://www.facebook.com/TopicFriends/" class="facebook"><i class="fa fa-facebook fa-2x"></i></a>
-      <a href="https://medium.com/@topicfriends" class="medium"><i class="fa fa-medium fa-2x"></i></a>
+      <span class="mail"> <p>contact@topicfriends.org</p> </span>
+      <span class="facebook">
+        <a href="https://www.facebook.com/TopicFriends/" ><i class="fa fa-facebook"></i></a>
+      </span>
+      <span class="medium">
+        <a href="https://medium.com/@topicfriends" ><i class="fa fa-medium"></i></a>
+      </span>
     </div>
-  </mat-toolbar>
+  
 </footer>
 

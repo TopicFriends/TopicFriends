@@ -20,11 +20,17 @@ app-header {
     overflow-y: scroll;
     overflow-x: hidden;
 }
+.body-wrapper{
+  min-height: 95vh; /* 100vh - 5vh of footer. keep footer at bottom*/
 
-app-footer{
-  position: fixed;
-  bottom: 0px;
+}
+
+app-footer{  
   width: 100%;
+  position: absolute;  
+  margin: 0;
+  padding: 0;
+
 }
 
 .cookie-law::ng-deep  {

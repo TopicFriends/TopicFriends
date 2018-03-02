@@ -39,7 +39,9 @@ import 'hammerjs';
 import {FormsModule} from '@angular/forms';
 import { UserGroupsComponent } from './user-groups/user-groups.component'
 import {UserGroupService} from './shared/user-group.service'
-import {CookieLawModule} from 'angular2-cookie-law'
+import {CookieLawModule} from 'angular2-cookie-law';
+import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component'
 
 const appRoutes: Routes = [
   {
@@ -68,6 +70,14 @@ const appRoutes: Routes = [
     component: AboutComponent,
   },
   {
+    path: 'terms',
+    component: TermsOfServiceComponent,
+  },
+  {
+    path: 'privacy',
+    component: PrivacyPolicyComponent,
+  },
+  {
     path: '**',
     redirectTo: '',
   },
@@ -84,6 +94,8 @@ const appRoutes: Routes = [
     TopicsAllComponent,
     AboutComponent,
     UserGroupsComponent,
+    TermsOfServiceComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule,
