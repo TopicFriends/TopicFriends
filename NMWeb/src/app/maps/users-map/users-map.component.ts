@@ -118,7 +118,7 @@ export class UsersMapComponent implements OnInit {
     // window.alert('Click ' + JSON.stringify(marker))
     console.log('click', marker)
     // window.alert('Click ' + marker)
-    this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.id])
+    this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.userId])
   }
 
   changeShowLabelOverMark() {

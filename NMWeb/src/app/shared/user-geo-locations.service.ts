@@ -18,7 +18,6 @@ export class UserGeoLocationsService {
     return this.dbService.list(this.domainDbService.PATHS.GEO_LOCATIONS)
   }
 
-  
 
 
   calculateDistance(coordinatesA, coordinatesB) {
