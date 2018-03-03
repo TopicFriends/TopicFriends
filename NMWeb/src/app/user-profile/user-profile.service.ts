@@ -147,8 +147,8 @@ export class UserGeoLocations {
           if (subLocationMulti) {
             subLocationMulti = GeoLocation.clone(subLocationMulti)
             let userId = (<any>userLocation).$key
-
             subLocationMulti.userId = userId
+            
             allUsersGeoLocationsFlattened.push(subLocationMulti)
           }
         }
