@@ -1,0 +1,11 @@
+$map-height: 600px;
+
+agm-map {
+  height: $map-height;
+  width: 100%;
+}
+
+agm-marker {
+  width: 10px;
+  size: 20px;
+}
