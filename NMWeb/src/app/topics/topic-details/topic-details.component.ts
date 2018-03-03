@@ -29,7 +29,7 @@ export class TopicDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private topicsService: TopicsService,
     private gitHubService: GitHubService,
-    private titleService: Title
+    private titleService: Title,
   ) {
     this.topic = this.topicsService.getTopicById(this.topicId)
     this.topicInterest = this.createTopicInterest(this.topic);
