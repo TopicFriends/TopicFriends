@@ -8,11 +8,11 @@ import {GitHubService} from '../../shared/git-hub.service'
 import {Title} from "@angular/platform-browser";
 import { GeoLocationService } from '../../shared/geo-location.service';
 import {GeoLocation, GeoLocationsDictionary, UserDataCombined} from '../../user-profile/user-profile.service';
-import { UserMatcherService } from '../../user-matcher.service';
+import {UserMatched, UserMatcherService} from '../../user-matcher.service';
 import { UserListService } from '../../user-list/user-list.service';
 import { TagInclusions } from '../../shared/TagInclusions';
 import {TopicsDetailsService} from '../topics-details.service'
-import {DbList} from '../../db.service'
+import {DbList, DbListReadOnly} from '../../db.service'
 
 @Component({
   selector: 'app-topic-details',
@@ -26,6 +26,7 @@ export class TopicDetailsComponent implements OnInit {
   topic: TagEntry
   topicInterest: TopicInterest
   userCoordinates: GeoLocationsDictionary[];
+
   constructor(
     private route: ActivatedRoute,
     private topicsService: TopicsService,
@@ -36,6 +37,7 @@ export class TopicDetailsComponent implements OnInit {
   ) {
     this.topic = this.topicsService.getTopicById(this.topicId)
     this.topicInterest = this.createTopicInterest(this.topic);
+    this.topicId = this.topicInterest.tagEntry.id;
   }
 
   ngOnInit() {
@@ -49,9 +51,14 @@ export class TopicDetailsComponent implements OnInit {
       }
     );
 
-    let usersWithTopic: DbList<UserDataCombined> = this.topicDetailsService.getUsersWithTopic(this.topicInterest.tagEntry.id)
+    let usersWithTopic: DbListReadOnly<UserDataCombined> = this.topicDetailsService.getUsersWithTopic(this.topicId)
     usersWithTopic.subscribe(userList => {
-    //
+
+    })
+
+    let matchedUsersWithTopic: DbListReadOnly<UserMatched> = this.topicDetailsService.getMatchedUsersWithTopic(this.topicId)
+    matchedUsersWithTopic.subscribe(userMatchedList => {
+      console.log(userMatchedList)
     })
   }
 

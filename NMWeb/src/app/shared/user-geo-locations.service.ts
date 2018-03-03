@@ -18,6 +18,9 @@ export class UserGeoLocationsService {
     return this.dbService.list(this.domainDbService.PATHS.GEO_LOCATIONS)
   }
 
+  
+
+
   calculateDistance(coordinatesA, coordinatesB) {
     console.log(google.maps.geometry.spherical.computeDistanceBetween(coordinatesA, coordinatesB));
     return google.maps.geometry.spherical.computeDistanceBetween(coordinatesA, coordinatesB);
