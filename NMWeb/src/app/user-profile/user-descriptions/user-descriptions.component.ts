@@ -4,7 +4,7 @@ import {UserDescriptionsService} from '../../shared/user-profile/user-descriptio
 import {UserDescriptions} from '../user-profile.service'
 import {MatTextareaAutosize} from '@angular/material'
 import {TextAreaComponent} from './text-area/text-area.component'
-import {UserProfileInputs} from '../user-profile.component'
+import {UserProfileInputs} from '../UserProfileInputs'
 import {DomainDbService} from '../../domain-db.service'
 
 

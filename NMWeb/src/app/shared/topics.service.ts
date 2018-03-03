@@ -504,7 +504,7 @@ export class TopicsService {
 
     // CI: Continous Integration, CD: Continuous Delivery
     // RethinkDB
-
+    tagNoIcon('Web Animations API'),
     'Jest',
 
     tagNoIcon('Electronic Voting'), tagNoIcon('Activism'), tagNoIcon('Volunteering'),
@@ -512,6 +512,7 @@ export class TopicsService {
     tagNoIcon('Figma'),
     tagNoIcon('Affinity Designer'),
     tagNoIcon('Psychology'),
+    tagNoIcon('StackBlitz'),
     tag('Dexie.js', 'dexie-js'),
     'Aurelia',
     'Marionette',

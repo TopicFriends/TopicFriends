@@ -5,7 +5,7 @@ import {TopicGroupCardComponent} from '../../user-interests/topic-group-card/top
 import {UserInterests, WantedTopics} from '../../user-interests'
 import {SkillLevelsPerTopic, UserSkillLevelsHaveWant} from '../../../shared/user-skills.service'
 import {TagEntry} from '../../tag-entry'
-import {UserProfileInputs} from '../../user-profile.component'
+import {UserProfileInputs} from '../../UserProfileInputs'
 
 @Component({
   selector: 'app-user-skills-list',

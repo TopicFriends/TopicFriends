@@ -3,7 +3,7 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {AuthService} from '../auth.service'
 import {GeoLocation, GeoLocations, UserGeoLocations, UserProfileService} from '../user-profile.service'
 import {DomainDbService} from '../../domain-db.service'
-import {UserProfileInputs} from '../user-profile.component'
+import {UserProfileInputs} from '../UserProfileInputs'
 
 function transformIntoLocationDictionaries(values: any) {
   let returnVal = {}

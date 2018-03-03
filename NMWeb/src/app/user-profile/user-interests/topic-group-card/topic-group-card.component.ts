@@ -4,7 +4,7 @@ import {WantedTopics} from '../../user-interests'
 import {ItemListInputComponent} from '../../item-list-input/item-list-input.component'
 import {TagListModelEvent} from '../../../shared/TagListModel'
 import {createTopicsDictionary} from '../../user-profile.service'
-import {UserProfileInputs} from '../../user-profile.component'
+import {UserProfileInputs} from '../../UserProfileInputs'
 
 @Component({
   selector: 'app-topic-group-card',

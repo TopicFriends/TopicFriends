@@ -4,7 +4,7 @@ import {GeoLocation} from '../../user-profile/user-profile.service'
 import {FormControl} from '@angular/forms';
 import {MapsAPILoader} from '@agm/core';
 // import { } from 'googlemaps';
-import {UserProfileInputs} from '../../user-profile/user-profile.component'
+import {UserProfileInputs} from '../../user-profile/UserProfileInputs'
 
 
 export class UserPickLocationDialogParams {

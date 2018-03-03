@@ -5,7 +5,7 @@ import {MatDialog} from "@angular/material";
 import {SkillLevelPopoverComponent} from "../../user-interest-configuration-dialog/skill-level-popover/skill-level-popover.component";
 import {UserInterestConfigurationDialogComponent} from "../../user-interest-configuration-dialog/user-interest-configuration-dialog.component";
 import {UserSkillLevelsHaveWant} from '../../../shared/user-skills.service'
-import {UserProfileInputs} from '../../user-profile.component'
+import {UserProfileInputs} from '../../UserProfileInputs'
 
 @Component({
   selector: 'app-user-skill',

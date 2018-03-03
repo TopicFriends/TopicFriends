@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms'
-import {UserProfileInputs} from '../../user-profile.component'
+import {UserProfileInputs} from '../../UserProfileInputs'
 
 @Component({
   selector: 'app-topic-group-supply-demand-card',

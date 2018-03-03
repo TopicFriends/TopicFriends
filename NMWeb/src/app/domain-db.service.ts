@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {DbObject, DbList, DbService} from './db.service'
-import {UserOtherProfiles, UserProfile, UserData, UserGeoLocations, UserDescriptions} from './user-profile/user-profile.service'
+import {UserProfile, UserData, UserGeoLocations, UserDescriptions} from './user-profile/user-profile.service'
 import {Observable} from 'rxjs/Observable'
 import "rxjs/add/observable/of"
 
 import {UserInterests} from './user-profile/user-interests'
 import {combineLatest} from 'rxjs/operator/combineLatest'
 import {UserSkillLevelsPerUser} from './shared/user-skills.service'
+import {UserOtherProfiles} from './user-profile/user-other-profiles.service'
 
 @Injectable()
 export class DomainDbService {
@@ -14,7 +15,7 @@ export class DomainDbService {
   USER_DATA = 'UserData/';
 
   PATHS = {
-    USER_PROFILE: this.USER_DATA + 'UserProfile',
+    USER_PROFILE: this.USER_DATA + 'UserProfile' /* really user basic info */,
     USER_INTERESTS: this.USER_DATA + 'UserInterests',
     OTHER_PROFILES: this.USER_DATA + 'OtherProfiles',
     GEO_LOCATIONS: this.USER_DATA + 'GeoLocations',
@@ -30,10 +31,6 @@ export class DomainDbService {
 
   listUserProfile(): DbList<UserProfile> {
     return this.db.list(this.PATHS.USER_PROFILE)
-  }
-
-  listOtherProfiles(): DbList<UserOtherProfiles> {
-    return this.db.list(this.PATHS.OTHER_PROFILES);
   }
 
   listUserInterests(): DbList<UserInterests> {

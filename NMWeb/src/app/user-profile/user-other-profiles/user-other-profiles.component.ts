@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
-import {OtherProfile, UserOtherProfiles, UserProfileService} from '../user-profile.service'
+import {OtherProfile, UserProfileService} from '../user-profile.service'
 import {DomainDbService} from '../../domain-db.service'
-import {UserProfileInputs} from '../user-profile.component'
+import {UserProfileInputs} from '../UserProfileInputs'
 import {setFormControlEnabled} from '../../shared/utils'
+import {UserOtherProfiles} from '../user-other-profiles.service'
 
 
 function getOtherProfileName(otherProfile: OtherProfile) {

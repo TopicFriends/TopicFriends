@@ -35,10 +35,13 @@ import { BasicActionsButtonGroupComponent } from './user-interest-configuration-
 import { SupplyDemandButtonGroupComponent } from './user-interest-configuration-dialog/supply-demand-button-group/supply-demand-button-group.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {TopicLogoComponent} from "../topic-logo/topic-logo.component";
+import {UserOtherProfilesService} from './user-other-profiles.service'
+import {AboutComponent} from '../about/about.component'
 
 export const USER_PROFILE_ID_PARAM_NO_COLON = 'userId'
 
 export const USER_ROUTE_WITH_TRAILING_SLASH = 'user/'
+
 
 const userProfileRoutes: Routes = [
   {
@@ -50,6 +53,10 @@ const userProfileRoutes: Routes = [
   {
     path: 'config',
     loadChildren: '../user-config/user-config.module#UserConfigModule'
+  },
+  {
+    path: 'u/:' + USER_PROFILE_ID_PARAM_NO_COLON,
+    component: UserProfileComponent,
   },
   {
     path: USER_ROUTE_WITH_TRAILING_SLASH + ':' + USER_PROFILE_ID_PARAM_NO_COLON,
@@ -81,6 +88,9 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     // return future.routeConfig === curr.routeConfig ;
   }
 }
+
+// TODO: split modules: user-profile (services mostly? ; also used by e.g. maps, user-list) and user-profile-details (edit/view)
+// keep lazy-loading in mind
 
 @NgModule({
   imports: [
@@ -131,13 +141,18 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
   ],
   providers: [
     CanDeactivateUserProfileGuard,
+    UserOtherProfilesService,
     // {
     //   provide: RouteReuseStrategy,
     //   useClass: CustomRouteReuseStrategy
     // },
   ],
-  entryComponents: [ SkillLevelPopoverComponent, UserInterestConfigurationDialogComponent ],
+  entryComponents: [
+    SkillLevelPopoverComponent,
+    UserInterestConfigurationDialogComponent,
+  ],
   exports: [
+    UserOtherProfilesService,
   ],
   schemas: [
     // CUSTOM_ELEMENTS_SCHEMA

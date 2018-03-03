@@ -4,7 +4,7 @@ import {AuthService} from '../auth.service'
 import {UserProfile, UserProfileService} from '../user-profile.service'
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {DomainDbService} from '../../domain-db.service'
-import {UserProfileInputs} from '../user-profile.component'
+import {UserProfileInputs} from '../UserProfileInputs'
 import {isNullOrUndefinedOrWhiteSpace, setFormControlEnabled} from '../../shared/utils'
 import {Title} from "@angular/platform-browser";
 

@@ -1,9 +1,8 @@
 import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {AuthService} from './auth.service';
 import {Observable} from 'rxjs/Observable';
-import {UserOtherProfiles, UserProfile, UserProfileService} from './user-profile.service'
-import {SymmetricInteractions, TopicInterest, UserInterests} from './user-interests'
+import {UserProfile, UserProfileService} from './user-profile.service'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {UserProfileBasicInfoComponent} from './user-profile-basic-info/user-profile-basic-info.component'
 import {UserInterestsComponent} from './user-interests/user-interests.component'
@@ -13,6 +12,7 @@ import {UserDescriptionsComponent} from './user-descriptions/user-descriptions.c
 import {ActivatedRoute, ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot} from '@angular/router'
 import {USER_PROFILE_ID_PARAM_NO_COLON} from './user-profile.module'
 import {UserSkillsComponent} from './user-skills/user-skills.component'
+import {UserProfileInputs} from './UserProfileInputs'
 
 export class CanDeactivateUserProfileGuard implements CanDeactivate<UserProfileComponent> {
 
@@ -27,15 +27,6 @@ export class CanDeactivateUserProfileGuard implements CanDeactivate<UserProfileC
       window.alert('You have unsaved changes.')
     }
     return canDeactivate
-  }
-}
-
-export class UserProfileInputs {
-  constructor(
-    public userId: string,
-    public isEditable: boolean,
-    public isUserIdFromRouter: boolean,
-  ) {
   }
 }
 

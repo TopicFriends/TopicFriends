@@ -5,7 +5,7 @@ import {createTopicsDictionary, UserProfileService} from '../user-profile.servic
 import {AuthService} from '../auth.service'
 import {ItemListInputComponent} from '../item-list-input/item-list-input.component'
 import {FormBuilder, FormGroup} from '@angular/forms'
-import {UserProfileInputs} from '../user-profile.component'
+import {UserProfileInputs} from '../UserProfileInputs'
 import {DomainDbService} from '../../domain-db.service'
 
 const INITIAL_WANTED_TOPICS: WantedTopics = {
