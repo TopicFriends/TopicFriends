@@ -65,6 +65,8 @@ export class UserProfileComponent implements OnInit {
   userProfileInputs: UserProfileInputs
   checkPrivacityValue: boolean
 
+  showUserSkillsSection = false
+
   constructor(
     public userProfileService: UserProfileService,
     public authService: AuthService,
@@ -73,7 +75,11 @@ export class UserProfileComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
   ) {
     console.log('UserProfileComponent constructor')
-    let userIdFromRouter = this.activatedRoute.snapshot.params[USER_PROFILE_ID_PARAM_NO_COLON];
+
+    const userConfig = JSON.parse(localStorage.getItem('userConfig'));
+    this.showUserSkillsSection = userConfig && userConfig['show-skills']
+
+      let userIdFromRouter = this.activatedRoute.snapshot.params[USER_PROFILE_ID_PARAM_NO_COLON];
     if ( userIdFromRouter ) {
       this.userProfileInputs = new UserProfileInputs(userIdFromRouter, false /* Unless we are admin */, true)
     } else {

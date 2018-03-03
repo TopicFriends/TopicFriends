@@ -49,6 +49,7 @@
 
 
     <app-user-skills
+      *ngIf="showUserSkillsSection"
       [userProfileInputs]="userProfileInputs"
       #userSkills
       [parentFormGroup]="formGroup"
