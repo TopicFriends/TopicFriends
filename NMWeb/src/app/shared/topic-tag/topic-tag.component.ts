@@ -3,6 +3,7 @@ import {TagEntry} from '../../user-profile/tag-entry'
 import {TopicInterest} from '../../user-profile/user-interests'
 import {RelatedTopicLists} from '../../user-matcher.service'
 import {TagListModel} from '../TagListModel'
+import {TopicsService} from '../topics.service'
 
 @Component({
   selector: 'app-topic-tag',
@@ -19,10 +20,21 @@ export class TopicTagComponent implements OnInit {
 
   @Output() clickTopic = new EventEmitter<any>()
 
-  constructor() { }
+  constructor(
+    public topicsService: TopicsService,
+  ) { }
 
   ngOnInit() {
     // console.log('related tags', this.relatedTopicLists)
+    // console.log('TopicTagComponent: tag', this.tag)
+    const topicById = this.topicsService.getTopicById(
+      this.tag.tagEntry.id ||
+      this.tag.tagEntry.name
+    )
+    if ( ! topicById ) {
+      console.error('! topicById', this.tag)
+    }
+    this.tag.tagEntry = topicById
   }
 
   shouldHighlightSymmetric() {

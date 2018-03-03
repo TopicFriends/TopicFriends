@@ -31,6 +31,8 @@ export class TopicDetailsComponent implements OnInit {
     private gitHubService: GitHubService,
     private titleService: Title,
   ) {
+    console.log('topicId', this.topicId)
+
     this.topic = this.topicsService.getTopicById(this.topicId)
     this.topicInterest = this.createTopicInterest(this.topic);
     this.topicId = this.topicInterest.tagEntry.id;
