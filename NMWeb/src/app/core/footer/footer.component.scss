@@ -1,5 +1,7 @@
 $footer-height: 5vh;
 $max-screen-width: 600px;
+$facebook-color:#3b5998;
+$medium-color:#1c9963;
 
 footer{
   background-color: black;
@@ -39,32 +41,30 @@ footer{
   }
 
   .facebook{
-    background-color: #3b5998;
+    background-color: $facebook-color;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    &:hover {
+      background-color: lighten($facebook-color, 20%);
+    }
   }
 
   .medium{
-    background-color: #1c9963;
+    background-color: $medium-color;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    &:hover {
+      background-color: lighten($medium-color, 20%);
+    }
   }
 
   a{
     color: #ffffff;
     text-decoration: none;
-  }
-
-.facebook:hover{
-    background-color: #000000;
-  }
-
-.medium:hover{
-   background-color: #000000;
   }
 
 }
