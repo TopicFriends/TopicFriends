@@ -1,54 +1,53 @@
 $footer-height: 5vh;
 $max-screen-width: 600px;
 
-footer{  
+footer{
   background-color: black;
   color: #ffff;
-  font-size: .7rem;
+  font-size: .9em;
   height: $footer-height;
-  padding: 0; 
+  padding: 0;
   margin:0;
   display: flex;
   @media screen and (max-width: $max-screen-width){
     display: none;
 }
-  
+
 }
 
 .legal{
-  width: 50%;
+  width: 65%;
   display: flex;
   align-items: center;
 
-  a,span{
+  a, span{
     text-decoration: none;
-    color: #ffffff; 
-    margin: 0 .5em;    
+    color: #ffffff;
+    margin: 0 .5em;
   }
 }
 
 .contact{
-  width: 50%;
-  display: flex;    
+  width: 35%;
+  display: flex;
 
   .mail{
     flex-grow: 1;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    margin-right: 1em;
+    justify-content: center;
   }
 
   .facebook{
-    background-color: #3b5998;      
+    background-color: #3b5998;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;       
+    flex-grow: 1;
   }
 
   .medium{
-    background-color: #1c9963;        
+    background-color: #1c9963;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,6 +56,7 @@ footer{
 
   a{
     color: #ffffff;
+    text-decoration: none;
   }
 
 .facebook:hover{
@@ -68,7 +68,7 @@ footer{
   }
 
 }
- 
+
 
 
 
