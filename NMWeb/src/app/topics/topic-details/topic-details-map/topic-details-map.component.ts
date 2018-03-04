@@ -1,12 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GeoLocation, UserDataCombined} from '../../../user-profile/user-profile.service'
-import {DbListReadOnly} from '../../../db.service'
-import {UserMatched} from '../../../user-matcher.service'
+import {GeoLocation} from '../../../user-profile/user-profile.service'
 import {GeoLocationService} from '../../../shared/geo-location.service'
 import {TopicsDetailsService} from '../../topics-details.service'
 import {TOPIC_ID_PARAM} from '../../topics.module'
-import {ActivatedRoute} from '@angular/router'
+import {ActivatedRoute, Router} from '@angular/router'
 import {TagEntry} from '../../../user-profile/tag-entry'
+import {USER_ROUTE_WITH_TRAILING_SLASH} from '../../../user-profile/user-profile.module'
 
 @Component({
   selector: 'app-topic-details-map',
@@ -23,7 +22,8 @@ export class TopicDetailsMapComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private geoLocationService: GeoLocationService,
-    private topicDetailsService: TopicsDetailsService
+    private topicDetailsService: TopicsDetailsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -88,24 +88,14 @@ export class TopicDetailsMapComponent implements OnInit {
       }
     }
 
-    this.geoLocationService.getPosition().subscribe(
+    /*this.geoLocationService.getPosition().subscribe(
       (pos: Position) => {
-        // this.coordinates = {
-        //   latitude:  +(pos.coords.latitude.toFixed(5)),
-        //   longitude: +(pos.coords.longitude.toFixed(5))
-        // };
+         this.coordinates = {
+           latitude:  +(pos.coords.latitude.toFixed(5)),
+           longitude: +(pos.coords.longitude.toFixed(5))
+         };
       }
-    );
-
-    let usersWithTopic: DbListReadOnly<UserDataCombined> = this.topicDetailsService.getUsersWithTopic(this.topicId)
-    usersWithTopic.subscribe(userList => {
-
-    })
-
-    let matchedUsersWithTopic: DbListReadOnly<UserMatched> = this.topicDetailsService.getMatchedUsersWithTopic(this.topicId)
-    matchedUsersWithTopic.subscribe(userMatchedList => {
-      console.log(userMatchedList)
-    })
+    );*/
 
     let matchedUsersWithTopicGeoLocations = this.topicDetailsService.getAllGeoLocationsOfUsersWithTopic(this.topicId);
     matchedUsersWithTopicGeoLocations.subscribe((geoLocations: GeoLocation[]) => {
@@ -113,6 +103,7 @@ export class TopicDetailsMapComponent implements OnInit {
     })
   }
 
-
-
+  onMarkerClick(marker: GeoLocation) {
+    this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.userId])
+  }
 }

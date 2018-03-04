@@ -4,21 +4,11 @@
   [zoom]="10">
   <ng-template ngFor let-userLocation [ngForOf]="allUsersGeoLocations">
     <agm-marker
+      [markerClickable]="true"
+      (markerClick)="onMarkerClick(userLocation)"
       [latitude]="userLocation.latitude"
       [longitude]="userLocation.longitude"
       [iconUrl]="icon"
     ></agm-marker>
-
-    <!--<agm-marker-->
-      <!--[markerClickable]="true"-->
-      <!--(markerClick)="onMarkerClick(userLocation)"-->
-      <!--[latitude]="userLocation.latitude"-->
-      <!--[longitude]="userLocation.longitude"-->
-      <!--[label]="showLabelsOverMarker ? (-->
-        <!--(userLocation.title | async)-->
-        <!--+ ' ' +-->
-        <!--(((userLocation.matchResults | async)?.matchScore) || '')-->
-        <!--) : ''"-->
-    <!--&gt;</agm-marker>-->
   </ng-template>
 </agm-map>
