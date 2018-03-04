@@ -138,7 +138,13 @@ export class UserInterests {
     return topics1.filter((topic1: TopicInterest) => {
       return topics2.filter((topic2: TopicInterest) => {
           // later use id-s
-          return topic1.tagEntry.name === topic2.tagEntry.name;
+          return (
+            (topic1.tagEntry.id ===
+             topic2.tagEntry.id)
+            ||
+            (topic1.tagEntry.name ===
+             topic2.tagEntry.name)
+          );
         }).length >= 1;
     });
   }
