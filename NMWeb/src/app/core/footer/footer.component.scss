@@ -1,15 +1,15 @@
-
-
+$footer-height: 5vh;
+$max-screen-width: 600px;
 
 footer{  
   background-color: black;
   color: #ffff;
   font-size: .7rem;
-  height: 5vh;
+  height: $footer-height;
   padding: 0; 
   margin:0;
   display: flex;
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: $max-screen-width){
     display: none;
 }
   

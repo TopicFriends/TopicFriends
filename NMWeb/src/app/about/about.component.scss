@@ -1,5 +1,8 @@
-
 $h-margin: 15px;
+.actionable-interests {
+  text-decoration: underline;
+}
+
 
 h2 {
   padding-left: $h-margin;
@@ -12,17 +15,20 @@ li {
   margin: 7px 0;
 }
 
-$partner-margin-top: 20px;
 
+$partner-margin: 20px;
 .partners-container {
-  margin-top: -$partner-margin-top;
+  margin-top: -$partner-margin;
+  display: flex; 
+  flex-wrap: wrap; 
+  align-items: center;
 }
 
 .partner-img {
-  margin-top: $partner-margin-top;
+  margin-top: $partner-margin;
+  margin-right: $partner-margin;
 }
 
-// ==== :target blink:
 
 $bg-target: #c0c0c0;
 
