@@ -35,7 +35,7 @@ export class SkillLevelLabelComponent implements OnInit {
 
   ngOnInit() {
     if ( this.skillLevels ) {
-      console.log('SkillLevelLabelComponent, skillLevels', this.skillLevels)
+      // console.log('SkillLevelLabelComponent, skillLevels', this.skillLevels)
       this.icon = this.skillsIcons[this.skillLevels.have as any /* HACK */]
       // todo; want
     }
