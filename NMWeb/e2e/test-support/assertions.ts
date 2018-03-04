@@ -1,4 +1,4 @@
-import {$$, ElementArrayFinder, ElementFinder} from 'protractor'
+import {ElementArrayFinder, ElementFinder} from 'protractor'
 import {promise} from 'selenium-webdriver'
 import Promise = promise.Promise
 import {TestWait} from './wait'
@@ -8,6 +8,7 @@ export class TestAssertions {
   private wait = new TestWait()
   private topicSections = new TopicsSections()
 
+  //FIXME: fix the turtles all the way down
   tagsMatch(selectedTopic: Promise<string>, expectedTopic: ElementArrayFinder) {
     let topics = []
     selectedTopic.then(topic => {
@@ -26,8 +27,8 @@ export class TestAssertions {
     })
   }
 
-  elementIsContainingText(element: ElementFinder, text: string) {
-    expect(element.getText()).toEqual(text, 'Element doesn\'t contain text: ' + text)
+  elementIsContainingText(element: ElementFinder, expectedText: Promise<string>) {
+    expect(element.getText()).toEqual(expectedText, 'Element doesn\'t contain text: ' + expectedText)
   }
 
   saveNotificationAppears(saveElement: ElementFinder) {
