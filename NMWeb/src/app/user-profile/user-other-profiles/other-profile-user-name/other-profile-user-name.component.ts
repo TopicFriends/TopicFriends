@@ -23,13 +23,20 @@ export class OtherProfileUserNameComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.applyDataFromFormControl()
     if ( ! this.userProfileInputs.isEditable ) {
-      this.thisFormControl.valueChanges.subscribe(values => {
-        this.userName = this.thisFormControl.value
-        this.urlNoProtocol = this.userName && this.descriptor.urlPrefix + this.userName
-        this.fullUrl = this.userName && ('https://' + this.urlNoProtocol)
+      this.thisFormControl.valueChanges.subscribe(value => {
+        // console.log('OtherProfileUserNameComponent, in subscribe value', value)
+        this.applyDataFromFormControl()
       })
     }
   }
 
+  private applyDataFromFormControl() {
+    if ( this.thisFormControl.value ) {
+      this.userName = this.thisFormControl.value
+      this.urlNoProtocol = this.userName && this.descriptor.urlPrefix + this.userName
+      this.fullUrl = this.userName && ('https://' + this.urlNoProtocol)
+    }
+  }
 }
