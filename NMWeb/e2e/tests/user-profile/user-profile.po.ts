@@ -11,7 +11,7 @@ export class UserProfilePage {
   userProfileSelector                      = 'app-user-profile'
   userProfile: ElementFinder               = $(this.userProfileSelector)
   userProfileBasicInfo: ElementFinder      = $('app-user-profile-basic-info')
-  userProfileDescription: ElementFinder    = $('textarea[id="md-input-3"]')
+  userProfileDescription: ElementFinder    = $('textarea[id="mat-input-3"]')
   userProfileWhatYouExpect: ElementFinder  = $('textarea[formControlName="whatDoYouExpectFromTheApp"]')
 
   pleaseLogInButton: ElementFinder         = $(this.userProfileSelector + ' button')
@@ -23,12 +23,14 @@ export class UserProfilePage {
   saveConfirmationNotification             = element(by.cssContainingText('div.cdk-overlay-container>div',
                                               'Profile sent. Thank you!'))
 
+  acceptPrivacyPolicyCheckbox              = $('input[type="checkbox"]')
 
   navigateTo(): Promise<any> {
     return browser.get('profile')
   }
 
   saveProfileWithKeyboard() {
+    this.acceptPrivacyPolicyCheckbox.click()
     this.userProfileDescription.click()
     this.userProfileBasicInfo.sendKeys(protractor.Key.chord(protractor.Key.CONTROL, 'S'))
   }
