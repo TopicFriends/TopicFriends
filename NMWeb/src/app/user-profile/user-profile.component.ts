@@ -121,13 +121,13 @@ export class UserProfileComponent implements OnInit {
       window.alert('User Profile not editable. Unable to save!')
       return;
     }
-    if (!this.checkPrivacityValue) {
-      this.snackBarComponent.showSnackBar('Privacy must be checked. Unable to save!')
-      return;
-    }
     if ( ! this.hasUnsavedChanges() ) {
-      this.snackBarComponent.showSnackBar('There are no unsaved changes')
+      this.snackBarComponent.showSnackBar('No hay cambios nuevos en tu perfil')
       return
+    }
+    if (!this.checkPrivacityValue) {
+      this.snackBarComponent.showSnackBar('Por favor, marca la casilla, indicando que aceptas nuestra política de privacidad.')
+      return;
     }
     // FIXME this.userProfile.displayName = this.displayName.value;
 
