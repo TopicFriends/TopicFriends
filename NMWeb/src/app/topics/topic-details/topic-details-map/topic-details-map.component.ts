@@ -27,13 +27,17 @@ export class TopicDetailsMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.icon = {
-      url: this.tagEntry.logo,
-      scaledSize: {
-        //Hardcoded for Angular ratio
-        width: 37.64,
-        height: 40
+    let icon_url = this.tagEntry.logo;
+    if(icon_url) {
+      this.icon = {
+        url: icon_url,
+        scaledSize: {
+          //Hardcoded for Angular ratio
+          width: 37.64,
+          height: 40
+        }
       }
+
     }
 
     this.geoLocationService.getPosition().subscribe(
