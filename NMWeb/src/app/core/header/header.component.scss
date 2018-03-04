@@ -1,3 +1,5 @@
+$tool-bar-height: 5vh;
+
 .tf-icon {
   height: 4vh;
 }
@@ -21,7 +23,7 @@
 }
 
 .mat-toolbar {
-    height: 5vh;
+    height: $tool-bar-height;
     user-select: none;
     //background: rgba(255, 255, 255, 0.75);
     background: rgba(0,0,0, 1);

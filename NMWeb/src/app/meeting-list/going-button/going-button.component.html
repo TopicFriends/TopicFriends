@@ -10,18 +10,18 @@
                          class="mat-progress-spinner"></mat-progress-spinner>
   </button>
 
-  <button mat-raised-button style="background-color: mediumseagreen; color: white" (click)="updateUserMeetingAttendance(false)"
+  <button class="tf-going-button" mat-raised-button (click)="updateUserMeetingAttendance(false)"
           *ngIf="meetingAttendanceByUser?.going === true">I'm going
-    <i class="ion-checkmark-circled going-button-icon"></i>
+    <i class="ion-checkmark-circled tf-icon"></i>
   </button>
 
-  <button mat-raised-button (click)="updateUserMeetingAttendance(true)"
+  <button class="tf-question-button" mat-raised-button (click)="updateUserMeetingAttendance(true)"
           *ngIf="meetingAttendanceByUser?.going === undefined">Are you going
-    <i class="ion-help-circled going-button-icon"></i>
+    <i class="ion-help-circled tf-icon"></i>
   </button>
 
-  <button mat-raised-button style="background-color: indianred" (click)="updateUserMeetingAttendance(true)"
+  <button class ="tf-not-going-button" mat-raised-button (click)="updateUserMeetingAttendance(true)"
           *ngIf="meetingAttendanceByUser?.going === false">I'm not going
-    <i class="ion-close-round going-button-icon"></i>
+    <i class="ion-close-round  tf-icon"></i>
   </button>
 </ng-template>

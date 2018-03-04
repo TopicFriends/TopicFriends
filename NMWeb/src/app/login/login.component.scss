@@ -1,3 +1,14 @@
+$icon-size: 80px;
+$icon-margin: 3em;
+.tf-login-container {
+  margin-top: 12px;
+}
+
+.tf-login-icon {
+  height: $icon-size;
+  width: $icon-size;
+  margin-right: 3em;
+}
 button {
   //padding: 15px;
   width: 100%;
