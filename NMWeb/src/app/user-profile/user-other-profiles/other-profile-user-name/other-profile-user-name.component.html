@@ -12,7 +12,9 @@
       </span>
     </mat-placeholder>
     <span matPrefix>
-      <i class="icon {{descriptor.iconClass}}"></i>
+      <app-user-other-profile-icon
+        [descriptor]="descriptor"
+      ></app-user-other-profile-icon>
       &nbsp;
       {{descriptor.urlPrefix}}
     </span>
@@ -30,7 +32,9 @@
     <span
       class="other-profile-icon-container"
     >
-      <i class="icon {{descriptor.iconClass}}"></i>
+      <app-user-other-profile-icon
+        [descriptor]="descriptor"
+      ></app-user-other-profile-icon>
     </span>
     <a
       *ngIf="fullUrl"

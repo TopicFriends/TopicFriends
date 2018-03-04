@@ -19,7 +19,8 @@ export class UserOtherProfileDescriptor {
   websiteName: string
   urlPrefix: string
   whatIsEnough?: string
-  iconClass: string
+  iconClass?: string
+  iconImg?: string
   id?: string
 
   constructor(initFrom: UserOtherProfileDescriptor) {
@@ -70,7 +71,7 @@ export class UserOtherProfilesComponent implements OnInit {
     stackOverflow: new UserOtherProfileDescriptor({
       websiteName: 'StackOverflow',
       urlPrefix: 'stackoverflow.com/users/',
-      iconClass: null,
+      iconImg: 'assets/images/logos/stackoverflow-black.svg',
       whatIsEnough: 'user id and name are'
     }),
   }
