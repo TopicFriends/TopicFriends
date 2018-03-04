@@ -55,7 +55,7 @@ export class UserProfileComponent implements OnInit {
 
   /* Rename to rootFormGroup */
   formGroup: FormGroup
-
+  isFirstTime: boolean;
   userProfileBasicInfoFormGroup: FormGroup
   userInterestsFormGroup: FormGroup
   userSkillsFormGroup: FormGroup
@@ -113,7 +113,9 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     console.log('UserProfileComponent ngOnInit')
-    this.checkPrivacityValue = false
+    let privacityValue = localStorage.getItem('privacity');
+    this.checkPrivacityValue = (privacityValue == 'Accepted');
+    this.isFirstTime = (!privacityValue);
   }
 
   save() {
@@ -138,7 +140,8 @@ export class UserProfileComponent implements OnInit {
     const userGeoLocations = this.userGeoLocations.getValue()
     const userDescriptions = this.userDescriptions.getValue()
     console.log('userGeoLocations', userGeoLocations)
-    console.log('save()', userInterests)
+    console.log('save()', userInterests);
+    (this.isFirstTime) ? localStorage.setItem('privacity', 'Accepted') : false;
     // this.userProfileObservable =
     this.userProfileService.saveUserProfile(
       userProfile,

@@ -74,10 +74,12 @@
   </label>
 
 </form>
+
   <p
     *ngIf="userProfileInputs.isEditable"
   >
     <button
+      #saveProfileButton
       id="saveProfile"
       style="
         width:100%
@@ -91,6 +93,10 @@
       Save <i>(Cmd/Ctrl+S)</i>
     </button>
   </p>
+
+  <!--<button mat-icon-button *ngIf="hasUnsavedChanges()" color="primary">-->
+    <!--<mat-icon (click)="saveProfileButton.click()">save</mat-icon>-->
+  <!--</button>-->
 
 </ng-template>
 
