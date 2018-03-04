@@ -28,16 +28,64 @@ export class TopicDetailsMapComponent implements OnInit {
 
   ngOnInit() {
     let icon_url = this.tagEntry.logo;
+    let showLogo = true;
+    console.log(icon_url);
     if(icon_url) {
-      this.icon = {
-        url: icon_url,
-        scaledSize: {
-          //Hardcoded for Angular ratio
-          width: 37.64,
-          height: 40
-        }
+      let width, height;
+      //Hardcoded values
+      switch(this.topicId) {
+        case 'Angular':
+          width = 37.64
+          height = 40
+          break;
+
+        case 'NodeJS':
+          width = 48.91
+          height = 30
+          break;
+
+
+        case 'HTML5':
+          width = 30
+          height = 42.3
+          break;
+
+        case 'JavaScript':
+          width = 35
+          height = 35
+          break;
+
+        case 'ECMAScript':
+          width = 35
+          height = 35
+          break;
+
+
+        case 'Firebase':
+          width = 29.17
+          height = 40
+          break;
+
+        case 'TypeScript':
+          width = 35
+          height = 35
+          break;
+
+        default:
+          showLogo = false;
+          width = height = 40;
+          break;
       }
 
+      if(showLogo) {
+        this.icon = {
+          url: icon_url,
+          scaledSize: {
+            width: width,
+            height: height
+          }
+        }
+      }
     }
 
     this.geoLocationService.getPosition().subscribe(

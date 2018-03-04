@@ -49,7 +49,7 @@
 
 
     <app-user-skills
-      *ngIf="showUserSkillsSection"
+      [ngClass]="{hidden: ! showUserSkillsSection}"
       [userProfileInputs]="userProfileInputs"
       #userSkills
       [parentFormGroup]="formGroup"
