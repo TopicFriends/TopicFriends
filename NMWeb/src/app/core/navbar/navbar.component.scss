@@ -68,3 +68,25 @@
         transform: translateX(-50%) translateY(-50%);
     }
 }
+
+.footer-mobile{
+font-size: 0.7em;
+margin: 0px;
+background-color: grey;
+height: 3vh;
+align-items: center;
+
+
+a{
+    text-decoration: none;
+    color: #ffff;
+    margin-left: .4rem;
+    
+ }
+
+span{  
+    margin-left: .4rem;
+    color: #ffff;
+  
+ }
+}

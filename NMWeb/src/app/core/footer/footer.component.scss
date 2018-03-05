@@ -3,14 +3,16 @@ $max-screen-width: 600px;
 $facebook-color:#3b5998;
 $medium-color:#1c9963;
 
+
 footer{
-  background-color: black;
+  background-color: rgba(0,0,0, 1);
   color: #ffff;
   font-size: .9em;
   height: $footer-height;
   padding: 0;
   margin:0;
   display: flex;
+  box-shadow:  0 -6px 10px 0 rgba(0,0,0,.14);
   @media screen and (max-width: $max-screen-width){
     display: none;
 }
