@@ -35,6 +35,7 @@ import { BasicActionsButtonGroupComponent } from './user-interest-configuration-
 import { SupplyDemandButtonGroupComponent } from './user-interest-configuration-dialog/supply-demand-button-group/supply-demand-button-group.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {TopicLogoComponent} from "../topic-logo/topic-logo.component";
+import { UserOtherProfileIconComponent } from './user-other-profiles/user-other-profile-icon/user-other-profile-icon.component';
 
 export const USER_PROFILE_ID_PARAM_NO_COLON = 'userId'
 
@@ -115,6 +116,9 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     TopicGroupSupplyDemandCardComponent,
     TextAreaComponent,
     OtherProfileUserNameComponent,
+    UserOtherProfileIconComponent
+    /* stuff like this should go to different modules user-profile-details vs user-profile[-shared] when I split it */
+    ,
     UserWebsiteComponent,
     CreateTopicComponent,
     UserSkillsComponent,
@@ -128,6 +132,7 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     BasicActionsButtonGroupComponent,
     SupplyDemandButtonGroupComponent,
     TopicLogoComponent,
+    UserOtherProfileIconComponent,
   ],
   providers: [
     CanDeactivateUserProfileGuard,
