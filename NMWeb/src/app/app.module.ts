@@ -24,7 +24,7 @@ import {UserProfileModule} from './user-profile/user-profile.module'
 import {CoreModule} from 'app/core/core.module';
 import {SharedModule} from './shared/shared.module';
 // import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
-import { TopicsAllComponent } from './topics-all/topics-all.component';
+import { TopicsListComponent } from './topics-list/topics-list.component';
 import {MapsModule} from './maps/maps.module'
 import { AboutComponent } from './about/about.component';
 
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'topics',
-    component: TopicsAllComponent,
+    component: TopicsListComponent,
   },
   {
     path: 'groups',
@@ -91,7 +91,7 @@ const appRoutes: Routes = [
     LoginComponent,
     // UserTemplateComponent,
     // UserInterestsModeViewComponent,
-    TopicsAllComponent,
+    TopicsListComponent,
     AboutComponent,
     UserGroupsComponent,
     TermsOfServiceComponent,

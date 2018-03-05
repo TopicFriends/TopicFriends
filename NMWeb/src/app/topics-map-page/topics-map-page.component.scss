@@ -1,0 +1,24 @@
+$map-desktop-height: 90.3vh;
+$map-desktop-width: calc(100% - 33px);
+
+$map-mobile-height:calc(100% - 52px);
+$map-mobile-width: 100%;
+
+
+agm-map {
+  position: absolute;
+  height: $map-desktop-height;
+  margin-top: -12px;
+  margin-left: -12px;
+  width: $map-desktop-width;
+}
+
+
+@media only screen and (max-width: 600px) {
+  agm-map {
+    margin-top: -5px;
+    margin-left: -5px;
+    width: $map-mobile-width;
+    height: $map-mobile-height;
+  }
+}

@@ -6,11 +6,11 @@ import {createTopicsDictionary} from '../user-profile/user-profile.service'
 import {TagEntry} from '../user-profile/tag-entry'
 
 @Component({
-  selector: 'app-topics-all',
-  templateUrl: './topics-all.component.html',
-  styleUrls: ['./topics-all.component.scss']
+  selector: 'app-topics-list',
+  templateUrl: './topics-list.component.html',
+  styleUrls: ['./topics-list.component.scss']
 })
-export class TopicsAllComponent implements OnInit {
+export class TopicsListComponent implements OnInit {
 
   allTopicsArray: TagEntry[]
   allTopics: TagInclusions
