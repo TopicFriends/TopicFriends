@@ -3,11 +3,11 @@
 }
 
 .editable-map {
-  height: 250px;
+  height: 400px;
 }
 
 .non-editable-map {
-  height: 300px;
+  height: 400px;
 }
 
 #searchInputFieldContainer {
@@ -26,15 +26,19 @@
 $names: #fff;
 
 agm-map {
-  height: 700px;
   width: 100%;
-  text-shadow:
-    2px 2px 3px $names,
-    -1px -1px 3px $names,
-    1px -1px 3px $names,
-    -1px 1px 3px $names,
-    1px 1px 3px $names;
   font-size: large;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .editable-map {
+    height: 350px;
+  }
+
+  .non-editable-map {
+    height: 450px;
+  }
 }
 
 

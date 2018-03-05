@@ -59,7 +59,7 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
       geoLocationString: this.latitudeLongitudeControl.nativeElement.value
     }
     let dialogRef = this.dialog.open(UserPickLocationComponent, {
-      height: '470px',
+      height: '620px',
       width: '90%',
       data: dialogParams
     }).afterClosed().subscribe(returnVal => {
