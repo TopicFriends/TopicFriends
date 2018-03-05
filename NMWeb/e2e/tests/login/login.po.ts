@@ -17,7 +17,7 @@ export class LoginPage {
 
   private defaultSleep = 1000
 
-  private readonly menuButtonSelector = 'md-toolbar button'
+  private readonly menuButtonSelector = 'mat-toolbar button'
 
   readonly userEmail    = 'peoplematchertest@gmail.com'
   readonly userPassword = '@ngul@rAppT3st!n'

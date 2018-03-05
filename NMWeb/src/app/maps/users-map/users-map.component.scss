@@ -1,8 +1,15 @@
 //$names: #ff9535;
 //$names: #ffff0c;
 $names: #fff;
-
 $blur-radius: 1px;
+
+$map-desktop-height: 90.3vh;
+$map-desktop-width: calc(100% - 33px);
+
+$map-mobile-height:calc(100% - 52px);
+$map-mobile-width: 100%;
+
+$distance-slicer-width: 300px;
 
 :host {
   height: 100%;
@@ -16,7 +23,7 @@ $blur-radius: 1px;
   margin-left: 6px;
   padding: 5px;
   border-radius: 5px;
-  background: rgba($color: #111111, $alpha: 0.2);
+  background: rgba($color: #111111, $alpha: 0.5);
   text-shadow:
     -1px 0 $blur-radius $names,
     0 1px $blur-radius $names,
@@ -27,10 +34,10 @@ $blur-radius: 1px;
 
 agm-map {
   position: absolute;
-  height: 94vh;
+  height: $map-desktop-height;
   margin-top: -12px;
   margin-left: -12px;
-  width: calc(100% - 33px);
+  width: $map-desktop-width;
   text-shadow:
     -1px 0 $blur-radius $names,
     0 1px $blur-radius $names,
@@ -41,14 +48,14 @@ agm-map {
 
 
 mat-slider {
-  width: 300px;
+  width: $distance-slicer-width;
 }
 
 @media only screen and (max-width: 600px) {
   agm-map {
     margin-top: -5px;
     margin-left: -5px;
-    width: 100%;
-    height: calc(100% - 52px);
+    width: $map-mobile-width;
+    height: $map-mobile-height;
   }
 }

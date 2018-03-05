@@ -52,14 +52,14 @@ export class GeoLocation {
     public latitude: number,
     public longitude: number,
     public title?: Observable<string>,
-    public id?: string,
+    public userId?: string,
     public matchResults?: Observable<MatchResults>,
   ) {
     if ( this.title === undefined ) {
       this.title = null; // for firebase
     }
-    if ( this.id === undefined ) {
-      this.id = null; // for firebase
+    if ( this.userId === undefined ) {
+      this.userId = null; // for firebase
     }
     if ( this.matchResults === undefined ) {
       this.matchResults = null; // for firebase
@@ -83,7 +83,7 @@ export class GeoLocation {
       it.latitude,
       it.longitude,
       it.title,
-      it.id,
+      it.userId,
       it.matchResults
     )
   }
@@ -117,6 +117,54 @@ export class GeoLocations {
 
 export class UserGeoLocations {
   geoLocations: GeoLocations
+
+  static appendUserGeoLocations(userLocation: UserGeoLocations, allUsersGeoLocationsFlattened: GeoLocation[]) {
+    if(userLocation && userLocation.geoLocations) {
+      for (let subLocationKey of Object.keys(userLocation.geoLocations)) {
+        const subLocation: GeoLocationsDictionary = userLocation.geoLocations[subLocationKey]
+        // console.log('getAllUserGeoLocations: subLocation', subLocation)
+        for (let subLocationMultiKey of Object.keys(subLocation)) {
+          let subLocationMulti: GeoLocation = subLocation[subLocationMultiKey]
+
+          // console.log('getAllUserGeoLocations: subLocationMulti', subLocationMulti)
+          if (subLocationMulti) {
+            subLocationMulti = GeoLocation.clone(subLocationMulti)
+            let userId = (<any>userLocation).$key
+            subLocationMulti.userId = userId
+            
+            allUsersGeoLocationsFlattened.push(subLocationMulti)
+          }
+        }
+      }
+
+    }
+  }
+
+  /** This will be refactored to use UserMatcherService **/
+  static appendAllGeoLocations(userLocation, allUsersGeoLocationsFlattened: any[], userMatcherService, userProfileService) {
+    if (userLocation && userLocation.geoLocations) {
+      for (let subLocationKey of Object.keys(userLocation.geoLocations)) {
+        const subLocation: GeoLocationsDictionary = userLocation.geoLocations[subLocationKey]
+        // console.log('getAllUserGeoLocations: subLocation', subLocation)
+        for (let subLocationMultiKey of Object.keys(subLocation)) {
+          let subLocationMulti: GeoLocation = subLocation[subLocationMultiKey]
+
+          // console.log('getAllUserGeoLocations: subLocationMulti', subLocationMulti)
+          if (subLocationMulti) {
+            subLocationMulti = GeoLocation.clone(subLocationMulti)
+            let userId = (<any>userLocation).$key
+            subLocationMulti.matchResults = userMatcherService.observeMatchResultsWithAnotherUserByIdOnceLoggedIn(userId)
+            subLocationMulti.title = userProfileService.userDataById(userId).profile.map((it: UserProfile) => {
+              return it.displayName
+            })
+            subLocationMulti.userId = userId
+            allUsersGeoLocationsFlattened.push(subLocationMulti)
+          }
+        }
+      }
+    }
+  }
+
 }
 
 /* Rename to UserBasicInfo(not: too vague: info, like data; I shall avoid vague names) or *UserBasicProfile*

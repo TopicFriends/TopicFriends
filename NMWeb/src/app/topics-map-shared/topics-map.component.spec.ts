@@ -1,25 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TopicsAllComponent } from './topics-all.component';
+import { TopicsMapComponent } from './topics-map.component';
 
-describe('TopicsAllComponent', () => {
-  let component: TopicsAllComponent;
-  let fixture: ComponentFixture<TopicsAllComponent>;
+describe('TopicDetailsMapComponent', () => {
+  let component: TopicsMapComponent;
+  let fixture: ComponentFixture<TopicsMapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopicsAllComponent ]
+      declarations: [ TopicsMapComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TopicsAllComponent);
+    fixture = TestBed.createComponent(TopicsMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  xit('should be created', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

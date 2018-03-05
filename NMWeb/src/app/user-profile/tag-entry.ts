@@ -52,7 +52,7 @@ export class TagEntry {
       .replace(/\./, '_Dot_')
       .replace(/\//, '_Slash_')
     if ( this.id !== name ) {
-      console.log('id mangled from name: ' + this.id)
+      // console.log('id mangled from name: ' + this.id)
     }
     if ( logo === null ) {
       this.logo = null;

@@ -9,7 +9,7 @@ import {MatMenuModule} from '@angular/material';
 import {SharedModule} from '../shared/shared.module'
 import {UserProfileModule} from '../user-profile/user-profile.module'
 import {MeetingsModule} from '../meeting-list/meetings.module'
-import {TopicsModule} from '../topics/topics.module'
+import {TopicDetailsModule} from '../topic-details/topic-details.module'
 import {CapitalizeFirstPipe} from "../shared/pipes/capitalize-first.pipe";
 import {CleanUrlPipe} from "../shared/pipes/clean-url.pipe";
 import { FooterComponent } from './footer/footer.component';
@@ -22,7 +22,7 @@ import { FooterComponent } from './footer/footer.component';
     FlexLayoutModule,
     UserProfileModule,
     MeetingsModule,
-    TopicsModule,
+    TopicDetailsModule,
     MatIconModule,
     MatMenuModule,
     MatButtonModule,

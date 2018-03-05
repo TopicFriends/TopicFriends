@@ -1,0 +1,14 @@
+<agm-map
+  [latitude]="coordinates.latitude"
+  [longitude]="coordinates.longitude"
+  [zoom]="10">
+  <ng-template ngFor let-userLocation [ngForOf]="allUsersGeoLocations">
+    <agm-marker
+      [markerClickable]="true"
+      (markerClick)="onMarkerClick(userLocation)"
+      [latitude]="userLocation.latitude"
+      [longitude]="userLocation.longitude"
+      [iconUrl]="icon"
+    ></agm-marker>
+  </ng-template>
+</agm-map>

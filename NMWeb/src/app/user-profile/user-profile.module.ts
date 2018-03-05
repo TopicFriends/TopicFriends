@@ -37,6 +37,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {TopicLogoComponent} from "../topic-logo/topic-logo.component";
 import {UserOtherProfilesService} from './user-other-profiles.service'
 import {AboutComponent} from '../about/about.component'
+import { UserOtherProfileIconComponent } from './user-other-profiles/user-other-profile-icon/user-other-profile-icon.component';
 
 export const USER_PROFILE_ID_PARAM_NO_COLON = 'userId'
 
@@ -125,6 +126,9 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     TopicGroupSupplyDemandCardComponent,
     TextAreaComponent,
     OtherProfileUserNameComponent,
+    UserOtherProfileIconComponent
+    /* stuff like this should go to different modules user-profile-details vs user-profile[-shared] when I split it */
+    ,
     UserWebsiteComponent,
     CreateTopicComponent,
     UserSkillsComponent,
@@ -138,6 +142,7 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     BasicActionsButtonGroupComponent,
     SupplyDemandButtonGroupComponent,
     TopicLogoComponent,
+    UserOtherProfileIconComponent,
   ],
   providers: [
     CanDeactivateUserProfileGuard,
@@ -152,7 +157,6 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     UserInterestConfigurationDialogComponent,
   ],
   exports: [
-    UserOtherProfilesService,
   ],
   schemas: [
     // CUSTOM_ELEMENTS_SCHEMA

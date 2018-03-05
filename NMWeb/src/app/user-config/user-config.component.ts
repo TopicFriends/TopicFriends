@@ -15,7 +15,12 @@ export class UserConfigComponent implements OnInit {
     {
       name:"show-interest-dialog",
       label: "Show Interest on Topic as a PopUp",
-      description: "Let you change de profile view from scrolling to popover"
+      description: "Let you change the profile view from scrolling to popover"
+    },
+    {
+      name:"show-skills",
+      label: "Show Skill Levels section in user profile",
+      description: "Define your skill levels (have, want) for given topics"
     }
   ];
 

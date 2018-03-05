@@ -2,7 +2,7 @@
   ngClass.xs="navbar-container-mobile"
   ngClass.gt-xs="navbar-container"
   fxLayout="column"
-  fxLayout.xs="row"
+  
 >
 <div
   class="navbar-container-inner"
@@ -80,9 +80,19 @@
   </div>
 
   <div [fxHide.xs]="true" fxFlexOrder="8" fxFlex="1 .4 100%"></div>
+  
+  </div>
+
+  <div fxShow fxHide.gt-xs="true" class="footer-mobile"  fxLayout="row">
+     <a routerLink="/terms" routerLinkActive="active">TÉRMINOS DE USO</a>
+     <span>|</span>
+     <a routerLink="/privacy" routerLinkActive="active">POLÍTICA DE PRIVACIDAD</a>        
+     <span>&copy; 2018 </span>
   </div>
 
 </div>
+
+
 
 <!--
      <nav>

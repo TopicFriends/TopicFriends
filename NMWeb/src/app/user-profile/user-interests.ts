@@ -138,7 +138,13 @@ export class UserInterests {
     return topics1.filter((topic1: TopicInterest) => {
       return topics2.filter((topic2: TopicInterest) => {
           // later use id-s
-          return topic1.tagEntry.name === topic2.tagEntry.name;
+          return (
+            (topic1.tagEntry.id ===
+             topic2.tagEntry.id)
+            ||
+            (topic1.tagEntry.name ===
+             topic2.tagEntry.name)
+          );
         }).length >= 1;
     });
   }
@@ -200,19 +206,21 @@ export class UserInterests {
       this.byInteractionMode.supplyDemand
     if ( allSupplyDemandOfOther && allSupplyDemandOfMe ) {
       for (const interactionModeKey in allSupplyDemandOfOther) {
-        const currentSupplyDemandOfOther: SupplyDemand = allSupplyDemandOfOther[interactionModeKey]; // e.g. mentor
-        const currentSupplyDemandOfMe: SupplyDemand = allSupplyDemandOfMe[interactionModeKey];
-        // currentSupplyDemandOfOther.supply.
-        // getTopicMatchesWithinInteractionMode
-        // const ourTopics = WantedTopics.extractTags(ourSupplyDemand);
+        if(allSupplyDemandOfOther.hasOwnProperty(interactionModeKey)) {
+          const currentSupplyDemandOfOther: SupplyDemand = allSupplyDemandOfOther[interactionModeKey]; // e.g. mentor
+          const currentSupplyDemandOfMe: SupplyDemand = allSupplyDemandOfMe[interactionModeKey];
+          // currentSupplyDemandOfOther.supply.
+          // getTopicMatchesWithinInteractionMode
+          // const ourTopics = WantedTopics.extractTags(ourSupplyDemand);
 
-        // if ( ourTopics ) {
+          // if ( ourTopics ) {
           // for (const topicInclusionId in supplyDemandPerMode) {
           // supplyDemandPerMode[topicInclusionId];
           // matchScore += UserInterests.getTopicMatchesWithinInteractionMode().length;
           // }
           // supplyDemandOfOther2.name;
-        // }
+          // }
+        }
       }
     }
     return {
@@ -232,6 +240,26 @@ export class UserInterests {
 
   public static fromJson(initFrom: UserInterests) {
     return new UserInterests(initFrom);
+  }
+
+  public static hasTopicId(interests: UserInterests, topicId: string) {
+    let topicInclusions: TagInclusions =
+      interests &&
+      interests.byInteractionMode &&
+      interests.byInteractionMode.symmetric &&
+      interests.byInteractionMode.symmetric.exchange &&
+      interests.byInteractionMode.symmetric.exchange.topics;
+
+    if(topicInclusions) {
+      for(let key in topicInclusions) {
+        if(topicInclusions.hasOwnProperty(key)) {
+          if(topicInclusions[key].tagEntry.id === topicId) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
 
   constructor(initFrom: UserInterests) {

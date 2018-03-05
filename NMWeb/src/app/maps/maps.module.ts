@@ -8,6 +8,7 @@ import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatIconModule, MatI
 import {SharedModule} from '../shared/shared.module'
 import {FlexLayoutModule} from '@angular/flex-layout'
 import {FormsModule} from '@angular/forms';
+import {MapsSharedModule} from '../maps-shared/maps-shared.module'
 
 
 const mapsRoutes: Routes = [
@@ -18,13 +19,7 @@ const mapsRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(mapsRoutes),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB8eJ4NjIFWy0tABOEasmykdAj8e7aenL0',
-      libraries: [
-        "places",
-        "geometry"
-      ]
-    }),
+    MapsSharedModule,
     SharedModule,
     MatButtonModule,
     FlexLayoutModule,

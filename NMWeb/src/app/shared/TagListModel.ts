@@ -44,7 +44,11 @@ export class TagListModel {
 
   tagExists(option: TagEntry) {
     return this.tags.some((tag) => {
-      return tag.tagEntry.name.toLowerCase() === option.name.toLowerCase()
+      return (
+        tag.tagEntry.name.toLowerCase() === option.name.toLowerCase()
+        ||
+        tag.tagEntry.id === option.id
+      )
     });
   }
 

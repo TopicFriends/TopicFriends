@@ -221,7 +221,9 @@ export class TopicsService {
     tag('Vue.js', 'vue'),
     tag('Linux', 'tux'), tag('Debian Linux', 'debian'), tag('Ubuntu Linux', 'ubuntu') , tag('SUSE Linux', 'suse'),
     tag('RedHat Linux', 'redhat'),
-    tag('Fedora Linux' /* Officially just "Fedora", but better for filtering*/, 'fedora'), tagLogoTipo('CentOS Linux', 'centos'),
+    tag('Fedora Linux' /* Officially just "Fedora", but better for filtering*/, 'fedora'),
+    tagNoIcon('Fedora' /* Just for compatibility with older data that I (Karol) have in firebase */),
+    tagLogoTipo('CentOS Linux', 'centos'),
     tagNoIcon('Gentoo Linux'), tag('Arch Linux', 'archlinux'),
     'FreeBSD',
     'Redis', 'CouchBase', 'CouchDB', tagLogoTipo('MongoDB'), 'Memcached',
@@ -249,6 +251,7 @@ export class TopicsService {
     'Capistrano', 'Chef', 'Puppet',
     'Clojure',  'CoffeeScript', /* TODO ClojureScript */
     'Electron',
+    tagNoIcon('MyBatis'),
     'Gradle', 'Grails',
     'Neo4j', 'Hadoop',
     tagLogoTipo('OpenGL'), 'Unity',
@@ -513,6 +516,7 @@ export class TopicsService {
     tagNoIcon('Affinity Designer'),
     tagNoIcon('Psychology'),
     tagNoIcon('StackBlitz'),
+    tagNoIcon('Java Server Faces (JSF)'),
     tag('Dexie.js', 'dexie-js'),
     'Aurelia',
     'Marionette',
@@ -527,9 +531,16 @@ export class TopicsService {
     return retTopicsArray
   }
 
-  getTopicById(topicId: string, topicsArray?: TagEntry[]): TagEntry {
+  getTopicById(topicIdOrName: string, topicsArray?: TagEntry[]): TagEntry {
     topicsArray = topicsArray || this.topics
-    const retVal = topicsArray.find(it => it.id === topicId)
+    let retVal = topicsArray.find((it: TagEntry) => it.id === topicIdOrName)
+    if ( ! retVal ) {
+      retVal = topicsArray.find((it: TagEntry) => it.name === topicIdOrName)
+    }
+    if ( ! retVal ) {
+      // console.error('getTopicById failed for topicIdOrName', topicIdOrName)
+      // console.log(topicsArray)
+    }
     // console.log('getTopicById', topicId, retVal)
     return retVal
   }

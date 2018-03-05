@@ -1,74 +1,76 @@
+$footer-height: 5vh;
+$max-screen-width: 600px;
+$facebook-color:#3b5998;
+$medium-color:#1c9963;
 
 
-
-footer{  
-  background-color: black;
+footer{
+  background-color: rgba(0,0,0, 1);
   color: #ffff;
-  font-size: .7rem;
-  height: 5vh;
-  padding: 0; 
+  font-size: .9em;
+  height: $footer-height;
+  padding: 0;
   margin:0;
   display: flex;
-  @media screen and (max-width: 600px){
+  box-shadow:  0 -6px 10px 0 rgba(0,0,0,.14);
+  @media screen and (max-width: $max-screen-width){
     display: none;
 }
-  
+
 }
 
 .legal{
-  width: 50%;
+  width: 65%;
   display: flex;
   align-items: center;
 
-  a,span{
+  a, span{
     text-decoration: none;
-    color: #ffffff; 
-    margin: 0 .5em;    
+    color: #ffffff;
+    margin: 0 .5em;
   }
 }
 
 .contact{
-  width: 50%;
-  display: flex;    
+  width: 35%;
+  display: flex;
 
   .mail{
     flex-grow: 1;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    margin-right: 1em;
+    justify-content: center;
   }
 
   .facebook{
-    background-color: #3b5998;      
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;       
-  }
-
-  .medium{
-    background-color: #1c9963;        
+    background-color: $facebook-color;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    &:hover {
+      background-color: lighten($facebook-color, 20%);
+    }
+  }
+
+  .medium{
+    background-color: $medium-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    &:hover {
+      background-color: lighten($medium-color, 20%);
+    }
   }
 
   a{
     color: #ffffff;
-  }
-
-.facebook:hover{
-    background-color: #000000;
-  }
-
-.medium:hover{
-   background-color: #000000;
+    text-decoration: none;
   }
 
 }
- 
+
 
 
 

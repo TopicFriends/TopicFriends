@@ -46,7 +46,7 @@ export class UserProfileComponent implements OnInit {
 
   /* Rename to rootFormGroup */
   formGroup: FormGroup
-
+  isFirstTime: boolean;
   userProfileBasicInfoFormGroup: FormGroup
   userInterestsFormGroup: FormGroup
   userSkillsFormGroup: FormGroup
@@ -56,6 +56,8 @@ export class UserProfileComponent implements OnInit {
   userProfileInputs: UserProfileInputs
   checkPrivacityValue: boolean
 
+  showUserSkillsSection = false
+
   constructor(
     public userProfileService: UserProfileService,
     public authService: AuthService,
@@ -64,7 +66,11 @@ export class UserProfileComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
   ) {
     console.log('UserProfileComponent constructor')
-    let userIdFromRouter = this.activatedRoute.snapshot.params[USER_PROFILE_ID_PARAM_NO_COLON];
+
+    const userConfig = JSON.parse(localStorage.getItem('userConfig'));
+    this.showUserSkillsSection = userConfig && userConfig['show-skills']
+
+      let userIdFromRouter = this.activatedRoute.snapshot.params[USER_PROFILE_ID_PARAM_NO_COLON];
     if ( userIdFromRouter ) {
       this.userProfileInputs = new UserProfileInputs(userIdFromRouter, false /* Unless we are admin */, true)
     } else {
@@ -98,7 +104,9 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     console.log('UserProfileComponent ngOnInit')
-    this.checkPrivacityValue = false
+    let privacityValue = localStorage.getItem('privacity');
+    this.checkPrivacityValue = (privacityValue == 'Accepted');
+    this.isFirstTime = (!privacityValue);
   }
 
   save() {
@@ -107,11 +115,11 @@ export class UserProfileComponent implements OnInit {
       return;
     }
     if (!this.checkPrivacityValue) {
-      this.snackBarComponent.showSnackBar('Privacy must be checked. Unable to save!')
+      this.snackBarComponent.showSnackBar('Por favor, marca la casilla, indicando que aceptas nuestra política de privacidad.')
       return;
     }
     if ( ! this.hasUnsavedChanges() ) {
-      this.snackBarComponent.showSnackBar('There are no unsaved changes')
+      this.snackBarComponent.showSnackBar('No hay cambios nuevos en tu perfil')
       return
     }
     // FIXME this.userProfile.displayName = this.displayName.value;
@@ -123,7 +131,8 @@ export class UserProfileComponent implements OnInit {
     const userGeoLocations = this.userGeoLocations.getValue()
     const userDescriptions = this.userDescriptions.getValue()
     console.log('userGeoLocations', userGeoLocations)
-    console.log('save()', userInterests)
+    console.log('save()', userInterests);
+    (this.isFirstTime) ? localStorage.setItem('privacity', 'Accepted') : false;
     // this.userProfileObservable =
     this.userProfileService.saveUserProfile(
       userProfile,
@@ -157,7 +166,7 @@ export class UserProfileComponent implements OnInit {
   hasUnsavedChanges() {
     // console.log('hasUnsavedChanges, userProfileInputs:', this.userProfileInputs)
     // return false
-    return this.userProfileInputs && this.userProfileInputs.isEditable && this.formGroup.dirty && this.checkPrivacityValue
+    return this.userProfileInputs && this.userProfileInputs.isEditable && this.formGroup.dirty
   }
 
 }

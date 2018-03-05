@@ -79,13 +79,18 @@ export class UserMatcherService {
     return this.listUsersSortedFiltered(sortUserByLastModified)
   }
 
-  public listUsersSortedFiltered(sortFunc, filterFunc?): Observable<Array<UserMatched>> {
+  public listUsersSortedFiltered(sortFunc, filterFuncBeforeMatching?: (user: UserDataCombined) => boolean): Observable<Array<UserMatched>> {
     return this.userProfileService.observeLoggedUserProfile().switchMap((loggedUserUdc: UserDataCombined) => {
       return this.userListService.listUserDataCombined().map((usersArray: Array<UserDataCombined>) => {
+        if(filterFuncBeforeMatching) {
+          usersArray = usersArray.filter(filterFuncBeforeMatching)
+        }
         const arrayOfMatchResults = usersArray.map((user: UserDataCombined) => {
           return new UserMatched(user, loggedUserUdc)
         })
-        arrayOfMatchResults.sort(sortFunc)
+        if(sortFunc) {
+          arrayOfMatchResults.sort(sortFunc)
+        }
         return arrayOfMatchResults
       })
     })
@@ -102,8 +107,9 @@ export class UserMatcherService {
         return UserInterests.getInterestsMatchWith(loggedUserInterests, otherUserInterests)
       }
       return this.userProfileService.userDataById(userId).interests.map(mapFun)
-
     })
   }
+
+
 
 }

@@ -49,6 +49,7 @@
 
 
     <app-user-skills
+      [ngClass]="{hidden: ! showUserSkillsSection}"
       [userProfileInputs]="userProfileInputs"
       #userSkills
       [parentFormGroup]="formGroup"
@@ -69,14 +70,16 @@
 
   <label for="checkPrivacity" *ngIf="userProfileInputs.isEditable">
     <input class='form-control' type="checkbox" name="checkPrivacity" id="checkPrivacity" [(ngModel)]="checkPrivacityValue">
-    He leido y acepto la <a routerLink="/about" class="privacityLink">Polìtica de Privacidad</a> y tengo 16 años o más.
+    He leido y acepto la <a routerLink="/about" class="privacityLink">Política de Privacidad</a> y tengo 16 años o más.
   </label>
 
 </form>
+
   <p
     *ngIf="userProfileInputs.isEditable"
   >
     <button
+      #saveProfileButton
       id="saveProfile"
       style="
         width:100%
@@ -90,6 +93,10 @@
       Save <i>(Cmd/Ctrl+S)</i>
     </button>
   </p>
+
+  <!--<button mat-icon-button *ngIf="hasUnsavedChanges()" color="primary">-->
+    <!--<mat-icon (click)="saveProfileButton.click()">save</mat-icon>-->
+  <!--</button>-->
 
 </ng-template>
 

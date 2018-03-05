@@ -35,7 +35,7 @@ describe('UserProfile: Supply-demand topics: User', () => {
     let exchange = topicSelection.exchangeSectionSelector
     topicSelection.inputTopic(exchange, topic)
 
-    let selectedTopic = page.selectFirstSuggestedTag(topicSelection.assembleTopicInputLocator(exchange))
+    let selectedTopic = topicSelection.selectFirstSuggestedTag(topicSelection.assembleTopicInputLocator(exchange))
     let expectedTopic = topicSelection.returnSelectedSectionTags(exchange)
 
     support.takeScreenshot(topic)

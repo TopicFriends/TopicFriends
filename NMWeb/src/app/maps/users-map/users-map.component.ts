@@ -19,6 +19,7 @@ export class UserCoords {
   geoCoords: GeoLocation
 }
 
+
 @Component({
   selector: 'app-users-map',
   templateUrl: './users-map.component.html',
@@ -63,32 +64,16 @@ export class UsersMapComponent implements OnInit {
       }
     );
 
-    this.userGeoLocationsService.getAllUserGeoLocations().subscribe(geos => {
+    this.userGeoLocationsService.getAllUserGeoLocations().subscribe((geos: UserGeoLocations[]) => {
       let allUsersGeoLocationsFlattened = []
       if ( geos ) {
         for ( let userLocation of geos ) {
-          if ( userLocation && userLocation.geoLocations) {
-            for ( let subLocationKey of Object.keys(userLocation.geoLocations) ) {
-              const subLocation: GeoLocationsDictionary = userLocation.geoLocations[subLocationKey]
-              // console.log('getAllUserGeoLocations: subLocation', subLocation)
-              for ( let subLocationMultiKey of Object.keys(subLocation) ) {
-                let subLocationMulti: GeoLocation = subLocation[subLocationMultiKey]
-
-                // console.log('getAllUserGeoLocations: subLocationMulti', subLocationMulti)
-                if ( subLocationMulti ) {
-                  subLocationMulti = GeoLocation.clone(subLocationMulti)
-                  let userId = (<any>userLocation).$key
-                  subLocationMulti.matchResults = this.userMatcherService.observeMatchResultsWithAnotherUserByIdOnceLoggedIn(userId)
-                  subLocationMulti.title = this.userProfileService.userDataById(userId).profile.map((it: UserProfile) => {
-                    return it.displayName
-                  })
-                  subLocationMulti.id = userId
-                  allUsersGeoLocationsFlattened.push(subLocationMulti)
-                }
-              }
-            }
-          }
-
+          UserGeoLocations.appendAllGeoLocations(
+            userLocation,
+            allUsersGeoLocationsFlattened,
+            this.userMatcherService,
+            this.userProfileService
+          )
         }
       }
       // console.log('allUsersGeoLocationsFlattened', allUsersGeoLocationsFlattened)
@@ -133,7 +118,7 @@ export class UsersMapComponent implements OnInit {
     // window.alert('Click ' + JSON.stringify(marker))
     console.log('click', marker)
     // window.alert('Click ' + marker)
-    this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.id])
+    this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.userId])
   }
 
   changeShowLabelOverMark() {
