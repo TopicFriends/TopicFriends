@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {SharedModule} from '../shared/shared.module'
-import {TopicDetailsMapComponent} from './topics-map.component'
+import {TopicsMapComponent} from './topics-map.component'
+import {MapsSharedModule} from '../maps-shared/maps-shared.module'
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    MapsSharedModule
   ],
   declarations: [
-    TopicDetailsMapComponent
+    TopicsMapComponent
   ],
   exports: [
-    SharedModule
+    SharedModule,
+    TopicsMapComponent,
   ]
 })
 export class TopicsMapSharedModule { }

@@ -1,11 +1,6 @@
-$map-height: 600px;
-
 agm-map {
-  height: $map-height;
+  height: 100%;
   width: 100%;
-}
-
-agm-marker {
-  width: 10px;
-  size: 20px;
+  margin: 0px;
+  padding: 0px;
 }

@@ -1,27 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {SharedModule} from '../shared/shared.module'
-import {RouterModule, Routes} from '@angular/router'
 import {TopicsMapPageComponent} from './topics-map-page.component'
-
-export const TOPIC_ID_PARAM = 'topicId'
-
-
-const topicsMapRoutes: Routes = [
-  { path: 'topics-map-page/:' + TOPIC_ID_PARAM, component: TopicsMapPageComponent },
-];
+import {TopicsMapPageRoutingModule} from './topics-map-page-routing'
+import {MapsSharedModule} from '../maps-shared/maps-shared.module'
+import {TopicsMapSharedModule} from '../topics-map-shared/topics-map-shared.module'
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(topicsMapRoutes),
+    TopicsMapSharedModule,
+    TopicsMapPageRoutingModule,
   ],
   declarations: [
     TopicsMapPageComponent
   ],
   exports: [
-    SharedModule
+    SharedModule,
+    TopicsMapPageComponent
   ]
 })
 export class TopicsMapPageModule { }

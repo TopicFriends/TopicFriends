@@ -12,11 +12,11 @@ import {USER_ROUTE_WITH_TRAILING_SLASH} from '../user-profile/user-profile.modul
   templateUrl: './topics-map.component.html',
   styleUrls: ['./topics-map.component.scss']
 })
-export class TopicDetailsMapComponent implements OnInit {
+export class TopicsMapComponent implements OnInit {
   @Input() tagEntry: TagEntry;
 
   icon;
-  topicId: string = this.route.snapshot.params[TOPIC_ID_PARAM];
+  topicId: string;
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
   allUsersGeoLocations: GeoLocation[]
   constructor(
@@ -27,6 +27,7 @@ export class TopicDetailsMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.topicId = this.tagEntry.id;
     let icon_url = this.tagEntry.logo;
     let showLogo = true;
     console.log(icon_url);
