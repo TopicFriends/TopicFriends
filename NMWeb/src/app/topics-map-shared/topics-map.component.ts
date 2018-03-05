@@ -1,22 +1,22 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GeoLocation} from '../../../user-profile/user-profile.service'
-import {GeoLocationService} from '../../../shared/geo-location.service'
-import {TopicsDetailsService} from '../../topics-details.service'
-import {TOPIC_ID_PARAM} from '../../topics.module'
+import {GeoLocation} from '../user-profile/user-profile.service'
+import {GeoLocationService} from '../shared/geo-location.service'
+import {TopicsDetailsService} from '../topic-details/topics-details.service'
+import {TOPIC_ID_PARAM} from '../topic-details/topic-details.module'
 import {ActivatedRoute, Router} from '@angular/router'
-import {TagEntry} from '../../../user-profile/tag-entry'
-import {USER_ROUTE_WITH_TRAILING_SLASH} from '../../../user-profile/user-profile.module'
+import {TagEntry} from '../user-profile/tag-entry'
+import {USER_ROUTE_WITH_TRAILING_SLASH} from '../user-profile/user-profile.module'
 
 @Component({
-  selector: 'app-topic-details-map',
-  templateUrl: './topic-details-map.component.html',
-  styleUrls: ['./topic-details-map.component.scss']
+  selector: 'app-topics-map',
+  templateUrl: './topics-map.component.html',
+  styleUrls: ['./topics-map.component.scss']
 })
-export class TopicDetailsMapComponent implements OnInit {
+export class TopicsMapComponent implements OnInit {
   @Input() tagEntry: TagEntry;
 
   icon;
-  topicId: string = this.route.snapshot.params[TOPIC_ID_PARAM];
+  topicId: string;
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
   allUsersGeoLocations: GeoLocation[]
   constructor(
@@ -27,6 +27,7 @@ export class TopicDetailsMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.topicId = this.tagEntry.id;
     let icon_url = this.tagEntry.logo;
     let showLogo = true;
     console.log(icon_url);

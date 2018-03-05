@@ -24,7 +24,7 @@ import {UserProfileModule} from './user-profile/user-profile.module'
 import {CoreModule} from 'app/core/core.module';
 import {SharedModule} from './shared/shared.module';
 // import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
-import { TopicsAllComponent } from './topics-all/topics-all.component';
+import { TopicsListComponent } from './topics-list/topics-list.component';
 import {MapsModule} from './maps/maps.module'
 import { AboutComponent } from './about/about.component';
 
@@ -42,47 +42,10 @@ import {UserGroupService} from './shared/user-group.service'
 import {CookieLawModule} from 'angular2-cookie-law';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component'
+import {routingModule} from './app.routing'
+import {TopicsMapPageModule} from './topics-map-page/topics-map-page.module'
+import {MapsSharedModule} from './maps-shared/maps-shared.module'
 
-const appRoutes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'profile',
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'people-list',
-    component: UserListComponent,
-  },
-  {
-    path: 'topics',
-    component: TopicsAllComponent,
-  },
-  {
-    path: 'groups',
-    component: UserGroupsComponent,
-  },
-  {
-    path: 'about',
-    component: AboutComponent,
-  },
-  {
-    path: 'terms',
-    component: TermsOfServiceComponent,
-  },
-  {
-    path: 'privacy',
-    component: PrivacyPolicyComponent,
-  },
-  {
-    path: '**',
-    redirectTo: '',
-  },
-
-];
 
 @NgModule({
   declarations: [
@@ -91,7 +54,7 @@ const appRoutes: Routes = [
     LoginComponent,
     // UserTemplateComponent,
     // UserInterestsModeViewComponent,
-    TopicsAllComponent,
+    TopicsListComponent,
     AboutComponent,
     UserGroupsComponent,
     TermsOfServiceComponent,
@@ -101,12 +64,14 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
+    routingModule,
     SharedModule,
     MeetingsModule,
     UserProfileModule,
     MapsModule,
+    MapsSharedModule,
+    TopicsMapPageModule,
     // ----
-    RouterModule.forRoot(appRoutes),
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,

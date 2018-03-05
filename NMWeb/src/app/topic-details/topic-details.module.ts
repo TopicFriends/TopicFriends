@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {SharedModule} from '../shared/shared.module'
 import {RouterModule, Routes} from '@angular/router';
-import { TopicDetailsComponent } from './topic-details/topic-details.component'
+import { TopicDetailsComponent } from './topic-details.component'
 import {MatChipsModule} from '@angular/material'
-import { MapsModule } from '../maps/maps.module';
 import {TopicsDetailsService} from './topics-details.service';
-import { TopicDetailsMapComponent } from './topic-details/topic-details-map/topic-details-map.component'
+import { TopicsMapComponent } from '../topics-map-shared/topics-map.component'
+import {TopicsMapSharedModule} from '../topics-map-shared/topics-map-shared.module'
+import {MapsSharedModule} from '../maps-shared/maps-shared.module'
 
 
 export const TOPIC_ID_PARAM = 'topicId'
@@ -22,14 +23,13 @@ const topicsRoutes: Routes = [
     SharedModule,
     RouterModule.forChild(topicsRoutes),
     MatChipsModule,
-    MapsModule
+    TopicsMapSharedModule,
   ],
   declarations: [
     TopicDetailsComponent,
-    TopicDetailsMapComponent,
   ],
   providers: [
     TopicsDetailsService
   ]
 })
-export class TopicsModule { }
+export class TopicDetailsModule { }

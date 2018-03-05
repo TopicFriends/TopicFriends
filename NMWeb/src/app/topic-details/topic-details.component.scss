@@ -1,4 +1,5 @@
 $img-size: 38px;
+$map-height: 600px;
 
 .url-icon {
   height: $img-size;
@@ -9,4 +10,9 @@ $img-size: 38px;
 
 iframe {
   vertical-align: middle
+}
+
+app-topics-map {
+  height: $map-height;
+  display: block;
 }

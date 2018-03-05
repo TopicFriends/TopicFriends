@@ -26,6 +26,7 @@ import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import { CleanUrlPipe } from './pipes/clean-url.pipe'
 import {UserSkillsService} from './user-skills.service'
 import {UserTermsOfServiceService} from './user-terms-of-service.service'
+import {MapsSharedModule} from '../maps-shared/maps-shared.module'
 
 @NgModule({
   imports: [
@@ -67,7 +68,7 @@ import {UserTermsOfServiceService} from './user-terms-of-service.service'
     DistancePipe,
     MatTabsModule,
     MatProgressSpinnerModule,
-    Angular2FontawesomeModule
+    Angular2FontawesomeModule,
   ],
   providers: [
     SnackBarComponent,
