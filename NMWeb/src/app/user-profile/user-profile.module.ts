@@ -36,6 +36,7 @@ import { SupplyDemandButtonGroupComponent } from './user-interest-configuration-
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {TopicLogoComponent} from "../topic-logo/topic-logo.component";
 import { UserOtherProfileIconComponent } from './user-other-profiles/user-other-profile-icon/user-other-profile-icon.component';
+import {UserConfigService} from "../shared/user-config.service";
 
 export const USER_PROFILE_ID_PARAM_NO_COLON = 'userId'
 
@@ -136,6 +137,7 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
   ],
   providers: [
     CanDeactivateUserProfileGuard,
+    UserConfigService
     // {
     //   provide: RouteReuseStrategy,
     //   useClass: CustomRouteReuseStrategy

@@ -13,6 +13,7 @@ import {UserDescriptionsComponent} from './user-descriptions/user-descriptions.c
 import {ActivatedRoute, ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot} from '@angular/router'
 import {USER_PROFILE_ID_PARAM_NO_COLON} from './user-profile.module'
 import {UserSkillsComponent} from './user-skills/user-skills.component'
+import {UserConfigService} from "../shared/user-config.service";
 
 export class CanDeactivateUserProfileGuard implements CanDeactivate<UserProfileComponent> {
 
@@ -73,6 +74,7 @@ export class UserProfileComponent implements OnInit {
     public snackBarComponent: SnackBarComponent,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
+    private userConfigService: UserConfigService
   ) {
     console.log('UserProfileComponent constructor')
 
@@ -113,7 +115,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     console.log('UserProfileComponent ngOnInit')
-    let privacityValue = localStorage.getItem('privacity');
+    let privacityValue = this.userConfigService.getPrivacityValue();
     this.checkPrivacityValue = (privacityValue == 'Accepted');
     this.isFirstTime = (!privacityValue);
   }
@@ -141,7 +143,7 @@ export class UserProfileComponent implements OnInit {
     const userDescriptions = this.userDescriptions.getValue()
     console.log('userGeoLocations', userGeoLocations)
     console.log('save()', userInterests);
-    (this.isFirstTime) ? localStorage.setItem('privacity', 'Accepted') : false;
+    (this.isFirstTime) ? this.userConfigService.setPrivacityValue('Acceptedgit ') : false;
     // this.userProfileObservable =
     this.userProfileService.saveUserProfile(
       userProfile,
