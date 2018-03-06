@@ -6,6 +6,7 @@ import {TOPIC_ID_PARAM} from '../topic-details/topic-details.module'
 import {ActivatedRoute, Router} from '@angular/router'
 import {TagEntry} from '../user-profile/tag-entry'
 import {USER_ROUTE_WITH_TRAILING_SLASH} from '../user-profile/user-profile.module'
+import {logosScaleFactors} from '../../assets/logos-scale-factors'
 
 @Component({
   selector: 'app-topics-map',
@@ -13,10 +14,9 @@ import {USER_ROUTE_WITH_TRAILING_SLASH} from '../user-profile/user-profile.modul
   styleUrls: ['./topics-map.component.scss']
 })
 export class TopicsMapComponent implements OnInit {
-  @Input() tagEntry: TagEntry;
+  @Input() topic: TagEntry;
 
   icon;
-  topicId: string;
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
   allUsersGeoLocations: GeoLocation[]
   constructor(
@@ -27,67 +27,18 @@ export class TopicsMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.topicId = this.tagEntry.id;
-    let icon_url = this.tagEntry.logo;
-    let showLogo = true;
-    console.log(icon_url);
-    if(icon_url) {
-      let width, height;
-      //Hardcoded values
-      switch(this.topicId) {
-        case 'Angular':
-          width = 37.64
-          height = 40
-          break;
-
-        case 'NodeJS':
-          width = 48.91
-          height = 30
-          break;
-
-
-        case 'HTML5':
-          width = 30
-          height = 42.3
-          break;
-
-        case 'JavaScript':
-          width = 35
-          height = 35
-          break;
-
-        case 'ECMAScript':
-          width = 35
-          height = 35
-          break;
-
-
-        case 'Firebase':
-          width = 29.17
-          height = 40
-          break;
-
-        case 'TypeScript':
-          width = 35
-          height = 35
-          break;
-
-        default:
-          showLogo = false;
-          width = height = 40;
-          break;
-      }
-
-      if(showLogo) {
-        this.icon = {
-          url: icon_url,
-          scaledSize: {
-            width: width,
-            height: height
-          }
+    let icon_url = this.topic.logo;
+    let logoScaleFactors = logosScaleFactors[this.topic.id];
+    if(logoScaleFactors) {
+      this.icon = {
+        url: this.topic.logo,
+        scaledSize: {
+          width: logoScaleFactors.width,
+          height: logoScaleFactors.height
         }
       }
     }
+
 
     /*this.geoLocationService.getPosition().subscribe(
       (pos: Position) => {
@@ -98,7 +49,7 @@ export class TopicsMapComponent implements OnInit {
       }
     );*/
 
-    let matchedUsersWithTopicGeoLocations = this.topicDetailsService.getAllGeoLocationsOfUsersWithTopic(this.topicId);
+    let matchedUsersWithTopicGeoLocations = this.topicDetailsService.getAllGeoLocationsOfUsersWithTopic(this.topic.id);
     matchedUsersWithTopicGeoLocations.subscribe((geoLocations: GeoLocation[]) => {
       this.allUsersGeoLocations = geoLocations;
     })
