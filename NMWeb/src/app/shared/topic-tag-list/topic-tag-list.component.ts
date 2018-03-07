@@ -34,7 +34,8 @@ export class TopicTagListComponent implements OnInit {
   }
   @Input() editable: boolean;
 
-  showLimit = 10;
+  minShow = 10;
+  showLimit = this.minShow;
 
   constructor() { }
 
@@ -50,7 +51,20 @@ export class TopicTagListComponent implements OnInit {
   }
 
 
+  canShowMore() {
+    return this.tagListModel.tags.length > this.showLimit;
+  }
+
+  canShowLess() {
+    return (this.showLimit > this.minShow) && (this.minShow < this.tagListModel.tags.length);
+  }
+
   onShowMoreClick() {
-   this.showLimit = this.tagListModel.tags.length;
+    this.showLimit = this.tagListModel.tags.length;
+  }
+
+
+  onShowLessClick() {
+    this.showLimit = this.minShow;
   }
 }

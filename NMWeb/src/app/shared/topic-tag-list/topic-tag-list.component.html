@@ -11,8 +11,13 @@
     ></app-topic-tag>
   </ng-template>
 
-  <ng-template [ngIf]="showLimit < tagListModel?.tags.length">
+  <ng-template [ngIf]="canShowMore()">
     <a (click)="onShowMoreClick()"> Show more </a>
+  </ng-template>
+
+
+  <ng-template [ngIf]="canShowLess()">
+    <a (click)="onShowLessClick()"> Show less </a>
   </ng-template>
 
 </mat-chip-list>
