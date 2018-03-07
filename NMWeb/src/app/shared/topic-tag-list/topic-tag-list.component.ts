@@ -34,6 +34,7 @@ export class TopicTagListComponent implements OnInit {
   }
   @Input() editable: boolean;
 
+  showLimit = 10;
 
   constructor() { }
 
@@ -49,4 +50,7 @@ export class TopicTagListComponent implements OnInit {
   }
 
 
+  onShowMoreClick() {
+   this.showLimit = this.tagListModel.tags.length;
+  }
 }
