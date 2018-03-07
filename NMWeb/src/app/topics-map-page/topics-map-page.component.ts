@@ -13,8 +13,8 @@ import {TopicsService} from '../shared/topics.service'
 })
 export class TopicsMapPageComponent implements OnInit {
 
-  //topicIds: string[] = this.route.snapshot.params[TOPIC_ID_PARAM].split(',');
-  topicTag: TagEntry = this.topicsService.getTopicById('Angular');
+  topicIds: string[] = this.route.snapshot.params[TOPIC_ID_PARAM].split(',');
+  topics: TagEntry[] = [];
 
   constructor(
     private geoLocationService: GeoLocationService,
@@ -23,6 +23,9 @@ export class TopicsMapPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    for(let topicId of this.topicIds) {
+      this.topics.push(this.topicsService.getTopicById(topicId));
+    }
     //console.log(this.topicIds);
     /*this.geoLocationService.getPosition().subscribe(
    (pos: Position) => {

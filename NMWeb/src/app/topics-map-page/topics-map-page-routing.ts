@@ -6,7 +6,7 @@ export const TOPIC_ID_PARAM = 'topicId'
 
 
 const topicsMapRoutes: Routes = [
-  //{ path: 'topics-map/:' + TOPIC_ID_PARAM, component: TopicsMapPageComponent },
+  { path: 'topics-map/:' + TOPIC_ID_PARAM, component: TopicsMapPageComponent },
 ];
 
 

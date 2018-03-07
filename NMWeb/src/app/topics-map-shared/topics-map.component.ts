@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router'
 import {TagEntry} from '../user-profile/tag-entry'
 import {USER_ROUTE_WITH_TRAILING_SLASH} from '../user-profile/user-profile.module'
 import {logosSizeRatio} from '../../assets/logos-size-ratio'
+import {DbListReadOnly} from '../db.service'
 
 @Component({
   selector: 'app-topics-map',
@@ -14,12 +15,12 @@ import {logosSizeRatio} from '../../assets/logos-size-ratio'
   styleUrls: ['./topics-map.component.scss']
 })
 export class TopicsMapComponent implements OnInit {
-  @Input() topic: TagEntry;
-
+  @Input() topics: TagEntry[];
   icon;
   iconBaseSize = 25;
+  usersGeoLocations = {};
+  topicsIcon = [];
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
-  allUsersGeoLocations: GeoLocation[]
   constructor(
     private route: ActivatedRoute,
     private geoLocationService: GeoLocationService,
@@ -28,41 +29,40 @@ export class TopicsMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(this.topic.logo) {
-      this.getMapTopicIcon();
+    for(let topic of this.topics) {
+      console.log(topic)
+      this.topicsIcon[topic.id] = this.getMapTopicIcon(topic);
+      this.getUsersWithTopicGeoLocations(topic.id).subscribe((geoLocations) => {
+          this.usersGeoLocations[topic.id] = geoLocations
+          console.log(this.usersGeoLocations[topic.id])
+      })
     }
-    /*this.geoLocationService.getPosition().subscribe(
-      (pos: Position) => {
-         this.coordinates = {
-           latitude:  +(pos.coords.latitude.toFixed(5)),
-           longitude: +(pos.coords.longitude.toFixed(5))
-         };
-      }
-    );*/
-
-    let matchedUsersWithTopicGeoLocations = this.topicDetailsService.getAllGeoLocationsOfUsersWithTopic(this.topic.id);
-    matchedUsersWithTopicGeoLocations.subscribe((geoLocations: GeoLocation[]) => {
-      this.allUsersGeoLocations = geoLocations;
-    })
   }
 
-  getMapTopicIcon() {
-    //May be extracted in a component
-    let maxScaleFactor = 100;
-    let icon_url = this.topic.logo;
-    let logoFileName = this.topic.logo.replace(/^.*[\\\/]/, '');
-    let logoSizeRatio = logosSizeRatio[logoFileName];
-    let scaleFactor = this.iconBaseSize / (logoSizeRatio.width * logoSizeRatio.height);
-    scaleFactor = Math.min(scaleFactor, maxScaleFactor);
-    if(logoSizeRatio) {
-      this.icon = {
-        url: this.topic.logo,
-        scaledSize: {
-          width: scaleFactor * logoSizeRatio.width,
-          height: scaleFactor * logoSizeRatio.height
+  getUsersWithTopicGeoLocations(topicId: string) {
+    return this.topicDetailsService.getAllGeoLocationsOfUsersWithTopic(topicId);
+  }
+
+  getMapTopicIcon(topic: TagEntry) {
+    //May be extracted in a service
+    let icon;
+    if(topic.logo) {
+      let maxScaleFactor = 100;
+      let logoFileName = topic.logo.replace(/^.*[\\\/]/, '');
+      let logoSizeRatio = logosSizeRatio[logoFileName];
+      let scaleFactor = this.iconBaseSize / (logoSizeRatio.width * logoSizeRatio.height);
+      scaleFactor = Math.min(scaleFactor, maxScaleFactor);
+      if(logoSizeRatio) {
+        icon = {
+          url: topic.logo,
+          scaledSize: {
+            width: scaleFactor * logoSizeRatio.width,
+            height: scaleFactor * logoSizeRatio.height
+          }
         }
       }
     }
+    return icon;
   }
 
   onMarkerClick(marker: GeoLocation) {
