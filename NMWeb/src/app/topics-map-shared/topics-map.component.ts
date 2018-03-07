@@ -28,7 +28,9 @@ export class TopicsMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getMapTopicIcon();
+    if(this.topic.logo) {
+      this.getMapTopicIcon();
+    }
     /*this.geoLocationService.getPosition().subscribe(
       (pos: Position) => {
          this.coordinates = {
