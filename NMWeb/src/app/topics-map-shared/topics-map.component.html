@@ -1,3 +1,15 @@
+<div class="icons-size">
+  <span>Icons size:</span>
+
+  <mat-slider
+    min="4"
+    max="100"
+    step="2"
+    [(ngModel)]="iconBaseSize"
+    (change)="onIconBaseSizeChange()"
+  ></mat-slider>
+</div>
+
 <agm-map
   [latitude]="coordinates.latitude"
   [longitude]="coordinates.longitude"

@@ -30,11 +30,9 @@ export class TopicsMapComponent implements OnInit {
 
   ngOnInit() {
     for(let topic of this.topics) {
-      console.log(topic)
       this.topicsIcon[topic.id] = this.getMapTopicIcon(topic);
       this.getUsersWithTopicGeoLocations(topic.id).subscribe((geoLocations) => {
           this.usersGeoLocations[topic.id] = geoLocations
-          console.log(this.usersGeoLocations[topic.id])
       })
     }
   }
@@ -47,11 +45,9 @@ export class TopicsMapComponent implements OnInit {
     //May be extracted in a service
     let icon;
     if(topic.logo) {
-      let maxScaleFactor = 100;
       let logoFileName = topic.logo.replace(/^.*[\\\/]/, '');
       let logoSizeRatio = logosSizeRatio[logoFileName];
       let scaleFactor = this.iconBaseSize / (logoSizeRatio.width * logoSizeRatio.height);
-      scaleFactor = Math.min(scaleFactor, maxScaleFactor);
       if(logoSizeRatio) {
         icon = {
           url: topic.logo,
@@ -67,5 +63,11 @@ export class TopicsMapComponent implements OnInit {
 
   onMarkerClick(marker: GeoLocation) {
     this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.userId])
+  }
+
+  onIconBaseSizeChange() {
+    for(let topic of this.topics) {
+      this.topicsIcon[topic.id] = this.getMapTopicIcon(topic);
+    }
   }
 }

@@ -1,4 +1,16 @@
+.icons-size {
+  position: absolute;
+  color: white;
+  z-index: 1;
+  margin: 10px 0px 0px 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  background: rgba($color: #111111, $alpha: 0.5);
+}
+
 agm-map {
+  position: absolute;
   height: 100%;
   width: 100%;
   margin: 0px;
