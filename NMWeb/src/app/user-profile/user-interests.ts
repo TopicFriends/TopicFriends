@@ -243,14 +243,19 @@ export class UserInterests {
   }
 
   public static hasTopicId(interests: UserInterests, topicId: string) {
-    let topicInclusions: TagInclusions =
-      interests &&
+    let topicInclusionsList: TagInclusions[] = [];
+    let symmetricInterests = interests &&
       interests.byInteractionMode &&
-      interests.byInteractionMode.symmetric &&
-      interests.byInteractionMode.symmetric.exchange &&
-      interests.byInteractionMode.symmetric.exchange.topics;
+      interests.byInteractionMode.symmetric;
+      if(symmetricInterests) {
+        for (let interest in symmetricInterests) {
+          if(symmetricInterests.hasOwnProperty(interest)) {
+            topicInclusionsList.push(symmetricInterests[interest].topics);
+          }
+        }
+      }
 
-    if(topicInclusions) {
+    for(let topicInclusions of topicInclusionsList) {
       for(let key in topicInclusions) {
         if(topicInclusions.hasOwnProperty(key)) {
           if(topicInclusions[key].tagEntry.id === topicId) {
