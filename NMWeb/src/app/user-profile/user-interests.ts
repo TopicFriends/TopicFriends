@@ -244,16 +244,35 @@ export class UserInterests {
 
   public static hasTopicId(interests: UserInterests, topicId: string) {
     let topicInclusionsList: TagInclusions[] = [];
+
+    //Check for symmetric interests
     let symmetricInterests = interests &&
       interests.byInteractionMode &&
       interests.byInteractionMode.symmetric;
-      if(symmetricInterests) {
-        for (let interest in symmetricInterests) {
-          if(symmetricInterests.hasOwnProperty(interest)) {
-            topicInclusionsList.push(symmetricInterests[interest].topics);
+    if(symmetricInterests) {
+      for (let interest in symmetricInterests) {
+        if(symmetricInterests.hasOwnProperty(interest)) {
+          topicInclusionsList.push(symmetricInterests[interest].topics);
+        }
+      }
+    }
+
+    //Check for supply/demand interests
+    let supplyDemandInterests = interests &&
+      interests.byInteractionMode &&
+      interests.byInteractionMode.supplyDemand;
+    if(supplyDemandInterests) {
+      for (let interest in supplyDemandInterests) {
+        if(supplyDemandInterests.hasOwnProperty(interest)) {
+          if(supplyDemandInterests[interest].supply) {
+            topicInclusionsList.push(supplyDemandInterests[interest].supply.topics);
+          }
+          if(supplyDemandInterests[interest].demand) {
+            topicInclusionsList.push(supplyDemandInterests[interest].demand.topics);
           }
         }
       }
+    }
 
     for(let topicInclusions of topicInclusionsList) {
       for(let key in topicInclusions) {
@@ -266,6 +285,7 @@ export class UserInterests {
     }
     return false;
   }
+
 
   constructor(initFrom: UserInterests) {
     initFromObject<UserInterests>(this, initFrom);
