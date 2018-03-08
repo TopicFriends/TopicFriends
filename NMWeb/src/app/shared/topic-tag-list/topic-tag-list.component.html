@@ -12,7 +12,7 @@
   </ng-template>
 
   <ng-template [ngIf]="canShowMore()">
-    <a (click)="onShowMoreClick()"> Show more </a>
+    <a (click)="onShowMoreClick()"> Show {{tagListModel?.tags.length - showLimit}} more </a>
   </ng-template>
 
 
