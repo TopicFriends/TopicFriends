@@ -243,38 +243,16 @@ export class UserInterests {
   }
 
   public static hasTopicId(interests: UserInterests, topicId: string) {
-    let topicInclusionsList: TagInclusions[] = [];
+    let tagInclusionsList: TagInclusions[] = [];
 
     //Check for symmetric interests
-    let symmetricInterests = interests &&
-      interests.byInteractionMode &&
-      interests.byInteractionMode.symmetric;
-    if(symmetricInterests) {
-      for (let interest in symmetricInterests) {
-        if(symmetricInterests.hasOwnProperty(interest)) {
-          topicInclusionsList.push(symmetricInterests[interest].topics);
-        }
-      }
-    }
-
+    tagInclusionsList = UserInterests.getSymmetricInterests(interests);
     //Check for supply/demand interests
-    let supplyDemandInterests = interests &&
-      interests.byInteractionMode &&
-      interests.byInteractionMode.supplyDemand;
-    if(supplyDemandInterests) {
-      for (let interest in supplyDemandInterests) {
-        if(supplyDemandInterests.hasOwnProperty(interest)) {
-          if(supplyDemandInterests[interest].supply) {
-            topicInclusionsList.push(supplyDemandInterests[interest].supply.topics);
-          }
-          if(supplyDemandInterests[interest].demand) {
-            topicInclusionsList.push(supplyDemandInterests[interest].demand.topics);
-          }
-        }
-      }
-    }
+    tagInclusionsList = tagInclusionsList.concat(UserInterests.getSupplyInterests(interests));
+    tagInclusionsList = tagInclusionsList.concat(UserInterests.getDemandInterests(interests));
 
-    for(let topicInclusions of topicInclusionsList) {
+    //Check if our topic is in some of those files.
+    for(let topicInclusions of tagInclusionsList) {
       for(let key in topicInclusions) {
         if(topicInclusions.hasOwnProperty(key)) {
           if(topicInclusions[key].tagEntry.id === topicId) {
@@ -286,7 +264,54 @@ export class UserInterests {
     return false;
   }
 
+  static getSymmetricInterests(interests: UserInterests): TagInclusions[] {
+    let tagInclusionsList = []
+    let symmetricInterests = interests &&
+      interests.byInteractionMode &&
+      interests.byInteractionMode.symmetric;
+    if(symmetricInterests) {
+      for (let interest in symmetricInterests) {
+        if(symmetricInterests.hasOwnProperty(interest)) {
+          tagInclusionsList.push(symmetricInterests[interest].topics);
+        }
+      }
+    }
+    return tagInclusionsList;
+  }
 
+  static getSupplyInterests(interests: UserInterests): TagInclusions[] {
+    let tagInclusionsList = []
+    let supplyDemandInterests = interests &&
+      interests.byInteractionMode &&
+      interests.byInteractionMode.supplyDemand;
+    if(supplyDemandInterests) {
+      for (let interest in supplyDemandInterests) {
+        if(supplyDemandInterests.hasOwnProperty(interest)) {
+          if(supplyDemandInterests[interest].supply) {
+            tagInclusionsList.push(supplyDemandInterests[interest].supply.topics);
+          }
+        }
+      }
+    }
+    return tagInclusionsList;
+  }
+
+  static getDemandInterests(interests: UserInterests): TagInclusions[] {
+    let tagInclusionsList = []
+    let supplyDemandInterests = interests &&
+      interests.byInteractionMode &&
+      interests.byInteractionMode.supplyDemand;
+    if(supplyDemandInterests) {
+      for (let interest in supplyDemandInterests) {
+        if(supplyDemandInterests.hasOwnProperty(interest)) {
+          if(supplyDemandInterests[interest].demand) {
+            tagInclusionsList.push(supplyDemandInterests[interest].demand.topics);
+          }
+        }
+      }
+    }
+    return tagInclusionsList;
+  }
   constructor(initFrom: UserInterests) {
     initFromObject<UserInterests>(this, initFrom);
   }
