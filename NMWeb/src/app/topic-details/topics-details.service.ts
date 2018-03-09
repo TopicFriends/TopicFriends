@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {UserListService} from '../user-list/user-list.service'
 import {TagInclusions} from '../shared/TagInclusions'
-import {GeoLocation, GeoLocations, UserDataCombined, UserGeoLocations} from '../user-profile/user-profile.service'
+import {GeoLocation, GeoLocations, UserData, UserDataCombined, UserGeoLocations} from '../user-profile/user-profile.service'
 import { DbListReadOnly} from '../db.service'
 import {UserInterests} from '../user-profile/user-interests'
 import {UserMatched, UserMatcherService} from '../user-matcher.service'
@@ -30,7 +30,7 @@ export class TopicsDetailsService {
     });
   }
 
-  static getAllGeoLocationsOfUsers(usersMatched: UserMatched[]): GeoLocation[] {
+  static getAllGeoLocationsOfUsersMatched(usersMatched: UserMatched[]): GeoLocation[] {
     let flattenedGeoLocations: GeoLocation[] = [];
     for(let userMatched of usersMatched) {
       let userGeoLocations = userMatched.userDataCombined.geoLocations
@@ -39,9 +39,10 @@ export class TopicsDetailsService {
     return flattenedGeoLocations
   }
 
+
   getAllGeoLocationsOfUsersWithTopic(topicId:string): DbListReadOnly<GeoLocation> {
     return this.getMatchedUsersWithTopic(topicId).map((usersMatched: UserMatched[]) => {
-      return TopicsDetailsService.getAllGeoLocationsOfUsers(usersMatched);
+      return TopicsDetailsService.getAllGeoLocationsOfUsersMatched(usersMatched);
     });
   }
 }

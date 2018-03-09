@@ -16,6 +16,8 @@ import { MeetingAttendanceUserListComponent } from './meeting-attendance-user-li
 import {UserTemplateComponent} from '../user-list/user-template/user-template.component';
 import {AppModule} from '../app.module';
 import {SharedModule} from '../shared/shared.module';
+import {MeetingMapComponent} from './meeting-map/meeting-map.component'
+import {MapsSharedModule} from '../maps-shared/maps-shared.module'
 
 const meetingRoutes: Routes = [
   { path: 'meeting-list',  component: MeetingListComponent },
@@ -32,13 +34,15 @@ const meetingRoutes: Routes = [
     RouterModule.forChild(meetingRoutes),
     MatProgressSpinnerModule,
     SharedModule,
+    MapsSharedModule
   ],
   declarations: [
     MeetingListComponent,
     MeetingListItemComponent,
     MeetingDetailsComponent,
     GoingButtonComponent,
-    MeetingAttendanceUserListComponent
+    MeetingAttendanceUserListComponent,
+    MeetingMapComponent
   ],
   exports: [
     RouterModule
