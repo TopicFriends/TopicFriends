@@ -1,28 +1,30 @@
-<div class="icons-size">
-  <span>Icons size:</span>
+<div class="container">
+  <div class="icons-size">
+    <span>Icons size:</span>
+    <mat-slider
+      min="4"
+      max="100"
+      step="2"
+      [(ngModel)]="iconBaseSize"
+      (change)="onIconBaseSizeChange()"
+    ></mat-slider>
+  </div>
 
-  <mat-slider
-    min="4"
-    max="100"
-    step="2"
-    [(ngModel)]="iconBaseSize"
-    (change)="onIconBaseSizeChange()"
-  ></mat-slider>
+  <agm-map
+    [latitude]="coordinates.latitude"
+    [longitude]="coordinates.longitude"
+    [zoom]="10">
+    <ng-template ngFor let-topic [ngForOf]="topics">
+      <ng-template ngFor let-userLocation [ngForOf]="usersGeoLocations[topic.id]">
+        <agm-marker
+          [markerClickable]="true"
+          (markerClick)="onMarkerClick(userLocation)"
+          [latitude]="userLocation.latitude"
+          [longitude]="userLocation.longitude"
+          [iconUrl]="topicsIcon[topic.id]"
+        ></agm-marker>
+      </ng-template>
+    </ng-template>
+  </agm-map>
 </div>
 
-<agm-map
-  [latitude]="coordinates.latitude"
-  [longitude]="coordinates.longitude"
-  [zoom]="10">
-  <ng-template ngFor let-topic [ngForOf]="topics">
-  <ng-template ngFor let-userLocation [ngForOf]="usersGeoLocations[topic.id]">
-   <agm-marker
-       [markerClickable]="true"
-       (markerClick)="onMarkerClick(userLocation)"
-       [latitude]="userLocation.latitude"
-       [longitude]="userLocation.longitude"
-       [iconUrl]="topicsIcon[topic.id]"
-     ></agm-marker>
-    </ng-template>
-  </ng-template>
-</agm-map>
