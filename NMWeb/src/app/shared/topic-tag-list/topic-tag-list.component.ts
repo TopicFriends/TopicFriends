@@ -33,11 +33,13 @@ export class TopicTagListComponent implements OnInit {
     // }
   }
   @Input() editable: boolean;
-
+  @Input() minShow = 10;
+  showLimit;
 
   constructor() { }
 
   ngOnInit() {
+    this.showLimit = this.minShow;
   }
 
   trackByKey(index, val) {
@@ -49,4 +51,20 @@ export class TopicTagListComponent implements OnInit {
   }
 
 
+  canShowMore() {
+    return this.tagListModel.tags.length > this.showLimit;
+  }
+
+  canShowLess() {
+    return (this.showLimit > this.minShow) && (this.minShow < this.tagListModel.tags.length);
+  }
+
+  onShowMoreClick() {
+    this.showLimit = this.tagListModel.tags.length;
+  }
+
+
+  onShowLessClick() {
+    this.showLimit = this.minShow;
+  }
 }

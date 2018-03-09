@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ExperimentalFeature} from "./experimental-feature";
+import {UserConfigService} from "../shared/user-config.service";
 
 @Component({
   selector: 'app-user-config',
@@ -26,8 +27,10 @@ export class UserConfigComponent implements OnInit {
 
   public userConfig;
 
-  constructor() {
-    this.userConfig = JSON.parse(localStorage.getItem('userConfig')) || {};
+  constructor(
+    private userConfigService: UserConfigService
+  ) {
+    this.userConfig = this.userConfigService.getUserConfiguration();
     console.log(this.userConfig);
   }
 
@@ -36,6 +39,7 @@ export class UserConfigComponent implements OnInit {
 
   featureChange(name){
     this.userConfig[name] = (this.userConfig[name]) ? false : true;
-    localStorage.setItem('userConfig', JSON.stringify(this.userConfig));
+    this.userConfigService.setUserConfiguration(this.userConfig);
+
   }
 }

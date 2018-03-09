@@ -6,6 +6,8 @@ import {TOPIC_ID_PARAM} from '../topic-details/topic-details.module'
 import {ActivatedRoute, Router} from '@angular/router'
 import {TagEntry} from '../user-profile/tag-entry'
 import {USER_ROUTE_WITH_TRAILING_SLASH} from '../user-profile/user-profile.module'
+import {logosSizeRatio} from '../../assets/logos-size-ratio'
+import {DbListReadOnly} from '../db.service'
 
 @Component({
   selector: 'app-topics-map',
@@ -13,12 +15,12 @@ import {USER_ROUTE_WITH_TRAILING_SLASH} from '../user-profile/user-profile.modul
   styleUrls: ['./topics-map.component.scss']
 })
 export class TopicsMapComponent implements OnInit {
-  @Input() tagEntry: TagEntry;
-
+  @Input() topics: TagEntry[];
   icon;
-  topicId: string;
+  iconBaseSize = 25;
+  usersGeoLocations = {};
+  topicsIcon = [];
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
-  allUsersGeoLocations: GeoLocation[]
   constructor(
     private route: ActivatedRoute,
     private geoLocationService: GeoLocationService,
@@ -27,84 +29,45 @@ export class TopicsMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.topicId = this.tagEntry.id;
-    let icon_url = this.tagEntry.logo;
-    let showLogo = true;
-    console.log(icon_url);
-    if(icon_url) {
-      let width, height;
-      //Hardcoded values
-      switch(this.topicId) {
-        case 'Angular':
-          width = 37.64
-          height = 40
-          break;
+    for(let topic of this.topics) {
+      this.topicsIcon[topic.id] = this.getMapTopicIcon(topic);
+      this.getUsersWithTopicGeoLocations(topic.id).subscribe((geoLocations) => {
+          this.usersGeoLocations[topic.id] = geoLocations
+      })
+    }
+  }
 
-        case 'NodeJS':
-          width = 48.91
-          height = 30
-          break;
+  getUsersWithTopicGeoLocations(topicId: string) {
+    return this.topicDetailsService.getAllGeoLocationsOfUsersWithTopic(topicId);
+  }
 
-
-        case 'HTML5':
-          width = 30
-          height = 42.3
-          break;
-
-        case 'JavaScript':
-          width = 35
-          height = 35
-          break;
-
-        case 'ECMAScript':
-          width = 35
-          height = 35
-          break;
-
-
-        case 'Firebase':
-          width = 29.17
-          height = 40
-          break;
-
-        case 'TypeScript':
-          width = 35
-          height = 35
-          break;
-
-        default:
-          showLogo = false;
-          width = height = 40;
-          break;
-      }
-
-      if(showLogo) {
-        this.icon = {
-          url: icon_url,
+  getMapTopicIcon(topic: TagEntry) {
+    //May be extracted in a service
+    let icon;
+    if(topic.logo) {
+      let logoFileName = topic.logo.replace(/^.*[\\\/]/, '');
+      let logoSizeRatio = logosSizeRatio[logoFileName];
+      let scaleFactor = this.iconBaseSize / (logoSizeRatio.width * logoSizeRatio.height);
+      if(logoSizeRatio) {
+        icon = {
+          url: topic.logo,
           scaledSize: {
-            width: width,
-            height: height
+            width: scaleFactor * logoSizeRatio.width,
+            height: scaleFactor * logoSizeRatio.height
           }
         }
       }
     }
-
-    /*this.geoLocationService.getPosition().subscribe(
-      (pos: Position) => {
-         this.coordinates = {
-           latitude:  +(pos.coords.latitude.toFixed(5)),
-           longitude: +(pos.coords.longitude.toFixed(5))
-         };
-      }
-    );*/
-
-    let matchedUsersWithTopicGeoLocations = this.topicDetailsService.getAllGeoLocationsOfUsersWithTopic(this.topicId);
-    matchedUsersWithTopicGeoLocations.subscribe((geoLocations: GeoLocation[]) => {
-      this.allUsersGeoLocations = geoLocations;
-    })
+    return icon;
   }
 
   onMarkerClick(marker: GeoLocation) {
     this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.userId])
+  }
+
+  onIconBaseSizeChange() {
+    for(let topic of this.topics) {
+      this.topicsIcon[topic.id] = this.getMapTopicIcon(topic);
+    }
   }
 }
