@@ -99,4 +99,16 @@ export class MeetingAttendanceService {
   private buildAllUsersMeetingAttendancePath(meetingId: string): any {
     return this.MEETING_ATTENDANCE + '/' + meetingId;
   }
+
+  private buildUserMeetingAttendancePathForUser(userId: string, meetingId: string) {
+    return this.buildAllUsersMeetingAttendancePath(meetingId) + '/' + userId;
+  }
+
+  public goesToMeeting(userId:string, meetingId:string): boolean {
+    let path = this.buildUserMeetingAttendancePathForUser(meetingId);
+    const allAttendance = this.db.objectByPath<MeetingAttendanceByUser>(path);
+    allAttendance.subscribe((attendance) => {
+      return attendance.going;
+    })
+  }
 }
