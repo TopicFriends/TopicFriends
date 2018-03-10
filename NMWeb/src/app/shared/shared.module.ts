@@ -5,7 +5,8 @@ import {
   MatIconModule, MatInputModule,
   MatMenuModule,
   MatButtonModule, MatCheckboxModule, MatChipList, MatDialogModule,
-  MatSlideToggleModule, MatSnackBar, MatSnackBarModule, MatTabsModule, MatProgressSpinnerModule, MatSelectModule,
+  MatSlideToggleModule, MatSnackBar, MatSnackBarModule, MatTabsModule, MatProgressSpinnerModule, MatSelectModule, MatAutocompleteModule,
+  MatListModule, MatButtonToggleModule, MatExpansionModule,
 } from '@angular/material'
 import {TopicTagComponent} from './topic-tag/topic-tag.component'
 import {TopicTagListComponent} from './topic-tag-list/topic-tag-list.component'
@@ -28,6 +29,10 @@ import {UserSkillsService} from './user-skills.service'
 import {UserTermsOfServiceService} from './user-terms-of-service.service'
 import {MapsSharedModule} from '../maps-shared/maps-shared.module';
 import { LimitToPipe } from './pipes/limit-to.pipe'
+import {ItemListInputComponent} from './item-list-input/item-list-input.component'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {MapsModule} from '../maps/maps.module'
+import {FlexLayoutModule} from '@angular/flex-layout'
 
 @NgModule({
   imports: [
@@ -39,10 +44,14 @@ import { LimitToPipe } from './pipes/limit-to.pipe'
     MatCheckboxModule,
     MatIconModule,
     MatChipsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatTabsModule,
     MatCardModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatListModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     RouterModule,
@@ -58,6 +67,7 @@ import { LimitToPipe } from './pipes/limit-to.pipe'
     DistancePipe,
     CleanUrlPipe,
     LimitToPipe,
+    ItemListInputComponent,
     // GeolocationService,
   ],
   exports: [
@@ -71,6 +81,7 @@ import { LimitToPipe } from './pipes/limit-to.pipe'
     MatTabsModule,
     MatProgressSpinnerModule,
     Angular2FontawesomeModule,
+    ItemListInputComponent
   ],
   providers: [
     SnackBarComponent,

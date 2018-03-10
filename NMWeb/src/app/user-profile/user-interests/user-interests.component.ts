@@ -3,7 +3,7 @@ import {SymmetricInteractions, TopicInterest, UserInterests, WantedTopics} from 
 import {Observable} from 'rxjs/Observable'
 import {createTopicsDictionary, UserProfileService} from '../user-profile.service'
 import {AuthService} from '../auth.service'
-import {ItemListInputComponent} from '../item-list-input/item-list-input.component'
+import {ItemListInputComponent} from '../../shared/item-list-input/item-list-input.component'
 import {FormBuilder, FormGroup} from '@angular/forms'
 import {UserProfileInputs} from '../user-profile.component'
 import {DomainDbService} from '../../domain-db.service'
