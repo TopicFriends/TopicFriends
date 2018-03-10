@@ -15,7 +15,7 @@ export class TopicsListComponent implements OnInit {
 
   allTopicsArray: TagEntry[]
   allTopics: TagInclusions
-  searchTagList;
+  searchTagList = [];
   constructor(
     private topicsService: TopicsService,
     private router: Router
@@ -29,17 +29,17 @@ export class TopicsListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSearchClick() {
+  getRoute() {
+    if(this.searchTagList == 0 ) {
+      return "#";
+    }
     let url = '';
-    console.log(this.searchTagList)
-
     for (let topic of this.searchTagList) {
-      console.log(topic);
       url = url + topic.tagEntry.id + ',';
     }
     //Remove last comma
     url = url.slice(0, url.length-1);
-    this.router.navigateByUrl("/topics-map/" + url);
+    return "/topics-map/" + url;
   }
 
   onOutputTagList(topics) {
