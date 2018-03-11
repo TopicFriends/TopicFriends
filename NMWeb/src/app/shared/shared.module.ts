@@ -33,6 +33,7 @@ import {ItemListInputComponent} from './item-list-input/item-list-input.componen
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {MapsModule} from '../maps/maps.module'
 import {FlexLayoutModule} from '@angular/flex-layout'
+import { TextAreaComponent } from './text-area/text-area.component'
 
 @NgModule({
   imports: [
@@ -68,6 +69,7 @@ import {FlexLayoutModule} from '@angular/flex-layout'
     CleanUrlPipe,
     LimitToPipe,
     ItemListInputComponent,
+    TextAreaComponent,
     // GeolocationService,
   ],
   exports: [
@@ -81,12 +83,13 @@ import {FlexLayoutModule} from '@angular/flex-layout'
     MatTabsModule,
     MatProgressSpinnerModule,
     Angular2FontawesomeModule,
-    ItemListInputComponent
+    ItemListInputComponent,
+    TextAreaComponent,
+    MatButtonModule,
   ],
   providers: [
     SnackBarComponent,
     MatSnackBar,
-    MatButtonModule,
     GeoLocationService,
     UserGeoLocationsService,
     UserDescriptionsService,

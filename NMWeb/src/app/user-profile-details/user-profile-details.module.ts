@@ -24,6 +24,18 @@ import {
   RouterModule,
   Routes,
 } from '@angular/router'
+import { SharedModule } from '../shared/shared.module'
+import {
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms'
+import {
+  MatCardModule,
+  MatIconModule,
+  MatOptionModule,
+  MatSelectModule,
+} from '@angular/material'
+import { OtherProfileUserNameComponent } from './user-other-profiles/other-profile-user-name/other-profile-user-name.component'
 
 
 // Consider moving to smth like `routes.ts` in shared module
@@ -34,7 +46,7 @@ export const USER_ROUTE_WITH_TRAILING_SLASH = 'user/'
 
 const userProfileRoutes: Routes = [
   {
-    path: 'profile',
+    path: '',
     component: UserProfileDetailsComponent,
     canDeactivate: [CanDeactivateUserProfileGuard],
     // data: { reuse: false },
@@ -45,6 +57,10 @@ const userProfileRoutes: Routes = [
   },
   {
     path: 'u/:' + USER_PROFILE_ID_PARAM_NO_COLON,
+    component: UserProfileDetailsComponent,
+  },
+  {
+    path: ':' + USER_PROFILE_ID_PARAM_NO_COLON,
     component: UserProfileDetailsComponent,
   },
   {
@@ -85,8 +101,15 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     UserProfileModule,
     RouterModule.forChild(userProfileRoutes),
+    ReactiveFormsModule,
+    FormsModule,
+    MatCardModule,
+    MatIconModule,
+    MatOptionModule,
+    MatSelectModule,
   ],
   declarations: [
     UserDescriptionsComponent,
@@ -101,7 +124,8 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     UserWebsiteComponent,
     UserSkillComponent,
     UserSkillsListComponent,
-    UserProfileDetailsComponent
+    UserProfileDetailsComponent,
+    OtherProfileUserNameComponent,
   ]
 })
 export class UserProfileDetailsModule { }

@@ -28,7 +28,7 @@ import {TopicLogoComponent} from '../topic-logo/topic-logo.component';
 import {UserOtherProfilesService} from './user-other-profiles.service'
 import {UserConfigService} from '../shared/user-config.service';
 import { UserOtherProfileIconComponent } from './user-other-profile-icon/user-other-profile-icon.component'
-import { SkillLevelLabelComponent } from '../user-profile-details/user-skills/skill-level-label/skill-level-label.component'
+import { SkillLevelLabelComponent } from './skill-level-label/skill-level-label.component'
 
 @NgModule({
   imports: [
@@ -74,6 +74,9 @@ import { SkillLevelLabelComponent } from '../user-profile-details/user-skills/sk
     UserInterestConfigurationDialogComponent,
   ],
   exports: [
+    SkillLevelPopoverComponent,
+    SkillLevelLabelComponent,
+    UserOtherProfileIconComponent,
   ],
   schemas: [
     // CUSTOM_ELEMENTS_SCHEMA

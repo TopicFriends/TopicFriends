@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+/** FIXME: move to topics-shared module */
 @Component({
   selector: 'app-topic-logo',
   templateUrl: './topic-logo.component.html',

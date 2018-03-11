@@ -8,6 +8,7 @@ import {TermsOfServiceComponent} from './terms-of-service/terms-of-service.compo
 import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component'
 import {UserListComponent} from './user-list/user-list.component'
 import {TopicsMapPageComponent} from './topics-map-page/topics-map-page.component'
+import { UserProfileDetailsComponent } from './user-profile-details/user-profile-details.component'
 
 export const DASHBOARD_ROUTE = 'dashboard'
 
@@ -41,6 +42,14 @@ const appRoutes: Routes = [
   {
     path: 'terms',
     component: TermsOfServiceComponent,
+  },
+  {
+    path: 'profile',
+    loadChildren: 'app/user-profile-details/user-profile-details.module#UserProfileDetailsModule',
+  },
+  {
+    path: 'user',
+    loadChildren: 'app/user-profile-details/user-profile-details.module#UserProfileDetailsModule',
   },
   {
     path: 'privacy',
