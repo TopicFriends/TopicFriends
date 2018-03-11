@@ -519,6 +519,7 @@ export class TopicsService {
     tag('Dexie.js', 'dexie-js'),
     'Aurelia',
     'Marionette',
+    tagNoIcon('Cypress' /* From David Atencia GitHub repo :) */) ,
   ]);
 
 
