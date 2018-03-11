@@ -27,7 +27,6 @@ export class MeetingAttendanceService {
   MEETING_ATTENDANCE = 'Meetings/MeetingAttendanceByUser';
 
   private userId;
-
   constructor(private authService: AuthService,
               private db: DbService,
               private userProfileService: UserProfileService
@@ -98,5 +97,9 @@ export class MeetingAttendanceService {
 
   private buildAllUsersMeetingAttendancePath(meetingId: string): any {
     return this.MEETING_ATTENDANCE + '/' + meetingId;
+  }
+
+  private buildUserMeetingAttendancePathForUser(userId: string, meetingId: string) {
+    return this.buildAllUsersMeetingAttendancePath(meetingId) + '/' + userId;
   }
 }

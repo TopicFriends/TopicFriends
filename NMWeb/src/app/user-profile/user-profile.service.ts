@@ -118,7 +118,7 @@ export class GeoLocations {
 export class UserGeoLocations {
   geoLocations: GeoLocations
 
-  static appendUserGeoLocations(userLocation: UserGeoLocations, allUsersGeoLocationsFlattened: GeoLocation[]) {
+  public static appendUserGeoLocations(userLocation: UserGeoLocations, allUsersGeoLocationsFlattened: GeoLocation[]) {
     if(userLocation && userLocation.geoLocations) {
       for (let subLocationKey of Object.keys(userLocation.geoLocations)) {
         const subLocation: GeoLocationsDictionary = userLocation.geoLocations[subLocationKey]
@@ -131,13 +131,22 @@ export class UserGeoLocations {
             subLocationMulti = GeoLocation.clone(subLocationMulti)
             let userId = (<any>userLocation).$key
             subLocationMulti.userId = userId
-            
+
             allUsersGeoLocationsFlattened.push(subLocationMulti)
           }
         }
       }
 
     }
+  }
+
+  static getAllGeoLocationsOfUsersDataCombined(usersDataCombined: UserDataCombined[]) {
+    let flattenedGeoLocations: GeoLocation[] = [];
+    for(let userDataCombined of usersDataCombined) {
+      let userGeoLocations = userDataCombined.geoLocations
+      UserGeoLocations.appendUserGeoLocations(userGeoLocations, flattenedGeoLocations)
+    }
+    return flattenedGeoLocations
   }
 
   /** This will be refactored to use UserMatcherService **/

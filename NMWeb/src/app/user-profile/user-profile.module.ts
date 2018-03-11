@@ -10,7 +10,6 @@ import {
   MatTextareaAutosize, MatDialogModule, MatButtonToggleModule, MatListModule, MatExpansionModule
 } from '@angular/material'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
-import {ItemListInputComponent} from './item-list-input/item-list-input.component'
 import { UserInterestsComponent } from './user-interests/user-interests.component'
 import { UserGeoLocationsComponent } from './user-geo-locations/user-geo-locations.component';
 import { UserGeoLocationComponent } from './user-geo-locations/user-geo-location/user-geo-location.component'
@@ -118,7 +117,6 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
     UserProfileComponent,
     UserProfileBasicInfoComponent,
     UserOtherProfilesComponent,
-    ItemListInputComponent,
     UserInterestsComponent,
     UserGeoLocationsComponent,
     UserGeoLocationComponent,

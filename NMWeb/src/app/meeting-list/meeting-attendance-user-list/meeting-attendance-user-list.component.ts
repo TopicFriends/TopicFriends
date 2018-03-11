@@ -4,6 +4,7 @@ import {
   MeetingAttendanceService,
 } from '../meeting-attendance.service';
 import {DbListReadOnly} from '../../db.service';
+import {UserMatcherService} from '../../user-matcher.service'
 
 @Component({
   selector: 'app-meeting-attendance-user-list',
@@ -18,7 +19,8 @@ export class MeetingAttendanceUserListComponent implements OnInit {
 
   @Input() meetingId: string;
 
-  constructor(private meetingAttendanceService: MeetingAttendanceService,) {
+  constructor(
+    private meetingAttendanceService: MeetingAttendanceService,) {
   }
 
   ngOnInit() {

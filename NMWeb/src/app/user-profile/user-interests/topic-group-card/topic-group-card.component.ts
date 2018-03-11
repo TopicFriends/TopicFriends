@@ -1,7 +1,7 @@
 import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
 import {WantedTopics} from '../../user-interests'
-import {ItemListInputComponent} from '../../item-list-input/item-list-input.component'
+import {ItemListInputComponent} from '../../../shared/item-list-input/item-list-input.component'
 import {TagListModelEvent} from '../../../shared/TagListModel'
 import {createTopicsDictionary} from '../../user-profile.service'
 import {UserProfileInputs} from '../../UserProfileInputs'
