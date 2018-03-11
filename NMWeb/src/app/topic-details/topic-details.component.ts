@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {TOPIC_ID_PARAM} from './topic-details.module'
-import {TagEntry} from '../user-profile/tag-entry'
+import {TagEntry} from '../topics/tag-entry'
 import {TopicsService} from '../shared/topics.service'
 import {TopicInterest} from '../user-profile/user-interests'
 import {GitHubService} from '../shared/git-hub.service'
 import {Title} from "@angular/platform-browser";
 import { GeoLocationService } from '../shared/geo-location.service';
 import {GeoLocation, GeoLocationsDictionary, UserDataCombined} from '../user-profile/user-profile.service';
-import {UserMatched, UserMatcherService} from '../user-matcher.service';
+import {UserMatched, UserMatcherService} from '../user-profile/user-matcher.service';
 import { UserListService } from '../user-list/user-list.service';
 import { TagInclusions } from '../shared/TagInclusions';
 import {TopicsDetailsService} from './topics-details.service'

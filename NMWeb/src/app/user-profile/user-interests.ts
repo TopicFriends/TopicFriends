@@ -1,6 +1,6 @@
 /* TODO: rename to WantedTopic for consistency? */
 import {initFromObject} from '../util/util'
-import {TagEntry} from './tag-entry'
+import {TagEntry} from '../topics/tag-entry'
 import {getDictionaryValuesAsArray} from '../shared/utils'
 import {TagInclusions} from '../shared/TagInclusions'
 
@@ -117,6 +117,7 @@ export class SupplyDemandInteractions {
 
   workshop?: SupplyDemand;
   // TODO: code review (kinda similar to pair programming)
+  // teach, give courses
 }
 
 /* Other names:

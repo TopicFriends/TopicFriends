@@ -3,7 +3,7 @@ import {TopicsService} from '../shared/topics.service'
 import {TagInclusions} from '../shared/TagInclusions'
 import {TopicInterest} from '../user-profile/user-interests'
 import {createTopicsDictionary} from '../user-profile/user-profile.service'
-import {TagEntry} from '../user-profile/tag-entry'
+import {TagEntry} from '../topics/tag-entry'
 import {Router} from '@angular/router'
 
 @Component({

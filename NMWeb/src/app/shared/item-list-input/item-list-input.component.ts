@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output,  EventEmitter } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import { TagEntry } from "app/user-profile/tag-entry";
+import { TagEntry } from "app/topics/tag-entry";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';

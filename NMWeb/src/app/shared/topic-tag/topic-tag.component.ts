@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {TagEntry} from '../../user-profile/tag-entry'
+import {TagEntry} from '../../topics/tag-entry'
 import {TopicInterest} from '../../user-profile/user-interests'
-import {RelatedTopicLists} from '../../user-matcher.service'
+import {RelatedTopicLists} from '../../user-profile/user-matcher.service'
 import {TagListModel} from '../TagListModel'
 import {TopicsService} from '../topics.service'
 

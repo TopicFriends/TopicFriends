@@ -4,15 +4,15 @@ import {
   UserProfileService,
 } from '../../user-profile/user-profile.service'
 import {GeoLocationService} from '../../shared/geo-location.service'
-import {UserGeoLocationsService} from '../../shared/user-geo-locations.service'
 
 // import { } from 'googlemaps';
 import {Router} from '@angular/router'
-import {USER_ROUTE_WITH_TRAILING_SLASH} from '../../user-profile/user-profile.module'
 import {MatCheckbox} from '@angular/material'
 import {Poi, PoiService} from '../../shared/poi.service'
 import {UserListService} from '../../user-list/user-list.service'
-import {UserMatcherService} from '../../user-matcher.service'
+import {UserMatcherService} from '../../user-profile/user-matcher.service'
+import {UserGeoLocationsService} from '../../user-profile/user-geo-locations.service'
+import { USER_ROUTE_WITH_TRAILING_SLASH } from '../../user-profile-details/user-profile-details.module'
 
 export class UserCoords {
   user?: UserProfile

@@ -4,7 +4,7 @@ import {TagInclusions} from '../shared/TagInclusions'
 import {GeoLocation, GeoLocations, UserData, UserDataCombined, UserGeoLocations} from '../user-profile/user-profile.service'
 import { DbListReadOnly} from '../db.service'
 import {UserInterests} from '../user-profile/user-interests'
-import {UserMatched, UserMatcherService} from '../user-matcher.service'
+import {UserMatched, UserMatcherService} from '../user-profile/user-matcher.service'
 
 @Injectable()
 export class TopicsDetailsService {

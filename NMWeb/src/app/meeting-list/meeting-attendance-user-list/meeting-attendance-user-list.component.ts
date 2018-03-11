@@ -4,7 +4,7 @@ import {
   MeetingAttendanceService,
 } from '../meeting-attendance.service';
 import {DbListReadOnly} from '../../db.service';
-import {UserMatcherService} from '../../user-matcher.service'
+import {UserMatcherService} from '../../user-profile/user-matcher.service'
 
 @Component({
   selector: 'app-meeting-attendance-user-list',

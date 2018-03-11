@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {TagEntry, TopicUrls} from '../user-profile/tag-entry'
+import {TagEntry, TopicUrls} from '../topics/tag-entry'
 
 
 function tag(name: string, logo?: string, webSite?: string, related?: TagEntry[], urls?: TopicUrls) {

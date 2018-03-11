@@ -4,7 +4,6 @@ import {SharedModule} from '../shared/shared.module'
 import {AgmCoreModule} from '@agm/core'
 
 
-
 @NgModule({
   imports: [
     CommonModule,

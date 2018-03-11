@@ -8,7 +8,7 @@ import {DbHistory, HasDbHistory} from '../util/history'
 import 'rxjs/add/observable/never'
 import {combineLatest} from 'rxjs/observable/combineLatest'
 import 'rxjs/add/observable/empty'
-import {UserSkillLevelsPerUser} from '../shared/user-skills.service'
+import {UserSkillLevelsPerUser} from './user-skills.service'
 import {UserOtherProfiles} from './user-other-profiles.service'
 
 // TODO: massive refactor and split it per separate features

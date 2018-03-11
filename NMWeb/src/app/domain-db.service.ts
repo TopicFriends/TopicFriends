@@ -6,7 +6,7 @@ import "rxjs/add/observable/of"
 
 import {UserInterests} from './user-profile/user-interests'
 import {combineLatest} from 'rxjs/operator/combineLatest'
-import {UserSkillLevelsPerUser} from './shared/user-skills.service'
+import {UserSkillLevelsPerUser} from './user-profile/user-skills.service'
 import {UserOtherProfiles} from './user-profile/user-other-profiles.service'
 
 @Injectable()

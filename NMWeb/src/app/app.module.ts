@@ -13,7 +13,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {UserProfileService} from './user-profile/user-profile.service';
 import {AuthService} from './user-profile/auth.service';
 import {UserListService} from './user-list/user-list.service';
-import {UserMatcherService} from './user-matcher.service';
+import {UserMatcherService} from './user-profile/user-matcher.service';
 // import { UserTemplateComponent } from './user-list/user-template/user-template.component';
 import {MeetingsModule} from './meeting-list/meetings.module';
 import {DbService} from './db.service'

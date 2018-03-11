@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {DbList, DbService} from '../db.service'
-import {TagEntry} from '../user-profile/tag-entry'
+import {TagEntry} from '../topics/tag-entry'
 
 export const TOPICS_PATH = 'Topics'
 export const TOPICS_TOPIC_PATH = TOPICS_PATH + '/UserTopic'
