@@ -7,7 +7,7 @@
 <button
   mat-raised-button
   [routerLink]="getRoute()"
-  [disabled]="searchTagList.length == 0"
+  [disabled]="searchTagList.length === 0"
 >Search</button>
 <h1>All Topics ({{allTopicsArray.length}})</h1>
 <app-topic-tag-list [editable]="false"
