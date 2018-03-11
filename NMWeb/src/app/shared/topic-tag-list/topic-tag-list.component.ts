@@ -33,12 +33,15 @@ export class TopicTagListComponent implements OnInit {
     // }
   }
   @Input() editable: boolean;
-  @Input() minShow = 10;
+  @Input() minShow;
   showLimit;
 
   constructor() { }
 
   ngOnInit() {
+    if(!this.minShow) {
+      this.minShow = 10;
+    }
     this.showLimit = this.minShow;
   }
 
