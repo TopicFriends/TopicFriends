@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * The role of this class: to have a single lightweight place where all the names/paths can be listed.
+ * E.g. for analysing naming consistency, and to get a quick glimpse of the domain db overall structure.
+ * Do not put module-specific logic here (it belongs in specific services).
+ *
+ * Later I might decide to split into smth like UserProfileDb; but that would kinda negate the "have all the names in one place",
+ * plus it might be too much hair-splitting. Time will show :).
+ */
 @Injectable()
 export class DomainDbService {
-
 
   USER_DATA = 'UserData/';
 
