@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GeoLocation, UserGeoLocations, UserProfileService} from '../../user-profile/user-profile.service'
+import {GeoLocation, UserGeoLocations, UserProfileService} from '../../user-profile-shared/user-profile.service'
 import {MeetingAttendanceByUserWithUserData, MeetingAttendanceService} from '../meeting-attendance.service'
 import {ActivatedRoute, Router} from '@angular/router'
 import { USER_ROUTE_WITH_TRAILING_SLASH } from '../../user-profile-details/user-profile-details.module'

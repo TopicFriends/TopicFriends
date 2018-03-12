@@ -7,7 +7,7 @@ import {FlexLayoutModule} from '@angular/flex-layout'
 import {MatButtonModule, MatCheckboxModule, MatInputModule} from '@angular/material';
 import {MatMenuModule} from '@angular/material';
 import {SharedModule} from '../shared/shared.module'
-import {UserProfileModule} from '../user-profile/user-profile.module'
+import {UserProfileSharedModule} from '../user-profile-shared/user-profile-shared.module'
 import {MeetingsModule} from '../meeting-list/meetings.module'
 import {TopicDetailsModule} from '../topic-details/topic-details.module'
 import {CapitalizeFirstPipe} from "../shared/pipes/capitalize-first.pipe";
@@ -20,7 +20,7 @@ import { FooterComponent } from './footer/footer.component';
     CommonModule,
     SharedModule,
     FlexLayoutModule,
-    UserProfileModule,
+    UserProfileSharedModule,
     MeetingsModule,
     TopicDetailsModule,
     MatIconModule,

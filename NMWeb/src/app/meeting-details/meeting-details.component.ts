@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Meeting, MeetingsService} from '../shared/meetings.service';
 import {ActivatedRoute} from '@angular/router';
 import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meeting-list/meeting-attendance.service';
-import {AuthService} from '../user-profile/auth.service';
+import {AuthService} from '../user-profile-shared/auth.service';
 
 @Component({
   selector: 'app-meeting-details',

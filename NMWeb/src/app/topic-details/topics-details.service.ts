@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {UserListService} from '../user-list/user-list.service'
 import {TagInclusions} from '../shared/TagInclusions'
-import {GeoLocation, GeoLocations, UserData, UserDataCombined, UserGeoLocations} from '../user-profile/user-profile.service'
+import {GeoLocation, GeoLocations, UserData, UserDataCombined, UserGeoLocations} from '../user-profile-shared/user-profile.service'
 import { DbListReadOnly} from '../db.service'
-import {UserInterests} from '../user-profile/user-interests'
-import {UserMatched, UserMatcherService} from '../user-profile/user-matcher.service'
+import {UserInterests} from '../user-profile-shared/user-interests'
+import {UserMatched, UserMatcherService} from '../user-profile-shared/user-matcher.service'
 
 @Injectable()
 export class TopicsDetailsService {

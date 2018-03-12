@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {GeoLocation} from '../user-profile/user-profile.service'
+import {GeoLocation} from '../user-profile-shared/user-profile.service'
 import {Observable} from 'rxjs/Observable'
 
 export class Poi {

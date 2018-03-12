@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {UserData, UserDescriptions, UserProfile, UserProfileService} from 'app/user-profile/user-profile.service';
+import {UserData, UserDescriptions, UserProfile, UserProfileService} from 'app/user-profile-shared/user-profile.service';
 import {
   MatchResults, SupplyDemandInteractions, SymmetricInteractions, TopicInterest,
   UserInterests,
-} from '../../user-profile/user-interests'
+} from '../../user-profile-shared/user-interests'
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
 import {TagInclusions} from '../../shared/TagInclusions'

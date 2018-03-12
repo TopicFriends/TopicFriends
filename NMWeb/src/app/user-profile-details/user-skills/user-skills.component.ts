@@ -1,15 +1,15 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
 import {TopicsService} from '../../shared/topics.service'
 import {TagInclusions} from '../../shared/TagInclusions'
-import {UserSkillLevelsPerUser, UserSkillsService} from '../../user-profile/user-skills.service'
+import {UserSkillLevelsPerUser, UserSkillsService} from '../../user-profile-shared/user-skills.service'
 import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms'
 import {UserProfileInputs} from '../UserProfileInputs'
 import {TopicGroupCardComponent} from '../user-interests/topic-group-card/topic-group-card.component'
 import {TagListModelEvent} from '../../shared/TagListModel'
 import {DomainDbService} from '../../domain-db.service'
 import { TagEntry } from '../../topics-shared/tag-entry'
-import { createTopicsDictionary } from '../../user-profile/user-profile.service'
-import { TopicInterest } from '../../user-profile/user-interests'
+import { createTopicsDictionary } from '../../user-profile-shared/user-profile.service'
+import { TopicInterest } from '../../user-profile-shared/user-interests'
 
 @Component({
   selector: 'app-user-skills',

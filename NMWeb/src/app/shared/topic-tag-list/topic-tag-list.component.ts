@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TopicInterest, WantedTopics} from '../../user-profile/user-interests'
+import {TopicInterest, WantedTopics} from '../../user-profile-shared/user-interests'
 import {getDictionaryValuesAsArray} from '../utils'
 import {TagEntry} from '../../topics-shared/tag-entry'
 import {TagListModel} from '../TagListModel'
 import {TagInclusions} from 'app/shared/TagInclusions';
-import {RelatedTopicLists} from '../../user-profile/user-matcher.service'
+import {RelatedTopicLists} from '../../user-profile-shared/user-matcher.service'
 
 @Component({
   selector: 'app-topic-tag-list',

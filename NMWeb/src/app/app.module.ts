@@ -10,17 +10,17 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
-import {UserProfileService} from './user-profile/user-profile.service';
-import {AuthService} from './user-profile/auth.service';
+import {UserProfileService} from './user-profile-shared/user-profile.service';
+import {AuthService} from './user-profile-shared/auth.service';
 import {UserListService} from './user-list/user-list.service';
-import {UserMatcherService} from './user-profile/user-matcher.service';
+import {UserMatcherService} from './user-profile-shared/user-matcher.service';
 // import { UserTemplateComponent } from './user-list/user-template/user-template.component';
 import {MeetingsModule} from './meeting-list/meetings.module';
 import {DbService} from './db.service'
 import {DomainDbService} from './domain-db.service'
 import {MeetingsService} from './shared/meetings.service'
 import {TopicsService} from './shared/topics.service';
-import {UserProfileModule} from './user-profile/user-profile.module'
+import {UserProfileSharedModule} from './user-profile-shared/user-profile-shared.module'
 import {CoreModule} from 'app/core/core.module';
 import {SharedModule} from './shared/shared.module';
 // import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
@@ -67,7 +67,7 @@ import {MapsSharedModule} from './maps-shared/maps-shared.module'
     routingModule,
     SharedModule,
     MeetingsModule,
-    UserProfileModule,
+    UserProfileSharedModule,
     MapsModule,
     MapsSharedModule,
     TopicsMapPageModule,

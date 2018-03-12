@@ -1,11 +1,11 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {SymmetricInteractions, TopicInterest, UserInterests, WantedTopics} from '../../user-profile/user-interests'
+import {SymmetricInteractions, TopicInterest, UserInterests, WantedTopics} from '../../user-profile-shared/user-interests'
 import {Observable} from 'rxjs/Observable'
 import {ItemListInputComponent} from '../../shared/item-list-input/item-list-input.component'
 import {FormBuilder, FormGroup} from '@angular/forms'
 import {UserProfileInputs} from '../UserProfileInputs'
 import {DomainDbService} from '../../domain-db.service'
-import { UserProfileService } from '../../user-profile/user-profile.service'
+import { UserProfileService } from '../../user-profile-shared/user-profile.service'
 
 const INITIAL_WANTED_TOPICS: WantedTopics = {
   // active: true,

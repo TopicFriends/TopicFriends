@@ -3,7 +3,7 @@ import {Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import {TopicInterest} from "../user-interests";
 import {SkillLevelPopoverComponent} from "./skill-level-popover/skill-level-popover.component";
-import {UserSkillLevelsHaveWant} from '../../user-profile/user-skills.service';
+import {UserSkillLevelsHaveWant} from '..//user-skills.service';
 import { TagEntry } from '../../topics-shared/tag-entry'
 
 

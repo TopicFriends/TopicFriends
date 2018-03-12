@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import {DbObject, DbList, DbService} from './db.service'
-import {UserProfile, UserData, UserGeoLocations, UserDescriptions} from './user-profile/user-profile.service'
+import {UserProfile, UserData, UserGeoLocations, UserDescriptions} from './user-profile-shared/user-profile.service'
 import {Observable} from 'rxjs/Observable'
 import "rxjs/add/observable/of"
 
-import {UserInterests} from './user-profile/user-interests'
+import {UserInterests} from './user-profile-shared/user-interests'
 import {combineLatest} from 'rxjs/operator/combineLatest'
-import {UserSkillLevelsPerUser} from './user-profile/user-skills.service'
-import {UserOtherProfiles} from './user-profile/user-other-profiles.service'
+import {UserSkillLevelsPerUser} from './user-profile-shared/user-skills.service'
+import {UserOtherProfiles} from './user-profile-shared/user-other-profiles.service'
 
 @Injectable()
 export class DomainDbService {

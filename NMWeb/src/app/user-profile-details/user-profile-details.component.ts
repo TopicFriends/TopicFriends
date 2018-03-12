@@ -1,8 +1,8 @@
 import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {AuthService} from '../user-profile/auth.service';
+import {AuthService} from '../user-profile-shared/auth.service';
 import {Observable} from 'rxjs/Observable';
-import {UserProfile, UserProfileService} from '../user-profile/user-profile.service'
+import {UserProfile, UserProfileService} from '../user-profile-shared/user-profile.service'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {UserProfileBasicInfoComponent} from './user-profile-basic-info/user-profile-basic-info.component'
 import {UserInterestsComponent} from './user-interests/user-interests.component'

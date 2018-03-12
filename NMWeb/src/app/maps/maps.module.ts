@@ -9,7 +9,7 @@ import {SharedModule} from '../shared/shared.module'
 import {FlexLayoutModule} from '@angular/flex-layout'
 import {FormsModule} from '@angular/forms';
 import {MapsSharedModule} from '../maps-shared/maps-shared.module';
-import {UserProfileModule} from '../user-profile/user-profile.module'
+import {UserProfileSharedModule} from '../user-profile-shared/user-profile-shared.module'
 
 
 const mapsRoutes: Routes = [
@@ -30,7 +30,7 @@ const mapsRoutes: Routes = [
     FormsModule,
     MatCheckboxModule,
     MatDialogModule,
-    UserProfileModule,
+    UserProfileSharedModule,
   ],
   declarations: [
     UsersMapComponent,

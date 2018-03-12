@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {UserData, UserDataCombined} from 'app/user-profile/user-profile.service';
-import {UserProfile} from 'app/user-profile/user-profile.service';
+import {UserData, UserDataCombined} from 'app/user-profile-shared/user-profile.service';
+import {UserProfile} from 'app/user-profile-shared/user-profile.service';
 import {DomainDbService} from '../domain-db.service'
 import {DbListReadOnly} from '../db.service';
 import {combineLatest} from 'rxjs/observable/combineLatest'

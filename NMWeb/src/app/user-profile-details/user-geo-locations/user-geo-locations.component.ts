@@ -7,7 +7,7 @@ import {
   GeoLocations,
   UserGeoLocations,
   UserProfileService,
-} from '../../user-profile/user-profile.service'
+} from '../../user-profile-shared/user-profile.service'
 
 function transformIntoLocationDictionaries(values: any) {
   let returnVal = {}

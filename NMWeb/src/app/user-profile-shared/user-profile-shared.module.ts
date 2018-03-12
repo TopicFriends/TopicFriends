@@ -82,4 +82,4 @@ import { TopicsSharedModule } from '../topics-shared/topics-shared.module'
     // CUSTOM_ELEMENTS_SCHEMA
   ],
 })
-export class UserProfileModule { }
+export class UserProfileSharedModule { }

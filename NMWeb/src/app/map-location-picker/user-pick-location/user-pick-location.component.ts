@@ -1,6 +1,6 @@
 import {Component, ElementRef, Inject, NgZone, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
-import {GeoLocation} from '../../user-profile/user-profile.service'
+import {GeoLocation} from '../../user-profile-shared/user-profile.service'
 import {FormControl} from '@angular/forms';
 import {MapsAPILoader} from '@agm/core';
 // import { } from 'googlemaps';

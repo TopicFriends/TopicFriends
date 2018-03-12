@@ -1,7 +1,7 @@
 import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
-import {AuthService} from './user-profile/auth.service';
+import {AuthService} from './user-profile-shared/auth.service';
 import {CookieLawComponent} from 'angular2-cookie-law'
 
 @Component({

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {UserProfileModule} from '../user-profile/user-profile.module'
+import {UserProfileSharedModule} from '../user-profile-shared/user-profile-shared.module'
 import {UserDescriptionsComponent} from './user-descriptions/user-descriptions.component'
 import {UserInterestsComponent} from './user-interests/user-interests.component'
 import {UserGeoLocationsComponent} from './user-geo-locations/user-geo-locations.component'
@@ -102,7 +102,7 @@ export class CustomRouteReuseStrategy extends RouteReuseStrategy {
   imports: [
     CommonModule,
     SharedModule,
-    UserProfileModule,
+    UserProfileSharedModule,
     RouterModule.forChild(userProfileRoutes),
     ReactiveFormsModule,
     FormsModule,

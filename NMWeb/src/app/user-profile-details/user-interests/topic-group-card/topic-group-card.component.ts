@@ -3,8 +3,8 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
 import {ItemListInputComponent} from '../../../shared/item-list-input/item-list-input.component'
 import {TagListModelEvent} from '../../../shared/TagListModel'
 import {UserProfileInputs} from '../../UserProfileInputs'
-import { WantedTopics } from '../../../user-profile/user-interests'
-import { createTopicsDictionary } from '../../../user-profile/user-profile.service'
+import { WantedTopics } from '../../../user-profile-shared/user-interests'
+import { createTopicsDictionary } from '../../../user-profile-shared/user-profile.service'
 
 @Component({
   selector: 'app-topic-group-card',

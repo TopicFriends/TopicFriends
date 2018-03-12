@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {TopicInterest} from 'app/user-profile/user-interests';
+import {TopicInterest} from 'app/user-profile-shared/user-interests';
 import {UserSkillLevelsHaveWant} from '../user-skills.service'
 
 @Component({
