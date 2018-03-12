@@ -21,7 +21,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
+    loadChildren: 'app/login/login.module#LoginModule',
   },
   {
     path: 'people-list',

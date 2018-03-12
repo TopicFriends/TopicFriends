@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCardModule, MatChipsModule, MatRadioModule, MatSelectModule, MatSliderModule} from '@angular/material';
-import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
@@ -51,7 +50,6 @@ import {MapsSharedModule} from './maps-shared/maps-shared.module'
   declarations: [
     AppComponent,
     UserListComponent,
-    LoginComponent,
     // UserTemplateComponent,
     // UserInterestsModeViewComponent,
     TopicsListComponent,
