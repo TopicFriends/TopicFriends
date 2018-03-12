@@ -25,6 +25,7 @@ export class TopicsMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    window.scrollTo(0,0);
     for(let topic of this.topics) {
       this.topicsIcon[topic.id] = this.getMapTopicIcon(topic);
       this.getUsersWithTopicGeoLocations(topic.id).subscribe((geoLocations) => {

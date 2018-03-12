@@ -4,16 +4,16 @@ $names: #fff;
 $blur-radius: 1px;
 
 $map-desktop-height: 90.3vh;
-$map-desktop-width: calc(100% - 33px);
 
-$map-mobile-height:calc(100% - 52px);
+$map-desktop-width: calc(100vw - 70px);
+
+$map-mobile-height:calc(95vh - 90px);
 $map-mobile-width: 100%;
 
 $distance-slicer-width: 300px;
 
 :host {
-  height: 100%;
-  overflow: hidden;
+  overflow-y: hidden !important;
 }
 
 .filter-buttons {
