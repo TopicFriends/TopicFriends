@@ -18,6 +18,7 @@ const appRoutes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: 'profile',
+    // loadChildren: 'app/landing-page/landing-page.module#LandingPageModule',
   },
   {
     path: 'login',
@@ -48,7 +49,11 @@ const appRoutes: Routes = [
     loadChildren: 'app/user-profile-details/user-profile-details.module#UserProfileDetailsModule',
   },
   {
-    path: 'user',
+    path: 'config',
+    loadChildren: 'app/user-config/user-config.module#UserConfigModule',
+  },
+  {
+    path: 'user', /* workaround to support older urls which were /user/<user-id> */
     loadChildren: 'app/user-profile-details/user-profile-details.module#UserProfileDetailsModule',
   },
   {

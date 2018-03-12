@@ -13,23 +13,8 @@ import {ActivatedRoute, ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapsh
 import {UserSkillsComponent} from './user-skills/user-skills.component'
 import {UserProfileInputs} from './UserProfileInputs'
 import {UserConfigService} from "../shared/user-config.service"
-import { USER_PROFILE_ID_PARAM_NO_COLON } from './user-profile-details.module'
+import { USER_PROFILE_ID_PARAM_NO_COLON } from '../shared/routes'
 
-export class CanDeactivateUserProfileGuard implements CanDeactivate<UserProfileDetailsComponent> {
-
-  canDeactivate(
-    component: UserProfileDetailsComponent,
-    currentRoute: ActivatedRouteSnapshot,
-    currentState: RouterStateSnapshot,
-    nextState: RouterStateSnapshot
-  ): Observable<boolean>|Promise<boolean>|boolean {
-    let canDeactivate = component.canDeactivate()
-    if ( ! canDeactivate ) {
-      window.alert('You have unsaved changes.')
-    }
-    return canDeactivate
-  }
-}
 
 @Component({
   selector: 'app-user-profile-details',

@@ -60,7 +60,7 @@ import { TextAreaComponent } from './text-area/text-area.component'
     Angular2FontawesomeModule,
   ],
   declarations: [
-    TopicTagComponent,
+    TopicTagComponent, /* FIXME: move to topics-shared */
     TopicTagListComponent,
     UserTemplateComponent,
     UserInterestsModeViewComponent,

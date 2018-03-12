@@ -1,7 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CanDeactivateUserProfileGuard, UserProfileDetailsComponent} from '../user-profile-details/user-profile-details.component'
-import {ActivatedRouteSnapshot, DetachedRouteHandle, RouteReuseStrategy, RouterModule, Routes} from '@angular/router'
 import {SharedModule} from '../shared/shared.module'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {
@@ -16,7 +14,6 @@ import {
   MatListModule,
   MatSelectModule,
 } from '@angular/material'
-import {MapsModule} from '../maps/maps.module';
 import {SkillLevelPopoverComponent} from './user-interest-configuration-dialog/skill-level-popover/skill-level-popover.component';
 import {CapitalizeFirstPipe} from '../shared/pipes/capitalize-first.pipe';
 import {SkillLevelsComponent} from './user-interest-configuration-dialog/skill-levels/skill-levels.component';
@@ -61,7 +58,6 @@ import { TopicsSharedModule } from '../topics-shared/topics-shared.module'
     UserOtherProfileIconComponent,
   ],
   providers: [
-    CanDeactivateUserProfileGuard,
     UserOtherProfilesService,
     UserConfigService,
     // {
@@ -77,6 +73,7 @@ import { TopicsSharedModule } from '../topics-shared/topics-shared.module'
     SkillLevelPopoverComponent,
     SkillLevelLabelComponent,
     UserOtherProfileIconComponent,
+    FlexLayoutModule,
   ],
   schemas: [
     // CUSTOM_ELEMENTS_SCHEMA

@@ -12,7 +12,7 @@ import {Poi, PoiService} from '../../shared/poi.service'
 import {UserListService} from '../../user-list/user-list.service'
 import {UserMatcherService} from '../../user-profile-shared/user-matcher.service'
 import {UserGeoLocationsService} from '../../user-profile-shared/user-geo-locations.service'
-import { USER_ROUTE_WITH_TRAILING_SLASH } from '../../user-profile-details/user-profile-details.module'
+import { USER_ROUTE_WITH_TRAILING_SLASH } from '../../shared/routes'
 
 export class UserCoords {
   user?: UserProfile
