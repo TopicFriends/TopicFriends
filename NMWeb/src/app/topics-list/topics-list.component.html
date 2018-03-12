@@ -1,4 +1,4 @@
-<h1>Search Topics</h1>
+<h1>Show topics on the map</h1>
 <app-item-list-input
   [isEditable]="true"
   (outputTagList)="onOutputTagList($event)"
@@ -7,7 +7,7 @@
 <button
   mat-raised-button
   [routerLink]="getRoute()"
-  [disabled]="searchTagList.length == 0"
+  [disabled]="searchTagList.length === 0"
 >Search</button>
 <h1>All Topics ({{allTopicsArray.length}})</h1>
 <app-topic-tag-list [editable]="false"

@@ -30,7 +30,7 @@ export class TopicsListComponent implements OnInit {
   }
 
   getRoute() {
-    if(this.searchTagList.length == 0 ) {
+    if(this.searchTagList.length === 0 ) {
       return "#";
     }
     let url = '';

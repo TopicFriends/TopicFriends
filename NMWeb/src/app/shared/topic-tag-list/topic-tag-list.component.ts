@@ -28,17 +28,23 @@ export class TopicTagListComponent implements OnInit {
 
   @Input() set relatedTopicLists(lists: RelatedTopicLists) {
     this._relatedTopicLists = lists
+    //Sort tags
+    this.tagListModel.tags = this.tagListModel.tags.sort(this.sortFuncTags.bind(this));
+
     // if ( tagList ) {
     //   this.tagListModel = new TagListModel(getDictionaryValuesAsArray(tagList))
     // }
   }
   @Input() editable: boolean;
-  @Input() minShow = 10;
+  @Input() minShow;
   showLimit;
 
   constructor() { }
 
   ngOnInit() {
+    if(!this.minShow) {
+      this.minShow = 10;
+    }
     this.showLimit = this.minShow;
   }
 
@@ -63,8 +69,25 @@ export class TopicTagListComponent implements OnInit {
     this.showLimit = this.tagListModel.tags.length;
   }
 
-
   onShowLessClick() {
     this.showLimit = this.minShow;
+  }
+
+  sortFuncTags(a: TopicInterest, b: TopicInterest) {
+    let ans = 0;
+
+    if(this.currentUserHasInterest(a)){
+      ans--;
+    }
+    if(this.currentUserHasInterest(b)) {
+      ans++;
+    }
+    return ans;
+  }
+
+  currentUserHasInterest(interest: TopicInterest) {
+    return this.relatedTopicLists.symmetric.tagExists(interest.tagEntry)  ||
+    this.relatedTopicLists.supplyDemandMatch.tagExists(interest.tagEntry) ||
+    this.relatedTopicLists.supplyDemandSame.tagExists(interest.tagEntry)
   }
 }
