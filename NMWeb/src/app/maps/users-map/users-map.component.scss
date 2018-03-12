@@ -13,8 +13,7 @@ $map-mobile-width: 100%;
 $distance-slicer-width: 300px;
 
 :host {
-  height: 100%;
-  overflow: hidden;
+  overflow-y: hidden !important;
 }
 
 .filter-buttons {
