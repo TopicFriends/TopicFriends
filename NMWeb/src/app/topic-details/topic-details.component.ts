@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
-import {TOPIC_ID_PARAM} from './topic-details.module'
+import {TOPIC_ID_PARAM} from '../shared/routes'
 import {TagEntry} from '../topics-shared/tag-entry'
 import {TopicsService} from '../shared/topics.service'
 import {TopicInterest} from '../user-profile-shared/user-interests'
