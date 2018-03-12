@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
-import {DomainDbService} from '../../domain-db.service'
 import {UserProfileInputs} from '../UserProfileInputs'
 import {isNullOrUndefinedOrWhiteSpace, setFormControlEnabled} from '../../shared/utils'
 import {Title} from "@angular/platform-browser";
@@ -29,7 +28,6 @@ export class UserProfileBasicInfoComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private userProfileService: UserProfileService,
-    private domainDbService: DomainDbService,
     private titleService: Title,
 
   ) {
@@ -60,7 +58,7 @@ export class UserProfileBasicInfoComponent implements OnInit {
       });
     }
 
-    this.domainDbService.userProfileById(this.userProfileInputs.userId).subscribe((userProfile: UserProfile) => {
+    this.userProfileService.userProfileById(this.userProfileInputs.userId).subscribe((userProfile: UserProfile) => {
       console.log('userProfileById: ', userProfile)
       this.applyFromDb(userProfile)
       this.titleService.setTitle(`${userProfile.displayName} - Profile`);

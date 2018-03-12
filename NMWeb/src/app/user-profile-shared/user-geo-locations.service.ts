@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import {DomainDbService} from '../domain-db.service'
 import {DbListReadOnly, DbService} from '../db.service'
 import {UserGeoLocations} from './user-profile.service'
 import { } from 'googlemaps';
+import { DomainDbService } from '../shared/domain-db.service'
 
 @Injectable()
 export class UserGeoLocationsService {
 
+
   constructor(
-    private domainDbService: DomainDbService,
     private dbService: DbService,
+    private domainDbService: DomainDbService,
   ) {
 
   }

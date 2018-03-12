@@ -9,7 +9,7 @@ describe('DomainDbService', () => {
     });
   });
 
-  xit('should be created', inject([DomainDbService], (service: DomainDbService) => {
+  it('should be created', inject([DomainDbService], (service: DomainDbService) => {
     expect(service).toBeTruthy();
   }));
 });

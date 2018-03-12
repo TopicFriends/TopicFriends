@@ -34,6 +34,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {MapsModule} from '../maps/maps.module'
 import {FlexLayoutModule} from '@angular/flex-layout'
 import { TextAreaComponent } from './text-area/text-area.component'
+import { DomainDbService } from './domain-db.service'
 
 @NgModule({
   imports: [
@@ -60,7 +61,7 @@ import { TextAreaComponent } from './text-area/text-area.component'
     Angular2FontawesomeModule,
   ],
   declarations: [
-    TopicTagComponent, /* FIXME: move to topics-shared */
+    TopicTagComponent, /* FIXME: move to topics-shared[-components] */
     TopicTagListComponent,
     UserTemplateComponent,
     UserInterestsModeViewComponent,
@@ -99,6 +100,7 @@ import { TextAreaComponent } from './text-area/text-area.component'
     PoiService,
     GitHubService,
     StackOverflowService,
+    DomainDbService,
   ]
 
 })

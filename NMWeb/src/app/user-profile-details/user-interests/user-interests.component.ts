@@ -4,7 +4,6 @@ import {Observable} from 'rxjs/Observable'
 import {ItemListInputComponent} from '../../shared/item-list-input/item-list-input.component'
 import {FormBuilder, FormGroup} from '@angular/forms'
 import {UserProfileInputs} from '../UserProfileInputs'
-import {DomainDbService} from '../../domain-db.service'
 import { UserProfileService } from '../../user-profile-shared/user-profile.service'
 
 const INITIAL_WANTED_TOPICS: WantedTopics = {
@@ -35,13 +34,12 @@ export class UserInterestsComponent implements OnInit {
 
   constructor(
     protected userProfileService: UserProfileService,
-    private domainDbService: DomainDbService,
   ) { }
 
   ngOnInit() {
     this.supplyDemandFormGroup = <FormGroup> this.thisFormGroup.get('byInteractionMode').get('supplyDemand')
 
-    this.domainDbService.userInterestsById(this.userProfileInputs.userId).subscribe((userInterests: UserInterests) => {
+    this.userProfileService.userInterestsById(this.userProfileInputs.userId).subscribe((userInterests: UserInterests) => {
       this.applyFromDb(userInterests)
     });
   }

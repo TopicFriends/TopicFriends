@@ -1,8 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {AuthService} from './auth.service';
-import {DbObject} from '../db.service'
-import {DomainDbService} from '../domain-db.service'
+import {
+  DbList,
+  DbObject,
+  DbService,
+} from '../db.service'
 import {MatchResults, TopicInterest, UserInterests} from './user-interests'
 import {DbHistory, HasDbHistory} from '../util/history'
 import 'rxjs/add/observable/never'
@@ -10,6 +13,7 @@ import {combineLatest} from 'rxjs/observable/combineLatest'
 import 'rxjs/add/observable/empty'
 import {UserSkillLevelsPerUser} from './user-skills.service'
 import {UserOtherProfiles} from './user-other-profiles.service'
+import { DomainDbService } from '../shared/domain-db.service'
 
 // TODO: massive refactor and split it per separate features
 
@@ -269,13 +273,14 @@ export class UserProfileService {
   myUserData: UserData;
 
   constructor(
-    private db: DomainDbService,
+    private db: DbService,
+    private domainDbService: DomainDbService,
     private authService: AuthService,
   ) {
     authService.user.subscribe(user => {
       this.userId = user && user.uid;
       // this.userId = this.fakeUser;
-      this.myUserData = this.db.userDataById(this.userId);
+      this.myUserData = this.userDataById(this.userId);
     })
 
     // this.getWhatUsersWant().subscribe((wuws) => {
@@ -401,10 +406,6 @@ export class UserProfileService {
   //   });
   // }
 
-  userDataById(userId: string): UserData {
-    return this.db.userDataById(userId)
-  }
-
   userDataByIdCombined(userId: string): Observable<UserDataCombined> {
     const userData = this.userDataById(userId)
     return userData.combineLatest()
@@ -430,4 +431,76 @@ export class UserProfileService {
       }
     })
   }
+
+
+
+  // ======== FIXME: moved from DomainDbService: (naming idea for some: UserProfileCombinedService)
+
+
+  listUserProfile(): DbList<UserProfile> {
+    return this.db.list(this.domainDbService.PATHS.USER_PROFILE)
+  }
+
+  listUserInterests(): DbList<UserInterests> {
+    return this.db.list(this.domainDbService.PATHS.USER_INTERESTS);
+  }
+
+
+  listUserDataWithDetails(): Observable<UserData[]> {
+    return this.listUserProfile().map(list => {
+      // console.log('list', list)
+      return list.map(profile => {
+          const id = (profile as any).$key;
+          const mapped: UserData = new UserData(
+            id,
+            Observable.of(profile),
+            this.userInterestsById(id),
+            this.userSkillLevelsByUserId(id),
+            this.otherProfilesById(id),
+            this.userGeoLocationsById(id),
+            this.userDescriptionsById(id),
+          )
+          return mapped;
+        }
+      )
+    });
+  }
+
+  userProfileById(id: string): DbObject<UserProfile> {
+    return this.db.objectById(this.domainDbService.PATHS.USER_PROFILE, id);
+  }
+
+  otherProfilesById(id: string): DbObject<UserOtherProfiles> {
+    return this.db.objectById(this.domainDbService.PATHS.OTHER_PROFILES, id);
+  }
+
+  userInterestsById(id: string): DbObject<UserInterests> {
+    return this.db.objectById(this.domainDbService.PATHS.USER_INTERESTS, id);
+  }
+
+  userGeoLocationsById(userId: string): DbObject<UserGeoLocations> {
+    return this.db.objectById(this.domainDbService.PATHS.GEO_LOCATIONS, userId);
+  }
+
+  userDescriptionsById(userId: string): DbObject<UserDescriptions> {
+    return this.db.objectById(this.domainDbService.PATHS.DESCRIPTIONS, userId);
+  }
+
+  userSkillLevelsByUserId(userId: string): DbObject<UserSkillLevelsPerUser> {
+    return this.db.objectById(this.domainDbService.PATHS.SKILL_LEVELS, userId)
+  }
+
+  userDataById(userId: string): UserData {
+    return new UserData(
+      userId,
+      this.userProfileById(userId),
+      this.userInterestsById(userId),
+      this.userSkillLevelsByUserId(userId),
+      this.otherProfilesById(userId),
+      this.userGeoLocationsById(userId),
+      this.userDescriptionsById(userId),
+    )
+  }
+
+  // ======== END moved from DomainDbService
 }

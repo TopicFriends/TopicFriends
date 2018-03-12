@@ -6,9 +6,11 @@ import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@
 import {UserProfileInputs} from '../UserProfileInputs'
 import {TopicGroupCardComponent} from '../user-interests/topic-group-card/topic-group-card.component'
 import {TagListModelEvent} from '../../shared/TagListModel'
-import {DomainDbService} from '../../domain-db.service'
 import { TagEntry } from '../../topics-shared/tag-entry'
-import { createTopicsDictionary } from '../../user-profile-shared/user-profile.service'
+import {
+  createTopicsDictionary,
+  UserProfileService,
+} from '../../user-profile-shared/user-profile.service'
 import { TopicInterest } from '../../user-profile-shared/user-interests'
 
 @Component({
@@ -28,7 +30,7 @@ export class UserSkillsComponent implements OnInit {
   constructor(
     public topicsService: TopicsService,
     public userSkillsService: UserSkillsService,
-    public domainDbService: DomainDbService,
+    public userProfileService: UserProfileService,
   ) {
     this.allTopicsArray = topicsService.topics
     this.allTopics = createTopicsDictionary(this.allTopicsArray.map(tagEntry => {
@@ -41,7 +43,7 @@ export class UserSkillsComponent implements OnInit {
 
     // this.userSkillsService.saveExampleData() // FIXME
 
-    this.domainDbService.userSkillLevelsByUserId(this.userProfileInputs.userId)
+    this.userProfileService.userSkillLevelsByUserId(this.userProfileInputs.userId)
       .subscribe((userSkillLevelsPerUser: UserSkillLevelsPerUser) => {
       this.applyFromDb(userSkillLevelsPerUser)
     });

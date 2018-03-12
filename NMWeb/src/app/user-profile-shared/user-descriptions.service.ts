@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {DbListReadOnly, DbObject, DbService} from '../db.service'
 import {UserDescriptions} from './user-profile.service'
-import {DomainDbService} from '../domain-db.service'
 import {AuthService} from './auth.service'
 import 'rxjs/add/operator/switchMap';
+import { DomainDbService } from '../shared/domain-db.service'
 
 
 @Injectable()

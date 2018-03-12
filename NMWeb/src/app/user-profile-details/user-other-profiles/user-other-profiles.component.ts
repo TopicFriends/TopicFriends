@@ -1,9 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
-import {DomainDbService} from '../../domain-db.service'
 import {UserProfileInputs} from '../UserProfileInputs'
 import {setFormControlEnabled} from '../../shared/utils'
-import { OtherProfile } from '../../user-profile-shared/user-profile.service'
+import {
+  OtherProfile,
+  UserProfileService,
+} from '../../user-profile-shared/user-profile.service'
 import { UserOtherProfiles } from '../../user-profile-shared/user-other-profiles.service'
 
 
@@ -105,7 +107,7 @@ export class UserOtherProfilesComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private domainDbService: DomainDbService,
+    private userProfileService: UserProfileService,
   ) {
     this.formGroup = this.formBuilder.group(this.formControls)
   }
@@ -113,7 +115,7 @@ export class UserOtherProfilesComponent implements OnInit {
   ngOnInit() {
     this.parentFormGroup.addControl('UserOtherProfiles', this.formGroup)
     // new approach: adding to parent form group instead of constructing the whole form structure at once
-    this.domainDbService.otherProfilesById(this.userProfileInputs.userId).subscribe((otherProfiles: UserOtherProfiles) => {
+    this.userProfileService.otherProfilesById(this.userProfileInputs.userId).subscribe((otherProfiles: UserOtherProfiles) => {
       this.applyFromDb(otherProfiles)
     });
     setFormControlEnabled(this.formGroup, this.userProfileInputs.isEditable)

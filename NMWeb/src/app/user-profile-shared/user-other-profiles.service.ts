@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {OtherProfile} from './user-profile.service'
 import {DbList, DbService} from '../db.service'
-import {DomainDbService} from '../domain-db.service'
+import { DomainDbService } from '../shared/domain-db.service'
 
 
 export class UserOtherProfiles {

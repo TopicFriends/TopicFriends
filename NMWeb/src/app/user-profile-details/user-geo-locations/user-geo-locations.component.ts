@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
-import {DomainDbService} from '../../domain-db.service'
 import {UserProfileInputs} from '../UserProfileInputs'
 import {
   GeoLocation,
@@ -53,13 +52,12 @@ export class UserGeoLocationsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userProfileService: UserProfileService,
-    private domainDbService: DomainDbService,
   ) {
   }
 
   ngOnInit() {
     console.log('UserGeoLocationsComponent: parentFormGroup', this.parentFormGroup)
-    this.domainDbService.userGeoLocationsById(this.userProfileInputs.userId).subscribe(
+    this.userProfileService.userGeoLocationsById(this.userProfileInputs.userId).subscribe(
         (geoLocationsFromDb: UserGeoLocations) => {
       this.applyFromDb(geoLocationsFromDb)
     })
