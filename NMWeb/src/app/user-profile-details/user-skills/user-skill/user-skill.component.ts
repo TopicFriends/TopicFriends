@@ -3,7 +3,7 @@ import {TopicInterest} from 'app/user-profile/user-interests';
 import {MatDialog} from "@angular/material";
 import {UserSkillLevelsHaveWant} from '../../../user-profile/user-skills.service'
 import {UserProfileInputs} from '../../UserProfileInputs'
-import { TagEntry } from '../../../topics/tag-entry'
+import { TagEntry } from '../../../topics-shared/tag-entry'
 import { UserInterestConfigurationDialogComponent } from '../../../user-profile/user-interest-configuration-dialog/user-interest-configuration-dialog.component'
 import { SkillLevelPopoverComponent } from '../../../user-profile/user-interest-configuration-dialog/skill-level-popover/skill-level-popover.component'
 

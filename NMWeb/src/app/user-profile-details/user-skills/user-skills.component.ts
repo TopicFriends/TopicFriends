@@ -7,7 +7,7 @@ import {UserProfileInputs} from '../UserProfileInputs'
 import {TopicGroupCardComponent} from '../user-interests/topic-group-card/topic-group-card.component'
 import {TagListModelEvent} from '../../shared/TagListModel'
 import {DomainDbService} from '../../domain-db.service'
-import { TagEntry } from '../../topics/tag-entry'
+import { TagEntry } from '../../topics-shared/tag-entry'
 import { createTopicsDictionary } from '../../user-profile/user-profile.service'
 import { TopicInterest } from '../../user-profile/user-interests'
 

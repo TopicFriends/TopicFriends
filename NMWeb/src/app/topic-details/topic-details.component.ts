@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {TOPIC_ID_PARAM} from './topic-details.module'
-import {TagEntry} from '../topics/tag-entry'
+import {TagEntry} from '../topics-shared/tag-entry'
 import {TopicsService} from '../shared/topics.service'
 import {TopicInterest} from '../user-profile/user-interests'
 import {GitHubService} from '../shared/git-hub.service'

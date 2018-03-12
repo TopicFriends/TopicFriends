@@ -24,11 +24,11 @@ import {UserInterestConfigurationDialogComponent} from './user-interest-configur
 import {BasicActionsButtonGroupComponent} from './user-interest-configuration-dialog/basic-actions-button-group/basic-actions-button-group.component';
 import {SupplyDemandButtonGroupComponent} from './user-interest-configuration-dialog/supply-demand-button-group/supply-demand-button-group.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {TopicLogoComponent} from '../topic-logo/topic-logo.component';
 import {UserOtherProfilesService} from './user-other-profiles.service'
 import {UserConfigService} from '../shared/user-config.service';
 import { UserOtherProfileIconComponent } from './user-other-profile-icon/user-other-profile-icon.component'
 import { SkillLevelLabelComponent } from './skill-level-label/skill-level-label.component'
+import { TopicsSharedModule } from '../topics-shared/topics-shared.module'
 
 @NgModule({
   imports: [
@@ -46,7 +46,8 @@ import { SkillLevelLabelComponent } from './skill-level-label/skill-level-label.
     MatButtonToggleModule,
     MatListModule,
     MatExpansionModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    TopicsSharedModule,
   ],
   declarations: [
     UserOtherProfileIconComponent,
@@ -57,7 +58,6 @@ import { SkillLevelLabelComponent } from './skill-level-label/skill-level-label.
     UserInterestConfigurationDialogComponent,
     BasicActionsButtonGroupComponent,
     SupplyDemandButtonGroupComponent,
-    TopicLogoComponent,
     UserOtherProfileIconComponent,
   ],
   providers: [
