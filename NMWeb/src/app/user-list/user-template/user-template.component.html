@@ -9,6 +9,7 @@
       <div class="user-display-name">
         <a routerLink="/user/{{userId}}">{{profileBasicInfo?.displayName || profileBasicInfo?.name}}</a>
         &nbsp; MatchScore: {{matchResults ? matchResults?.matchScore : '(Please Log In to see MatchScore)'}}
+        &nbsp; <mat-chip *ngIf="isLoggedUser()"> YOU!</mat-chip>
       </div>
       <!--</h3>-->
     </mat-card-title>
