@@ -40,7 +40,7 @@
 
       }
 
-      debugAlert('hello script in src/index.html, getFirebaseProjectId(): ' + getFirebaseProjectId());
+      //debugAlert('hello script in src/index.html, getFirebaseProjectId(): ' + getFirebaseProjectId());
 
 
       /**
@@ -55,6 +55,7 @@
        * Returns the ID of the Firebase project.
        */
       function getFirebaseProjectId() {
+        //HAS TO INITIALIZE FIREBASE FIRST!
         return firebase.app().options.authDomain.split('.')[0];
       }
 
