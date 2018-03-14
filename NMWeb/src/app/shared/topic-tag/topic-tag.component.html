@@ -10,8 +10,14 @@
 >
   <div style="display:table-cell; vertical-align: middle">
     <ng-template [ngIf]="tag.tagEntry.logo" >
-      <img style="width: 18px; height: 18px; vertical-align: middle"
-           src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>&nbsp;
+      <a *ngIf="! isCustomClick" [routerLink]="'/topic/'+tag.tagEntry.id">
+        <img style="width: 18px; height: 18px; vertical-align: middle"
+             src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>&nbsp;
+      </a>
+      <a *ngIf="isCustomClick">
+        <img style="width: 18px; height: 18px; vertical-align: middle"
+             src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>&nbsp;
+      </a>
     </ng-template>
     <ng-template [ngIf]="! tag.tagEntry.logo" > <!-- hack for "vertical-align: middle" slightly shifted if no img -->
       <img style="width: 0px; height: 18px; vertical-align:middle"
