@@ -2,7 +2,7 @@
   ngClass.xs="navbar-container-mobile"
   ngClass.gt-xs="navbar-container"
   fxLayout="column"
-  
+
 >
 <div
   class="navbar-container-inner"
@@ -10,7 +10,7 @@
   fxLayout.xs="row"
 >
   <div fxFlexOrder="1" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==0)}" (click)="selectedTab = 0">
-    <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/meeting-list" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/meeting-list" routerLinkActive="active">
          <div class="nav-bar-centerd-items">
             <mat-icon>event</mat-icon>
             <p>Meetings</p>
@@ -19,7 +19,7 @@
 
   </div>
   <div fxFlexOrder="2" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==1)}"  (click)="selectedTab = 1">
-    <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/people-list" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/people-list" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
             <mat-icon>people</mat-icon>
             <p>People</p>
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div fxFlexOrder="3" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==2)}"  (click)="selectedTab = 2">
-    <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/profile" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/profile" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
             <mat-icon>person_pin</mat-icon>
             <p>Profile</p>
@@ -42,7 +42,7 @@
   <div fxFlexOrder="4" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==3)}"  (click)="selectedTab = 3"
        fxHide fxShow.gt-xs
     >
-    <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/topics" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/topics" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
             <mat-icon>filter_vintage</mat-icon>
             <p>Topics</p>
@@ -52,7 +52,7 @@
   </div>
 
   <div fxFlexOrder="5" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==4)}"  (click)="selectedTab = 4">
-    <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/users-map" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/users-map" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
             <mat-icon>map</mat-icon>
             <p>Map</p>
@@ -62,7 +62,7 @@
   </div>
 
   <!--<div fxFlexOrder="6" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==5)}"  (click)="selectedTab = 5">-->
-    <!--<div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/groups" routerLinkActive="active">-->
+    <!--<div class="nav-bar-item-container" [ngStyle.xs ]="{'height.px': 50}" routerLink="/groups" routerLinkActive="active">-->
       <!--<div class="nav-bar-centerd-items">-->
         <!--<mat-icon>people_outline</mat-icon>-->
         <!--<p>Groups</p>-->
@@ -71,7 +71,7 @@
   <!--</div>-->
 
   <div fxFlexOrder="7" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==6)}"  (click)="selectedTab = 6">
-    <div class="nav-bar-item-container" [style.xs]="{'height.px': 50}" routerLink="/about" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/about" routerLinkActive="active">
         <div class="nav-bar-centerd-items">
             <mat-icon>info</mat-icon>
             <p>About</p>
@@ -80,13 +80,13 @@
   </div>
 
   <div [fxHide.xs]="true" fxFlexOrder="8" fxFlex="1 .4 100%"></div>
-  
+
   </div>
 
   <div fxShow fxHide.gt-xs="true" class="footer-mobile"  fxLayout="row">
      <a routerLink="/terms" routerLinkActive="active">TÉRMINOS DE USO</a>
      <span>|</span>
-     <a routerLink="/privacy" routerLinkActive="active">POLÍTICA DE PRIVACIDAD</a>        
+     <a routerLink="/privacy" routerLinkActive="active">POLÍTICA DE PRIVACIDAD</a>
      <span>&copy; 2018 </span>
   </div>
 
