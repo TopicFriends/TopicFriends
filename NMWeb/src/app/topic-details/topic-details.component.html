@@ -28,10 +28,11 @@
 <div style="vertical-align: middle">
   <a href="{{topic.urls.gitHub}}">
     <img class='url-icon' src="/assets/images/logos/github.svg"/>{{topic.urls.gitHub}}</a>
+  &nbsp;
   <a
     *ngIf="topic.urls.gitHub"
     style="vertical-align: middle"
-    class="github-button" href="{{topic.urls.gitHub}}" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star on GitHub"
+    class="github-button" href="{{topic.urls.gitHub}}" data-icon="star" data-size="large" data-show-count="true" aria-label="Star on GitHub"
   > <!-- https://github.com/ntkme/github-buttons -->
     Star
   </a>
