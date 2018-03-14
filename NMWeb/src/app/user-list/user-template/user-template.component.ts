@@ -51,7 +51,7 @@ export class UserTemplateComponent implements OnInit {
 
   ngOnInit() {
     this.authService.user.subscribe((user) => {
-      this.loggedUserId = user.uid;
+      this.loggedUserId = user && user.uid;
     })
     this.userId = this._userPublicProfile.userId
     this.userProfileService.userDataByIdCombined(this.userId).subscribe(x => {
