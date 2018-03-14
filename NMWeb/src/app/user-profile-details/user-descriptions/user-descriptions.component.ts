@@ -1,10 +1,12 @@
 import {Component, Input, OnInit, ViewChildren} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms'
-import {UserDescriptionsService} from '../../user-profile-shared/user-descriptions.service'
+import {
+  UserDescriptions,
+  UserDescriptionsService,
+} from '../../user-profile-shared/user-descriptions.service'
 import {TextAreaComponent} from '../../shared/text-area/text-area.component'
 import {UserProfileInputs} from '../UserProfileInputs'
 import {
-  UserDescriptions,
   UserProfileService,
 } from '../../user-profile-shared/user-profile.service'
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {UserData, UserDescriptions, UserProfile, UserProfileService} from 'app/user-profile-shared/user-profile.service';
+import {UserData, UserProfile, UserProfileService} from 'app/user-profile-shared/user-profile.service';
 import {
   MatchResults, SupplyDemandInteractions, SymmetricInteractions, TopicInterest,
   UserInterests,
@@ -8,6 +8,7 @@ import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
 import {TagInclusions} from '../../shared/TagInclusions'
 import { AuthService } from '../../user-profile-shared/auth.service'
+import { UserDescriptions } from '../../user-profile-shared/user-descriptions.service'
 
 export class SupplyDemandTemplate{
   public static DESIRE_TYPE = {

@@ -1,10 +1,27 @@
 import { Injectable } from '@angular/core';
-import {DbListReadOnly, DbObject, DbService} from '../db.service'
-import {UserDescriptions} from './user-profile.service'
-import {AuthService} from './auth.service'
+import { DbService } from '../db.service'
+import { AuthService } from './auth.service'
 import 'rxjs/add/operator/switchMap';
 import { DomainDbService } from '../shared/domain-db.service'
 
+
+export class UserDescription {
+  text: string
+}
+
+export class UserDescriptions {
+  descriptions: {
+    /* or textDescriptions. For future: ask myself, what other descriptions can there be apart from textual?
+       graphics? That would probably go into another firebase node...
+       What graphics? Background? User map pin? This is not a description.
+       TODO: rename the whole Firebase list-root-node to UserTextDescriptions ?
+     */
+    myDescription: UserDescription, /* or userDescription? */
+    whatDoYouExpectFromTheApp: UserDescription,
+    adviceOnContactingMe: UserDescription, /* TODO: contacting / meeting */
+    howDidYouFindThisCommunity: UserDescription, /* TODO: standardize this/the, app/community -> this community */
+  }
+}
 
 @Injectable()
 export class UserDescriptionsService {

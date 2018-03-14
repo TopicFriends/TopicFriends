@@ -21,6 +21,7 @@ import 'rxjs/add/observable/empty'
 import { UserSkillLevelsPerUser } from './user-skills.service'
 import { UserOtherProfiles } from './user-other-profiles.service'
 import { DomainDbService } from '../shared/domain-db.service'
+import { UserDescriptions, } from './user-descriptions.service'
 
 // TODO: massive refactor and split it per separate features
 
@@ -34,23 +35,6 @@ export function createTopicsDictionary(topics: TopicInterest[]) {
   return ret;
 }
 
-
-export class UserDescription {
-  text: string
-}
-
-export class UserDescriptions {
-  descriptions: { /* or textDescriptions. For future: ask myself, what other descriptions can there be apart from textual?
-    graphics? That would probably go into another firebase node...
-    What graphics? Background? User map pin? This is not a description.
-    TODO: rename the whole Firebase list-root-node to UserTextDescriptions ?
-  */
-    myDescription: UserDescription, /* or userDescription? */
-    whatDoYouExpectFromTheApp: UserDescription,
-    adviceOnContactingMe: UserDescription, /* TODO: contacting / meeting */
-    howDidYouFindThisCommunity: UserDescription, /* TODO: standardize this/the, app/community -> this community */
-  }
-}
 
 export class GeoLocation {
   constructor(
