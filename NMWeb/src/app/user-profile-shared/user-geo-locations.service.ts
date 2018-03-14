@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {DbListReadOnly, DbService} from '../db.service'
+import {DbListReadOnly, DbService} from '../shared/db.service'
 import {UserGeoLocations} from './user-profile.service'
 import { } from 'googlemaps';
 import { DomainDbService } from '../shared/domain-db.service'

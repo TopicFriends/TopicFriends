@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {DbList, DbObject, DbService} from '../db.service';
+import {DbList, DbObject, DbService} from './db.service';
 
 export class Meeting {
   $key: string; // note: $key might be more handy in Firebase

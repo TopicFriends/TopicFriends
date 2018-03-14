@@ -12,7 +12,7 @@ import {UserMatched, UserMatcherService} from '../user-profile-shared/user-match
 import { UserListService } from '../user-list/user-list.service';
 import { TagInclusions } from '../shared/TagInclusions';
 import {TopicsDetailsService} from './topics-details.service'
-import {DbList, DbListReadOnly} from '../db.service'
+import {DbList, DbListReadOnly} from '../shared/db.service'
 
 @Component({
   selector: 'app-topic-details',

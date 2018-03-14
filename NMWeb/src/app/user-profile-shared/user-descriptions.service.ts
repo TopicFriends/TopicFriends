@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DbService } from '../db.service'
+import { DbService } from '../shared/db.service'
 import { AuthService } from './auth.service'
 import 'rxjs/add/operator/switchMap';
 import { DomainDbService } from '../shared/domain-db.service'

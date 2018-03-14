@@ -11,7 +11,7 @@ import {TagInclusions} from '../TagInclusions'
 import {getDictionaryValuesAsArray} from '../utils'
 import {Subject} from 'rxjs/Subject'
 import {UserTopicsService} from '../user-topics.service'
-import {DbList} from '../../db.service'
+import {DbList} from '../db.service'
 
 declare var require: any
 const Sifter = require("sifter")

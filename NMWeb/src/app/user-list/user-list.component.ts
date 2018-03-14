@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserData, UserDataCombined} from 'app/user-profile-shared/user-profile.service';
 import { UserListService } from "app/user-list/user-list.service";
-import { DbListReadOnly } from '../db.service';
+import { DbListReadOnly } from '../shared/db.service';
 import {Observable} from 'rxjs/Observable'
 import {UserMatched, UserMatcherService} from '../user-profile-shared/user-matcher.service'
 import {MatSliderChange} from '@angular/material'

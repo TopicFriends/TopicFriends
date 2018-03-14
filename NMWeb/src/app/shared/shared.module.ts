@@ -35,6 +35,7 @@ import {MapsModule} from '../maps/maps.module'
 import {FlexLayoutModule} from '@angular/flex-layout'
 import { TextAreaComponent } from './text-area/text-area.component'
 import { DomainDbService } from './domain-db.service'
+import { DbService } from './db.service'
 
 @NgModule({
   imports: [
@@ -100,6 +101,7 @@ import { DomainDbService } from './domain-db.service'
     PoiService,
     GitHubService,
     StackOverflowService,
+    DbService,
     DomainDbService,
   ]
 

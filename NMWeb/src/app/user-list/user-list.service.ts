@@ -5,7 +5,7 @@ import {
   UserProfileService,
 } from 'app/user-profile-shared/user-profile.service';
 import {UserProfile} from 'app/user-profile-shared/user-profile.service';
-import {DbListReadOnly} from '../db.service';
+import {DbListReadOnly} from '../shared/db.service';
 import {Observable} from 'rxjs/Observable'
 import {arrayOfObservablesToObservableOfArray} from '../shared/utils'
 

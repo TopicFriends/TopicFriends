@@ -5,7 +5,7 @@ import {
   DbList,
   DbObject,
   DbService,
-} from '../db.service'
+} from '../shared/db.service'
 import {
   MatchResults,
   TopicInterest,

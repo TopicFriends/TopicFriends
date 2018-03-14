@@ -15,7 +15,6 @@ import {UserListService} from './user-list/user-list.service';
 import {UserMatcherService} from './user-profile-shared/user-matcher.service';
 // import { UserTemplateComponent } from './user-list/user-template/user-template.component';
 import {MeetingsModule} from './meeting-list/meetings.module';
-import {DbService} from './db.service'
 import {MeetingsService} from './shared/meetings.service'
 import {TopicsService} from './shared/topics.service';
 import {UserProfileSharedModule} from './user-profile-shared/user-profile-shared.module'
@@ -85,7 +84,6 @@ import {MapsSharedModule} from './maps-shared/maps-shared.module'
   ],
   providers: [
     AuthService,
-    DbService,
     UserProfileService,
     UserListService,
     UserMatcherService,

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   DbList,
   DbService,
-} from '../db.service'
+} from '../shared/db.service'
 import { DomainDbService } from '../shared/domain-db.service'
 
 

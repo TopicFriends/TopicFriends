@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {DbList, DbService} from '../db.service'
+import {DbList, DbService} from './db.service'
 import {TagEntry} from '../topics-shared/tag-entry'
 
 export const TOPICS_PATH = 'Topics'
