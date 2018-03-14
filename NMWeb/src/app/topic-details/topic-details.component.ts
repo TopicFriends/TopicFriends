@@ -24,12 +24,15 @@ export class TopicDetailsComponent implements OnInit {
   topicId: string = this.route.snapshot.params[TOPIC_ID_PARAM];
   topic: TagEntry
   topicInterest: TopicInterest
+  interestedUsers: UserMatched[]
+
 
   constructor(
     private route: ActivatedRoute,
     private topicsService: TopicsService,
     private gitHubService: GitHubService,
     private titleService: Title,
+    private topicsDetailsService: TopicsDetailsService
   ) {
     console.log('topicId', this.topicId)
 
@@ -40,7 +43,9 @@ export class TopicDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle( this.topic.name + ' - TopicFriends');
-
+    this.topicsDetailsService.getMatchedUsersWithTopic(this.topicId).subscribe((users) => {
+      this.interestedUsers = users;
+    });
   }
 
   createTopicInterest(topic) {

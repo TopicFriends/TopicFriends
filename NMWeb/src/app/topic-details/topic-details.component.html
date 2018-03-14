@@ -21,6 +21,13 @@
   ></app-topic-tag>
 </mat-chip-list>
 
+<h2>Interested Users</h2>
+<nw-user-template
+  *ngFor="let user of interestedUsers; trackBy: trackByKey"
+  [userProfile]="user.userDataCombined.userData"
+></nw-user-template>
+
+
 <h2>Links</h2>
 <p><a href="https://topicfriends.org/topic/{{topic.id}}">https://topicfriends.org/topic/{{topic.id}}</a></p>
 <p><a href="{{topic.website}}">{{topic.website}}</a></p>
