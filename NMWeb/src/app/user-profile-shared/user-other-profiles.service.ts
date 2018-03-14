@@ -1,8 +1,16 @@
-import {Injectable} from '@angular/core';
-import {OtherProfile} from './user-profile.service'
-import {DbList, DbService} from '../db.service'
+import { Injectable } from '@angular/core';
+import {
+  DbList,
+  DbService,
+} from '../db.service'
 import { DomainDbService } from '../shared/domain-db.service'
 
+
+export class OtherProfile {
+  userName?: string;
+  url?: string;
+  show?: boolean;
+}
 
 export class UserOtherProfiles {
 

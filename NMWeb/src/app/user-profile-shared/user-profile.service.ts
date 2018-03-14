@@ -1,18 +1,25 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {AuthService} from './auth.service';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AuthService } from './auth.service';
 import {
   DbList,
   DbObject,
   DbService,
 } from '../db.service'
-import {MatchResults, TopicInterest, UserInterests} from './user-interests'
-import {DbHistory, HasDbHistory} from '../util/history'
+import {
+  MatchResults,
+  TopicInterest,
+  UserInterests,
+} from './user-interests'
+import {
+  DbHistory,
+  HasDbHistory,
+} from '../util/history'
 import 'rxjs/add/observable/never'
-import {combineLatest} from 'rxjs/observable/combineLatest'
+import { combineLatest } from 'rxjs/observable/combineLatest'
 import 'rxjs/add/observable/empty'
-import {UserSkillLevelsPerUser} from './user-skills.service'
-import {UserOtherProfiles} from './user-other-profiles.service'
+import { UserSkillLevelsPerUser } from './user-skills.service'
+import { UserOtherProfiles } from './user-other-profiles.service'
 import { DomainDbService } from '../shared/domain-db.service'
 
 // TODO: massive refactor and split it per separate features
@@ -25,12 +32,6 @@ export function createTopicsDictionary(topics: TopicInterest[]) {
     i++;
   }
   return ret;
-}
-
-export class OtherProfile {
-  userName?: string;
-  url?: string;
-  show?: boolean;
 }
 
 

@@ -3,10 +3,12 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {UserProfileInputs} from '../UserProfileInputs'
 import {setFormControlEnabled} from '../../shared/utils'
 import {
-  OtherProfile,
   UserProfileService,
 } from '../../user-profile-shared/user-profile.service'
-import { UserOtherProfiles } from '../../user-profile-shared/user-other-profiles.service'
+import {
+  OtherProfile,
+  UserOtherProfiles,
+} from '../../user-profile-shared/user-other-profiles.service'
 
 
 function getOtherProfileName(otherProfile: OtherProfile) {
