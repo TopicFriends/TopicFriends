@@ -7,6 +7,7 @@ import {
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
 import {TagInclusions} from '../../shared/TagInclusions'
+import {AuthService} from '../../user-profile/auth.service'
 
 export class SupplyDemandTemplate{
   public static DESIRE_TYPE = {
@@ -33,6 +34,8 @@ export class UserTemplateComponent implements OnInit {
   loggedUserInterests: UserInterests;
   loggedUserInterestsSymmetric: SymmetricInteractions;
   loggedUserInterestsSupplyDemand: SupplyDemandInteractions;
+  loggedUserId: string;
+
 
   userInterests: UserInterests;
   userDescriptions: UserDescriptions;
@@ -42,10 +45,14 @@ export class UserTemplateComponent implements OnInit {
   matchResults: MatchResults
 
   constructor(
-    private userProfileService: UserProfileService
+    private userProfileService: UserProfileService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
+    this.authService.user.subscribe((user) => {
+      this.loggedUserId = user.uid;
+    })
     this.userId = this._userPublicProfile.userId
     this.userProfileService.userDataByIdCombined(this.userId).subscribe(x => {
       // console.log('userDataByIdCombined', this.userId, x)
@@ -112,6 +119,10 @@ export class UserTemplateComponent implements OnInit {
     }
 
     return whatUserWants;
+  }
+
+  isLoggedUser() {
+    return this.loggedUserId === this.userId;
   }
 
 }
