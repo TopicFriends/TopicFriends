@@ -34,7 +34,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'about',
-    component: AboutComponent,
+    loadChildren: 'app/about/about.module#AboutModule',
   },
   {
     path: 'terms',
