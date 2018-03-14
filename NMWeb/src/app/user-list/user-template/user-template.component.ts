@@ -7,7 +7,7 @@ import {
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
 import {TagInclusions} from '../../shared/TagInclusions'
-import {AuthService} from '../../user-profile/auth.service'
+import { AuthService } from '../../user-profile-shared/auth.service'
 
 export class SupplyDemandTemplate{
   public static DESIRE_TYPE = {
@@ -46,7 +46,7 @@ export class UserTemplateComponent implements OnInit {
 
   constructor(
     private userProfileService: UserProfileService,
-    private authService: AuthService
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {

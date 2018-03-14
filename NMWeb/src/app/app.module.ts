@@ -70,8 +70,8 @@ import {MapsSharedModule} from './maps-shared/maps-shared.module'
     TopicsMapPageModule,
     // ----
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase) ,
+    AngularFireDatabaseModule, /* maybe move to its own module: DbModule; e.g. LoginModule would not require full db (for lazy loading) */
     AngularFireAuthModule,
     MatButtonModule,
     MatRadioModule,

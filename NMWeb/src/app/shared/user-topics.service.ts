@@ -5,6 +5,10 @@ import {TagEntry} from '../topics-shared/tag-entry'
 export const TOPICS_PATH = 'Topics'
 export const TOPICS_TOPIC_PATH = TOPICS_PATH + '/UserTopic'
 
+/**
+ * Move to topics-shared-services module
+ * FIXME: rename to CustomTopicsService (because User* prefix is misleading, suggesting part of user's profile.
+ * Or the reverse: only have TopicsService and move built-in topics data into separate file (e.g. topics.data.ts) or service (BuiltInTopicsService) */
 @Injectable()
 export class UserTopicsService {
 

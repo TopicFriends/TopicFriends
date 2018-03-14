@@ -26,6 +26,7 @@ import {UserConfigService} from '../shared/user-config.service';
 import { UserOtherProfileIconComponent } from './user-other-profile-icon/user-other-profile-icon.component'
 import { SkillLevelLabelComponent } from './skill-level-label/skill-level-label.component'
 import { TopicsSharedModule } from '../topics-shared/topics-shared.module'
+import { UserTopicsService } from './user-topics.service'
 
 @NgModule({
   imports: [
@@ -60,6 +61,7 @@ import { TopicsSharedModule } from '../topics-shared/topics-shared.module'
   providers: [
     UserOtherProfilesService,
     UserConfigService,
+    UserTopicsService,
     // {
     //   provide: RouteReuseStrategy,
     //   useClass: CustomRouteReuseStrategy

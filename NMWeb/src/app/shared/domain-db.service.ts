@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
  * E.g. for analysing naming consistency, and to get a quick glimpse of the domain db overall structure.
  * Do not put module-specific logic here (it belongs in specific services).
  *
+ * Analogy: shared/routes.ts
+ *
  * Later I might decide to split into smth like UserProfileDb; but that would kinda negate the "have all the names in one place",
  * plus it might be too much hair-splitting. Time will show :).
  */
@@ -23,6 +25,13 @@ export class DomainDbService {
     GEO_LOCATIONS: this.USER_DATA + 'GeoLocations',
     DESCRIPTIONS: this.USER_DATA + 'Descriptions',
     SKILL_LEVELS: this.USER_DATA + 'UserSkillLevels',
+  }
+
+  /* New idea to avoid duplication.
+   * Then a function would run on it and would assign path field based on the key that it is in (unless already provided in the object). */
+  PATHS2 = {
+    OtherProfiles: {},
+
   }
 
   constructor() { }
