@@ -23,7 +23,6 @@ import {SharedModule} from './shared/shared.module';
 // import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
 import { TopicsListComponent } from './topics-list/topics-list.component';
 import {MapsModule} from './maps/maps.module'
-import { AboutComponent } from './about/about.component';
 
 // import {
 //   AngularFireModule,
@@ -51,7 +50,6 @@ import {MapsSharedModule} from './maps-shared/maps-shared.module'
     // UserTemplateComponent,
     // UserInterestsModeViewComponent,
     TopicsListComponent,
-    AboutComponent,
     UserGroupsComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,
