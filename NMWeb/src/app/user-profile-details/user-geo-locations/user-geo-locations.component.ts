@@ -2,11 +2,13 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {UserProfileInputs} from '../UserProfileInputs'
 import {
+  UserProfileService,
+} from '../../user-profile-shared/user-profile.service'
+import {
   GeoLocation,
   GeoLocations,
   UserGeoLocations,
-  UserProfileService,
-} from '../../user-profile-shared/user-profile.service'
+} from '../../user-profile-shared/user-geo-locations.types'
 
 function transformIntoLocationDictionaries(values: any) {
   let returnVal = {}

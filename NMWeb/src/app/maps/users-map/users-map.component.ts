@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {
-  GeoLocation, GeoLocationsDictionary, UserGeoLocations, UserProfile,
+  UserProfile,
   UserProfileService,
 } from '../../user-profile-shared/user-profile.service'
 import {GeoLocationService} from '../../shared/geo-location.service'
@@ -13,6 +13,11 @@ import {UserListService} from '../../user-list/user-list.service'
 import {UserMatcherService} from '../../user-profile-shared/user-matcher.service'
 import {UserGeoLocationsService} from '../../user-profile-shared/user-geo-locations.service'
 import { USER_ROUTE_WITH_TRAILING_SLASH } from '../../shared/routes'
+import {
+  GeoLocation,
+  GeoLocationsDictionary,
+  UserGeoLocations,
+} from '../../user-profile-shared/user-geo-locations.types'
 
 export class UserCoords {
   user?: UserProfile

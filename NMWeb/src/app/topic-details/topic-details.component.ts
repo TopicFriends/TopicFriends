@@ -7,12 +7,16 @@ import {TopicInterest} from '../user-profile-shared/user-interests'
 import {GitHubService} from '../shared/git-hub.service'
 import {Title} from "@angular/platform-browser";
 import { GeoLocationService } from '../shared/geo-location.service';
-import {GeoLocation, GeoLocationsDictionary, UserDataCombined} from '../user-profile-shared/user-profile.service';
+import {UserDataCombined} from '../user-profile-shared/user-profile.service';
 import {UserMatched, UserMatcherService} from '../user-profile-shared/user-matcher.service';
 import { UserListService } from '../user-list/user-list.service';
 import { TagInclusions } from '../shared/TagInclusions';
 import {TopicsDetailsService} from './topics-details.service'
 import {DbList, DbListReadOnly} from '../shared/db.service'
+import {
+  GeoLocation,
+  GeoLocationsDictionary,
+} from '../user-profile-shared/user-geo-locations.types'
 
 @Component({
   selector: 'app-topic-details',

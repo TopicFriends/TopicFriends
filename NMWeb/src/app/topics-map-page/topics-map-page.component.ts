@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GeoLocationService} from '../shared/geo-location.service'
-import {GeoLocation} from '../user-profile-shared/user-profile.service'
+import {GeoLocation} from '../user-profile-shared/user-geo-locations.types'
 import {TOPIC_ID_PARAM} from '../shared/routes'
 import {ActivatedRoute} from '@angular/router'
 import {TagEntry} from '../topics-shared/tag-entry'
