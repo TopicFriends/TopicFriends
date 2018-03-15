@@ -49,7 +49,6 @@ export class UsersMapComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    window.scrollTo(0,0);
     this.poiService.observePois().subscribe(pois => {
       this.pois = pois
     })
