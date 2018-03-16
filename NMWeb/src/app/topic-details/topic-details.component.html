@@ -23,11 +23,21 @@
 
 <h2>Interested Users</h2>
 <nw-user-template
-  *ngFor="let user of interestedUsers; trackBy: trackByKey"
+  *ngFor="let user of interestedUsers | limitTo:showLimit"
   [userProfile]="user.userDataCombined.userData"
   [showLess]="true"
 ></nw-user-template>
 
+<button
+  *ngIf="canShowLess()"
+  mat-raised-button
+  (click)="onShowLessClick()"
+>Show less</button>
+<button
+  *ngIf="canShowMore()"
+  mat-raised-button
+  (click)="onShowMoreClick()"
+>Show more</button>
 
 <h2>Links</h2>
 <p><a href="https://topicfriends.org/topic/{{topic.id}}">https://topicfriends.org/topic/{{topic.id}}</a></p>

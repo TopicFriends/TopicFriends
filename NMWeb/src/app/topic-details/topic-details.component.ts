@@ -25,7 +25,7 @@ export class TopicDetailsComponent implements OnInit {
   topic: TagEntry
   topicInterest: TopicInterest
   interestedUsers: UserMatched[]
-
+  showLimit = 10;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,4 +52,19 @@ export class TopicDetailsComponent implements OnInit {
     return new TopicInterest(topic)
   }
 
+  canShowMore() {
+    return this.interestedUsers && this.interestedUsers.length > this.showLimit;
+  }
+
+  canShowLess() {
+    return this.interestedUsers && (this.showLimit > 10) && (10 < this.interestedUsers.length);
+  }
+
+  onShowMoreClick() {
+    this.showLimit = this.interestedUsers.length;
+  }
+
+  onShowLessClick() {
+    this.showLimit = 10;
+  }
 }
