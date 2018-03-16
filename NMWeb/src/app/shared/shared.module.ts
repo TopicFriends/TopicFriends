@@ -78,7 +78,9 @@ import {FlexLayoutModule} from '@angular/flex-layout'
     SnackBarComponent,
     MatInputModule,
     DistancePipe,
+    LimitToPipe,
     MatTabsModule,
+    MatButtonModule,
     MatProgressSpinnerModule,
     Angular2FontawesomeModule,
     ItemListInputComponent
