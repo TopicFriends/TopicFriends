@@ -25,6 +25,7 @@
 <nw-user-template
   *ngFor="let user of interestedUsers; trackBy: trackByKey"
   [userProfile]="user.userDataCombined.userData"
+  [showLess]="true"
 ></nw-user-template>
 
 
