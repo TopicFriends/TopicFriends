@@ -10,6 +10,7 @@ export class MeetingListComponent implements OnInit {
 
   pastMeetings: Meeting[];
   upcommingMeetings: Meeting[];
+  seePastMeetings = false;
 
   constructor(private meetingsService: MeetingsService) {
     this.meetingsService.retrieveAllMeetings().subscribe((meetings: Meeting[]) => {

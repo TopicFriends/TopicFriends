@@ -6,11 +6,20 @@
   </mat-list-item>
 </ng-template>
 
-<h2>Past Meetings</h2>
+<button
+  class="pastMeetingsButton"
+  *ngIf="pastMeetings && pastMeetings.length > 0"
+  (click)="seePastMeetings = !seePastMeetings"
+  mat-raised-button>
+  <span *ngIf="!seePastMeetings">See past meetings</span>
+  <span *ngIf="seePastMeetings">Hide past meetings</span>
+</button>
 
-
-<ng-template mat-list ngFor let-item [ngForOf]="pastMeetings" >
-  <mat-list-item>
-    <app-meeting-list-item mat-list-item [meeting]="item" formcontrolname="meeting"></app-meeting-list-item>
-  </mat-list-item>
+<ng-template [ngIf]="seePastMeetings">
+  <h2>Past Meetings</h2>
+  <ng-template mat-list ngFor let-item [ngForOf]="pastMeetings" >
+    <mat-list-item>
+      <app-meeting-list-item mat-list-item [meeting]="item" formcontrolname="meeting"></app-meeting-list-item>
+    </mat-list-item>
+  </ng-template>
 </ng-template>
