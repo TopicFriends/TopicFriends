@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {TopicsService} from '../shared/topics.service'
 import {TagInclusions} from '../shared/TagInclusions'
-import {TopicInterest} from '../user-profile/user-interests'
-import {createTopicsDictionary} from '../user-profile/user-profile.service'
-import {TagEntry} from '../user-profile/tag-entry'
+import {TopicInterest} from '../user-profile-shared/user-interests'
+import {createTopicsDictionary} from '../user-profile-shared/user-profile.service'
+import {TagEntry} from '../topics-shared/tag-entry'
 import {Router} from '@angular/router'
 
 @Component({

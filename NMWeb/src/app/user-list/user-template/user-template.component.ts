@@ -1,13 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {UserData, UserDescriptions, UserProfile, UserProfileService} from 'app/user-profile/user-profile.service';
+import {UserData, UserProfile, UserProfileService} from 'app/user-profile-shared/user-profile.service';
 import {
   MatchResults, SupplyDemandInteractions, SymmetricInteractions, TopicInterest,
   UserInterests,
-} from '../../user-profile/user-interests'
+} from '../../user-profile-shared/user-interests'
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
 import {TagInclusions} from '../../shared/TagInclusions'
-import {AuthService} from '../../user-profile/auth.service'
+import { AuthService } from '../../user-profile-shared/auth.service'
+import { UserDescriptions } from '../../user-profile-shared/user-descriptions.service'
 
 export class SupplyDemandTemplate{
   public static DESIRE_TYPE = {
@@ -47,7 +48,7 @@ export class UserTemplateComponent implements OnInit {
 
   constructor(
     private userProfileService: UserProfileService,
-    private authService: AuthService
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {

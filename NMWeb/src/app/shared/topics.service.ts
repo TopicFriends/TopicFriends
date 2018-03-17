@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {TagEntry, TopicUrls} from '../user-profile/tag-entry'
+import {TagEntry, TopicUrls} from '../topics-shared/tag-entry'
 
 
 function tag(name: string, logo?: string, webSite?: string, related?: TagEntry[], urls?: TopicUrls) {
@@ -507,7 +507,7 @@ export class TopicsService {
 
     // CI: Continous Integration, CD: Continuous Delivery
     // RethinkDB
-
+    tagNoIcon('Web Animations API'),
     'Jest',
 
     tagNoIcon('Electronic Voting'), tagNoIcon('Activism'), tagNoIcon('Volunteering'),
@@ -515,6 +515,7 @@ export class TopicsService {
     tagNoIcon('Figma'),
     tagNoIcon('Affinity Designer'),
     tagNoIcon('Psychology'),
+    tagNoIcon('StackBlitz'),
     tagNoIcon('Java Server Faces (JSF)'),
     tag('Dexie.js', 'dexie-js'),
     'Aurelia',

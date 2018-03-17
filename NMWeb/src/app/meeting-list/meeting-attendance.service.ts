@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {AuthService} from '../user-profile/auth.service';
-import {DbList, DbObject, DbService} from '../db.service';
+import {AuthService} from '../user-profile-shared/auth.service';
+import {DbList, DbObject, DbService} from '../shared/db.service';
 import {
   UserData,
   UserProfileService,
-} from '../user-profile/user-profile.service';
+} from '../user-profile-shared/user-profile.service';
 import {Observable} from 'rxjs/Observable';
 
 export class MeetingAttendanceByUser {

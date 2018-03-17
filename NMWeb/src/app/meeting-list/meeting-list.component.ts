@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DbList} from '../db.service';
+import {DbList} from '../shared/db.service';
 import {Meeting, MeetingsService} from '../shared/meetings.service'
 
 @Component({

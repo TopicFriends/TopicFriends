@@ -1,18 +1,23 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {
-  GeoLocation, GeoLocationsDictionary, UserGeoLocations, UserProfile,
+  UserProfile,
   UserProfileService,
-} from '../../user-profile/user-profile.service'
+} from '../../user-profile-shared/user-profile.service'
 import {GeoLocationService} from '../../shared/geo-location.service'
-import {UserGeoLocationsService} from '../../shared/user-geo-locations.service'
 
 // import { } from 'googlemaps';
 import {Router} from '@angular/router'
-import {USER_ROUTE_WITH_TRAILING_SLASH} from '../../user-profile/user-profile.module'
 import {MatCheckbox} from '@angular/material'
 import {Poi, PoiService} from '../../shared/poi.service'
 import {UserListService} from '../../user-list/user-list.service'
-import {UserMatcherService} from '../../user-matcher.service'
+import {UserMatcherService} from '../../user-profile-shared/user-matcher.service'
+import {UserGeoLocationsService} from '../../user-profile-shared/user-geo-locations.service'
+import { USER_ROUTE_WITH_TRAILING_SLASH } from '../../shared/routes'
+import {
+  GeoLocation,
+  GeoLocationsDictionary,
+  UserGeoLocations,
+} from '../../user-profile-shared/user-geo-locations.types'
 
 export class UserCoords {
   user?: UserProfile

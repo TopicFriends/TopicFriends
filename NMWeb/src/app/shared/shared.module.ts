@@ -14,9 +14,9 @@ import {UserTemplateComponent} from '../user-list/user-template/user-template.co
 import {UserInterestsModeViewComponent} from '../user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
 import {SnackBarComponent} from './snackbar/snackbar.component'
 import {GeoLocationService} from './geo-location.service'
-import {UserGeoLocationsService} from './user-geo-locations.service'
+import {UserGeoLocationsService} from '../user-profile-shared/user-geo-locations.service'
 import {RouterModule} from '@angular/router'
-import {UserDescriptionsService} from './user-profile/user-descriptions.service'
+import {UserDescriptionsService} from '../user-profile-shared/user-descriptions.service'
 import {UserTopicsService} from './user-topics.service'
 import {DistancePipe} from '../maps/users-map/distance.pipe'
 import {PoiService} from './poi.service'
@@ -25,7 +25,7 @@ import {GitHubService} from './git-hub.service'
 import {StackOverflowService} from './stack-overflow.service'
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
 import { CleanUrlPipe } from './pipes/clean-url.pipe'
-import {UserSkillsService} from './user-skills.service'
+import {UserSkillsService} from '../user-profile-shared/user-skills.service'
 import {UserTermsOfServiceService} from './user-terms-of-service.service'
 import {MapsSharedModule} from '../maps-shared/maps-shared.module';
 import { LimitToPipe } from './pipes/limit-to.pipe'
@@ -33,6 +33,9 @@ import {ItemListInputComponent} from './item-list-input/item-list-input.componen
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {MapsModule} from '../maps/maps.module'
 import {FlexLayoutModule} from '@angular/flex-layout'
+import { TextAreaComponent } from './text-area/text-area.component'
+import { DomainDbService } from './domain-db.service'
+import { DbService } from './db.service'
 
 @NgModule({
   imports: [
@@ -59,7 +62,7 @@ import {FlexLayoutModule} from '@angular/flex-layout'
     Angular2FontawesomeModule,
   ],
   declarations: [
-    TopicTagComponent,
+    TopicTagComponent, /* FIXME: move to topics-shared[-components] */
     TopicTagListComponent,
     UserTemplateComponent,
     UserInterestsModeViewComponent,
@@ -68,6 +71,7 @@ import {FlexLayoutModule} from '@angular/flex-layout'
     CleanUrlPipe,
     LimitToPipe,
     ItemListInputComponent,
+    TextAreaComponent,
     // GeolocationService,
   ],
   exports: [
@@ -83,12 +87,13 @@ import {FlexLayoutModule} from '@angular/flex-layout'
     MatButtonModule,
     MatProgressSpinnerModule,
     Angular2FontawesomeModule,
-    ItemListInputComponent
+    ItemListInputComponent,
+    TextAreaComponent,
+    MatButtonModule,
   ],
   providers: [
     SnackBarComponent,
     MatSnackBar,
-    MatButtonModule,
     GeoLocationService,
     UserGeoLocationsService,
     UserDescriptionsService,
@@ -98,6 +103,8 @@ import {FlexLayoutModule} from '@angular/flex-layout'
     PoiService,
     GitHubService,
     StackOverflowService,
+    DbService,
+    DomainDbService,
   ]
 
 })

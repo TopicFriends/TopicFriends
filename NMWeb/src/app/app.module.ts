@@ -5,28 +5,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCardModule, MatChipsModule, MatRadioModule, MatSelectModule, MatSliderModule} from '@angular/material';
-import { LoginComponent } from './login/login.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
-import {UserProfileService} from './user-profile/user-profile.service';
-import {AuthService} from './user-profile/auth.service';
+import {UserProfileService} from './user-profile-shared/user-profile.service';
+import {AuthService} from './user-profile-shared/auth.service';
 import {UserListService} from './user-list/user-list.service';
-import {UserMatcherService} from './user-matcher.service';
+import {UserMatcherService} from './user-profile-shared/user-matcher.service';
 // import { UserTemplateComponent } from './user-list/user-template/user-template.component';
 import {MeetingsModule} from './meeting-list/meetings.module';
-import {DbService} from './db.service'
-import {DomainDbService} from './domain-db.service'
 import {MeetingsService} from './shared/meetings.service'
 import {TopicsService} from './shared/topics.service';
-import {UserProfileModule} from './user-profile/user-profile.module'
+import {UserProfileSharedModule} from './user-profile-shared/user-profile-shared.module'
 import {CoreModule} from 'app/core/core.module';
 import {SharedModule} from './shared/shared.module';
 // import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
 import { TopicsListComponent } from './topics-list/topics-list.component';
 import {MapsModule} from './maps/maps.module'
-import { AboutComponent } from './about/about.component';
 
 // import {
 //   AngularFireModule,
@@ -51,11 +47,9 @@ import {MapsSharedModule} from './maps-shared/maps-shared.module'
   declarations: [
     AppComponent,
     UserListComponent,
-    LoginComponent,
     // UserTemplateComponent,
     // UserInterestsModeViewComponent,
     TopicsListComponent,
-    AboutComponent,
     UserGroupsComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,
@@ -67,14 +61,14 @@ import {MapsSharedModule} from './maps-shared/maps-shared.module'
     routingModule,
     SharedModule,
     MeetingsModule,
-    UserProfileModule,
+    UserProfileSharedModule,
     MapsModule,
     MapsSharedModule,
     TopicsMapPageModule,
     // ----
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase) ,
+    AngularFireDatabaseModule, /* maybe move to its own module: DbModule; e.g. LoginModule would not require full db (for lazy loading) */
     AngularFireAuthModule,
     MatButtonModule,
     MatRadioModule,
@@ -88,8 +82,6 @@ import {MapsSharedModule} from './maps-shared/maps-shared.module'
   ],
   providers: [
     AuthService,
-    DbService,
-    DomainDbService,
     UserProfileService,
     UserListService,
     UserMatcherService,

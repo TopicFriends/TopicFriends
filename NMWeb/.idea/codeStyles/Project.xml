@@ -8,9 +8,11 @@
       <option name="USE_DOUBLE_QUOTES" value="false" />
       <option name="FORCE_QUOTE_STYlE" value="true" />
       <option name="ENFORCE_TRAILING_COMMA" value="WhenMultiline" />
+      <option name="IMPORTS_WRAP" value="2" />
+      <option name="SPACES_WITHIN_IMPORTS" value="true" />
     </TypeScriptCodeStyleSettings>
     <codeStyleSettings language="TypeScript">
-      <option name="RIGHT_MARGIN" value="140" />
+      <option name="RIGHT_MARGIN" value="160" />
     </codeStyleSettings>
   </code_scheme>
 </component>

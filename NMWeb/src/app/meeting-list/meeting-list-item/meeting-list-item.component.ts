@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meeting-attendance.service';
 import {Meeting} from '../../shared/meetings.service';
-import {AuthService} from '../../user-profile/auth.service';
+import {AuthService} from '../../user-profile-shared/auth.service';
 
 @Component({
   selector: 'app-meeting-list-item',

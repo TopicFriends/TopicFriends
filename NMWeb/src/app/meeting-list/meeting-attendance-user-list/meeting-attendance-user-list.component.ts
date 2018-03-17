@@ -3,8 +3,8 @@ import {
   MeetingAttendanceByUserWithUserData,
   MeetingAttendanceService,
 } from '../meeting-attendance.service';
-import {DbListReadOnly} from '../../db.service';
-import {UserMatcherService} from '../../user-matcher.service'
+import {DbListReadOnly} from '../../shared/db.service';
+import {UserMatcherService} from '../../user-profile-shared/user-matcher.service'
 
 @Component({
   selector: 'app-meeting-attendance-user-list',

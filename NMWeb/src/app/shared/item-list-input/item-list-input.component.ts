@@ -1,17 +1,17 @@
 import { Component, Input, OnInit, Output,  EventEmitter } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import { TagEntry } from "app/user-profile/tag-entry";
+import { TagEntry } from "app/topics-shared/tag-entry";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
-import {TopicInterest} from '../../user-profile/user-interests'
+import {TopicInterest} from '../../user-profile-shared/user-interests'
 import {TopicsService} from '../topics.service'
 import {TagListModel} from '../TagListModel'
 import {TagInclusions} from '../TagInclusions'
 import {getDictionaryValuesAsArray} from '../utils'
 import {Subject} from 'rxjs/Subject'
 import {UserTopicsService} from '../user-topics.service'
-import {DbList} from '../../db.service'
+import {DbList} from '../db.service'
 
 declare var require: any
 const Sifter = require("sifter")
