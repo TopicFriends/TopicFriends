@@ -78,7 +78,7 @@ export class MeetingAttendanceService {
       //TODO: attendees might be null or undefined
       return meetingAttendanceByUserArray.filter(
         (meetingAttendanceByUser: MeetingAttendanceByUser) => {
-          return meetingAttendanceByUser.going === true
+          return meetingAttendanceByUser.going
         }
       ).map((meetingAttendanceByUser: MeetingAttendanceByUser) => {
         let userId = meetingAttendanceByUser.$key;

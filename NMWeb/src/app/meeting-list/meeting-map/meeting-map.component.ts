@@ -33,6 +33,7 @@ export class MeetingMapComponent implements OnInit {
     this.meetingId = this.route.snapshot.params['meetingId'];
     this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meetingId).subscribe(list => {
       for(let user of list) {
+        this.allUsersLocations = [];
         this.addUserToUsersGeoLocations(user);
       }
     });
@@ -51,5 +52,4 @@ export class MeetingMapComponent implements OnInit {
     // window.alert('Click ' + marker)
     this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.userId])
   }
-
 }
