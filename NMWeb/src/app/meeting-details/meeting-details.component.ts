@@ -3,6 +3,7 @@ import {Meeting, MeetingsService} from '../shared/meetings.service';
 import {ActivatedRoute} from '@angular/router';
 import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meeting-list/meeting-attendance.service';
 import {AuthService} from '../user-profile-shared/auth.service';
+import {Title} from '@angular/platform-browser'
 
 @Component({
   selector: 'app-meeting-details',
@@ -20,6 +21,7 @@ export class MeetingDetailsComponent implements OnInit {
               private authService: AuthService,
               private meetingsService: MeetingsService,
               private meetingAttendanceService: MeetingAttendanceService,
+              private titleService: Title
   ) {
     console.log('meetingId: ', this.meetingId)
   }
@@ -42,6 +44,7 @@ export class MeetingDetailsComponent implements OnInit {
   private retrieveMeetingDetails(meetingId: string) {
     this.meetingsService.retrieveMeetingDetails(meetingId).subscribe((meeting: Meeting) => {
       this.meeting = meeting;
+      this.titleService.setTitle(meeting.title + ' - Meeting');
     });
   }
 }
