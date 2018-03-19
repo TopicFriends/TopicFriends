@@ -29,7 +29,7 @@ export class MeetingsService {
     return !meeting.date || isNaN(new Date(meeting.date).getTime()) || new Date(meeting.date).getTime() < today.getTime();
   }
 
-  isUpcommingMeeting(meeting: Meeting) {
+  isUpcomingMeeting(meeting: Meeting) {
     let today = new Date();
     return meeting.date && new Date(meeting.date).getTime() >= today.getTime();
   }

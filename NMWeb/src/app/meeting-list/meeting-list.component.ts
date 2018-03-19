@@ -8,15 +8,16 @@ import {Meeting, MeetingsService} from '../shared/meetings.service'
 })
 export class MeetingListComponent implements OnInit {
 
-  pastMeetings: Meeting[];
-  upcommingMeetings: Meeting[];
+  pastMeetings: Meeting[] = [];
+  upcomingMeetings: Meeting[] = [];
   seePastMeetings = false;
 
   constructor(private meetingsService: MeetingsService) {
     this.meetingsService.retrieveAllMeetings().subscribe((meetings: Meeting[]) => {
       this.pastMeetings = meetings.filter(meeting => this.meetingsService.isPastMeeting(meeting));
-      this.upcommingMeetings = meetings.filter(meeting => this.meetingsService.isUpcommingMeeting(meeting));
+      this.upcomingMeetings = meetings.filter(meeting => this.meetingsService.isUpcomingMeeting(meeting));
     });
+
   }
 
   ngOnInit() {
