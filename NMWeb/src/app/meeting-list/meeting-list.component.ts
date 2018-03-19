@@ -14,18 +14,12 @@ export class MeetingListComponent implements OnInit {
 
   constructor(private meetingsService: MeetingsService) {
     this.meetingsService.retrieveAllMeetings().subscribe((meetings: Meeting[]) => {
-      let today = new Date();
-      this.pastMeetings = meetings.filter((meeting) =>  {
-        return !meeting.date || isNaN(new Date(meeting.date).getTime()) || new Date(meeting.date).getTime() < today.getTime();
-      });
-
-      this.upcommingMeetings = meetings.filter((meeting) =>  {
-        return meeting.date && new Date(meeting.date).getTime() >= today.getTime();
-      });
+      this.pastMeetings = meetings.filter(meeting => this.meetingsService.isPastMeeting(meeting));
+      this.upcommingMeetings = meetings.filter(meeting => this.meetingsService.isUpcommingMeeting(meeting));
     });
   }
 
   ngOnInit() {
-  }
 
+  }
 }
