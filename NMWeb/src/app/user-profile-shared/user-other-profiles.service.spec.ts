@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { UserOtherProfilesService } from './user-other-profiles.service';
 
-describe('UserOtherProfilesService', () => {
+xdescribe('UserOtherProfilesService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [UserOtherProfilesService]
