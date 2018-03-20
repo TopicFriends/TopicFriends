@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject, NgZone, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Inject, Input, NgZone, OnInit, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
 import {GeoLocation} from '../../user-profile-shared/user-geo-locations.types'
 import {FormControl} from '@angular/forms';
@@ -21,6 +21,9 @@ export class UserPickLocationDialogParams {
 })
 export class UserPickLocationComponent implements OnInit {
 
+  @Input() display = false;
+  @Input() data: UserPickLocationDialogParams;
+  @Output() onClose = new EventEmitter;
   coordinates: GeoLocation
   private coords: any;
 
@@ -34,23 +37,15 @@ export class UserPickLocationComponent implements OnInit {
   public searchElementRef: ElementRef;
 
   constructor(
-    public dialogRef: MatDialogRef<UserPickLocationComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: UserPickLocationDialogParams,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
-  ) {
-    if ( UserPickLocationComponent.instance ) {
-      console.log('UserPickLocationComponent ctor')
-      // return UserPickLocationComponent.instance
-    }
-    this.isEditable = data.userProfileInputs.isEditable
-    this.locationName = data.locationName
-    this.coordinates = GeoLocation.parseGeoString(data.geoLocationString) || new GeoLocation(36.726, -4.476)
-    UserPickLocationComponent.instance = this
-
-  }
+  ) {}
 
   ngOnInit() {
+
+    this.isEditable = this.data.userProfileInputs.isEditable
+    this.locationName = this.data.locationName
+    this.coordinates = GeoLocation.parseGeoString(this.data.geoLocationString) || new GeoLocation(36.726, -4.476)
     console.log('UserPickLocationComponent ngOnInit')
     if ( this.isEditable ) {
       this.initSearchBar()
@@ -95,7 +90,7 @@ export class UserPickLocationComponent implements OnInit {
 
   close() {
     let dialogResult = this.isEditable ? this.coords : undefined
-    this.dialogRef.close(dialogResult);
+    this.onClose.emit(dialogResult);
+    this.display = false;
   }
-
 }

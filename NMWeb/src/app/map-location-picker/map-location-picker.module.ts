@@ -8,11 +8,7 @@ import {UserPickLocationComponent} from './user-pick-location/user-pick-location
   imports: [
     CommonModule,
     MapsSharedModule,
-    DialogModule,
   ],
   declarations: [],
-  exports: [
-    UserPickLocationComponent
-  ],
 })
 export class MapLocationPickerModule { }

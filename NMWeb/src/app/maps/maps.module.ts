@@ -10,6 +10,7 @@ import {FlexLayoutModule} from '@angular/flex-layout'
 import {FormsModule} from '@angular/forms';
 import {MapsSharedModule} from '../maps-shared/maps-shared.module';
 import {UserProfileSharedModule} from '../user-profile-shared/user-profile-shared.module'
+import {DialogModule} from 'primeng/dialog'
 
 
 const mapsRoutes: Routes = [
@@ -31,6 +32,7 @@ const mapsRoutes: Routes = [
     MatCheckboxModule,
     MatDialogModule,
     UserProfileSharedModule,
+    DialogModule
   ],
   declarations: [
     UsersMapComponent,
