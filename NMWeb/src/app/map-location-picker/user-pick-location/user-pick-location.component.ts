@@ -2,7 +2,7 @@ import {Component, ElementRef, EventEmitter, Inject, Input, NgZone, OnInit, Outp
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
 import {GeoLocation} from '../../user-profile-shared/user-geo-locations.types'
 import {FormControl} from '@angular/forms';
-import {MapsAPILoader} from '@agm/core';
+import {AgmMap, MapsAPILoader} from '@agm/core';
 // import { } from 'googlemaps';
 import {UserProfileInputs} from '../../user-profile-details/UserProfileInputs'
 
@@ -21,7 +21,17 @@ export class UserPickLocationDialogParams {
 })
 export class UserPickLocationComponent implements OnInit {
 
-  @Input() display = false;
+  disp = false;
+  @Output() displayChange:  EventEmitter<boolean>;
+  @Input()
+  get display (){
+    return this.disp;
+  }
+  set display(value) {
+    this.disp = value;
+    this.displayChange.emit(this.disp)
+  }
+
   @Input() data: UserPickLocationDialogParams;
   @Output() onClose = new EventEmitter;
   coordinates: GeoLocation
@@ -35,14 +45,17 @@ export class UserPickLocationComponent implements OnInit {
 
   @ViewChild("searchInputField")
   public searchElementRef: ElementRef;
+  @ViewChild("searchInputField")
+  public agmMap: AgmMap;
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
-  ) {}
+  ) {
+    this.displayChange = new EventEmitter();
+  }
 
   ngOnInit() {
-
     this.isEditable = this.data.userProfileInputs.isEditable
     this.locationName = this.data.locationName
     this.coordinates = GeoLocation.parseGeoString(this.data.geoLocationString) || new GeoLocation(36.726, -4.476)
@@ -88,9 +101,15 @@ export class UserPickLocationComponent implements OnInit {
     // window.alert('markerDragEnd ' + JSON.stringify(event))
   }
 
+  onShowDialog() {
+
+  }
+
+  onHideDialog() {
+    this.disp = false;
+  }
   close() {
     let dialogResult = this.isEditable ? this.coords : undefined
     this.onClose.emit(dialogResult);
-    this.display = false;
   }
 }

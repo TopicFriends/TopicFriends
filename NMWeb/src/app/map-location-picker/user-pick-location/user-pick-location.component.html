@@ -1,4 +1,10 @@
-<p-dialog [header]="locationName" [(visible)]="display" [width]="300">
+<p-dialog
+  [header]="locationName"
+  [(visible)]="display"
+  [width]="300"
+  [modal]="true"
+  (onShow)="onShowDialog()"
+  (onHide)="onHideDialog()">
   <mat-form-field
     *ngIf="isEditable"
     id=searchInputFieldContainer
