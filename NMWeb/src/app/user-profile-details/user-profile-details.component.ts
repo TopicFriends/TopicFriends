@@ -14,6 +14,7 @@ import {UserSkillsComponent} from './user-skills/user-skills.component'
 import {UserProfileInputs} from './UserProfileInputs'
 import {UserConfigService} from "../shared/user-config.service"
 import { USER_PROFILE_ID_PARAM_NO_COLON } from '../shared/routes'
+import { Title } from '@angular/platform-browser'
 
 
 @Component({
@@ -50,7 +51,8 @@ export class UserProfileDetailsComponent implements OnInit {
     public snackBarComponent: SnackBarComponent,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private userConfigService: UserConfigService
+    private userConfigService: UserConfigService,
+    private titleService: Title
   ) {
     console.log('UserProfileComponent constructor')
 
