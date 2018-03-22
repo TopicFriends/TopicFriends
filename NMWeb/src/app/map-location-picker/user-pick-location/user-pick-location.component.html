@@ -21,6 +21,7 @@
 
 <agm-map
   [ngClass]="isEditable ? 'editable-map' : 'non-editable-map'"
+  #pickLocationMap
   id=pickLocationMap
   [latitude]="coordinates.latitude"
   [longitude]="coordinates.longitude"

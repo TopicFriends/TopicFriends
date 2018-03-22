@@ -45,7 +45,7 @@ export class UserPickLocationComponent implements OnInit {
 
   @ViewChild("searchInputField")
   public searchElementRef: ElementRef;
-  @ViewChild("searchInputField")
+  @ViewChild("pickLocationMap")
   public agmMap: AgmMap;
 
   constructor(
@@ -102,7 +102,8 @@ export class UserPickLocationComponent implements OnInit {
   }
 
   onShowDialog() {
-
+    console.log(this.agmMap);
+    this.agmMap.triggerResize().then(res => console.log(res));
   }
 
   onHideDialog() {

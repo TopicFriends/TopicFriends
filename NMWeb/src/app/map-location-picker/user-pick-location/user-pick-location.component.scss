@@ -15,12 +15,16 @@
 }
 
 .pac-container {
-  position: fixed !important; // Fix the position for scrolling
+  z-index: 5000;
 }
 
 .map-dialog-button {
   width: 10px;
   margin-top: 10px;
+}
+
+p-dialog {
+  z-index: 10;
 }
 
 $names: #fff;
