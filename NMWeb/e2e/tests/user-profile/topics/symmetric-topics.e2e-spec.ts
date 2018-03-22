@@ -7,8 +7,6 @@ import {TestWait} from '../../../test-support/wait'
 import {TestSupport} from '../../../test-support/test-support'
 import {$, $$, browser} from 'protractor'
 import {ProtractorWrapper} from '../../../test-support/protractor-wrapper'
-import {promise} from 'selenium-webdriver'
-import Promise = promise.Promise
 
 describe('Symmetric topics on Profile page: User', () => {
   let loginPage: LoginPage
@@ -32,8 +30,12 @@ describe('Symmetric topics on Profile page: User', () => {
 
     page.navigateTo().then(() => {
       loginPage.loginWhenAlreadySignedInToGoogle()
-    });
-  });
+    })
+
+    wait.forElementPresent(page.acceptCookiesButton).then(() => {
+      page.acceptCookiesButton.click()
+    })
+  })
 
   function testTopicTagCanBeAdded(topic: string) {
     let exchange = topicSections.exchangeSectionSelector
@@ -95,7 +97,7 @@ describe('Symmetric topics on Profile page: User', () => {
     assert.sectionTagsMatch(hackathon, selectedTopics)
   });
 
-  it('can save profile by clicking save', () => {
+  xit('can save profile by clicking save', () => {
     let topicsHackathon = ['c', 'universal']
     let topicsSectionHackathon = topicSections.hackathonSectionSelector
     wait.forElementPresent($(topicsSectionHackathon))
@@ -127,7 +129,7 @@ describe('Symmetric topics on Profile page: User', () => {
     })
   });
 
-  it('can change selected topics', () => {
+  xit('can change selected topics', () => {
     wait.forElementPresent($(topicSections.tagSelector))
     topicSections.removeAllTags()
 
@@ -159,13 +161,14 @@ describe('Symmetric topics on Profile page: User', () => {
 
     page.saveProfileByClickingSaveButton()
     page.navigateTo().then(() => {
-      wait.forElementPresent(page.userProfileBasicInfo).then(() => {
+      wait.forElementPresent(page.topicsGroup).then(() => {
         browser.sleep(3000)
-        expect(topicSections.allTagsClosings().count()).toBe(0,
-          'Not all tags removed')
+        topicSections.allTagsClosings().count().then(result => {
+          expect(result).toBe(0, 'Not all tags removed')
+        })
       })
     })
-  });
+  })
 
   // it('can save profile by pressing CTRL+S', () => {
   // });
@@ -180,4 +183,4 @@ describe('Symmetric topics on Profile page: User', () => {
   afterAll(() => {
     cleanUp.cleanUpAfterTests()
   })
-});
+})

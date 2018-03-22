@@ -52,7 +52,7 @@ export class TopicsSections {
   }
 
   removeAllTags() {
-    return this.wait.forElementPresent($(this.tagSelector)).then(() => {
+    this.wait.forElementPresent($(this.tagSelector)).then(() => {
       browser.sleep(3000)
       this.allTagsClosings().count().then((count) => {
         while (count > 0) {
