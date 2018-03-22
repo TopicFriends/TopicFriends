@@ -8,6 +8,7 @@ import {FormControl} from '@angular/forms';
 import {AgmMap, MapsAPILoader} from '@agm/core';
 // import { } from 'googlemaps';
 import {UserProfileInputs} from '../../user-profile-details/UserProfileInputs'
+import {ScrollingService} from '../../shared/scrolling.service'
 
 
 export class UserPickLocationDialogParams {
@@ -56,8 +57,8 @@ export class UserPickLocationComponent implements OnInit {
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    private renderer: Renderer2
-  ) {
+    private scrollingService: ScrollingService
+    ) {
     this.displayChange = new EventEmitter();
   }
 
@@ -110,13 +111,13 @@ export class UserPickLocationComponent implements OnInit {
   onShowDialog() {
     this.agmMap.triggerResize();
     //Prevent scrolling
-    this.renderer.addClass(document.body, 'modal-open');
+    this.scrollingService.disableScrolling();
   }
 
   onHideDialog() {
     this.disp = false;
     //Enable scrolling
-    this.renderer.removeClass(document.body, 'modal-open');
+    this.scrollingService.enableScrolling();
   }
   close() {
     let dialogResult = this.isEditable ? this.coords : undefined
