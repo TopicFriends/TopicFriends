@@ -1,4 +1,7 @@
-import {Component, ElementRef, EventEmitter, Inject, Input, NgZone, OnInit, Output, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+  Component, ElementRef, EventEmitter, Inject, Input, NgZone, OnInit, Output, Renderer2, ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
 import {GeoLocation} from '../../user-profile-shared/user-geo-locations.types'
 import {FormControl} from '@angular/forms';
@@ -21,6 +24,7 @@ export class UserPickLocationDialogParams {
 })
 export class UserPickLocationComponent implements OnInit {
 
+  //Two-way databinding
   disp = false;
   @Output() displayChange:  EventEmitter<boolean>;
   @Input()
@@ -34,9 +38,10 @@ export class UserPickLocationComponent implements OnInit {
 
   @Input() data: UserPickLocationDialogParams;
   @Output() onClose = new EventEmitter;
+
+
   coordinates: GeoLocation
   private coords: any;
-
   public locationName: string
   public searchControl: FormControl;
   public isEditable: boolean
@@ -50,7 +55,8 @@ export class UserPickLocationComponent implements OnInit {
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private renderer: Renderer2
   ) {
     this.displayChange = new EventEmitter();
   }
@@ -102,12 +108,15 @@ export class UserPickLocationComponent implements OnInit {
   }
 
   onShowDialog() {
-    console.log(this.agmMap);
-    this.agmMap.triggerResize().then(res => console.log(res));
+    this.agmMap.triggerResize();
+    //Prevent scrolling
+    this.renderer.addClass(document.body, 'modal-open');
   }
 
   onHideDialog() {
     this.disp = false;
+    //Enable scrolling
+    this.renderer.removeClass(document.body, 'modal-open');
   }
   close() {
     let dialogResult = this.isEditable ? this.coords : undefined
