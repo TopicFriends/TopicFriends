@@ -31,6 +31,7 @@ import { OtherProfileUserNameComponent } from './user-other-profiles/other-profi
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { Observable } from 'rxjs/Observable'
 import { UserProfileDetailsRoutingModule } from './user-profile-details-routing.module'
+import {MapsModule} from '../maps/maps.module'
 
 
 /** User profile editing/viewing here */
@@ -47,6 +48,7 @@ import { UserProfileDetailsRoutingModule } from './user-profile-details-routing.
     MatIconModule,
     MatOptionModule,
     MatSelectModule,
+    MapsModule
   ],
   declarations: [
     UserDescriptionsComponent,

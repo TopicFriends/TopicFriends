@@ -1,10 +1,14 @@
-import {Component, ElementRef, Inject, NgZone, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+  Component, ElementRef, EventEmitter, Inject, Input, NgZone, OnInit, Output, Renderer2, ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
 import {GeoLocation} from '../../user-profile-shared/user-geo-locations.types'
 import {FormControl} from '@angular/forms';
-import {MapsAPILoader} from '@agm/core';
+import {AgmMap, MapsAPILoader} from '@agm/core';
 // import { } from 'googlemaps';
 import {UserProfileInputs} from '../../user-profile-details/UserProfileInputs'
+import {ScrollingService} from '../../shared/scrolling.service'
 
 
 export class UserPickLocationDialogParams {
@@ -21,9 +25,24 @@ export class UserPickLocationDialogParams {
 })
 export class UserPickLocationComponent implements OnInit {
 
+  //Two-way databinding
+  disp = false;
+  @Output() displayChange:  EventEmitter<boolean>;
+  @Input()
+  get display (){
+    return this.disp;
+  }
+  set display(value) {
+    this.disp = value;
+    this.displayChange.emit(this.disp)
+  }
+
+  @Input() data: UserPickLocationDialogParams;
+  @Output() onClose = new EventEmitter;
+
+
   coordinates: GeoLocation
   private coords: any;
-
   public locationName: string
   public searchControl: FormControl;
   public isEditable: boolean
@@ -32,25 +51,21 @@ export class UserPickLocationComponent implements OnInit {
 
   @ViewChild("searchInputField")
   public searchElementRef: ElementRef;
+  @ViewChild("pickLocationMap")
+  public agmMap: AgmMap;
 
   constructor(
-    public dialogRef: MatDialogRef<UserPickLocationComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: UserPickLocationDialogParams,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
-  ) {
-    if ( UserPickLocationComponent.instance ) {
-      console.log('UserPickLocationComponent ctor')
-      // return UserPickLocationComponent.instance
-    }
-    this.isEditable = data.userProfileInputs.isEditable
-    this.locationName = data.locationName
-    this.coordinates = GeoLocation.parseGeoString(data.geoLocationString) || new GeoLocation(36.726, -4.476)
-    UserPickLocationComponent.instance = this
-
+    private ngZone: NgZone,
+    private scrollingService: ScrollingService
+    ) {
+    this.displayChange = new EventEmitter();
   }
 
   ngOnInit() {
+    this.isEditable = this.data.userProfileInputs.isEditable
+    this.locationName = this.data.locationName
+    this.coordinates = GeoLocation.parseGeoString(this.data.geoLocationString) || new GeoLocation(36.726, -4.476)
     console.log('UserPickLocationComponent ngOnInit')
     if ( this.isEditable ) {
       this.initSearchBar()
@@ -93,9 +108,19 @@ export class UserPickLocationComponent implements OnInit {
     // window.alert('markerDragEnd ' + JSON.stringify(event))
   }
 
-  close() {
-    let dialogResult = this.isEditable ? this.coords : undefined
-    this.dialogRef.close(dialogResult);
+  onShowDialog() {
+    this.agmMap.triggerResize();
+    //Prevent scrolling
+    this.scrollingService.disableScrolling();
   }
 
+  onHideDialog() {
+    this.disp = false;
+    //Enable scrolling
+    this.scrollingService.enableScrolling();
+  }
+  close() {
+    let dialogResult = this.isEditable ? this.coords : undefined
+    this.onClose.emit(dialogResult);
+  }
 }

@@ -1,10 +1,10 @@
-<h3 matDialogTitle>
-  <ng-template [ngIf]="isEditable">Please pick location for</ng-template>
-  "{{locationName}}"
-</h3>
-
-<mat-dialog-content>
-
+<p-dialog
+  [header]="locationName"
+  [(visible)]="display"
+  [width]="300"
+  [modal]="true"
+  (onShow)="onShowDialog()"
+  (onHide)="onHideDialog()">
   <mat-form-field
     *ngIf="isEditable"
     id=searchInputFieldContainer
@@ -21,6 +21,7 @@
 
 <agm-map
   [ngClass]="isEditable ? 'editable-map' : 'non-editable-map'"
+  #pickLocationMap
   id=pickLocationMap
   [latitude]="coordinates.latitude"
   [longitude]="coordinates.longitude"
@@ -33,24 +34,7 @@
     (dragEnd)="markerDragEnd($event)"
   >
   </agm-marker>
-  <!--<agm-marker *ngFor="let userCoords of usersCoords"-->
-  <!--[latitude]="userCoords.geoCoords.latitude"-->
-  <!--[longitude]="userCoords.geoCoords.longitude"-->
-  <!--[label]="userCoords.user.displayName"-->
-  <!--&gt;-->
-  <!--</agm-marker>-->
-
-  <!--<agm-circle-->
-  <!--[latitude]="coordinates.latitude"-->
-  <!--[longitude]="coordinates.longitude"-->
-  <!--[radius]="300"-->
-  <!--fillColor="#4885ed"-->
-  <!--&gt;</agm-circle>-->
 </agm-map>
-
-</mat-dialog-content>
-
-<mat-dialog-actions>
 
   <button
     class="map-dialog-button"
@@ -61,5 +45,4 @@
   >
     {{isEditable ? 'Accept' : 'Close'}}
   </button>
-
-</mat-dialog-actions>
+</p-dialog>
