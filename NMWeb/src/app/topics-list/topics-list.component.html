@@ -8,7 +8,10 @@
   mat-raised-button
   [routerLink]="getRoute()"
   [disabled]="searchTagList.length === 0"
->Search</button>
+>
+  Show chosen topics on map
+</button>
+
 <h1>All Topics ({{allTopicsArray.length}})</h1>
 <app-topic-tag-list [editable]="false"
                     [tagList]="allTopics"
