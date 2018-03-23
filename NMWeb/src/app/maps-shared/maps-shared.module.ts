@@ -8,13 +8,7 @@ import {AgmCoreModule} from '@agm/core'
   imports: [
     CommonModule,
     SharedModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB8eJ4NjIFWy0tABOEasmykdAj8e7aenL0',
-      libraries: [
-        "places",
-        "geometry"
-      ]
-    }),
+    AgmCoreModule,
   ],
   declarations: [],
   exports: [
