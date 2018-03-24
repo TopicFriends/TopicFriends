@@ -110,6 +110,12 @@ export class UserMatcherService {
     })
   }
 
-
+  static sortByScore(userA: UserMatched, userB: UserMatched) {
+    if(!userA.matchResults) {
+      return 0;
+    } else {
+      return userB.matchResults.matchScore - userA.matchResults.matchScore;
+    }
+  }
 
 }
