@@ -14,8 +14,6 @@ export class UserProfilePage {
   userProfileDescription: ElementFinder    = $('textarea[id="mat-input-3"]')
   userProfileWhatYouExpect: ElementFinder  = $('textarea[formControlName="whatDoYouExpectFromTheApp"]')
 
-  topicsGroup                              = $('app-topic-group-card')
-
   pleaseLogInButton: ElementFinder         = $(this.userProfileSelector + ' button')
   saveProfileButton: ElementFinder         = $('#saveProfile')
 
@@ -35,7 +33,7 @@ export class UserProfilePage {
   saveProfileWithKeyboard() {
     this.markAcceptPrivacyPolicyIfNeeded()
 
-    this.userProfileDescription.click()
+    this.ptor.click(this.userProfileDescription)
     this.userProfileBasicInfo.sendKeys(protractor.Key.chord(protractor.Key.CONTROL, 'S'))
   }
 
@@ -46,17 +44,10 @@ export class UserProfilePage {
     this.assert.saveNotificationAppears(this.saveConfirmationNotification)
   }
 
-  expectTopicTagSelected(tag?: ElementFinder) { // FIXME
-    if(tag) {
-      return true
-    }
-    return false
-  }
-
   private markAcceptPrivacyPolicyIfNeeded() {
     this.acceptPrivacyPolicyCheckbox.isSelected().then(selected => {
       if (!selected) {
-        this.acceptPrivacyPolicyCheckbox.click()
+        this.ptor.click(this.acceptPrivacyPolicyCheckbox)
       }
     })
   }
