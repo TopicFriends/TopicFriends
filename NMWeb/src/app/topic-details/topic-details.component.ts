@@ -47,8 +47,8 @@ export class TopicDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle( this.topic.name + ' - TopicFriends');
-    this.topicsDetailsService.getMatchedUsersWithTopic(this.topicId).subscribe((users) => {
-      this.interestedUsers = users.sort(UserMatcherService.sortByScore);
+    this.topicsDetailsService.getMatchedUsersWithTopicSortedBy(this.topicId, UserMatcherService.sortByMatchScore).subscribe((users) => {
+      this.interestedUsers = users;
     });
   }
 

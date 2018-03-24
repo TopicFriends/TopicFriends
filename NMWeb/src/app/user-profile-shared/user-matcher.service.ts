@@ -110,7 +110,7 @@ export class UserMatcherService {
     })
   }
 
-  static sortByScore(userA: UserMatched, userB: UserMatched) {
+  static sortByMatchScore(userA: UserMatched, userB: UserMatched) {
     if(!userA.matchResults) {
       return 0;
     } else {
