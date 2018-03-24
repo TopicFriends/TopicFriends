@@ -8,11 +8,13 @@ export class UserProfilePage {
   private ptor = new ProtractorWrapper()
   private assert = new TestAssertions()
 
-  userProfileSelector                      = 'app-user-profile'
+  userProfileSelector                      = 'app-user-profile-details'
   userProfile: ElementFinder               = $(this.userProfileSelector)
   userProfileBasicInfo: ElementFinder      = $('app-user-profile-basic-info')
   userProfileDescription: ElementFinder    = $('textarea[id="mat-input-3"]')
   userProfileWhatYouExpect: ElementFinder  = $('textarea[formControlName="whatDoYouExpectFromTheApp"]')
+
+  topicsGroup                              = $('app-topic-group-card')
 
   pleaseLogInButton: ElementFinder         = $(this.userProfileSelector + ' button')
   saveProfileButton: ElementFinder         = $('#saveProfile')
@@ -24,18 +26,22 @@ export class UserProfilePage {
                                               'Profile sent. Thank you!'))
 
   acceptPrivacyPolicyCheckbox              = $('input[type="checkbox"]')
+  acceptCookiesButton                      = $('cookie-law-el button')
 
   navigateTo(): Promise<any> {
     return browser.get('profile')
   }
 
   saveProfileWithKeyboard() {
-    this.acceptPrivacyPolicyCheckbox.click()
+    this.markAcceptPrivacyPolicyIfNeeded()
+
     this.userProfileDescription.click()
     this.userProfileBasicInfo.sendKeys(protractor.Key.chord(protractor.Key.CONTROL, 'S'))
   }
 
   saveProfileByClickingSaveButton() {
+    this.markAcceptPrivacyPolicyIfNeeded()
+
     this.ptor.click(this.saveProfileButton)
     this.assert.saveNotificationAppears(this.saveConfirmationNotification)
   }
@@ -45,5 +51,13 @@ export class UserProfilePage {
       return true
     }
     return false
+  }
+
+  private markAcceptPrivacyPolicyIfNeeded() {
+    this.acceptPrivacyPolicyCheckbox.isSelected().then(selected => {
+      if (!selected) {
+        this.acceptPrivacyPolicyCheckbox.click()
+      }
+    })
   }
 }

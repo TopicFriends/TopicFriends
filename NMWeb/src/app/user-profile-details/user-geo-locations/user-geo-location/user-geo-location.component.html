@@ -1,0 +1,68 @@
+<div>
+<!--  // City
+  // Postal Code
+  // Country-->
+
+<!--
+  <ng-content></ng-content>
+-->
+  <div
+    style="display: inline-block; width: 8em"
+  >
+    {{locationName}}: &nbsp;
+  </div>
+
+  <!--<mat-form-field id="postalCode">
+
+    <mat-placeholder>
+      Postal code (optional)
+    </mat-placeholder>
+
+  </mat-form-field>-->
+
+  <mat-form-field
+  >
+    <!-- style="display: none" -->
+
+    <mat-placeholder>
+      Latitude, Longitude
+    </mat-placeholder>
+
+    <input
+      matInput
+      #latitudeLongitude
+      readonly
+      (click)="openLocationPicker()"
+      [disabled]="(! value) && (! userProfileInputs.isEditable)"
+    >
+
+  </mat-form-field>
+
+<!--
+  <button mat-button mat-raised-button (click)="useCurrentLocation()">Use current location</button>
+-->
+  <button
+    mat-button
+    mat-raised-button
+    (click)="openLocationPicker()"
+    color="primary"
+    [disabled]="(! value) && (! userProfileInputs.isEditable)"
+  >
+    <i class="ion-ios-location" ></i>
+    &nbsp;
+    <span *ngIf="userProfileInputs.isEditable">Pick</span>
+    <span *ngIf="! userProfileInputs.isEditable">View</span>
+  </button>
+
+  <button
+    *ngIf="userProfileInputs.isEditable"
+    mat-button
+    mat-raised-button
+    (click)="clear()"
+  >
+    Clear
+  </button>
+</div>
+
+
+<app-user-pick-location *ngIf="(value) || (userProfileInputs.isEditable)" [(display)]="display" [data]="dialogData" (onClose)="onDialogClose($event)"></app-user-pick-location>

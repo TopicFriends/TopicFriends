@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {DbList} from '../db.service';
 import {Meeting, MeetingsService} from '../shared/meetings.service'
 
 @Component({
@@ -9,13 +8,19 @@ import {Meeting, MeetingsService} from '../shared/meetings.service'
 })
 export class MeetingListComponent implements OnInit {
 
-  items: DbList<Meeting>;
+  pastMeetings: Meeting[] = [];
+  upcomingMeetings: Meeting[] = [];
+  seePastMeetings = false;
 
   constructor(private meetingsService: MeetingsService) {
-    this.items = this.meetingsService.retrieveAllMeetings();
+    this.meetingsService.retrieveAllMeetings().subscribe((meetings: Meeting[]) => {
+      this.pastMeetings = meetings.filter(meeting => this.meetingsService.isPastMeeting(meeting));
+      this.upcomingMeetings = meetings.filter(meeting => this.meetingsService.isUpcomingMeeting(meeting));
+    });
+
   }
 
   ngOnInit() {
-  }
 
+  }
 }

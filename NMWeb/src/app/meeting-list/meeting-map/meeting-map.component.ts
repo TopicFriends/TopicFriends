@@ -1,8 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GeoLocation, UserGeoLocations, UserProfileService} from '../../user-profile/user-profile.service'
+import {UserProfileService} from '../../user-profile-shared/user-profile.service'
 import {MeetingAttendanceByUserWithUserData, MeetingAttendanceService} from '../meeting-attendance.service'
 import {ActivatedRoute, Router} from '@angular/router'
-import {USER_ROUTE_WITH_TRAILING_SLASH} from '../../user-profile/user-profile.module'
+import { USER_ROUTE_WITH_TRAILING_SLASH } from '../../shared/routes'
+import {
+  GeoLocation,
+  UserGeoLocations,
+} from '../../user-profile-shared/user-geo-locations.types'
 
 @Component({
   selector: 'app-meeting-map',
@@ -29,6 +33,7 @@ export class MeetingMapComponent implements OnInit {
     this.meetingId = this.route.snapshot.params['meetingId'];
     this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meetingId).subscribe(list => {
       for(let user of list) {
+        this.allUsersLocations = [];
         this.addUserToUsersGeoLocations(user);
       }
     });
@@ -47,5 +52,4 @@ export class MeetingMapComponent implements OnInit {
     // window.alert('Click ' + marker)
     this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.userId])
   }
-
 }

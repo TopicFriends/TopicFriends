@@ -24,7 +24,7 @@
     </mat-card-subtitle>
   </mat-card-header>
 
-  <mat-card-content>
+  <mat-card-content *ngIf="!showLess">
     <!--<div *ngIf="_whatUserWants.length > 0" style="padding-bottom: 0.5em;">-->
     <!--{{_whatUserWants[0].desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}-->
     <!--<span style="font-weight: bold; color: #666666">{{_whatUserWants[0].topics}}</span>-->

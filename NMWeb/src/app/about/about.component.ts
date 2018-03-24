@@ -5,7 +5,7 @@ import {
   typeScript, webPack,
 } from '../shared/topics.service'
 import {Tag} from '@angular/compiler/src/i18n/serializers/xml_helper'
-import {TopicInterest} from '../user-profile/user-interests'
+import {TopicInterest} from '../user-profile-shared/user-interests'
 
 @Component({
   selector: 'app-about',

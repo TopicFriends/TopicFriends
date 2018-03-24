@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {GeoLocationService} from '../shared/geo-location.service'
-import {GeoLocation} from '../user-profile/user-profile.service'
-import {TOPIC_ID_PARAM} from '../topic-details/topic-details.module'
+import {GeoLocation} from '../user-profile-shared/user-geo-locations.types'
+import {TOPIC_ID_PARAM} from '../shared/routes'
 import {ActivatedRoute} from '@angular/router'
-import {TagEntry} from '../user-profile/tag-entry'
+import {TagEntry} from '../topics-shared/tag-entry'
 import {TopicsService} from '../shared/topics.service'
+import {Title} from '@angular/platform-browser'
 
 @Component({
   selector: 'app-topics-map-page',
@@ -19,13 +20,17 @@ export class TopicsMapPageComponent implements OnInit {
   constructor(
     private geoLocationService: GeoLocationService,
     private route: ActivatedRoute,
-    private topicsService: TopicsService
+    private topicsService: TopicsService,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
     for(let topicId of this.topicIds) {
       this.topics.push(this.topicsService.getTopicById(topicId));
     }
+
+    this.buildPageTitle();
+
     //console.log(this.topicIds);
     /*this.geoLocationService.getPosition().subscribe(
    (pos: Position) => {
@@ -35,5 +40,14 @@ export class TopicsMapPageComponent implements OnInit {
       };
    }
  );*/
+  }
+
+  buildPageTitle() {
+    let title = this.topicIds[0];
+    for(let i = 1; i < this.topicIds.length; i++) {
+      title += ', ' + this.topicIds[i];
+    }
+    title = title + ' - Topics Map'
+    this.titleService.setTitle(title);
   }
 }

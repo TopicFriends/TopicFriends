@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {DbList, DbObject, DbService} from '../db.service';
+import {DbList, DbObject, DbService} from './db.service';
 
 export class Meeting {
   $key: string; // note: $key might be more handy in Firebase
@@ -22,5 +22,15 @@ export class MeetingsService {
 
   retrieveAllMeetings(): DbList<Meeting> {
     return this.db.list(this.MEETINGS_PATH);
+  }
+
+  isPastMeeting(meeting: Meeting) {
+    let today = new Date();
+    return !meeting.date || isNaN(new Date(meeting.date).getTime()) || new Date(meeting.date).getTime() < today.getTime();
+  }
+
+  isUpcomingMeeting(meeting: Meeting) {
+    let today = new Date();
+    return meeting.date && new Date(meeting.date).getTime() >= today.getTime();
   }
 }

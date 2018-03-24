@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import {UserData, UserDataCombined} from 'app/user-profile/user-profile.service';
-import {UserProfile} from 'app/user-profile/user-profile.service';
-import {DomainDbService} from '../domain-db.service'
-import {DbListReadOnly} from '../db.service';
-import {combineLatest} from 'rxjs/observable/combineLatest'
+import {
+  UserData,
+  UserDataCombined,
+  UserProfileService,
+} from 'app/user-profile-shared/user-profile.service';
+import {UserProfile} from 'app/user-profile-shared/user-profile.service';
+import {DbListReadOnly} from '../shared/db.service';
 import {Observable} from 'rxjs/Observable'
 import {arrayOfObservablesToObservableOfArray} from '../shared/utils'
 
@@ -13,7 +15,7 @@ export class UserListService {
   userList = [];
 
   constructor(
-    private domainDbService: DomainDbService,
+    private userProfileService: UserProfileService,
   ) {
     //this.userList = db.list('UserProfile');
   }
@@ -56,12 +58,12 @@ export class UserListService {
   // }
 
   public listUserData(): DbListReadOnly<UserData> {
-    let listUserDataWithDetails: DbListReadOnly<UserData> = this.domainDbService.listUserDataWithDetails();
+    let listUserDataWithDetails: DbListReadOnly<UserData> = this.userProfileService.listUserDataWithDetails();
     return listUserDataWithDetails;
   }
 
   public listUserDataCombined(): Observable<Array<UserDataCombined>> {
-    let listUserDataWithDetails: DbListReadOnly<UserData> = this.domainDbService.listUserDataWithDetails();
+    let listUserDataWithDetails: DbListReadOnly<UserData> = this.userProfileService.listUserDataWithDetails();
 
     let obsOfArrayOfObsUDC = listUserDataWithDetails.map((arrayOfUserData: Array<UserData>) => {
       return arrayOfUserData.map(ud => {

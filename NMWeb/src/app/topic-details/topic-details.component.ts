@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
-import {TOPIC_ID_PARAM} from './topic-details.module'
-import {TagEntry} from '../user-profile/tag-entry'
+import {TOPIC_ID_PARAM} from '../shared/routes'
+import {TagEntry} from '../topics-shared/tag-entry'
 import {TopicsService} from '../shared/topics.service'
-import {TopicInterest} from '../user-profile/user-interests'
+import {TopicInterest} from '../user-profile-shared/user-interests'
 import {GitHubService} from '../shared/git-hub.service'
 import {Title} from "@angular/platform-browser";
 import { GeoLocationService } from '../shared/geo-location.service';
-import {GeoLocation, GeoLocationsDictionary, UserDataCombined} from '../user-profile/user-profile.service';
-import {UserMatched, UserMatcherService} from '../user-matcher.service';
+import {UserDataCombined} from '../user-profile-shared/user-profile.service';
+import {UserMatched, UserMatcherService} from '../user-profile-shared/user-matcher.service';
 import { UserListService } from '../user-list/user-list.service';
 import { TagInclusions } from '../shared/TagInclusions';
 import {TopicsDetailsService} from './topics-details.service'
-import {DbList, DbListReadOnly} from '../db.service'
+import {DbList, DbListReadOnly} from '../shared/db.service'
+import {
+  GeoLocation,
+  GeoLocationsDictionary,
+} from '../user-profile-shared/user-geo-locations.types'
 
 @Component({
   selector: 'app-topic-details',
@@ -25,7 +29,7 @@ export class TopicDetailsComponent implements OnInit {
   topic: TagEntry
   topicInterest: TopicInterest
   interestedUsers: UserMatched[]
-
+  showLimit = 10;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,7 +47,7 @@ export class TopicDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle( this.topic.name + ' - TopicFriends');
-    this.topicsDetailsService.getMatchedUsersWithTopic(this.topicId).subscribe((users) => {
+    this.topicsDetailsService.getMatchedUsersWithTopicSortedBy(this.topicId, UserMatcherService.sortByMatchScore).subscribe((users) => {
       this.interestedUsers = users;
     });
   }
@@ -52,4 +56,19 @@ export class TopicDetailsComponent implements OnInit {
     return new TopicInterest(topic)
   }
 
+  canShowMore() {
+    return this.interestedUsers && this.interestedUsers.length > this.showLimit;
+  }
+
+  canShowLess() {
+    return this.interestedUsers && (this.showLimit > 10) && (10 < this.interestedUsers.length);
+  }
+
+  onShowMoreClick() {
+    this.showLimit = this.interestedUsers.length;
+  }
+
+  onShowLessClick() {
+    this.showLimit = 10;
+  }
 }

@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {SharedModule} from '../shared/shared.module'
-import {RouterModule, Routes} from '@angular/router';
+import { SharedModule } from '../shared/shared.module'
+import {
+  RouterModule,
+  Routes,
+} from '@angular/router';
 import { TopicDetailsComponent } from './topic-details.component'
-import {MatChipsModule} from '@angular/material'
-import {TopicsDetailsService} from './topics-details.service';
-import { TopicsMapComponent } from '../topics-map-shared/topics-map.component'
-import {TopicsMapSharedModule} from '../topics-map-shared/topics-map-shared.module'
-import {MapsSharedModule} from '../maps-shared/maps-shared.module'
-
-
-export const TOPIC_ID_PARAM = 'topicId'
+import { MatChipsModule } from '@angular/material'
+import { TopicsDetailsService } from './topics-details.service';
+import { TopicsMapSharedModule } from '../topics-map-shared/topics-map-shared.module'
+import { TOPIC_ID_PARAM } from '../shared/routes'
 
 const topicsRoutes: Routes = [
   { path: 'topic/:' + TOPIC_ID_PARAM, component: TopicDetailsComponent },
