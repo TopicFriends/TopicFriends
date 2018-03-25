@@ -3,6 +3,7 @@
 </p>
 
 <app-topics-map
+  id="map"
   [topics]="[topic]"
 ></app-topics-map>
 <p>
@@ -11,7 +12,7 @@
   </a>
 </p>
 
-<h2>Related Topics</h2>
+<h2 id="related">Related Topics</h2>
 
 <mat-chip-list>
   <app-topic-tag
@@ -20,7 +21,7 @@
   ></app-topic-tag>
 </mat-chip-list>
 
-<h2>Interested Users</h2>
+<h2 id="users">Interested Users</h2>
 <nw-user-template
   *ngFor="let user of interestedUsers | limitTo:showLimit"
   [userProfile]="user.userDataCombined.userData"
@@ -38,7 +39,7 @@
   (click)="onShowMoreClick()"
 >Show more</button>
 
-<h2>Links</h2>
+<h2 id="links">Links</h2>
 <p><a href="https://topicfriends.org/topic/{{topic.id}}">https://topicfriends.org/topic/{{topic.id}}</a></p>
 <p><a href="{{topic.website}}">{{topic.website}}</a></p>
 <p><a href="{{topic.urls.wikipedia}}">{{topic.urls.wikipedia}}</a></p>
@@ -79,4 +80,4 @@
 <!-- TODO: changelog-->
 <!-- TODO: RunKit-->
 
-<h2>News for this topic</h2>
+<h2 id="news">News for this topic</h2>

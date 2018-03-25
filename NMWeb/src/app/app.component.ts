@@ -22,7 +22,9 @@ export class AppComponent implements OnInit{
   ngOnInit() {
       //Reset scroll on section change
       this.router.events.subscribe((val) => {
-        window.scrollTo(0,0);
+        if(!this.router.url.includes('#')) {
+          window.scrollTo(0,0);
+        }
       })
   }
 
