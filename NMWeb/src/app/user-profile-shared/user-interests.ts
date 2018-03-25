@@ -8,14 +8,14 @@ import {TagInclusions} from '../shared/TagInclusions'
 export class TopicInterest {
   // idea: hourly / per-minute rates (in Pro version? :) )
   // name: string;
-  constructor(
-    public tagEntry: TagEntry,
-    // public active?: boolean,
-    // public level?: string, // level of expertise
+  constructor(public tagEntry: TagEntry,
+              // public active?: boolean,
+              // public level?: string, // level of expertise
 
   ) {
 
   }
+
   // potential in the future: where. E.g. play soccer where
 }
 
@@ -36,7 +36,7 @@ export class WantedTopics {
   } = {}
 
   static extractTags(dictionary: WantedTopics): TopicInterest[] {
-    if ( ! dictionary ) {
+    if (!dictionary) {
       return []
     }
     return getDictionaryValuesAsArray(dictionary.topics);
@@ -65,9 +65,10 @@ export class SymmetricInteractions {
   // todo: general interests? (generally chat about)
   /** General exchange of knowledge/skills and brainstorming, pair programming */
   exchange?: WantedTopics;
-  pairProgramming?: WantedTopics; /*
-   TODO: pair programming supply-demand (as "follower/leader" / join pair programming of existing code
-   vs have the existing code) */
+  pairProgramming?: WantedTopics;
+  /*
+    TODO: pair programming supply-demand (as "follower/leader" / join pair programming of existing code
+    vs have the existing code) */
   /** play together, e.g. soccer, chess */
   play?: WantedTopics;
   /** Watch together (/screening). E.g. watch Silicon Valley together, wink, wink :) */
@@ -108,10 +109,12 @@ export class SupplyDemandInteractions {
   contributeToOpenSource?: SupplyDemand;
   /** probably move to symmetric */
   organizeHackathon?: SupplyDemand;
-  /** I would like to organize/participate */ /** For hackathon in supplyDemand we could
- have a stronger wording: "I would like to organize hackathon."
- / "I would like to participate in an **organized** hackathon" */
-  presentation?: SupplyDemand;      /** I'm interested in making/attending presentation */
+  /** I would like to organize/participate */
+  /** For hackathon in supplyDemand we could
+   have a stronger wording: "I would like to organize hackathon."
+   / "I would like to participate in an **organized** hackathon" */
+  presentation?: SupplyDemand;
+  /** I'm interested in making/attending presentation */
 
   /* Krzysztof Falkowicz: find presenter / be presenter */
 
@@ -132,69 +135,98 @@ export class UserInterests {
     supplyDemand?: SupplyDemandInteractions
   };
 
-  public static getTopicMatchesWithinInteractionMode(
-    // topics1: { [topicInclusionId: string]: TopicInterest },
-    topics1: TopicInterest[],
-    topics2: TopicInterest[] ): TopicInterest[] {
+  public static getTopicMatchesWithinInteractionMode(// topics1: { [topicInclusionId: string]: TopicInterest },
+                                                     topics1: TopicInterest[],
+                                                     topics2: TopicInterest[]): TopicInterest[] {
     return topics1.filter((topic1: TopicInterest) => {
       return topics2.filter((topic2: TopicInterest) => {
-          // later use id-s
-          return (
-            (topic1.tagEntry.id ===
-             topic2.tagEntry.id)
-            ||
-            (topic1.tagEntry.name ===
-             topic2.tagEntry.name)
-          );
-        }).length >= 1;
+        // later use id-s
+        return (
+          (topic1.tagEntry.id ===
+            topic2.tagEntry.id)
+          ||
+          (topic1.tagEntry.name ===
+            topic2.tagEntry.name)
+        );
+      }).length >= 1;
     });
   }
 
   /** getSymmetricExchangeInterestsMatchWith */
   public static getInterestsMatchWith(interests1: UserInterests, other: UserInterests): MatchResults {
-    let topicMatches = UserInterests.getTopicMatchesWithinInteractionMode(
-      getDictionaryValuesAsArray(
-        interests1.byInteractionMode &&
-        interests1.byInteractionMode.symmetric &&
-        interests1.byInteractionMode.symmetric.exchange &&
-        interests1.byInteractionMode.symmetric.exchange.topics),
-      getDictionaryValuesAsArray(
-        other.byInteractionMode &&
-        other.byInteractionMode.symmetric &&
-        other.byInteractionMode.symmetric.exchange &&
-        other.byInteractionMode.symmetric.exchange.topics)
-    )
-    const topicMatches2 = UserInterests.getTopicMatchesWithinInteractionMode(
-      getDictionaryValuesAsArray(
-        interests1.byInteractionMode &&
-        interests1.byInteractionMode.symmetric &&
-        interests1.byInteractionMode.symmetric.pairProgramming &&
-        interests1.byInteractionMode.symmetric.pairProgramming.topics),
-      getDictionaryValuesAsArray(
-        other.byInteractionMode &&
-        other.byInteractionMode.symmetric &&
-        other.byInteractionMode.symmetric.pairProgramming &&
-        other.byInteractionMode.symmetric.pairProgramming.topics)
-    )
-    const topicMatches3 = UserInterests.getTopicMatchesWithinInteractionMode(
-      getDictionaryValuesAsArray(
-        interests1.byInteractionMode &&
-        interests1.byInteractionMode.symmetric &&
-        interests1.byInteractionMode.symmetric.hackathon &&
-        interests1.byInteractionMode.symmetric.hackathon.topics),
-      getDictionaryValuesAsArray(
-        other.byInteractionMode &&
-        other.byInteractionMode.symmetric &&
-        other.byInteractionMode.symmetric.hackathon &&
-        other.byInteractionMode.symmetric.hackathon.topics)
-    )
-    topicMatches = topicMatches.concat(topicMatches2).concat(topicMatches3)
+
+    let topicMatches = UserInterests.getTopicsMatchedWithSymmetricInteractionMode(interests1, other);
+    topicMatches = topicMatches.concat(UserInterests.getTopicsMatchedWithSupplyDemandInteractionMode(interests1, other));
     const matchScore = topicMatches.length;
     return {
       matchScore: matchScore, // FIXME
       topicMatches: topicMatches,
     }
   }
+
+  public static getTopicsMatchedWithSymmetricInteractionMode(userInterests: UserInterests, otherUserInterests: UserInterests) {
+    let matchedTopics = [];
+    let userSymmetricInterests = userInterests &&
+      userInterests.byInteractionMode &&
+      userInterests.byInteractionMode.symmetric;
+    let otherUserSymmetricInterests = otherUserInterests &&
+      otherUserInterests.byInteractionMode &&
+      otherUserInterests.byInteractionMode.symmetric;
+
+    if (userSymmetricInterests && otherUserSymmetricInterests) {
+      for (let interest in userSymmetricInterests) {
+        if (userSymmetricInterests.hasOwnProperty(interest) && otherUserSymmetricInterests.hasOwnProperty(interest)) {
+          if(userSymmetricInterests[interest].topics && otherUserSymmetricInterests[interest].topics) {
+            matchedTopics = matchedTopics.concat(
+              UserInterests.getTopicMatchesWithinInteractionMode(
+                getDictionaryValuesAsArray(userSymmetricInterests[interest].topics),
+                getDictionaryValuesAsArray(otherUserSymmetricInterests[interest].topics)
+              )
+            );
+          }
+        }
+      }
+    }
+    return matchedTopics;
+  }
+
+
+  public static getTopicsMatchedWithSupplyDemandInteractionMode(userInterests: UserInterests, otherUserInterests: UserInterests) {
+    let matchedTopics = [];
+    let userSupplyDemandInterests = userInterests &&
+      userInterests.byInteractionMode &&
+      userInterests.byInteractionMode.supplyDemand;
+    let otherUserSupplyDemandInterests = otherUserInterests &&
+      otherUserInterests.byInteractionMode &&
+      otherUserInterests.byInteractionMode.supplyDemand;
+
+    if (userSupplyDemandInterests && otherUserSupplyDemandInterests) {
+      for (let interest in userSupplyDemandInterests) {
+        if (userSupplyDemandInterests.hasOwnProperty(interest) && otherUserSupplyDemandInterests.hasOwnProperty(interest)) {
+          if(userSupplyDemandInterests[interest] && otherUserSupplyDemandInterests[interest]) {
+            if(userSupplyDemandInterests[interest].supply && otherUserSupplyDemandInterests[interest].demand) {
+              matchedTopics = matchedTopics.concat(
+                UserInterests.getTopicMatchesWithinInteractionMode(
+                  getDictionaryValuesAsArray(userSupplyDemandInterests[interest].supply.topics),
+                  getDictionaryValuesAsArray(otherUserSupplyDemandInterests[interest].demand.topics)
+                )
+              );
+            }
+            if(userSupplyDemandInterests[interest].demand && otherUserSupplyDemandInterests[interest].supply) {
+              matchedTopics = matchedTopics.concat(
+                UserInterests.getTopicMatchesWithinInteractionMode(
+                  getDictionaryValuesAsArray(userSupplyDemandInterests[interest].demand.topics),
+                  getDictionaryValuesAsArray(otherUserSupplyDemandInterests[interest].supply.topics)
+                )
+              );
+            }
+          }
+        }
+      }
+    }
+    return matchedTopics;
+  }
+
 
   /** TODO target version. We simplify for now */
   public getInterestsMatchWithIncludingSupplyDemand?(other: UserInterests): MatchResults {
@@ -205,9 +237,9 @@ export class UserInterests {
     const allSupplyDemandOfMe =
       this.byInteractionMode &&
       this.byInteractionMode.supplyDemand
-    if ( allSupplyDemandOfOther && allSupplyDemandOfMe ) {
+    if (allSupplyDemandOfOther && allSupplyDemandOfMe) {
       for (const interactionModeKey in allSupplyDemandOfOther) {
-        if(allSupplyDemandOfOther.hasOwnProperty(interactionModeKey)) {
+        if (allSupplyDemandOfOther.hasOwnProperty(interactionModeKey)) {
           const currentSupplyDemandOfOther: SupplyDemand = allSupplyDemandOfOther[interactionModeKey]; // e.g. mentor
           const currentSupplyDemandOfMe: SupplyDemand = allSupplyDemandOfMe[interactionModeKey];
           // currentSupplyDemandOfOther.supply.
@@ -253,10 +285,10 @@ export class UserInterests {
     tagInclusionsList = tagInclusionsList.concat(UserInterests.getDemandInterests(interests));
 
     //Check if our topic is in some of those files.
-    for(let topicInclusions of tagInclusionsList) {
-      for(let key in topicInclusions) {
-        if(topicInclusions.hasOwnProperty(key)) {
-          if(topicInclusions[key].tagEntry.id === topicId) {
+    for (let topicInclusions of tagInclusionsList) {
+      for (let key in topicInclusions) {
+        if (topicInclusions.hasOwnProperty(key)) {
+          if (topicInclusions[key].tagEntry.id === topicId) {
             return true;
           }
         }
@@ -270,9 +302,9 @@ export class UserInterests {
     let symmetricInterests = interests &&
       interests.byInteractionMode &&
       interests.byInteractionMode.symmetric;
-    if(symmetricInterests) {
+    if (symmetricInterests) {
       for (let interest in symmetricInterests) {
-        if(symmetricInterests.hasOwnProperty(interest)) {
+        if (symmetricInterests.hasOwnProperty(interest)) {
           tagInclusionsList.push(symmetricInterests[interest].topics);
         }
       }
@@ -285,10 +317,10 @@ export class UserInterests {
     let supplyDemandInterests = interests &&
       interests.byInteractionMode &&
       interests.byInteractionMode.supplyDemand;
-    if(supplyDemandInterests) {
+    if (supplyDemandInterests) {
       for (let interest in supplyDemandInterests) {
-        if(supplyDemandInterests.hasOwnProperty(interest)) {
-          if(supplyDemandInterests[interest].supply) {
+        if (supplyDemandInterests.hasOwnProperty(interest)) {
+          if (supplyDemandInterests[interest].supply) {
             tagInclusionsList.push(supplyDemandInterests[interest].supply.topics);
           }
         }
@@ -302,10 +334,10 @@ export class UserInterests {
     let supplyDemandInterests = interests &&
       interests.byInteractionMode &&
       interests.byInteractionMode.supplyDemand;
-    if(supplyDemandInterests) {
+    if (supplyDemandInterests) {
       for (let interest in supplyDemandInterests) {
-        if(supplyDemandInterests.hasOwnProperty(interest)) {
-          if(supplyDemandInterests[interest].demand) {
+        if (supplyDemandInterests.hasOwnProperty(interest)) {
+          if (supplyDemandInterests[interest].demand) {
             tagInclusionsList.push(supplyDemandInterests[interest].demand.topics);
           }
         }
@@ -313,6 +345,7 @@ export class UserInterests {
     }
     return tagInclusionsList;
   }
+
   constructor(initFrom: UserInterests) {
     initFromObject<UserInterests>(this, initFrom);
   }

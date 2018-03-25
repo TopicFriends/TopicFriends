@@ -25,19 +25,11 @@ exports.config = {
     showColors: true,
     isVerbose: true,
     includeStackTrace: true,
-    defaultTimeoutInterval: 60000,
+    defaultTimeoutInterval: 100000,
     print: function() {}
   },
   onPrepare: function() {
     browser.waitForAngularEnabled(false);
-
-    // Disable animations so e2e tests run more quickly
-    var disableNgAnimate = function() {
-      angular.module('disableNgAnimate', []).run(function($animate) {
-        $animate.enabled(false);
-      })
-    };
-    browser.addMockModule('disableNgAnimate', disableNgAnimate);
 
     browser.driver.manage().window().maximize();
 

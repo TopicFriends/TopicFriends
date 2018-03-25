@@ -33,7 +33,7 @@ describe('Symmetric topics on Profile page: User', () => {
     })
 
     wait.forElementPresent(page.acceptCookiesButton).then(() => {
-      page.acceptCookiesButton.click()
+      ptor.click(page.acceptCookiesButton)
     })
   })
 
@@ -97,7 +97,7 @@ describe('Symmetric topics on Profile page: User', () => {
     assert.sectionTagsMatch(hackathon, selectedTopics)
   });
 
-  xit('can save profile by clicking save', () => {
+  it('can save profile by clicking save', () => {
     let topicsHackathon = ['c', 'universal']
     let topicsSectionHackathon = topicSections.hackathonSectionSelector
     wait.forElementPresent($(topicsSectionHackathon))
@@ -129,7 +129,7 @@ describe('Symmetric topics on Profile page: User', () => {
     })
   });
 
-  xit('can change selected topics', () => {
+  it('can change selected topics', () => {
     wait.forElementPresent($(topicSections.tagSelector))
     topicSections.removeAllTags()
 
@@ -156,22 +156,22 @@ describe('Symmetric topics on Profile page: User', () => {
   });
 
   it('can remove all topics from profile', () => {
+    console.log('can remove all topics from profile')
     wait.forElementPresent($(topicSections.tagSelector))
     topicSections.removeAllTags()
 
     page.saveProfileByClickingSaveButton()
-    page.navigateTo().then(() => {
-      wait.forElementPresent(page.topicsGroup).then(() => {
-        browser.sleep(3000)
-        topicSections.allTagsClosings().count().then(result => {
-          expect(result).toBe(0, 'Not all tags removed')
-        })
+    browser.refresh().then(() => {
+      browser.sleep(5000)
+      topicSections.allTagsClosings().count().then(result => {
+        expect(result).toBe(0, 'Not all tags removed')
       })
     })
   })
 
-  // it('can save profile by pressing CTRL+S', () => {
-  // });
+  xit('save with keyboard', () => {
+
+  })
 
   afterEach(() => {
     page.navigateTo().then(() => {

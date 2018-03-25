@@ -37,10 +37,6 @@ export class TestAssertions {
   }
 
   private allTopicsToMatch(selectedTopics: Array<string>, expectedTopics: ElementArrayFinder) {
-    // for(let i=0; i<selectedTopics.length; i++) {
-    //   console.log('Selected topic:' + selectedTopics[i])
-    // }
-
     expectedTopics.then((expTopics: ElementFinder[]) => {
       let selectedTopicsCount = selectedTopics.length
       let expectedTopicsCount = expTopics.length
@@ -50,7 +46,6 @@ export class TestAssertions {
       expTopics.forEach(topicPromise => {
         topicPromise.getText().then(topic => {
           console.log('Expected Topic: ' + topic)
-          // this.support.takeScreenshot('topic_' + topic)
           expect(selectedTopics.indexOf(' ' + topic) > -1).toBe(true,
             'Expected topic \'' + topic + '\' wasn\'t found in tags')
         })
