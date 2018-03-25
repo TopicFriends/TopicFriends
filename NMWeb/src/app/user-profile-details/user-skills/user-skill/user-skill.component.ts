@@ -65,6 +65,7 @@ export class UserSkillComponent implements OnInit {
 
     if ( window.innerWidth < mobileMaxWidth ){
       delete dialogConfig.position;
+      dialogConfig['maxWidth'] = '100%';
     }
 
     let dialogRef;
