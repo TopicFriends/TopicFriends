@@ -156,7 +156,7 @@ export class UserInterests {
   public static getInterestsMatchWith(interests1: UserInterests, other: UserInterests): MatchResults {
 
     let topicMatches = UserInterests.getTopicsMatchedWithSymmetricInteractionMode(interests1, other);
-
+    topicMatches = topicMatches.concat(UserInterests.getTopicsMatchedWithSupplyDemandInteractionMode(interests1, other));
     const matchScore = topicMatches.length;
     return {
       matchScore: matchScore, // FIXME
@@ -183,6 +183,43 @@ export class UserInterests {
                 getDictionaryValuesAsArray(otherUserSymmetricInterests[interest].topics)
               )
             );
+          }
+        }
+      }
+    }
+    return matchedTopics;
+  }
+
+
+  public static getTopicsMatchedWithSupplyDemandInteractionMode(userInterests: UserInterests, otherUserInterests: UserInterests) {
+    let matchedTopics = [];
+    let userSupplyDemandInterests = userInterests &&
+      userInterests.byInteractionMode &&
+      userInterests.byInteractionMode.supplyDemand;
+    let otherUserSupplyDemandInterests = otherUserInterests &&
+      otherUserInterests.byInteractionMode &&
+      otherUserInterests.byInteractionMode.supplyDemand;
+
+    if (userSupplyDemandInterests && otherUserSupplyDemandInterests) {
+      for (let interest in userSupplyDemandInterests) {
+        if (userSupplyDemandInterests.hasOwnProperty(interest) && otherUserSupplyDemandInterests.hasOwnProperty(interest)) {
+          if(userSupplyDemandInterests[interest] && otherUserSupplyDemandInterests[interest]) {
+            if(userSupplyDemandInterests[interest].supply && otherUserSupplyDemandInterests[interest].demand) {
+              matchedTopics = matchedTopics.concat(
+                UserInterests.getTopicMatchesWithinInteractionMode(
+                  getDictionaryValuesAsArray(userSupplyDemandInterests[interest].supply.topics),
+                  getDictionaryValuesAsArray(otherUserSupplyDemandInterests[interest].demand.topics)
+                )
+              );
+            }
+            if(userSupplyDemandInterests[interest].demand && otherUserSupplyDemandInterests[interest].supply) {
+              matchedTopics = matchedTopics.concat(
+                UserInterests.getTopicMatchesWithinInteractionMode(
+                  getDictionaryValuesAsArray(userSupplyDemandInterests[interest].demand.topics),
+                  getDictionaryValuesAsArray(otherUserSupplyDemandInterests[interest].supply.topics)
+                )
+              );
+            }
           }
         }
       }
