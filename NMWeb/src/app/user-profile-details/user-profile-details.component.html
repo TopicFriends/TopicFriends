@@ -79,11 +79,20 @@
     *ngIf="userProfileInputs.isEditable"
   >
     <button
+      class="save-fab"
+      appHideOnScroll
+      (click)="scrollToSave()"
+      mat-fab
+    >
+      <mat-icon aria-label="Goto save">
+        cloud_upload
+      </mat-icon>
+    </button>
+
+    <button
+      class="saveProfileButton"
       #saveProfileButton
       id="saveProfile"
-      style="
-        width:100%
-      "
       mat-button
       mat-raised-button
       color="primary"

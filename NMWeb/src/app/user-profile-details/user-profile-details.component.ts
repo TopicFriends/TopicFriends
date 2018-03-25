@@ -158,4 +158,13 @@ export class UserProfileDetailsComponent implements OnInit {
     return this.userProfileInputs && this.userProfileInputs.isEditable && this.formGroup.dirty
   }
 
+
+  scrollToSave() {
+    window.scroll({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
 }
