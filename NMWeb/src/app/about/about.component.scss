@@ -19,9 +19,10 @@ li {
 $partner-margin: 20px;
 .partners-container {
   margin-top: -$partner-margin;
-  display: flex; 
-  flex-wrap: wrap; 
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center
 }
 
 .partner-img {
