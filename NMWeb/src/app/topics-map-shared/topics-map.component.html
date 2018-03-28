@@ -14,13 +14,13 @@
     [latitude]="coordinates.latitude"
     [longitude]="coordinates.longitude"
     [zoom]="10">
-    <ng-template ngFor let-topic [ngForOf]="topics">
-      <ng-template ngFor let-userLocation [ngForOf]="usersGeoLocations[topic.id]">
+    <ng-template ngFor let-i="index" let-topic [ngForOf]="topics">
+      <ng-template ngFor  let-userLocation [ngForOf]="usersGeoLocations[topic.id]">
         <agm-marker
           [markerClickable]="true"
           (markerClick)="onMarkerClick(userLocation)"
-          [latitude]="userLocation.latitude"
-          [longitude]="userLocation.longitude"
+          [latitude]="userLocation.latitude + offsets[i].lat"
+          [longitude]="userLocation.longitude + offsets[i].lon"
           [iconUrl]="topicsIcon[topic.id]"
         ></agm-marker>
       </ng-template>
