@@ -7,6 +7,8 @@ import {TermsOfServiceComponent} from './terms-of-service/terms-of-service.compo
 import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component'
 import {UserListComponent} from './user-list/user-list.component'
 import {TopicsMapPageComponent} from './topics-map-page/topics-map-page.component'
+import {TOPIC_ID_PARAM} from "./shared/routes";
+import {TopicDetailsModule} from "./topic-details/topic-details.module";
 
 
 const appRoutes: Routes = [
@@ -35,6 +37,10 @@ const appRoutes: Routes = [
   {
     path: 'about',
     loadChildren: 'app/about/about.module#AboutModule',
+  },
+  {
+    path: 'topic/:' + TOPIC_ID_PARAM,
+    loadChildren: 'app/topic-details/topic-details.module#TopicDetailsModule',
   },
   {
     path: 'terms',
