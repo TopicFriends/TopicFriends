@@ -13,6 +13,19 @@ import {Router} from '@angular/router'
 })
 export class TopicsListComponent implements OnInit {
 
+  allRelatedTopics = {
+    "results": [{
+      "columns": ["user", "entity"],
+      "data": [{
+        "graph": {
+          "nodes": [],
+          "relationships": []
+        }
+      }]
+    }],
+    "errors": []
+  };
+
   allTopicsArray: TagEntry[]
   allTopics: TagInclusions
   searchTagList = [];
@@ -22,6 +35,21 @@ export class TopicsListComponent implements OnInit {
   ) {
     this.allTopicsArray = topicsService.topics
     this.allTopics = createTopicsDictionary(this.allTopicsArray.map(tagEntry => {
+      this.allRelatedTopics.results[0].data[0].graph.nodes.push({
+        id: tagEntry.id,
+        labels: [tagEntry.name],
+      });
+      if(tagEntry.related) {
+        let relationships = this.allRelatedTopics.results[0].data[0].graph.relationships;
+        for(let topic of tagEntry.related) {
+          relationships.push({
+            id: relationships.length,
+            startNode: tagEntry.id,
+            endNode: topic.id,
+          });
+        }
+      }
+      console.log(JSON.stringify(this.allRelatedTopics));
       return new TopicInterest(tagEntry);
     }))
   }
