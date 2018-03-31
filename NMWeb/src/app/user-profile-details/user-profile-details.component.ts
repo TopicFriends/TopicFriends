@@ -108,6 +108,7 @@ export class UserProfileDetailsComponent implements OnInit {
     }
     if (!this.checkPrivacityValue) {
       this.snackBarComponent.showSnackBar('Por favor, marca la casilla, indicando que aceptas nuestra política de privacidad.')
+      this.scrollToSave()
       return;
     }
     if ( ! this.hasUnsavedChanges() ) {
