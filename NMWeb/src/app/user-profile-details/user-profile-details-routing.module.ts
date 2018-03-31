@@ -27,7 +27,7 @@ export class CanDeactivateUserProfileGuard implements CanDeactivate<UserProfileD
   ): Observable<boolean>|Promise<boolean>|boolean {
     let canDeactivate = component.canDeactivate()
     if ( ! canDeactivate ) {
-      window.alert('You have unsaved changes.')
+      canDeactivate = window.confirm('You have unsaved changes. Do you really want to leave?')
     }
     return canDeactivate
   }
