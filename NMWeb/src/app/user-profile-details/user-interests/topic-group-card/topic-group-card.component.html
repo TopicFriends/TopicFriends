@@ -1,20 +1,24 @@
-<mat-card
-  style="margin-bottom: 0.5em"
->
+<div [hidden]="hidden">
 
-  <mat-card-title>
+  <mat-card
+    style="margin-bottom: 0.5em"
+  >
 
-    <ng-content></ng-content>
+    <mat-card-title
+    >
 
-  </mat-card-title>
+      <ng-content></ng-content>
 
-  <mat-card-content>
+    </mat-card-title>
 
-    <app-item-list-input
-      [isEditable]="userProfileInputs.isEditable"
-      (outputTagList)="onOutputTagListChanged($event)"
-    ></app-item-list-input>
+    <mat-card-content>
 
-  </mat-card-content>
+      <app-item-list-input
+        [isEditable]="userProfileInputs.isEditable"
+        (outputTagList)="onOutputTagListChanged($event)"
+      ></app-item-list-input>
 
-</mat-card>
+    </mat-card-content>
+
+  </mat-card>
+</div>
