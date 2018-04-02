@@ -171,4 +171,8 @@ export class UserProfileDetailsComponent implements OnInit {
     });
   }
 
+  shouldShowUserProfile() {
+    return !(!this.userProfileInputs || !this.authService.userSaved && this.userProfileInputs.isEditable);
+  }
+
 }
