@@ -12,7 +12,7 @@ import {CleanUrlPipe} from "../../shared/pipes/clean-url.pipe";
 })
 export class HeaderComponent implements OnInit {
   public title = 'TopicFriends';
-
+  display = false;
 
   constructor(
     public authService: AuthService,
@@ -41,6 +41,10 @@ export class HeaderComponent implements OnInit {
 
   capitalize(string){
     return this.capitalizeFirstPîpe.transform(string);
+  }
+
+  onLogInClick() {
+    this.display = true;
   }
 
 }

@@ -16,6 +16,7 @@ import {MeetingsModule} from '../meeting-list/meetings.module'
 import {CapitalizeFirstPipe} from "../shared/pipes/capitalize-first.pipe";
 import {CleanUrlPipe} from "../shared/pipes/clean-url.pipe";
 import { FooterComponent } from './footer/footer.component';
+import {LoginComponent} from '../login/login.component'
 
 /** https://angular.io/guide/styleguide#prevent-re-import-of-the-core-module */
 export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
@@ -40,6 +41,7 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     NavbarComponent,
     HeaderComponent,
     FooterComponent,
+    LoginComponent,
   ],
   exports: [
     NavbarComponent,

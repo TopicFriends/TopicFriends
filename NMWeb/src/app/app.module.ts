@@ -77,6 +77,7 @@ import {AgmCoreModule} from '@agm/core'
     MatChipsModule,
     MatSliderModule,
     MatSelectModule,
+
     FormsModule,
     CookieLawModule,
     AgmCoreModule.forRoot({

@@ -38,6 +38,7 @@ import { DomainDbService } from './domain-db.service'
 import { DbService } from './db.service'
 import {ScrollingService} from './scrolling.service';
 import {HideOnScrollDirective} from './hide-on-scroll.directive'
+import {DialogModule} from 'primeng/dialog'
 
 @NgModule({
   imports: [
@@ -59,6 +60,7 @@ import {HideOnScrollDirective} from './hide-on-scroll.directive'
     MatListModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    DialogModule,
     RouterModule,
     HttpClientModule,
     Angular2FontawesomeModule,
@@ -94,6 +96,7 @@ import {HideOnScrollDirective} from './hide-on-scroll.directive'
     ItemListInputComponent,
     TextAreaComponent,
     MatButtonModule,
+    DialogModule,
   ],
   providers: [
     SnackBarComponent,
