@@ -21,7 +21,8 @@ import {GeoLocation} from '../../../user-profile-shared/user-geo-locations.types
 })
 export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
 
-  display = false;
+  displayModal = false;
+  hidden = false;
   dialogData: UserPickLocationDialogParams;
   position: Position
   @Input() locationName: string
@@ -75,11 +76,11 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
     //     this.setInputText(returnVal.lat.toFixed(fractionDigits) + ', ' + returnVal.lng.toFixed(fractionDigits))
     //   }
     // })
-    this.display = true;
+    this.displayModal = true;
   }
 
   onDialogClose(returnVal) {
-      this.display = false;
+      this.displayModal = false;
       if ( returnVal ) {
         const fractionDigits = 4
         this.setInputText(returnVal.lat.toFixed(fractionDigits) + ', ' + returnVal.lng.toFixed(fractionDigits))
@@ -89,6 +90,7 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
 
   private setInputText(s: string) {
     this.latitudeLongitudeControl.nativeElement.value = s
+    this.hidden = !this.userProfileInputs.isEditable && s === '';
     this.doPropagateChange(s)
   }
 

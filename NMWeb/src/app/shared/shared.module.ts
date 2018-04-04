@@ -36,7 +36,8 @@ import {FlexLayoutModule} from '@angular/flex-layout'
 import { TextAreaComponent } from './text-area/text-area.component'
 import { DomainDbService } from './domain-db.service'
 import { DbService } from './db.service'
-import {ScrollingService} from './scrolling.service'
+import {ScrollingService} from './scrolling.service';
+import {HideOnScrollDirective} from './hide-on-scroll.directive'
 
 @NgModule({
   imports: [
@@ -73,6 +74,7 @@ import {ScrollingService} from './scrolling.service'
     LimitToPipe,
     ItemListInputComponent,
     TextAreaComponent,
+    HideOnScrollDirective,
     // GeolocationService,
   ],
   exports: [
@@ -84,6 +86,7 @@ import {ScrollingService} from './scrolling.service'
     MatInputModule,
     DistancePipe,
     LimitToPipe,
+    HideOnScrollDirective,
     MatTabsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
@@ -106,7 +109,8 @@ import {ScrollingService} from './scrolling.service'
     StackOverflowService,
     DbService,
     DomainDbService,
-    ScrollingService
+    ScrollingService,
+
   ]
 
 })

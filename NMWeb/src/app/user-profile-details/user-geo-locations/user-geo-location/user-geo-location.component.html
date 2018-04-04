@@ -1,4 +1,4 @@
-<div>
+<div [hidden]="hidden">
 <!--  // City
   // Postal Code
   // Country-->
@@ -65,4 +65,4 @@
 </div>
 
 
-<app-user-pick-location *ngIf="(value) || (userProfileInputs.isEditable)" [(display)]="display" [data]="dialogData" (onClose)="onDialogClose($event)"></app-user-pick-location>
+<app-user-pick-location *ngIf="(value) || (userProfileInputs.isEditable)" [(display)]="displayModal" [data]="dialogData" (onClose)="onDialogClose($event)"></app-user-pick-location>

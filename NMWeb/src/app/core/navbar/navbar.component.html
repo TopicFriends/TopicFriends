@@ -9,8 +9,8 @@
   fxLayout="column"
   fxLayout.xs="row"
 >
-  <div fxFlexOrder="1" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==0)}" (click)="selectedTab = 0">
-    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/meeting-list" routerLinkActive="active">
+  <div fxFlexOrder="1" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==0)}" (click)="selectedTab = 0" routerLink="/meeting-list" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}">
          <div class="nav-bar-centerd-items">
             <mat-icon>event</mat-icon>
             <p>Meetings</p>
@@ -18,16 +18,16 @@
     </div>
 
   </div>
-  <div fxFlexOrder="2" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==1)}"  (click)="selectedTab = 1">
-    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/people-list" routerLinkActive="active">
+  <div fxFlexOrder="2" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==1)}"  (click)="selectedTab = 1" routerLink="/people-list" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}">
         <div class="nav-bar-centerd-items">
             <mat-icon>people</mat-icon>
             <p>People</p>
         </div>
     </div>
   </div>
-  <div fxFlexOrder="3" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==2)}"  (click)="selectedTab = 2">
-    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/profile" routerLinkActive="active">
+  <div fxFlexOrder="3" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==2)}"  (click)="selectedTab = 2" routerLink="/profile" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}">
         <div class="nav-bar-centerd-items">
             <mat-icon>person_pin</mat-icon>
             <p>Profile</p>
@@ -39,10 +39,8 @@
     ... because of limited horizontal space.
     It is accessible from About box as well.
   -->
-  <div fxFlexOrder="4" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==3)}"  (click)="selectedTab = 3"
-
-    >
-    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/topics" routerLinkActive="active">
+  <div fxFlexOrder="4" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==3)}"  (click)="selectedTab = 3" routerLink="/topics" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}">
         <div class="nav-bar-centerd-items">
             <mat-icon>filter_vintage</mat-icon>
             <p>Topics</p>
@@ -51,8 +49,8 @@
 
   </div>
 
-  <div fxFlexOrder="5" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==4)}"  (click)="selectedTab = 4">
-    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/users-map" routerLinkActive="active">
+  <div fxFlexOrder="5" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==4)}"  (click)="selectedTab = 4" routerLink="/users-map" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}">
         <div class="nav-bar-centerd-items">
             <mat-icon>map</mat-icon>
             <p>Map</p>
@@ -70,8 +68,8 @@
     <!--</div>-->
   <!--</div>-->
 
-  <div fxFlexOrder="7" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==6)}"  (click)="selectedTab = 6">
-    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}" routerLink="/about" routerLinkActive="active">
+  <div fxFlexOrder="7" fxFlex="1 1 100%" [ngClass]="{'selected-tab': (selectedTab==6)}"  (click)="selectedTab = 6" routerLink="/about" routerLinkActive="active">
+    <div class="nav-bar-item-container" [ngStyle.xs]="{'height.px': 50}">
         <div class="nav-bar-centerd-items">
             <mat-icon>info</mat-icon>
             <p>About</p>

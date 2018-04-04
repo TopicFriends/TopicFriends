@@ -38,11 +38,7 @@ agm-map {
   margin-top: -12px;
   margin-left: -12px;
   width: $map-desktop-width;
-  text-shadow:
-    -1px 0 $blur-radius $names,
-    0 1px $blur-radius $names,
-    1px 0 $blur-radius $names,
-    0 -1px $blur-radius $names;
+
 
 }
 

@@ -28,6 +28,7 @@ export class AuthService {
   // }
 
   logout() {
+    this.userSaved = null;
     return this.afAuth.auth.signOut();
   }
 }

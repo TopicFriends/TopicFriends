@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {
   UserProfile,
   UserProfileService,
@@ -18,6 +18,7 @@ import {
   GeoLocationsDictionary,
   UserGeoLocations,
 } from '../../user-profile-shared/user-geo-locations.types'
+import {ScrollingService} from '../../shared/scrolling.service'
 
 export class UserCoords {
   user?: UserProfile
@@ -30,7 +31,7 @@ export class UserCoords {
   templateUrl: './users-map.component.html',
   styleUrls: ['./users-map.component.scss']
 })
-export class UsersMapComponent implements OnInit {
+export class UsersMapComponent implements OnInit, OnDestroy {
 
   @ViewChild('slider') slider: ElementRef;
 
@@ -51,9 +52,16 @@ export class UsersMapComponent implements OnInit {
     private userListService: UserListService,
     private poiService: PoiService,
     private router: Router,
+    private scrollingService: ScrollingService
   ) {}
 
+  ngOnDestroy() {
+    this.scrollingService.enableScrolling();
+  }
+
   ngOnInit() {
+    this.scrollingService.disableScrolling();
+
     this.poiService.observePois().subscribe(pois => {
       this.pois = pois
     })
@@ -68,7 +76,6 @@ export class UsersMapComponent implements OnInit {
         // }
       }
     );
-
     this.userGeoLocationsService.getAllUserGeoLocations().subscribe((geos: UserGeoLocations[]) => {
       let allUsersGeoLocationsFlattened = []
       if ( geos ) {

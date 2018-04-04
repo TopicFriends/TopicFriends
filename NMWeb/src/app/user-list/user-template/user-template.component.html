@@ -9,18 +9,24 @@
       <div class="user-display-name">
         <a routerLink="/user/{{userId}}">{{profileBasicInfo?.displayName || profileBasicInfo?.name}}</a>
         &nbsp; MatchScore: {{matchResults ? matchResults?.matchScore : '(Please Log In to see MatchScore)'}}
-        &nbsp; <mat-chip *ngIf="isLoggedUser()"> YOU!</mat-chip>
+          &nbsp; <span class="badge" *ngIf="isLoggedUser()"> YOU!</span>
       </div>
       <!--</h3>-->
     </mat-card-title>
-    <mat-card-subtitle>
+    <mat-card-subtitle *ngIf="!showLess">
       {{userDescriptions?.descriptions?.myDescription?.text || 'No description yet'}}
 
       <!--{{profileBasicInfo?.role}}-->
       <!--<span *ngIf="profileBasicInfo?.company">-->
-                <!--at-->
-                <!--<span style="font-weight: bold;">{{' ' + profileBasicInfo?.company}}</span>-->
-            <!--</span>-->
+      <!--at-->
+      <!--<span style="font-weight: bold;">{{' ' + profileBasicInfo?.company}}</span>-->
+      <!--</span>-->
+    </mat-card-subtitle>
+
+
+    <mat-card-subtitle *ngIf="showLess">
+      {{ shortDescription(userDescriptions?.descriptions?.myDescription?.text) || 'No description yet' }}
+
     </mat-card-subtitle>
   </mat-card-header>
 
