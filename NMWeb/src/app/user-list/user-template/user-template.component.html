@@ -13,14 +13,20 @@
       </div>
       <!--</h3>-->
     </mat-card-title>
-    <mat-card-subtitle>
+    <mat-card-subtitle *ngIf="!showLess">
       {{userDescriptions?.descriptions?.myDescription?.text || 'No description yet'}}
 
       <!--{{profileBasicInfo?.role}}-->
       <!--<span *ngIf="profileBasicInfo?.company">-->
-                <!--at-->
-                <!--<span style="font-weight: bold;">{{' ' + profileBasicInfo?.company}}</span>-->
-            <!--</span>-->
+      <!--at-->
+      <!--<span style="font-weight: bold;">{{' ' + profileBasicInfo?.company}}</span>-->
+      <!--</span>-->
+    </mat-card-subtitle>
+
+
+    <mat-card-subtitle *ngIf="showLess">
+      {{ shortDescription(userDescriptions?.descriptions?.myDescription?.text) || 'No description yet' }}
+
     </mat-card-subtitle>
   </mat-card-header>
 

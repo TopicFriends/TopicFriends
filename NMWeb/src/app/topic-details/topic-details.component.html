@@ -22,11 +22,14 @@
 </mat-chip-list>
 
 <h2 id="users">Interested Users</h2>
-<nw-user-template
-  *ngFor="let user of interestedUsers | limitTo:showLimit"
-  [userProfile]="user.userDataCombined.userData"
-  [showLess]="true"
-></nw-user-template>
+<div class="users-list">
+  <nw-user-template
+    class="user-card"
+    *ngFor="let user of interestedUsers | limitTo:showLimit"
+    [userProfile]="user.userDataCombined.userData"
+    [showLess]="true"
+  ></nw-user-template>
+</div>
 
 <button
   *ngIf="canShowLess()"
