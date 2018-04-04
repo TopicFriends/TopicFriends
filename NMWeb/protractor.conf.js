@@ -15,7 +15,7 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome',
     chromeOptions: {
-    args: ["--disable-gpu"]
+    args: ["--disable-gpu", "--start-maximized"]
     }
   },
   directConnect: true,
