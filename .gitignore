@@ -62,3 +62,5 @@ typings/
 # ==== Firebase / Cloud Functions / GCM:
 service-account*.json
 
+# E2E test results with screenshots
+e2e-screenshots
