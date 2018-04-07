@@ -9,6 +9,7 @@ import {UserListComponent} from './user-list/user-list.component'
 import {TopicsMapPageComponent} from './topics-map-page/topics-map-page.component'
 import {TOPIC_ID_PARAM} from "./shared/routes";
 import {TopicDetailsModule} from "./topic-details/topic-details.module";
+import { LandingPageComponent } from './landing-page/landing-page/landing-page.component'
 
 
 const appRoutes: Routes = [
@@ -66,6 +67,10 @@ const appRoutes: Routes = [
     path: 'topics-map',
     component: TopicsMapPageComponent
     //loadChildren: 'app/topics-map-page/topics-map-page.module#TopicsMapPageComponent'
+  },
+  {
+    path: 'landing-page',
+    component: LandingPageComponent
   },
   {
     path: '**',

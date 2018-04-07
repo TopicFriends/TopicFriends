@@ -1,2 +1,21 @@
+<div class="container">
+  <h1 class="title">Find people with common interests</h1>
+  <app-item-list-input
+    width="70%"
+    displayMode="inline"
+    class="search-bar"
+    margin="0 0 0 10%"
+    placeholder="e.g. Angular, Firebase..."
+    [isEditable]="true"
+    (outputTagList)="onOutputTagList($event)"
+  ></app-item-list-input>
 
-Welcome to TopicFriends Landing Page :)
+  <button
+    class="search-button"
+    mat-raised-button
+    [routerLink]="getRoute()"
+    [disabled]="searchTagList.length === 0"
+  >
+    Find
+  </button>
+</div>
