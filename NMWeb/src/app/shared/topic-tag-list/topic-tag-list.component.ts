@@ -37,6 +37,10 @@ export class TopicTagListComponent implements OnInit {
   }
   @Input() editable: boolean;
   @Input() minShow;
+
+  @Input() margin = "0";
+  @Input() width = "100%";
+
   showLimit;
 
   constructor() { }
