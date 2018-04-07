@@ -49,6 +49,10 @@ export class ItemListInputComponent implements OnInit {
     this.reFilter()
   }
 
+  @Input() width = "100%";
+  @Input() margin = "0";
+  @Input() displayMode ="flex"
+  @Input() placeholder;
 
   // rename: chosen Tag list
   // public tagList: TopicInterest[] = this.exampleTags;

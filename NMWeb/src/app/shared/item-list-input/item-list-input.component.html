@@ -2,6 +2,8 @@
 <br>
 
 <app-topic-tag-list
+  [margin]="margin"
+  [width]="width"
   [tagListModel]="tagListModel"
   [editable]="isEditable"
   [minShow]="0"
@@ -13,16 +15,13 @@
     (keydown.enter)="addTag(currentFilteredOptions[0])"
 -->
 <div
-  style="
-    display: flex;
-    flex-direction: row;
-  "
-
+  [ngStyle]="{'display': displayMode }"
+  style="flex-direction: row;"
 >
 
 <mat-form-field
   *ngIf="isEditable"
-  style="width:100%"
+  [ngStyle]="{'width': width, 'margin': margin}"
 >
   <input
     matInput
@@ -31,7 +30,7 @@
   > <!-- FIXME!!!: addTag(currentFilteredOptions[0]) : this should check if a specific item was selected by
       down-arrow instead of always forcing [0] -->
   <mat-placeholder>
-    Search for topics to see them on the map
+    {{placeholder}}
   </mat-placeholder>
 </mat-form-field>
 
