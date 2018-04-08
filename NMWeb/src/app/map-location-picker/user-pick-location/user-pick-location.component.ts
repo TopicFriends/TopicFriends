@@ -109,7 +109,7 @@ export class UserPickLocationComponent implements OnInit {
   }
 
   onShowDialog() {
-    this.agmMap.triggerResize();
+    window.dispatchEvent(new Event('resize'));
     //Prevent scrolling
     this.scrollingService.disableScrolling();
   }
