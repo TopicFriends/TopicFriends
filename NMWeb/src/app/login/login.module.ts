@@ -13,6 +13,8 @@ import { SharedModule } from '../shared/shared.module'
   ],
   declarations: [
     LoginComponent,
+  ], exports: [
+    LoginComponent,
   ]
 })
 export class LoginModule { }

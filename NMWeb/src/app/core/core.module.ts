@@ -21,6 +21,7 @@ import {CapitalizeFirstPipe} from '../shared/pipes/capitalize-first.pipe';
 import {CleanUrlPipe} from '../shared/pipes/clean-url.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from '../login/login.component'
+import {LoginModule} from '../login/login.module'
 
 /** https://angular.io/guide/styleguide#prevent-re-import-of-the-core-module */
 export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
@@ -40,12 +41,12 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     MatMenuModule,
     MatButtonModule,
     MatToolbarModule,
+    LoginModule,
   ],
   declarations: [
     NavbarComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
   ],
   exports: [
     NavbarComponent,
