@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./privacy-policy.component.scss']
 })
 export class PrivacyPolicyComponent implements OnInit {
-  lastUpdate: string = "1 de Marzo de 2018";
+  lastUpdate: string = "8 de Abril de 2018";
 
   constructor() { }
 
