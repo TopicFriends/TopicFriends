@@ -19,6 +19,7 @@ export class TopicsMapComponent implements OnInit {
   usersGeoLocations = {};
   offsets = [];
   topicsIcon = [];
+  offsetRadius = 1;
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
   constructor(
     private topicDetailsService: TopicsDetailsService,
@@ -69,10 +70,18 @@ export class TopicsMapComponent implements OnInit {
       this.topicsIcon[topic.id] = this.getMapTopicIcon(topic);
     }
   }
+
+  onOffsetRadiusChange() {
+    let newOffsets = [];
+    this.topics.forEach((topic, index) => {
+      newOffsets.push(this.getOffset(index));
+    });
+    this.offsets = newOffsets;
+  }
+
   getOffset(index: number) {
-    let r = 0.05
     let degree = index*2*Math.PI/this.topics.length;
-    let scaleFactor = this.topics.length/5000;
+    let scaleFactor = this.offsetRadius*this.topics.length/5000;
     return {
       lat: Math.cos(degree)*scaleFactor,
       lon: Math.sin(degree)*scaleFactor
