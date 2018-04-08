@@ -9,15 +9,17 @@
       (change)="onIconBaseSizeChange()"
     ></mat-slider>
 
+    <ng-template [ngIf]="topics.length > 1">
+      <span>Separation:</span>
+      <mat-slider
+        min="0"
+        max="10"
+        step="0.5"
+        [(ngModel)]="offsetRadius"
+        (change)="onOffsetRadiusChange()"
+      ></mat-slider>
+    </ng-template>
 
-    <span>Separation:</span>
-    <mat-slider
-      min="0"
-      max="10"
-      step="0.5"
-      [(ngModel)]="offsetRadius"
-      (change)="onOffsetRadiusChange()"
-    ></mat-slider>
   </div>
 
   <agm-map
