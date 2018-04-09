@@ -46,7 +46,7 @@ export class TopicsMapComponent implements OnInit {
     let icon;
     if(topic.logo) {
       let logoFileName = topic.logo.replace(/^.*[\\\/]/, '');
-      let logoSizeRatio = logosSizeRatio[logoFileName];
+      let logoSizeRatio = logosSizeRatio[logoFileName] || {width: 1, height: 1};
       let scaleFactor = this.iconBaseSize / (logoSizeRatio.width * logoSizeRatio.height);
       if(logoSizeRatio) {
         icon = {
