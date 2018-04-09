@@ -8,12 +8,15 @@ import {Meeting, MeetingsService} from '../shared/meetings.service'
 })
 export class MeetingListComponent implements OnInit {
 
+  allMeetings: Meeting[] = [];
+  showAllMeetings = true;
   pastMeetings: Meeting[] = [];
   upcomingMeetings: Meeting[] = [];
   seePastMeetings = false;
 
   constructor(private meetingsService: MeetingsService) {
     this.meetingsService.retrieveAllMeetings().subscribe((meetings: Meeting[]) => {
+      this.allMeetings = meetings;
       this.pastMeetings = meetings.filter(meeting => this.meetingsService.isPastMeeting(meeting));
       this.upcomingMeetings = meetings.filter(meeting => this.meetingsService.isUpcomingMeeting(meeting));
     });
