@@ -175,7 +175,7 @@ export class TopicsService {
     tagNoIcon('Akka'),
     tagLogoTipo('Ember'), 'React', 'Redux', 'MobX', tagNoIcon('React Native'), 'Xamarin', tagNoIcon('Xamarin.Forms'),
     'Git',
-    tag('TensorFlow', null), 'OpenCV',
+    tag('TensorFlow', 'tensorflow'), 'OpenCV',
     'Appium', tagNoIcon('Robotium'),
     'JHipster', tagLogoTipo('Meteor'), tagLogoTipo('Hoodie'),
     'Laravel', 'CakePHP', 'Zend Framework', 'CodeIgniter', 'Symfony',
