@@ -24,6 +24,7 @@ $tool-bar-height: 5vh;
 
 .mat-toolbar {
     height: $tool-bar-height;
+   padding-right: 0;
     user-select: none;
     //background: rgba(255, 255, 255, 0.75);
     background: rgba(0,0,0, 1);
@@ -33,11 +34,23 @@ $tool-bar-height: 5vh;
     a {
       text-decoration: none;
 
+
+
       * {
          vertical-align: middle;
        }
 
     }
+  button{
+    background-color: rgb(103, 58, 183);
+    height: $tool-bar-height;
+    border-radius: 0;
+    margin-right: 0;
+    text-align: center;
+    line-height: initial;
+
+
+  }
 }
 
 .user-profile-corner-button {
