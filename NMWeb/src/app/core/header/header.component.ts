@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.dialogRef = this.dialog.open(LoginComponent);
+    this.dialogRef = this.dialog.open(LoginComponent, {autoFocus: false});
   }
 
   closeDialog(): void {
