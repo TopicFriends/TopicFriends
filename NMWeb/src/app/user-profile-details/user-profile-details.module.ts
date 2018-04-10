@@ -32,6 +32,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { Observable } from 'rxjs/Observable'
 import { UserProfileDetailsRoutingModule } from './user-profile-details-routing.module'
 import {MapsModule} from '../maps/maps.module'
+import {HeaderComponent} from "../core/header/header.component";
 
 
 /** User profile editing/viewing here */
@@ -65,6 +66,9 @@ import {MapsModule} from '../maps/maps.module'
     UserSkillsListComponent,
     UserProfileDetailsComponent,
     OtherProfileUserNameComponent,
+  ],
+  providers: [
+    HeaderComponent
   ]
 })
 export class UserProfileDetailsModule { }

@@ -7,17 +7,12 @@ import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component'
 import {UserListComponent} from './user-list/user-list.component'
 import {TopicsMapPageComponent} from './topics-map-page/topics-map-page.component'
 import {TOPIC_ID_PARAM} from "./shared/routes";
+import {LoginComponent} from "./login/login.component";
 
 const appRoutes: Routes = [
   {
     path: '',
-    // pathMatch: 'full',
-    // redirectTo: 'profile',
     loadChildren: 'app/landing-page/landing-page.module#LandingPageModule',
-  },
-  {
-    path: 'login',
-    loadChildren: 'app/login/login.module#LoginModule',
   },
   {
     path: 'people-list',

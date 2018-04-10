@@ -41,12 +41,12 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     MatMenuModule,
     MatButtonModule,
     MatToolbarModule,
+    LoginModule
   ],
   declarations: [
     NavbarComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent,
   ],
   exports: [
     NavbarComponent,

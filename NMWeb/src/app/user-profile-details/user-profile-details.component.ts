@@ -16,6 +16,7 @@ import {UserConfigService} from "../shared/user-config.service"
 import { USER_PROFILE_ID_PARAM_NO_COLON } from '../shared/routes'
 import { Title } from '@angular/platform-browser'
 import {userAliases} from '../../assets/user-aliases'
+import {HeaderComponent} from "../core/header/header.component";
 
 
 @Component({
@@ -53,7 +54,8 @@ export class UserProfileDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private userConfigService: UserConfigService,
-    private titleService: Title
+    private titleService: Title,
+    private header: HeaderComponent
   ) {
     console.log('UserProfileComponent constructor')
 
@@ -173,6 +175,10 @@ export class UserProfileDetailsComponent implements OnInit {
 
   shouldShowUserProfile() {
     return !(!this.userProfileInputs || !this.authService.userSaved && this.userProfileInputs.isEditable);
+  }
+
+  openDialog(){
+    this.header.openDialog();
   }
 
 }

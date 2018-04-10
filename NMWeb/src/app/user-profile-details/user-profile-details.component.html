@@ -14,7 +14,7 @@
 </div>
 
 <ng-template [ngIf]="! userProfileService.userId" >
-  <button mat-raised-button routerLink="/login">
+  <button mat-raised-button (click)="openDialog()">
     Please log in, to access your profile
   </button>
 </ng-template>
