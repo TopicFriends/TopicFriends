@@ -110,6 +110,7 @@ export class UserInterestConfigurationDialogComponent implements OnInit, AfterVi
 
     let dialogConfig = {
       // id: "skill-level-dialog",
+      autoFocus: false,
       width: `${this.dialogSize.width}`,
       height: `${this.dialogSize.height}`,
       maxWidth: `${this.dialogSize.width}px`,
@@ -123,7 +124,7 @@ export class UserInterestConfigurationDialogComponent implements OnInit, AfterVi
         tag2: this.tag2,
         userProfileInputs: this.data.userProfileInputs,
         skillLevels: this.data.skillLevels
-      }
+      },
     }
 
     if ( window.innerWidth < mobileMaxWidth ){
