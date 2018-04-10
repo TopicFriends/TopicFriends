@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TopicInterest } from '../../user-profile-shared/user-interests'
-import { TopicsService } from '../../shared/topics.service'
-import { TagEntry } from '../../topics-shared/tag-entry'
-import { TagInclusions } from '../../shared/TagInclusions'
+import { TopicInterest } from '../user-profile-shared/user-interests'
+import { TopicsService } from '../shared/topics.service'
+import { TagEntry } from '../topics-shared/tag-entry'
+import { TagInclusions } from '../shared/TagInclusions'
 import { Router } from '@angular/router'
-import { createTopicsDictionary } from '../../user-profile-shared/user-profile.service'
+import { createTopicsDictionary } from '../user-profile-shared/user-profile.service'
 
 @Component({
   selector: 'app-landing-page',
