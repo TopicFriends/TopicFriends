@@ -35,6 +35,15 @@ export class TopicsDetailsService {
     });
   }
 
+  getMatchedUsersWithTopicSortedBy(
+    topicId: string,
+    sortFunction: (a: UserMatched, b: UserMatched) => number
+  ) {
+    return this.userMatcherService.listUsersSortedFiltered( sortFunction, (user) => {
+      return UserInterests.hasTopicId(user.interests, topicId)
+    });
+  }
+
   static getAllGeoLocationsOfUsersMatched(usersMatched: UserMatched[]): GeoLocation[] {
     let flattenedGeoLocations: GeoLocation[] = [];
     for(let userMatched of usersMatched) {

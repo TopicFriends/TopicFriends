@@ -2,6 +2,7 @@
 <app-item-list-input
   [isEditable]="true"
   (outputTagList)="onOutputTagList($event)"
+  placeholder="Search for topics to see them on the map"
 ></app-item-list-input>
 
 <button
@@ -15,6 +16,6 @@
 <h1>All Topics ({{allTopicsArray.length}})</h1>
 <app-topic-tag-list [editable]="false"
                     [tagList]="allTopics"
-                    [minShow]="allTopicsArray.length"
+                    [minShow]="100"
 >
 </app-topic-tag-list>

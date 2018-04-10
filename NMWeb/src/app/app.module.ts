@@ -41,6 +41,8 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import {routingModule} from './app.routing'
 import {TopicsMapPageModule} from './topics-map-page/topics-map-page.module'
 import {MapsSharedModule} from './maps-shared/maps-shared.module'
+import {AgmCoreModule} from '@agm/core'
+import { LandingPageModule } from './landing-page/landing-page.module'
 
 
 @NgModule({
@@ -65,6 +67,7 @@ import {MapsSharedModule} from './maps-shared/maps-shared.module'
     MapsModule,
     MapsSharedModule,
     TopicsMapPageModule,
+    LandingPageModule,
     // ----
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     AngularFireModule.initializeApp(environment.firebase) ,
@@ -78,6 +81,13 @@ import {MapsSharedModule} from './maps-shared/maps-shared.module'
     MatSelectModule,
     FormsModule,
     CookieLawModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB8eJ4NjIFWy0tABOEasmykdAj8e7aenL0',
+      libraries: [
+        "places",
+        "geometry"
+      ]
+    }),
     // FlexLayoutModule,
   ],
   providers: [

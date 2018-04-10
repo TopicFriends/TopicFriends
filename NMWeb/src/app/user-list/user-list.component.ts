@@ -3,7 +3,7 @@ import {UserData, UserDataCombined} from 'app/user-profile-shared/user-profile.s
 import { UserListService } from "app/user-list/user-list.service";
 import { DbListReadOnly } from '../shared/db.service';
 import {Observable} from 'rxjs/Observable'
-import {UserMatched, UserMatcherService} from '../user-profile-shared/user-matcher.service'
+import {sortUserByLastModified, sortUserByMatchScore, UserMatched, UserMatcherService} from '../user-profile-shared/user-matcher.service'
 import {MatSliderChange} from '@angular/material'
 
 @Component({
@@ -15,15 +15,19 @@ export class UserListComponent implements OnInit {
 
   userList: DbListReadOnly<UserData>; // = [];// = this.userListService.getUserList();
   userListCombinedSorted: Array<UserMatched> // = [];// = this.userListService.getUserList();
-  userListCombinedSorted2: Array<UserMatched> // = [];// = this.userListService.getUserList();
 
   userListSaved;  //: UserDataWithDetails[];
 
   maxDistance = 5000
+  sortFunctions = [
+    sortUserByMatchScore,
+    sortUserByLastModified
+  ];
+
 
   constructor(
     private userListService: UserListService,
-    private userMatcherService: UserMatcherService,
+    public userMatcherService: UserMatcherService,
   ) {
 
   }
@@ -43,12 +47,7 @@ export class UserListComponent implements OnInit {
     //     )
     //   })
     // })
-    this.userMatcherService.listUsersSortedByLastModified().subscribe(l => {
-      this.userListCombinedSorted2 = l
-    })
-    this.userMatcherService.listUsersSortedByMatchScoreAndFilteredByMaxDistance().subscribe(l => {
-      this.userListCombinedSorted = l
-    })
+    this.sortUserListBy(this.sortFunctions[0])
   }
 
   trackByKey(idx, val: UserMatched) {
@@ -66,6 +65,12 @@ export class UserListComponent implements OnInit {
   maxDistanceChange(event: MatSliderChange) {
     // console.log(event)
     this.maxDistance = event.value
+  }
+
+  sortUserListBy(sortFunction) {
+    this.userMatcherService.listUsersSortedFiltered(sortFunction).subscribe(usersSorted => {
+      this.userListCombinedSorted = usersSorted
+    })
   }
 
 

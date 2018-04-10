@@ -14,6 +14,9 @@ import {UserSkillsComponent} from './user-skills/user-skills.component'
 import {UserProfileInputs} from './UserProfileInputs'
 import {UserConfigService} from "../shared/user-config.service"
 import { USER_PROFILE_ID_PARAM_NO_COLON } from '../shared/routes'
+import { Title } from '@angular/platform-browser'
+import {userAliases} from '../../assets/user-aliases'
+import {HeaderComponent} from "../core/header/header.component";
 
 
 @Component({
@@ -50,16 +53,20 @@ export class UserProfileDetailsComponent implements OnInit {
     public snackBarComponent: SnackBarComponent,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private userConfigService: UserConfigService
+    private userConfigService: UserConfigService,
+    private titleService: Title,
+    private header: HeaderComponent
   ) {
     console.log('UserProfileComponent constructor')
 
     const userConfig = JSON.parse(localStorage.getItem('userConfig'));
     this.showUserSkillsSection = userConfig && userConfig['show-skills']
 
-      let userIdFromRouter = this.activatedRoute.snapshot.params[USER_PROFILE_ID_PARAM_NO_COLON];
-    if ( userIdFromRouter ) {
-      this.userProfileInputs = new UserProfileInputs(userIdFromRouter, false /* Unless we are admin */, true)
+    let userIdFromRouter = this.activatedRoute.snapshot.params[USER_PROFILE_ID_PARAM_NO_COLON];
+    let userId = userAliases[userIdFromRouter] || userIdFromRouter;
+    console.log(userId);
+    if ( userId ) {
+      this.userProfileInputs = new UserProfileInputs(userId, false /* Unless we are admin */, true)
     } else {
       this.authService.user.subscribe(loggedUser => {
         let loggedUserId = loggedUser && loggedUser.uid
@@ -103,6 +110,7 @@ export class UserProfileDetailsComponent implements OnInit {
     }
     if (!this.checkPrivacityValue) {
       this.snackBarComponent.showSnackBar('Por favor, marca la casilla, indicando que aceptas nuestra política de privacidad.')
+      this.scrollToSave()
       return;
     }
     if ( ! this.hasUnsavedChanges() ) {
@@ -154,6 +162,23 @@ export class UserProfileDetailsComponent implements OnInit {
     // console.log('hasUnsavedChanges, userProfileInputs:', this.userProfileInputs)
     // return false
     return this.userProfileInputs && this.userProfileInputs.isEditable && this.formGroup.dirty
+  }
+
+
+  scrollToSave() {
+    window.scroll({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  shouldShowUserProfile() {
+    return !(!this.userProfileInputs || !this.authService.userSaved && this.userProfileInputs.isEditable);
+  }
+
+  openDialog(){
+    this.header.openDialog();
   }
 
 }

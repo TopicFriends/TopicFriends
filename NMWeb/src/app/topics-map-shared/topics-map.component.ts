@@ -17,7 +17,9 @@ export class TopicsMapComponent implements OnInit {
   icon;
   iconBaseSize = 25;
   usersGeoLocations = {};
+  offsets = [];
   topicsIcon = [];
+  offsetRadius = 1;
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
   constructor(
     private topicDetailsService: TopicsDetailsService,
@@ -25,12 +27,14 @@ export class TopicsMapComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    for(let topic of this.topics) {
+    this.topics.forEach((topic, index) => {
       this.topicsIcon[topic.id] = this.getMapTopicIcon(topic);
-      this.getUsersWithTopicGeoLocations(topic.id).subscribe((geoLocations) => {
-          this.usersGeoLocations[topic.id] = geoLocations
+      this.offsets.push(this.getOffset(index));
+      this.getUsersWithTopicGeoLocations(topic.id)
+        .subscribe((geoLocations) => {
+          this.usersGeoLocations[topic.id] = geoLocations;
       })
-    }
+    });
   }
 
   getUsersWithTopicGeoLocations(topicId: string) {
@@ -42,7 +46,7 @@ export class TopicsMapComponent implements OnInit {
     let icon;
     if(topic.logo) {
       let logoFileName = topic.logo.replace(/^.*[\\\/]/, '');
-      let logoSizeRatio = logosSizeRatio[logoFileName];
+      let logoSizeRatio = logosSizeRatio[logoFileName] || {width: 1, height: 1};
       let scaleFactor = this.iconBaseSize / (logoSizeRatio.width * logoSizeRatio.height);
       if(logoSizeRatio) {
         icon = {
@@ -66,4 +70,22 @@ export class TopicsMapComponent implements OnInit {
       this.topicsIcon[topic.id] = this.getMapTopicIcon(topic);
     }
   }
+
+  onOffsetRadiusChange() {
+    let newOffsets = [];
+    this.topics.forEach((topic, index) => {
+      newOffsets.push(this.getOffset(index));
+    });
+    this.offsets = newOffsets;
+  }
+
+  getOffset(index: number) {
+    let degree = index*2*Math.PI/this.topics.length;
+    let scaleFactor = this.offsetRadius*this.topics.length/5000;
+    return {
+      lat: Math.cos(degree)*scaleFactor,
+      lon: Math.sin(degree)*scaleFactor
+    }
+  }
+
 }

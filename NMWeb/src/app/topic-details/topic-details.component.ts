@@ -29,7 +29,8 @@ export class TopicDetailsComponent implements OnInit {
   topic: TagEntry
   topicInterest: TopicInterest
   interestedUsers: UserMatched[]
-  showLimit = 10;
+  showMin = 12;
+  showLimit = 12;
 
   constructor(
     private route: ActivatedRoute,
@@ -47,7 +48,7 @@ export class TopicDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle( this.topic.name + ' - TopicFriends');
-    this.topicsDetailsService.getMatchedUsersWithTopic(this.topicId).subscribe((users) => {
+    this.topicsDetailsService.getMatchedUsersWithTopicSortedBy(this.topicId, UserMatcherService.sortByMatchScore).subscribe((users) => {
       this.interestedUsers = users;
     });
   }
@@ -61,7 +62,7 @@ export class TopicDetailsComponent implements OnInit {
   }
 
   canShowLess() {
-    return this.interestedUsers && (this.showLimit > 10) && (10 < this.interestedUsers.length);
+    return this.interestedUsers && (this.showLimit > this.showMin) && (this.showMin < this.interestedUsers.length);
   }
 
   onShowMoreClick() {
@@ -69,6 +70,6 @@ export class TopicDetailsComponent implements OnInit {
   }
 
   onShowLessClick() {
-    this.showLimit = 10;
+    this.showLimit = this.showMin;
   }
 }

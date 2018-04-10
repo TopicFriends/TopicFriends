@@ -1,0 +1,32 @@
+*{
+  margin:0;
+  padding: 0;
+}
+
+.full-landing{
+  background-image: url("../../assets/backgroundTFopac.svg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  left:0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.title {
+  margin-left: 10%;
+
+}
+
+.search-button {
+  display: inline;
+  margin-left: 10%;
+}
+
+.container {
+
+}

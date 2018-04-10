@@ -1,37 +1,39 @@
-<mat-chip-list>
-  <ng-template [ngIf]="! tagListModel?.valueWasSet">
-    Loading...
-  </ng-template>
-
-  <ng-template [ngIf]="editable">
-    <ng-template ngFor let-tag [ngForOf]="tagListModel.tags" [ngForTrackBy]="trackByKey">
-      <app-topic-tag
-        [tag]="tag"
-        [editable]="editable"
-        [tagListModel]="tagListModel"
-        [relatedTopicLists]="_relatedTopicLists"
-      ></app-topic-tag>
-    </ng-template>
-  </ng-template>
-
-  <ng-template [ngIf]="!editable">
-    <ng-template ngFor let-tag [ngForOf]="tagListModel.tags | limitTo:showLimit" [ngForTrackBy]="trackByKey">
-      <app-topic-tag
-        [tag]="tag"
-        [editable]="editable"
-        [tagListModel]="tagListModel"
-        [relatedTopicLists]="_relatedTopicLists"
-      ></app-topic-tag>
-    </ng-template>
-    <ng-template [ngIf]="canShowMore()">
-      <a (click)="onShowMoreClick()"> Show {{tagListModel?.tags.length - showLimit}} more </a>
+<div   [ngStyle]="{'width': width, 'margin': margin}">
+  <mat-chip-list>
+    <ng-template [ngIf]="! tagListModel?.valueWasSet">
+      Loading...
     </ng-template>
 
-
-    <ng-template [ngIf]="canShowLess()">
-      <a (click)="onShowLessClick()"> Show less </a>
+    <ng-template [ngIf]="editable">
+      <ng-template ngFor let-tag [ngForOf]="tagListModel.tags" [ngForTrackBy]="trackByKey">
+        <app-topic-tag
+          [tag]="tag"
+          [editable]="editable"
+          [tagListModel]="tagListModel"
+          [relatedTopicLists]="_relatedTopicLists"
+        ></app-topic-tag>
+      </ng-template>
     </ng-template>
-  </ng-template>
 
-</mat-chip-list>
+    <ng-template [ngIf]="!editable">
+      <ng-template ngFor let-tag [ngForOf]="tagListModel.tags | limitTo:showLimit" [ngForTrackBy]="trackByKey">
+        <app-topic-tag
+          [tag]="tag"
+          [editable]="editable"
+          [tagListModel]="tagListModel"
+          [relatedTopicLists]="_relatedTopicLists"
+        ></app-topic-tag>
+      </ng-template>
+      <ng-template [ngIf]="canShowMore()">
+        <a (click)="onShowMoreClick()"> Show {{tagListModel?.tags.length - showLimit}} more </a>
+      </ng-template>
 
+
+      <ng-template [ngIf]="canShowLess()">
+        <a (click)="onShowLessClick()"> Show less </a>
+      </ng-template>
+    </ng-template>
+
+  </mat-chip-list>
+
+</div>

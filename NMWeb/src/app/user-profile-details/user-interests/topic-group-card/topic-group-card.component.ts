@@ -5,6 +5,7 @@ import {TagListModelEvent} from '../../../shared/TagListModel'
 import {UserProfileInputs} from '../../UserProfileInputs'
 import { WantedTopics } from '../../../user-profile-shared/user-interests'
 import { createTopicsDictionary } from '../../../user-profile-shared/user-profile.service'
+import {isUndefined} from 'util'
 
 @Component({
   selector: 'app-topic-group-card',
@@ -20,6 +21,8 @@ import { createTopicsDictionary } from '../../../user-profile-shared/user-profil
 })
 export class TopicGroupCardComponent implements OnInit, ControlValueAccessor {
 
+  hidden = false;
+
   @Input() userProfileInputs: UserProfileInputs
 
   @ViewChild(ItemListInputComponent) itemListInputComponent: ItemListInputComponent
@@ -29,6 +32,7 @@ export class TopicGroupCardComponent implements OnInit, ControlValueAccessor {
   constructor() { }
 
   ngOnInit() {
+
   }
 
   /* override */ registerOnChange(fn) {
@@ -36,6 +40,7 @@ export class TopicGroupCardComponent implements OnInit, ControlValueAccessor {
   }
 
   /* override */ writeValue(value: WantedTopics) {
+    this.hidden = ((!value.topics || Object.keys(value.topics).length === 0) && !this.userProfileInputs.isEditable)
     this.itemListInputComponent.chosenTags = value.topics
     // this.value = value
   }

@@ -21,6 +21,9 @@ import {GeoLocation} from '../../../user-profile-shared/user-geo-locations.types
 })
 export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
 
+  displayModal = false;
+  hidden = false;
+  dialogData: UserPickLocationDialogParams;
   position: Position
   @Input() locationName: string
   @Input() public userProfileInputs: UserProfileInputs
@@ -41,6 +44,11 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
       // window.alert('got coords ' + position)
       this.position = position
     })
+    this.dialogData = {
+      userProfileInputs: this.userProfileInputs,
+      locationName: this.locationName,
+      geoLocationString: this.latitudeLongitudeControl.nativeElement.value
+    }
   }
 
   registerOnChange(fn) {
@@ -53,25 +61,36 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
   }
 
   openLocationPicker() {
-    const dialogParams: UserPickLocationDialogParams = {
-      userProfileInputs: this.userProfileInputs,
-      locationName: this.locationName,
-      geoLocationString: this.latitudeLongitudeControl.nativeElement.value
-    }
-    let dialogRef = this.dialog.open(UserPickLocationComponent, {
-      height: '620px',
-      width: '90%',
-      data: dialogParams
-    }).afterClosed().subscribe(returnVal => {
+    // const dialogParams: UserPickLocationDialogParams = {
+    //   userProfileInputs: this.userProfileInputs,
+    //   locationName: this.locationName,
+    //   geoLocationString: this.latitudeLongitudeControl.nativeElement.value
+    // }
+    // let dialogRef = this.dialog.open(UserPickLocationComponent, {
+    //   height: '620px',
+    //   width: '90%',
+    //   data: dialogParams
+    // }).afterClosed().subscribe(returnVal => {
+    //   if ( returnVal ) {
+    //     const fractionDigits = 4
+    //     this.setInputText(returnVal.lat.toFixed(fractionDigits) + ', ' + returnVal.lng.toFixed(fractionDigits))
+    //   }
+    // })
+    this.displayModal = true;
+  }
+
+  onDialogClose(returnVal) {
+      this.displayModal = false;
       if ( returnVal ) {
         const fractionDigits = 4
         this.setInputText(returnVal.lat.toFixed(fractionDigits) + ', ' + returnVal.lng.toFixed(fractionDigits))
       }
-    })
+      console.log(returnVal)
   }
 
   private setInputText(s: string) {
     this.latitudeLongitudeControl.nativeElement.value = s
+    this.hidden = !this.userProfileInputs.isEditable && s === '';
     this.doPropagateChange(s)
   }
 

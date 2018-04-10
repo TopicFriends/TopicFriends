@@ -2,6 +2,12 @@
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
 const { SpecReporter } = require('jasmine-spec-reporter');
+const HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
+
+var reporter = new HtmlScreenshotReporter({
+  dest: 'e2e-screenshots',
+  filename: 'my-report.html'
+});
 
 exports.config = {
   allScriptsTimeout: 30000,
@@ -15,7 +21,7 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome',
     chromeOptions: {
-    args: ["--disable-gpu"]
+    args: ["--disable-gpu", "--start-maximized"]
     }
   },
   directConnect: true,
@@ -25,19 +31,11 @@ exports.config = {
     showColors: true,
     isVerbose: true,
     includeStackTrace: true,
-    defaultTimeoutInterval: 60000,
+    defaultTimeoutInterval: 100000,
     print: function() {}
   },
   onPrepare: function() {
     browser.waitForAngularEnabled(false);
-
-    // Disable animations so e2e tests run more quickly
-    var disableNgAnimate = function() {
-      angular.module('disableNgAnimate', []).run(function($animate) {
-        $animate.enabled(false);
-      })
-    };
-    browser.addMockModule('disableNgAnimate', disableNgAnimate);
 
     browser.driver.manage().window().maximize();
 
@@ -46,5 +44,16 @@ exports.config = {
     });
 
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+    jasmine.getEnv().addReporter(reporter);
+  },
+  beforeLaunch: function() {
+    return new Promise(function(resolve){
+      reporter.beforeLaunch(resolve);
+    });
+  },
+  afterLaunch: function(exitCode) {
+    return new Promise(function(resolve){
+      reporter.afterLaunch(resolve.bind(this, exitCode));
+    });
   }
 };

@@ -13,11 +13,42 @@ $map-height: 600px;
   text-decoration: none;
 }
 
+.users-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.user-card {
+  width: 33%;
+}
+
 iframe {
   vertical-align: middle
 }
 
 app-topics-map {
   height: $map-height;
+  margin-left: -10px;
+  width: calc(100% + 20px);
   display: block;
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+  .user-card {
+    width: 50%;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  app-topics-map {
+    margin-left: -5px;
+    width: calc(100% + 10px);
+  }
+  .user-card {
+    width: 100%;
+  }
 }

@@ -34,8 +34,7 @@ export function sortUserByMatchScore (u1: UserMatched, u2: UserMatched) {
 
 export function sortUserByLastModified (u1: UserMatched, u2: UserMatched) {
   if ( u1.userDataCombined.profile && u2.userDataCombined.profile ) {
-    return (''+u1.userDataCombined.profile.lastSaved)
-      .localeCompare(''+u2.userDataCombined.profile.lastSaved)
+    return new Date(u2.userDataCombined.profile.lastSaved).getTime() - new Date(u1.userDataCombined.profile.lastSaved).getTime();
   } else {
     return 0
   }
@@ -75,8 +74,10 @@ export class UserMatcherService {
     return this.listUsersSortedFiltered(sortFunc)
   }
 
+
   public listUsersSortedByLastModified(): Observable<Array<UserMatched>> {
-    return this.listUsersSortedFiltered(sortUserByLastModified)
+    let sortFunc = sortUserByLastModified
+    return this.listUsersSortedFiltered(sortFunc)
   }
 
   public listUsersSortedFiltered(sortFunc, filterFuncBeforeMatching?: (user: UserDataCombined) => boolean): Observable<Array<UserMatched>> {
@@ -110,6 +111,12 @@ export class UserMatcherService {
     })
   }
 
-
+  static sortByMatchScore(userA: UserMatched, userB: UserMatched) {
+    if(!userA.matchResults) {
+      return 0;
+    } else {
+      return userB.matchResults.matchScore - userA.matchResults.matchScore;
+    }
+  }
 
 }

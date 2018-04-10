@@ -859,6 +859,10 @@ export const logosSizeRatio = {
 "height":1,
 "width":1.00
 },
+"c_sharp.svg": {
+  "height": 1,
+  "width": 1
+},
 "css-3_official.svg":{
 "height":.90,
 "width":1

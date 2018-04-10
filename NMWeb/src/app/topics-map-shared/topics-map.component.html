@@ -8,19 +8,31 @@
       [(ngModel)]="iconBaseSize"
       (change)="onIconBaseSizeChange()"
     ></mat-slider>
+
+    <ng-template [ngIf]="topics.length > 1">
+      <span>Separation:</span>
+      <mat-slider
+        min="0"
+        max="10"
+        step="0.5"
+        [(ngModel)]="offsetRadius"
+        (change)="onOffsetRadiusChange()"
+      ></mat-slider>
+    </ng-template>
+
   </div>
 
   <agm-map
     [latitude]="coordinates.latitude"
     [longitude]="coordinates.longitude"
     [zoom]="10">
-    <ng-template ngFor let-topic [ngForOf]="topics">
-      <ng-template ngFor let-userLocation [ngForOf]="usersGeoLocations[topic.id]">
+    <ng-template ngFor let-i="index" let-topic [ngForOf]="topics">
+      <ng-template ngFor  let-userLocation [ngForOf]="usersGeoLocations[topic.id]">
         <agm-marker
           [markerClickable]="true"
           (markerClick)="onMarkerClick(userLocation)"
-          [latitude]="userLocation.latitude"
-          [longitude]="userLocation.longitude"
+          [latitude]="userLocation.latitude + offsets[i].lat"
+          [longitude]="userLocation.longitude + offsets[i].lon"
           [iconUrl]="topicsIcon[topic.id]"
         ></agm-marker>
       </ng-template>

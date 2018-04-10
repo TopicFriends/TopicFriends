@@ -127,4 +127,12 @@ export class UserTemplateComponent implements OnInit {
     return this.loggedUserId === this.userId;
   }
 
+  shortDescription(description: String, maxLength = 140) {
+
+    if(description && description.length > 140) {
+      description = description.slice(0, maxLength) + '...';
+    }
+    return description;
+  }
+
 }
