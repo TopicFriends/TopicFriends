@@ -48,6 +48,7 @@ export class UserSkillComponent implements OnInit {
     let name = topicInterest.tagEntry.name;
 
     let dialogConfig = {
+      autoFocus: false,
       position: {
         top: `${positionY}px`,
         left: `${positionX}px`,
