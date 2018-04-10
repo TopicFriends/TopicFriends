@@ -6,7 +6,7 @@ import {
   MatMenuModule,
   MatButtonModule, MatCheckboxModule, MatChipList, MatDialogModule,
   MatSlideToggleModule, MatSnackBar, MatSnackBarModule, MatTabsModule, MatProgressSpinnerModule, MatSelectModule, MatAutocompleteModule,
-  MatListModule, MatButtonToggleModule, MatExpansionModule,
+  MatListModule, MatButtonToggleModule, MatExpansionModule, MatTableModule
 } from '@angular/material'
 import {TopicTagComponent} from './topic-tag/topic-tag.component'
 import {TopicTagListComponent} from './topic-tag-list/topic-tag-list.component'
@@ -50,6 +50,7 @@ import {HideOnScrollDirective} from './hide-on-scroll.directive'
     MatIconModule,
     MatChipsModule,
     MatAutocompleteModule,
+    MatTableModule,
     ReactiveFormsModule,
     FormsModule,
     MatTabsModule,
