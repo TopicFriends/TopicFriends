@@ -66,6 +66,6 @@
 
 
 <app-user-pick-location
-  *ngIf="(value) || (userProfileInputs.isEditable)"
+  *ngIf="dialogData && ((value) || (userProfileInputs.isEditable))"
   [(display)]="displayModal" [data]="dialogData"
   (onClose)="onDialogClose($event)"></app-user-pick-location>

@@ -43,12 +43,8 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
     this.geoLocationService.getPosition().subscribe((position: Position) => {
       // window.alert('got coords ' + position)
       this.position = position
+
     })
-    this.dialogData = {
-      userProfileInputs: this.userProfileInputs,
-      locationName: this.locationName,
-      geoLocationString: this.latitudeLongitudeControl.nativeElement.value
-    }
   }
 
   registerOnChange(fn) {
@@ -61,21 +57,11 @@ export class UserGeoLocationComponent implements OnInit, ControlValueAccessor {
   }
 
   openLocationPicker() {
-    // const dialogParams: UserPickLocationDialogParams = {
-    //   userProfileInputs: this.userProfileInputs,
-    //   locationName: this.locationName,
-    //   geoLocationString: this.latitudeLongitudeControl.nativeElement.value
-    // }
-    // let dialogRef = this.dialog.open(UserPickLocationComponent, {
-    //   height: '620px',
-    //   width: '90%',
-    //   data: dialogParams
-    // }).afterClosed().subscribe(returnVal => {
-    //   if ( returnVal ) {
-    //     const fractionDigits = 4
-    //     this.setInputText(returnVal.lat.toFixed(fractionDigits) + ', ' + returnVal.lng.toFixed(fractionDigits))
-    //   }
-    // })
+    this.dialogData = {
+      userProfileInputs: this.userProfileInputs,
+      locationName: this.locationName,
+      geoLocationString: this.latitudeLongitudeControl.nativeElement.value
+    }
     this.displayModal = true;
   }
 
