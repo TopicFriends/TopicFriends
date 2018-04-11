@@ -181,4 +181,7 @@ export class UserProfileDetailsComponent implements OnInit {
     this.header.openDialog();
   }
 
+  isOwnProfile() {
+    return !this.activatedRoute.snapshot.params[USER_PROFILE_ID_PARAM_NO_COLON];
+  }
 }

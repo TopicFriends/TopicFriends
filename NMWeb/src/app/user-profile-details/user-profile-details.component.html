@@ -13,7 +13,7 @@
   </button>
 </div>
 
-<ng-template [ngIf]="! userProfileService.userId" >
+<ng-template [ngIf]="!userProfileService.userId && isOwnProfile()" >
   <button mat-raised-button (click)="openDialog()">
     Please log in, to access your profile
   </button>
