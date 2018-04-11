@@ -149,8 +149,28 @@
     personalización, cookies de análisis, cookies publicitarias y cookies de publicidad comportamental.
   </p>
   <h4>Cookies utilizadas por TopicFriends:</h4>
-  <p>Únicamente nos servimos de una cookie de inicio de sesión, gestionada por el servicio Firebase. Esta cookie queda
-    depositada en el almacenamiento local del navegador y se utiliza para recordar el inicio de sesión. </p>
+  <p> En la siguiente tabla te damos información detallada sobre las cookies que podemos llegar a utilizar: </p>
+
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="identificador">
+      <mat-header-cell *matHeaderCellDef> Identificador </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.identificador}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="definicion">
+      <mat-header-cell *matHeaderCellDef> Definición </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.definicion}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="duracion">
+      <mat-header-cell *matHeaderCellDef> Duración </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="days"> {{element.duracion}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+  </mat-table>
+
   <h4>Aceptación de la política de cookies:</h4>
   <p>Desde TopicFriends damos por hecho que aceptas el uso de cookies en tu navegador y por lo tanto aceptas nuestra
     política de cookies. No obstante, en cumplimiento de lo estipulado en el RGPD y la LOPD, mostraremos siempre al

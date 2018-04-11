@@ -37,8 +37,8 @@ export class HeaderComponent implements OnInit {
 
     router.events.subscribe( val => {
       if( val instanceof NavigationEnd ){
-        let title = this.capitalize(this.clearUrl(val.url))
-        titleService.setTitle(`${title} - ${this.title}`);
+        let title = this.capitalize(this.clearUrl(val.url));
+        (title) ? titleService.setTitle(`${title} - ${this.title}`) : titleService.setTitle(this.title);
       }
     })
   }
