@@ -3,7 +3,9 @@
 
 
 <ng-template [ngIf]="userListSaved">
-  <span>{{userListSaved.length}} People. {{ potentialConnectionsCount() }} potential connections between people! Sort by: &nbsp; </span>
+  <span>{{userListSaved.length}} People. {{ potentialConnectionsCount() }} potential connections between people!</span>
+  <br>
+  <span>Sort by: &nbsp;</span>
   <mat-form-field>
     <mat-select value="0" (selectionChange)="sortUserListBy(sortFunctions[$event.value])">
       <mat-option value="0">Match Score</mat-option>
