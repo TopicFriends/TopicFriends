@@ -1,8 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  angular, angularFire, angularFlexLayout, angularMaterial, firebase, ionic, jasmine, karma, materialDesign, npm, protractor, reactiveX,
-  rxJs, sass,
-  typeScript, webPack,
+  angular,
+  angularFire,
+  angularFlexLayout,
+  angularMaterial,
+  businessNetworking,
+  entrepreneurship,
+  firebase,
+  ionic,
+  jasmine,
+  karma,
+  materialDesign,
+  npm,
+  protractor,
+  reactiveX,
+  rxJs,
+  sass,
+  typeScript,
+  webPack,
 } from '../shared/topics.service'
 import {Tag} from '@angular/compiler/src/i18n/serializers/xml_helper'
 import {TopicInterest} from '../user-profile-shared/user-interests'
@@ -14,6 +29,8 @@ import {TopicInterest} from '../user-profile-shared/user-interests'
 })
 export class AboutComponent implements OnInit {
 
+  entrepreneurship = new TopicInterest(entrepreneurship)
+  businessNetworking = new TopicInterest(businessNetworking)
   angular = new TopicInterest(angular)
   angularFire = new TopicInterest(angularFire)
   angularFlexLayout =  new TopicInterest(angularFlexLayout)

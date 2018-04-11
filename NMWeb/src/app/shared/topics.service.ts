@@ -75,6 +75,8 @@ export const angular = tag ('Angular', 'angular', 'https://angular.io/', [
     'https://twitter.com/angular'
   ));
 
+export const businessNetworking = tagNoIcon('Business Networking').setLogo('business--chart-line')
+export const entrepreneurship = tagNoIcon('Entrepreneurship').setLogo('business--chart-line')
 
 @Injectable()
 export class TopicsService {
@@ -338,7 +340,8 @@ export class TopicsService {
       tagNoIcon('Search Engine Marketing').setLogo('business--chart-line') /* TODO: add acronym: SEM */,
       tagNoIcon('Inbound Marketing').setLogo('business--chart-line'),
       tagNoIcon('Advertising').setLogo('business--chart-line'),
-      tagNoIcon('Entrepreneurship').setLogo('business--chart-line'),
+      entrepreneurship,
+      businessNetworking,
       tagNoIcon('Business Development').setLogo('business--chart-line'),
       tagNoIcon('Small Business').setLogo('business--chart-line'),
       tagNoIcon('Business Administration').setLogo('business--chart-line'),
