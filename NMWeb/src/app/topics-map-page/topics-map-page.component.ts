@@ -15,7 +15,7 @@ import {ScrollingService} from '../shared/scrolling.service'
 })
 export class TopicsMapPageComponent implements OnInit, OnDestroy {
 
-  topicIds: string[] = this.route.snapshot.params[TOPIC_ID_PARAM].split(',');
+  topicIds: string[];
   topics: TagEntry[] = [];
 
   constructor(
@@ -31,6 +31,7 @@ export class TopicsMapPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.topicIds = this.route.snapshot.params[TOPIC_ID_PARAM].split(/[;,]/);
     this.scrollingService.disableScrolling();
     for(let topicId of this.topicIds) {
       this.topics.push(this.topicsService.getTopicById(topicId));

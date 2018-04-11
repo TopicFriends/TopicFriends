@@ -37,7 +37,7 @@ export class LandingPageComponent implements OnInit {
     }
     let url = '';
     for (let topic of this.searchTagList) {
-      url = url + topic.tagEntry.id + ',';
+      url = url + topic.tagEntry.id + ';';
     }
     //Remove last comma
     url = url.slice(0, url.length-1);
