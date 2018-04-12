@@ -1,17 +1,16 @@
-import { Component, Input, OnInit, Output,  EventEmitter } from '@angular/core';
+import {Component, Input, OnInit, Output, OnDestroy} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { TagEntry } from "app/topics-shared/tag-entry";
-import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
-import {TopicInterest} from '../../user-profile-shared/user-interests'
 import {TopicsService} from '../topics.service'
 import {TagListModel} from '../TagListModel'
 import {TagInclusions} from '../TagInclusions'
 import {getDictionaryValuesAsArray} from '../utils'
 import {Subject} from 'rxjs/Subject'
 import {UserTopicsService} from '../user-topics.service'
-import {DbList} from '../db.service'
+
+import "rxjs/add/operator/takeUntil";
 
 declare var require: any
 const Sifter = require("sifter")
@@ -21,7 +20,7 @@ const Sifter = require("sifter")
   templateUrl: './item-list-input.component.html',
   styleUrls: ['./item-list-input.component.scss'],
 })
-export class ItemListInputComponent implements OnInit {
+export class ItemListInputComponent implements OnInit, OnDestroy {
 
   enableAddingTopics = false
 
@@ -54,37 +53,33 @@ export class ItemListInputComponent implements OnInit {
   @Input() displayMode ="flex"
   @Input() placeholder;
 
-  // rename: chosen Tag list
-  // public tagList: TopicInterest[] = this.exampleTags;
-  // tagListModel: TagListModel = new TagListModel(this.exampleTags)
   tagListModel: TagListModel = new TagListModel([])
   @Output() public outputTagList = this.tagListModel.outputTagList
-  // = new EventEmitter<{tagList: TopicInterest[]}>();
 
   stateCtrl: FormControl;
-  // filteredOptions: Observable<TagEntry[]>;
   filteredOptions = new Subject<TagEntry[]>()
   lastFilteredOptions: TagEntry[]
   currentFilteredOptions: TagEntry[] = [];
   lastFilterText: string;
-
   lastAddedOption: TagEntry
+
+  private unsubscribe = new Subject<void>();
+
 
   constructor(
     public topicsService: TopicsService,
     private userTopicsService: UserTopicsService,
   ) {
     this.inputTagList = this.topicsService.topics;
-    this.userTopicsService.observeUserTopics().subscribe(topics => {
+    this.userTopicsService.observeUserTopics().takeUntil(this.unsubscribe).subscribe(topics => {
       this.inputTagList = this.topicsService.topics.concat(topics)
-      // console.log('observeUserTopics', this.inputTagList)
     })
 
     this.stateCtrl = new FormControl();
     this.stateCtrl.valueChanges
       // .startWith(null /* ensures initial filtering (all) - note that apparently md autocomplete
       //   does not show the auto-complete list initially anyway */ )
-      .subscribe(textFilter => {
+      .takeUntil(this.unsubscribe).subscribe(textFilter => {
         if ( textFilter === this.lastFilterText ) {
           return; // prevent stack overflow
         }
@@ -110,12 +105,17 @@ export class ItemListInputComponent implements OnInit {
 
   ngOnInit() {
 
-    this.filteredOptions.subscribe((filteredOptions) => {
+    this.filteredOptions.takeUntil(this.unsubscribe).subscribe((filteredOptions) => {
       this.currentFilteredOptions = filteredOptions;
     });
-    this.outputTagList.subscribe(list => {
+    this.outputTagList.takeUntil(this.unsubscribe).subscribe(list => {
       this.reFilter()
     })
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
   filter(filterString: string) {
