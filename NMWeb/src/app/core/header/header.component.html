@@ -11,7 +11,7 @@
     </span>
   </a>
   <span class="toolbar-spacer"></span>
-  <button class="user-profile-corner-button" *ngIf="!(authService.user | async)?.displayName" mat-button (click)="openDialog()">Log in</button>
+  <button class="user-profile-corner-button" *ngIf="!(authService.user | async)?.displayName" mat-button (click)="openDialog()">Log in or Sign Up</button>
   <button class="user-profile-corner-button" *ngIf="(authService.user | async)?.displayName" mat-button [matMenuTriggerFor]="menu">{{ (authService.user | async)?.displayName }}</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/profile" routerLinkActive="active">Profile</button>
