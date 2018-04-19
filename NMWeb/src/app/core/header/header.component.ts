@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { AuthService } from "app/user-profile-shared/auth.service";
 import {CapitalizeFirstPipe} from "../../shared/pipes/capitalize-first.pipe";
 import {Title} from "@angular/platform-browser";
@@ -19,7 +19,7 @@ import { SkillLevelPopoverComponent } from '../../user-profile-shared/user-inter
 export class HeaderComponent implements OnInit {
   public title = 'TopicFriends';
   private dialogRef;
-
+  @Input() sidenav;
   constructor(
     public authService: AuthService,
     private router: Router,

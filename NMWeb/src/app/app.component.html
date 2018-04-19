@@ -1,11 +1,28 @@
-<div class="body-wrapper">
-<app-header></app-header>
-<div class="content-container" ngClass.xs="content-container-mobile">
-  <router-outlet></router-outlet>
-</div>
+<app-header [sidenav]="sidenav"></app-header>
 
-<app-navbar></app-navbar>
-</div>
+  <mat-sidenav-container class="body-wrapper"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item >Hola</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="content-container" ngClass.xs="content-container-mobile">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!--<mat-sidenav-container>-->
+    <!--<mat-sidenav  mode="over">-->
+      <!--Hola-->
+    <!--</mat-sidenav>-->
+    <!--<mat-sidenav-content>-->
+    <!--</mat-sidenav-content>-->
+  <!--</mat-sidenav-container>-->
 
 <app-footer></app-footer>
 

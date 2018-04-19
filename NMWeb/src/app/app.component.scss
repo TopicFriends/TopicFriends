@@ -5,10 +5,11 @@ app-header {
 
 .content-container{
     margin-top:0px;
-    margin-left:71px;
+    margin-left:21px;
     padding:10px;
     overflow-y: auto;
     overflow-x: hidden;
+    min-height: 95vh;
 }
 .content-container-mobile{
     margin-top:0px;
@@ -47,4 +48,8 @@ app-footer{
 
 a.dismiss {
   display: none !important
+}
+
+mat-sidenav {
+  width: 200px;
 }

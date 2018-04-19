@@ -4,7 +4,12 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatChipsModule, MatRadioModule, MatSelectModule, MatSliderModule,MatTableModule} from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatChipsModule, MatIcon, MatIconModule, MatListModule, MatNavList, MatRadioModule, MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatTableModule,
+} from '@angular/material';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
@@ -80,6 +85,9 @@ import { LandingPageModule } from './landing-page/landing-page.module'
     MatSliderModule,
     MatSelectModule,
     MatTableModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
     FormsModule,
     CookieLawModule,
     AgmCoreModule.forRoot({
