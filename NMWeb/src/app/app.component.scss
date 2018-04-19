@@ -10,25 +10,25 @@ app-header {
     overflow-y: auto;
     overflow-x: hidden;
     min-height: 95vh;
+    max-height: 95vh;
 }
 .content-container-mobile{
     margin-top:0px;
-    padding: 5px;
     //margin-left: 0px;
     margin-left: inherit;
 //+    margin-left: 0px;
-    margin-bottom:80px;
     overflow-y: scroll;
     overflow-x: hidden;
-}
-.body-wrapper{
-  min-height: 95vh; /* 100vh - 5vh of footer. keep footer at bottom*/
 
+  min-height: calc(100vh - 65px);
+  max-height: calc(100vh - 65px);
 }
 
 app-footer{
   width: 100%;
   position: absolute;
+  top: 90vh;
+  right: 0;
   margin: 0;
   padding: 0;
 
@@ -52,4 +52,9 @@ a.dismiss {
 
 mat-sidenav {
   width: 200px;
+}
+
+app-wrapper {
+  min-width: 100vw;
+  max-width: 100vw;
 }

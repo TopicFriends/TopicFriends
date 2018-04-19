@@ -23,6 +23,7 @@ $tool-bar-height: 5vh;
 }
 
 .mat-toolbar {
+  width: 100%;
     height: $tool-bar-height;
    padding-right: 0;
     user-select: none;
@@ -65,5 +66,21 @@ mat-toolbar {
   padding-left: 10px !important;
   position: relative;
   z-index: 100;
+}
 
+@media only screen and (max-width: 600px) {
+  .mat-toolbar {
+    height: 40px !important;
+  }
+
+  .tf-icon {
+    height: 30px !important;
+  }
+
+  button {
+    height: 40px !important;;
+  }
+  .betta-icon {
+    font-size: 25px !important;
+  }
 }
