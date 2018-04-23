@@ -163,8 +163,7 @@ export class UserProfileDetailsComponent implements OnInit {
     // return false
     return this.userProfileInputs && this.userProfileInputs.isEditable && this.formGroup.dirty
   }
-
-
+  
   scrollToSave() {
     window.scroll({
       top: document.body.scrollHeight,
