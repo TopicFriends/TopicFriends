@@ -7,10 +7,9 @@ app-header {
     margin-top:0px;
     margin-left:21px;
     padding:10px;
-    overflow-y: auto;
     overflow-x: hidden;
-    min-height: 95vh;
-    max-height: 95vh;
+    min-height: 87.5vh;
+    max-height: 87.5vh;
 }
 .content-container-mobile{
     margin-top:0px;
@@ -27,7 +26,7 @@ app-header {
 app-footer{
   width: 100%;
   position: absolute;
-  top: 90vh;
+  top: 95vh;
   right: 0;
   margin: 0;
   padding: 0;
@@ -58,3 +57,5 @@ app-wrapper {
   min-width: 100vw;
   max-width: 100vw;
 }
+
+
