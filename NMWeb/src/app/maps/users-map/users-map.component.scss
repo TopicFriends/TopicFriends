@@ -3,7 +3,7 @@
 $names: #fff;
 $blur-radius: 1px;
 
-$map-mobile-height:calc(95vh - 70px);
+$map-mobile-height:100%;
 $map-mobile-width: 100%;
 
 $distance-slicer-width: 300px;
@@ -43,11 +43,3 @@ mat-slider {
   width: $distance-slicer-width;
 }
 
-@media only screen and (max-width: 600px) {
-  agm-map {
-    margin-top: -5px;
-    margin-left: -5px;
-    width: $map-mobile-width;
-    height: $map-mobile-height;
-  }
-}

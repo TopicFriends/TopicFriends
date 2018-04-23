@@ -29,6 +29,7 @@ mat-form-field {
   .save-fab {
     position: fixed;
     z-index: 2;
-    top: calc(100% - 150px);
+    top: calc(100vh - 80px);
+    left: calc(100vw - 80px);
   }
 }
