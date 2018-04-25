@@ -50,8 +50,9 @@ app-wrapper {
 @media only screen and (max-width: 600px) {
   .content-container{
     overflow-y: scroll;
-    min-height: 92vh;
-    max-height: 92vh;
+    min-height: 91.8vh;
+    max-height: 91.8vh;
+    margin-left:5px;
   }
 }
 
