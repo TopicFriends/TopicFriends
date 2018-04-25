@@ -75,6 +75,8 @@ export const angular = tag ('Angular', 'angular', 'https://angular.io/', [
     'https://twitter.com/angular'
   ));
 
+export const businessNetworking = tagNoIcon('Business Networking').setLogo('business--chart-line')
+export const entrepreneurship = tagNoIcon('Entrepreneurship').setLogo('business--chart-line')
 
 @Injectable()
 export class TopicsService {
@@ -207,7 +209,6 @@ export class TopicsService {
     tagNoIcon('Cryptocurrency'), tagNoIcon('Blockchain'), tagNoIcon('Cryptography'),
     // TODO: segregated witness (SegWit)
     'Cordova', 'PhoneGap',
-    tagNoIcon('Trabajador Autónomo (Spain)'),
     tagNoIcon('Game Design'),
     tagNoIcon('Game Development'),
     tagNoIcon('Geolocation'),
@@ -283,11 +284,10 @@ export class TopicsService {
     tagNoIcon('UX'), tagNoIcon('UI'), tagNoIcon('Usability'), tagNoIcon('Accessibility'),
     'GraphQL', 'Grunt', tag('Browserify', 'browserify-icon'),
     'Hibernate', tagNoIcon('NHibernate'), 'MariaDB', 'Material-UI',
-    tagNoIcon('FinTech'), tagNoIcon('PropTech'), tagNoIcon('Startups'), tagNoIcon('Startup Financing'),
-    tagNoIcon('Finance'), tagNoIcon('Financing'),
+    tagNoIcon('FinTech'), tagNoIcon('PropTech'),
+
     tagNoIcon('Law'), tagNoIcon('LOPD'),
     tagNoIcon('SEO'), tagNoIcon('JBoss'),
-    tagNoIcon('Marketing'), tagNoIcon('Advertising'),
     tagNoIcon('Functional Programming'), tag('EC2', 'aws-ec2'), tagNoIcon('GCP'),
     'CocoaPods',
     tagLogoTipo('ArangoDB'),
@@ -311,6 +311,8 @@ export class TopicsService {
     'NativeScript',
     tagNoIcon('SOAP'),
     tagNoIcon('Microsoft SQL Server'),
+    tagNoIcon('Microsoft Excel'),
+    tagNoIcon('Microsoft Word'),
     tagNoIcon('Microservices'),
     tagNoIcon('Testing'),
     tagNoIcon('Quality Assurance'),
@@ -322,10 +324,44 @@ export class TopicsService {
     tagNoIcon('Russian Language'), tagNoIcon('Chinese Language'), tagNoIcon('Japanese Language'),
     tagNoIcon('Arabic Language'), tagNoIcon('Hindi Language'), tagNoIcon('Turkish Language'),
     tagNoIcon('Bioinformatics'), tagNoIcon('Layouts'), tagNoIcon('Graphic Design'), tagNoIcon('Logo Design'),
-    tagNoIcon('Venture Capital'), tagNoIcon('Seed Funding'), tagNoIcon('Angel Investment'), tagNoIcon('Bootstrapping'),
     tagNoIcon('Social Media'),
-    tagNoIcon('Internet Business'), tagNoIcon('Business'),
-    tagNoIcon('Entrepreneurship'), tagNoIcon('Business Development'), tagNoIcon('Small Business'), tagNoIcon('Business Administration'),
+    tagNoIcon('Web Design'),
+    tagNoIcon('Web Analytics'),
+
+    tag('Business').setLogo('business--chart-line').setRelated(
+      tagNoIcon('Venture Capital').setLogo('business--chart-line'),
+      tagNoIcon('Seed Funding').setLogo('business--chart-line'),
+      tagNoIcon('Angel Investment').setLogo('business--chart-line'),
+      tagNoIcon('Bootstrapping').setLogo('business--chart-line'),
+      tagNoIcon('Internet Business').setLogo('business--chart-line'),
+      tagNoIcon('Finance').setLogo('business--chart-line'),
+      tagNoIcon('Financing').setLogo('business--chart-line'),
+      tagNoIcon('Marketing').setLogo('business--chart-line'),
+      tagNoIcon('Search Engine Marketing').setLogo('business--chart-line') /* TODO: add acronym: SEM */,
+      tagNoIcon('Inbound Marketing').setLogo('business--chart-line'),
+      tagNoIcon('Advertising').setLogo('business--chart-line'),
+      entrepreneurship,
+      businessNetworking,
+      tagNoIcon('Business Development').setLogo('business--chart-line'),
+      tagNoIcon('Small Business').setLogo('business--chart-line'),
+      tagNoIcon('Business Administration').setLogo('business--chart-line'),
+      tagNoIcon('Startups').setLogo('business--chart-line'),
+      tagNoIcon('Startup Financing').setLogo('business--chart-line'),
+      tagNoIcon('Y Combinator').setLogo('ycombinator').setLogo('business--chart-line'),
+      tagNoIcon('Freelance').setLogo('business--chart-line'),
+      tagNoIcon('Freelance Platforms').setLogo('business--chart-line'),
+      tagNoIcon('Freelancer.com').setLogo('business--chart-line'),
+      tagNoIcon('Toptal').setLogo('business--chart-line'),
+      tagNoIcon('Trabajador Autónomo (Spain)').setLogo('business--chart-line'),
+      tagNoIcon('Recruitment').setLogo('business--chart-line'),
+      tagNoIcon('Human Resources').setLogo('business--chart-line'),
+      tagNoIcon('Management').setLogo('business--chart-line'),
+      tagNoIcon('Project Management').setLogo('business--chart-line'),
+      tagNoIcon('Sales').setLogo('business--chart-line'),
+      tagNoIcon('Logistics').setLogo('business--chart-line'),
+      tagNoIcon('Supply Chain').setLogo('business--chart-line'),
+    ),
+
     tagNoIcon('Mobile apps'),
     tagNoIcon('Neuroscience'),
     tagNoIcon('Ecopreneurship'),
@@ -378,16 +414,10 @@ export class TopicsService {
     tagNoIcon('Computer Networks'),
     tagNoIcon('Green Economy'),
     tagNoIcon('CleanTech'),
-    tagNoIcon('Management'),
-    tagNoIcon('Project Management'),
     tagNoIcon('Windows Phone'),
     tagNoIcon('Windows Forms'),
     tagNoIcon('Wearable Computing'),
     tagNoIcon('iWatch'),
-    tagNoIcon('Toptal'),
-    tagNoIcon('Freelance'),
-    tagNoIcon('Freelance Platforms'),
-    tagNoIcon('Freelancer.com'),
     'Semantic UI',
     'Foundation',
     tagNoIcon('Email Deliverability'),
@@ -472,6 +502,7 @@ export class TopicsService {
     tagNoIcon('SQL'),
     tagNoIcon('Remote Work'),
     tagNoIcon('Consulting'),
+    tagNoIcon('Chirimoya'),
     // TODO: Accelerated Mobile Pages
     // TODO: Business Intelligence
     /* DONE: hibernate

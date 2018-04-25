@@ -48,6 +48,10 @@ const appRoutes: Routes = [
   },
   {
     path: 'user', /* workaround to support older urls which were /user/<user-id> */
+    redirectTo: 'u',
+  },
+  {
+    path: 'u',
     loadChildren: 'app/user-profile-details/user-profile-details.module#UserProfileDetailsModule',
   },
   {
