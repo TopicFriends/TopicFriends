@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import {NavbarComponent} from './navbar/navbar.component'
 import {HeaderComponent} from './header/header.component'
 import {
-  MatIconModule,
+  MatIconModule, MatListModule,
   MatToolbar,
   MatToolbarModule,
 } from '@angular/material'
@@ -41,6 +41,7 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     MatMenuModule,
     MatButtonModule,
     MatToolbarModule,
+    MatListModule,
     LoginModule
   ],
   declarations: [

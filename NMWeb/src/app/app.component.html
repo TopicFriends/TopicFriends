@@ -4,9 +4,7 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="25">
-      <mat-nav-list>
-        <a mat-list-item >Hola</a>
-      </mat-nav-list>
+      <app-navbar></app-navbar>
     </mat-sidenav>
 
     <mat-sidenav-content>
