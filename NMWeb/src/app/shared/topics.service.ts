@@ -169,7 +169,7 @@ export class TopicsService {
     tag('D3'),
 
     webPack,
-    tagNoIcon('Web Development'), tagNoIcon('Web Design'), tagNoIcon('CMS'), tagNoIcon('Selenium'), tagNoIcon('Blog Software'),
+    tagNoIcon('Web Development'), tagNoIcon('CMS'), tagNoIcon('Selenium'), tagNoIcon('Blog Software'),
     tagNoIcon('Blogging'),
     tagNoIcon('VR'),
     'JavaScript', tag('ECMAScript', 'es6'),
