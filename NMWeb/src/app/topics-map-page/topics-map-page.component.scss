@@ -6,21 +6,10 @@ $map-mobile-width: 100%;
 
 
 app-topics-map {
+  width: 100%;
+  height: 100%;
+  max-height: 95vh;
   position: absolute;
-  height: $map-desktop-height;
-  margin-top: -12px;
-  margin-left: -12px;
-  width: $map-desktop-width;
-  display: block;
-}
-
-
-@media only screen and (max-width: 600px) {
-  app-topics-map {
-    margin-top: -5px;
-    margin-left: -5px;
-    width: $map-mobile-width;
-    height: $map-mobile-height;
-    display: block;
-  }
+  top: 0px;
+  left: 0px;
 }
