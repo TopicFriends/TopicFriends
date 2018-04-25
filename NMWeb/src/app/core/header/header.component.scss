@@ -2,6 +2,7 @@ $tool-bar-height: 5vh;
 
 .tf-icon {
   height: 4vh;
+  margin-left: 10px;
 }
 
 .betta-icon {
@@ -52,6 +53,10 @@ $tool-bar-height: 5vh;
 
 
   }
+}
+
+.menu-button {
+  margin-left: -10px;
 }
 
 .user-profile-corner-button {
