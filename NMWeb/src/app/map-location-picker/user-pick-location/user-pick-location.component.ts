@@ -1,21 +1,13 @@
 import {
-  Component, ElementRef, EventEmitter, Inject, Input, NgZone, OnInit, Output, Renderer2, ViewChild,
+  Component, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
 import {GeoLocation} from '../../user-profile-shared/user-geo-locations.types'
-import {FormControl} from '@angular/forms';
-import {AgmMap, MapsAPILoader} from '@agm/core';
-// import { } from 'googlemaps';
-import {UserProfileInputs} from '../../user-profile-details/UserProfileInputs'
+import { MapsAPILoader} from '@agm/core';
 import {ScrollingService} from '../../shared/scrolling.service'
+import {UserPickLocationDialogParams} from '../user-pick-location-dialog-params'
 
 
-export class UserPickLocationDialogParams {
-  userProfileInputs: UserProfileInputs
-  locationName: string
-  geoLocationString: string
-}
 
 @Component({
   selector: 'app-user-pick-location',
@@ -44,15 +36,12 @@ export class UserPickLocationComponent implements OnInit {
   coordinates: GeoLocation
   private coords: any;
   public locationName: string
-  public searchControl: FormControl;
   public isEditable: boolean
 
   static instance: UserPickLocationComponent
 
   @ViewChild("searchInputField")
   public searchElementRef: ElementRef;
-  @ViewChild("pickLocationMap")
-  public agmMap: AgmMap;
 
   constructor(
     private mapsAPILoader: MapsAPILoader,

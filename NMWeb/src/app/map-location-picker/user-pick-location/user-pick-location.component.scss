@@ -1,5 +1,6 @@
 #pickLocationMap {
   width: 100%;
+  z-index: 1001;
 }
 
 .editable-map {
@@ -24,7 +25,7 @@
 }
 
 p-dialog {
-  z-index: 10;
+  z-index: 100;
 }
 
 $names: #fff;

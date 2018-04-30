@@ -1,0 +1,29 @@
+
+<p-dialog
+  [header]="locationName"
+  [(visible)]="disp"
+  [width]="800"
+  [modal]="true">
+
+  <agm-map
+    [latitude]="coordinates.latitude"
+    [longitude]="coordinates.longitude"
+    [zoom]="15">
+    <agm-marker
+      [latitude]="coordinates.latitude"
+      [longitude]="coordinates.longitude"
+      [markerDraggable]="false"
+    >
+    </agm-marker>
+  </agm-map
+>
+
+  <button
+    class="map-dialog-button"
+    mat-button
+    mat-raised-button
+    color="primary"
+  >
+    Close
+  </button>
+</p-dialog>
