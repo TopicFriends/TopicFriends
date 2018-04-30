@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MapsSharedModule} from '../maps-shared/maps-shared.module'
-import {DialogModule} from 'primeng/dialog'
-import {UserPickLocationComponent} from './user-pick-location/user-pick-location.component'
 
 @NgModule({
   imports: [
@@ -10,5 +8,6 @@ import {UserPickLocationComponent} from './user-pick-location/user-pick-location
     MapsSharedModule,
   ],
   declarations: [],
+  exports: []
 })
 export class MapLocationPickerModule { }

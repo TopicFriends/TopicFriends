@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import {MapsSharedModule} from '../maps-shared/maps-shared.module';
 import {UserProfileSharedModule} from '../user-profile-shared/user-profile-shared.module'
 import {DialogModule} from 'primeng/dialog'
+import {MapLocationsViewerComponent} from '../map-location-picker/map-locations-viewer/map-locations-viewer.component'
 
 
 const mapsRoutes: Routes = [
@@ -36,12 +37,15 @@ const mapsRoutes: Routes = [
   declarations: [
     UsersMapComponent,
     UserPickLocationComponent,
+    MapLocationsViewerComponent
   ],
   exports: [
     UserPickLocationComponent,
+    MapLocationsViewerComponent
   ],
   entryComponents: [
     UserPickLocationComponent,
+    MapLocationsViewerComponent
   ],
 })
 export class MapsModule { }

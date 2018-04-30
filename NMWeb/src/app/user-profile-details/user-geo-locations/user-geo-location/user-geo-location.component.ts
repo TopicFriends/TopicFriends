@@ -1,11 +1,11 @@
 import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
 import {GeoLocationService} from '../../../shared/geo-location.service'
-import {UserPickLocationDialogParams, UserPickLocationComponent} from '../../../map-location-picker/user-pick-location/user-pick-location.component'
 import {MatDialog} from '@angular/material'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
 import {geoLocationToString} from '../user-geo-locations.component'
 import {UserProfileInputs} from '../../UserProfileInputs'
 import {GeoLocation} from '../../../user-profile-shared/user-geo-locations.types'
+import {UserPickLocationDialogParams} from '../../../map-location-picker/user-pick-location-dialog-params'
 
 @Component({
   selector: 'app-user-geo-location',
