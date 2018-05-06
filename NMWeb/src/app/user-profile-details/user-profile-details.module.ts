@@ -26,6 +26,7 @@ import {
   MatIconModule,
   MatOptionModule,
   MatSelectModule,
+  MatDialogModule
 } from '@angular/material'
 import { OtherProfileUserNameComponent } from './user-other-profiles/other-profile-user-name/other-profile-user-name.component'
 import { FlexLayoutModule } from '@angular/flex-layout'
@@ -33,6 +34,9 @@ import { Observable } from 'rxjs/Observable'
 import { UserProfileDetailsRoutingModule } from './user-profile-details-routing.module'
 import {MapsModule} from '../maps/maps.module'
 import {HeaderComponent} from "../core/header/header.component";
+import { UserProjectsComponent } from './user-projects/user-projects.component';
+import { DialogCreateProjectComponent } from './user-projects/dialog-create-project/dialog-create-project.component';
+import { UserFavorsComponent } from './user-favors/user-favors.component';
 
 
 /** User profile editing/viewing here */
@@ -49,6 +53,7 @@ import {HeaderComponent} from "../core/header/header.component";
     MatIconModule,
     MatOptionModule,
     MatSelectModule,
+    MatDialogModule,
     MapsModule
   ],
   declarations: [
@@ -66,9 +71,13 @@ import {HeaderComponent} from "../core/header/header.component";
     UserSkillsListComponent,
     UserProfileDetailsComponent,
     OtherProfileUserNameComponent,
+    UserProjectsComponent,
+    DialogCreateProjectComponent,
+    UserFavorsComponent,
   ],
   providers: [
     HeaderComponent
-  ]
+  ],
+  entryComponents: [DialogCreateProjectComponent]
 })
 export class UserProfileDetailsModule { }

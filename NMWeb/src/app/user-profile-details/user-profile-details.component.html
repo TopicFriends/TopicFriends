@@ -22,7 +22,8 @@
 <ng-template [ngIf]="shouldShowUserProfile()">
 
   <form>
-
+    <div class="container">
+    <mat-card class="user-info">
     <app-user-profile-basic-info
       [userProfileInputs]="userProfileInputs"
       #basicInfo
@@ -34,19 +35,25 @@
       #userDescriptions
       [thisFormGroup]="userDescriptionsFormGroup"
     ></app-user-description>
+    </mat-card>
 
-    <app-user-geo-locations
-      [userProfileInputs]="userProfileInputs"
-      #userGeoLocations
-      [parentFormGroup]="userGeoLocationsFormGroup"
-    ></app-user-geo-locations>
+      <app-user-projects></app-user-projects>
 
-    <app-user-other-profiles
-      [userProfileInputs]="userProfileInputs"
-      #userOtherProfiles
-      [parentFormGroup]="formGroup"
-    ></app-user-other-profiles>
+      <app-user-favors></app-user-favors>
 
+
+      <app-user-geo-locations
+        [userProfileInputs]="userProfileInputs"
+        #userGeoLocations
+        [parentFormGroup]="userGeoLocationsFormGroup"
+      ></app-user-geo-locations>
+
+      <app-user-other-profiles
+        [userProfileInputs]="userProfileInputs"
+        #userOtherProfiles
+        [parentFormGroup]="formGroup"
+      ></app-user-other-profiles>
+    </div>
 
     <app-user-skills
       [ngClass]="{hidden: ! showUserSkillsSection}"

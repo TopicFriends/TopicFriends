@@ -1,0 +1,17 @@
+mat-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 40vh;
+}
+
+.buttonNoProjects{
+  width: 80%;
+  height: 80%;
+  border: 3px dashed black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
