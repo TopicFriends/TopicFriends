@@ -1,1 +1,20 @@
-<mat-card-title>Hello Project</mat-card-title>
+<form [formGroup]="form" class="form-container" (ngSubmit)="submit(form)" >
+  <h2 mat-dialog-title>create your project </h2>
+
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="description" placeholder="description">
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <mat-slide-toggle >Public project</mat-slide-toggle>
+    <button class="mat-raised-button" type="submit">Save</button>
+
+  </mat-dialog-actions>
+</form>

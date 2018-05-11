@@ -1,6 +1,10 @@
 <mat-card>
   <mat-card-title>My Projects</mat-card-title>
-  <div class="buttonNoProjects" *ngIf="projects.length === 0" (click)="openDialog()">
+
+  <div class="projects-container" fxLayout="row" fxLayoutAlign="space-around center"></div>
+    <app-project *ngFor="let project of projects" [project]="project"></app-project>
+
+  <div class="buttonNoProjects" *ngIf="projects.length < 2" (click)="openDialog()">
     Add New Project
   </div>
 

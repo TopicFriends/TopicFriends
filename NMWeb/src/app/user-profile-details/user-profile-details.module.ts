@@ -26,7 +26,8 @@ import {
   MatIconModule,
   MatOptionModule,
   MatSelectModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSlideToggleModule
 } from '@angular/material'
 import { OtherProfileUserNameComponent } from './user-other-profiles/other-profile-user-name/other-profile-user-name.component'
 import { FlexLayoutModule } from '@angular/flex-layout'
@@ -37,6 +38,7 @@ import {HeaderComponent} from "../core/header/header.component";
 import { UserProjectsComponent } from './user-projects/user-projects.component';
 import { DialogCreateProjectComponent } from './user-projects/dialog-create-project/dialog-create-project.component';
 import { UserFavorsComponent } from './user-favors/user-favors.component';
+import { ProjectComponent } from './user-projects/project/project.component';
 
 
 /** User profile editing/viewing here */
@@ -54,6 +56,7 @@ import { UserFavorsComponent } from './user-favors/user-favors.component';
     MatOptionModule,
     MatSelectModule,
     MatDialogModule,
+    MatSlideToggleModule,
     MapsModule
   ],
   declarations: [
@@ -74,6 +77,7 @@ import { UserFavorsComponent } from './user-favors/user-favors.component';
     UserProjectsComponent,
     DialogCreateProjectComponent,
     UserFavorsComponent,
+    ProjectComponent,
   ],
   providers: [
     HeaderComponent
