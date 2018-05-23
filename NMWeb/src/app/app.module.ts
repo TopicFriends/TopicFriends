@@ -47,7 +47,9 @@ import {routingModule} from './app.routing'
 import {TopicsMapPageModule} from './topics-map-page/topics-map-page.module'
 import {MapsSharedModule} from './maps-shared/maps-shared.module'
 import {AgmCoreModule} from '@agm/core'
-import { LandingPageModule } from './landing-page/landing-page.module'
+import { LandingPageModule } from './landing-page/landing-page.module';
+import { ProjectsPageComponent } from './projects-page/projects-page.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component'
 
 
 @NgModule({
@@ -60,6 +62,8 @@ import { LandingPageModule } from './landing-page/landing-page.module'
     UserGroupsComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,
+    ProjectsPageComponent,
+    ProjectDetailsComponent,
   ],
   imports: [
     BrowserModule,
