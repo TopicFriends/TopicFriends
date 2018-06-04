@@ -56,9 +56,8 @@ export class LoginPage {
     })
   }
 
-  confirmUserLoggedIn(): Promise<boolean>  {
-    this.wait.forElementPresent(this.userProfilePage.userProfileBasicInfo)
-    return element(by.cssContainingText(this.menuButtonSelector, this.testUserName)).isPresent()
+  confirmUserLoggedIn(): Promise<boolean> {
+    return this.wait.forElementText($(this.menuButtonSelector), this.testUserName)
   }
 
   logoutUser() {
