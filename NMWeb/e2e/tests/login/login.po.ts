@@ -17,19 +17,19 @@ export class LoginPage {
 
   private defaultSleep = 1000
 
-  private readonly menuButtonSelector = 'mat-toolbar button'
+  private readonly loginMenuButtonSelector = 'button.user-profile-corner-button'
 
   readonly userEmail    = 'peoplematchertest@gmail.com'
   readonly userPassword = '@ngul@rAppT3st!n'
   readonly testUserName = 'People Matcher'
 
-  loginMenuButton: ElementFinder = $(this.menuButtonSelector)
+  loginMenuButton: ElementFinder = $(this.loginMenuButtonSelector)
   logoutButton: ElementFinder =
     element(by.cssContainingText('button.mat-menu-item', 'Log out'))
   logInViaGoogle: ElementFinder =
     element(by.cssContainingText('app-login button>span', 'Log in via Google'))
   loginButtonWithUserName: ElementFinder =
-    element(by.cssContainingText(this.menuButtonSelector, this.testUserName))
+    element(by.cssContainingText(this.loginMenuButtonSelector, this.testUserName))
   usernameField: ElementFinder = $('#identifierId')
   passwordField: ElementFinder = $('#password input')
   googleIdNextButton: ElementFinder = $('#identifierNext')
@@ -57,7 +57,7 @@ export class LoginPage {
   }
 
   confirmUserLoggedIn(): Promise<boolean> {
-    return this.wait.forElementText($(this.menuButtonSelector), this.testUserName)
+    return this.wait.forElementText($(this.loginMenuButtonSelector), this.testUserName)
   }
 
   logoutUser() {
