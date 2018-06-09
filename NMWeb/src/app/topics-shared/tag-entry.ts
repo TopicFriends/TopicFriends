@@ -106,6 +106,17 @@ export class TagEntry {
     return this
   }
 
+}
 
+export function tag(name: string, logo?: string, webSite?: string, related?: TagEntry[], urls?: TopicUrls) {
+  return new TagEntry(name, logo, webSite, related, urls);
+}
 
+export function tagNoIcon(name: string, gitHubLink?: string, related?: TagEntry[], urls?: TopicUrls) {
+  return new TagEntry(name, null, null, related, urls);
+}
+
+/** Will cause double width for icon, because the logotipo's font otherwise is too tiny */
+export function tagLogoTipo(name: string, logo?: string, website?, related?: TagEntry[], urls?: TopicUrls) {
+  return tag(name, logo, website, related, urls); // pass visual hint later
 }

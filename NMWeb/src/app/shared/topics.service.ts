@@ -1,19 +1,12 @@
-import {Injectable} from '@angular/core';
-import {TagEntry, TopicUrls} from '../topics-shared/tag-entry'
+import { Injectable } from '@angular/core';
+import {
+  tag,
+  tagNoIcon,
+  tagLogoTipo,
+  TagEntry,
+  TopicUrls,
+} from '../topics-shared/tag-entry'
 
-
-function tag(name: string, logo?: string, webSite?: string, related?: TagEntry[], urls?: TopicUrls) {
-  return new TagEntry(name, logo, webSite, related, urls);
-}
-
-function tagNoIcon(name: string, gitHubLink?: string, related?: TagEntry[], urls?: TopicUrls) {
-  return new TagEntry(name, null, null, related, urls);
-}
-
-/** Will cause double width for icon, because the logotipo's font otherwise is too tiny */
-function tagLogoTipo(name: string, logo?: string, website?, related?: TagEntry[], urls?: TopicUrls) {
-  return tag(name, logo, website, related, urls); // pass visual hint later
-}
 
 export const firebase = tag('Firebase').setRelated(
   // most are from firebase console left navbar:
