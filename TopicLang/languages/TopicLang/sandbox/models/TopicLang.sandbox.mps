@@ -14,7 +14,11 @@
     </language>
     <language id="5bcb7fb7-ea72-4949-9771-e2c64ddab4d7" name="TopicLang">
       <concept id="6533528771041286203" name="TopicLang.structure.TopicCollection" flags="ng" index="1d7xBQ">
+        <child id="6533528771041312481" name="organizations" index="1d7vWG" />
         <child id="6533528771041286945" name="topics" index="1d7xFG" />
+      </concept>
+      <concept id="6533528771041245887" name="TopicLang.structure.Organization" flags="ng" index="1d7JHM">
+        <child id="6533528771041311685" name="topics" index="1d7vC8" />
       </concept>
       <concept id="6533528771041245876" name="TopicLang.structure.TopicUsage" flags="ng" index="1d7JHT">
         <reference id="6533528771041287785" name="topic" index="1d7xY$" />
@@ -27,6 +31,34 @@
     </language>
   </registry>
   <node concept="1d7xBQ" id="5EFKsOnHtGw">
+    <node concept="1d7JIR" id="5EFKsOnH$ae" role="1d7xFG">
+      <property role="TrG5h" value="Java" />
+    </node>
+    <node concept="1d7JIR" id="5EFKsOnH$9Q" role="1d7xFG">
+      <property role="TrG5h" value="HTML5" />
+    </node>
+    <node concept="1d7JHM" id="5EFKsOnH$9a" role="1d7vWG">
+      <property role="TrG5h" value="JetBrains" />
+      <node concept="1d7JIR" id="5EFKsOnH$9d" role="1d7vC8">
+        <property role="TrG5h" value="Meta Programming System" />
+        <property role="1d7JIM" value="MPS" />
+        <node concept="1d7JIR" id="5EFKsOnH$9g" role="1d7JHe">
+          <property role="TrG5h" value="Generator" />
+        </node>
+        <node concept="1d7JIR" id="5EFKsOnH$9m" role="1d7JHe">
+          <property role="TrG5h" value="Editor" />
+        </node>
+        <node concept="1d7JIR" id="5EFKsOnH$9r" role="1d7JHe">
+          <property role="TrG5h" value="Constraints" />
+        </node>
+        <node concept="1d7JIR" id="5EFKsOnH$9y" role="1d7JHe">
+          <property role="TrG5h" value="TypeSystem" />
+        </node>
+        <node concept="1d7JIR" id="5EFKsOnH$9F" role="1d7JHe">
+          <property role="TrG5h" value="Behavior" />
+        </node>
+      </node>
+    </node>
     <node concept="1d7JIR" id="5EFKsOnHtT5" role="1d7xFG">
       <property role="TrG5h" value="Angular" />
       <property role="1d7JIM" value="ng" />
@@ -44,10 +76,19 @@
       <node concept="1d7JHT" id="5EFKsOnHu5Q" role="1d7JHE">
         <ref role="1d7xY$" node="5EFKsOnHu5D" resolve="RxJS" />
       </node>
+      <node concept="1d7JHT" id="5EFKsOnH$a9" role="1d7JHE">
+        <ref role="1d7xY$" node="5EFKsOnH$9Q" resolve="HTML5" />
+      </node>
     </node>
     <node concept="1d7JIR" id="5EFKsOnHtSw" role="1d7xFG">
       <property role="TrG5h" value="Domain Specific Language" />
       <property role="1d7JIM" value="DSL" />
+    </node>
+    <node concept="1d7JIR" id="5EFKsOnHzIL" role="1d7xFG">
+      <property role="TrG5h" value="Meta Programming System" />
+      <node concept="1d7JHT" id="5EFKsOnH$a_" role="1d7JHE">
+        <ref role="1d7xY$" node="5EFKsOnH$ae" resolve="Java" />
+      </node>
     </node>
     <node concept="1d7JIR" id="5EFKsOnHu5D" role="1d7xFG">
       <property role="TrG5h" value="RxJS" />

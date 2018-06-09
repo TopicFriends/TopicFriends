@@ -85,6 +85,16 @@
     <property role="EcuMT" value="6533528771041245887" />
     <property role="TrG5h" value="Organization" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="5EFKsOnHzJ5" role="1TKVEi">
+      <property role="IQ2ns" value="6533528771041311685" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="topics" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="5EFKsOnHjDU" resolve="Topic" />
+    </node>
+    <node concept="PrWs8" id="5EFKsOnHzJ2" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
   </node>
   <node concept="1TIwiD" id="5EFKsOnHtwV">
     <property role="EcuMT" value="6533528771041286203" />
@@ -97,6 +107,13 @@
       <property role="20kJfa" value="topics" />
       <property role="20lbJX" value="0..n" />
       <ref role="20lvS9" node="5EFKsOnHjDU" resolve="Topic" />
+    </node>
+    <node concept="1TJgyj" id="5EFKsOnHzVx" role="1TKVEi">
+      <property role="IQ2ns" value="6533528771041312481" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="organizations" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="5EFKsOnHjEZ" resolve="Organization" />
     </node>
   </node>
 </model>
