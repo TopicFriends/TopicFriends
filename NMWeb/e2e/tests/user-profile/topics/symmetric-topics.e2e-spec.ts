@@ -48,13 +48,8 @@ describe('Symmetric topics on Profile page: User', () => {
     assert.tagsMatch(selectedTopic, expectedTopic)
   }
 
-  it('can select topic by full topic name: Ionic', () => {
-    let topic = 'Ionic'
-    testTopicTagCanBeAdded(topic)
-  });
-
-  it('can select topic by topic name fragment: pro', () => {
-    let topic = 'pro'
+  it('can fill in profile with autocomplete by keyboard', () => {
+    let topic = 'Kar'
     testTopicTagCanBeAdded(topic)
   });
 
@@ -68,11 +63,6 @@ describe('Symmetric topics on Profile page: User', () => {
     testTopicTagCanBeAdded(topic)
   });
 
-  it('can fill in profile with autocomplete by keyboard', () => {
-    let topic = 'Kar'
-    testTopicTagCanBeAdded(topic)
-  });
-
   it('can enter first topic from list without searching', () => {
     let selectedTopic = topicSections.selectFirstSuggestedTag(
       topicSections.assembleTopicInputLocator(topicSections.pairProgrammingSectionSelector))
@@ -83,7 +73,7 @@ describe('Symmetric topics on Profile page: User', () => {
     assert.tagsMatch(selectedTopic, expectedTopic);
   });
 
-  // it('nothing selected when no value entered', () => {
+  // it('nothing selected when hitting ENTER with no search term', () => {
     // TODO
   // });
 
