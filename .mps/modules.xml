@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MPSProject">
+    <projectModules>
+      <modulePath path="$PROJECT_DIR$/TopicLang/languages/TopicLang/TopicLang.mpl" folder="" />
+      <modulePath path="$PROJECT_DIR$/TopicLang/languages/TopicLang/runtime/TopicLang.runtime.msd" folder="" />
+      <modulePath path="$PROJECT_DIR$/TopicLang/languages/TopicLang/sandbox/TopicLang.sandbox.msd" folder="" />
+    </projectModules>
+  </component>
+</project>

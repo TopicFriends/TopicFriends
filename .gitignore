@@ -64,3 +64,9 @@ service-account*.json
 
 # E2E test results with screenshots
 e2e-screenshots
+
+TopicLang/languages/TopicLang/source_gen
+classes_gen
+source_gen
+trace.info
+*.caches
