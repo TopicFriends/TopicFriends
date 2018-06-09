@@ -28,6 +28,7 @@ export const firebase = tag('Firebase').setRelated(
   tagNoIcon('Firebase Analytics').setLogo('Firebase'),
   tagNoIcon('Firebase Grow').setLogo('Firebase'),
   // Firebase: hosting, analytics, authentication, ...
+  // TODO: ML Kit
 
 )
 export const angularMaterial = tagNoIcon('Angular Material')
@@ -65,6 +66,7 @@ export const angular = tag ('Angular', 'angular', 'https://angular.io/', [
     angularFlexLayout,
     angularFlexLayoutResponsiveApi,
     tag('Angular Lazy Loading', 'angular'),
+    tag('Angular Elements', 'angular'),
   ],
   new TopicUrls(
     'https://en.wikipedia.org/wiki/Angular_(application_platform)',
@@ -229,6 +231,7 @@ export class TopicsService {
     tagNoIcon('Gentoo Linux'), tag('Arch Linux', 'archlinux'),
     'FreeBSD',
     'Redis', 'CouchBase', 'CouchDB', tagLogoTipo('MongoDB'), 'Memcached',
+    tagNoIcon('Apache Cassandra').setLogo('cassandra'),
     tagNoIcon('Mongoose'),
     'PrestaShop', 'WooCommerce', tagNoIcon('osCommerce'), 'Magento', 'Shopify', tagNoIcon('BigCommerce'),
     'Travis CI',
@@ -253,6 +256,7 @@ export class TopicsService {
     'Capistrano', 'Chef', 'Puppet',
     'Clojure',  'CoffeeScript', /* TODO ClojureScript */
     'Electron',
+    tagNoIcon('NW.js') /* kinda similar to Electron */,
     tagNoIcon('MyBatis'),
     'Gradle', 'Grails',
     'Neo4j', 'Hadoop',
@@ -503,6 +507,12 @@ export class TopicsService {
     tagNoIcon('Remote Work'),
     tagNoIcon('Consulting'),
     tagNoIcon('Chirimoya'),
+    tagNoIcon('Flutter'),
+    tag('Dart'),
+    tagNoIcon('AngularDart').setLogo('angulardart-5e7ebca88c5584b1da301f9f9e61d1e7d4f0688b6a9222991cde3bada950088c'),  // Adrian Stabiszewski
+    tag('Preact'),
+    // TODO: NGXS: (Carlos Caballero) -- https://ngxs.gitbook.io/ngxs/
+    // TODO: testcafe (Jesus RR)
     // TODO: Accelerated Mobile Pages
     // TODO: Business Intelligence
     /* DONE: hibernate
@@ -537,8 +547,8 @@ export class TopicsService {
 
     // NestJS: A progressive Node.js framework for building efficient and scalable server-side applications on top of TypeScript & JavaScript (ES6 / ES7 / ES8) heavily inspired by Angular 😻🚀
 
-    // CI: Continous Integration, CD: Continuous Delivery
-    // RethinkDB
+    // CI: Continuous Integration, CD: Continuous Delivery
+    'RethinkDB',
     tagNoIcon('Web Animations API'),
     'Jest',
 
@@ -553,6 +563,13 @@ export class TopicsService {
     'Aurelia',
     'Marionette',
     tagNoIcon('Cypress' /* From David Atencia GitHub repo :) */) ,
+    tag('Behance') ,
+
+    // ng-bootstrap and ngx-bootstrap
+
+    // TODO: music (Zardax Torremolinos, Alex MorNie)
+    // TODO HyperApp (Jairo)
+    // TODO Riot JS (Jairo)
   ]);
 
 
