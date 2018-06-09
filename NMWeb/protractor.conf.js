@@ -4,9 +4,11 @@
 const { SpecReporter } = require('jasmine-spec-reporter');
 const HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
 
+const date = new Date();
+
 var reporter = new HtmlScreenshotReporter({
   dest: 'e2e-screenshots',
-  filename: 'my-report.html'
+  filename: 'my-report_' + date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '.html'
 });
 
 exports.config = {
