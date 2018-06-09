@@ -11,7 +11,7 @@ export class TopicsSections {
   readonly hackathonSectionSelector       = 'app-topic-group-card[formcontrolname="hackathon"]'
   readonly pairProgrammingSectionSelector = 'app-topic-group-card[formcontrolname="pairProgramming"]'
   readonly exchangeSectionSelector        = 'app-topic-group-card[formcontrolname="exchange"]'
-  readonly tagSelector                    = 'app-topic-tag'
+  readonly tagSelector                    = 'app-topic-tag-list app-topic-tag'
   readonly tagCloseIconSelector           = this.tagSelector + ' i.ion-close-circled'
 
   returnSelectedSectionTags(topicSectionSelector: string): ElementArrayFinder {
