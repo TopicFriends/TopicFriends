@@ -84,6 +84,12 @@
           <property role="VOm3f" value="true" />
         </node>
       </node>
+      <node concept="3F0ifn" id="5EFKsOnIxgk" role="3EZMnx">
+        <property role="3F0ifm" value="useForPartIds: " />
+      </node>
+      <node concept="3F0A7n" id="5EFKsOnIxi9" role="3EZMnx">
+        <ref role="1NtTu8" to="vnwr:5EFKsOnIwTc" resolve="useForPartsId" />
+      </node>
       <node concept="3F0ifn" id="5EFKsOnH$aL" role="3EZMnx">
         <property role="3F0ifm" value="{" />
         <node concept="3mYdg7" id="5EFKsOnH$aM" role="3F10Kt">

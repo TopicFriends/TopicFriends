@@ -68,6 +68,11 @@
       <property role="TrG5h" value="short" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
+    <node concept="1TJgyi" id="5EFKsOnIwTc" role="1TKVEl">
+      <property role="IQ2nx" value="6533528771041562188" />
+      <property role="TrG5h" value="useForPartsId" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
   </node>
   <node concept="1TIwiD" id="5EFKsOnHjEO">
     <property role="EcuMT" value="6533528771041245876" />

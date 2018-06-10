@@ -24,6 +24,7 @@
         <reference id="6533528771041287785" name="topic" index="1d7xY$" />
       </concept>
       <concept id="6533528771041245818" name="TopicLang.structure.Topic" flags="ng" index="1d7JIR">
+        <property id="6533528771041562188" name="useForPartsId" index="1d4sY1" />
         <property id="6533528771041245823" name="short" index="1d7JIM" />
         <child id="6533528771041245827" name="parts" index="1d7JHe" />
         <child id="6533528771041245863" name="uses" index="1d7JHE" />
@@ -82,6 +83,7 @@
       <node concept="1d7JIR" id="5EFKsOnH$9d" role="1d7vC8">
         <property role="TrG5h" value="Meta Programming System" />
         <property role="1d7JIM" value="MPS" />
+        <property role="1d4sY1" value="true" />
         <node concept="1d7JIR" id="5EFKsOnH$9g" role="1d7JHe">
           <property role="TrG5h" value="Generator" />
         </node>
@@ -132,6 +134,7 @@
     <node concept="1d7JIR" id="5EFKsOnHtT5" role="1d7xFG">
       <property role="TrG5h" value="Angular" />
       <property role="1d7JIM" value="ng" />
+      <property role="1d4sY1" value="true" />
       <node concept="1d7JIR" id="5EFKsOnHtT6" role="1d7JHe">
         <property role="TrG5h" value="Router" />
       </node>
@@ -142,6 +145,9 @@
       <node concept="1d7JIR" id="5EFKsOnHtT8" role="1d7JHe">
         <property role="TrG5h" value="Dependency Injection" />
         <property role="1d7JIM" value="DI" />
+      </node>
+      <node concept="1d7JIR" id="5EFKsOnIwT3" role="1d7JHe">
+        <property role="TrG5h" value="Lazy Loading" />
       </node>
       <node concept="1d7JHT" id="5EFKsOnHu5Q" role="1d7JHE">
         <ref role="1d7xY$" node="5EFKsOnHu5D" resolve="RxJS" />
