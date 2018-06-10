@@ -61,6 +61,22 @@
     <node concept="1d7JIR" id="5EFKsOnH$9Q" role="1d7xFG">
       <property role="TrG5h" value="HTML5" />
     </node>
+    <node concept="1d7JIR" id="5EFKsOnHPpB" role="1d7xFG">
+      <property role="TrG5h" value="Unified Modeling Language" />
+      <property role="1d7JIM" value="UML" />
+    </node>
+    <node concept="1d7JIR" id="5EFKsOnHPq4" role="1d7xFG">
+      <property role="TrG5h" value="Executable Unified Modeling Language" />
+      <property role="1d7JIM" value="xtUML" />
+    </node>
+    <node concept="1d7JIR" id="5EFKsOnHPqz" role="1d7xFG">
+      <property role="TrG5h" value="Behavior-Driven Development" />
+      <property role="1d7JIM" value="BDD" />
+    </node>
+    <node concept="1d7JIR" id="5EFKsOnHPr4" role="1d7xFG">
+      <property role="TrG5h" value="Test-Driven Development" />
+      <property role="1d7JIM" value="TDD" />
+    </node>
     <node concept="1d7JHM" id="5EFKsOnH$9a" role="1d7vWG">
       <property role="TrG5h" value="JetBrains" />
       <node concept="1d7JIR" id="5EFKsOnH$9d" role="1d7vC8">
@@ -80,6 +96,36 @@
         </node>
         <node concept="1d7JIR" id="5EFKsOnH$9F" role="1d7JHe">
           <property role="TrG5h" value="Behavior" />
+        </node>
+      </node>
+    </node>
+    <node concept="1d7JHM" id="5EFKsOnHPn_" role="1d7vWG">
+      <property role="TrG5h" value="Adobe" />
+      <node concept="1d7JIR" id="5EFKsOnHPo4" role="1d7vC8">
+        <property role="TrG5h" value="Creative Cloud" />
+        <property role="1d7JIM" value="CC" />
+        <node concept="1d7JIR" id="5EFKsOnHPoa" role="1d7JHe">
+          <property role="TrG5h" value="Photoshop" />
+          <property role="1d7JIM" value="PS" />
+        </node>
+        <node concept="1d7JIR" id="5EFKsOnHPog" role="1d7JHe">
+          <property role="TrG5h" value="InDesign" />
+        </node>
+        <node concept="1d7JIR" id="5EFKsOnHPol" role="1d7JHe">
+          <property role="TrG5h" value="Illustrator" />
+          <property role="1d7JIM" value="AI" />
+        </node>
+        <node concept="1d7JIR" id="5EFKsOnHPos" role="1d7JHe">
+          <property role="TrG5h" value="After Effects" />
+        </node>
+        <node concept="1d7JIR" id="5EFKsOnHPo_" role="1d7JHe">
+          <property role="TrG5h" value="XD" />
+        </node>
+        <node concept="1d7JIR" id="5EFKsOnHPoK" role="1d7JHe">
+          <property role="TrG5h" value="Lightroom" />
+        </node>
+        <node concept="1d7JIR" id="5EFKsOnHPoX" role="1d7JHe">
+          <property role="TrG5h" value="Premiere Pro" />
         </node>
       </node>
     </node>
@@ -107,6 +153,10 @@
     <node concept="1d7JIR" id="5EFKsOnHtSw" role="1d7xFG">
       <property role="TrG5h" value="Domain Specific Language" />
       <property role="1d7JIM" value="DSL" />
+    </node>
+    <node concept="1d7JIR" id="5EFKsOnHPpc" role="1d7xFG">
+      <property role="TrG5h" value="Model-Driven Engineering" />
+      <property role="1d7JIM" value="MDE" />
     </node>
     <node concept="1d7JIR" id="5EFKsOnHzIL" role="1d7xFG">
       <property role="TrG5h" value="Meta Programming System" />
