@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import {
+  TopicUrls,
+  TagEntry,
   tag,
   tagNoIcon,
   tagLogoTipo,
-  TagEntry,
-  TopicUrls,
 } from '../topics-shared/tag-entry'
+import {
+  processTopicsCollection,
+  TOPICS,
+} from './topics.data'
 
 
 export const firebase = tag('Firebase').setRelated(
@@ -76,7 +80,9 @@ export const entrepreneurship = tagNoIcon('Entrepreneurship').setLogo('business-
 @Injectable()
 export class TopicsService {
 
-  constructor() { }
+  constructor() {
+    processTopicsCollection(TOPICS)
+  }
 
   public topics: TagEntry[] = this.transformTags([
     angular, tagNoIcon('Angular Universal').setLogo('angular'),
@@ -526,7 +532,7 @@ export class TopicsService {
     // angellist
     // self-driving cars/vehicles
     // Electric vehicles
-    // Tesla
+    // Tesla Motors
     // TODO: Hyperloop
     // TODO: check Malaga meetup topics
 
@@ -558,11 +564,8 @@ export class TopicsService {
     tagNoIcon('Cypress' /* From David Atencia GitHub repo :) */) ,
     tag('Behance') ,
 
-    // ng-bootstrap and ngx-bootstrap
+    // TODO: BDD
 
-    // TODO: music (Zardax Torremolinos, Alex MorNie)
-    // TODO HyperApp (Jairo)
-    // TODO Riot JS (Jairo)
   ]);
 
 
