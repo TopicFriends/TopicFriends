@@ -65,8 +65,10 @@ service-account*.json
 # E2E test results with screenshots
 e2e-screenshots
 
+# ==== MPS:
 TopicLang/languages/TopicLang/source_gen
 classes_gen
 source_gen
 trace.info
 *.caches
+.mps/workspace.xml
