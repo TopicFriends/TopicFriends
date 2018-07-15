@@ -1,0 +1,52 @@
+
+
+/* =====  Experimental: */
+
+//.topic-hex {
+//
+//}
+
+$rotation: 60deg;
+$rotation2: -60deg;
+
+.hexagon-circle {
+  position: relative;
+  margin: 1em auto;
+  width: 10em;
+  height: 17.32em;
+  border-radius: 1em/.5em;
+  background: blue ; //transparent ;
+  transition: opacity .5s;
+  cursor: pointer;
+}
+
+.hexagon-circle:before,
+.hexagon-circle:after {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  background: inherit;
+  content: '';
+}
+
+.hexagon-circle:before {
+  -webkit-transform: rotate($rotation);  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: rotate($rotation);  /* IE 9 */
+  transform: rotate($rotation); /* Firefox 16+, IE 10+, Opera */
+}
+
+.hexagon-circle:after {
+  -webkit-transform: rotate($rotation2);  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: rotate($rotation2);  /* IE 9 */
+  transform: rotate($rotation2); /* Firefox 16+, IE 10+, Opera */
+}
+
+.hex-padding {
+  margin: 200px
+}
+
+#hex2 {
+  color: greenyellow;
+}
+

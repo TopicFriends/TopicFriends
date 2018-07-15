@@ -1,52 +1,62 @@
-<mat-chip
-  (click)="clickTopic.emit($event)"
-  style="cursor: pointer"
-  [ngClass]="{
-    'tag-chip': true,
-    'tag-chip-highlight-symmetric': shouldHighlightSymmetric(),
-    'tag-chip-highlight-supplyDemandSame': shouldHighlightSupplyDemandSame(),
-    'tag-chip-highlight-supplyDemandMatch': shouldHighlightSupplyDemandMatch()
-  }"
->
-  <div style="display:table-cell; vertical-align: middle">
-    <ng-template [ngIf]="tag.tagEntry.logo" >
-      <a *ngIf="! isCustomClick" [routerLink]="'/topic/'+tag.tagEntry.id">
-        <img style="width: 18px; height: 18px; vertical-align: middle"
-             src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>&nbsp;
-      </a>
-      <a *ngIf="isCustomClick">
-        <img style="width: 18px; height: 18px; vertical-align: middle"
-             src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>&nbsp;
-      </a>
-    </ng-template>
-    <ng-template [ngIf]="! tag.tagEntry.logo" > <!-- hack for "vertical-align: middle" slightly shifted if no img -->
-      <img style="width: 0px; height: 18px; vertical-align:middle"
-           src="assets/images/logos/git.svg" onerror="this.style.display='none';"/>&nbsp;
-    </ng-template>
-    <!--<i *ngIf="editable"-->
-    <!--class="ion-close-circled"-->
-    <!--style="cursor:pointer; color: rgba(0, 0, 0, 0.54); font-size: 20px"-->
-    <!--(click)=deleteTag(chip)></i>-->
+<div style="margin: 150px; height: 600px">
+  <div style="position: relative" class="hex-padding">
 
-    <!--<div style="vertical-align: middle; display: inline; height: 100%">-->
-    <span style="display: inline; height: 100%; vertical-align: middle">
-      <a *ngIf="! isCustomClick" [routerLink]="'/topic/'+tag.tagEntry.id">{{tag.tagEntry.name}}</a>
-      <a *ngIf="isCustomClick">{{tag.tagEntry.name}}</a>
-      &nbsp;
-      <!--<span *ngIf="shouldHighlightSymmetric()">SYM_MATCH</span>-->
-    </span>
-    <i *ngIf="editable"
-       class="ion-close-circled"
-       style="vertical-align: middle; cursor:pointer; color: rgba(0, 0, 0, 0.30); font-size: 18px"
-       (click)="tagListModel.deleteTag(tag)"></i>
-    <!--<i *ngIf="! editable"-->
-    <!--class="ion-close-circled"-->
-    <!--style="vertical-align: middle; display: block; width: 0px;"-->
-    <!--&gt;</i>-->
-
-    <!--</div>-->
-    <!--<div style="vertical-align: middle; display: table-cell; height: 100px; width: 300px">{{chip.tagEntry.name}}</div>-->
-    <!--{{chip.tagEntry.name}}-->
-    <ng-content></ng-content>
+    <div style="position: absolute; left: 0; top: 0; z-index: 0" class="hexagon-circle">{{tag.tagEntry.name}}</div>
+    <div style="position: absolute; right: 0; top: 0; z-index: 1" id="hex2" class="hexagon-circle">{{tag.tagEntry.name}}</div>
+    <!--<div class="hexagon">{{tag.tagEntry.name}}</div>-->
   </div>
-</mat-chip>
+</div>
+
+
+<!--<mat-chip-->
+  <!--(click)="clickTopic.emit($event)"-->
+  <!--style="cursor: pointer"-->
+  <!--[ngClass]="{-->
+    <!--'tag-chip': true,-->
+    <!--'tag-chip-highlight-symmetric': shouldHighlightSymmetric(),-->
+    <!--'tag-chip-highlight-supplyDemandSame': shouldHighlightSupplyDemandSame(),-->
+    <!--'tag-chip-highlight-supplyDemandMatch': shouldHighlightSupplyDemandMatch()-->
+  <!--}"-->
+<!--&gt;-->
+  <!--<div style="display:table-cell; vertical-align: middle">-->
+    <!--<ng-template [ngIf]="tag.tagEntry.logo" >-->
+      <!--<a *ngIf="! isCustomClick" [routerLink]="'/topic/'+tag.tagEntry.id">-->
+        <!--<img style="width: 18px; height: 18px; vertical-align: middle"-->
+             <!--src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>&nbsp;-->
+      <!--</a>-->
+      <!--<a *ngIf="isCustomClick">-->
+        <!--<img style="width: 18px; height: 18px; vertical-align: middle"-->
+             <!--src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>&nbsp;-->
+      <!--</a>-->
+    <!--</ng-template>-->
+    <!--<ng-template [ngIf]="! tag.tagEntry.logo" > &lt;!&ndash; hack for "vertical-align: middle" slightly shifted if no img &ndash;&gt;-->
+      <!--<img style="width: 0px; height: 18px; vertical-align:middle"-->
+           <!--src="assets/images/logos/git.svg" onerror="this.style.display='none';"/>&nbsp;-->
+    <!--</ng-template>-->
+    <!--&lt;!&ndash;<i *ngIf="editable"&ndash;&gt;-->
+    <!--&lt;!&ndash;class="ion-close-circled"&ndash;&gt;-->
+    <!--&lt;!&ndash;style="cursor:pointer; color: rgba(0, 0, 0, 0.54); font-size: 20px"&ndash;&gt;-->
+    <!--&lt;!&ndash;(click)=deleteTag(chip)></i>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<div style="vertical-align: middle; display: inline; height: 100%">&ndash;&gt;-->
+    <!--<span style="display: inline; height: 100%; vertical-align: middle">-->
+      <!--<a *ngIf="! isCustomClick" [routerLink]="'/topic/'+tag.tagEntry.id">{{tag.tagEntry.name}}</a>-->
+      <!--<a *ngIf="isCustomClick">{{tag.tagEntry.name}}</a>-->
+      <!--&nbsp;-->
+      <!--&lt;!&ndash;<span *ngIf="shouldHighlightSymmetric()">SYM_MATCH</span>&ndash;&gt;-->
+    <!--</span>-->
+    <!--<i *ngIf="editable"-->
+       <!--class="ion-close-circled"-->
+       <!--style="vertical-align: middle; cursor:pointer; color: rgba(0, 0, 0, 0.30); font-size: 18px"-->
+       <!--(click)="tagListModel.deleteTag(tag)"></i>-->
+    <!--&lt;!&ndash;<i *ngIf="! editable"&ndash;&gt;-->
+    <!--&lt;!&ndash;class="ion-close-circled"&ndash;&gt;-->
+    <!--&lt;!&ndash;style="vertical-align: middle; display: block; width: 0px;"&ndash;&gt;-->
+    <!--&lt;!&ndash;&gt;</i>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div style="vertical-align: middle; display: table-cell; height: 100px; width: 300px">{{chip.tagEntry.name}}</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;{{chip.tagEntry.name}}&ndash;&gt;-->
+    <!--<ng-content></ng-content>-->
+  <!--</div>-->
+<!--</mat-chip>-->

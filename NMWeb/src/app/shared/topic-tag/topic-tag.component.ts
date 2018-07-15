@@ -15,7 +15,7 @@ import {TopicsService} from '../topics.service'
 @Component({
   selector: 'app-topic-tag',
   templateUrl: './topic-tag.component.html',
-  styleUrls: ['./topic-tag.component.scss'],
+  styleUrls: ['./topic-tag.component.scss', './topic-tag.component-rounded-hexagon.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopicTagComponent implements OnInit {

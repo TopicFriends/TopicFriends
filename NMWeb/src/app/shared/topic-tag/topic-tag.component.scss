@@ -57,3 +57,39 @@ a {
   background-color: #b0b0FF;
   @include highlight-border;
 }
+
+
+// =============  2:
+
+.hexagon {
+  position: relative;
+  width: 900px;
+  height: 173.21px;
+  background-color: #64C7CC;
+  margin: 86.60px 0;
+  border-radius: 1em/.5em;
+
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-radius: inherit;
+
+  border-left: 150px solid green;
+  border-right: 150px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 86.60px solid #64C7CC;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 86.60px solid #64C7CC;
+}
+
