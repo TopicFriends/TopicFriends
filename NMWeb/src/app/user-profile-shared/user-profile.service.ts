@@ -92,13 +92,14 @@ export class UserData {
 
 export class UserDataCombined {
   public constructor(
-    public userData: UserData,
-    public userId,
-    public profile: UserProfile,
-    public interests: UserInterests,
-    public otherProfiles: UserOtherProfiles,
-    public geoLocations: UserGeoLocations,
-    public descriptions: UserDescriptions,
+    public userData?: UserData,
+    public userId?,
+    public profile?: UserProfile,
+    public interests?: UserInterests,
+    public otherProfiles?: UserOtherProfiles,
+    public geoLocations?: UserGeoLocations,
+    public descriptions?: UserDescriptions,
+    public skills?: UserSkillLevelsPerUser,
   ) {}
 
 }

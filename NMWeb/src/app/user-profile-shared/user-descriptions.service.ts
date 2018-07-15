@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
-import { DbService } from '../shared/db.service'
+import {
+  DbList,
+  DbService,
+} from '../shared/db.service'
 import { AuthService } from './auth.service'
 import 'rxjs/add/operator/switchMap';
 import { DomainDbService } from '../shared/domain-db.service'
+import { UserOtherProfiles } from './user-other-profiles.service'
 
 
 export class UserDescription {
@@ -40,5 +44,10 @@ export class UserDescriptionsService {
       return this.dbService.objectById(this.DB_PATH, user.uid)
     }).subscribe(handler)
   }
+
+  listUserDescriptions(): DbList<UserDescriptions> {
+    return this.dbService.list(this.domainDbService.PATHS.OTHER_PROFILES);
+  }
+
 
 }

@@ -89,6 +89,7 @@ export class UserMatcherService {
         const arrayOfMatchResults = usersArray.map((user: UserDataCombined) => {
           return new UserMatched(user, loggedUserUdc)
         })
+        console.log('UserMatcherService:: arrayOfMatchResults', arrayOfMatchResults)
         if(sortFunc) {
           arrayOfMatchResults.sort(sortFunc)
         }

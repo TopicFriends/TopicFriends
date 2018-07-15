@@ -31,10 +31,18 @@
 </div>
 
 
-<nw-user-template
-  *ngFor="let user of userListCombinedSorted; trackBy: trackByKey"
-  [userProfile]="user.userDataCombined.userData"
-></nw-user-template>
+<p
+  *ngFor="let user of userListCombinedSorted; trackBy: trackByKey">
+  User {{user.userDataCombined.profile.displayName}}
+</p>
+<app-user-template-fast
+  *ngFor="let user of userListCombinedSorted; trackBy: trackByKey">
+  [user]="user"
+</app-user-template-fast>
+<!--<nw-user-template-->
+  <!--*ngFor="let user of userListCombinedSorted; trackBy: trackByKey"-->
+  <!--[userProfile]="user.userDataCombined.userData"-->
+<!--&gt;</nw-user-template>-->
 <!-- TODO: pass UserMatched instead -->
 <!-- TODO: restore trackBy: trackByKey -->
 

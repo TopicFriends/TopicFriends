@@ -42,7 +42,7 @@ import {routingModule} from './app.routing'
 import {TopicsMapPageModule} from './topics-map-page/topics-map-page.module'
 import {MapsSharedModule} from './maps-shared/maps-shared.module'
 import {AgmCoreModule} from '@agm/core'
-import { LandingPageModule } from './landing-page/landing-page.module'
+import { LandingPageModule } from './landing-page/landing-page.module';
 
 
 @NgModule({

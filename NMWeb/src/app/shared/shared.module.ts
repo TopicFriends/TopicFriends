@@ -6,7 +6,7 @@ import {
   MatMenuModule,
   MatButtonModule, MatCheckboxModule, MatChipList, MatDialogModule,
   MatSlideToggleModule, MatSnackBar, MatSnackBarModule, MatTabsModule, MatProgressSpinnerModule, MatSelectModule, MatAutocompleteModule,
-  MatListModule, MatButtonToggleModule, MatExpansionModule, MatTableModule
+  MatListModule, MatButtonToggleModule, MatExpansionModule, MatTableModule,
 } from '@angular/material'
 import {TopicTagComponent} from './topic-tag/topic-tag.component'
 import {TopicTagListComponent} from './topic-tag-list/topic-tag-list.component'
@@ -38,6 +38,7 @@ import { DomainDbService } from './domain-db.service'
 import { DbService } from './db.service'
 import {ScrollingService} from './scrolling.service';
 import {HideOnScrollDirective} from './hide-on-scroll.directive'
+import { UserTemplateFastComponent } from 'app/user-list/user-template-fast/user-template-fast.component';
 
 @NgModule({
   imports: [
@@ -68,6 +69,7 @@ import {HideOnScrollDirective} from './hide-on-scroll.directive'
     TopicTagComponent, /* FIXME: move to topics-shared[-components] */
     TopicTagListComponent,
     UserTemplateComponent,
+    UserTemplateFastComponent,
     UserInterestsModeViewComponent,
     SnackBarComponent,
     DistancePipe,
@@ -82,6 +84,7 @@ import {HideOnScrollDirective} from './hide-on-scroll.directive'
     TopicTagComponent,
     TopicTagListComponent,
     UserTemplateComponent,
+    UserTemplateFastComponent,
     UserInterestsModeViewComponent,
     SnackBarComponent,
     MatInputModule,
@@ -112,7 +115,7 @@ import {HideOnScrollDirective} from './hide-on-scroll.directive'
     DomainDbService,
     ScrollingService,
 
-  ]
+  ],
 
 })
 export class SharedModule { }

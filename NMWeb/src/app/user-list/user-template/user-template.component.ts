@@ -1,4 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {UserData, UserProfile, UserProfileService} from 'app/user-profile-shared/user-profile.service';
 import {
   MatchResults, SupplyDemandInteractions, SymmetricInteractions, TopicInterest,
@@ -24,6 +29,7 @@ export class SupplyDemandTemplate{
   selector: 'nw-user-template',
   templateUrl: './user-template.component.html',
   styleUrls: ['./user-template.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserTemplateComponent implements OnInit {
 

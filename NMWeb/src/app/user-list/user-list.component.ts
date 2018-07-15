@@ -37,6 +37,7 @@ export class UserListComponent implements OnInit {
     this.userList.subscribe(list => {
       this.userListSaved = list;
     })
+    // this.userListService.listUserDataCombined.su
     // this.userListService.listUserDataCombined().subscribe(list=> {
     //   this.userListCombinedSortedByName = list.sort((el1, el2) => {
     //     if ( ! el1.profile.displayName || ! el2.profile.displayName) {
@@ -69,10 +70,9 @@ export class UserListComponent implements OnInit {
 
   sortUserListBy(sortFunction) {
     this.userMatcherService.listUsersSortedFiltered(sortFunction).subscribe(usersSorted => {
+      console.log('listUsersSortedFiltered usersSorted', usersSorted)
       this.userListCombinedSorted = usersSorted
     })
   }
-
-
 
 }

@@ -1,10 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 /** FIXME: move to topics-shared module */
 @Component({
   selector: 'app-topic-logo',
   templateUrl: './topic-logo.component.html',
-  styleUrls: ['./topic-logo.component.scss']
+  styleUrls: ['./topic-logo.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopicLogoComponent implements OnInit {
 

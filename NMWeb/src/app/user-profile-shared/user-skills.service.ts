@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import {TagEntry} from '../topics-shared/tag-entry'
-import {DbObject, DbService} from '../shared/db.service'
+import {
+  DbList,
+  DbObject,
+  DbService,
+} from '../shared/db.service'
+import { UserOtherProfiles } from './user-other-profiles.service'
+import { DomainDbService } from '../shared/domain-db.service'
 
 
 export type UserSkillLevelEnum = undefined | 'none' | 'beginner' | 'intermediate' | 'advanced' | 'expert' // guru|coreContributor|Author
@@ -97,9 +103,15 @@ export class UserSkillsService {
 
   constructor(
     private db: DbService,
+    private domainDb: DomainDbService,
   ) { }
 
   saveExampleData() {
     // this.userSkillLevelsByUserId('ExampleUser').set(exampleData)
   }
+
+  listAll(): DbList<UserSkillsService> {
+    return this.db.list(this.domainDb.PATHS.SKILL_LEVELS);
+  }
+
 }
