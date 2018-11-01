@@ -55,6 +55,10 @@ const appRoutes: Routes = [
     loadChildren: 'app/user-profile-details/user-profile-details.module#UserProfileDetailsModule',
   },
   {
+    path: 'admin',
+    loadChildren: 'app/admin/admin.module#AdminModule',
+  },
+  {
     path: 'privacy',
     component: PrivacyPolicyComponent,
   },
