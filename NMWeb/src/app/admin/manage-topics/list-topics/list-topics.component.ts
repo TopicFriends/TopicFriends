@@ -47,8 +47,12 @@ export class ListTopicsComponent implements OnInit, AfterViewInit {
     );
   }
 
-  onSearch(query) {
+  onSearch(query: string = '') {
     this.subjectSearch.next(query);
+  }
+
+  createTopic(query) {
+
   }
 
 }
