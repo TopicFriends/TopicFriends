@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {ManageTopicsRoutingModule} from "./manage-topics-routing.module";
 import {ListTopicsComponent} from "./list-topics/list-topics.component";
 import {
-  MatButtonModule,
+  MatButtonModule, MatCardModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -23,6 +23,7 @@ import {UserProfileDetailsModule} from "../../user-profile-details/user-profile-
     MatIconModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatCardModule,
     MatListModule,
     MatFormFieldModule,
     MatInputModule,

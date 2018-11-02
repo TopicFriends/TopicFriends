@@ -7,6 +7,17 @@ import {TagEntry, TopicUrls} from "../../../topics-shared/tag-entry";
 import {Observable} from "rxjs";
 import {MatSnackBar} from "@angular/material";
 
+type urlType = {id: string, name: string, icon?: string};
+const URL_TYPES: urlType[] = [
+  {id: 'wikipedia', name: 'Wikipedia'},
+  {id: 'gitHub', icon: 'ion-social-github', name: 'GitHub'},
+  {id: 'npm', name: 'Npm'},
+  {id: 'stackOverFlow', name: 'StackOverFlow'},
+  {id: 'stackShare', name: 'StackShare'},
+  {id: 'twitter', icon: 'ion-social-twitter', name: 'Twitter'},
+];
+
+
 @Component({
   selector: 'app-edit-topic',
   templateUrl: './edit-topic.component.html',
@@ -18,33 +29,52 @@ export class EditTopicComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public topicsService: TopicsService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
   ) { }
 
-  form: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    shortName: new FormControl(''),
-    website: new FormControl(''),
-    parents: new FormControl(''),
-    related: new FormControl(''),
-  });
+  form: FormGroup;
+  urlTypes: urlType[] = URL_TYPES;
 
   // TODO: refactor app-topic-group-card to remove this
   userProfileInputs = new UserProfileInputs('', true, true);
 
   ngOnInit() {
+    this.form = new FormGroup(this.getControls());
     const defaultName = this.route.snapshot.queryParams['name'];
-    console.log(defaultName);
     if(defaultName) {
       this.form.controls.name.patchValue(defaultName);
     }
   }
 
+  private getControls() {
+    let controls = {
+      name: new FormControl(''),
+      shortName: new FormControl(''),
+      website: new FormControl(''),
+      parents: new FormControl(''),
+      related: new FormControl(''),
+    };
+    this.urlTypes.forEach((urlType) => {
+      controls[urlType.id] = new FormControl('');
+    });
+    return controls;
+  }
+
   createSave(): Observable<TagEntry> {
     const data = this.form.value;
     const topic = new TagEntry(
-      data['name'],'', data['website'], data['related'],
-      new TopicUrls('', '', '', '', '', ''),
+      data['name'],
+      '',
+      data['website'],
+      data['related'],
+      new TopicUrls(
+        data['github'],
+        data['wikipedia'],
+        data['npm'],
+        data['stackOverFlow'],
+        data['stackShare'],
+        data['twitter']
+      ),
       data['parents'],
     );
     return Observable.create((observer) => {

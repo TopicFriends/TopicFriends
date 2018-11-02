@@ -15,6 +15,22 @@
     <input matInput placeholder="Website project" formControlName="website">
   </mat-form-field>
 
+  <mat-card id="topic-urls">
+    <mat-card-title>Topic urls</mat-card-title>
+    <mat-card-content>
+      <mat-form-field *ngFor="let urlType of urlTypes" class="full-width-form-field">
+        <mat-placeholder>
+          <i class="icon" [ngClass]="urlType.icon" *ngIf="urlType.icon; else noIcon"></i>
+          <ng-template #noIcon>
+            <mat-icon class="mat-18">link</mat-icon>
+          </ng-template>
+          {{ urlType.name }} url
+        </mat-placeholder>
+        <input matInput [formControlName]="urlType.id">
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
   <!-- TODO: refactor app-topic-group-card -->
   <app-topic-group-card id="parents" formControlName="parents"
                         [userProfileInputs]="userProfileInputs">
@@ -29,27 +45,14 @@
 
 
   <p>
-    <button
-      class="save-fab"
-      appHideOnScroll
-      (click)="save()"
-      mat-fab
-    >
+    <button class="save-fab" appHideOnScroll (click)="save()" mat-fab>
       <mat-icon aria-label="Save profile">
         save
       </mat-icon>
     </button>
 
-    <button
-      class="saveProfileButton"
-      #saveProfileButton
-      id="saveProfile"
-      mat-button
-      mat-raised-button
-      color="primary"
-      (click)="save()"
-      [disabled]="false"
-    >
+    <button class="saveProfileButton" #save id="save" mat-button mat-raised-button
+            color="primary" (click)="save()" [disabled]="false">
       Save <i>(Cmd/Ctrl+S)</i>
     </button>
   </p>
