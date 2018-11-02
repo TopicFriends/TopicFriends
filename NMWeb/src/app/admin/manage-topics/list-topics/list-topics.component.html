@@ -22,7 +22,14 @@
       <img matListAvatar src="{{ topic.logo }}" alt="">
       <h4 mat-line>{{ topic.name }}</h4>
       <p mat-line>
-        {{ topic.related }}
+        <span *ngIf="topic.related && topic.related.length; else noRelated">Related topics:</span>
+        <ng-container *ngFor="let relatedTopic of topic.related; let last = last;">
+          <a routerLink="/admin/topics/{{ relatedTopic.id }}/edit">
+            {{ relatedTopic.name }}</a><span *ngIf="!last">, </span>
+        </ng-container>
+        <ng-template #noRelated>
+          Without related topics
+        </ng-template>
       </p>
       <span fxFlex></span>
       <button (click)="editTopic(topic)" mat-button="" mat-icon-button>
