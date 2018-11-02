@@ -94,14 +94,24 @@ export class EditTopicComponent implements OnInit {
       data['parents'],
     );
     return Observable.create((observer) => {
-      // Send topic to server
+      // Send new topic to server
       this.topicsService.addTopic(topic);
       observer.next(topic);
     });
   }
 
-  updateSave() {
-
+  updateSave(): Observable<TagEntry> {
+    const data = this.form.value;
+    this.editTopic.name = data['name'];
+    this.editTopic.website = data['website'];
+    this.editTopic.related = data['related'];
+    this.urlTypes.forEach((urlType) => {
+      this.editTopic.urls[urlType.id] = data[urlType.id];
+    });
+    return Observable.create((observer) => {
+      // Send edited topic to server
+      observer.next(this.editTopic);
+    });
   }
 
   showSaveMessage(topic: TagEntry) {
@@ -111,7 +121,13 @@ export class EditTopicComponent implements OnInit {
   }
 
   save(): void {
-    this.createSave().subscribe((topic) => {
+    let observable: Observable<TagEntry>;
+    if(this.editTopic) {
+      observable = this.updateSave();
+    } else {
+      observable = this.createSave();
+    }
+    observable.subscribe((topic) => {
       this.showSaveMessage(topic);
       this.router.navigate([`/admin/topics/${topic.id}/edit`]);
     });

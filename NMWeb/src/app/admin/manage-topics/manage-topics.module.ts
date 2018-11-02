@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {EditTopicComponent} from "./edit-topic/edit-topic.component";
 import {RouterModule} from "@angular/router";
 import {UserProfileDetailsModule} from "../../user-profile-details/user-profile-details.module";
+import {SharedModule} from 'primeng/components/common/shared';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import {UserProfileDetailsModule} from "../../user-profile-details/user-profile-
     RouterModule,
 
     UserProfileDetailsModule,
+    SharedModule,
   ],
   declarations: [
     ListTopicsComponent,
