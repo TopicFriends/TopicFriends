@@ -67,6 +67,9 @@ import {HeaderComponent} from "../core/header/header.component";
     UserProfileDetailsComponent,
     OtherProfileUserNameComponent,
   ],
+  exports: [
+    TopicGroupCardComponent,
+  ],
   providers: [
     HeaderComponent
   ]

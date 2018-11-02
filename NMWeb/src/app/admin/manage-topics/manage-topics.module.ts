@@ -7,6 +7,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {EditTopicComponent} from "./edit-topic/edit-topic.component";
 import {RouterModule} from "@angular/router";
+import {UserProfileDetailsModule} from "../../user-profile-details/user-profile-details.module";
 
 @NgModule({
   imports: [
@@ -20,6 +21,8 @@ import {RouterModule} from "@angular/router";
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+
+    UserProfileDetailsModule,
   ],
   declarations: [
     ListTopicsComponent,

@@ -3,12 +3,56 @@
     Create a new topic
   </h2>
 
-  <mat-form-field>
+  <mat-form-field class="full-width-form-field">
     <input matInput placeholder="Topic name" formControlName="name">
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="full-width-form-field">
     <input matInput placeholder="Short name" formControlName="shortName">
   </mat-form-field>
 
+  <mat-form-field class="full-width-form-field">
+    <input matInput placeholder="Website project" formControlName="website">
+  </mat-form-field>
+
+  <!-- TODO: refactor app-topic-group-card -->
+  <app-topic-group-card id="parents" formControlName="parents"
+                        [userProfileInputs]="userProfileInputs">
+    Topics that <strong>make</strong> {{ form.controls.name.value || 'this' }} possible
+  </app-topic-group-card>
+
+  <!-- TODO: refactor app-topic-group-card -->
+  <app-topic-group-card id="related" formControlName="related"
+                        [userProfileInputs]="userProfileInputs">
+    Topics used <strong>frequently together</strong> with {{ form.controls.name.value || 'this' }}
+  </app-topic-group-card>
+
+
+  <!--
+  <p>
+    <button
+      class="save-fab"
+      appHideOnScroll
+      (click)="save()"
+      mat-fab
+    >
+      <mat-icon aria-label="Save profile">
+        save
+      </mat-icon>
+    </button>
+
+    <button
+      class="saveProfileButton"
+      #saveProfileButton
+      id="saveProfile"
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="save()"
+      [disabled]="! hasUnsavedChanges()"
+    >
+      Save <i>(Cmd/Ctrl+S)</i>
+    </button>
+  </p>
+  -->
 </form>
