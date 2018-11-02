@@ -1,7 +1,11 @@
 <form [formGroup]="form">
-  <h2>
-    Create a new topic
+  <h2 *ngIf="editTopic; else noEditTopic">
+    Edit topic {{ editTopic.name }}
+
   </h2>
+  <ng-template #noEditTopic>
+    <h2>Create a new topic</h2>
+  </ng-template>
 
   <mat-form-field class="full-width-form-field">
     <input matInput placeholder="Topic name" formControlName="name">
