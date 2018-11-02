@@ -57,4 +57,8 @@ export class ListTopicsComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/admin/topics/create'], {queryParams: {name: query}});
   }
 
+  editTopic(topic) {
+    this.router.navigate([`/admin/topics/${topic.id}/edit`]);
+  }
+
 }

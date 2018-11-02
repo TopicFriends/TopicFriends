@@ -19,9 +19,15 @@
       <p mat-line>... or press the Enter key</p>
     </mat-list-item>
     <mat-list-item *ngFor="let topic of topics">
-      <mat-icon mat-list-icon>folder</mat-icon>
+      <img matListAvatar src="{{ topic.logo }}" alt="">
       <h4 mat-line>{{ topic.name }}</h4>
-      <p mat-line> {{topic}} </p>
+      <p mat-line>
+        {{ topic.related }}
+      </p>
+      <span fxFlex></span>
+      <button (click)="editTopic(topic)" mat-button="" mat-icon-button>
+        <mat-icon class="mat-18">edit</mat-icon>
+      </button>
     </mat-list-item>
   </mat-list>
 </div>
