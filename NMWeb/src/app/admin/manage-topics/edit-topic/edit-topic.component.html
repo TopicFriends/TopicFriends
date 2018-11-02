@@ -18,17 +18,16 @@
   <!-- TODO: refactor app-topic-group-card -->
   <app-topic-group-card id="parents" formControlName="parents"
                         [userProfileInputs]="userProfileInputs">
-    Topics that <strong>make</strong> {{ form.controls.name.value || 'this' }} possible
+    Topics that <strong>make</strong> {{ form.controls['name'].value || 'this' }} possible
   </app-topic-group-card>
 
   <!-- TODO: refactor app-topic-group-card -->
   <app-topic-group-card id="related" formControlName="related"
                         [userProfileInputs]="userProfileInputs">
-    Topics used <strong>frequently together</strong> with {{ form.controls.name.value || 'this' }}
+    Topics used <strong>frequently together</strong> with {{ form.controls['name'].value || 'this' }}
   </app-topic-group-card>
 
 
-  <!--
   <p>
     <button
       class="save-fab"
@@ -49,10 +48,10 @@
       mat-raised-button
       color="primary"
       (click)="save()"
-      [disabled]="! hasUnsavedChanges()"
+      [disabled]="false"
     >
       Save <i>(Cmd/Ctrl+S)</i>
     </button>
   </p>
-  -->
+
 </form>

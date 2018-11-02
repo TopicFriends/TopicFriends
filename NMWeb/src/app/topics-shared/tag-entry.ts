@@ -45,6 +45,7 @@ export class TagEntry {
     public website?: string,
     public related?: TagEntry[],
     public urls?: TopicUrls,
+    public parents?: TagEntry[],
   ) {
     this.id = name
       .replace('#', '_Sharp')

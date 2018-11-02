@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'create',
     component: EditTopicComponent,
   },
+  {
+    path: ':topicId/edit',
+    component: EditTopicComponent,
+  },
 ];
 
 @NgModule({
