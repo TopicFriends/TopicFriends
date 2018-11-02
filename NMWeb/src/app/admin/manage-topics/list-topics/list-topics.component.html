@@ -1,5 +1,21 @@
-<div fxLayoutAlign="space-between center">
+<div>
   <h2>
-    Topics list
+    Manage topics list
   </h2>
+
+  <div id="search-or-create">
+    <mat-form-field>
+      <input matInput placeholder="Search for create a new topic" #searchInput
+             (keyup)="onSearch(searchInput.value)">
+    </mat-form-field>
+  </div>
+
+  <mat-list>
+    <mat-list-item *ngFor="let topic of topics">
+      <mat-icon mat-list-icon>folder</mat-icon>
+      <h4 mat-line>{{ topic.name }}</h4>
+      <p mat-line> {{topic}} </p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
 </div>

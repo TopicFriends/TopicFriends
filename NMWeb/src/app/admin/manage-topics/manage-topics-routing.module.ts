@@ -13,7 +13,7 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
   declarations: [
-    ListTopicsComponent
+    // ListTopicsComponent
   ]
 })
 export class ManageTopicsRoutingModule { }
