@@ -34,28 +34,44 @@ export class EditTopicComponent implements OnInit {
 
   form: FormGroup;
   urlTypes: urlType[] = URL_TYPES;
+  editTopic: TagEntry;
 
   // TODO: refactor app-topic-group-card to remove this
   userProfileInputs = new UserProfileInputs('', true, true);
 
   ngOnInit() {
-    this.form = new FormGroup(this.getControls());
+    let controls;
     const defaultName = this.route.snapshot.queryParams['name'];
+    const topicId = this.route.snapshot.params['topicId'];
     if(defaultName) {
       this.form.controls.name.patchValue(defaultName);
     }
+    if(topicId) {
+      const topic = this.topicsService.getTopicById(topicId);
+      if(!topic) {
+        this.snackBar.open(`Unknown topic id: ${topic.id}`, 'Close',
+          {duration: 5000});
+        this.router.navigate(['/admin/topics']);
+      }
+      this.editTopic = topic;
+      controls = this.getControls(topic);
+    } else {
+      controls = this.getControls();
+    }
+    this.form = new FormGroup(controls);
   }
 
-  private getControls() {
+  private getControls(topic: TagEntry|{} = {}) {
+    let topicUrls: TopicUrls|{} = topic['urls'] || {};
     let controls = {
-      name: new FormControl(''),
-      shortName: new FormControl(''),
-      website: new FormControl(''),
-      parents: new FormControl(''),
-      related: new FormControl(''),
+      name: new FormControl(topic['name'] || ''),
+      shortName: new FormControl(topic['shortName'] || ''),
+      website: new FormControl(topic['website'] || ''),
+      parents: new FormControl(topic['parents'] || ''),
+      related: new FormControl(topic['related'] || ''),
     };
     this.urlTypes.forEach((urlType) => {
-      controls[urlType.id] = new FormControl('');
+      controls[urlType.id] = new FormControl(topicUrls[urlType.id] || '');
     });
     return controls;
   }
