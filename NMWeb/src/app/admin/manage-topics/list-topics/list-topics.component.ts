@@ -3,6 +3,7 @@ import {TopicsService} from "../../../shared/topics.service";
 import {MatInput} from "@angular/material";
 import {Subject} from "rxjs";
 import {TagEntry} from "../../../topics-shared/tag-entry";
+import {Router} from "@angular/router";
 
 
 const SEARCH_DEBOUNCE: number = 100;
@@ -22,6 +23,7 @@ export class ListTopicsComponent implements OnInit, AfterViewInit {
 
   constructor(
     public topicsService: TopicsService,
+    private router: Router,
   ) {
   }
 
@@ -52,7 +54,7 @@ export class ListTopicsComponent implements OnInit, AfterViewInit {
   }
 
   createTopic(query) {
-
+    this.router.navigate(['/admin/topics/create'], {queryParams: {name: query}});
   }
 
 }

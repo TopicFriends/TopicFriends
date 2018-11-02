@@ -6,6 +6,7 @@ import {MatFormFieldModule, MatIconModule, MatInputModule, MatListModule} from "
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {EditTopicComponent} from "./edit-topic/edit-topic.component";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import {EditTopicComponent} from "./edit-topic/edit-topic.component";
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
   ],
   declarations: [
     ListTopicsComponent,
