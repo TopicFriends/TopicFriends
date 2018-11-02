@@ -1,3 +1,14 @@
-<p>
-  edit-topics works!
-</p>
+<form [formGroup]="form">
+  <h2>
+    Create a new topic
+  </h2>
+
+  <mat-form-field>
+    <input matInput placeholder="Topic name" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Short name" formControlName="shortName">
+  </mat-form-field>
+
+</form>

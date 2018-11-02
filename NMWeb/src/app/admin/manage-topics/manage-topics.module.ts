@@ -4,6 +4,8 @@ import {ManageTopicsRoutingModule} from "./manage-topics-routing.module";
 import {ListTopicsComponent} from "./list-topics/list-topics.component";
 import {MatFormFieldModule, MatIconModule, MatInputModule, MatListModule} from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {EditTopicComponent} from "./edit-topic/edit-topic.component";
 
 @NgModule({
   imports: [
@@ -14,10 +16,12 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatFormFieldModule,
     MatInputModule,
     FlexLayoutModule,
-
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     ListTopicsComponent,
+    EditTopicComponent,
   ]
 })
 export class ManageTopicsModule { }
