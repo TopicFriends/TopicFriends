@@ -92,6 +92,7 @@ export class EditTopicComponent implements OnInit {
         data['twitter']
       ),
       data['parents'],
+      data['shortName'],
     );
     return Observable.create((observer) => {
       // Send new topic to server
@@ -103,6 +104,7 @@ export class EditTopicComponent implements OnInit {
   updateSave(): Observable<TagEntry> {
     const data = this.form.value;
     this.editTopic.name = data['name'];
+    this.editTopic.shortName = data['shortName'];
     this.editTopic.website = data['website'];
     this.editTopic.related = data['related'];
     this.urlTypes.forEach((urlType) => {
