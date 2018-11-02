@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
+import {ListTopicsComponent} from "./list-topics/list-topics.component";
 
 const routes: Routes = [
   {
-    path: 'topics',
-    loadChildren: './manage-topics/manage-topics.module#ManageTopicsModule',
+    path: '',
+    component: ListTopicsComponent,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  declarations: []
+  declarations: [
+    ListTopicsComponent
+  ]
 })
-export class AdminRoutingModule { }
+export class ManageTopicsRoutingModule { }
