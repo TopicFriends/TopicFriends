@@ -53,11 +53,11 @@ export class ListTopicsComponent implements OnInit, AfterViewInit {
     this.subjectSearch.next(query);
   }
 
-  createTopic(query) {
+  createTopic(query: string) {
     this.router.navigate(['/admin/topics/create'], {queryParams: {name: query}});
   }
 
-  editTopic(topic) {
+  editTopic(topic: TagEntry) {
     this.router.navigate([`/admin/topics/${topic.id}/edit`]);
   }
 

@@ -43,9 +43,6 @@ export class EditTopicComponent implements OnInit {
     let controls;
     const defaultName = this.route.snapshot.queryParams['name'];
     const topicId = this.route.snapshot.params['topicId'];
-    if(defaultName) {
-      this.form.controls.name.patchValue(defaultName);
-    }
     if(topicId) {
       const topic = this.topicsService.getTopicById(topicId);
       if(!topic) {
@@ -59,6 +56,9 @@ export class EditTopicComponent implements OnInit {
       controls = this.getControls();
     }
     this.form = new FormGroup(controls);
+    if(defaultName) {
+      this.form.controls.name.patchValue(defaultName);
+    }
   }
 
   private getControls(topic: TagEntry|{} = {}) {
