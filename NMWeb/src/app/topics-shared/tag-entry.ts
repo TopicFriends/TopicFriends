@@ -45,7 +45,7 @@ export class TagEntry {
     public website?: string,
     public related?: TagEntry[],
     public urls?: TopicUrls,
-    public parents?: TagEntry[],
+    public dependencies?: TagEntry[],
     public shortName?: string,
   ) {
     this.id = name

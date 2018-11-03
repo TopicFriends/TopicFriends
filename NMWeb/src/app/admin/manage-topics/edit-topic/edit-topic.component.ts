@@ -67,7 +67,7 @@ export class EditTopicComponent implements OnInit {
       name: new FormControl(topic['name'] || ''),
       shortName: new FormControl(topic['shortName'] || ''),
       website: new FormControl(topic['website'] || ''),
-      parents: new FormControl(topic['parents'] || ''),
+      parents: new FormControl(topic['dependencies'] || ''),
       related: new FormControl(topic['related'] || ''),
     };
     this.urlTypes.forEach((urlType) => {
@@ -91,7 +91,7 @@ export class EditTopicComponent implements OnInit {
         data['stackShare'],
         data['twitter']
       ),
-      data['parents'],
+      data['dependencies'],
       data['shortName'],
     );
     return Observable.create((observer) => {
