@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tsc index.ts && testcafe chrome --speed 0.4 index.js",
-    "test": "tsc index.ts && testcafe chrome --speed 1 index.js"
+    "test": "tsc index.ts && testcafe firefox --speed 0.4 index.js",
+    "test": "tsc index.ts && testcafe firefox --speed 1 index.js"
   },
   "author": "",
   "license": "ISC",

@@ -46,6 +46,10 @@ var loginButton = testcafe_1.Selector("body > app-root > div > app-header > mat-
 var googleLogIn = testcafe_1.Selector("#mat-dialog-0 > app-login > div > button:nth-child(2)");
 var userClass = testcafe_1.Selector(".riddkc");
 //
+var usernameField = testcafe_1.Selector("#identifierId");
+var userEmail = "qa.cod3r@gmail.com";
+var passwordField = testcafe_1.Selector(".I0VJ4d > div:nth-child(1) > input:nth-child(1)");
+var userPassword = "lekcjaonlineprod";
 fixture(templateObject_1 || (templateObject_1 = __makeTemplateObject(["TopicFriend"], ["TopicFriend"]))).page(url);
 test("As a user I want to log in.", function (t) { return __awaiter(_this, void 0, void 0, function () {
     return __generator(this, function (_a) {
@@ -53,7 +57,14 @@ test("As a user I want to log in.", function (t) { return __awaiter(_this, void 
             case 0: return [4 /*yield*/, t.click(loginButton).click(googleLogIn)];
             case 1:
                 _a.sent();
-                return [4 /*yield*/, t.click(userClass)];
+                return [4 /*yield*/, t
+                        .typeText(usernameField, userEmail)
+                        .pressKey("enter")
+                        .typeText(passwordField, userPassword)
+                        .pressKey("enter")
+                        .typeText("#mat-input-1", "My name")
+                        .typeText("#mat-input-2", "My name")
+                        .typeText("#mat-input-3", "My name")];
             case 2:
                 _a.sent();
                 return [2 /*return*/];
