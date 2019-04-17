@@ -1,11 +1,11 @@
-import {browser} from 'protractor';
-let fs_extra = require('fs-extra');
+import { browser } from "protractor";
+let fs_extra = require("fs-extra");
 
 export class TestSupport {
-  TMP_FOLDER_PATH = '/tmp/protractor';
+  TMP_FOLDER_PATH = "/tmp/protractor";
 
   constructor() {
-    let fs = require('fs');
+    let fs = require("fs");
     if (!fs.existsSync(this.TMP_FOLDER_PATH)) {
       this.createDirectoryRecursively(this.TMP_FOLDER_PATH);
     }
@@ -13,44 +13,48 @@ export class TestSupport {
 
   takeScreenshot(prefix: string, path?: string) {
     let filePath;
-    if(path) {
+    if (path) {
       filePath = path;
-    }
-    else {
-      filePath = this.TMP_FOLDER_PATH
+    } else {
+      filePath = this.TMP_FOLDER_PATH;
     }
 
-    browser.takeScreenshot().then((png) => {
-      let filename = prefix + '-' + new Date().getTime();
-      let stream = fs_extra.createWriteStream(filePath + '/' + filename + '.png');
-      stream.write(new Buffer(png, 'base64'));
+    browser.takeScreenshot().then(png => {
+      let filename = prefix + "-" + new Date().getTime();
+      let stream = fs_extra.createWriteStream(
+        filePath + "/" + filename + ".png"
+      );
+      stream.write(Buffer.from(png, "base64"));
       stream.end();
     });
   }
 
   switchTabs(tab: number) {
-    return browser.getAllWindowHandles().then((handles) => {
+    return browser.getAllWindowHandles().then(handles => {
       browser.switchTo().window(handles[tab]);
     });
   }
 
   acceptAlertIfAppears() {
-    browser.driver.switchTo().alert().then(
-      function (alert) {
-        alert.accept();
-      },
-      function (error) {
-        console.log('No alert visible')
-      }
-    )
+    browser.driver
+      .switchTo()
+      .alert()
+      .then(
+        function(alert) {
+          alert.accept();
+        },
+        function(error) {
+          console.log("No alert visible");
+        }
+      );
   }
 
   private createDirectoryRecursively(path: string) {
-    fs_extra.mkdirp(path, function (err) {
+    fs_extra.mkdirp(path, function(err) {
       if (err) {
         console.error('Directory "' + path + '" not created!', err);
       } else {
-        console.log('Directory "' + path + '" created!')
+        console.log('Directory "' + path + '" created!');
       }
     });
   }

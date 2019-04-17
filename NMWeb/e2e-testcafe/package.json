@@ -1,0 +1,15 @@
+{
+  "name": "testsintestcafe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc index.ts && testcafe chrome --speed 0.4 index.js",
+    "test": "tsc index.ts && testcafe chrome --speed 1 index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "testcafe": "^1.1.2"
+  }
+}
