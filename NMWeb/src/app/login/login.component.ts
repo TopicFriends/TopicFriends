@@ -31,4 +31,8 @@ export class LoginComponent implements OnInit {
     window.open('assets/login/popup.html', 'name', 'height=585,width=400');
   }
 
+  logInViaEmailAndPassword() {
+    // TODO: read from form: https://angular.io/guide/forms
+    this.authService.logInViaEmailAndPassword('topicfriends-test@gmail.com', '----TFPass....')
+  }
 }
