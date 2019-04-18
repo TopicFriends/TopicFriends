@@ -13,7 +13,12 @@ import {DialogModule} from 'primeng/dialog'
 
 
 const mapsRoutes: Routes = [
-  { path: 'users-map',  component: UsersMapComponent },
+  { path: 'users-map',
+    component: UsersMapComponent
+  },
+  { path: 'map',
+    component: UsersMapComponent
+  },
 ];
 
 @NgModule({

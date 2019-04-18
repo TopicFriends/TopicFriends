@@ -20,7 +20,8 @@ import {MeetingMapComponent} from './meeting-map/meeting-map.component'
 import {MapsSharedModule} from '../maps-shared/maps-shared.module'
 
 const meetingRoutes: Routes = [
-  { path: 'meeting-list',  component: MeetingListComponent },
+  { path: 'meeting-list',  component: MeetingListComponent }, /* old */
+  { path: 'meetings',  component: MeetingListComponent },
   { path: 'meeting-details/:meetingId', component: MeetingDetailsComponent }, /* old */
   { path: 'meeting/:meetingId', component: MeetingDetailsComponent },
 ];

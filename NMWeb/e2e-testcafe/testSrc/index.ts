@@ -41,26 +41,21 @@ test(`As a user I want to log in.`, async t => {
     // .typeText("#mat-input-3", "My name");
 });
 
-test(`Navigate to Meetings`, async t => {
-  await t
-    .click('#menuButtonHamburger')
-    .click('#navToMeetings')
-    .expect(getLocation()).contains('/meeting')
-    .takeScreenshot()
-})
+export function testNav(name) {
+  test(`Navigate to: ` + name, async t => {
+    await t
+      .maximizeWindow( )
+      .click('#menuButtonHamburger')
+      .click('#navTo' + name)
+      .expect(getLocation()).contains('/' + name.toLowerCase())
+      .takeScreenshot()
+  })
+}
 
-test(`Navigate to People`, async t => {
-  await t
-    .click('#menuButtonHamburger')
-    .click('#navToPeople')
-    .expect(getLocation()).contains('/people')
-    .takeScreenshot()
-})
-
-test(`Navigate to Profile`, async t => {
-  await t
-    .click('#menuButtonHamburger')
-    .click('#navToProfile')
-    .expect(getLocation()).contains('/profile')
-    .takeScreenshot()
-})
+// DRY CoC
+testNav('Meetings')
+testNav('People')
+testNav('Topics')
+testNav('Map')
+testNav('Profile')
+testNav('About')

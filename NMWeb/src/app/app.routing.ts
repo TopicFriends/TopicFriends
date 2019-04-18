@@ -19,6 +19,10 @@ const appRoutes: Routes = [
     component: UserListComponent,
   },
   {
+    path: 'people',
+    component: UserListComponent,
+  },
+  {
     path: 'topics',
     component: TopicsListComponent,
   },
