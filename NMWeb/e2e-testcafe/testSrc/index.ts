@@ -1,4 +1,5 @@
-import { Selector } from "testcafe";
+import { Selector } from 'testcafe';
+import { getLocation } from './testUtils'
 
 const url = "http://localhost:4444/";
 
@@ -39,3 +40,24 @@ test(`As a user I want to log in.`, async t => {
     // .typeText("#mat-input-2", "My name")
     // .typeText("#mat-input-3", "My name");
 });
+
+test(`Navigate to Meetings`, async t => {
+  await t
+    .click('#menuButtonHamburger')
+    .click('#navToMeetings')
+    .expect(getLocation()).contains('/meeting');
+})
+
+test(`Navigate to People`, async t => {
+  await t
+    .click('#menuButtonHamburger')
+    .click('#navToPeople')
+    .expect(getLocation()).contains('/people');
+})
+
+test(`Navigate to Profile`, async t => {
+  await t
+    .click('#menuButtonHamburger')
+    .click('#navToProfile')
+    .expect(getLocation()).contains('/profile');
+})
