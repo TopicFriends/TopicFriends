@@ -25,7 +25,7 @@ const passwordField = Selector(
 );
 const userPassword = "lekcjaonlineprod";
 
-fixture`TopicFriend`.page(url);
+(fixture`TopicFriends` as any).disablePageReloads.page(url);
 
 test(`As a user I want to log in.`, async t => {
   await t.click(loginOrSignupButton).click(loginViaEmailPassword);
@@ -41,21 +41,37 @@ test(`As a user I want to log in.`, async t => {
     // .typeText("#mat-input-3", "My name");
 });
 
-export function testNav(name) {
+/** DRY CoC */
+export async function navTo(t, name, openHamburger: boolean = true) {
+  await t
+  // .maximizeWindow( )
+  if ( openHamburger ) {
+    await t.click('#menuButtonHamburger')
+  }
+  await t.click('#navTo' + name)
+    .expect(getLocation()).contains('/' + name.toLowerCase())
+    .takeScreenshot()
+}
+
+export function testNavTo(name) {
   test(`Navigate to: ` + name, async t => {
-    await t
-      .maximizeWindow( )
-      .click('#menuButtonHamburger')
-      .click('#navTo' + name)
-      .expect(getLocation()).contains('/' + name.toLowerCase())
-      .takeScreenshot()
+    await navTo(t, name)
   })
 }
 
-// DRY CoC
-testNav('Meetings')
-testNav('People')
-testNav('Topics')
-testNav('Map')
-testNav('Profile')
-testNav('About')
+// test(`Navigate to pages`, async t=> {
+//   await t.click('#menuButtonHamburger')
+//   await navTo(t, 'Meetings', false)
+//   await navTo(t, 'People', false)
+//   await navTo(t, 'Topics', false)
+//   await navTo(t, 'Map', false)
+//   await navTo(t, 'Profile', false)
+//   await navTo(t, 'About', false)
+// })
+
+testNavTo('Meetings')
+testNavTo('People')
+testNavTo('Topics')
+testNavTo('Map')
+testNavTo('Profile')
+testNavTo('About')
