@@ -25,7 +25,9 @@ const passwordField = Selector(
 );
 const userPassword = "lekcjaonlineprod";
 
-(fixture`TopicFriends` as any).disablePageReloads.page(url);
+(fixture`TopicFriends` as any)
+  // .disablePageReloads
+  .page(url);
 
 test(`As a user I want to log in.`, async t => {
   await t.click(loginOrSignupButton).click(loginViaEmailPassword);
@@ -65,13 +67,13 @@ export function testNavTo(name) {
 //   await navTo(t, 'People', false)
 //   await navTo(t, 'Topics', false)
 //   await navTo(t, 'Map', false)
-//   await navTo(t, 'Profile', false)
 //   await navTo(t, 'About', false)
+//   await navTo(t, 'Profile', false) // can cause native dialog (unsaved), so should be last
 // })
 
 testNavTo('Meetings')
 testNavTo('People')
 testNavTo('Topics')
 testNavTo('Map')
-testNavTo('Profile')
 testNavTo('About')
+testNavTo('Profile') // can cause native dialog (unsaved), so should be last
