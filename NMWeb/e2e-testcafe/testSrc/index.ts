@@ -61,19 +61,25 @@ export function testNavTo(name) {
   })
 }
 
-// test(`Navigate to pages`, async t=> {
-//   await t.click('#menuButtonHamburger')
-//   await navTo(t, 'Meetings', false)
-//   await navTo(t, 'People', false)
-//   await navTo(t, 'Topics', false)
-//   await navTo(t, 'Map', false)
-//   await navTo(t, 'About', false)
-//   await navTo(t, 'Profile', false) // can cause native dialog (unsaved), so should be last
-// })
+export const reloadBetweenNavTests = false
 
-testNavTo('Meetings')
-testNavTo('People')
-testNavTo('Topics')
-testNavTo('Map')
-testNavTo('About')
-testNavTo('Profile') // can cause native dialog (unsaved), so should be last
+if ( reloadBetweenNavTests ) {
+  testNavTo('Meetings')
+  testNavTo('People')
+  testNavTo('Topics')
+  testNavTo('Map')
+  testNavTo('About')
+  testNavTo('Profile') // can cause native dialog (unsaved), so should be last
+} else {
+  test(`Navigate to pages`, async t=> {
+    await t.click('#menuButtonHamburger')
+    await navTo(t, 'Meetings', false)
+    await navTo(t, 'People', false)
+    await navTo(t, 'Topics', false)
+    await navTo(t, 'Map', false)
+    await navTo(t, 'About', false)
+    await navTo(t, 'Profile', false) // can cause native dialog (unsaved), so should be last
+  })
+}
+
+
