@@ -44,9 +44,10 @@ test(`As a user I want to log in.`, async t => {
 });
 
 /** DRY CoC */
-export async function navTo(t, name, openHamburger: boolean = true) {
-  await t
+export async function navTo(t, name, {openHamburger}) {
+  // await tz
   // .maximizeWindow( )
+  console.log('navTo', name)
   if ( openHamburger ) {
     await t.click('#menuButtonHamburger')
   }
@@ -57,29 +58,28 @@ export async function navTo(t, name, openHamburger: boolean = true) {
 
 export function testNavTo(name) {
   test(`Navigate to: ` + name, async t => {
-    await navTo(t, name)
+    await navTo(t, name, {openHamburger: true})
   })
 }
 
-export const reloadBetweenNavTests = false
+export const reloadBetweenNavTests = true
+
+export const navToNames = 'Meetings People Topics Map About Profile'.split(' ') // Profile can cause native dialog (unsaved), so should be last
+console.log('navToNames', navToNames)
 
 if ( reloadBetweenNavTests ) {
-  testNavTo('Meetings')
-  testNavTo('People')
-  testNavTo('Topics')
-  testNavTo('Map')
-  testNavTo('About')
-  testNavTo('Profile') // can cause native dialog (unsaved), so should be last
+  navToNames.forEach(navToName => {
+    testNavTo(navToName)
+  })
 } else {
-  test(`Navigate to pages`, async t=> {
+  test(`Navigate to pages`, async t => {
     await t.click('#menuButtonHamburger')
-    await navTo(t, 'Meetings', false)
-    await navTo(t, 'People', false)
-    await navTo(t, 'Topics', false)
-    await navTo(t, 'Map', false)
-    await navTo(t, 'About', false)
-    await navTo(t, 'Profile', false) // can cause native dialog (unsaved), so should be last
+    console.log('navToNames', navToNames)
+    for ( const navToName of navToNames ) {
+      await navTo(t, navToName, {openHamburger: false})
+    }
+    // navToNames.forEach(async (navToName) => {
+    //   await navTo(t, navToName, {openHamburger: false})
+    // })
   })
 }
-
-
