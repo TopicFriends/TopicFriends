@@ -6,13 +6,14 @@
   "scripts": {
     "tsc": "tsc --outDir ts_out",
     "test": "npm run test:chrome",
-    "test:chrome": "npm run tsc && testcafe chrome --speed 1 ts_out/index.js",
-    "test:ff": "npm run tsc && testcafe firefox --speed 1 ts_out/index.js",
-    "test:all": "npm run tsc && testcafe all --speed 1 ts_out/index.js"
+    "test:chrome": "npm run tsc && testcafe chrome --speed 1 -S -s screenshots ts_out/index.js",
+    "test:ff": "npm run tsc && testcafe firefox --speed 1 -S -s screenshots ts_out/index.js",
+    "test:all": "npm run tsc && testcafe all --speed 1 -S -s screenshots ts_out/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.17",
     "testcafe": "^1.1.2"
   }
 }

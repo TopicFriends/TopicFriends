@@ -45,19 +45,22 @@ test(`Navigate to Meetings`, async t => {
   await t
     .click('#menuButtonHamburger')
     .click('#navToMeetings')
-    .expect(getLocation()).contains('/meeting');
+    .expect(getLocation()).contains('/meeting')
+    .takeScreenshot()
 })
 
 test(`Navigate to People`, async t => {
   await t
     .click('#menuButtonHamburger')
     .click('#navToPeople')
-    .expect(getLocation()).contains('/people');
+    .expect(getLocation()).contains('/people')
+    .takeScreenshot()
 })
 
 test(`Navigate to Profile`, async t => {
   await t
     .click('#menuButtonHamburger')
     .click('#navToProfile')
-    .expect(getLocation()).contains('/profile');
+    .expect(getLocation()).contains('/profile')
+    .takeScreenshot()
 })
