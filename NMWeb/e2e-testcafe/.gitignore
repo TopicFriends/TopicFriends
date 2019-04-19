@@ -1,6 +1,6 @@
 
-ts_out
-
+ts_out/
+dist/
 # TestCafe
 reports
 screenshots
