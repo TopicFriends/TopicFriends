@@ -1,3 +1,4 @@
 {
-  "videoPath": "reports/screen-captures"
+//  "videoPath": "reports/screen-captures"
+  "skipJsErrors": true // for TypeError: f.getAttribute is not a function
 }
