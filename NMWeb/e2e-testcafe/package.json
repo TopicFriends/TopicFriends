@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc --outDir --speed 1 -S -s screenshots ts_out",
+    "tsc": "tsc --outDir ts_out",
     "test": "npm run test:chrome",
     "test:chrome": "npm run tsc && testcafe chrome --speed 1 -S -s screenshots --speed 1 -S -s screenshots ts_out/index.js",
     "test:ff": "npm run tsc && testcafe firefox --speed 1 -S -s screenshots --speed 1 -S -s screenshots ts_out/index.js",
