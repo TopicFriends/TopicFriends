@@ -1,7 +1,9 @@
 $icon-size: 80px;
 $icon-margin: 5%;
+
 .tf-login-container {
   margin-top: 12px;
+  text-align: -webkit-center;
 }
 
 .tf-login-icon {
@@ -9,6 +11,7 @@ $icon-margin: 5%;
   width: $icon-size;
   margin-right: $icon-margin;
 }
+
 button {
   //padding: 15px;
   width: 100%;
@@ -17,4 +20,9 @@ button {
 h2 {
   margin-top: 0px;
   margin-bottom: 15px;
+}
+
+#loginViaEmailPassword {
+  background: #673ab7;
+  color: white;
 }

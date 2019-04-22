@@ -4,25 +4,28 @@
   </h2>
 
   <!-- https://material.angular.io/components/input/examples -->
-  <form class="example-form">
+  <form (ngSubmit)="logInViaEmailAndPassword(f)" #f="ngForm">
+<div>
     <mat-form-field class="example-full-width">
-      <input matInput id='login-email' placeholder="Login E-mail" value="">
+      <input ngModel class="form-control" name="email" matInput id='email' placeholder="Login E-mail" value="">
     </mat-form-field>
-
+</div>
+<div >
     <mat-form-field class="example-full-width">
-      <textarea id='login-password' matInput placeholder="Login password"></textarea>
+    <input ngModel class="form-control" name="password" matInput id='password' placeholder="Login password" value="">
     </mat-form-field>
-  </form>
-
-
-  <button
+</div>
+      <button
     id = 'loginViaEmailPassword'
     mat-button
     mat-raised-button
     (click)="logInViaEmailAndPassword()"
+    [disabled]="!f.valid"
   >
-    Log in via e-mail and password
+    Log in 
   </button>
+  </form>
+<br>
 
   <button
     mat-button
