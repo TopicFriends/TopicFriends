@@ -8,7 +8,7 @@ $tool-bar-height: 5vh;
 .betta-icon {
   color: white;
   font-family: serif;
-  font-size:3vh;
+  font-size: 3vh;
 }
 
 .toolbar-icon {
@@ -19,39 +19,37 @@ $tool-bar-height: 5vh;
   flex: 1 1 auto;
 }
 
-.login-button{
-    cursor: pointer;
+.login-button {
+  cursor: pointer;
 }
 
 .mat-toolbar {
   width: 100%;
-    height: $tool-bar-height;
-    padding-right: 0;
-    user-select: none;
-    //background: rgba(255, 255, 255, 0.75);
-    background: rgba(0,0,0, 1);
-    color: black;
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  height: $tool-bar-height;
+  padding-right: 0;
+  user-select: none;
+  //background: rgba(255, 255, 255, 0.75);
+  background: rgba(0, 0, 0, 1);
+  color: black;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
 
-    a {
-      text-decoration: none;
+  a {
+    text-decoration: none;
 
-
-
-      * {
-         vertical-align: middle;
-       }
-
+    * {
+      vertical-align: middle;
     }
-  button{
+
+  }
+
+  button {
     background-color: rgb(103, 58, 183);
     height: $tool-bar-height;
     border-radius: 0;
     margin-right: 0;
     text-align: center;
     line-height: initial;
-
-
+    color: white;
   }
 }
 
@@ -83,8 +81,9 @@ mat-toolbar {
   }
 
   button {
-    height: 40px !important;;
+    height: 40px !important;
   }
+
   .betta-icon {
     font-size: 25px !important;
   }

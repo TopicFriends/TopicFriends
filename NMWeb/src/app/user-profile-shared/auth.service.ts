@@ -1,12 +1,10 @@
-import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import * as firebase from 'firebase/app';
-import {AngularFireAuth} from 'angularfire2/auth';
-
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/Observable";
+import * as firebase from "firebase/app";
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Injectable()
 export class AuthService {
-
   public user: Observable<firebase.User>;
 
   /** Crude way to save from observable, revise for async later */
@@ -20,7 +18,9 @@ export class AuthService {
   }
 
   loginViaGoogle() {
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    return this.afAuth.auth.signInWithPopup(
+      new firebase.auth.GoogleAuthProvider()
+    );
   }
 
   // loginViaLinkedIn() {
@@ -33,6 +33,9 @@ export class AuthService {
   }
 
   logInViaEmailAndPassword(email, password: string) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    return this.afAuth.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
   }
 }
