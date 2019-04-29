@@ -22,7 +22,18 @@ h2 {
   margin-bottom: 15px;
 }
 
-#loginViaEmailPassword {
+#loginViaEmailPassword,
+#signUpViaEmailPassword {
   background: #673ab7;
   color: white;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
 }

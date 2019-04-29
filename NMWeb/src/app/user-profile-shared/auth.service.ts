@@ -32,10 +32,22 @@ export class AuthService {
     return this.afAuth.auth.signOut();
   }
 
+  signUpWithEmailAndPassword(email, password: string) {
+    return this.afAuth.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(function(data) {
+        console.log("Signing up successful", data);
+      })
+      .catch(function(error) {
+        // Handle Errors here.
+        console.log("Error on creating account", error);
+      });
+  }
+
   logInViaEmailAndPassword(email, password: string) {
     return this.afAuth.auth
       .signInWithEmailAndPassword(email, password)
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
+      .then(response => console.log("Logged in correctly", response))
+      .catch(error => console.log("Error loggin in", error));
   }
 }

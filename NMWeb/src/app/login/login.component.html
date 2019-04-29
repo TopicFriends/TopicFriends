@@ -1,8 +1,16 @@
 <div class="tf-login-container">
   <h2>
-    Log in
+    Log in or Sign Up
   </h2>
 
+    <button
+    mat-button
+    mat-raised-button
+    (click)="toggleLoginSignUpFields()"
+  >
+    {{!logInSignUpToggleButton ? "Switch to Register" : "Switch to Login "}}
+  </button>
+<div *ngIf="!(logInSignUpToggleButton)">
   <!-- https://material.angular.io/components/input/examples -->
   <form (ngSubmit)="logInViaEmailAndPassword(f)" #f="ngForm">
 <div>
@@ -22,9 +30,40 @@
     (click)="logInViaEmailAndPassword()"
     [disabled]="!f.valid"
   >
-    Log in 
+    Log in
   </button>
   </form>
+</div>
+<br>
+
+<div *ngIf="(logInSignUpToggleButton)">
+  <form (ngSubmit)="signUpWithEmailAndPassword(f)" #f="ngForm">
+<div>
+    <mat-form-field class="example-full-width">
+      <input ngModel class="form-control" name="email" matInput id='email' placeholder="Register E-mail" value="">
+    </mat-form-field>
+</div>
+<div >
+    <mat-form-field class="example-full-width">
+    <input ngModel class="form-control" name="password" matInput id='password' placeholder="Register password" value="">
+    </mat-form-field>
+</div>
+<div >
+    <mat-form-field class="example-full-width">
+    <input ngModel class="form-control" name="password2" matInput id='password2' placeholder="Confirm password" value="">
+    </mat-form-field>
+</div>
+  <button
+    id = 'signUpViaEmailPassword'
+    mat-button
+    mat-raised-button
+    (click)="signUpWithEmailAndPassword()"
+     [disabled]="!f.valid"
+  >
+    Create Account
+  </button>
+  </form>
+</div>
 <br>
 
   <button
@@ -38,10 +77,8 @@
     >
     Log in via Google
   </button>
-
-  <br/>
-  <br/>
-
+<br>
+<br>
   <button
     mat-button
     mat-raised-button
