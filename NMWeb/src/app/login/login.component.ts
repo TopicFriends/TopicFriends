@@ -10,11 +10,25 @@ import { FormControl, Validators } from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
   logInSignUpToggleButton: boolean = false;
-  emailFormControl = new FormControl("", [
+  loginEmailFormControl = new FormControl("loginEmailFormControl", [
     Validators.required,
     Validators.email
   ]);
-  passwordFormControl = new FormControl("", [
+  registerEmailFormControl = new FormControl("registerEmailFormControl", [
+    Validators.required,
+    Validators.email
+  ]);
+  loginPasswordFormControl = new FormControl("loginPasswordFormControl", [
+    Validators.required,
+    // Minimum length off password for Firebase is 8??
+    Validators.minLength(8)
+  ]);
+  registerPasswordFormControl = new FormControl("registerPasswordFormControl", [
+    Validators.required,
+    // Minimum length off password for Firebase is 8??
+    Validators.minLength(8)
+  ]);
+  repeatPasswordFormControl = new FormControl("repeatPasswordFormControl", [
     Validators.required,
     // Minimum length off password for Firebase is 8??
     Validators.minLength(8)
@@ -38,10 +52,9 @@ export class LoginComponent implements OnInit {
   }
 
   signUpWithEmailAndPassword(form: NgForm) {
-
-    const email = form.form.controls.email.value;
-    const password = form.form.controls.password.value;
-    const password2 = form.form.controls.password2.value;
+    const email = this.registerEmailFormControl.value;
+    const password = this.registerPasswordFormControl.value;
+    const password2 = this.repeatPasswordFormControl.value;
     if (password === password2) {
       this.authService.signUpWithEmailAndPassword(email, password);
     } else {
@@ -54,9 +67,8 @@ export class LoginComponent implements OnInit {
     // TODO: read from form: https://angular.io/guide/forms
     // So far hardcoded values:
     //this.authService.logInViaEmailAndPassword('topicfriends-test@gmail.com', '----TFPass....')
-
-    const email = form.form.controls.email.value;
-    const password = form.form.controls.password.value;
+    const email = this.loginEmailFormControl.value;
+    const password = this.loginPasswordFormControl.value;
 
     this.authService.logInViaEmailAndPassword(email, password);
   }

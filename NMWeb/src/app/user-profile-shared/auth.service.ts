@@ -36,18 +36,18 @@ export class AuthService {
     return this.afAuth.auth
       .createUserWithEmailAndPassword(email, password)
       .then(function(data) {
-        console.log("Signing up successful", data);
+        console.log("Signing up successful");
       })
       .catch(function(error) {
         // Handle Errors here.
-        console.log("Error on creating account", error);
+        console.log("Error on creating account");
       });
   }
 
   logInViaEmailAndPassword(email, password: string) {
     return this.afAuth.auth
       .signInWithEmailAndPassword(email, password)
-      .then(response => console.log("Logged in correctly", response))
-      .catch(error => console.log("Error loggin in", error));
+      .then(response => console.log("Logged in correctly"))
+      .catch(error => console.log("Error loggin in"));
   }
 }
