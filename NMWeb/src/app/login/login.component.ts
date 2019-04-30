@@ -64,12 +64,8 @@ export class LoginComponent implements OnInit {
   }
 
   logInViaEmailAndPassword(form: NgForm) {
-    // TODO: read from form: https://angular.io/guide/forms
-    // So far hardcoded values:
-    //this.authService.logInViaEmailAndPassword('topicfriends-test@gmail.com', '----TFPass....')
     const email = this.loginEmailFormControl.value;
     const password = this.loginPasswordFormControl.value;
-
     this.authService.logInViaEmailAndPassword(email, password);
   }
 

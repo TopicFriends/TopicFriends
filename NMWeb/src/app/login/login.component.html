@@ -2,126 +2,98 @@
   <h2>
     Log in or Sign Up
   </h2>
-
-    <button
-    mat-button
-    mat-raised-button
-    (click)="toggleLoginSignUpFields()"
-  >
+  <button mat-button mat-raised-button (click)="toggleLoginSignUpFields()">
     {{!logInSignUpToggleButton ? "Switch to Register" : "Switch to Login "}}
   </button>
   <br>
- 
-<div *ngIf="!(logInSignUpToggleButton)">
-  <!-- https://material.angular.io/components/input/examples -->
-  <form (ngSubmit)="logInViaEmailAndPassword(f)" #f="ngForm">
-<div>
-  <mat-form-field class="example-full-width">
-    <input ngModel class="form-control" [formControl]="loginEmailFormControl" name="email" matInput id='email' placeholder="Login E-mail" value="">
-    <mat-error *ngIf="loginEmailFormControl.hasError('email') && !loginEmailFormControl.hasError('required')">
-      Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="loginEmailFormControl.hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-</div>
-<div >
-  <mat-form-field class="example-full-width">
-    <input matInput [formControl]="loginPasswordFormControl" name="password" matInput id='password' placeholder="Login password" value="" minlength="8">
-    <mat-error *ngIf="!loginPasswordFormControl.hasError('minLength')">
-      Password has to have at least 8 characters
-    </mat-error>
-    <mat-error *ngIf="loginPasswordFormControl.hasError('required')">
-      Password is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-</div>
+  <div *ngIf="!(logInSignUpToggleButton)">
+    <form (ngSubmit)="logInViaEmailAndPassword(f)" #f="ngForm">
+      <div>
+        <mat-form-field class="login-full-width">
+          <input ngModel class="form-control" [formControl]="loginEmailFormControl" name="email" matInput id='email'
+            placeholder="Login E-mail" value="">
+          <mat-error *ngIf="loginEmailFormControl.hasError('email') && !loginEmailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="loginEmailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="login-full-width">
+          <input matInput [formControl]="loginPasswordFormControl" name="password" matInput id='password'
+            placeholder="Login password" value="" minlength="8">
+          <mat-error *ngIf="!loginPasswordFormControl.hasError('minLength')">
+            Password has to have at least 8 characters
+          </mat-error>
+          <mat-error *ngIf="loginPasswordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+      <button id='loginViaEmailPassword' mat-button mat-raised-button (click)="logInViaEmailAndPassword()"
+        [disabled]="!f.valid">
+        Log in
+      </button>
+    </form>
+  </div>
   <br>
-      <button
-    id = 'loginViaEmailPassword'
-    mat-button
-    mat-raised-button
-    (click)="logInViaEmailAndPassword()"
-    [disabled]="!f.valid"
-  >
-    Log in
-  </button>
-  </form>
-</div>
-<br>
-
-<div *ngIf="(logInSignUpToggleButton)">
-  <form (ngSubmit)="signUpWithEmailAndPassword(f)" #f="ngForm">
-<div>
-  <mat-form-field class="example-full-width">
-    <input matInput [formControl]="registerEmailFormControl" name="email" matInput id='email' placeholder="Register E-mail" value="">
-    <mat-error *ngIf="registerEmailFormControl.hasError('email') && !registerEmailFormControl.hasError('required')">
-      Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="registerEmailFormControl.hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-</div>
-<div >
-
-  <mat-form-field class="example-full-width">
-    <input matInput [formControl]="registerPasswordFormControl" name="password" matInput id='password' placeholder="Register password" value="">
-    <mat-error *ngIf="!registerPasswordFormControl.hasError('minLength')">
-      Password has to have at least 8 characters
-    </mat-error>
-    <mat-error *ngIf="registerPasswordFormControl.hasError('required')">
-      Password is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-</div>
-<div >
-  <mat-form-field class="example-full-width">
-    <input matInput [formControl]="repeatPasswordFormControl" name="password2" matInput id='password2' placeholder="Confirm password" value="">
-    <mat-error *ngIf="!repeatPasswordFormControl.hasError('minLength')">
-      Password has to have at least 8 characters
-    </mat-error>
-    <mat-error *ngIf="repeatPasswordFormControl.hasError('required')">
-      Password is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-</div>
-  <button
-    id = 'signUpViaEmailPassword'
-    mat-button
-    mat-raised-button
-    (click)="signUpWithEmailAndPassword()"
-     [disabled]="!f.valid"
-  >
-    Create Account
-  </button>
-  </form>
-</div>
-<br>
-
-  <button
-    mat-button
-    mat-raised-button
-    (click)="logInViaGoogle()"
-  >
-    <img
-      class="tf-login-icon"
-      src="assets/images/logos/google.svg"
-    >
+  <div *ngIf="logInSignUpToggleButton">
+    <form (ngSubmit)="signUpWithEmailAndPassword(f)" #f="ngForm">
+      <div>
+        <mat-form-field class="signup-full-width">
+          <input matInput [formControl]="registerEmailFormControl" name="email" matInput id='email'
+            placeholder="Register E-mail" value="">
+          <mat-error
+            *ngIf="registerEmailFormControl.hasError('email') && !registerEmailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="registerEmailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="signup-full-width">
+          <input matInput [formControl]="registerPasswordFormControl" name="password" matInput id='password'
+            placeholder="Register password" value="">
+          <mat-error *ngIf="!registerPasswordFormControl.hasError('minLength')">
+            Password has to have at least 8 characters
+          </mat-error>
+          <mat-error *ngIf="registerPasswordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="signup-full-width">
+          <input matInput [formControl]="repeatPasswordFormControl" name="password2" matInput id='password2'
+            placeholder="Confirm password" value="">
+          <mat-error *ngIf="!repeatPasswordFormControl.hasError('minLength')">
+            Password has to have at least 8 characters
+          </mat-error>
+          <mat-error *ngIf="repeatPasswordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button id='signUpViaEmailPassword' mat-button mat-raised-button (click)="signUpWithEmailAndPassword()"
+        [disabled]="!f.valid">
+        Create Account
+      </button>
+    </form>
+  </div>
+  <br>
+  <button mat-button mat-raised-button (click)="logInViaGoogle()">
+    <img class="tf-login-icon" src="assets/images/logos/google.svg">
     Log in via Google
   </button>
-<br>
-<br>
-  <button
-    mat-button
-    mat-raised-button
-    (click)="logInViaLinkedin()"
-  >
-    <img
-      class="tf-login-icon"
-      src="assets/images/logos/linkedin.svg"
-    >
+  <br>
+  <br>
+  <button mat-button mat-raised-button (click)="logInViaLinkedin()">
+    <img class="tf-login-icon" src="assets/images/logos/linkedin.svg">
     Log in via LinkedIn
     <!-- LinkedIn log-in disabled until further discussion.
       Considerations:
@@ -132,5 +104,4 @@
       - pending questions over which parts should or should not go into which html files
      -->
   </button>
-
 </div>

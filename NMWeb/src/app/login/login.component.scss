@@ -18,7 +18,7 @@ button {
 }
 
 h2 {
-  margin-top: 0px;
+  margin-top: 0;
   margin-bottom: 15px;
 }
 
@@ -28,12 +28,14 @@ h2 {
   color: white;
 }
 
-.example-form {
+.login-form,
+.signup-form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
 }
 
-.example-full-width {
+.login-full-width,
+.signup-full-width {
   width: 100%;
 }
