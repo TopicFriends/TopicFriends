@@ -1,7 +1,11 @@
 import { Selector } from "testcafe";
 import { getLocation } from "./testUtils";
-
-const url = "http://localhost:4444/";
+import {
+  login,
+  loginTest,
+} from './login'
+import { skillLevelsTest } from './testSkillLevels'
+import { LOCALHOST_URL } from './globals'
 
 const loginOrSignupButton = Selector("#login-or-sign-up-corner-button");
 
@@ -21,13 +25,11 @@ const passwordField = Selector(
 );
 const userPassword = "lekcjaonlineprod";
 
-(fixture`TopicFriends` as any)
+(fixture `TopicFriends` as any)
   // .disablePageReloads
-  .page(url);
+  .page(LOCALHOST_URL);
 
-test(`As a user I want to log in.`, async t => {
-  await t.click(loginOrSignupButton).click(loginViaEmailPassword);
-});
+
 
 /** DRY CoC */
 export async function navTo(t, name, { openHamburger }) {
@@ -54,6 +56,9 @@ export const reloadBetweenNavTests = true;
 
 export const navToNames = "Meetings People Topics Map About Profile".split(" "); // Profile can cause native dialog (unsaved), so should be last
 console.log("navToNames", navToNames);
+
+// TODO configure testcafe to run test from differents files
+loginTest();
 
 if (reloadBetweenNavTests) {
   navToNames.forEach(navToName => {
