@@ -20,17 +20,17 @@ export class LoginComponent implements OnInit {
   ]);
   loginPasswordFormControl = new FormControl("loginPasswordFormControl", [
     Validators.required,
-    // Minimum length off password for Firebase is 8??
+    // Minimum length of password for Firebase is 8??
     Validators.minLength(8)
   ]);
   registerPasswordFormControl = new FormControl("registerPasswordFormControl", [
     Validators.required,
-    // Minimum length off password for Firebase is 8??
+    // Minimum length of password for Firebase is 8??
     Validators.minLength(8)
   ]);
   repeatPasswordFormControl = new FormControl("repeatPasswordFormControl", [
     Validators.required,
-    // Minimum length off password for Firebase is 8??
+    // Minimum length of password for Firebase is 8??
     Validators.minLength(8)
   ]);
   constructor(private authService: AuthService, private router: Router) {
