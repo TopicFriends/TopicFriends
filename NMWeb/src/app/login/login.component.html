@@ -2,15 +2,12 @@
   <h2>
     Log in or Sign Up
   </h2>
-  <br />
   <button mat-button mat-raised-button (click)="logInViaGoogle()">
     <img class="tf-login-icon" src="assets/images/logos/google.svg">
-      Log in via Google
   </button>
   <br />
   <button mat-button mat-raised-button (click)="logInViaLinkedin()">
     <img class="tf-login-icon" src="assets/images/logos/linkedin.svg">
-    Log in via LinkedIn
     <!-- LinkedIn log-in disabled until further discussion.
       Considerations:
       - implemented using firebase sdk (not AngularFire) which might collide (version/instance)
