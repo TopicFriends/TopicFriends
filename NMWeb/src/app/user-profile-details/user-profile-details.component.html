@@ -8,13 +8,13 @@
   <h2>
     Public Profile
   </h2>
-  <button mat-button routerLink="/config" *ngIf="userProfileService.userId">
+  <button id="on-profile-config-button" mat-button routerLink="/config" *ngIf="userProfileService.userId">
     Config
   </button>
 </div>
 
 <ng-template [ngIf]="!userProfileService.userId && isOwnProfile()" >
-  <button mat-raised-button (click)="openDialog()">
+  <button id="login-on-profile-button" mat-raised-button (click)="openDialog()">
     Please log in, to access your profile
   </button>
 </ng-template>

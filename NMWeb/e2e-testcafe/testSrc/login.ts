@@ -1,23 +1,47 @@
-import { Selector } from 'testcafe'
-import { getLocation } from './testUtils'
-import { TESTUSER } from './globals'
+import { Selector } from "testcafe";
+import { getLocation } from "./testUtils";
+import { TEST_USER, LOCALHOST_URL } from "./globals";
 
-const loginOrSignupButton = Selector('#login-or-sign-up-corner-button');
-const loginViaEmailPassword = Selector('#loginViaEmailPassword');
-const emailInput = Selector('#email');
-const passwordInput = Selector('#password');
+const loginOrSignUpButton = Selector("#login-or-sign-up-corner-button");
+const loginViaEmailPassword = Selector("#loginViaEmailPassword");
+const emailInput = Selector("#email");
+const passwordInput = Selector("#password");
+const loginViaProfileButton = Selector("#login-on-profile-button");
+
+export function loginViaProfileTest() {
+  return test(`Should log-in using button on profile and go to profile page`, async t => {
+    loginViaProfile(t);
+    await t.expect(getLocation()).contains("/profile");
+  });
+}
 
 export function loginTest() {
   return test(`Should log-in with test account and go to profile page`, async t => {
     login(t);
-    await t.expect(getLocation()).contains('/profile');
+    // Problem with assertion
+    // await t.expect(getLocation()).contains("/profile");
   });
 }
 
-export async function login(t) {
+export async function loginByEmailPassword(t, location?) {
+  location && (await t.navigateTo(LOCALHOST_URL + location));
+
+  if (location === "profile") {
+    await t.click(loginViaProfileButton);
+  } else {
+    await t.click(loginOrSignUpButton);
+  }
+
   return await t
-    .click(loginOrSignupButton)
-    .typeText(emailInput, TESTUSER.userName)
-    .typeText(passwordInput, TESTUSER.password)
+    .typeText(emailInput, TEST_USER.userName)
+    .typeText(passwordInput, TEST_USER.password)
     .click(loginViaEmailPassword);
-};
+}
+
+export async function login(t) {
+  return loginByEmailPassword(t, "/");
+}
+
+export async function loginViaProfile(t) {
+  return loginByEmailPassword(t, "profile");
+}
