@@ -31,3 +31,12 @@ div.gm-style  > div > div > div > div > div > div > div {
 }
 
 html { overflow-x:hidden; }
+
+.ui-widget-overlay.ui-dialog-mask {
+  z-index: 0 !important; // HACK (hide pick-location modal overlay) for issue https://github.com/TopicFriends/TopicFriends/issues/168
+  // FIXME: makes the overlay invisible
+}
+
+p-dialog {
+  z-index: 2000; // (did not work) HACK for issue https://github.com/TopicFriends/TopicFriends/issues/168
+}
