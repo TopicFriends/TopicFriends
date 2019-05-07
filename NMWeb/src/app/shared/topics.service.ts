@@ -553,6 +553,7 @@ export class TopicsService {
     'Aurelia',
     'Marionette',
     tagNoIcon('Cypress' /* From David Atencia GitHub repo :) */) ,
+    'Dart', tagLogoTipo('Flutter'),
   ]);
 
 
