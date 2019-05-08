@@ -1,4 +1,4 @@
-# TopicFriends ![TopicFriends icon](NMWeb/src/assets/TFicon.png)
+# TopicFriends ![TopicFriends icon](NMWeb/src/favicon.ico)
 
 Open source Angular app that connects people with similar interests and goals. 
 
@@ -64,25 +64,25 @@ Please read [CONTRIBUTING](CONTRIBUTING.md) for details on our code of conduct, 
 
 ## Authors
 
-All contributors and people who attended PeopleMatcher Hackathon (in no particular order) :
-**Alejandro J. Morón Nieto**
-**Moisés Jiménez Martín**
-**Pablo Ortuño (Willimbu)**
-**Rubén Triviño (Willimbu)**
-**Enrique Arrabal (Willimbu)**
-**Luis José Sánchez (Espiral)**
-**Alfredo Martinez (Espiral)**
-**Francisco Durán Navarro**
-**Adrian Lopez**
-**Antonio David Ponce**
-**Luis Podadera**
-**David Bernal Guerrero**
-**Javier Bernal Guerrero**
-**Javier Molina**
-**Javier Matos**
-**Jesús Estevez**
-**Anna Niedzialek**
-**Karol Depka Pradzinski** - *Initial idea* - [GitHub](https://github.com/karol-depka)
+All contributors and people who attended PeopleMatcher Hackathon (in no particular order) :<br/>
+**Alejandro J. Morón Nieto**<br/>
+**Moisés Jiménez Martín**<br/>
+**Pablo Ortuño (Willimbu)**<br/>
+**Rubén Triviño (Willimbu)**<br/>
+**Enrique Arrabal (Willimbu)**<br/>
+**Luis José Sánchez (Espiral)**<br/>
+**Alfredo Martinez (Espiral)**<br/>
+**Francisco Durán Navarro**<br/>
+**Adrian Lopez**<br/>
+**Antonio David Ponce**<br/>
+**Luis Podadera**<br/>
+**David Bernal Guerrero**<br/>
+**Javier Bernal Guerrero**<br/>
+**Javier Molina**<br/>
+**Javier Matos**<br/>
+**Jesús Estevez**<br/>
+**Anna Niedzialek**<br/>
+**Karol Depka Pradzinski** - *Initial idea* - [GitHub](https://github.com/karol-depka)<br/>
 
 ## License
 
