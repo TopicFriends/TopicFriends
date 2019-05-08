@@ -59,12 +59,12 @@ export function navToPages(options: {reloadBetweenNavTests: boolean}) {
 
 function navToPagesFromUrls() {
   for ( const pageName of navToNames ) {
-    const url = LOCALHOST_URL + '/' + pageName.toLowerCase()
-    test('Navigate via url to ' + url, async t => {
+    const urlSuffix = '/' + pageName.toLowerCase()
+    test('Navigate via url to ' + urlSuffix, async t => {
       await checkPageLoadedCorrectly(t, pageName)
       // just
-    }).page(url)
-      .only
+    }).page(LOCALHOST_URL + urlSuffix)
+      // .only
   }
 }
 
