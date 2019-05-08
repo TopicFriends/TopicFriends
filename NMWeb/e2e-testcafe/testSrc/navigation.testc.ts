@@ -1,11 +1,19 @@
 /** DRY CoC */
 import { getLocation } from './utilsGlobal/utils'
 import { logDebug } from './utilsGlobal/log'
+import { Selector } from 'testcafe'
 
-export async function navTo(t, name, { openHamburger }) {
+async function expectActiveNavBarLink(pageId: string, t: TestController) {
+  for ( const curPageId of navToNames ) {
+    const isCurActive = pageId === curPageId
+    await t.expect(Selector(`#navTo${curPageId}`).hasClass('active')).eql(isCurActive)
+  }
+}
+
+export async function navViaNavBarTo(t: TestController, name: string, { openHamburger }) {
   // await tz
   // .maximizeWindow( )
-  logDebug("navTo", name);
+  logDebug("navViaNavBarTo", name);
   if (openHamburger) {
     await t.click("#menuButtonHamburger");
   }
@@ -13,11 +21,12 @@ export async function navTo(t, name, { openHamburger }) {
     .click("#navTo" + name)
     .expect(getLocation())
     .contains("/" + name.toLowerCase());
+  await expectActiveNavBarLink(name, t)
 }
 
 export function testNavTo(name) {
-  test(`Navigate to: ` + name, async t => {
-    await navTo(t, name, { openHamburger: true });
+  test(`Navigate via NavBar to: ` + name, async t => {
+    await navViaNavBarTo(t, name, { openHamburger: true });
   });
 }
 
@@ -34,13 +43,23 @@ export function navToPages(options: {reloadBetweenNavTests: boolean}) {
       await t.click("#menuButtonHamburger");
       logDebug("navToNames", navToNames);
       for (const navToName of navToNames) {
-        await navTo(t, navToName, { openHamburger: false });
+        await navViaNavBarTo(t, navToName, { openHamburger: false });
       }
     });
   }
 }
 
+function navToPagesFromUrls() {
+  navToNames.forEach(name => {
+    const url = '/' + name
+    test('Navigate via url to ' + url, async t => {
+
+    })
+  })
+}
+
 export function navToPagesTests() {
-  navToPages({reloadBetweenNavTests: false}) // faster first
+  navToPages({reloadBetweenNavTests: false}) // faster first (no reloading in-between pages)
   navToPages({reloadBetweenNavTests: true})
+  navToPagesFromUrls()
 }
