@@ -1,6 +1,7 @@
 import { getLocation } from "../utilsGlobal/utils";
 import { loginViaProfile } from "../login/login.testc";
 import { Selector } from "testcafe";
+import { dismissCookieLawViaCookie } from '../cookieLaw/cookieLaw.testc'
 
 const onProfileConfigButton = Selector("#on-profile-config-button");
 const visitGeoTag = Selector(
@@ -10,6 +11,7 @@ const twitterInput = Selector("app-other-profile-user-name input");
 
 export function userProfileTest() {
   return test(`Should check user's profile page.`, async t => {
+    await dismissCookieLawViaCookie(t); // for some reason the one in beforeEach does not work and we need ot repeat here
     await loginViaProfile(t);
     await t.expect(getLocation()).contains("/profile");
     // Weird behaviour onclicking config
