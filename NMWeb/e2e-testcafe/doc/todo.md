@@ -1,3 +1,30 @@
+### Goals:
+
+1. Move protractor tests
+2. Improve speed of the test runs
+
+- Intercepting request to log in quicker:
+- https://devexpress.github.io/testcafe/documentation/test-api/intercepting-http-requests/logging-http-requests.html
+
+
+3. Try running headless without focused out windows.
+4. Generate readable JSON report.
+   
+
+### List of available by default devices to test on in emulator:
+
+- iPad Pro
+- iPad
+- iPhone X
+- iPhone 6/7/8 Plus
+- iPhone 6/7/8
+- iPhone 5/SE
+- Pixel 2 XL
+- Pixel 2
+- Galaxy S5
+
+### Resources:
+
 - https://devexpress.github.io/testcafe/documentation/recipes/test-on-remote-computers-and-mobile-devices.html
 
 - https://devexpress.github.io/testcafe/documentation/using-testcafe/common-concepts/browsers/using-chrome-device-emulation.html
@@ -20,15 +47,3 @@
 - :headless
 
 - https://devexpress.github.io/testcafe/documentation/test-api/assertions/
-
-# List of available by default devices to test on in emulator:
-
-- iPad Pro
-- iPad
-- iPhone X
-- iPhone 6/7/8 Plus
-- iPhone 6/7/8
-- iPhone 5/SE
-- Pixel 2 XL
-- Pixel 2
-- Galaxy S5

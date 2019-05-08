@@ -1,12 +1,13 @@
 import { Selector } from "testcafe";
-import { getLocation } from "./testUtils";
-import { TEST_USER, LOCALHOST_URL } from "./globals";
+import { getLocation } from "../utilsGlobal/utils";
+import { TEST_USER, LOCALHOST_URL } from "../utilsGlobal/globals";
 
 const loginOrSignUpButton = Selector("#login-or-sign-up-corner-button");
 const loginViaEmailPassword = Selector("#loginViaEmailPassword");
 const emailInput = Selector("#email");
 const passwordInput = Selector("#password");
 const loginViaProfileButton = Selector("#login-on-profile-button");
+const acceptCookiesButton = Selector("#accept-cookies-button");
 
 export function loginViaProfileTest() {
   return test(`Should log-in using button on profile and go to profile page`, async t => {
@@ -35,7 +36,8 @@ export async function loginByEmailPassword(t, location?) {
   return await t
     .typeText(emailInput, TEST_USER.userName)
     .typeText(passwordInput, TEST_USER.password)
-    .click(loginViaEmailPassword);
+    .click(loginViaEmailPassword)
+    .click(acceptCookiesButton);
 }
 
 export async function login(t) {
