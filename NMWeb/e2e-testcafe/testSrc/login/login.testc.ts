@@ -1,5 +1,5 @@
 import { Selector } from "testcafe";
-import { getLocation } from "../utilsGlobal/utils";
+import { getWindowDocumentLocation } from "../utilsGlobal/utils";
 import { TEST_USER, LOCALHOST_URL } from "../utilsGlobal/globals";
 
 const loginOrSignUpButton = Selector("#login-or-sign-up-corner-button");
@@ -11,7 +11,7 @@ const loginViaProfileButton = Selector("#login-on-profile-button");
 export function loginViaProfileTest() {
   return test(`Should log-in using button on profile and go to profile page`, async t => {
     loginViaProfile(t);
-    await t.expect(getLocation()).contains("/profile");
+    await t.expect(getWindowDocumentLocation()).contains("/profile");
   });
 }
 
@@ -19,7 +19,7 @@ export function loginTest() {
   return test(`Should log-in with test account and go to profile page`, async t => {
     login(t);
     // Problem with assertion
-    // await t.expect(getLocation()).contains("/profile");
+    // await t.expect(getWindowDocumentLocation()).contains("/profile");
   });
 }
 

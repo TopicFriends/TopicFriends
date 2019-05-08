@@ -1,12 +1,22 @@
 /** DRY CoC */
-import { getLocation } from './utilsGlobal/utils'
+import {
+  getWindowDocumentLocation,
+  getWindowDocumentTitle,
+} from './utilsGlobal/utils'
 import { logDebug } from './utilsGlobal/log'
 import { Selector } from 'testcafe'
+import { LOCALHOST_URL } from './utilsGlobal/globals'
 
-async function expectActiveNavBarLink(pageId: string, t: TestController) {
+async function checkPageLoadedCorrectly(t: TestController, pageName: string) {
+  await t.expect(getWindowDocumentLocation())
+    .contains("/" + pageName.toLowerCase());
+
+  await t.expect(getWindowDocumentTitle())
+    .eql(pageName + ' - TopicFriends');
+
   for ( const curPageId of navToNames ) {
-    const isCurActive = pageId === curPageId
-    await t.expect(Selector(`#navTo${curPageId}`).hasClass('active')).eql(isCurActive)
+    const curActive = pageName === curPageId
+    await t.expect(Selector(`#navTo${curPageId}`).hasClass('active')).eql(curActive)
   }
 }
 
@@ -19,9 +29,7 @@ export async function navViaNavBarTo(t: TestController, name: string, { openHamb
   }
   await t
     .click("#navTo" + name)
-    .expect(getLocation())
-    .contains("/" + name.toLowerCase());
-  await expectActiveNavBarLink(name, t)
+  await checkPageLoadedCorrectly(t, name)
 }
 
 export function testNavTo(name) {
@@ -50,12 +58,14 @@ export function navToPages(options: {reloadBetweenNavTests: boolean}) {
 }
 
 function navToPagesFromUrls() {
-  navToNames.forEach(name => {
-    const url = '/' + name
+  for ( const pageName of navToNames ) {
+    const url = LOCALHOST_URL + '/' + pageName.toLowerCase()
     test('Navigate via url to ' + url, async t => {
-
-    })
-  })
+      await checkPageLoadedCorrectly(t, pageName)
+      // just
+    }).page(url)
+      .only
+  }
 }
 
 export function navToPagesTests() {
