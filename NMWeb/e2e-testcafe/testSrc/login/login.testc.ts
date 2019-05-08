@@ -1,6 +1,6 @@
 import { Selector } from "testcafe";
-import { getLocation } from "./testUtils";
-import { TEST_USER, LOCALHOST_URL } from "./globals";
+import { getLocation } from "../utilsGlobal/utils";
+import { TEST_USER, LOCALHOST_URL } from "../utilsGlobal/globals";
 
 const loginOrSignUpButton = Selector("#login-or-sign-up-corner-button");
 const loginViaEmailPassword = Selector("#loginViaEmailPassword");

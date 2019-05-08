@@ -1,5 +1,5 @@
-import { getLocation } from "./testUtils";
-import { loginViaProfile } from "./login";
+import { getLocation } from "../utilsGlobal/utils";
+import { loginViaProfile } from "../login/login.testc";
 import { Selector } from "testcafe";
 
 const onProfileConfigButton = Selector("#on-profile-config-button");

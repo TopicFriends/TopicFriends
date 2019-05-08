@@ -1,13 +1,13 @@
 import { Selector } from "testcafe";
-import { getLocation } from "./testUtils";
+import { getLocation } from "./utilsGlobal/utils";
 import {
   login,
   loginTest,
   loginViaProfile,
   loginViaProfileTest
-} from "./login";
-import { userProfileTest } from "./userProfile";
-import { LOCALHOST_URL } from "./globals";
+} from "./login/login.testc";
+import { userProfileTest } from "./profile/userProfile.testc";
+import { LOCALHOST_URL } from "./utilsGlobal/globals";
 
 (fixture`TopicFriends` as any)
   // .disablePageReloads
