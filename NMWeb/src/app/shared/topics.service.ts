@@ -554,6 +554,7 @@ export class TopicsService {
     'Marionette',
     tagNoIcon('Cypress' /* From David Atencia GitHub repo :) */) ,
     'Dart', tagLogoTipo('Flutter'),
+    'Angular Dart',
   ]);
 
 
