@@ -23,6 +23,13 @@ export class AuthService {
     );
   }
 
+  logInViaGithub() {
+    return this.afAuth.auth
+      .signInWithPopup(
+        new firebase.auth.GithubAuthProvider()
+      );
+  }
+
   // loginViaLinkedIn() {
   //   return this.afAuth.auth.signInWithCustomToken() // JSONP token
   // }
