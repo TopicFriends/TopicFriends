@@ -1,4 +1,3 @@
-import { Selector } from "testcafe";
 import {
   loginTest,
   loginViaProfileTest
