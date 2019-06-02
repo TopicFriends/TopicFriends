@@ -4,10 +4,8 @@ import {UserGroupsComponent} from './user-groups/user-groups.component'
 import {TopicsListComponent} from './topics-list/topics-list.component'
 import {TermsOfServiceComponent} from './terms-of-service/terms-of-service.component'
 import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component'
-import {UserListPage} from './user-list-page/user-list.page'
 import {TopicsMapPageComponent} from './topics-map-page/topics-map-page.component'
 import {TOPIC_ID_PARAM} from "./shared/routes";
-import {LoginComponent} from "./login/login.component";
 
 const appRoutes: Routes = [
   {
@@ -72,8 +70,7 @@ const appRoutes: Routes = [
     redirectTo: '',
   },
 
-];
-
+]
 
 export const routingModule = RouterModule.forRoot(
   appRoutes,
