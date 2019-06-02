@@ -28,14 +28,6 @@ import {SharedModule} from './shared/shared.module';
 // import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
 import { TopicsListComponent } from './topics-list/topics-list.component';
 import {MapsModule} from './maps/maps.module'
-
-// import {
-//   AngularFireModule,
-//   AngularFire,
-//   AuthMethods,
-//   AuthProviders} from 'angularfire2';
-
-
 import 'hammerjs';
 import {FormsModule} from '@angular/forms';
 import { UserGroupsComponent } from './user-groups/user-groups.component'

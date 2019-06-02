@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TopicInterest } from '../../user-profile-shared/user-interests'
 import {
   angular,
   angularFire,
@@ -18,16 +19,14 @@ import {
   sass,
   typeScript,
   webPack,
-} from '../shared/topics.service'
-import {Tag} from '@angular/compiler/src/i18n/serializers/xml_helper'
-import {TopicInterest} from '../user-profile-shared/user-interests'
+} from '../../shared/topics.service'
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+  selector: 'app-about-powered-by',
+  templateUrl: './about-powered-by.component.html',
+  styleUrls: ['./about-powered-by.component.scss']
 })
-export class AboutComponent implements OnInit {
+export class AboutPoweredByComponent implements OnInit {
 
   entrepreneurship = new TopicInterest(entrepreneurship)
   businessNetworking = new TopicInterest(businessNetworking)
@@ -48,21 +47,10 @@ export class AboutComponent implements OnInit {
   npm = new TopicInterest(npm)
   sass = new TopicInterest(sass)
 
+
   constructor() { }
 
   ngOnInit() {
-    this.facebookConection();
   }
 
-  facebookConection() {
-    let doc = document;
-    let script : string = 'script';
-    let sdkId : string = 'facebook-jssdk';
-
-    var js, fjs = document.getElementsByTagName(script)[0];
-    if (document.getElementById(sdkId)) return;
-    js = document.createElement(script); js.id = sdkId;
-    js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.10";
-    fjs.parentNode.insertBefore(js, fjs);
-  }
 }

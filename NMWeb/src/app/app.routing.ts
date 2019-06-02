@@ -32,7 +32,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'about',
-    loadChildren: 'app/about/about.module#AboutModule',
+    loadChildren: 'app/about-page/about-page.module#AboutPageModule',
   },
   {
     path: 'topic/:' + TOPIC_ID_PARAM,
