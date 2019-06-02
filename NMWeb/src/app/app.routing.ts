@@ -4,7 +4,7 @@ import {UserGroupsComponent} from './user-groups/user-groups.component'
 import {TopicsListComponent} from './topics-list/topics-list.component'
 import {TermsOfServiceComponent} from './terms-of-service/terms-of-service.component'
 import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component'
-import {UserListComponent} from './user-list/user-list.component'
+import {UserListPage} from './user-list-page/user-list.page'
 import {TopicsMapPageComponent} from './topics-map-page/topics-map-page.component'
 import {TOPIC_ID_PARAM} from "./shared/routes";
 import {LoginComponent} from "./login/login.component";
@@ -16,11 +16,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'people-list',
-    component: UserListComponent,
+    redirectTo: 'people',
   },
   {
     path: 'people',
-    component: UserListComponent,
+    loadChildren: 'app/user-list-page/user-list-page.module#UserListPageModule',
   },
   {
     path: 'topics',

@@ -2,8 +2,8 @@
   <hr>
   <h3 class="tf-title">{{attendeesCount}} Techies joining us for this meeting:</h3>  <!--7px - find a way for aligning with meeting attendance user list in a better way-->
 </ng-template>
-<nw-user-template
+<nw-user-list-item
   *ngFor="let user of userList; trackBy: trackByKey"
   [userProfile]="user.userData"
 >
-</nw-user-template>
+</nw-user-list-item>

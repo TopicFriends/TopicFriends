@@ -2,7 +2,7 @@ import {NgModule, CUSTOM_ELEMENTS_SCHEMA, NgZone} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
-import { UserListComponent } from './user-list/user-list.component';
+import { UserListPage } from './user-list-page/user-list.page';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatCardModule, MatChipsModule, MatIcon, MatIconModule, MatListModule, MatNavList, MatRadioModule, MatSelectModule,
@@ -16,7 +16,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {UserProfileService} from './user-profile-shared/user-profile.service';
 import {AuthService} from './user-profile-shared/auth.service';
-import {UserListService} from './user-list/user-list.service';
+import {UserListService} from './user-list-page/user-list.service';
 import {UserMatcherService} from './user-profile-shared/user-matcher.service';
 // import { UserTemplateComponent } from './user-list/user-template/user-template.component';
 import {MeetingsModule} from './meeting-list/meetings.module';
@@ -45,7 +45,6 @@ import { LandingPageModule } from './landing-page/landing-page.module'
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent,
     // UserTemplateComponent,
     // UserInterestsModeViewComponent,
     TopicsListComponent,

@@ -24,11 +24,11 @@ export class SupplyDemandTemplate{
 }
 
 @Component({
-  selector: 'nw-user-template',
-  templateUrl: './user-template.component.html',
-  styleUrls: ['./user-template.component.scss'],
+  selector: 'nw-user-list-item',
+  templateUrl: './user-list-item.component.html',
+  styleUrls: ['./user-list-item.component.scss'],
 })
-export class UserTemplateComponent implements OnInit, OnDestroy {
+export class UserListItemComponent implements OnInit, OnDestroy {
 
   @Input('userProfile') _userPublicProfile: UserData
   @Input() showLess: boolean;

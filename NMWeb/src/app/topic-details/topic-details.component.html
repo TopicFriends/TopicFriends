@@ -23,12 +23,12 @@
 
 <h2 id="users">Interested Users</h2>
 <div class="users-list">
-  <nw-user-template
+  <nw-user-list-item
     class="user-card"
     *ngFor="let user of interestedUsers | limitTo:showLimit"
     [userProfile]="user.userDataCombined.userData"
     [showLess]="true"
-  ></nw-user-template>
+  ></nw-user-list-item>
 </div>
 
 <button
