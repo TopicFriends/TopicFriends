@@ -1,0 +1,3 @@
+[submodule "NMWeb/src/app/TopicFriendsShared"]
+	path = NMWeb/src/app/TopicFriendsShared
+	url = git@github.com:TopicFriends/TopicFriendsShared.git
