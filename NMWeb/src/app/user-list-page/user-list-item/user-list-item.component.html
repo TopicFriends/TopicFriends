@@ -1,7 +1,13 @@
 <mat-card class="user-item" style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
   <mat-card-header>
     <!--<div mat-card-avatar class="card-avatar"></div>-->
-    <img mat-card-avatar *ngIf="profileBasicInfo?.photoUrl" mat-card-avatar style="vertical-align:middle" src="{{profileBasicInfo?.photoUrl}}"/>
+    <img
+      mat-card-avatar
+      *ngIf="profileBasicInfo?.photoUrl"
+      style="vertical-align:middle"
+      src="{{profileBasicInfo?.photoUrl}}"
+      onerror="this.src='assets/images/icons/user-solid.svg'"
+    >
     <mat-card-title
       style="vertical-align:middle"
     >

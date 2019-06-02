@@ -15,22 +15,6 @@ li {
   margin: 7px 0;
 }
 
-
-$partner-margin: 20px;
-.partners-container {
-  margin-top: -$partner-margin;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center
-}
-
-.partner-img {
-  margin-top: $partner-margin;
-  margin-right: $partner-margin;
-}
-
-
 $bg-target: #c0c0c0;
 
 @keyframes pulse {

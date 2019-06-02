@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {UserDataCombined, UserProfileService} from './user-profile.service'
 import {MatchResults, UserInterests, WantedTopics} from './user-interests'
-import {UserListService} from '../user-list/user-list.service'
+import {UserListService} from '../user-list-page/user-list.service'
 import {Observable} from 'rxjs/Observable'
 import {TagListModel} from '../shared/TagListModel'
 

@@ -9,7 +9,7 @@ import {Title} from "@angular/platform-browser";
 import { GeoLocationService } from '../shared/geo-location.service';
 import {UserDataCombined} from '../user-profile-shared/user-profile.service';
 import {UserMatched, UserMatcherService} from '../user-profile-shared/user-matcher.service';
-import { UserListService } from '../user-list/user-list.service';
+import { UserListService } from '../user-list-page/user-list.service';
 import { TagInclusions } from '../shared/TagInclusions';
 import {TopicsDetailsService} from './topics-details.service'
 import {DbList, DbListReadOnly} from '../shared/db.service'

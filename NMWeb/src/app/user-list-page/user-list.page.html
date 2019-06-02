@@ -33,10 +33,10 @@
 </div>
 
 
-<nw-user-template
+<nw-user-list-item
   *ngFor="let user of userListCombinedSorted; trackBy: trackByKey"
   [userProfile]="user.userDataCombined.userData"
-></nw-user-template>
+></nw-user-list-item>
 <!-- TODO: pass UserMatched instead -->
 <!-- TODO: restore trackBy: trackByKey -->
 
@@ -45,7 +45,6 @@
 <!--&gt;-->
   <!--Person: {{user.profile.displayName}}-->
 <!--</div>-->
-
 
 
 <!--<br/>-->

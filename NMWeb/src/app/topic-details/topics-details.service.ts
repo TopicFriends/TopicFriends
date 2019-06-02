@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {UserListService} from '../user-list/user-list.service'
+import {UserListService} from '../user-list-page/user-list.service'
 import {TagInclusions} from '../shared/TagInclusions'
 import {UserData, UserDataCombined} from '../user-profile-shared/user-profile.service'
 import { DbListReadOnly} from '../shared/db.service'

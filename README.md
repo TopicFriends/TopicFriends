@@ -1,6 +1,6 @@
 # TopicFriends ![TopicFriends icon](NMWeb/src/favicon.ico)
 
-Open source Angular app that connects people with similar interests and goals. 
+Open source Angular app that connects People with similar actionable interests and goals and based on geo-locations.
 
 ## Getting Started
 
