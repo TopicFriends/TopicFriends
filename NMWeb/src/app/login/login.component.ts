@@ -25,6 +25,10 @@ export class LoginComponent implements OnInit {
     this.authService.loginViaGoogle();
   }
 
+  logInViaGithub() {
+    this.authService.logInViaGithub();
+  }
+
   logInViaLinkedin() {
     window.open("assets/login/popup.html", "name", "height=585,width=400");
   }
