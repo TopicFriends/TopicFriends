@@ -92,6 +92,7 @@ Please wait to log in...
         '?code=' + encodeURIComponent(code) +
         '&state=' + encodeURIComponent(state) +
         '&callback=' + tokenReceived.name;
+    console.log('LinkedIn auth popup for jsonp: script.src: ' + script.src + ' ; script: ' + script);
     document.head.appendChild(script);
   }
 </script>
