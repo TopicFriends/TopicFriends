@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css'
+@import '../node_modules/primeng/resources/themes/omega/theme.css'
+@import '../node_modules/primeng/resources/primeng.min.css'
+@import '../node_modules/font-awesome/css/font-awesome.min.css'
+
+$max-screen-width: 600px
+$map-names-color: #fff
+$blur-radius: 1px
+
+body
+  padding: 0
+  margin: 0
+
+*
+  font-family: 'Roboto', sans-serif
+
+.disable-scrolling
+  overflow: hidden
+
+div.gm-style  > div > div > div > div > div > div > div
+  text-shadow: -1px 0 $blur-radius $map-names-color 0 1px $blur-radius $map-names-color 1px 0 $blur-radius $map-names-color 0 -1px $blur-radius $map-names-color
+
+html
+  overflow-x: hidden
+
+.ui-widget-overlay.ui-dialog-mask
+  z-index: 0 !important // HACK (hide pick-location modal overlay) for issue https://github.com/TopicFriends/TopicFriends/issues/168
+  // FIXME: makes the overlay invisible
+
+p-dialog
+  z-index: 2000 // (did not work) HACK for issue https://github.com/TopicFriends/TopicFriends/issues/168
