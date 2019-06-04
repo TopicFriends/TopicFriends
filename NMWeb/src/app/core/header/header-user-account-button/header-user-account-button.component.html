@@ -1,0 +1,27 @@
+
+<button id='login-or-sign-up-corner-button'
+        class="tf-toolbar-btn"
+        *ngIf="! (authService.user | async); else loggedUserAccountButton"
+        mat-button
+        (click)="authDialogService.openLoginOrRegisterDialog()">
+  Log In or Sign Up
+</button>
+<ng-template
+  #loggedUserAccountButton
+>
+  <button
+    class="tf-toolbar-btn"
+    mat-button
+    [matMenuTriggerFor]="accountMenu">
+    {{ ((authService.user | async)?.displayName) || ((authService.user | async)?.email) }}
+  </button>
+  <mat-menu #accountMenu="matMenu">
+    <button mat-menu-item
+            routerLink="/profile"
+            routerLinkActive="active">Profile
+    </button>
+    <button mat-menu-item
+            (click)="authService.logout()">Log out
+    </button>
+  </mat-menu>
+</ng-template>

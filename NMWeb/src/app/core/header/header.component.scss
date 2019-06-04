@@ -41,28 +41,12 @@ $tool-bar-height: 5vh;
     }
 
   }
-
-  button {
-    background-color: rgb(103, 58, 183);
-    height: $tool-bar-height;
-    border-radius: 0;
-    margin-right: 0;
-    text-align: center;
-    line-height: initial;
-    color: white;
-  }
 }
 
 .menu-button {
   margin-left: -10px;
 }
 
-.user-profile-corner-button {
-  //text-shadow: 0 0 10px #ff0000;
-  //text-shadow: 0 0 20px #ffffff, 3px 3px 20px #ffffff;
-  color: white;
-  //text-shadow: 0 0 2px #ffffff;
-}
 
 mat-toolbar {
   //margin-left: 10px !important;

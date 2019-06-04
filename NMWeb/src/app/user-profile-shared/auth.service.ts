@@ -13,6 +13,7 @@ export class AuthService {
   constructor(public afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
     this.user.subscribe(user => {
+      console.log('AuthService user.subscribe; user: ', user)
       this.userSaved = user;
     });
   }

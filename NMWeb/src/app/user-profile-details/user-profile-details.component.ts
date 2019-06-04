@@ -16,7 +16,7 @@ import {UserConfigService} from "../shared/user-config.service"
 import { USER_PROFILE_ID_PARAM_NO_COLON } from '../shared/routes'
 import { Title } from '@angular/platform-browser'
 import {userAliases} from '../../assets/user-aliases'
-import {HeaderComponent} from "../core/header/header.component";
+import { AuthDialogService } from '../core/auth-dialog.service'
 
 
 @Component({
@@ -55,7 +55,7 @@ export class UserProfileDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userConfigService: UserConfigService,
     private titleService: Title,
-    private header: HeaderComponent
+    public authDialogService: AuthDialogService,
   ) {
     console.log('UserProfileComponent constructor')
 
@@ -127,7 +127,7 @@ export class UserProfileDetailsComponent implements OnInit {
     const userDescriptions = this.userDescriptions.getValue()
     console.log('userGeoLocations', userGeoLocations)
     console.log('save()', userInterests);
-    (this.isFirstTime) ? this.userConfigService.setPrivacityValue('Acceptedgit ') : false;
+    (this.isFirstTime) ? this.userConfigService.setPrivacityValue('Accepted') : false;
     // this.userProfileObservable =
     this.userProfileService.saveUserProfile(
       userProfile,
@@ -174,10 +174,6 @@ export class UserProfileDetailsComponent implements OnInit {
 
   shouldShowUserProfile() {
     return !(!this.userProfileInputs || !this.authService.userSaved && this.userProfileInputs.isEditable);
-  }
-
-  openDialog(){
-    this.header.openDialog();
   }
 
   isOwnProfile() {

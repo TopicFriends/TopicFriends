@@ -14,7 +14,8 @@
 </div>
 
 <ng-template [ngIf]="!userProfileService.userId && isOwnProfile()" >
-  <button id="login-on-profile-button" mat-raised-button (click)="openDialog()">
+  <button id="login-on-profile-button" mat-raised-button
+          (click)="authDialogService.openLoginOrRegisterDialog()">
     Please log in, to access your profile
   </button>
 </ng-template>
@@ -65,9 +66,6 @@
     ></app-user-interests>
 
 
-
-
-
   <label for="checkPrivacity" *ngIf="userProfileInputs.isEditable">
     <input class='form-control' type="checkbox" name="checkPrivacity" id="checkPrivacity" [(ngModel)]="checkPrivacityValue">
     I accept the  <a routerLink="/privacy" class="privacityLink">Privacy Statement</a> and I declare to be over 16 years old.
@@ -108,4 +106,3 @@
   <!--</button>-->
 
 </ng-template>
-

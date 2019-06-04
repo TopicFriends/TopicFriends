@@ -19,7 +19,7 @@ body
   overflow: hidden
 
 div.gm-style  > div > div > div > div > div > div > div
-  text-shadow: -1px 0 $blur-radius $map-names-color 0 1px $blur-radius $map-names-color 1px 0 $blur-radius $map-names-color 0 -1px $blur-radius $map-names-color
+  text-shadow: -1px 0 $blur-radius $map-names-color, 0 1px $blur-radius $map-names-color, 1px 0 $blur-radius $map-names-color, 0 -1px $blur-radius $map-names-color
 
 html
   overflow-x: hidden
@@ -30,3 +30,12 @@ html
 
 p-dialog
   z-index: 2000 // (did not work) HACK for issue https://github.com/TopicFriends/TopicFriends/issues/168
+
+button.tf-toolbar-btn
+  background-color: rgb(103, 58, 183)
+  height: 100%
+  border-radius: 0
+  margin-right: 0
+  text-align: center
+  line-height: initial
+  color: white
