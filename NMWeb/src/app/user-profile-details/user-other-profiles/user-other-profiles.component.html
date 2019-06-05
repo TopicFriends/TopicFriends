@@ -1,6 +1,6 @@
 <mat-card style="margin-bottom: 10px">
 
-  <mat-card-title>Other Profiles</mat-card-title>
+  <mat-card-title>Other Profiles (optional, but recommended)</mat-card-title>
 
 <mat-card-content>
 
@@ -16,7 +16,6 @@
     [userProfileInputs]="userProfileInputs"
   ></app-other-profile-user-name>
 
-
   <mat-form-field *ngIf="false">
     <mat-placeholder>
       My Website URL
@@ -24,13 +23,11 @@
     <span matPrefix>
       <mat-icon>languages</mat-icon>
     </span>
-
     <input
       matInput
       [formControl]="otherProfileFacebook"
     >
   </mat-form-field>
-
 </div>
 
 </mat-card-content>

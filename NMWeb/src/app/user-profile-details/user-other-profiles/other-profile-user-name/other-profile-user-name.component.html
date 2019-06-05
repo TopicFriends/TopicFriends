@@ -8,16 +8,16 @@
       <b>{{descriptor.websiteName}}</b>
       &nbsp;Profile
       <span class="input-remark">
-        (optional, {{descriptor.whatIsEnough}} enough)
+        ({{descriptor.whatIsEnough}})
       </span>
     </mat-placeholder>
-    <span matPrefix style="text-align: center">
+    <span class="tf-user-other-profile-prefix" matPrefix style="text-align: center">
       <app-user-other-profile-icon
         style="display: inline"
         [descriptor]="descriptor"
       ></app-user-other-profile-icon>
       &nbsp;
-      {{descriptor.urlPrefix}}
+      {{descriptor.urlPrefix.replace('https://', '')}}
     </span>
 
     <input

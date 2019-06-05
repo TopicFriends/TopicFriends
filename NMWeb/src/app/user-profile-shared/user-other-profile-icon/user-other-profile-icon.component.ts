@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UserOtherProfileDescriptor} from '../../user-profile-details/user-other-profiles/user-other-profiles.component'
+import { UserOtherProfileDescriptor } from '../../user-profile-details/user-other-profiles/UserOtherProfilesDescriptors'
 
 @Component({
   selector: 'app-user-other-profile-icon',

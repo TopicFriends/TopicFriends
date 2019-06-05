@@ -12,6 +12,7 @@ export class OtherProfile {
   show?: boolean;
 }
 
+/** TODO: TS mapped type: UserOtherProfilesDescriptorVals<OtherProfile> */
 export class UserOtherProfiles {
 
   linkedIn?: OtherProfile;
@@ -21,12 +22,13 @@ export class UserOtherProfiles {
   facebook?: OtherProfile;
   website?: OtherProfile;
 
-  // Phone number/whatsapp
-  // telegram (phone?)
+  // Phone number(s)/whatsapp
+  // telegram (phone(s)?)
   // google / hangouts
   // slack?
   // TODO: companyWebsite
-  // blog
+  // blog(s)
+  // email(s)
 
 }
 

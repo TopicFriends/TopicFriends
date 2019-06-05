@@ -1,48 +1,25 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
-import {UserProfileInputs} from '../UserProfileInputs'
-import {setFormControlEnabled} from '../../shared/utils'
 import {
-  UserProfileService,
-} from '../../user-profile-shared/user-profile.service'
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import {
-  OtherProfile,
-  UserOtherProfiles,
-} from '../../user-profile-shared/user-other-profiles.service'
+  FormBuilder,
+  FormControl,
+  FormGroup,
+} from '@angular/forms'
+import { UserProfileInputs } from '../UserProfileInputs'
+import { setFormControlEnabled } from '../../shared/utils'
+import { UserProfileService } from '../../user-profile-shared/user-profile.service'
+import { UserOtherProfiles } from '../../user-profile-shared/user-other-profiles.service'
+import {
+  getOtherProfileName,
+  otherProfileUserName,
+  UserOtherProfileDescriptor,
+  UserOtherProfilesDescriptorsDefs,
+  UserOtherProfilesDescriptorVals,
+} from './UserOtherProfilesDescriptors'
 
-
-function getOtherProfileName(otherProfile: OtherProfile) {
-  return otherProfile && otherProfile.userName
-}
-
-function otherProfileUserName(formControl: FormControl) {
-  // return formControl.value || "" // || "" to prevent firebase complaining about undefined
-  return formControl.value || null // || "" to prevent firebase complaining about undefined
-}
-
-export class UserOtherProfileDescriptor {
-  websiteName: string
-  urlPrefix: string
-  whatIsEnough?: string
-  iconClass?: string
-  iconImg?: string
-  id?: string
-
-  constructor(initFrom: UserOtherProfileDescriptor) {
-    Object.assign(this, initFrom)
-    if ( ! this.whatIsEnough ) {
-      this.whatIsEnough = 'user name is'
-    }
-  }
-}
-
-export class UserOtherProfilesDescriptors<T> {
-  twitter: T;
-  linkedIn: T;
-  gitHub: T;
-  stackOverflow: T;
-  facebook: T;
-}
 
 @Component({
   selector: 'app-user-other-profiles',
@@ -52,47 +29,25 @@ export class UserOtherProfilesDescriptors<T> {
 export class UserOtherProfilesComponent implements OnInit {
 
   // descriptors: UserOtherProfilesDescriptors<UserOtherProfileDescriptor> = [
-  descriptorsMap = {
-    twitter: new UserOtherProfileDescriptor({
-      websiteName: 'Twitter',
-      urlPrefix: 'twitter.com/',
-      iconClass: 'ion-social-twitter',
-    }),
-    linkedIn: new UserOtherProfileDescriptor({
-      websiteName: 'LinkedIn',
-      urlPrefix: 'linkedin.com/in/',
-      iconClass: 'ion-social-linkedin',
-    }),
-    facebook: new UserOtherProfileDescriptor({
-      websiteName: 'Facebook',
-      urlPrefix: 'facebook.com/',
-      iconClass: 'ion-social-facebook',
-    }),
-    gitHub: new UserOtherProfileDescriptor({
-      websiteName: 'GitHub',
-      urlPrefix: 'github.com/',
-      iconClass: 'ion-social-github',
-    }),
-    stackOverflow: new UserOtherProfileDescriptor({
-      websiteName: 'StackOverflow',
-      urlPrefix: 'stackoverflow.com/users/',
-      iconImg: 'assets/images/logos/stackoverflow-black.svg',
-      whatIsEnough: 'user id and name are'
-    }),
-  }
+  descriptorsMap = new UserOtherProfilesDescriptorsDefs()
 
-  formControls: UserOtherProfilesDescriptors<FormControl>
+  formControls: UserOtherProfilesDescriptorVals<FormControl>
 
   descriptorsList = this.prepareDescriptorsList()
 
+  /* TODO: extract to non-component */
   private prepareDescriptorsList() {
     this.formControls = <any> {}
-    let ret = []
+    let ret = [] as UserOtherProfileDescriptor[]
     for ( let key in this.descriptorsMap ) {
       if (this.descriptorsMap.hasOwnProperty(key)) {
         // console.log('key: ', key)
         let descriptor = this.descriptorsMap[key]
         descriptor.id = key
+        descriptor.websiteName = descriptor.websiteName || key
+        // descriptor.iconImg = descriptor.iconImg || ('assets/images/logos/' + key.toLowerCase() + '.svg')
+        descriptor.iconImg = descriptor.iconImg || (! descriptor.iconClass && ('assets/images/logos/' + key.toLowerCase() + '.svg') )
+
         ret.push(descriptor)
         this.formControls[key] = new FormControl()
       }
@@ -123,39 +78,29 @@ export class UserOtherProfilesComponent implements OnInit {
     setFormControlEnabled(this.formGroup, this.userProfileInputs.isEditable)
   }
 
+  /* TODO: extract to non-component */
   private applyFromDb(otherProfiles: UserOtherProfiles) {
     this.otherProfiles = otherProfiles;
     if (otherProfiles) {
       // FIXME: setValue instead of patchValue (because some might be undefined)
       // this.formGroup.setValue({
-      this.formGroup.patchValue({
-        linkedIn: getOtherProfileName(otherProfiles.linkedIn),
-        gitHub: getOtherProfileName(otherProfiles.gitHub),
-        stackOverflow: getOtherProfileName(otherProfiles.stackOverflow),
-        twitter: getOtherProfileName(otherProfiles.twitter),
-        facebook: getOtherProfileName(otherProfiles.facebook),
-      })
+      const patch = {}
+      for ( let key of Object.keys(otherProfiles) ) {
+        patch[key] = getOtherProfileName(otherProfiles[key])
+      }
+      this.formGroup.patchValue(patch)
     }
     this.formGroup.markAsPristine()
   }
 
+  /* TODO: extract to non-component */
   getOtherProfiles(): UserOtherProfiles {
-    return {
-      linkedIn: {
-        userName: otherProfileUserName(this.formControls.linkedIn),
-      },
-      gitHub: {
-        userName: otherProfileUserName(this.formControls.gitHub),
-      },
-      stackOverflow: {
-        userName: otherProfileUserName(this.formControls.stackOverflow),
-      },
-      twitter: {
-        userName: otherProfileUserName(this.formControls.twitter),
-      },
-      facebook: {
-        userName: otherProfileUserName(this.formControls.facebook),
-      },
-    };
+    const formVal = {}
+    for ( let key of Object.keys(this.formControls) ) {
+      formVal[key] = {
+        userName: otherProfileUserName(this.formControls[key])
+      }
+    }
+    return formVal as UserOtherProfiles
   }
 }

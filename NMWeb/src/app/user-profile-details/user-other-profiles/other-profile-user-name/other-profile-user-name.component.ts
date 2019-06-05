@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UserOtherProfileDescriptor} from '../user-other-profiles.component'
 import {UserProfileInputs} from '../../UserProfileInputs'
 import {FormControl, FormGroup} from '@angular/forms'
+import { UserOtherProfileDescriptor } from '../UserOtherProfilesDescriptors'
 
 @Component({
   selector: 'app-other-profile-user-name',
