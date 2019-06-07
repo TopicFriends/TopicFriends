@@ -105,7 +105,8 @@ exports.token = functions.https.onRequest((req, res) => {
       });
     });
   } catch (error) {
-    return res.jsonp({error: error.toString});
+    // TODO: res.setHeader("Content-Type", mime.lookup(url))
+    return res.jsonp({error: error.toString}); // https://expressjs.com/en/api.html
   }
 });
 
