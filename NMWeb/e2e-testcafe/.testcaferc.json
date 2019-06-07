@@ -1,4 +1,6 @@
 {
 //  "videoPath": "reports/screen-captures"
-  "skipJsErrors": true // for TypeError: f.getAttribute is not a function
+  "skipJsErrors": true, // for TypeError: f.getAttribute is not a function
+  "assertionTimeout": 10000,
+  "selectorTimeout": 10000,
 }
