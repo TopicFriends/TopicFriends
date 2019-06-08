@@ -28,6 +28,7 @@
     [matAutocomplete]="auto"
     [formControl]="stateCtrl"
     (keydown.enter)="onEnterKey($event)"
+
   > <!-- FIXME!!!: addTag(currentFilteredOptions[0]) : this should check if a specific item was selected by
       down-arrow instead of always forcing [0] -->
   <mat-placeholder>
@@ -80,6 +81,8 @@ https://github.com/angular/material2/pull/1999
 <!--[value]="option.name"-->
 <mat-autocomplete
   #auto="matAutocomplete"
+  autoActiveFirstOption="true"
+  (optionSelected)="onAutocompleteOptionSelected($event)"
 >
 <!--   *ngIf="isEditable"
 -->

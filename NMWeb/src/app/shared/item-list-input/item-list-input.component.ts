@@ -173,4 +173,8 @@ export class ItemListInputComponent implements OnInit, OnDestroy {
     event.preventDefault()
 
   }
+
+  onAutocompleteOptionSelected($event) {
+    console.log('onAutocompleteOptionSelected', $event)
+  }
 }
