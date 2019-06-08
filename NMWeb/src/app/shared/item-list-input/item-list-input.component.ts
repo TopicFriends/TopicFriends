@@ -167,4 +167,10 @@ export class ItemListInputComponent implements OnInit, OnDestroy {
   private openCreateTopicDialog(topicName: string) {
 
   }
+
+  onEnterKey(event) {
+    console.log('ItemListInput onEnterKey', event)
+    event.preventDefault()
+
+  }
 }
