@@ -34,6 +34,9 @@
   <mat-placeholder>
     {{placeholder}}
   </mat-placeholder>
+  <button mat-button *ngIf="stateCtrl.value && stateCtrl.value !== ''" matSuffix mat-icon-button aria-label="Clear" (click)="stateCtrl.setValue('')">
+    <mat-icon>close</mat-icon>
+  </button>
 </mat-form-field>
 
 <button
