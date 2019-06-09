@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase} from 'angularfire2/database'
+import {AngularFireDatabase} from 'angularfire2/database-deprecated'
 import {Observable} from 'rxjs/Observable'
 
 export interface DbObject<T> extends Observable<T> {
