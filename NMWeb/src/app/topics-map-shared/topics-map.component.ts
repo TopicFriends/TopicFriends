@@ -65,6 +65,26 @@ export class TopicsMapComponent implements OnInit {
     this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.userId])
   }
 
+  onMouseOver(popupElement, popupProfile, agmap) {
+    if (agmap.lastOpen != null) {
+      agmap.lastOpen.close();
+    }
+    agmap.lastOpen = popupProfile;
+    popupElement.loadUserProfile();
+    popupProfile.open();
+    setTimeout(() => {
+      let elementHTML = document.getElementsByClassName('gm-ui-hover-effect')[0];
+      if (elementHTML) {
+        let x = elementHTML.remove();
+      }
+    }, 10);
+  }
+
+  onMouseOut(popupProfile, gm) {
+    gm.lastOpen = popupProfile;
+    popupProfile.close();
+  }
+
   onIconBaseSizeChange() {
     for(let topic of this.topics) {
       this.topicsIcon[topic.id] = this.getMapTopicIcon(topic);

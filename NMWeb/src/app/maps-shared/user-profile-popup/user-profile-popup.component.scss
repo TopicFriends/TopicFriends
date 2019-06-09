@@ -1,0 +1,28 @@
+.hovercard {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  .photocard {
+    width: 100px;
+    height: 100px;
+    .photo {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  .content {
+    padding: 4px 14px 5px;
+    max-width: 265px;
+    .headline {
+      padding: 5px 0 1px;
+      .username {
+        font-size: 15px;
+        line-height: 16px;
+        padding-bottom: 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}
