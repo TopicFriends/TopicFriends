@@ -13,7 +13,7 @@ import {
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireDatabaseModule} from 'angularfire2/database-deprecated';
 import {UserProfileService} from './user-profile-shared/user-profile.service';
 import {AuthService} from './user-profile-shared/auth.service';
 import {UserListService} from './user-list-page/user-list.service';
