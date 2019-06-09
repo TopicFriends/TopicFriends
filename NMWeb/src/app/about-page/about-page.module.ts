@@ -11,7 +11,8 @@ import { AboutPartnersComponent } from './about-partners/about-partners.componen
 import { AboutFacebookComponent } from './about-facebook/about-facebook.component';
 import { AboutPoweredByComponent } from './about-powered-by/about-powered-by.component';
 import { AboutNewsComponent } from './about-news/about-news.component';
-import { AboutContributorsWelcomeComponent } from './about-contributors-welcome/about-contributors-welcome.component'
+import { AboutContributorsWelcomeComponent } from './about-contributors-welcome/about-contributors-welcome.component';
+import { AboutTwitterComponent } from './about-twitter/about-twitter.component'
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { AboutContributorsWelcomeComponent } from './about-contributors-welcome/
     AboutPoweredByComponent,
     AboutNewsComponent,
     AboutContributorsWelcomeComponent,
+    AboutTwitterComponent,
   ]
 })
 export class AboutPageModule { }
