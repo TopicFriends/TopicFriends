@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database-deprecated'
 import {Observable} from 'rxjs/Observable'
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from 'angularfire2/firestore'
 
 export interface DbObject<T> extends Observable<T> {
   set?(value: T): any;
@@ -36,6 +40,7 @@ export class DbService {
 
   constructor(
     private db: AngularFireDatabase,
+    private firestoreDb: AngularFirestore
   ) {
 
   }
@@ -64,4 +69,9 @@ export class DbService {
     return this.DB_PREFIX + '/' + path
   }
 
+  // firestore test:
+  test() {
+    let collection: AngularFirestoreCollection<any> = this.firestoreDb.collection("test");
+    collection.add({"test": new Date()}).then(response => console.log(response)).catch(error => console.log(error));
+  }
 }

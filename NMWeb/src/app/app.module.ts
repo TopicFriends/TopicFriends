@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database-deprecated';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {UserProfileService} from './user-profile-shared/user-profile.service';
 import {AuthService} from './user-profile-shared/auth.service';
 import {UserListService} from './user-list-page/user-list.service';
@@ -68,6 +69,7 @@ import { LandingPageModule } from './landing-page/landing-page.module'
     // AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     AngularFireModule.initializeApp(environment.firebase) ,
     AngularFireDatabaseModule, /* maybe move to its own module: DbModule; e.g. LoginModule would not require full db (for lazy loading) */
+    AngularFirestoreModule,
     AngularFireAuthModule,
     MatButtonModule,
     MatRadioModule,
