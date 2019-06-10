@@ -1,6 +1,6 @@
 <ng-template [ngIf]="attendeesCount>0">
   <hr>
-  <h3 class="tf-title">{{attendeesCount}} Techies joining us for this meeting:</h3>  <!--7px - find a way for aligning with meeting attendance user list in a better way-->
+  <h3 class="tf-title">{{attendeesCount}} People joining us for this meeting:</h3>  <!--7px - find a way for aligning with meeting attendance user list in a better way-->
 </ng-template>
 <nw-user-list-item
   *ngFor="let user of userList; trackBy: trackByKey"
