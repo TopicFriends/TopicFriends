@@ -22,7 +22,7 @@
 
   </div>
 
-  <agm-map
+  <agm-map #agmap
     [latitude]="coordinates.latitude"
     [longitude]="coordinates.longitude"
     [zoom]="10">
@@ -30,11 +30,16 @@
       <ng-template ngFor  let-userLocation [ngForOf]="usersGeoLocations[topic.id]">
         <agm-marker
           [markerClickable]="true"
-          (markerClick)="onMarkerClick(userLocation)"
+          (mouseOver)="onMouseOver(popupElement, popupProfile, agmap)"
+          (mouseOut)="onMouseOut(popupProfile, agmap)"
           [latitude]="userLocation.latitude + offsets[i].lat"
           [longitude]="userLocation.longitude + offsets[i].lon"
           [iconUrl]="topicsIcon[topic.id]"
-        ></agm-marker>
+        >
+          <agm-info-window #popupProfile>
+            <app-user-profile-popup #popupElement [userId]="userLocation.userId"></app-user-profile-popup>
+          </agm-info-window>
+        </agm-marker>
       </ng-template>
     </ng-template>
   </agm-map>

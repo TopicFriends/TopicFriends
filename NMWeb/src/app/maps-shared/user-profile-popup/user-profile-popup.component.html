@@ -1,0 +1,10 @@
+<div class="hovercard">
+  <ng-template [ngIf]="!userProfile">Loading User profile basic info...<br /></ng-template>
+  <div class="photocard">
+    <img class="photo" src="{{ userProfile?.photoUrl }}" />
+  </div>
+  <div class="content">
+    <div class="headline">
+      <span class="username"> {{ userProfile?.displayName }}</span>
+    </div>
+  </div>
