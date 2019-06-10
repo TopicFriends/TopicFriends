@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meeting-list/meeting-attendance.service';
 import {AuthService} from '../user-profile-shared/auth.service';
 import {Title} from '@angular/platform-browser'
+import { SnackBarComponent } from '../shared/snackbar/snackbar.component'
 
 @Component({
   selector: 'app-meeting-details',
@@ -21,7 +22,8 @@ export class MeetingDetailsComponent implements OnInit {
               private authService: AuthService,
               private meetingsService: MeetingsService,
               private meetingAttendanceService: MeetingAttendanceService,
-              private titleService: Title
+              private titleService: Title,
+              public snackBar: SnackBarComponent,
   ) {
     console.log('meetingId: ', this.meetingId)
   }
@@ -46,5 +48,9 @@ export class MeetingDetailsComponent implements OnInit {
       this.meeting = meeting;
       this.titleService.setTitle(meeting.title + ' - Meeting');
     });
+  }
+
+  onEditClicked() {
+    this.snackBar.showSnackBar('Coming Soon!')
   }
 }
