@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Meeting, MeetingsService} from '../shared/meetings.service'
+import { MatSnackBar } from '@angular/material'
+import { SnackBarComponent } from '../shared/snackbar/snackbar.component'
 
 @Component({
   selector: 'app-meeting-list',
@@ -14,7 +16,10 @@ export class MeetingListComponent implements OnInit {
   upcomingMeetings: Meeting[] = [];
   seePastMeetings = false;
 
-  constructor(private meetingsService: MeetingsService) {
+  constructor(
+    private meetingsService: MeetingsService,
+    public snackBarComponent: SnackBarComponent
+  ) {
     this.meetingsService.retrieveAllMeetings().subscribe((meetings: Meeting[]) => {
       this.allMeetings = meetings;
       this.pastMeetings = meetings.filter(meeting => this.meetingsService.isPastMeeting(meeting));
@@ -25,5 +30,9 @@ export class MeetingListComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  onNewMeeting() {
+    this.snackBarComponent.showSnackBar('Coming Soon!')
   }
 }

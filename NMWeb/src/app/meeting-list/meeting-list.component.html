@@ -1,6 +1,14 @@
 
 <ng-template [ngIf]="showAllMeetings">
-  <h2>Meetings</h2>
+  <div class="meetings-header" style="display: flex">
+    <h2 style="flex-grow: 1">Meetings</h2>
+    <button style="margin: 7px; background-color: mediumseagreen; color: white"
+            mat-button mat-raised-button
+            (click)="onNewMeeting()"
+    >
+      New Meeting
+    </button>
+  </div>
   <ng-template mat-list ngFor let-item [ngForOf]="allMeetings" >
     <mat-list-item>
       <app-meeting-list-item mat-list-item [meeting]="item" formcontrolname="meeting"></app-meeting-list-item>
