@@ -19,7 +19,7 @@ import {AuthService} from './user-profile-shared/auth.service';
 import {UserListService} from './user-list-page/user-list.service';
 import {UserMatcherService} from './user-profile-shared/user-matcher.service';
 // import { UserTemplateComponent } from './user-list/user-template/user-template.component';
-import {MeetingsModule} from './meeting-list/meetings.module';
+import {MeetingListPageModule} from './meetings/meeting-list-page/meeting-list-page.module';
 import {MeetingsService} from './shared/meetings.service'
 import {TopicsService} from './shared/topics.service';
 import {UserProfileSharedModule} from './user-profile-shared/user-profile-shared.module'
@@ -40,6 +40,7 @@ import {TopicsMapPageModule} from './topics-map-page/topics-map-page.module'
 import {MapsSharedModule} from './maps-shared/maps-shared.module'
 import {AgmCoreModule} from '@agm/core'
 import { LandingPageModule } from './landing-page/landing-page.module'
+import { MeetingsCoreModule } from './meetings/meetings-core/meetings-core.module'
 
 
 @NgModule({
@@ -58,7 +59,7 @@ import { LandingPageModule } from './landing-page/landing-page.module'
     CoreModule,
     routingModule,
     SharedModule,
-    MeetingsModule,
+    MeetingListPageModule,
     UserProfileSharedModule,
     MapsModule,
     MapsSharedModule,
@@ -89,6 +90,7 @@ import { LandingPageModule } from './landing-page/landing-page.module'
       ]
     }),
     // FlexLayoutModule,
+    MeetingsCoreModule,
   ],
   providers: [
     AuthService,

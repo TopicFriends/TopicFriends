@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meeting-attendance.service';
-import {Meeting} from '../../shared/meetings.service';
-import {UserProfileService} from '../../user-profile-shared/user-profile.service'
+import {MeetingAttendanceByUser, MeetingAttendanceService} from '../../meetings-core/meeting-attendance.service';
+import {Meeting} from '../../../shared/meetings.service';
+import {UserProfileService} from '../../../user-profile-shared/user-profile.service'
 
 @Component({
   selector: 'app-going-button',

@@ -1,0 +1,26 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { MeetingDetailsRoutingModule } from './meeting-details-routing.module';
+import { MeetingsSharedModule } from '../meetings-shared/meetings-shared.module'
+import { MeetingDetailsComponent } from './meeting-details.component'
+import { MatCardModule } from '@angular/material'
+import { MeetingMapComponent } from './meeting-map/meeting-map.component'
+import { MapsSharedModule } from '../../maps-shared/maps-shared.module'
+import { MeetingAttendanceUserListComponent } from './meeting-attendance-user-list/meeting-attendance-user-list.component'
+
+@NgModule({
+  imports: [
+    CommonModule,
+    MeetingDetailsRoutingModule,
+    MeetingsSharedModule,
+    MatCardModule,
+    MapsSharedModule,
+  ],
+  declarations: [
+    MeetingDetailsComponent,
+    MeetingMapComponent,
+    MeetingAttendanceUserListComponent,
+  ]
+})
+export class MeetingDetailsPageModule { }

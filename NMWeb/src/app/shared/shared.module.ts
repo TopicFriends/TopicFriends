@@ -111,7 +111,6 @@ import {HideOnScrollDirective} from './hide-on-scroll.directive'
     DbService,
     DomainDbService,
     ScrollingService,
-
   ]
 
 })
