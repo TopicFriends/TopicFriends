@@ -4,7 +4,7 @@ import {
   MeetingAttendanceService,
 } from '../meeting-attendance.service';
 import {DbListReadOnly} from '../../shared/db.service';
-import {UserMatcherService} from '../../user-profile-shared/user-matcher.service'
+import { sortMeetingAttendantByMatchScore } from '../../user-profile-shared/user-matcher.service'
 
 @Component({
   selector: 'app-meeting-attendance-user-list',
@@ -29,7 +29,7 @@ export class MeetingAttendanceUserListComponent implements OnInit {
 
     this.userListObs.subscribe(list => {
       this.attendeesCount = list.length;
-      this.userList = list
+      this.userList = list.sort(sortMeetingAttendantByMatchScore);
       console.log('fetchMeetingAttendanceByUserWithUserData subscribed: ', list);
     });
   }

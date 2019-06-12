@@ -6,6 +6,10 @@ import {
   UserProfileService,
 } from '../user-profile-shared/user-profile.service';
 import {Observable} from 'rxjs/Observable';
+import {
+  MatchResults,
+  UserInterests,
+} from '../user-profile-shared/user-interests'
 
 export class MeetingAttendanceByUser {
   $key?: string;
@@ -17,7 +21,8 @@ export class MeetingAttendanceByUser {
 export class MeetingAttendanceByUserWithUserData {
   public constructor(
     public meetingAttendanceByUser: MeetingAttendanceByUser,
-    public userData: UserData
+    public userData: UserData,
+    public matchResult: MatchResults
   ) {}
 }
 
@@ -27,11 +32,14 @@ export class MeetingAttendanceService {
   MEETING_ATTENDANCE = 'Meetings/MeetingAttendanceByUser';
 
   private userId;
+  private loggedUserInterests: UserInterests;
   constructor(private authService: AuthService,
               private db: DbService,
               private userProfileService: UserProfileService
   ) {
-
+    userProfileService.getUserInterests().subscribe(userInterests => {
+      this.loggedUserInterests = userInterests
+    });
     authService.user.subscribe(user => {
       this.userId = user && user.uid;
     });
@@ -83,9 +91,14 @@ export class MeetingAttendanceService {
       ).map((meetingAttendanceByUser: MeetingAttendanceByUser) => {
         let userId = meetingAttendanceByUser.$key;
         let userData = this.userProfileService.userDataById(userId);
+        let userInterests: UserInterests;
+        this.userProfileService.userDataByIdCombined(userId).subscribe(userDataCombined => {
+          userInterests = userDataCombined.interests;
+        });
         return new MeetingAttendanceByUserWithUserData(
           meetingAttendanceByUser,
-          userData
+          userData,
+          UserInterests.getInterestsMatchWith(this.loggedUserInterests, userInterests)
         )
       })
     });

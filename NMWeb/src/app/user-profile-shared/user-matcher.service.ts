@@ -4,6 +4,7 @@ import {MatchResults, UserInterests, WantedTopics} from './user-interests'
 import {UserListService} from '../user-list-page/user-list.service'
 import {Observable} from 'rxjs/Observable'
 import {TagListModel} from '../shared/TagListModel'
+import { MeetingAttendanceByUserWithUserData } from '../meeting-list/meeting-attendance.service'
 
 export class RelatedTopicLists {
 
@@ -37,6 +38,14 @@ export function sortUserByLastModified (u1: UserMatched, u2: UserMatched) {
     return new Date(u2.userDataCombined.profile.lastSaved).getTime() - new Date(u1.userDataCombined.profile.lastSaved).getTime();
   } else {
     return 0
+  }
+}
+
+export function sortMeetingAttendantByMatchScore (a1: MeetingAttendanceByUserWithUserData, a2: MeetingAttendanceByUserWithUserData) {
+  if (a1 && a2 && a1.matchResult && a2.matchResult) {
+    return a2.matchResult.matchScore - a1.matchResult.matchScore;
+  } else {
+    return 0;
   }
 }
 
