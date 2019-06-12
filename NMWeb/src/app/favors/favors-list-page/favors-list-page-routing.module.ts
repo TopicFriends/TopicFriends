@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FavorsListPageComponent } from './favors-list-page.component'
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: './favors-list-page/favors-list-page.module#FavorsListPageModule'
+    path: '', component: FavorsListPageComponent
   }
 ];
 
@@ -12,4 +12,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FavorsRoutingModule { }
+export class FavorsListPageRoutingModule { }

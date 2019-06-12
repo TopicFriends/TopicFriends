@@ -21,6 +21,10 @@ const appRoutes: Routes = [
     loadChildren: 'app/user-list-page/user-list-page.module#UserListPageModule',
   },
   {
+    path: 'favors',
+    loadChildren: './favors/favors.module#FavorsModule',
+  },
+  {
     path: 'meetings',
     loadChildren: './meetings/meetings.module#MeetingsModule',
   },
