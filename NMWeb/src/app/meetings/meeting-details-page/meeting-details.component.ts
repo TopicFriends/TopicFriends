@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Meeting, MeetingsService} from '../shared/meetings.service';
+import {Meeting, MeetingsService} from '../../shared/meetings.service';
 import {ActivatedRoute} from '@angular/router';
-import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meeting-list/meeting-attendance.service';
-import {AuthService} from '../user-profile-shared/auth.service';
+import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meetings-core/meeting-attendance.service';
+import {AuthService} from '../../user-profile-shared/auth.service';
 import {Title} from '@angular/platform-browser'
-import { SnackBarComponent } from '../shared/snackbar/snackbar.component'
+import { SnackBarComponent } from '../../shared/snackbar/snackbar.component'
 
 @Component({
   selector: 'app-meeting-details',

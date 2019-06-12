@@ -16,7 +16,7 @@ import {MatButtonModule, MatCheckboxModule, MatInputModule} from '@angular/mater
 import {MatMenuModule} from '@angular/material';
 import {SharedModule} from '../shared/shared.module'
 import {UserProfileSharedModule} from '../user-profile-shared/user-profile-shared.module'
-import {MeetingsModule} from '../meeting-list/meetings.module'
+import {MeetingListPageModule} from '../meetings/meeting-list-page/meeting-list-page.module'
 import {CapitalizeFirstPipe} from '../shared/pipes/capitalize-first.pipe';
 import {CleanUrlPipe} from '../shared/pipes/clean-url.pipe';
 import { FooterComponent } from './footer/footer.component';
@@ -38,7 +38,7 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     SharedModule,
     FlexLayoutModule,
     UserProfileSharedModule,
-    MeetingsModule,
+    MeetingListPageModule,
     MatIconModule,
     MatMenuModule,
     MatButtonModule,

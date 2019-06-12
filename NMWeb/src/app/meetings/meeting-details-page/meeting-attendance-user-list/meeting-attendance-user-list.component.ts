@@ -2,9 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {
   MeetingAttendanceByUserWithUserData,
   MeetingAttendanceService,
-} from '../meeting-attendance.service';
-import {DbListReadOnly} from '../../shared/db.service';
-import {UserMatcherService} from '../../user-profile-shared/user-matcher.service'
+} from '../../meetings-core/meeting-attendance.service';
+import {DbListReadOnly} from '../../../shared/db.service';
+import {UserMatcherService} from '../../../user-profile-shared/user-matcher.service'
 
 @Component({
   selector: 'app-meeting-attendance-user-list',

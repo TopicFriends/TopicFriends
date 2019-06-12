@@ -1,12 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UserProfileService} from '../../user-profile-shared/user-profile.service'
-import {MeetingAttendanceByUserWithUserData, MeetingAttendanceService} from '../meeting-attendance.service'
+import {UserProfileService} from '../../../user-profile-shared/user-profile.service'
+import {MeetingAttendanceByUserWithUserData, MeetingAttendanceService} from '../../meetings-core/meeting-attendance.service'
 import {ActivatedRoute, Router} from '@angular/router'
-import { USER_ROUTE_WITH_TRAILING_SLASH } from '../../shared/routes'
+import { USER_ROUTE_WITH_TRAILING_SLASH } from '../../../shared/routes'
 import {
   GeoLocation,
   UserGeoLocations,
-} from '../../user-profile-shared/user-geo-locations.types'
+} from '../../../user-profile-shared/user-geo-locations.types'
 
 @Component({
   selector: 'app-meeting-map',
@@ -14,7 +14,6 @@ import {
   styleUrls: ['./meeting-map.component.scss']
 })
 export class MeetingMapComponent implements OnInit {
-
 
   @Input() coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
 

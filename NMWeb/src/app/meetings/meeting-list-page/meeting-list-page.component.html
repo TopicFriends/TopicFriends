@@ -9,20 +9,12 @@
       New Meeting
     </button>
   </div>
-  <ng-template mat-list ngFor let-item [ngForOf]="allMeetings" >
-    <mat-list-item>
-      <app-meeting-list-item mat-list-item [meeting]="item" formcontrolname="meeting"></app-meeting-list-item>
-    </mat-list-item>
-  </ng-template>
+  <app-meeting-list [meetingsList]="allMeetings"></app-meeting-list>
 </ng-template>
 <ng-template>
   <h2>Upcoming Meetings</h2>
 
-  <ng-template mat-list ngFor let-item [ngForOf]="upcomingMeetings" >
-    <mat-list-item>
-      <app-meeting-list-item mat-list-item [meeting]="item" formcontrolname="meeting"></app-meeting-list-item>
-    </mat-list-item>
-  </ng-template>
+  <app-meeting-list [meetingsList]="upcomingMeetings"></app-meeting-list>
   <ng-template [ngIf]="!showAllMeetings && upcomingMeetings.length === 0">
     <h3 class="no-upcoming-meetings">There are no upcoming meetings</h3>
   </ng-template>
@@ -38,11 +30,7 @@
 
   <ng-template [ngIf]="seePastMeetings">
     <h2>Past Meetings</h2>
-    <ng-template mat-list ngFor let-item [ngForOf]="pastMeetings" >
-      <mat-list-item>
-        <app-meeting-list-item mat-list-item [meeting]="item" formcontrolname="meeting"></app-meeting-list-item>
-      </mat-list-item>
-    </ng-template>
+    <app-meeting-list [meetingsList]="pastMeetings"></app-meeting-list>
   </ng-template>
 </ng-template>
 

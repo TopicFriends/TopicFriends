@@ -21,6 +21,22 @@ const appRoutes: Routes = [
     loadChildren: 'app/user-list-page/user-list-page.module#UserListPageModule',
   },
   {
+    path: 'meetings',
+    loadChildren: './meetings/meetings.module#MeetingsModule',
+  },
+  {
+    path: 'meeting-list',
+    redirectTo: 'meetings',
+  },
+  {
+    path: 'meeting',
+    loadChildren: './meetings/meetings.module#MeetingsModule',
+  },
+  {
+    path: 'meeting-details',
+    redirectTo: 'meeting',
+  },
+  {
     path: 'topics',
     component: TopicsListComponent,
   },

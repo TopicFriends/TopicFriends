@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Meeting, MeetingsService} from '../shared/meetings.service'
+import {Meeting, MeetingsService} from '../../shared/meetings.service'
 import { MatSnackBar } from '@angular/material'
-import { SnackBarComponent } from '../shared/snackbar/snackbar.component'
+import { SnackBarComponent } from '../../shared/snackbar/snackbar.component'
 
 @Component({
-  selector: 'app-meeting-list',
-  templateUrl: './meeting-list.component.html',
-  styleUrls: ['./meeting-list.component.scss']
+  selector: 'app-meeting-list-page',
+  templateUrl: './meeting-list-page.component.html',
+  styleUrls: ['./meeting-list-page.component.scss']
 })
-export class MeetingListComponent implements OnInit {
+export class MeetingListPageComponent implements OnInit {
 
   allMeetings: Meeting[] = [];
   showAllMeetings = true;
