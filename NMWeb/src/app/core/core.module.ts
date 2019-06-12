@@ -23,7 +23,9 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from '../login/login.component'
 import {LoginModule} from '../login/login.module';
 import { HeaderUserAccountButtonComponent } from './header/header-user-account-button/header-user-account-button.component'
-import { AuthDialogService } from './auth-dialog.service'
+import { AuthDialogService } from './auth-dialog.service';
+import { CookieInfoComponent } from './cookie-info/cookie-info.component'
+import { CookieLawModule } from 'angular2-cookie-law'
 
 /** https://angular.io/guide/styleguide#prevent-re-import-of-the-core-module */
 export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
@@ -44,13 +46,15 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     MatButtonModule,
     MatToolbarModule,
     MatListModule,
-    LoginModule
+    LoginModule,
+    CookieLawModule,
   ],
   declarations: [
     NavbarComponent,
     HeaderComponent,
     FooterComponent,
     HeaderUserAccountButtonComponent,
+    CookieInfoComponent,
   ],
   exports: [
     NavbarComponent,
@@ -58,6 +62,7 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     FlexLayoutModule,
     FooterComponent,
     HeaderUserAccountButtonComponent,
+    CookieInfoComponent,
   ],
   entryComponents: [
     LoginComponent,

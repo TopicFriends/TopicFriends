@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { navs } from './nav-pages'
 
 @Component({
   selector: 'app-navbar',
@@ -6,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  public selectedTab:number = -1;
+
+  navs = navs
+
   constructor() { }
 
-
   ngOnInit() {
+    // console.log('navs', this.navs)
   }
 
 }

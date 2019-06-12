@@ -81,7 +81,6 @@ import { MeetingsCoreModule } from './meetings/meetings-core/meetings-core.modul
     MatListModule,
     MatIconModule,
     FormsModule,
-    CookieLawModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB8eJ4NjIFWy0tABOEasmykdAj8e7aenL0',
       libraries: [

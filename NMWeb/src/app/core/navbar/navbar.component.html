@@ -1,26 +1,12 @@
 <mat-nav-list>
-  <a mat-list-item id="navToMeetings"
-     routerLink="/meetings"
-     routerLinkActive="active"
-  ><mat-icon>event</mat-icon>Meetings</a>
-  <a mat-list-item id="navToPeople"
-     routerLink="/people"
-     routerLinkActive="active"
-  ><mat-icon>people</mat-icon>People</a>
-  <a mat-list-item id="navToProfile"
-     routerLink="/profile"
-     routerLinkActive="active"
-  ><mat-icon>person_pin</mat-icon>Profile</a>
-  <a mat-list-item id="navToTopics"
-     routerLink="/topics"
-     routerLinkActive="active"
-  ><mat-icon>filter_vintage</mat-icon>Topics</a>
-  <a mat-list-item id="navToMap"
-     routerLink="/map"
-     routerLinkActive="active"
-  ><mat-icon>map</mat-icon>Map</a>
-  <a mat-list-item id="navToAbout"
-     routerLink="/about"
-     routerLinkActive="active"
-  ><mat-icon>info</mat-icon>About</a>
+  <a
+    *ngFor="let nav of navs"
+    id="navTo{{nav.id}}"
+    routerLink="/{{nav.id.toLowerCase()}}"
+    routerLinkActive="active"
+    mat-list-item
+  >
+    <mat-icon>{{nav.icon}}</mat-icon>
+    {{nav.id}}
+  </a>
 </mat-nav-list>

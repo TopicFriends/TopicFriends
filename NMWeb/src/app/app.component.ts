@@ -1,8 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import { AngularFireAuth } from 'angularfire2/auth';
-import {AuthService} from './user-profile-shared/auth.service';
-import {CookieLawComponent} from 'angular2-cookie-law'
+import {ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router'
 import {MediaMatcher} from '@angular/cdk/layout'
 
@@ -12,9 +8,8 @@ import {MediaMatcher} from '@angular/cdk/layout'
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None /* to adjust things inside cookie law banner */,
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
-    @ViewChild(CookieLawComponent) cookieLawComponent: CookieLawComponent
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
@@ -36,10 +31,6 @@ export class AppComponent implements OnInit{
           window.scrollTo(0,0);
         }
       })
-  }
-
-  dismissCookieLaw() {
-    this.cookieLawComponent.dismiss()
   }
 
 }
