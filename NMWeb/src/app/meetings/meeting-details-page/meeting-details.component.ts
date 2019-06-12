@@ -50,7 +50,4 @@ export class MeetingDetailsComponent implements OnInit {
     });
   }
 
-  onEditClicked() {
-    this.snackBar.showSnackBar('Coming Soon!')
-  }
 }
