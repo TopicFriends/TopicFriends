@@ -40,6 +40,9 @@ path /TPProd/UserData/{anything}/{userId} {
 
 path /TPProd/Meetings {
   read() { true }
+  path /Meeting {
+    write() { true } // FIXME add permissions to organisers
+  }
 }
 
 path /TPProd/Meetings/MeetingAttendanceByUser/{meetingId}/{userId} {
