@@ -1,6 +1,6 @@
 <mat-card style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
-  <mat-card-title routerLink="/meeting/{{meeting.$key}}">
-    <span>{{meeting.title}}</span>
+  <mat-card-title id=title-text class=single-line-rich-text routerLink="/meeting/{{meeting.$key}}">
+    <span [innerHtml]="meeting.title"></span>
   </mat-card-title>
   <mat-card-subtitle>
     <ng-template [ngIf]="attendeesCount>0"> already {{attendeesCount}} coming!</ng-template>
