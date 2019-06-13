@@ -5,12 +5,14 @@ import {
   MatButtonModule,
   MatCardModule,
 } from '@angular/material'
+import { RouterModule } from '@angular/router'
 
 @NgModule({
   imports: [
     CommonModule,
     MatCardModule,
     MatButtonModule,
+    RouterModule,
   ],
   exports: [
     FavorListItemComponent,

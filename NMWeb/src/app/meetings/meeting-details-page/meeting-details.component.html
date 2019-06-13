@@ -5,7 +5,7 @@
 <mat-card *ngIf="meeting !== undefined">
   <mat-card-title-group>
     <mat-card-title>
-      {{meeting.title}}
+      <p class="title-text" [innerHtml]="meeting.title"></p>
       <app-going-button
                         [meeting]="meeting"
                         [meetingAttendanceByUser]="meetingAttendanceByUser"></app-going-button>
@@ -15,7 +15,8 @@
   <mat-card-content>
     <p><em>{{meeting.date}}</em> at <b>{{meeting.place}}</b></p>
     <a href="{{meeting.meetupLink}}">Meetup link</a>
-    <div style="padding-top: 0.5em; padding-bottom: 0.5em" [innerHtml]="meeting.description"></div>
+    <div id="meeting-description" class="rich-text" style="padding-top: 0.5em; padding-bottom: 0.5em"
+         [innerHtml]="meeting.description"></div>
     <app-meeting-map></app-meeting-map>
 
     <app-meeting-attendance-user-list

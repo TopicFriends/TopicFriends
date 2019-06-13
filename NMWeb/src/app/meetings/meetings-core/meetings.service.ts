@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {DbList, DbObject, DbService} from './db.service';
+import {DbList, DbObject, DbService} from '../../shared/db.service';
 
 export class Meeting {
   $key: string; // note: $key might be more handy in Firebase
@@ -12,6 +12,7 @@ export class Meeting {
 
 @Injectable()
 export class MeetingsService {
+
   MEETINGS_PATH = 'Meetings/Meeting/';
 
   constructor(private db: DbService) { }

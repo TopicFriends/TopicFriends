@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Meeting, MeetingsService} from '../../shared/meetings.service'
+import {Meeting, MeetingsService} from '../meetings-core/meetings.service'
 import { MatSnackBar } from '@angular/material'
 import { SnackBarComponent } from '../../shared/snackbar/snackbar.component'
 

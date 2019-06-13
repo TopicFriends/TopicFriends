@@ -20,7 +20,7 @@ import {UserListService} from './user-list-page/user-list.service';
 import {UserMatcherService} from './user-profile-shared/user-matcher.service';
 // import { UserTemplateComponent } from './user-list/user-template/user-template.component';
 import {MeetingListPageModule} from './meetings/meeting-list-page/meeting-list-page.module';
-import {MeetingsService} from './shared/meetings.service'
+import {MeetingsService} from './meetings/meetings-core/meetings.service'
 import {TopicsService} from './shared/topics.service';
 import {UserProfileSharedModule} from './user-profile-shared/user-profile-shared.module'
 import {CoreModule} from 'app/core/core.module';
@@ -96,7 +96,6 @@ import { MeetingsCoreModule } from './meetings/meetings-core/meetings-core.modul
     UserProfileService,
     UserListService,
     UserMatcherService,
-    MeetingsService,
     TopicsService,
     UserGroupService
   ],

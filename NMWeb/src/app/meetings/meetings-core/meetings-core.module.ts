@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MeetingAttendanceService } from './meeting-attendance.service'
+import { MeetingsService } from './meetings.service'
 
 @NgModule({
   imports: [
@@ -8,6 +9,7 @@ import { MeetingAttendanceService } from './meeting-attendance.service'
   ],
   declarations: [],
   providers: [
+    MeetingsService,
     MeetingAttendanceService,
   ]
 })

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meeting, MeetingsService} from '../../shared/meetings.service';
+import {Meeting, MeetingsService} from '../meetings-core/meetings.service';
 import {ActivatedRoute} from '@angular/router';
 import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meetings-core/meeting-attendance.service';
 import {AuthService} from '../../user-profile-shared/auth.service';
@@ -9,7 +9,7 @@ import { SnackBarComponent } from '../../shared/snackbar/snackbar.component'
 @Component({
   selector: 'app-meeting-details',
   templateUrl: './meeting-details.component.html',
-  styleUrls: ['./meeting-details.component.scss'],
+  styleUrls: ['./meeting-details.component.sass'],
 })
 export class MeetingDetailsComponent implements OnInit {
 

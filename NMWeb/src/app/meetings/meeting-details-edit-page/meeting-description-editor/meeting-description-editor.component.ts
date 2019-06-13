@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import { FormControl } from '@angular/forms'
 
 @Component({
   selector: 'app-meeting-description-editor',
@@ -6,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./meeting-description-editor.component.sass']
 })
 export class MeetingDescriptionEditorComponent implements OnInit {
+
+  @Input() control = new FormControl()
 
   constructor() { }
 

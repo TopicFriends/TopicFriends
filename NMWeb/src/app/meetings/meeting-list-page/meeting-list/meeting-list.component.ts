@@ -3,7 +3,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { Meeting } from '../../../shared/meetings.service'
+import { Meeting } from '../../meetings-core/meetings.service'
 
 @Component({
   selector: 'app-meeting-list',

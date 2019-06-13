@@ -5,12 +5,14 @@ import { MeetingDetailsEditPageRoutingModule } from './meeting-details-edit-page
 import { MeetingDetailsEditPageComponent } from './meeting-details-edit-page.component';
 import { MeetingDescriptionEditorComponent } from './meeting-description-editor/meeting-description-editor.component';
 import { QuillModule } from 'ngx-quill'
+import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   imports: [
     CommonModule,
     MeetingDetailsEditPageRoutingModule,
     QuillModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     MeetingDetailsEditPageComponent,
