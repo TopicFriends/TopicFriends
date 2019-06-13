@@ -4,6 +4,7 @@ import {DbList, DbObject, DbService} from '../../shared/db.service';
 export class Meeting {
   $key: string; // note: $key might be more handy in Firebase
   title: string;
+  plainTextTitle: string;
   description: string;
   date: Date;
   place: string;

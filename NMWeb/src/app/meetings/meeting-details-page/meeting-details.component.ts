@@ -46,7 +46,7 @@ export class MeetingDetailsComponent implements OnInit {
   private retrieveMeetingDetails(meetingId: string) {
     this.meetingsService.retrieveMeetingDetails(meetingId).subscribe((meeting: Meeting) => {
       this.meeting = meeting;
-      this.titleService.setTitle(meeting.title + ' - Meeting');
+      this.titleService.setTitle((meeting.plainTextTitle || meeting.title) + ' - TopicFriends Meeting');
     });
   }
 
