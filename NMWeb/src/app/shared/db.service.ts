@@ -75,6 +75,9 @@ export class DbService {
     for ( let key of keys ) {
       // TODO: throttleTime / debounce
       controls[key].valueChanges.subscribe(controlVal => {
+        if ( controlVal === undefined ) {
+          controlVal = null // for Firebase which does not like `undefined` as field value
+        }
         const patch = {}
         patch[key] = controlVal
         dbItem.update(patch)

@@ -6,6 +6,11 @@ import { MeetingDetailsEditPageComponent } from './meeting-details-edit-page.com
 import { MeetingDescriptionEditorComponent } from './meeting-description-editor/meeting-description-editor.component';
 import { QuillModule } from 'ngx-quill'
 import { ReactiveFormsModule } from '@angular/forms'
+import { RichTextEditorModule } from '../../rich-text-editor/rich-text-editor.module'
+import {
+  MatFormFieldModule,
+  MatInputModule,
+} from '@angular/material'
 
 @NgModule({
   imports: [
@@ -13,6 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms'
     MeetingDetailsEditPageRoutingModule,
     QuillModule,
     ReactiveFormsModule,
+    RichTextEditorModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   declarations: [
     MeetingDetailsEditPageComponent,

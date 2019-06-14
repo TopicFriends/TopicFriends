@@ -1,3 +1,38 @@
+<!-- Quill single-line / change/remove <p> tag:
+- https://github.com/quilljs/quill/issues/861#issuecomment-239961806
+- https://github.com/quilljs/quill/issues/1745
+- https://github.com/quilljs/quill/issues/1432
+- https://quilljs.com/docs/api/
+-->
+
+Location:
+<app-rich-text-editor
+  class=single-line-rich-text
+  [control]="controls.place"
+></app-rich-text-editor>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Location Link"
+         [formControl]="controls.placeLink">
+</mat-form-field>
+
+
+<br>
+
+<mat-form-field class="full-width">
+  <input matInput placeholder="Meetup Link" [formControl]="controls.meetupLink">
+</mat-form-field>
+
+<br>
+
+<mat-form-field>
+  <input matInput type="number" placeholder="Max Attendees"
+         [formControl]="controls.maxAttendees" min="1">
+</mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Date & Time"
+         [formControl]="controls.date">
+</mat-form-field>
+<br>
 
 Title:
 <app-meeting-description-editor
@@ -5,6 +40,8 @@ Title:
   class=single-line-rich-text
   [control]="controls.title"
 ></app-meeting-description-editor>
+
+<br>
 
 Description:
 <app-meeting-description-editor

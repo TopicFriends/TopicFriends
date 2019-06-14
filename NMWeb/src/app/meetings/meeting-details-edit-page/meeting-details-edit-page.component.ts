@@ -16,10 +16,10 @@ export class MeetingFormControls {
   description = new FormControl()
   title = new FormControl()
   meetupLink = new FormControl()
-  location = new FormControl()
-  locationLink = new FormControl()
+  place = new FormControl()
+  placeLink = new FormControl()
   date = new FormControl()
-  max = new FormControl()
+  maxAttendees = new FormControl()
 }
 
 @Component({
