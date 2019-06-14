@@ -64,4 +64,20 @@ export class DbService {
     return this.DB_PREFIX + '/' + path
   }
 
+  bindForm<TItem>(dbItem: DbObject<TItem>, controls: any /* TODO: partial & mapped type */) {
+    const keys = Object.keys(controls)
+    dbItem.take(1).subscribe(fromFirebase => {
+      for ( let key of keys ) {
+        controls[key].setValue(fromFirebase && fromFirebase[key])
+      }
+    })
+    for ( let key of keys ) {
+      // TODO: throttleTime / debounce
+      controls[key].valueChanges.subscribe(controlVal => {
+        const patch = {}
+        patch[key] = controlVal
+        dbItem.update(patch)
+      })
+    }
+  }
 }
