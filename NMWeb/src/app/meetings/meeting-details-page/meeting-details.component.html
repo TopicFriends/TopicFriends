@@ -13,7 +13,7 @@
     </mat-card-title>
   </mat-card-title-group>
   <mat-card-content>
-    <p><em>{{meeting.date}}</em> at <b>{{meeting.place}}</b></p>
+    <p><em>{{meeting.date}}</em> at <b><a href="{{meeting.placeLink}}">{{meeting.place}}</a></b></p>
     <a href="{{meeting.meetupLink}}">Meetup link</a>
     <div id="meeting-description" class="rich-text" style="padding-top: 0.5em; padding-bottom: 0.5em"
          [innerHtml]="meeting.description"></div>

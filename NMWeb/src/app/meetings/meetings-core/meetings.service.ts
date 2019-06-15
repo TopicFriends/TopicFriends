@@ -8,6 +8,7 @@ export class Meeting {
   description: string;
   date: Date;
   place: string;
+  placeLink: string;
   meetupLink: string;
  }
 
