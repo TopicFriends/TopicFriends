@@ -5,7 +5,7 @@
 <mat-card *ngIf="meeting !== undefined">
   <mat-card-title-group>
     <mat-card-title>
-      <p class="title-text" class=single-line-rich-text [innerHtml]="meeting.title"></p>
+      <p class="title-text single-line-rich-text" [innerHtml]="meeting.title"></p>
       <app-going-button
                         [meeting]="meeting"
                         [meetingAttendanceByUser]="meetingAttendanceByUser"></app-going-button>
