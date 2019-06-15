@@ -87,7 +87,7 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '',
+    loadChildren: 'app/page-not-found/page-not-found.module#PageNotFoundModule',
   },
 
 ]
