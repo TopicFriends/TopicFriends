@@ -11,15 +11,16 @@ import {
 } from '../../shared/db.service'
 import { MEETING_ID } from '../meetings-routing.module'
 import "rxjs/add/operator/take"
+import { ApfFormControl } from '../../util/ApfFormControl'
 
 export class MeetingFormControls {
-  description = new FormControl()
-  title = new FormControl()
-  meetupLink = new FormControl()
-  place = new FormControl()
-  placeLink = new FormControl()
-  date = new FormControl()
-  maxAttendees = new FormControl()
+  description = new ApfFormControl<string>()
+  title = new ApfFormControl<string>()
+  meetupLink = new ApfFormControl<string>()
+  place = new ApfFormControl<string>()
+  placeLink = new ApfFormControl<string>()
+  date = new ApfFormControl<string>()
+  maxAttendees = new ApfFormControl<number>()
 }
 
 @Component({
@@ -50,4 +51,10 @@ export class MeetingDetailsEditPageComponent implements OnInit {
     )
   }
 
+  stringKBytesCount(stringVal: string) {
+    if ( ! stringVal ) {
+      return 0
+    }
+    return Math.round(stringVal.length / 1024)
+  }
 }
