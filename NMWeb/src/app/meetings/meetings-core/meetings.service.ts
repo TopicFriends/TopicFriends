@@ -10,6 +10,7 @@ export class Meeting {
   place: string;
   placeLink: string;
   meetupLink: string;
+  maxAttendees: number;
  }
 
 @Injectable()

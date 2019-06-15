@@ -15,6 +15,7 @@
   <mat-card-content>
     <p><em>{{meeting.date}}</em> at <b><a href="{{meeting.placeLink}}">{{meeting.place}}</a></b></p>
     <a href="{{meeting.meetupLink}}">Meetup link</a>
+    <span *ngIf="meeting.maxAttendees; let maxAttendees">| Maximum Attendees: {{maxAttendees}}</span>
     <div id="meeting-description" class="rich-text" style="padding-top: 0.5em; padding-bottom: 0.5em"
          [innerHtml]="meeting.description"></div>
     <app-meeting-map></app-meeting-map>
