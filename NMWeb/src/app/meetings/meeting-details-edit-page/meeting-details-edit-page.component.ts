@@ -12,10 +12,10 @@ import {
 import { MEETING_ID } from '../meetings-routing.module'
 import "rxjs/add/operator/take"
 import { ApfFormControl } from '../../util/formUtils/ApfFormControl'
-import { FormControlDef } from '../../util/formUtils/formUtils'
+import { FormDef } from '../../util/formUtils/formUtils'
 
 
-export class MeetingFormControls implements FormControlDef<Meeting> {
+export class MeetingFormControls implements FormDef<Meeting> {
   description = new ApfFormControl<string>()
   title = new ApfFormControl<string>()
   meetupLink = new ApfFormControl<string>()

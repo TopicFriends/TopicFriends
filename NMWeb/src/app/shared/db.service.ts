@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database-deprecated'
 import {Observable} from 'rxjs/Observable'
 import { FormControl } from '@angular/forms'
+import { FormDef } from '../util/formUtils/formUtils'
 
 export interface DbObject<T> extends Observable<T> {
   set?(value: T): any;
@@ -65,7 +66,7 @@ export class DbService {
     return this.DB_PREFIX + '/' + path
   }
 
-  bindForm<TItem>(dbItem: DbObject<TItem>, controls: Partial<{[key in keyof TItem]: FormControl}>) {
+  bindForm<TItem>(dbItem: DbObject<TItem>, controls: FormDef<TItem>) {
     const keys = Object.keys(controls)
     dbItem.take(1).subscribe(fromFirebase => {
       for ( let key of keys ) {
