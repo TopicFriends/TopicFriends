@@ -10,7 +10,6 @@ import {
   DbService,
 } from '../../shared/db.service'
 import { MEETING_ID } from '../meetings-routing.module'
-import "rxjs/add/operator/take"
 import { ApfFormControl } from '../../util/formUtils/ApfFormControl'
 import { FormDef } from '../../util/formUtils/formUtils'
 
