@@ -46,7 +46,12 @@ export class MeetingDetailsComponent implements OnInit {
   private retrieveMeetingDetails(meetingId: string) {
     this.meetingsService.retrieveMeetingDetails(meetingId).subscribe((meeting: Meeting) => {
       this.meeting = meeting;
-      this.titleService.setTitle((meeting.plainTextTitle || meeting.title) + ' - TopicFriends Meeting');
+      // console.log('new DOMParser().parseFromString(meeting.title)', new DOMParser().parseFromString(meeting.title, 'text/html'))
+      // const titleTextContent = new DOMParser().parseFromString(meeting.title, 'text/html').documentElement.textContent
+      // console.log('new DOMParser().parseFromString(meeting.title)', titleTextContent)
+      // documentElement -- https://stackoverflow.com/questions/28899298/extract-the-text-out-of-html-string-using-javascript/28899585
+      const meetingTitleText = meeting.plainTextTitle || new DOMParser().parseFromString(meeting.title, 'text/html').documentElement.textContent
+      this.titleService.setTitle(meetingTitleText + ' - TopicFriends Meeting');
     });
   }
 
