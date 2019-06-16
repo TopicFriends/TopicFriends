@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material'
 import { MeetingMapComponent } from './meeting-map/meeting-map.component'
 import { MapsSharedModule } from '../../maps-shared/maps-shared.module'
 import { MeetingAttendanceUserListComponent } from './meeting-attendance-user-list/meeting-attendance-user-list.component'
+import { UserProfileSharedModule } from '../../user-profile-shared/user-profile-shared.module'
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { MeetingAttendanceUserListComponent } from './meeting-attendance-user-li
     MeetingsSharedModule,
     MatCardModule,
     MapsSharedModule,
+    UserProfileSharedModule,
   ],
   declarations: [
     MeetingDetailsComponent,

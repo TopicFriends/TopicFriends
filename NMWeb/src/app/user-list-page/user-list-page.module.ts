@@ -9,7 +9,8 @@ import {
   MatOptionModule,
   MatRadioModule,
   MatSelectModule,
-} from '@angular/material'
+} from '@angular/material';
+import { UserProfileSharedModule } from '../user-profile-shared/user-profile-shared.module'
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import {
     MatSelectModule,
     MatRadioModule,
     MatListModule,
+    UserProfileSharedModule,
   ],
   declarations: [
     UserListPage,

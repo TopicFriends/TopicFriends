@@ -16,6 +16,8 @@
         <a routerLink="/user/{{userId}}">{{profileBasicInfo?.displayName || profileBasicInfo?.name}}</a>
         &nbsp; MatchScore: {{matchResults?.isBasedOnLoggedInUser ? matchResults?.matchScore : '(Please Log In to see MatchScore)'}}
           &nbsp; <span class="badge" *ngIf="isLoggedUser()"> YOU!</span>
+        <app-user-other-profiles-badges></app-user-other-profiles-badges>
+
       </div>
       <!--</h3>-->
     </mat-card-title>

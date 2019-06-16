@@ -36,7 +36,26 @@ export function descriptor(d: UserOtherProfileDescriptor) {
   return new UserOtherProfileDescriptor(d)
 }
 
+function prepareDescriptorsList(descriptorsMap: UserOtherProfilesDescriptorsDefs) {
+  let ret = [] as UserOtherProfileDescriptor[]
+  for ( let key in descriptorsMap ) {
+    if (descriptorsMap.hasOwnProperty(key)) {
+      // console.log('key: ', key)
+      let descriptor = descriptorsMap[key]
+      descriptor.id = key
+      descriptor.websiteName = descriptor.websiteName || key
+      // descriptor.iconImg = descriptor.iconImg || ('assets/images/logos/' + key.toLowerCase() + '.svg')
+      descriptor.iconImg = descriptor.iconImg || (! descriptor.iconClass && ('assets/images/logos/' + key.toLowerCase() + '.svg') )
+
+      ret.push(descriptor)
+    }
+  }
+  return ret
+}
+
 export class UserOtherProfilesDescriptorsDefs {
+  static array = prepareDescriptorsList(new UserOtherProfilesDescriptorsDefs())
+
   twitter = descriptor({
     websiteName: 'Twitter',
     urlPrefix: 'twitter.com/',

@@ -8,12 +8,12 @@ import {
 import {
   MatchResults, SupplyDemandInteractions, SymmetricInteractions, TopicInterest,
   UserInterests,
-} from '../../user-profile-shared/user-interests'
+} from '../user-interests'
 import {getDictionaryValuesAsArray} from 'app/shared/utils';
 import {TagListModel} from '../../shared/TagListModel'
 import {TagInclusions} from '../../shared/TagInclusions'
-import { AuthService } from '../../user-profile-shared/auth.service'
-import { UserDescriptions } from '../../user-profile-shared/user-descriptions.service'
+import { AuthService } from '../auth.service'
+import { UserDescriptions } from '../user-descriptions.service'
 import {Subject} from 'rxjs/Subject'
 
 import "rxjs/add/operator/takeUntil";

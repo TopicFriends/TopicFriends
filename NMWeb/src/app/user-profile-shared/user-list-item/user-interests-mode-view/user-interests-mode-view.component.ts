@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {WantedTopics} from '../../../user-profile-shared/user-interests'
-import {RelatedTopicLists} from '../../../user-profile-shared/user-matcher.service'
+import {WantedTopics} from '../../user-interests'
+import {RelatedTopicLists} from '../../user-matcher.service'
 
 
 @Component({

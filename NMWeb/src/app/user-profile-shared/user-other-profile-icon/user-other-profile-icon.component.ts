@@ -8,7 +8,6 @@ import { UserOtherProfileDescriptor } from '../../user-profile-details/user-othe
 })
 export class UserOtherProfileIconComponent implements OnInit {
 
-
   @Input() descriptor: UserOtherProfileDescriptor
 
   constructor() { }

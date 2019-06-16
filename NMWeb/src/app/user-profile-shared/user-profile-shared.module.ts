@@ -27,6 +27,9 @@ import { UserOtherProfileIconComponent } from './user-other-profile-icon/user-ot
 import { SkillLevelLabelComponent } from './skill-level-label/skill-level-label.component'
 import { TopicsSharedModule } from '../topics-shared/topics-shared.module'
 import { UserTopicsService } from './user-topics.service'
+import { UserListItemComponent } from './user-list-item/user-list-item.component'
+import { RouterModule } from '@angular/router'
+import { UserOtherProfilesBadgesComponent } from './user-list-item/user-other-profiles-badges/user-other-profiles-badges.component'
 
 @NgModule({
   imports: [
@@ -46,6 +49,7 @@ import { UserTopicsService } from './user-topics.service'
     MatExpansionModule,
     FlexLayoutModule,
     TopicsSharedModule,
+    RouterModule,
   ],
   declarations: [
     UserOtherProfileIconComponent,
@@ -57,6 +61,8 @@ import { UserTopicsService } from './user-topics.service'
     BasicActionsButtonGroupComponent,
     SupplyDemandButtonGroupComponent,
     UserOtherProfileIconComponent,
+    UserListItemComponent,
+    UserOtherProfilesBadgesComponent,
   ],
   providers: [
     UserOtherProfilesService,
@@ -76,6 +82,8 @@ import { UserTopicsService } from './user-topics.service'
     SkillLevelLabelComponent,
     UserOtherProfileIconComponent,
     FlexLayoutModule,
+    UserListItemComponent,
+    UserOtherProfilesBadgesComponent,
   ],
   schemas: [
     // CUSTOM_ELEMENTS_SCHEMA

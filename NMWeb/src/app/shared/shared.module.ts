@@ -10,8 +10,8 @@ import {
 } from '@angular/material'
 import {TopicTagComponent} from './topic-tag/topic-tag.component'
 import {TopicTagListComponent} from './topic-tag-list/topic-tag-list.component'
-import {UserListItemComponent} from '../user-list-page/user-list-item/user-list-item.component';
-import {UserInterestsModeViewComponent} from '../user-list-page/user-list-item/user-interests-mode-view/user-interests-mode-view.component';
+import {UserListItemComponent} from '../user-profile-shared/user-list-item/user-list-item.component';
+import {UserInterestsModeViewComponent} from '../user-profile-shared/user-list-item/user-interests-mode-view/user-interests-mode-view.component';
 import {SnackBarComponent} from './snackbar/snackbar.component'
 import {GeoLocationService} from './geo-location.service'
 import {UserGeoLocationsService} from '../user-profile-shared/user-geo-locations.service'
@@ -67,7 +67,6 @@ import {HideOnScrollDirective} from './hide-on-scroll.directive'
   declarations: [
     TopicTagComponent, /* FIXME: move to topics-shared[-components] */
     TopicTagListComponent,
-    UserListItemComponent,
     UserInterestsModeViewComponent,
     SnackBarComponent,
     DistancePipe,
@@ -81,7 +80,6 @@ import {HideOnScrollDirective} from './hide-on-scroll.directive'
   exports: [
     TopicTagComponent,
     TopicTagListComponent,
-    UserListItemComponent,
     UserInterestsModeViewComponent,
     SnackBarComponent,
     MatInputModule,
