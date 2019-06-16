@@ -14,7 +14,7 @@ export class MeetingDescriptionEditorComponent implements OnInit {
 
   @Input() control = new FormControl()
   tinymceInit = {
-    plugins: 'image imagetools paste autolink link codesample',
+    plugins: 'image imagetools paste autolink link codesample autoresize',
     toolbar: 'undo redo | formatselect | bold italic backcolor code ' +
       '| alignleft aligncenter alignright alignjustify ' +
       '| bullist numlist outdent indent | image codesample | removeformat ' +
