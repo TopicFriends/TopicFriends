@@ -1,4 +1,11 @@
-<quill-editor
+<mat-slide-toggle #useTinyMce>Use tinymce</mat-slide-toggle>
+
+<quill-editor *ngIf="!useTinyMce.checked"
   [formControl]="control"
 >
 </quill-editor>
+
+<editor *ngIf="useTinyMce.checked"
+        [formControl]="control"
+        [init]="tinymceInit">
+</editor>
