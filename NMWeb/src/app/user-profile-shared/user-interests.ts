@@ -55,8 +55,14 @@ export class SupplyDemand {
 // Cool idea: calculate count / show: all matches between all users
 // and all matches from current user to other users
 export class MatchResults {
-  matchScore: number;
-  topicMatches: TopicInterest[];
+  constructor(
+    public matchScore: number,
+    public topicMatches: TopicInterest[],
+    public isBasedOnLoggedInUser = true
+  ) {
+  }
+
+  static readonly valueWhenNoLoggedUser = new MatchResults(0, [], false)
   // TODO: fine-grained match results later on (not necessary for MVP)
 }
 
@@ -158,10 +164,10 @@ export class UserInterests {
     let topicMatches = UserInterests.getTopicsMatchedWithSymmetricInteractionMode(interests1, other);
     topicMatches = topicMatches.concat(UserInterests.getTopicsMatchedWithSupplyDemandInteractionMode(interests1, other));
     const matchScore = topicMatches.length;
-    return {
-      matchScore: matchScore, // FIXME
-      topicMatches: topicMatches,
-    }
+    return new MatchResults(
+      matchScore, // FIXME
+      topicMatches,
+    )
   }
 
   public static getTopicsMatchedWithSymmetricInteractionMode(userInterests: UserInterests, otherUserInterests: UserInterests) {
@@ -256,10 +262,10 @@ export class UserInterests {
         }
       }
     }
-    return {
-      matchScore: matchScore + 999, // FIXME
-      topicMatches: [], // FIXME
-    }
+    return new MatchResults(
+      matchScore + 999, // FIXME
+      [], // FIXME
+    )
   }
 
 

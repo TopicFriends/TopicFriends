@@ -14,7 +14,7 @@
       <!--<h3>-->
       <div class="user-display-name">
         <a routerLink="/user/{{userId}}">{{profileBasicInfo?.displayName || profileBasicInfo?.name}}</a>
-        &nbsp; MatchScore: {{matchResults ? matchResults?.matchScore : '(Please Log In to see MatchScore)'}}
+        &nbsp; MatchScore: {{matchResults?.isBasedOnLoggedInUser ? matchResults?.matchScore : '(Please Log In to see MatchScore)'}}
           &nbsp; <span class="badge" *ngIf="isLoggedUser()"> YOU!</span>
       </div>
       <!--</h3>-->

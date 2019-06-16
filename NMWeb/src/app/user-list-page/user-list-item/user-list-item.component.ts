@@ -12,6 +12,7 @@ import { UserDescriptions } from '../../user-profile-shared/user-descriptions.se
 import {Subject} from 'rxjs/Subject'
 
 import "rxjs/add/operator/takeUntil";
+import { UserMatched } from '../../user-profile-shared/user-matcher.service'
 
 export class SupplyDemandTemplate{
   public static DESIRE_TYPE = {
@@ -31,6 +32,7 @@ export class SupplyDemandTemplate{
 export class UserListItemComponent implements OnInit, OnDestroy {
 
   @Input('userProfile') _userPublicProfile: UserData
+  @Input() userMatched: UserMatched
   @Input() showLess: boolean;
   userId
   // @Input('userProfile') _userPublicProfile: UserProfile = new UserProfile();
@@ -57,6 +59,9 @@ export class UserListItemComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    if ( this.userMatched ) {
+      this._userPublicProfile = this.userMatched.userDataCombined.userData // TODO: replace all to use userMatched
+    }
     this.authService.user.takeUntil(this.unsubscribe).subscribe((user) => {
       this.loggedUserId = user && user.uid;
     })

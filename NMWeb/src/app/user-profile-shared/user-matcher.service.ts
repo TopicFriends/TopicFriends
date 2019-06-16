@@ -49,11 +49,17 @@ export class UserMatched {
     public loggedInUser: UserDataCombined,
   ) {
     this.userId = userDataCombined.userId
-    if ( this.loggedInUser && this.loggedInUser.interests && this.userDataCombined.interests ) {
-      this.matchResults = UserInterests.getInterestsMatchWith(
-        this.loggedInUser.interests,
-        this.userDataCombined.interests,
-      )
+    if ( this.loggedInUser ) {
+      if ( this.loggedInUser.interests && this.userDataCombined.interests ) {
+        this.matchResults = UserInterests.getInterestsMatchWith(
+          this.loggedInUser.interests,
+          this.userDataCombined.interests,
+        )
+      } else {
+        this.matchResults = new MatchResults(0, [])
+      }
+    } else {
+      this.matchResults = MatchResults.valueWhenNoLoggedUser
     }
   }
 }
@@ -73,7 +79,6 @@ export class UserMatcherService {
     let sortFunc = sortUserByMatchScore
     return this.listUsersSortedFiltered(sortFunc)
   }
-
 
   public listUsersSortedByLastModified(): Observable<Array<UserMatched>> {
     let sortFunc = sortUserByLastModified

@@ -1,10 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {
+  MeetingAttendanceByUserMatched,
   MeetingAttendanceByUserWithUserData,
   MeetingAttendanceService,
 } from '../../meetings-core/meeting-attendance.service';
 import {DbListReadOnly} from '../../../shared/db.service';
 import {UserMatcherService} from '../../../user-profile-shared/user-matcher.service'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-meeting-attendance-user-list',
@@ -13,8 +15,8 @@ import {UserMatcherService} from '../../../user-profile-shared/user-matcher.serv
 })
 export class MeetingAttendanceUserListComponent implements OnInit {
 
-  userListObs: DbListReadOnly<MeetingAttendanceByUserWithUserData>;
-  userList: MeetingAttendanceByUserWithUserData[];
+  userListObs: Observable<MeetingAttendanceByUserMatched[]>;
+  userList: MeetingAttendanceByUserMatched[];
   attendeesCount: number = 0;
 
   @Input() meetingId: string;
@@ -25,7 +27,7 @@ export class MeetingAttendanceUserListComponent implements OnInit {
 
   ngOnInit() {
     this.userListObs =
-      this.meetingAttendanceService.fetchMeetingAttendanceByUserWithUserData(this.meetingId);
+      this.meetingAttendanceService.meetingAttendanceByUserMatched$(this.meetingId);
 
     this.userListObs.subscribe(list => {
       this.attendeesCount = list.length;
@@ -34,8 +36,7 @@ export class MeetingAttendanceUserListComponent implements OnInit {
     });
   }
 
-  trackByKey(idx, val: MeetingAttendanceByUserWithUserData) {
-    return val.meetingAttendanceByUser.$key
-    // TODO: change to val.userData.userId
+  trackByKey(idx, val: MeetingAttendanceByUserMatched) {
+    return val.userId
   }
 }

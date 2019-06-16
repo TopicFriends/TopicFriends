@@ -3,6 +3,6 @@
 </ng-template>
 <nw-user-list-item
   *ngFor="let user of userList; trackBy: trackByKey"
-  [userProfile]="user.userData"
+  [userMatched]="user.userMatched"
 >
 </nw-user-list-item>

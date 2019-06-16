@@ -32,6 +32,8 @@ export class MeetingAttendanceByUserDataCombined {
 }
 
 export class MeetingAttendanceByUserMatched {
+  userId = this.userMatched.userId
+
   public constructor(
     public meetingAttendanceByUser: MeetingAttendanceByUser,
     public userMatched: UserMatched,
@@ -82,6 +84,18 @@ export class MeetingAttendanceService {
     const path = this.buildUserMeetingAttendancePath(meetingId);
     let dbObject: DbObject<MeetingAttendanceByUser> = this.db.objectByPath(path);
     return dbObject;
+  }
+
+  meetingAttendanceByUserMatched$(meetingId: string): Observable<MeetingAttendanceByUserMatched[]>  {
+    return this.userProfileService.observeLoggedUserProfile().switchMap(loggedUserDataCombined => {
+      return this.meetingAttendanceByUserCombined$(meetingId).map(arr => {
+        return arr.map(meetingAttendanceByUserDataCombined => {
+          return new MeetingAttendanceByUserMatched(
+            meetingAttendanceByUserDataCombined.meetingAttendanceByUser,
+            new UserMatched(meetingAttendanceByUserDataCombined.userDataCombined, loggedUserDataCombined))
+        })
+      })
+    })
   }
 
   meetingAttendanceByUserCombined$(meetingId: string): Observable<MeetingAttendanceByUserDataCombined[]>  {
