@@ -34,8 +34,8 @@
 
 
 <nw-user-list-item
-  *ngFor="let user of userListCombinedSorted; trackBy: trackByKey"
-  [userProfile]="user.userDataCombined.userData"
+  *ngFor="let userMatched of userListCombinedSorted; trackBy: trackByKey"
+  [userMatched]="userMatched"
 ></nw-user-list-item>
 <!-- TODO: pass UserMatched instead -->
 <!-- TODO: restore trackBy: trackByKey -->

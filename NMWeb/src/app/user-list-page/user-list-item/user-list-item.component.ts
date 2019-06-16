@@ -1,5 +1,10 @@
 import {Component, OnInit, Input, OnDestroy} from '@angular/core';
-import {UserData, UserProfile, UserProfileService} from 'app/user-profile-shared/user-profile.service';
+import {
+  UserData,
+  UserDataCombined,
+  UserProfile,
+  UserProfileService,
+} from 'app/user-profile-shared/user-profile.service';
 import {
   MatchResults, SupplyDemandInteractions, SymmetricInteractions, TopicInterest,
   UserInterests,
@@ -14,15 +19,6 @@ import {Subject} from 'rxjs/Subject'
 import "rxjs/add/operator/takeUntil";
 import { UserMatched } from '../../user-profile-shared/user-matcher.service'
 
-export class SupplyDemandTemplate{
-  public static DESIRE_TYPE = {
-    SUPPLY: 'supply',
-    DEMAND: 'demand',
-  };
-
-  desireType: string;
-  topics: string;
-}
 
 @Component({
   selector: 'nw-user-list-item',
@@ -31,13 +27,13 @@ export class SupplyDemandTemplate{
 })
 export class UserListItemComponent implements OnInit, OnDestroy {
 
-  @Input('userProfile') _userPublicProfile: UserData
+  // @Input('userProfile') _userPublicProfile: UserData
   @Input() userMatched: UserMatched
+  @Input() userDataCombined: UserDataCombined
   @Input() showLess: boolean;
   userId
   // @Input('userProfile') _userPublicProfile: UserProfile = new UserProfile();
 
-  _whatUserWants: SupplyDemandTemplate[] = [];
   loggedUserInterests: UserInterests;
   loggedUserInterestsSymmetric: SymmetricInteractions;
   loggedUserInterestsSupplyDemand: SupplyDemandInteractions;
@@ -60,15 +56,12 @@ export class UserListItemComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if ( this.userMatched ) {
-      this._userPublicProfile = this.userMatched.userDataCombined.userData // TODO: replace all to use userMatched
+      this.userDataCombined = this.userMatched.userDataCombined
     }
     this.authService.user.takeUntil(this.unsubscribe).subscribe((user) => {
       this.loggedUserId = user && user.uid;
     })
-    this.userId = this._userPublicProfile.userId
-    this.userProfileService.userDataByIdCombined(this.userId).takeUntil(this.unsubscribe).subscribe(x => {
-      // console.log('userDataByIdCombined', this.userId, x)
-    })
+    this.userId = this.userDataCombined.userId
     this.userProfileService.getUserInterestsOnceLoggedIn().takeUntil(this.unsubscribe).subscribe(interests => {
       this.loggedUserInterests = UserInterests.fromJson(interests)
       this.loggedUserInterestsSymmetric =
@@ -80,62 +73,21 @@ export class UserListItemComponent implements OnInit, OnDestroy {
         this.loggedUserInterests &&
         this.loggedUserInterests.byInteractionMode &&
         this.loggedUserInterests.byInteractionMode.supplyDemand
-      this.calculateMatchScoreIfPossible()
     })
-    this._whatUserWants = this._getWhatUserWants();
-    this._userPublicProfile.descriptions.takeUntil(this.unsubscribe).subscribe(it => {
-      this.userDescriptions = it
-    })
-    this._userPublicProfile.interests.takeUntil(this.unsubscribe).subscribe(it => {
-      this.userInterests = it;
-      this.calculateMatchScoreIfPossible()
-      // console.log('userPublicProfile.interests.takeUntil(this.unsubscribe).subscribe', it)
-      this.supplyDemand =
-        this.userInterests &&
-        this.userInterests.byInteractionMode &&
-        this.userInterests.byInteractionMode.supplyDemand
-    });
-    this._userPublicProfile.profile.takeUntil(this.unsubscribe).subscribe(it => {
-      this.profileBasicInfo = it
-    })
+    this.userDescriptions = this.userDataCombined.descriptions
+    this.userInterests = this.userDataCombined.interests
+    this.supplyDemand =
+      this.userInterests &&
+      this.userInterests.byInteractionMode &&
+      this.userInterests.byInteractionMode.supplyDemand
+
+    this.matchResults = this.userMatched.matchResults
+    this.profileBasicInfo = this.userDataCombined.profile
   }
 
   public ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();
-  }
-
-  private calculateMatchScoreIfPossible() {
-    // TODO: use observeMatchResultsOnceLoggedInWithAnotherUserById
-    if ( this.loggedUserInterests && this.userInterests ) {
-      this.matchResults = UserInterests.getInterestsMatchWith(this.loggedUserInterests, this.userInterests)
-    }
-  }
-
-  private _getWhatUserWants(){
-    let whatUserWants: SupplyDemandTemplate[] = [];
-    if(this._userPublicProfile){
-      // let auxObjectJSON = JSON.parse(JSON.stringify(this._userPublicProfile.whatUserWants));
-      // let keys: string[] = Object.keys(this._userPublicProfile.whatUserWants);
-      // keys.forEach((key: string)=>{
-      //   if(auxObjectJSON[key]){
-      //     if(auxObjectJSON[key].supply.topics) {
-      //       let auxSupplyDemand: SupplyDemandTemplate = new SupplyDemandTemplate();
-      //       auxSupplyDemand.desireType = SupplyDemandTemplate.DESIRE_TYPE.SUPPLY;
-      //       auxSupplyDemand.topics = auxObjectJSON[key].supply.topics;
-      //       whatUserWants.push(auxSupplyDemand);
-      //     }
-      //     if(auxObjectJSON[key].demand.topics) {
-      //       let auxSupplyDemand: SupplyDemandTemplate = new SupplyDemandTemplate();
-      //       auxSupplyDemand.desireType = SupplyDemandTemplate.DESIRE_TYPE.DEMAND;
-      //       auxSupplyDemand.topics = auxObjectJSON[key].demand.topics;
-      //       whatUserWants.push(auxSupplyDemand);
-      //     }
-      //   }
-      // });
-    }
-
-    return whatUserWants;
   }
 
   isLoggedUser() {

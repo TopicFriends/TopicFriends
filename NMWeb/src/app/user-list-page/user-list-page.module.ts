@@ -5,7 +5,9 @@ import { UserListPageRoutingModule } from './user-list-page-routing.module';
 import { UserListPage } from './user-list.page'
 import { SharedModule } from '../shared/shared.module'
 import {
+  MatListModule,
   MatOptionModule,
+  MatRadioModule,
   MatSelectModule,
 } from '@angular/material'
 
@@ -16,6 +18,8 @@ import {
     SharedModule,
     MatOptionModule,
     MatSelectModule,
+    MatRadioModule,
+    MatListModule,
   ],
   declarations: [
     UserListPage,
