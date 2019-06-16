@@ -3,6 +3,7 @@ import {AngularFireDatabase} from 'angularfire2/database-deprecated'
 import {Observable} from 'rxjs/Observable'
 import { FormDef } from '../util/formUtils/formUtils'
 import "rxjs/add/operator/take"
+import "rxjs/add/operator/debounceTime"
 
 
 export interface DbObject<T> extends Observable<T> {
@@ -76,7 +77,7 @@ export class DbService {
     })
     for ( let key of keys ) {
       // TODO: throttleTime / debounce
-      controls[key].valueChanges.subscribe(controlVal => {
+      controls[key].valueChanges.debounceTime(1000).subscribe(controlVal => {
         if ( controlVal === undefined ) {
           controlVal = null // for Firebase which does not like `undefined` as field value
         }
