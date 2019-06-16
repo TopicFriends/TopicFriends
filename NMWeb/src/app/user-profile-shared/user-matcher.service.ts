@@ -62,6 +62,10 @@ export class UserMatched {
       this.matchResults = MatchResults.valueWhenNoLoggedUser
     }
   }
+
+  compareToDescending(otherUserMatched: UserMatched) {
+    return otherUserMatched.matchResults.matchScore - this.matchResults.matchScore
+  }
 }
 
 /** Idea: have bigger increments of score, like 5, 10. Looks cooler and we can have smaller bits of points like on SO */

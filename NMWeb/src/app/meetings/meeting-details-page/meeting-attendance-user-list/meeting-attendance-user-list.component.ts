@@ -31,7 +31,9 @@ export class MeetingAttendanceUserListComponent implements OnInit {
 
     this.userListObs.subscribe(list => {
       this.attendeesCount = list.length;
-      this.userList = list
+      this.userList = list.sort((_1, _2) => {
+        return _1.userMatched.compareToDescending(_2.userMatched)
+      })
       console.log('fetchMeetingAttendanceByUserWithUserData subscribed: ', list);
     });
   }
