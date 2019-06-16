@@ -10,17 +10,22 @@ import { RichTextEditorModule } from '../../rich-text-editor/rich-text-editor.mo
 import {
   MatFormFieldModule,
   MatInputModule,
-} from '@angular/material'
+} from '@angular/material';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 @NgModule({
   imports: [
     CommonModule,
+    MatSlideToggleModule,
     MeetingDetailsEditPageRoutingModule,
     QuillModule,
     ReactiveFormsModule,
     RichTextEditorModule,
     MatFormFieldModule,
     MatInputModule,
+    EditorModule
   ],
   declarations: [
     MeetingDetailsEditPageComponent,
