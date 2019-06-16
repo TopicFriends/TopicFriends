@@ -13,7 +13,13 @@
     </mat-card-title>
   </mat-card-title-group>
   <mat-card-content>
-    <p><em>{{meeting.date}}</em> at <b><a href="{{meeting.placeLink}}">{{meeting.place}}</a></b></p>
+    <p>
+      <em>{{meeting.date}}</em>
+      at
+      <b class="single-line-rich-text">
+        <a href="{{meeting.placeLink}}" [innerHtml]="meeting.place"></a>
+      </b>
+    </p>
     <a href="{{meeting.meetupLink}}">Meetup link</a>
     <span *ngIf="meeting.maxAttendees; let maxAttendees">| Maximum Attendees: {{maxAttendees}}</span>
     <div id="meeting-description" class="rich-text" style="padding-top: 0.5em; padding-bottom: 0.5em"
