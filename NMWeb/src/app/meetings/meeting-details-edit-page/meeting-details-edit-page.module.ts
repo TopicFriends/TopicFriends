@@ -11,7 +11,6 @@ import {
   MatFormFieldModule,
   MatInputModule,
 } from '@angular/material';
-import { EditorModule } from '@tinymce/tinymce-angular';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
@@ -25,7 +24,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     RichTextEditorModule,
     MatFormFieldModule,
     MatInputModule,
-    EditorModule
   ],
   declarations: [
     MeetingDetailsEditPageComponent,
