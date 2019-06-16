@@ -6,7 +6,11 @@
     <ng-template [ngIf]="attendeesCount>0"> already {{attendeesCount}} coming!</ng-template>
   </mat-card-subtitle>
   <mat-card-content>
-    <p>{{meeting.date}} at {{meeting.place}}</p>
+    <b class="single-line-rich-text">
+      <a href="{{meeting.placeLink}}" [innerHtml]="meeting.place"></a>
+    </b>
+
+<!--    <p>{{meeting.date}} at {{meeting.place}}</p>-->
     <a href="{{meeting.meetupLink}}">Meetup link</a>
   </mat-card-content>
   <mat-card-actions>
