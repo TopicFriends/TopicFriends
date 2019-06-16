@@ -1,9 +1,8 @@
 
 <h1>User List</h1>
 
-
 <ng-template [ngIf]="userListSaved">
-  <span>{{userListSaved.length}} People. {{ potentialConnectionsCount() }} potential connections between people!</span>
+  <span>{{userListSaved.length}} People | {{ potentialConnectionsCount() }} potential connections between people!</span>
   <br>
 <!--  <mat-form-field>-->
   <mat-list-item>
