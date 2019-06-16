@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {GeoLocationService} from '../shared/geo-location.service'
-import {GeoLocation} from '../user-profile-shared/user-geo-locations.types'
-import {TOPIC_ID_PARAM} from '../shared/routes'
+import {GeoLocationService} from '../../shared/geo-location.service'
+import {GeoLocation} from '../../user-profile-shared/user-geo-locations.types'
+import {TOPIC_ID_PARAM} from '../../shared/routes'
 import {ActivatedRoute} from '@angular/router'
 import {TagEntry} from '../topics-shared/tag-entry'
-import {TopicsService} from '../shared/topics.service'
+import {TopicsService} from '../../shared/topics.service'
 import {Title} from '@angular/platform-browser'
-import {ScrollingService} from '../shared/scrolling.service'
+import {ScrollingService} from '../../shared/scrolling.service'
 
 @Component({
   selector: 'app-topics-map-page',

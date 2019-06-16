@@ -1,10 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
 import { PreloadAllModules } from '@angular/router';
 import {UserGroupsComponent} from './user-groups/user-groups.component'
-import {TopicsListComponent} from './topics-list/topics-list.component'
+import {TopicsListComponent} from './topics/topics-list/topics-list.component'
 import {TermsOfServiceComponent} from './terms-of-service/terms-of-service.component'
 import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component'
-import {TopicsMapPageComponent} from './topics-map-page/topics-map-page.component'
+import {TopicsMapPageComponent} from './topics/topics-map-page/topics-map-page.component'
 import {TOPIC_ID_PARAM} from "./shared/routes";
 
 const appRoutes: Routes = [
@@ -54,7 +54,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'topic/:' + TOPIC_ID_PARAM,
-    loadChildren: 'app/topic-details/topic-details.module#TopicDetailsModule',
+    loadChildren: 'app/topics/topic-details/topic-details.module#TopicDetailsModule',
   },
   {
     path: 'terms',

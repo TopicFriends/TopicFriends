@@ -25,7 +25,7 @@ import {UserOtherProfilesService} from './user-other-profiles.service'
 import {UserConfigService} from '../shared/user-config.service';
 import { UserOtherProfileIconComponent } from './user-other-profile-icon/user-other-profile-icon.component'
 import { SkillLevelLabelComponent } from './skill-level-label/skill-level-label.component'
-import { TopicsSharedModule } from '../topics-shared/topics-shared.module'
+import { TopicsSharedModule } from '../topics/topics-shared/topics-shared.module'
 import { UserTopicsService } from './user-topics.service'
 import { UserListItemComponent } from './user-list-item/user-list-item.component'
 import { RouterModule } from '@angular/router'

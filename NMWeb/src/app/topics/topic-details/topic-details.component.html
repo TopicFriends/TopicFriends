@@ -26,7 +26,7 @@
   <nw-user-list-item
     class="user-card"
     *ngFor="let user of interestedUsers | limitTo:showLimit"
-    [userProfile]="user.userDataCombined.userData"
+    [userMatched]="user"
     [showLess]="true"
   ></nw-user-list-item>
 </div>

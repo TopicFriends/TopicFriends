@@ -1,5 +1,5 @@
 import {TopicInterest, WantedTopics} from '../user-profile-shared/user-interests'
-import {TagEntry} from '../topics-shared/tag-entry'
+import {TagEntry} from '../topics/topics-shared/tag-entry'
 import {EventEmitter} from '@angular/core'
 import {getDictionaryValuesAsArray} from './utils'
 /**

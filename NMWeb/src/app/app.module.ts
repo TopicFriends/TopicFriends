@@ -26,7 +26,7 @@ import {UserProfileSharedModule} from './user-profile-shared/user-profile-shared
 import {CoreModule} from 'app/core/core.module';
 import {SharedModule} from './shared/shared.module';
 // import { UserInterestsModeViewComponent } from './user-list/user-template/user-interests-mode-view/user-interests-mode-view.component';
-import { TopicsListComponent } from './topics-list/topics-list.component';
+import { TopicsListComponent } from './topics/topics-list/topics-list.component';
 import {MapsModule} from './maps/maps.module'
 import 'hammerjs';
 import {FormsModule} from '@angular/forms';
@@ -36,7 +36,7 @@ import {CookieLawModule} from 'angular2-cookie-law';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component'
 import {routingModule} from './app.routing'
-import {TopicsMapPageModule} from './topics-map-page/topics-map-page.module'
+import {TopicsMapPageModule} from './topics/topics-map-page/topics-map-page.module'
 import {MapsSharedModule} from './maps-shared/maps-shared.module'
 import {AgmCoreModule} from '@agm/core'
 import { LandingPageModule } from './landing-page/landing-page.module'

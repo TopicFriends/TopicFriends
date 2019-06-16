@@ -6,7 +6,7 @@ import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@
 import {UserProfileInputs} from '../UserProfileInputs'
 import {TopicGroupCardComponent} from '../user-interests/topic-group-card/topic-group-card.component'
 import {TagListModelEvent} from '../../shared/TagListModel'
-import { TagEntry } from '../../topics-shared/tag-entry'
+import { TagEntry } from '../../topics/topics-shared/tag-entry'
 import {
   createTopicsDictionary,
   UserProfileService,

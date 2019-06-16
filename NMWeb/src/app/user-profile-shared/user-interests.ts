@@ -1,6 +1,6 @@
 /* TODO: rename to WantedTopic for consistency? */
 import {initFromObject} from '../util/util'
-import {TagEntry} from '../topics-shared/tag-entry'
+import {TagEntry} from '../topics/topics-shared/tag-entry'
 import {getDictionaryValuesAsArray} from '../shared/utils'
 import {TagInclusions} from '../shared/TagInclusions'
 

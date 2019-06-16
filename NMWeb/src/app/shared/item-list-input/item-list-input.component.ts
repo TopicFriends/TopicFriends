@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, Output, OnDestroy} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import { TagEntry } from "app/topics-shared/tag-entry";
+import { TagEntry } from "app/topics/topics-shared/tag-entry";
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import {TopicsService} from '../topics.service'

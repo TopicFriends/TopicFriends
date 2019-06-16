@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {TagEntry, TopicUrls} from '../topics-shared/tag-entry'
+import {TagEntry, TopicUrls} from '../topics/topics-shared/tag-entry'
 
 
 function tag(name: string, logo?: string, webSite?: string, related?: TagEntry[], urls?: TopicUrls) {
@@ -407,7 +407,7 @@ export class TopicsService {
     tag('Dhivehi Language', 'flags/dhivehi'),
     tag('Faroese Language', 'flags/faroese'),
     tag('Kiribati Language', 'flags/kiribati'),
-    
+
     tagNoIcon('Bioinformatics'), tagNoIcon('Layouts'), tagNoIcon('Graphic Design'), tagNoIcon('Logo Design'),
     tagNoIcon('Social Media'),
     tagNoIcon('Web Design'),

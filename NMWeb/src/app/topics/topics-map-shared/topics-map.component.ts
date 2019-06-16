@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GeoLocation} from '../user-profile-shared/user-geo-locations.types'
+import {GeoLocation} from '../../user-profile-shared/user-geo-locations.types'
 import {TopicsDetailsService} from '../topic-details/topics-details.service'
 import {ActivatedRoute, Router} from '@angular/router'
 import {TagEntry} from '../topics-shared/tag-entry'
-import {logosSizeRatio} from '../../assets/logos-size-ratio'
-import {DbListReadOnly} from '../shared/db.service'
-import { USER_ROUTE_WITH_TRAILING_SLASH } from '../shared/routes'
+import {logosSizeRatio} from '../../../assets/logos-size-ratio'
+import {DbListReadOnly} from '../../shared/db.service'
+import { USER_ROUTE_WITH_TRAILING_SLASH } from '../../shared/routes'
 
 @Component({
   selector: 'app-topics-map',
