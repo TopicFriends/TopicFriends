@@ -41,14 +41,13 @@ export function sortUserByLastModified (u1: UserMatched, u2: UserMatched) {
 }
 
 export class UserMatched {
-  public userId
+  public userId = this.userDataCombined.userId
   public matchResults: MatchResults
 
   constructor(
     public userDataCombined: UserDataCombined,
     public loggedInUser: UserDataCombined,
   ) {
-    this.userId = userDataCombined.userId
     if ( this.loggedInUser ) {
       if ( this.loggedInUser.interests && this.userDataCombined.interests ) {
         this.matchResults = UserInterests.getInterestsMatchWith(
