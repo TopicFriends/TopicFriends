@@ -3,21 +3,38 @@ import {AuthService} from '../../user-profile-shared/auth.service';
 import {DbList, DbObject, DbService} from '../../shared/db.service';
 import {
   UserData,
+  UserDataCombined,
   UserProfileService,
 } from '../../user-profile-shared/user-profile.service';
 import {Observable} from 'rxjs/Observable';
+import { UserMatched } from '../../user-profile-shared/user-matcher.service'
+import { combineLatest } from 'rxjs/observable/combineLatest'
 
 export class MeetingAttendanceByUser {
   $key?: string;
   going: boolean;
-  user?: UserData
+  // user?: UserData
   whatDoYouExpectFromThisMeeting?: string // FIXME: move to MeetingAttendanceByUserDetails because it can be a long text
 }
 
 export class MeetingAttendanceByUserWithUserData {
   public constructor(
     public meetingAttendanceByUser: MeetingAttendanceByUser,
-    public userData: UserData
+    public userData: UserData,
+  ) {}
+}
+
+export class MeetingAttendanceByUserDataCombined {
+  public constructor(
+    public meetingAttendanceByUser: MeetingAttendanceByUser,
+    public userDataCombined: UserDataCombined,
+  ) {}
+}
+
+export class MeetingAttendanceByUserMatched {
+  public constructor(
+    public meetingAttendanceByUser: MeetingAttendanceByUser,
+    public userMatched: UserMatched,
   ) {}
 }
 
@@ -65,6 +82,34 @@ export class MeetingAttendanceService {
     const path = this.buildUserMeetingAttendancePath(meetingId);
     let dbObject: DbObject<MeetingAttendanceByUser> = this.db.objectByPath(path);
     return dbObject;
+  }
+
+  meetingAttendanceByUserCombined$(meetingId: string): Observable<MeetingAttendanceByUserDataCombined[]>  {
+    const observable: Observable<MeetingAttendanceByUserWithUserData[]> = this.fetchMeetingAttendanceByUserWithUserData(meetingId)
+
+    return observable.switchMap(arrayOfMeetingAttendanceByUserData => {
+      interface Temp {
+        userDataCombined: UserDataCombined
+        meetingAttendanceByUser: MeetingAttendanceByUser
+      }
+      const arrayOfObservables: Array<Observable<Temp>> = arrayOfMeetingAttendanceByUserData.map(meetingAttendanceByUserData => {
+        const intermediate$ = meetingAttendanceByUserData.userData.combineLatest().map(userDataCombined => ({
+          meetingAttendanceByUser: meetingAttendanceByUserData.meetingAttendanceByUser,
+          userDataCombined: userDataCombined
+        }))
+        return intermediate$
+      })
+      const observable1: Observable<Temp[]> = combineLatest<Temp>(arrayOfObservables)
+      const observable2: Observable<MeetingAttendanceByUserDataCombined[]> = observable1.map(arr => arr.map(_ =>
+        {
+          return new MeetingAttendanceByUserDataCombined(
+            _.meetingAttendanceByUser, _.userDataCombined
+          )
+        }
+      ))
+      return observable2
+      // const combineLatest1: Observable<UserDataCombined[]> = combineLatest<UserDataCombined>(arrayOfObservables)
+    })
   }
 
   fetchMeetingAttendanceByUserWithUserData(meetingId: string): Observable<MeetingAttendanceByUserWithUserData[]>  {
