@@ -9,7 +9,7 @@ import {MatSliderChange} from '@angular/material'
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.page.html',
-  styleUrls: ['./user-list.page.scss']
+  styleUrls: ['./user-list.page.sass']
 })
 export class UserListPage implements OnInit {
 
