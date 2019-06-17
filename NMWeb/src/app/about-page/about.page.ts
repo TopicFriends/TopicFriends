@@ -4,7 +4,7 @@ import {
   angular,
   firebase,
   ionic,
-} from '../shared/topics.service'
+} from '../topics/topics-core/topics.data'
 
 @Component({
   selector: 'app-about',

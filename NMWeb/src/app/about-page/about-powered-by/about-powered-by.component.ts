@@ -19,7 +19,7 @@ import {
   sass,
   typeScript,
   webPack,
-} from '../../shared/topics.service'
+} from '../../topics/topics-core/topics.data'
 
 @Component({
   selector: 'app-about-powered-by',
