@@ -29,7 +29,8 @@ import { TopicsSharedModule } from '../topics/topics-shared/topics-shared.module
 import { UserTopicsService } from './user-topics.service'
 import { UserListItemComponent } from './user-list-item/user-list-item.component'
 import { RouterModule } from '@angular/router'
-import { UserOtherProfilesBadgesComponent } from './user-list-item/user-other-profiles-badges/user-other-profiles-badges.component'
+import { UserOtherProfilesBadgesComponent } from './user-list-item/user-other-profiles-badges/user-other-profiles-badges.component';
+import { UserGeoLocationsBadgesComponent } from './user-list-item/user-geo-locations-badges/user-geo-locations-badges.component'
 
 @NgModule({
   imports: [
@@ -63,6 +64,7 @@ import { UserOtherProfilesBadgesComponent } from './user-list-item/user-other-pr
     UserOtherProfileIconComponent,
     UserListItemComponent,
     UserOtherProfilesBadgesComponent,
+    UserGeoLocationsBadgesComponent,
   ],
   providers: [
     UserOtherProfilesService,
