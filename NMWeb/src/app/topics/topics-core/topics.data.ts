@@ -73,8 +73,8 @@ export const angular = tag('Angular', 'angular', 'https://angular.io/', [
     'https://stackshare.io/angular-2',
     'https://twitter.com/angular',
   ));
-export const businessNetworking = tagNoIcon('Business Networking').setLogo('business--chart-line')
-export const entrepreneurship = tagNoIcon('Entrepreneurship').setLogo('business--chart-line')
+export const businessNetworking = tag('Business Networking', 'generic/business--chart-line')
+export const entrepreneurship = tag('Entrepreneurship', 'generic/business--chart-line')
 export const jasmine = tag('Jasmine')
 export const topics = [
   angular, tagNoIcon('Angular Universal').setLogo('angular'),
@@ -168,7 +168,8 @@ export const topics = [
   'JavaScript', tag('ECMAScript', 'es6'),
   'Elm', 'Scala', tag('.NET', 'dotnet'), tag('.NET Core', null), 'Docker', 'ElasticSearch',
   tagNoIcon('Akka'),
-  tagLogoTipo('Ember'), 'React', 'Redux', 'MobX', tagNoIcon('React Native'), 'Xamarin', tagNoIcon('Xamarin.Forms'),
+  tagLogoTipo('Ember'), 'React', 'Redux', 'MobX', tagNoIcon('React Native'),
+  'Xamarin', tagNoIcon('Xamarin.Forms'),
   'Git',
   tag('TensorFlow', 'tensorflow'), 'OpenCV',
   'Appium', tagNoIcon('Robotium'),
@@ -221,7 +222,7 @@ export const topics = [
   tagLogoTipo('CentOS Linux', 'centos'),
   tagNoIcon('Gentoo Linux'), tag('Arch Linux', 'archlinux'),
   'FreeBSD',
-  'Redis', 'CouchBase', 'CouchDB', tagLogoTipo('MongoDB'), 'Memcached',
+  'Redis', 'CouchBase', 'CouchDB', tagLogoTipo('MongoDB'), 'Memcached', 'RabbitMQ',
   tagNoIcon('Mongoose'),
   'PrestaShop', 'WooCommerce', tagNoIcon('osCommerce'), 'Magento', 'Shopify', tagNoIcon('BigCommerce'),
   'Travis CI',
@@ -401,47 +402,48 @@ export const topics = [
   tag('Faroese Language', 'flags/faroese'),
   tag('Kiribati Language', 'flags/kiribati'),
 
-  tagNoIcon('Bioinformatics'), tagNoIcon('Layouts'), tagNoIcon('Graphic Design'), tagNoIcon('Logo Design'),
+  tagNoIcon('Bioinformatics'), tag('Layouts', 'generic/palette-solid'),
+  tag('Graphic Design', 'generic/palette-solid'), tag('Logo Design', 'generic/palette-solid'),
   tagNoIcon('Social Media'),
   tagNoIcon('Web Design'),
   tagNoIcon('Web Analytics'),
 
-  tag('Business').setLogo('business--chart-line').setRelated(
-    tagNoIcon('Venture Capital').setLogo('business--chart-line'),
-    tagNoIcon('Seed Funding').setLogo('business--chart-line'),
-    tagNoIcon('Angel Investment').setLogo('business--chart-line'),
-    tagNoIcon('Bootstrapping').setLogo('business--chart-line'),
-    tagNoIcon('Internet Business').setLogo('business--chart-line'),
-    tagNoIcon('Finance').setLogo('business--chart-line'),
-    tagNoIcon('Financing').setLogo('business--chart-line'),
-    tagNoIcon('Marketing').setLogo('business--chart-line'),
-    tagNoIcon('Search Engine Marketing').setLogo('business--chart-line') /* TODO: add acronym: SEM */,
-    tagNoIcon('Inbound Marketing').setLogo('business--chart-line'),
-    tagNoIcon('Advertising').setLogo('business--chart-line'),
+  tag('Business').setLogo('generic/business--chart-line').setRelated(
+    tagNoIcon('Venture Capital').setLogo('generic/business--chart-line'),
+    tagNoIcon('Seed Funding').setLogo('generic/business--chart-line'),
+    tagNoIcon('Angel Investment').setLogo('generic/business--chart-line'),
+    tagNoIcon('Bootstrapping').setLogo('generic/business--chart-line'),
+    tagNoIcon('Internet Business').setLogo('generic/business--chart-line'),
+    tagNoIcon('Finance').setLogo('generic/business--chart-line'),
+    tagNoIcon('Financing').setLogo('generic/business--chart-line'),
+    tagNoIcon('Marketing').setLogo('generic/business--chart-line'),
+    tagNoIcon('Search Engine Marketing').setLogo('generic/business--chart-line') /* TODO: add acronym: SEM */,
+    tagNoIcon('Inbound Marketing').setLogo('generic/business--chart-line'),
+    tagNoIcon('Advertising').setLogo('generic/business--chart-line'),
     entrepreneurship,
     businessNetworking,
-    tagNoIcon('Business Development').setLogo('business--chart-line'),
-    tagNoIcon('Small Business').setLogo('business--chart-line'),
-    tagNoIcon('Business Administration').setLogo('business--chart-line'),
-    tagNoIcon('Startups').setLogo('business--chart-line'),
-    tagNoIcon('Startup Financing').setLogo('business--chart-line'),
-    tagNoIcon('Y Combinator').setLogo('ycombinator').setLogo('business--chart-line'),
-    tagNoIcon('Freelance').setLogo('business--chart-line'),
-    tagNoIcon('Freelance Platforms').setLogo('business--chart-line'),
-    tagNoIcon('Freelancer.com').setLogo('business--chart-line'),
-    tagNoIcon('Toptal').setLogo('business--chart-line'),
-    tagNoIcon('Trabajador Autónomo (Spain)').setLogo('business--chart-line'),
-    tagNoIcon('Recruitment').setLogo('business--chart-line'),
-    tagNoIcon('Human Resources').setLogo('business--chart-line'),
-    tagNoIcon('Management').setLogo('business--chart-line'),
-    tagNoIcon('Project Management').setLogo('business--chart-line'),
-    tagNoIcon('Sales').setLogo('business--chart-line'),
-    tagNoIcon('Logistics').setLogo('business--chart-line'),
-    tagNoIcon('Supply Chain').setLogo('business--chart-line'),
+    tagNoIcon('Business Development').setLogo('generic/business--chart-line'),
+    tagNoIcon('Small Business').setLogo('generic/business--chart-line'),
+    tagNoIcon('Business Administration').setLogo('generic/business--chart-line'),
+    tagNoIcon('Startups').setLogo('generic/business--chart-line'),
+    tagNoIcon('Startup Financing').setLogo('generic/business--chart-line'),
+    tagNoIcon('Y Combinator').setLogo('ycombinator').setLogo('generic/business--chart-line'),
+    tagNoIcon('Freelance').setLogo('generic/business--chart-line'),
+    tagNoIcon('Freelance Platforms').setLogo('generic/business--chart-line'),
+    tagNoIcon('Freelancer.com').setLogo('generic/business--chart-line'),
+    tagNoIcon('Toptal').setLogo('generic/business--chart-line'),
+    tagNoIcon('Trabajador Autónomo (Spain)').setLogo('generic/business--chart-line'),
+    tagNoIcon('Recruitment').setLogo('generic/business--chart-line'),
+    tagNoIcon('Human Resources').setLogo('generic/business--chart-line'),
+    tagNoIcon('Management').setLogo('generic/business--chart-line'),
+    tagNoIcon('Project Management').setLogo('generic/business--chart-line'),
+    tagNoIcon('Sales').setLogo('generic/business--chart-line'),
+    tagNoIcon('Logistics').setLogo('generic/business--chart-line'),
+    tagNoIcon('Supply Chain').setLogo('generic/business--chart-line'),
   ),
 
   tagNoIcon('Mobile apps'),
-  tagNoIcon('Neuroscience').setLogo('brain-solid'),
+  tagNoIcon('Neuroscience').setLogo('generic/brain-solid'),
   tagNoIcon('Ecopreneurship'),
   tagNoIcon('Neural Networks'),
   tagNoIcon('Convolutional Neural Networks'),
@@ -469,16 +471,16 @@ export const topics = [
   tagNoIcon('Video Editing'),
   tagNoIcon('YouTube'),
   tagNoIcon('Explainer Videos'),
-  tagNoIcon('Geomarketing').setLogo('business--chart-line'),
+  tag('Geomarketing', 'generic/business--chart-line'),
   tagNoIcon('LAMP Stack'),
-  tagNoIcon('Cyber Security'),
+  tag('Cyber Security', 'generic/lock-solid'),
   tagNoIcon('Chart.js'),
   tagNoIcon('Robotics'),
   tagNoIcon('Lego Mindstorms'),
   tagNoIcon('CSS Flexbox'),
   tagNoIcon('CSS Grid Layout'),
-  tagNoIcon('Economy'),
-  tagNoIcon('Economics'),
+  tag('Economy', 'generic/business--chart-line'),
+  tag('Economics', 'generic/business--chart-line'),
   tagNoIcon('Underscore_Test'),
   tag('R Language', 'r-lang'),
   'nginx',
@@ -532,7 +534,7 @@ export const topics = [
   tag('Spring Boot', null, 'https://projects.spring.io/spring-boot/'),
   tag('Dropwizard', null, 'http://www.dropwizard.io/'),
   tag('Algolia', undefined, 'https://www.algolia.com/'),
-  tag('Digital Marketing', null).setLogo('business--chart-line'),
+  tag('Digital Marketing', null).setLogo('generic/business--chart-line'),
   tag('Django Rest Framework', null, 'http://www.django-rest-framework.org/'),
   tag('Python pandas', null, 'http://pandas.pydata.org/'),
   tag('NumPy', null, 'http://www.numpy.org/'),
@@ -560,9 +562,9 @@ export const topics = [
   /* Mark:                       Just created a profile on there. It's looking very good 👍
    A couple of things for you to add to the list:
    // DONE: ProtoBuf, OpenID Connect */
-  tagNoIcon('Security'),
-  tagNoIcon('Computer Security'),
-  tagNoIcon('Computer Network Security'),
+  tag('Security', 'generic/lock-solid'),
+  tag('Computer Security', 'generic/lock-solid'),
+  tag('Computer Network Security', 'generic/lock-solid'),
   tag('Moleculer', undefined, 'https://moleculer.services/', [], new TopicUrls(
     null,
     'https://github.com/ice-services/moleculer',
@@ -588,8 +590,10 @@ export const topics = [
    DONE: Liquibase / Flyway - wersjonowanie SQL
    DONE: Spring Boot / Dropwizard / JHipster */
 
-  // TODO: Heilbronn:
-  // - Arduino, Raspberry Pi
+  tagLogoTipo('Arduino'),
+  'Raspberry Pi',
+  tag('Voice over IP', 'generic/network-wired-solid'),
+
 
   // Alex Moron:
   // Deployment
@@ -624,8 +628,8 @@ export const topics = [
 
   tagNoIcon('Figma'),
   tagNoIcon('Affinity Designer'),
-  tagNoIcon('Psychology').setLogo('brain-solid'),
-  tagNoIcon('Self-Improvement').setLogo('brain-solid'),
+  tag('Psychology', 'generic/brain-solid'),
+  tag('Self-Improvement', 'generic/brain-solid'),
   tagNoIcon('StackBlitz'),
   tagNoIcon('Java Server Faces (JSF)'),
   tag('Dexie.js', 'dexie-js'),
