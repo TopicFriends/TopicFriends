@@ -1,5 +1,5 @@
 import { GeoLocation } from '../user-profile-shared/user-geo-locations.types'
-import { Poi } from './poi.service'
+import { Poi } from './Poi'
 
 export const itCompanies = [
   // ... here https://github.com/TopicFriends/TopicFriends/issues/205
