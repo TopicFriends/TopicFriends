@@ -1,7 +1,12 @@
 import { GeoLocation } from '../user-profile-shared/user-geo-locations.types'
 import { Poi } from './poi.service'
 
+export const itCompanies = [
+  // ... here https://github.com/TopicFriends/TopicFriends/issues/205
+]
+
 export const pois = [
+  ... itCompanies,
   new Poi('Polo Digital', new GeoLocation(36.6989071, -4.4391211)),
   new Poi('GrowWorking', new GeoLocation(36.704939, -4.441062), 'https://growworking.com/',
     'assets/images/partners/GrowWorking_Icon.svg'),
