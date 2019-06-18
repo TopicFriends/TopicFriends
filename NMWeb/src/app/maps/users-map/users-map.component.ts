@@ -8,7 +8,7 @@ import {GeoLocationService} from '../../shared/geo-location.service'
 // import { } from 'googlemaps';
 import {Router} from '@angular/router'
 import {MatCheckbox} from '@angular/material'
-import {Poi, PoiService} from '../../shared/poi.service'
+import {PoiService} from '../../shared/poi.service'
 import {UserListService} from '../../user-list-page/user-list.service'
 import {UserMatcherService} from '../../user-profile-shared/user-matcher.service'
 import {UserGeoLocationsService} from '../../user-profile-shared/user-geo-locations.service'
@@ -19,6 +19,7 @@ import {
   UserGeoLocations,
 } from '../../user-profile-shared/user-geo-locations.types'
 import {ScrollingService} from '../../shared/scrolling.service'
+import { Poi } from '../../shared/Poi'
 
 export class UserCoords {
   user?: UserProfile
