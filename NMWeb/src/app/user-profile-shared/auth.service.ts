@@ -58,4 +58,9 @@ export class AuthService {
       .then(response => console.log("Logged in correctly"))
       .catch(error => console.log("Error loggin in"));
   }
+
+  resetPassword(email: string) {
+    return this.afAuth.auth
+      .sendPasswordResetEmail(email);
+  }
 }
