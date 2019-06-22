@@ -1,4 +1,4 @@
-import { GeoLocation } from '../user-profile-shared/user-geo-locations.types'
+import { GeoLocation } from '../user-profile/user-profile-core/user-geo-locations.types'
 import { Poi } from './Poi'
 
 export const itCompanies = [

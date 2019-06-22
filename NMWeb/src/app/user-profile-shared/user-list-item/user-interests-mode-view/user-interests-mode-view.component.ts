@@ -1,12 +1,19 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {WantedTopics} from '../../user-interests'
-import {RelatedTopicLists} from '../../user-matcher.service'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import { WantedTopics } from '../../../user-profile/user-profile-core/user-interests'
+import { RelatedTopicLists } from '../../../user-profile/user-profile-core/user-matcher.service'
+import { changeDetectionForUserProfileListSpeedup } from '../../../topics/topics-shared/topic-tag/topic-tag.component'
 
 
 @Component({
   selector: 'app-user-interests-mode-view',
   templateUrl: './user-interests-mode-view.component.html',
-  styleUrls: ['./user-interests-mode-view.component.scss']
+  styleUrls: ['./user-interests-mode-view.component.scss'],
+  changeDetection: changeDetectionForUserProfileListSpeedup,
 })
 export class UserInterestsModeViewComponent implements OnInit {
 

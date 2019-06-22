@@ -5,9 +5,9 @@ import {
   UserData,
   UserDataCombined,
   UserProfileService,
-} from '../../user-profile-shared/user-profile.service';
+} from '../../user-profile/user-profile-core/user-profile.service';
 import {Observable} from 'rxjs/Observable';
-import { UserMatched } from '../../user-profile-shared/user-matcher.service'
+import { UserMatched } from '../../user-profile/user-profile-core/user-matcher.service'
 import { combineLatest } from 'rxjs/observable/combineLatest'
 
 export class MeetingAttendanceByUser {

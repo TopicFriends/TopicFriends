@@ -9,9 +9,9 @@ import {
   FormGroup,
 } from '@angular/forms'
 import { UserProfileInputs } from '../UserProfileInputs'
-import { setFormControlEnabled } from '../../shared/utils'
-import { UserProfileService } from '../../user-profile-shared/user-profile.service'
-import { UserOtherProfiles } from '../../user-profile-shared/user-other-profiles.service'
+import { setFormControlEnabled } from '../../util/utils'
+import { UserProfileService } from '../../user-profile/user-profile-core/user-profile.service'
+import { UserOtherProfiles } from '../../user-profile/user-profile-core/user-other-profiles.service'
 import {
   getOtherProfileName,
   otherProfileUserName,

@@ -1,8 +1,8 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
-import {TopicsService} from '../../../shared/topics.service'
+import {TopicsService} from '../../../topics/topics-core/topics.service'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
 import {TopicGroupCardComponent} from '../../user-interests/topic-group-card/topic-group-card.component'
-import {SkillLevelsPerTopic, UserSkillLevelsHaveWant} from '../../../user-profile-shared/user-skills.service'
+import {SkillLevelsPerTopic, UserSkillLevelsHaveWant} from '../../../user-profile/user-profile-core/user-skills.service'
 import {UserProfileInputs} from '../../UserProfileInputs'
 import { TagEntry } from '../../../topics/topics-shared/tag-entry'
 

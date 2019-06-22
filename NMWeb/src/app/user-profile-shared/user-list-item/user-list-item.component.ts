@@ -1,29 +1,35 @@
-import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {
-  UserData,
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import {
   UserDataCombined,
   UserProfile,
   UserProfileService,
-} from 'app/user-profile-shared/user-profile.service';
+} from 'app/user-profile/user-profile-core/user-profile.service';
 import {
-  MatchResults, SupplyDemandInteractions, SymmetricInteractions, TopicInterest,
+  MatchResults,
+  SupplyDemandInteractions,
+  SymmetricInteractions,
   UserInterests,
-} from '../user-interests'
-import {getDictionaryValuesAsArray} from 'app/shared/utils';
-import {TagListModel} from '../../shared/TagListModel'
-import {TagInclusions} from '../../shared/TagInclusions'
+} from '../../user-profile/user-profile-core/user-interests'
 import { AuthService } from '../auth.service'
-import { UserDescriptions } from '../user-descriptions.service'
-import {Subject} from 'rxjs/Subject'
+import { UserDescriptions } from '../../user-profile/user-profile-core/user-descriptions.service'
+import { Subject } from 'rxjs/Subject'
 
-import "rxjs/add/operator/takeUntil";
-import { UserMatched } from '../../user-profile-shared/user-matcher.service'
+import 'rxjs/add/operator/takeUntil';
+import { UserMatched } from '../../user-profile/user-profile-core/user-matcher.service'
+import { changeDetectionForUserProfileListSpeedup } from '../../topics/topics-shared/topic-tag/topic-tag.component'
 
 
 @Component({
   selector: 'nw-user-list-item',
   templateUrl: './user-list-item.component.html',
   styleUrls: ['./user-list-item.component.scss'],
+  changeDetection: changeDetectionForUserProfileListSpeedup,
 })
 export class UserListItemComponent implements OnInit, OnDestroy {
 
@@ -31,6 +37,13 @@ export class UserListItemComponent implements OnInit, OnDestroy {
   @Input() userMatched: UserMatched
   @Input() userDataCombined: UserDataCombined
   @Input() showLess: boolean;
+
+  show = {
+    anything: true,
+    image: true,
+    topics: false,
+    otherProfileBadges: true,
+  }
   userId
   // @Input('userProfile') _userPublicProfile: UserProfile = new UserProfile();
 

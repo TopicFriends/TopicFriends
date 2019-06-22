@@ -1,8 +1,9 @@
 
 <h1>User List</h1>
 
-<ng-template [ngIf]="userListSaved">
-  <span>{{userListSaved.length}} People | {{ potentialConnectionsCount() }} potential connections between people!</span>
+<ng-template [ngIf]="userListCombinedSorted?.length">
+  <span>{{userListCombinedSorted?.length}} People | {{ potentialConnectionsCount() }}k potential connections between people!</span>
+<!--  <span>{{userListCombinedSorted?.length}} l2</span>-->
   <br>
 <!--  <mat-form-field>-->
   <mat-list-item>
@@ -10,7 +11,9 @@
                      [value]="0"
                      (change)="sortUserListBy(sortFunctions[$event.value])">
       <span>Sort by: &nbsp;</span>
-      <mat-radio-button [value]="0">TopicFriends <b>Match</b><sup>Score</sup></mat-radio-button>
+      <mat-radio-button [value]="0">TopicFriends <b>Match</b><sup>Score</sup>
+        <!-- consider other names: TopicScore (but then this does name does not take into account stuff like geolocations) -->
+      </mat-radio-button>
       <mat-radio-button [value]="1">Last Update</mat-radio-button>
     </mat-radio-group>
   </mat-list-item>

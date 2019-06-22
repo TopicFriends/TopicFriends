@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "serve.prod": "ng build --prod --aot  &&  cd dist  && g http-server-pwa",
+    "serve.prod": "ng build --prod --aot  &&  cd dist  &&  http-server-pwa",
     "start.qa": "ng serve --environment qa",
     "build": "ng build",
     "test": "ng test",

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {TopicInterest} from 'app/user-profile-shared/user-interests';
-import {UserSkillLevelsHaveWant} from '../user-skills.service'
+import {TopicInterest} from 'app/user-profile/user-profile-core/user-interests';
+import {UserSkillLevelsHaveWant} from '../../user-profile/user-profile-core/user-skills.service'
 
 @Component({
   selector: 'app-skill-level-label',

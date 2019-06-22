@@ -1,9 +1,9 @@
-<mat-card class="user-item" style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
+<mat-card *ngIf=show.anything class="user-item" style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
   <mat-card-header>
     <!--<div mat-card-avatar class="card-avatar"></div>-->
     <img
       mat-card-avatar
-      *ngIf="profileBasicInfo?.photoUrl"
+      *ngIf="show.image && profileBasicInfo?.photoUrl"
       style="vertical-align:middle"
       src="{{profileBasicInfo?.photoUrl}}"
       onerror="this.src='assets/images/icons/user-solid.svg'"
@@ -16,7 +16,7 @@
         <a routerLink="/user/{{userId}}">{{profileBasicInfo?.displayName || profileBasicInfo?.name}}</a>
         &nbsp; MatchScore: {{matchResults?.isBasedOnLoggedInUser ? matchResults?.matchScore : '(Please Log In to see MatchScore)'}}
           &nbsp; <span class="badge" *ngIf="isLoggedUser()"> YOU!</span>
-        <app-user-other-profiles-badges></app-user-other-profiles-badges>
+        <app-user-other-profiles-badges *ngIf="show.otherProfileBadges"></app-user-other-profiles-badges>
         <app-user-geo-locations-badges></app-user-geo-locations-badges>
 
       </div>
@@ -39,7 +39,7 @@
     </mat-card-subtitle>
   </mat-card-header>
 
-  <mat-card-content *ngIf="!showLess">
+  <mat-card-content *ngIf="show.topics">
     <!--{{_whatUserWants[0].desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}-->
     <app-user-interests-mode-view
       [topicGroup]="userInterests?.byInteractionMode?.symmetric?.exchange"
@@ -121,3 +121,4 @@
     <mat-grid-tile [colspan]=3 [rowspan]=6>Prueba</mat-grid-tile>
 </mat-grid-list>
 -->
+<div *ngIf="! show.anything">UProfile</div>

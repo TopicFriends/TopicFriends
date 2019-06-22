@@ -1,16 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
 import { PreloadAllModules } from '@angular/router';
-import {UserGroupsComponent} from './user-groups/user-groups.component'
-import {TopicsListComponent} from './topics/topics-list/topics-list.component'
-import {TermsOfServiceComponent} from './terms-of-service/terms-of-service.component'
-import {PrivacyPolicyComponent} from './privacy-policy/privacy-policy.component'
-import {TopicsMapPageComponent} from './topics/topics-map-page/topics-map-page.component'
-import {TOPIC_ID_PARAM} from "./shared/routes";
 
 const appRoutes: Routes = [
   {
     path: '',
-    loadChildren: 'app/landing-page/landing-page.module#LandingPageModule',
+    loadChildren: './landing-page/landing-page.module#LandingPageModule',
   },
   {
     path: 'people-list',
@@ -22,11 +16,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'favors',
-    loadChildren: './favors/favors.module#FavorsModule',
+    loadChildren: 'app/favors/favors.module#FavorsModule',
   },
   {
     path: 'meetings',
-    loadChildren: './meetings/meetings.module#MeetingsModule',
+    loadChildren: 'app/meetings/meetings.module#MeetingsModule',
   },
   {
     path: 'meeting-list',
@@ -34,7 +28,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'meeting',
-    loadChildren: './meetings/meetings.module#MeetingsModule',
+    loadChildren: 'app/meetings/meetings.module#MeetingsModule',
   },
   {
     path: 'meeting-details',
@@ -42,23 +36,19 @@ const appRoutes: Routes = [
   },
   {
     path: 'topics',
-    component: TopicsListComponent,
+    loadChildren: 'app/topics/topics-list-page/topics-list-page.module#TopicsListPageModule',
   },
   {
-    path: 'groups',
-    component: UserGroupsComponent,
+    path: 'topic',
+    loadChildren: 'app/topics/topic-details-page/topic-details-page.module#TopicDetailsPageModule',
   },
   {
     path: 'about',
     loadChildren: 'app/about-page/about-page.module#AboutPageModule',
   },
   {
-    path: 'topic/:' + TOPIC_ID_PARAM,
-    loadChildren: 'app/topics/topic-details/topic-details.module#TopicDetailsModule',
-  },
-  {
     path: 'terms',
-    component: TermsOfServiceComponent,
+    loadChildren: 'app/terms-of-service-page/terms-of-service-page.module#TermsOfServicePageModule',
   },
   {
     path: 'profile',
@@ -78,16 +68,19 @@ const appRoutes: Routes = [
   },
   {
     path: 'privacy',
-    component: PrivacyPolicyComponent,
+    loadChildren: './privacy-policy-page/privacy-policy-page.module#PrivacyPolicyPageModule',
   },
   {
-    path: 'topics-map',
-    component: TopicsMapPageComponent
-    //loadChildren: 'app/topics-map-page/topics-map-page.module#TopicsMapPageComponent'
+    path: `topics-map`,
+    loadChildren: './topics/topics-map-page/topics-map-page.module#TopicsMapPageModule'
+  },
+  {
+    path: 'map',
+    loadChildren: './maps/users-map-page/users-map-page.module#UsersMapPageModule'
   },
   {
     path: '**',
-    loadChildren: 'app/page-not-found/page-not-found.module#PageNotFoundModule',
+    loadChildren: './page-not-found/page-not-found.module#PageNotFoundModule',
   },
 
 ]

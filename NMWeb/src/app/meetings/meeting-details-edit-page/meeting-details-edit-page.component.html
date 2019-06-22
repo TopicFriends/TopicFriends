@@ -5,9 +5,23 @@
 - https://quilljs.com/docs/api/
 -->
 
-Meeting Editor - Early Access
+<h2>
+  <button mat-button [routerLink]="'/meeting/' + meetingId">
+    < Back to Meeting
+  </button>
+  Meeting Editor - Early Access
+</h2>
 
-Location:
+<h3>Title:</h3>
+<app-meeting-description-editor
+  id="title-editor"
+  class=single-line-rich-text
+  [control]="controls.title"
+></app-meeting-description-editor>
+
+<br>
+
+<h3>Location:</h3>
 <app-rich-text-editor
   class=single-line-rich-text
   [control]="controls.place"
@@ -16,7 +30,6 @@ Location:
   <input matInput placeholder="Location Link"
          [formControl]="controls.placeLink">
 </mat-form-field>
-
 
 <br>
 
@@ -36,16 +49,7 @@ Location:
 </mat-form-field>
 <br>
 
-Title:
-<app-meeting-description-editor
-  id="title-editor"
-  class=single-line-rich-text
-  [control]="controls.title"
-></app-meeting-description-editor>
-
-<br>
-
-Description (size: ~{{stringKBytesCount(controls.description?.valueTyped)}} kBytes)
+<h3>Description (size: ~{{stringKBytesCount(controls.description?.valueTyped)}} kBytes)</h3>
 <app-meeting-description-editor
   [control]="controls.description"
 ></app-meeting-description-editor>

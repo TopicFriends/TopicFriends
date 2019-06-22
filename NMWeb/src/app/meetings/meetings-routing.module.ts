@@ -5,13 +5,13 @@ export const MEETING_ID = 'meetingId'
 
 const routes: Routes = [
   { path: `:${MEETING_ID}/edit`,
-    loadChildren: './meeting-details-edit-page/meeting-details-edit-page.module#MeetingDetailsEditPageModule' },
+    loadChildren: 'app/meetings/meeting-details-edit-page/meeting-details-edit-page.module#MeetingDetailsEditPageModule' },
   { path: `:edit/:${MEETING_ID}`,
-    loadChildren: './meeting-details-edit-page/meeting-details-edit-page.module#MeetingDetailsEditPageModule' },
+    loadChildren: 'app/meetings/meeting-details-edit-page/meeting-details-edit-page.module#MeetingDetailsEditPageModule' },
   { path: ``,
-    loadChildren: './meeting-list-page/meeting-list-page.module#MeetingListPageModule' },
+    loadChildren: 'app/meetings/meeting-list-page/meeting-list-page.module#MeetingListPageModule' },
   { path: `:${MEETING_ID}`,
-    loadChildren: './meeting-details-page/meeting-details-page.module#MeetingDetailsPageModule' },
+    loadChildren: 'app/meetings/meeting-details-page/meeting-details-page.module#MeetingDetailsPageModule' },
 ];
 
 @NgModule({

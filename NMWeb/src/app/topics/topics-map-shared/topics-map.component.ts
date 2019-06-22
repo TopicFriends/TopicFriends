@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GeoLocation} from '../../user-profile-shared/user-geo-locations.types'
-import {TopicsDetailsService} from '../topic-details/topics-details.service'
+import {GeoLocation} from '../../user-profile/user-profile-core/user-geo-locations.types'
+import {TopicsDetailsService} from '../topic-details-page/topics-details.service'
 import {ActivatedRoute, Router} from '@angular/router'
 import {TagEntry} from '../topics-shared/tag-entry'
 import {logosSizeRatio} from '../../../assets/logos-size-ratio'

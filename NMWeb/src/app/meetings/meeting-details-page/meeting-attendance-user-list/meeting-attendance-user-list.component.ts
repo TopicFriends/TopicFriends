@@ -5,7 +5,7 @@ import {
   MeetingAttendanceService,
 } from '../../meetings-core/meeting-attendance.service';
 import {DbListReadOnly} from '../../../shared/db.service';
-import {UserMatcherService} from '../../../user-profile-shared/user-matcher.service'
+import {UserMatcherService} from '../../../user-profile/user-profile-core/user-matcher.service'
 import { Observable } from 'rxjs'
 
 @Component({

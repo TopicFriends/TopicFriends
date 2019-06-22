@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { UserProfileInputs } from "../UserProfileInputs";
-import { UserProfileService } from "../../user-profile-shared/user-profile.service";
+import { UserProfileService } from "../../user-profile/user-profile-core/user-profile.service";
 import {
   GeoLocation,
   GeoLocations,
   UserGeoLocations
-} from "../../user-profile-shared/user-geo-locations.types";
+} from "../../user-profile/user-profile-core/user-geo-locations.types";
 
 function transformIntoLocationDictionaries(values: any) {
   let returnVal = {};

@@ -294,6 +294,7 @@ export const topics = [
   tagNoIcon('Amazon Alexa'),
   tagNoIcon('Amazon Echo'),
   tagNoIcon('Google Home'),
+  // TODO: Google Assistant
   tagNoIcon('Cortana'),
   tagNoIcon('Google Docs'),
   tagNoIcon('Google AdWords'),
@@ -350,7 +351,7 @@ export const topics = [
   tag('Danish Language', 'flags/danish'),
   tag('Finnish Language', 'flags/finnish'),
   tag('Armenian Language', 'flags/armenian'),
-  tag('Catalan Language', 'flags/catalan'),
+  tag('Catalan Language', 'flags/catala'),
   tag('Romanian Language', 'flags/romanian'),
   tag('Lithuanian Language', 'flags/lithuanian'),
   tag('Latvian Language', 'flags/latvian'),
@@ -484,7 +485,7 @@ export const topics = [
   tagNoIcon('Underscore_Test'),
   tag('R Language', 'r-lang'),
   'nginx',
-  'WebAssembly',
+  'WebAssembly' /* TODO: short name: Wasm */,
   'Struts',
   'Yammer',
   tagNoIcon('Office 365'),
@@ -617,7 +618,7 @@ export const topics = [
   // IndexedDB, LocalStorage
   // ngx-bootstrap
 
-  // NestJS: A progressive Node.js framework for building efficient and scalable server-side applications on top of TypeScript & JavaScript (ES6 / ES7 / ES8) heavily inspired by Angular 😻🚀
+  // TODO: NestJS: A progressive Node.js framework for building efficient and scalable server-side applications on top of TypeScript & JavaScript (ES6 / ES7 / ES8) heavily inspired by Angular 😻🚀
 
   // CI: Continous Integration, CD: Continuous Delivery
   // RethinkDB
@@ -639,5 +640,22 @@ export const topics = [
   'Dart', tagLogoTipo('Flutter'),
   'Angular Dart',
   tag('Codelyzer'),
-  // TODO: SaaS (from Ali P.), PaaS, *aaS.
+  // TODO: SaaS (from Ali P.), PaaS, *aaS with Acronyms.
+  // TODO: Go Language (Leo)
+  // TODO: SparQL
+  'Preact',
+  // TODO: next, nuxt, rollup.js
+  // TODO: https://svelte.dev/
+  // TODO: gatsby - static renderer that uses React
+  // TODO: Server Side Rendering (SSR)
+  // TODO: Streaming SSR - https://www.youtube.com/watch?v=k-A2VfuUROg
+  // TODO: Spectrum - https://github.com/withspectrum/spectrum/issues/3303
+  // TODO: ARCore, Sceneform
+  // TODO: Tensorflow.js
+  // Chrome OS
+  // TODO: asm.js, Emscripten
+  // TODO: https://github.com/AssemblyScript/assemblyscript
+  // TODO: Android Jetpack
+  // TODO: webGL, three.js (Adam 3d printing etc) and smth for scene graph
+  // TODO: Vega lite
 ]

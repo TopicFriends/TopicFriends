@@ -31,15 +31,15 @@ export class MeetingFormControls implements FormDef<Meeting> {
 })
 export class MeetingDetailsEditPageComponent implements OnInit {
 
-  controls = new MeetingFormControls()
+  readonly controls = new MeetingFormControls()
 
-  private readonly meetingId: string
-  private readonly meeting: DbObject<Meeting>
+  readonly meetingId: string
+  readonly meeting: DbObject<Meeting>
 
   constructor(
-    public meetingsService: MeetingsService,
+    public readonly meetingsService: MeetingsService,
     private activatedRoute: ActivatedRoute,
-    private dbService: DbService,
+    private readonly dbService: DbService,
   ) {
     this.meetingId = this.activatedRoute.snapshot.params[MEETING_ID];
     this.meeting = this.meetingsService.retrieveMeetingDetails(this.meetingId)

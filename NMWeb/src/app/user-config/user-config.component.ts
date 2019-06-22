@@ -7,7 +7,6 @@ import {UserConfigService} from "../shared/user-config.service";
   templateUrl: './user-config.component.html',
   styleUrls: ['./user-config.component.scss']
 })
-
 export class UserConfigComponent implements OnInit {
 
   public loading:string;
@@ -20,6 +19,11 @@ export class UserConfigComponent implements OnInit {
     },
     {
       name:"show-skills",
+      label: "Show Skill Levels section in user profile",
+      description: "Define your skill levels (have, want) for given topics"
+    },
+    {
+      name:"show",
       label: "Show Skill Levels section in user profile",
       description: "Define your skill levels (have, want) for given topics"
     }

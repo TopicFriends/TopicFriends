@@ -8,6 +8,7 @@ import { QuillModule } from 'ngx-quill'
 import { ReactiveFormsModule } from '@angular/forms'
 import { RichTextEditorModule } from '../../rich-text-editor/rich-text-editor.module'
 import {
+  MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
 } from '@angular/material';
@@ -24,6 +25,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     RichTextEditorModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule,
   ],
   declarations: [
     MeetingDetailsEditPageComponent,
