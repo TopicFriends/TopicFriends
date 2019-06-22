@@ -1,6 +1,7 @@
 
-<ng-container *ngFor="let descriptor of [descriptors[0]]">
+<ng-container *ngFor="let descriptor of descriptors">
   <app-user-other-profile-icon
+    *ngIf="userOtherProfiles && userOtherProfiles[descriptor.id]"
     style="display: inline-block; padding-top: 4px"
     [descriptor]="descriptor"
   ></app-user-other-profile-icon>

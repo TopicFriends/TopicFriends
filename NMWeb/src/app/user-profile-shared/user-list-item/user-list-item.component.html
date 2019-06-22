@@ -16,8 +16,14 @@
         <a routerLink="/user/{{userId}}">{{profileBasicInfo?.displayName || profileBasicInfo?.name}}</a>
         &nbsp; MatchScore: {{matchResults?.isBasedOnLoggedInUser ? matchResults?.matchScore : '(Please Log In to see MatchScore)'}}
           &nbsp; <span class="badge" *ngIf="isLoggedUser()"> YOU!</span>
-        <app-user-other-profiles-badges *ngIf="show.otherProfileBadges"></app-user-other-profiles-badges>
-        <app-user-geo-locations-badges></app-user-geo-locations-badges>
+
+        <app-user-other-profiles-badges
+          *ngIf="show.otherProfileBadges"
+          [userOtherProfiles]="userDataCombined.otherProfiles"
+        ></app-user-other-profiles-badges>
+
+        <app-user-geo-locations-badges
+        ></app-user-geo-locations-badges>
 
       </div>
       <!--</h3>-->
