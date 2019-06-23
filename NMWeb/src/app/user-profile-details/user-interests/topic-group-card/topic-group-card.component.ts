@@ -1,11 +1,11 @@
 import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
-import {TopicListPickerComponent} from '../../../topics/topics-edit-shared/item-list-input/topic-list-picker.component'
 import {TagListModelEvent} from '../../../topics/topics-core/TagListModel'
 import {UserProfileInputs} from '../../UserProfileInputs'
 import { WantedTopics } from '../../../user-profile/user-profile-core/user-interests'
 import { createTopicsDictionary } from '../../../user-profile/user-profile-core/user-profile.service'
 import {isUndefined} from 'util'
+import { TopicListPickerComponent } from '../../../topics/topics-edit-shared/topic-list-picker/topic-list-picker.component'
 
 @Component({
   selector: 'app-topic-group-card',
