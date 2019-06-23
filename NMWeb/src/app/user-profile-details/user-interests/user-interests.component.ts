@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {SymmetricInteractions, TopicInterest, UserInterests, WantedTopics} from '../../user-profile/user-profile-core/user-interests'
 import {Observable} from 'rxjs/Observable'
-import {ItemListInputComponent} from '../../topics/topics-edit-shared/item-list-input/item-list-input.component'
+import {TopicListPickerComponent} from '../../topics/topics-edit-shared/item-list-input/topic-list-picker.component'
 import {FormBuilder, FormGroup} from '@angular/forms'
 import {UserProfileInputs} from '../UserProfileInputs'
 import { UserProfileService } from '../../user-profile/user-profile-core/user-profile.service'

@@ -1,7 +1,7 @@
 <div class="full-landing">
 <div class="container">
   <h1 class="title">Find people with common interests</h1>
-  <app-item-list-input
+  <app-topic-list-picker
     width="70%"
     displayMode="inline"
     class="search-bar"
@@ -9,7 +9,7 @@
     placeholder="e.g. Angular, Firebase..."
     [isEditable]="true"
     (outputTagList)="onOutputTagList($event)"
-  ></app-item-list-input>
+  ></app-topic-list-picker>
 
   <button
     class="search-button"

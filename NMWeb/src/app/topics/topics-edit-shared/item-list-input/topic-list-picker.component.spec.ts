@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ItemListInputComponent } from './item-list-input.component';
+import { TopicListPickerComponent } from './topic-list-picker.component';
 
 describe('ItemListInputComponent', () => {
-  let component: ItemListInputComponent;
-  let fixture: ComponentFixture<ItemListInputComponent>;
+  let component: TopicListPickerComponent;
+  let fixture: ComponentFixture<TopicListPickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItemListInputComponent ]
+      declarations: [ TopicListPickerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ItemListInputComponent);
+    fixture = TestBed.createComponent(TopicListPickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

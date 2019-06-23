@@ -15,13 +15,12 @@ import { getDictionaryValuesAsArray } from '../../../util/utils'
 declare var require: any
 const Sifter = require("sifter")
 
-/** FIXME: rename to smth like TopicListPicker */
 @Component({
-  selector: 'app-item-list-input',
-  templateUrl: './item-list-input.component.html',
-  styleUrls: ['./item-list-input.component.scss'],
+  selector: 'app-topic-list-picker',
+  templateUrl: './topic-list-picker.component.html',
+  styleUrls: ['./topic-list-picker.component.scss'],
 })
-export class ItemListInputComponent implements OnInit, OnDestroy {
+export class TopicListPickerComponent implements OnInit, OnDestroy {
 
   enableAddingTopics = false
 

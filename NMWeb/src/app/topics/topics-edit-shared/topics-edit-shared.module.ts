@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemListInputComponent } from './item-list-input/item-list-input.component'
+import { TopicListPickerComponent } from './item-list-input/topic-list-picker.component'
 import { TopicsSharedModule } from '../topics-shared/topics-shared.module'
 import {
   MatAutocompleteModule,
@@ -15,7 +15,7 @@ import {
 } from '@angular/forms'
 
 export const exportDeclarations = [
-  ItemListInputComponent,
+  TopicListPickerComponent,
 ]
 
 @NgModule({
