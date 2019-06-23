@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TopicListPickerComponent } from './item-list-input/topic-list-picker.component'
+import { TopicListPickerComponent } from './topic-list-picker/topic-list-picker.component'
 import { TopicsSharedModule } from '../topics-shared/topics-shared.module'
 import {
   MatAutocompleteModule,

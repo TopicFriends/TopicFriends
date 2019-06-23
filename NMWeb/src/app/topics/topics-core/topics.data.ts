@@ -351,7 +351,7 @@ export const topics = [
   tag('Danish Language', 'flags/danish'),
   tag('Finnish Language', 'flags/finnish'),
   tag('Armenian Language', 'flags/armenian'),
-  tag('Catalan Language', 'flags/catala'),
+  tag('Catalan Language', 'flags/catalan'),
   tag('Romanian Language', 'flags/romanian'),
   tag('Lithuanian Language', 'flags/lithuanian'),
   tag('Latvian Language', 'flags/latvian'),
