@@ -14,6 +14,8 @@ export class CookieInfoComponent implements OnInit {
 
   @ViewChild(CookieLawComponent) cookieLawComponent: CookieLawComponent
 
+  isSeen: boolean
+
   constructor() { }
 
   ngOnInit() {
@@ -21,6 +23,11 @@ export class CookieInfoComponent implements OnInit {
 
   dismissCookieLaw() {
     this.cookieLawComponent.dismiss()
+    this.isSeen = true
   }
 
+  onIsSeen(isSeen: boolean) {
+    console.log('onIsSeen', isSeen)
+    this.isSeen = isSeen
+  }
 }

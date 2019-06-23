@@ -1,7 +1,12 @@
 <cookie-law
+  *ngIf="! isSeen"
   learnMore="about#Terms"
+  (isSeen)="onIsSeen($event)"
 >
-  <div style="display: flex; align-items: center; width: 100%">
+  <div
+    *ngIf="! isSeen"
+    style="display: flex; align-items: center; width: 100%"
+  >
     <div style="flex-grow:1">
       Utilizamos cookies propias y de terceros para mejorar su experiencia y nuestros servicios,
       analizando la navegación en nuestro Sitio Web. Si continúa navegando, usted está aceptando su uso.
