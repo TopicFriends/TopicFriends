@@ -49,13 +49,13 @@
     ></app-user-other-profiles>
 
 
-    <app-user-skills
+    <app-user-skills-section
       [ngClass]="{hidden: ! showUserSkillsSection}"
       [userProfileInputs]="userProfileInputs"
       #userSkills
       [parentFormGroup]="formGroup"
       [thisFormGroup]="userSkillsFormGroup"
-    ></app-user-skills>
+    ></app-user-skills-section>
 
     <h2 id="actionable-interests">Actionable Interests</h2>
 
