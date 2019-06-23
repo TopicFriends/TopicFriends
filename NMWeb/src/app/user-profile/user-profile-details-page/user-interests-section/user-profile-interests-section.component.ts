@@ -19,11 +19,11 @@ function buildSupplyDemandSubForm(formBuilder: FormBuilder) {
 }
 
 @Component({
-  selector: 'app-user-interests',
-  templateUrl: './user-interests.component.html',
-  styleUrls: ['./user-interests.component.scss']
+  selector: 'app-user-interests-section',
+  templateUrl: './user-profile-interests-section.component.html',
+  styleUrls: ['./user-profile-interests-section.component.scss']
 })
-export class UserInterestsComponent implements OnInit {
+export class UserProfileInterestsSectionComponent implements OnInit {
 
   @Input() thisFormGroup: FormGroup
   @Input() public userProfileInputs: UserProfileInputs

@@ -10,3 +10,119 @@ Picked items:
     *ngTemplateOutlet="itemTagTemplate; context: {$implicit: item}"
   ></ng-container>
 </div>
+
+
+
+
+ <!-- ------------- -->
+
+
+<br>
+
+<!--<app-topic-tag-list-->
+<!--  [margin]="margin"-->
+<!--  [width]="width"-->
+<!--  [tagListModel]="tagListModel"-->
+<!--  [editable]="isEditable"-->
+<!--  [minShow]="50"-->
+<!--&gt;</app-topic-tag-list>-->
+
+<br>
+
+<!--
+    (keydown.enter)="addTag(currentFilteredOptions[0])"
+-->
+<div
+  [ngStyle]="{'display': displayMode }"
+  style="flex-direction: row;"
+>
+
+  <mat-form-field
+    *ngIf="isEditable"
+    [ngStyle]="{'width': width, 'margin': margin}"
+  >
+    <input
+      matInput
+      [matAutocomplete]="auto"
+      [formControl]="stateCtrl"
+      (keydown.enter)="onEnterKey($event)"
+
+    > <!-- FIXME!!!: addTag(currentFilteredOptions[0]) : this should check if a specific item was selected by
+      down-arrow instead of always forcing [0] -->
+    <mat-placeholder>
+      {{placeholder}}
+    </mat-placeholder>
+    <button mat-button *ngIf="stateCtrl.value && stateCtrl.value !== ''" matSuffix mat-icon-button aria-label="Clear" (click)="stateCtrl.setValue('')">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button
+    *ngIf="enableAddingTopics"
+    mat-button
+    color="primary"
+    (click)="createTopic()"
+  >
+    Create
+  </button>
+</div>
+
+
+<!-- UX NOTE: autocomplete is not really what we want, because it has too many assumptions that are not good for us:
+- filling text with just-selected option (circumvented by me in an ugly way)
+- hiding the autocomplete when item is selected (losing the position where the user was)
+
+Replace with a filtered list, which could also be smarter
+- not necessarily vertical only (better use of space)
+- always visible-->
+<!--
+https://github.com/angular/material2/pull/1999
+"I wasn't aware that mat-selection-list was a planned component. Closing in that case." -->
+<!-- TODO: make generic filtered list component -->
+<!-- Other benefits of getting rid of the <mat-autocomplete> completely:
+- it has jittery scroll
+- don't know how to control its positioning
+- it covers the input field etc -->
+<!-- Filter scores ("I wanted to do smart filtering anyway :D, kinda like RateVote"):
+... https://github.com/brianreavis/sifter.js
+- 1: substring match
+- 2: word starts with filterText
+- 3: whole name starts with filterText
+- 4: whole name equals filterText
+- ?: CMM -> CamelCaseMatch -->
+<div *ngIf="false" style="max-height: 200px; overflow: scroll">
+  <mat-list  >
+    <mat-list-item *ngFor="let option of lastFilteredOptions">
+      <h4><img src="{{option.logo}}" onerror="this.style.display='none';"/> {{ option.name }}</h4>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+
+<!--[value]="option.name"-->
+<mat-autocomplete
+  #auto="matAutocomplete"
+  autoActiveFirstOption="true"
+  (optionSelected)="onAutocompleteOptionSelected($event)"
+>
+  <!--   *ngIf="isEditable"
+  -->
+  <mat-option
+    *ngFor="let option of lastFilteredOptions"
+
+    (onSelectionChange)="addTag(option)"
+  >
+    <ng-container
+      *ngTemplateOutlet="itemCandidateTemplate; context: {$implicit: option}"
+    ></ng-container>
+
+    <!--<ng-template [ngIf]="option.logo" >-->
+    <!--<img src="{{chip.logo}}"/>-->
+    <img src="{{option.logo}}" onerror="this.style.display='none';"/>
+    <!--</ng-template>-->
+    &nbsp;{{ option.name }}
+  </mat-option>
+
+</mat-autocomplete>
+
+<!-- https://github.com/angular/material2/tree/master/src/lib/autocomplete -->

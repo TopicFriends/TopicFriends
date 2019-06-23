@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {UserProfileSharedModule} from '../user-profile-shared/user-profile-shared.module'
 import {UserDescriptionsComponent} from './user-descriptions/user-descriptions.component'
-import {UserInterestsComponent} from './user-interests/user-interests.component'
+import {UserProfileInterestsSectionComponent} from './user-interests-section/user-profile-interests-section.component'
 import {UserGeoLocationsComponent} from './user-geo-locations/user-geo-locations.component'
 import {UserOtherProfilesComponent} from './user-other-profiles/user-other-profiles.component'
 import {UserProfileBasicInfoComponent} from './user-profile-basic-info/user-profile-basic-info.component'
-import {TopicGroupCardComponent} from './user-interests/topic-group-card/topic-group-card.component'
-import {TopicGroupSupplyDemandCardComponent} from './user-interests/topic-group-supply-demand-card/topic-group-supply-demand-card.component'
+import {TopicGroupCardComponent} from './user-interests-section/topic-group-card/topic-group-card.component'
+import {TopicGroupSupplyDemandCardComponent} from './user-interests-section/topic-group-supply-demand-card/topic-group-supply-demand-card.component'
 import {UserGeoLocationComponent} from './user-geo-locations/user-geo-location/user-geo-location.component'
 import { UserWebsiteComponent } from './user-other-profiles/user-website/user-website.component'
-import { UserInterestsAndSkillsSectionComponent } from './user-interests-and-skills-section/user-interests-and-skills-section.component'
+import { UserProfileInterestsAndSkillsSectionComponent } from './user-interests-and-skills-section/user-profile-interests-and-skills-section.component'
 import { UserSkillComponent } from './user-interests-and-skills-section/user-skill/user-skill.component'
 import { UserSkillsListComponent } from './user-interests-and-skills-section/user-skills-list/user-skills-list.component'
 import {
@@ -56,8 +56,8 @@ import { TopicsEditSharedModule } from '../../topics/topics-edit-shared/topics-e
   ],
   declarations: [
     UserDescriptionsComponent,
-    UserInterestsComponent,
-    UserInterestsAndSkillsSectionComponent,
+    UserProfileInterestsSectionComponent,
+    UserProfileInterestsAndSkillsSectionComponent,
     UserGeoLocationsComponent,
     UserOtherProfilesComponent,
     UserProfileBasicInfoComponent,
