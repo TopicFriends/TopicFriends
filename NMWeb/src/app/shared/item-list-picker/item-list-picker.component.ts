@@ -199,6 +199,4 @@ export class ItemListPickerComponent implements OnInit, OnDestroy {
     console.log('onAutocompleteOptionSelected', $event)
   }
 
-
-
 }
