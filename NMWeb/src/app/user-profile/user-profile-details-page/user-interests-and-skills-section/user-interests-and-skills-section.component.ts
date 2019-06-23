@@ -12,11 +12,11 @@ import {
 import { TopicInterest } from '../../user-profile-core/user-interests'
 
 @Component({
-  selector: 'app-user-skills-section',
-  templateUrl: './user-skills-section.component.html',
-  styleUrls: ['./user-skills-section.component.scss'],
+  selector: 'app-user-interests-and-skills-section',
+  templateUrl: './user-interests-and-skills-section.component.html',
+  styleUrls: ['./user-interests-and-skills-section.component.scss'],
 })
-export class UserSkillsSectionComponent implements OnInit {
+export class UserInterestsAndSkillsSectionComponent implements OnInit {
 
   allTopicsArray: TagEntry[]
   allTopics: TagInclusions

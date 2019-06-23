@@ -10,9 +10,9 @@ import {TopicGroupCardComponent} from './user-interests/topic-group-card/topic-g
 import {TopicGroupSupplyDemandCardComponent} from './user-interests/topic-group-supply-demand-card/topic-group-supply-demand-card.component'
 import {UserGeoLocationComponent} from './user-geo-locations/user-geo-location/user-geo-location.component'
 import { UserWebsiteComponent } from './user-other-profiles/user-website/user-website.component'
-import { UserSkillsSectionComponent } from './user-skills-section/user-skills-section.component'
-import { UserSkillComponent } from './user-skills-section/user-skill/user-skill.component'
-import { UserSkillsListComponent } from './user-skills-section/user-skills-list/user-skills-list.component'
+import { UserInterestsAndSkillsSectionComponent } from './user-interests-and-skills-section/user-interests-and-skills-section.component'
+import { UserSkillComponent } from './user-interests-and-skills-section/user-skill/user-skill.component'
+import { UserSkillsListComponent } from './user-interests-and-skills-section/user-skills-list/user-skills-list.component'
 import {
   UserProfileDetailsComponent,
 } from './user-profile-details.component'
@@ -57,7 +57,7 @@ import { TopicsEditSharedModule } from '../../topics/topics-edit-shared/topics-e
   declarations: [
     UserDescriptionsComponent,
     UserInterestsComponent,
-    UserSkillsSectionComponent,
+    UserInterestsAndSkillsSectionComponent,
     UserGeoLocationsComponent,
     UserOtherProfilesComponent,
     UserProfileBasicInfoComponent,
@@ -77,4 +77,4 @@ import { TopicsEditSharedModule } from '../../topics/topics-edit-shared/topics-e
     HeaderComponent,
   ],
 })
-export class UserProfileDetailsModule { }
+export class UserProfileDetailsPageModule { }

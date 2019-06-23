@@ -22,6 +22,6 @@ export function userProfileTest() {
     //   .contains("/config");
 
     await t.click(visitGeoTag);
-    await t.typeText(twitterInput, "twitter");
+    await t.typeText(twitterInput, "test_twitter_user_name");
   });
 }

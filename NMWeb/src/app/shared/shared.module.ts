@@ -39,7 +39,7 @@ import { TextAreaComponent } from './text-area/text-area.component'
 import { DomainDbService } from './domain-db.service'
 import { DbService } from './db.service'
 import { ScrollingService } from './scrolling.service';
-import { HideOnScrollDirective } from './hide-on-scroll.directive'
+import { HideOnScrollDirective } from './hide-on-scroll.directive';
 
 export const exportModules = [
   MatChipsModule,

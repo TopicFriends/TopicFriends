@@ -51,10 +51,6 @@ const appRoutes: Routes = [
     loadChildren: 'app/other/terms-of-service-page/terms-of-service-page.module#TermsOfServicePageModule',
   },
   {
-    path: 'profile',
-    loadChildren: 'app/user-profile/user-profile-details/user-profile-details.module#UserProfileDetailsModule',
-  },
-  {
     path: 'config',
     loadChildren: 'app/user-profile/user-config/user-config.module#UserConfigModule',
   },
@@ -64,7 +60,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'u',
-    loadChildren: 'app/user-profile/user-profile-details/user-profile-details.module#UserProfileDetailsModule',
+    loadChildren: 'app/user-profile/user-profile-details-page/user-profile-details-page.module#UserProfileDetailsPageModule',
+  },
+  {
+    path: 'profile',
+    loadChildren: 'app/user-profile/user-profile-details-page/user-profile-details-page.module#UserProfileDetailsPageModule',
   },
   {
     path: 'privacy',

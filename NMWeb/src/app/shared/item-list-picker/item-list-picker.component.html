@@ -1,0 +1,12 @@
+<p>
+  item-list-picker works!
+</p>
+Picked items:
+<div
+  *ngFor="let item of pickedTags"
+>
+  <!-- ; trackBy: trackById -->
+  <ng-container
+    *ngTemplateOutlet="itemTagTemplate; context: {$implicit: item}"
+  ></ng-container>
+</div>

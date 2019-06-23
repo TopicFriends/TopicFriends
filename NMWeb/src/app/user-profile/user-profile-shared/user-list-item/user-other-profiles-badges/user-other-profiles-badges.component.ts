@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { UserOtherProfiles } from '../../../user-profile-core/user-other-profiles.service'
-import { UserOtherProfilesDescriptorsDefs } from '../../../user-profile-details/user-other-profiles/UserOtherProfilesDescriptors'
+import { UserOtherProfilesDescriptorsDefs } from '../../../user-profile-details-page/user-other-profiles/UserOtherProfilesDescriptors'
 
 @Component({
   selector: 'app-user-other-profiles-badges',

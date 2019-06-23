@@ -7,7 +7,7 @@ import {GeoLocation} from '../../../user-profile/user-profile-core/user-geo-loca
 import {FormControl} from '@angular/forms';
 import {AgmMap, MapsAPILoader} from '@agm/core';
 // import { } from 'googlemaps';
-import {UserProfileInputs} from '../../../user-profile/user-profile-details/UserProfileInputs'
+import {UserProfileInputs} from '../../../user-profile/user-profile-details-page/UserProfileInputs'
 import {ScrollingService} from '../../../shared/scrolling.service'
 
 

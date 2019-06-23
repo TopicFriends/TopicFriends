@@ -1,9 +1,9 @@
 
 <mat-card style="margin-bottom: 10px">
 
-  <app-topic-list-picker
-    [isEditable]="userProfileInputs.isEditable"
-  ></app-topic-list-picker>
+<!--  <app-topic-list-picker-->
+<!--    [isEditable]="userProfileInputs.isEditable"-->
+<!--  ></app-topic-list-picker>-->
 
 <!--  <mat-card-title>-->
 <!--    Skill Levels-->
@@ -23,10 +23,13 @@
 
   <mat-card-content [formGroup]="thisFormGroup">
 
-    <app-user-skills-list
-      [userProfileInputs]="userProfileInputs"
-      formControlName="skillLevelsPerTopic"
-    ></app-user-skills-list>
+<!--    <app-user-skills-list-->
+<!--      [userProfileInputs]="userProfileInputs"-->
+<!--      formControlName="skillLevelsPerTopic"-->
+<!--    ></app-user-skills-list>-->
+    app-topic-interests-and-skills-list-picker:
+    <app-user-topic-interests-and-skills-list-picker
+    ></app-user-topic-interests-and-skills-list-picker>
 
   </mat-card-content>
 

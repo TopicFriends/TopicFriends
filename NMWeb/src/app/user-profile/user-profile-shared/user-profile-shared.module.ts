@@ -31,6 +31,9 @@ import { RouterModule } from '@angular/router'
 import { UserOtherProfilesBadgesComponent } from './user-list-item/user-other-profiles-badges/user-other-profiles-badges.component';
 import { UserGeoLocationsBadgesComponent } from './user-list-item/user-geo-locations-badges/user-geo-locations-badges.component'
 import { UserInterestsModeViewComponent } from './user-list-item/user-interests-mode-view/user-interests-mode-view.component'
+import { TopicSkillsSharedModule } from '../../skills/topic-skills-shared/topic-skills-shared.module';
+import { UserTopicInterestsAndSkillsListPickerComponent } from './user-topic-interests-and-skills-list-picker/user-topic-interests-and-skills-list-picker.component'
+import { ItemListPickerModule } from '../../shared/item-list-picker/item-list-picker.module'
 
 export const exportDeclarations = [
   UserOtherProfileIconComponent,
@@ -45,6 +48,7 @@ export const exportDeclarations = [
   SkillLevelsLabelComponent,
   UserListItemComponent,
   UserInterestsModeViewComponent,
+  UserTopicInterestsAndSkillsListPickerComponent,
 ]
 
 @NgModule({
@@ -66,7 +70,9 @@ export const exportDeclarations = [
     MatExpansionModule,
     FlexLayoutModule,
     TopicsSharedModule,
+    TopicSkillsSharedModule,
     RouterModule,
+    ItemListPickerModule,
   ],
   declarations: [
     ...exportDeclarations,

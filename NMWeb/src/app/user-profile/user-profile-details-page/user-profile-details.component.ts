@@ -10,7 +10,7 @@ import {SnackBarComponent} from '../../shared/snackbar/snackbar.component'
 import {UserGeoLocationsComponent} from './user-geo-locations/user-geo-locations.component'
 import {UserDescriptionsComponent} from './user-descriptions/user-descriptions.component'
 import {ActivatedRoute, ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot} from '@angular/router'
-import {UserSkillsSectionComponent} from './user-skills-section/user-skills-section.component'
+import {UserInterestsAndSkillsSectionComponent} from './user-interests-and-skills-section/user-interests-and-skills-section.component'
 import {UserProfileInputs} from './UserProfileInputs'
 import {UserConfigService} from "../../shared/user-config.service"
 import { USER_PROFILE_ID_PARAM_NO_COLON } from '../../shared/routes'
@@ -30,7 +30,7 @@ export class UserProfileDetailsComponent implements OnInit {
   @ViewChild('userDescriptions') userDescriptions: UserDescriptionsComponent
   @ViewChild('userOtherProfiles') userOtherProfilesComponent: UserOtherProfilesComponent
   @ViewChild('userInterests') userInterests: UserInterestsComponent
-  @ViewChild('userSkills') userSkills: UserSkillsSectionComponent
+  @ViewChild('userSkills') userSkills: UserInterestsAndSkillsSectionComponent
   @ViewChild('userGeoLocations') userGeoLocations: UserGeoLocationsComponent
 
   /* Rename to rootFormGroup */
@@ -79,7 +79,7 @@ export class UserProfileDetailsComponent implements OnInit {
     this.userProfileBasicInfoFormGroup = UserProfileBasicInfoComponent.buildFormGroup(this.formBuilder)
     this.userDescriptionsFormGroup = UserDescriptionsComponent.buildFormGroup(this.formBuilder)
     this.userInterestsFormGroup = UserInterestsComponent.buildFormGroup(this.formBuilder)
-    this.userSkillsFormGroup = UserSkillsSectionComponent.buildFormGroup(this.formBuilder)
+    this.userSkillsFormGroup = UserInterestsAndSkillsSectionComponent.buildFormGroup(this.formBuilder)
     this.userGeoLocationsFormGroup = UserGeoLocationsComponent.buildFormGroup(this.formBuilder)
     this.formGroup = this.formBuilder.group({
       userProfileBasicInfo:
