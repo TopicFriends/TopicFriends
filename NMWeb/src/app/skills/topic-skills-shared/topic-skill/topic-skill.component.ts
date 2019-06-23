@@ -3,7 +3,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { UserSkillLevelsHaveWant } from '../../user-profile-shared/user-skills.service';
+import { UserSkillLevelsHaveWant } from '../../../user-profile/user-profile-core/user-skills.service'
 
 @Component({
   selector: 'app-topic-skill',
