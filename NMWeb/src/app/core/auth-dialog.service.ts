@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginComponent } from '../login/login.component'
 import { MatDialog } from '@angular/material'
-import { AuthService } from '../user-profile-shared/auth.service'
+import { AuthService } from '../user-profile/user-profile-shared/auth.service'
 
 @Injectable()
 export class AuthDialogService {

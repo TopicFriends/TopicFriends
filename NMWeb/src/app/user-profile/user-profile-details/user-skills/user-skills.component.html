@@ -1,0 +1,33 @@
+
+<mat-card style="margin-bottom: 10px">
+
+  <app-topic-list-picker
+    [isEditable]="userProfileInputs.isEditable"
+  ></app-topic-list-picker>
+
+<!--  <mat-card-title>-->
+<!--    Skill Levels-->
+
+<!--    <mat-form-field-->
+<!--      style="width:100%"-->
+<!--    >-->
+<!--      <input-->
+<!--        matInput-->
+<!--      >-->
+<!--      <mat-placeholder>-->
+<!--        Filter Skills (TODO)-->
+<!--      </mat-placeholder>-->
+<!--    </mat-form-field>-->
+<!--  </mat-card-title>-->
+
+
+  <mat-card-content [formGroup]="thisFormGroup">
+
+    <app-user-skills-list
+      [userProfileInputs]="userProfileInputs"
+      formControlName="skillLevelsPerTopic"
+    ></app-user-skills-list>
+
+  </mat-card-content>
+
+</mat-card>

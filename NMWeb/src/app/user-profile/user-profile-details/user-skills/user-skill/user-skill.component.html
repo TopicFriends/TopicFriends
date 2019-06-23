@@ -1,0 +1,13 @@
+  <app-topic-tag
+    [tag]="tag2"
+    [editable]="false"
+    [isCustomClick]="true"
+    (clickTopic)="openDialog($event, tag2)"
+  >
+    <!--{{skillLevels | json}}-->
+    <app-skill-level-label
+      [skillLevels]="skillLevels"
+    ></app-skill-level-label>
+  </app-topic-tag>
+
+

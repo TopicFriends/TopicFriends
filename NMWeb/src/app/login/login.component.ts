@@ -2,7 +2,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { AuthService } from '../user-profile-shared/auth.service';
+import { AuthService } from '../user-profile/user-profile-shared/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

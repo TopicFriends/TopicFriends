@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { AuthService } from "app/user-profile-shared/auth.service";
+import { AuthService } from "app/user-profile/user-profile-shared/auth.service";
 import {CapitalizeFirstPipe} from "../../shared/pipes/capitalize-first.pipe";
 import {Title} from "@angular/platform-browser";
 import {NavigationEnd, Router} from "@angular/router";

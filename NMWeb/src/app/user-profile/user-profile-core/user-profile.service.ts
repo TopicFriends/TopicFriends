@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from '../../user-profile-shared/auth.service';
+import { AuthService } from '../user-profile-shared/auth.service';
 import {
   DbList,
   DbObject,

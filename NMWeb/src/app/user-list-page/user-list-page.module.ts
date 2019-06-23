@@ -10,7 +10,7 @@ import {
   MatRadioModule,
   MatSelectModule,
 } from '@angular/material';
-import { UserProfileSharedModule } from '../user-profile-shared/user-profile-shared.module'
+import { UserProfileSharedModule } from '../user-profile/user-profile-shared/user-profile-shared.module'
 
 @NgModule({
   imports: [

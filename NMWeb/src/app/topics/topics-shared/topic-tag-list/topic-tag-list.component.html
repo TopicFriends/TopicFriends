@@ -6,6 +6,15 @@
 
     <ng-template [ngIf]="editable">
       <ng-template ngFor let-tag [ngForOf]="tagListModel.tags" [ngForTrackBy]="trackByKey">
+<!--        <app-user-skill-->
+<!--          [tag]="tag"-->
+<!--        ></app-user-skill>-->
+<!--        [userProfileInputs]="userProfileInputs"-->
+<!--        [tag]="tag"-->
+<!--        [skillLevels]="getSkillLevelsForTopicId(topic.id)"-->
+<!--        (levelsChanged)="onLevelsChanged($event, topic)"-->
+
+
         <app-topic-tag
           style="display: inline-block"
           [tag]="tag"

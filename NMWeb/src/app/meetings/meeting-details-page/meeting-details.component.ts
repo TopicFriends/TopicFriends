@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Meeting, MeetingsService} from '../meetings-core/meetings.service';
 import {ActivatedRoute} from '@angular/router';
 import {MeetingAttendanceByUser, MeetingAttendanceService} from '../meetings-core/meeting-attendance.service';
-import {AuthService} from '../../user-profile-shared/auth.service';
+import {AuthService} from '../../user-profile/user-profile-shared/auth.service';
 import {Title} from '@angular/platform-browser'
 import { SnackBarComponent } from '../../shared/snackbar/snackbar.component'
 
