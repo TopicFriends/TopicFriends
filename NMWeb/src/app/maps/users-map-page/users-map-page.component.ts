@@ -142,4 +142,19 @@ export class UsersMapPageComponent implements OnInit, OnDestroy {
     this.showPeople = !this.showPeople
   }
 
+  onMouseOver(agmMap, profilePopup, profilePopupContent) {
+    if (agmMap.lastOpen != null) {
+      agmMap.lastOpen.close();
+    }
+
+    agmMap.lastOpen = profilePopup;
+    profilePopupContent.loadUserProfile();
+    profilePopup.open();
+  }
+
+  onMouseOut(agmMap, profilePopup) {
+    agmMap.lastOpen = profilePopup;
+    setTimeout(() => { profilePopup.close();}, 100);
+  }
+
 }

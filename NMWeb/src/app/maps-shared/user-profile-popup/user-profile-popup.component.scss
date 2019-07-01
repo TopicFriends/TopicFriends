@@ -3,8 +3,8 @@
   display: -webkit-flex;
   display: flex;
   .photocard {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     .photo {
       width: 100px;
       height: 100px;
@@ -12,7 +12,8 @@
   }
   .content {
     padding: 4px 14px 5px;
-    max-width: 265px;
+    max-width: 300px;
+    max-height: 300px;
     .headline {
       padding: 5px 0 1px;
       .username {
