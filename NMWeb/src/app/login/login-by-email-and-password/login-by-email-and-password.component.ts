@@ -13,19 +13,13 @@ import { AuthDialogService } from '../../core/auth-dialog.service';
   styleUrls: ['./login-by-email-and-password.component.scss']
 })
 export class LoginByEmailAndPasswordComponent implements OnInit {
-  resetForm: boolean = false;
   logInSignUpToggleButton: boolean = false;
-  resetEmailResponseMessage: string = '';
 
   loginEmailFormControl = new FormControl("loginEmailFormControl", [
     Validators.required,
     Validators.email
   ]);
   registerEmailFormControl = new FormControl("registerEmailFormControl", [
-    Validators.required,
-    Validators.email
-  ]);
-  resetEmailFormControl = new FormControl("resetEmailFormControl", [
     Validators.required,
     Validators.email
   ]);
@@ -69,25 +63,7 @@ export class LoginByEmailAndPasswordComponent implements OnInit {
 
   toggleLoginSignUpFields() {
     this.logInSignUpToggleButton = !this.logInSignUpToggleButton;
-    this.resetForm = false;
     return this.logInSignUpToggleButton;
-  }
-
-  changeToResetForm() {
-    this.logInSignUpToggleButton = true;
-    this.resetForm = true;
-    return this.resetForm;
-  }
-
-  sendPasswordResetRequest() {
-    this.authService.resetPassword(this.resetEmailFormControl.value)
-                      .then((response) => {
-                        this.resetEmailResponseMessage = '';
-                        this.authDialogService.closeDialog();
-                      })
-                      .catch((error) => {
-                        this.resetEmailResponseMessage = error.message;
-                      });
   }
 
 }

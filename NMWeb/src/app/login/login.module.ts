@@ -8,6 +8,7 @@ import {
 import { LoginComponent } from './login.component';
 import { SharedModule } from '../shared/shared.module';
 import { LoginByEmailAndPasswordComponent } from './login-by-email-and-password/login-by-email-and-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { LoginByEmailAndPasswordComponent } from './login-by-email-and-password/
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [LoginComponent, LoginByEmailAndPasswordComponent],
+  declarations: [LoginComponent, LoginByEmailAndPasswordComponent, ResetPasswordComponent],
   exports: [LoginComponent]
 })
 export class LoginModule {}

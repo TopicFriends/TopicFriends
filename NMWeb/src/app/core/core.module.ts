@@ -24,6 +24,7 @@ import { LoginComponent } from '../login/login.component'
 import {LoginModule} from '../login/login.module';
 import { HeaderUserAccountButtonComponent } from './header/header-user-account-button/header-user-account-button.component'
 import { AuthDialogService } from './auth-dialog.service'
+import { ResetPasswordComponent } from 'app/login/reset-password/reset-password.component';
 
 /** https://angular.io/guide/styleguide#prevent-re-import-of-the-core-module */
 export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
@@ -60,7 +61,7 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     HeaderUserAccountButtonComponent,
   ],
   entryComponents: [
-    LoginComponent,
+    LoginComponent
   ],
   providers: [
     CleanUrlPipe,
