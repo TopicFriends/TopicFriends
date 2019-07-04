@@ -11,4 +11,4 @@
 - [ ] Please follow platform / language / library style guide
   - camelCaseVariableNames
   - CamelCaseClassNames  
-- [ ] Avoid duplicate code. Do not copy-paste ~2 or more lines. Instead extract component / class / method and reuse in all places. For the sake of future maintenance.
+- [ ] Avoid duplicate code. Do not copy-paste ~2 or more lines. Instead, extract component / class / method and reuse in all places. For the sake of future maintenance.
