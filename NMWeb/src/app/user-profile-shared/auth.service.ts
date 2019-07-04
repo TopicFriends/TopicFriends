@@ -13,7 +13,6 @@ export class AuthService {
   constructor(public afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
     this.user.subscribe(user => {
-      console.log('AuthService user.subscribe; user: ', user)
       this.userSaved = user;
     });
   }
@@ -25,10 +24,9 @@ export class AuthService {
   }
 
   logInViaGithub() {
-    return this.afAuth.auth
-      .signInWithPopup(
-        new firebase.auth.GithubAuthProvider()
-      );
+    return this.afAuth.auth.signInWithPopup(
+      new firebase.auth.GithubAuthProvider()
+    );
   }
 
   // loginViaLinkedIn() {
@@ -41,21 +39,10 @@ export class AuthService {
   }
 
   signUpWithEmailAndPassword(email, password: string) {
-    return this.afAuth.auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(function(data) {
-        console.log("Signing up successful");
-      })
-      .catch(function(error) {
-        // Handle Errors here.
-        console.log("Error on creating account");
-      });
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
   logInViaEmailAndPassword(email, password: string) {
-    return this.afAuth.auth
-      .signInWithEmailAndPassword(email, password)
-      .then(response => console.log("Logged in correctly"))
-      .catch(error => console.log("Error loggin in"));
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 }
