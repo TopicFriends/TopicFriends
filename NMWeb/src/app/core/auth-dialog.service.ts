@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { LoginComponent } from '../login/login.component'
 import { MatDialog } from '@angular/material'
 import { AuthService } from '../user-profile-shared/auth.service'
-import { ResetPasswordComponent } from 'app/login/reset-password/reset-password.component';
 
 @Injectable()
 export class AuthDialogService {
@@ -20,7 +19,7 @@ export class AuthDialogService {
     })
   }
 
-  closeDialog(): void {
+  public closeDialog(): void {
     if(this.dialogRef){
       this.dialogRef.close();
     }
@@ -30,9 +29,8 @@ export class AuthDialogService {
     this.dialogRef = this.dialog.open(LoginComponent, {autoFocus: false});
   }
 
-  public openResetPasswordDialog() {
-    this.closeDialog();
-    this.dialogRef = this.dialog.open(ResetPasswordComponent, {autoFocus: false});
+  public getDialogRef() {
+    return this.dialog;
   }
 
 }

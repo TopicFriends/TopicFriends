@@ -6,6 +6,7 @@ import {
 } from '@angular/forms'
 import { AuthService } from '../../user-profile-shared/auth.service';
 import { AuthDialogService } from '../../core/auth-dialog.service';
+import { ResetPasswordComponent } from '../reset-password/reset-password.component';
 
 @Component({
   selector: 'app-login-by-email-and-password',
@@ -64,6 +65,11 @@ export class LoginByEmailAndPasswordComponent implements OnInit {
   toggleLoginSignUpFields() {
     this.logInSignUpToggleButton = !this.logInSignUpToggleButton;
     return this.logInSignUpToggleButton;
+  }
+
+  openResetPasswordDialog() {
+    this.authDialogService.closeDialog();
+    this.authDialogService.getDialogRef().open(ResetPasswordComponent, {autoFocus: false});
   }
 
 }

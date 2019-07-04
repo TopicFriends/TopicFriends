@@ -27,7 +27,6 @@ export class ResetPasswordComponent implements OnInit {
     this.authService.resetPassword(this.resetEmailFormControl.value)
                       .then((response) => {
                         this.resetEmailResponseMessage = 'Please follow the instructions in the e-mail we have just sent to you.';
-                        this.authDialogService.closeDialog();
                       })
                       .catch((error) => {
                         this.resetEmailResponseMessage = error.message;

@@ -61,7 +61,7 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     HeaderUserAccountButtonComponent,
   ],
   entryComponents: [
-    LoginComponent
+    LoginComponent, ResetPasswordComponent
   ],
   providers: [
     CleanUrlPipe,
