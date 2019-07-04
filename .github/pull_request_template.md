@@ -1,11 +1,12 @@
-### Checklist before committing / pull-request:
-- [ ] Read this checklist and checkmark the items
+### IMPORTANT: Checklist before committing / pull-request:
+- [ ] IMPORTANT: Please read this checklist and checkmark the items, putting `[x]` at the beginning of the bullet-point
 - [ ] Think of the reviewers and make their life easier :) while also keeping You reputation good by committing high-quality code and avoiding bad-quality commits
 - [ ] Self-review before committing, with graphical diff (e.g. IDE), ideally with per-character diff highlight.
 - [ ] Provide descriptive commit message, pull-request titles and branch names, including issue number in commit message, e.g. #123
 - [ ] Use spell-checker built into Your IDE
 - [ ] Please avoid compiler warnings or tslint / codelyzer / IDE warnings
 - [ ] Run unit tests `npm test` and TestCafe `cd e2e-testcafe && npm i && npm test`
+- [ ] Check Continuous Integration (CI) build status (takes about 1m30s)
 - [ ] Small files / modules / classes / methods / components (single responsibility principle). Even if a given thing seems like it will not be re-used, it should be split off, for the sake of making it easier to analyse it (and maybe it will actually be reused in the future or a new implementation will be developed / experimented-on in the future)
 - [ ] Please don't put random changes in pull-requests, e.g. reformatting entire files, changing quotes to double/single, etc. For the sake of easier reviewing and not polluting `git annotate`
 - [ ] Please follow platform / language / library style guide
