@@ -1,0 +1,49 @@
+.mat-raised-button {
+  border-radius: 16px;
+  color: mediumseagreen;
+}
+
+.about__basedOn {
+  text-align: center;
+
+  &--tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &--icon {
+    font-size: 3rem;
+    color: rgb(88, 180, 129);
+    display: contents;
+  }
+
+  &--tile {
+    width: 210px;
+    padding: .7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between ;
+  
+    @media screen and (max-width: 810px) {
+    width: 55% ;
+
+    &:nth-child(2){
+      margin: 1rem 0;
+      padding: 2rem 0;
+
+      border-top: 1px solid lightgray;
+      border-bottom: 1px solid lightgray;
+    }
+  }
+
+  & h4 {
+    margin: .5em;
+  }
+  & p {
+    color: #888;
+  }
+}
+}
+

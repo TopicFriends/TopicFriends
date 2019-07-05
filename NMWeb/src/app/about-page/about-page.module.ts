@@ -13,6 +13,10 @@ import { AboutPoweredByComponent } from './about-powered-by/about-powered-by.com
 import { AboutNewsComponent } from './about-news/about-news.component';
 import { AboutContributorsWelcomeComponent } from './about-contributors-welcome/about-contributors-welcome.component';
 import { AboutTwitterComponent } from './about-twitter/about-twitter.component'
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { AboutInfoComponent } from './about-info/about-info.component';
+
 
 @NgModule({
   imports: [
@@ -21,6 +25,8 @@ import { AboutTwitterComponent } from './about-twitter/about-twitter.component'
     SharedModule,
     TopicsSharedModule,
     MatChipsModule /* later will have a dedicated topics-list-inline component instead of relying on mat chips */,
+    MatIconModule,
+    MatCardModule,
   ],
   declarations: [
     AboutPage,
@@ -31,6 +37,8 @@ import { AboutTwitterComponent } from './about-twitter/about-twitter.component'
     AboutNewsComponent,
     AboutContributorsWelcomeComponent,
     AboutTwitterComponent,
+    AboutPartnersComponent,
+    AboutInfoComponent,
   ]
 })
 export class AboutPageModule { }
