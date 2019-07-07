@@ -1,6 +1,7 @@
 .mat-raised-button {
   border-radius: 16px;
   color: mediumseagreen;
+  overflow: hidden;
 }
 
 .about__basedOn {
@@ -20,30 +21,29 @@
 
   &--tile {
     width: 210px;
-    padding: .7rem;
+    padding: 0.7rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between ;
-  
+    justify-content: space-between;
+
     @media screen and (max-width: 810px) {
-    width: 55% ;
+      width: 55%;
 
-    &:nth-child(2){
-      margin: 1rem 0;
-      padding: 2rem 0;
+      &:nth-child(2) {
+        margin: 1rem 0;
+        padding: 2rem 0;
 
-      border-top: 1px solid lightgray;
-      border-bottom: 1px solid lightgray;
+        border-top: 1px solid lightgray;
+        border-bottom: 1px solid lightgray;
+      }
+    }
+
+    & h4 {
+      margin: 0.5em;
+    }
+    & p {
+      color: #888;
     }
   }
-
-  & h4 {
-    margin: .5em;
-  }
-  & p {
-    color: #888;
-  }
 }
-}
-
