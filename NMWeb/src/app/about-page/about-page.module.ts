@@ -16,6 +16,7 @@ import { AboutTwitterComponent } from './about-twitter/about-twitter.component'
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { AboutInfoComponent } from './about-info/about-info.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { AboutInfoComponent } from './about-info/about-info.component';
     MatChipsModule /* later will have a dedicated topics-list-inline component instead of relying on mat chips */,
     MatIconModule,
     MatCardModule,
+    FlexLayoutModule
   ],
   declarations: [
     AboutPage,
