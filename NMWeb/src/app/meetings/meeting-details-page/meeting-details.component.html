@@ -1,0 +1,38 @@
+<button class="mat-button" style="font-size: 1em; margin-bottom: 0.5em;"
+        routerLink="/meetings">< Back to meetings list
+</button>
+
+<mat-card *ngIf="meeting !== undefined">
+  <mat-card-title-group>
+    <mat-card-title>
+      <p class="title-text single-line-rich-text" [innerHtml]="meeting.title"></p>
+      <app-going-button
+                        [meeting]="meeting"
+                        [meetingAttendanceByUser]="meetingAttendanceByUser"></app-going-button>
+      <button mat-button mat-raised-button routerLink="/meeting/{{meetingId}}/edit">Edit</button>
+    </mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content>
+    <p>
+      <em>{{meeting.date}}</em>
+      at
+      <b class="single-line-rich-text">
+        <a href="{{meeting.placeLink}}" [innerHtml]="meeting.place"></a>
+      </b>
+    </p>
+    <a href="{{meeting.meetupLink}}">Meetup link</a>
+    <span *ngIf="meeting.maxAttendees; let maxAttendees">| Maximum Attendees: {{maxAttendees}}</span>
+    <div id="meeting-description" class="rich-text" style="padding-top: 0.5em; padding-bottom: 0.5em"
+         [innerHtml]="meeting.description"></div>
+    <app-meeting-map></app-meeting-map>
+
+    <app-meeting-attendance-user-list
+      [meetingId]="meetingId">
+    </app-meeting-attendance-user-list>
+  </mat-card-content>
+
+  <button class="mat-button" style="font-size: 1em; margin-top: 0.5em;"
+          routerLink="/meetings">< Back to meetings list
+  </button>
+
+</mat-card>

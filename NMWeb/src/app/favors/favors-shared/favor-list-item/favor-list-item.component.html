@@ -1,0 +1,16 @@
+
+<mat-card>
+  <h3 routerLink="{{favor.id}}">{{favor.title}}</h3>
+  <p>{{favor.topics}}</p>
+
+  <button mat-raised-button>
+    Offer Help
+  </button>
+  <button
+    mat-raised-button
+    routerLink="{{favor.id}}/edit"
+  >
+    Edit
+    (unpublished draft) <!-- TODO make ngIf hasUnpublishedDraft -->
+  </button>
+</mat-card>

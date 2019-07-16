@@ -66,3 +66,7 @@ service-account*.json
 e2e-screenshots
 
 .mps/workspace.xml
+
+.vs/
+*.swp
+

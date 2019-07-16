@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TopicInterest } from '../user-profile-shared/user-interests'
+import { TopicInterest } from '../user-profile/user-profile-core/user-interests'
 import {
   angular,
   firebase,
   ionic,
-} from '../shared/topics.service'
+} from '../topics/topics-core/topics.data'
 
 @Component({
   selector: 'app-about',

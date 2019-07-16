@@ -11,7 +11,7 @@ import {CleanUrlPipe} from "../../shared/pipes/clean-url.pipe";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public title = 'TopicFriends';
+  public appName = 'TopicFriends';
 
   @Input() sidenav;
 
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     router.events.subscribe( val => {
       if( val instanceof NavigationEnd ){
         let title = this.capitalize(this.clearUrl(val.url));
-        (title) ? titleService.setTitle(`${title} - ${this.title}`) : titleService.setTitle(this.title);
+        (title) ? titleService.setTitle(`${title} - ${this.appName}`) : titleService.setTitle(this.appName);
       }
     })
   }

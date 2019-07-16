@@ -1,0 +1,21 @@
+<h1>Show topics on the map</h1>
+<app-topic-list-picker
+  [isEditable]="true"
+  (outputTagList)="onOutputTagList($event)"
+  placeholder="Search for topics to see them on the map"
+></app-topic-list-picker>
+
+<button
+  mat-raised-button
+  [routerLink]="getRoute()"
+  [disabled]="searchTagList.length === 0"
+>
+  Show chosen topics on map
+</button>
+
+<h1>All Topics ({{allTopicsArray.length}})</h1>
+<app-topic-tag-list [editable]="false"
+                    [tagList]="allTopics"
+                    [minShow]="100"
+>
+</app-topic-tag-list>

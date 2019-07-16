@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsersMapComponent } from './users-map/users-map.component';
+import { UsersMapPageComponent } from './users-map-page/users-map-page.component';
 import {RouterModule, Routes} from '@angular/router'
 import { UserPickLocationComponent } from '../map-location-picker/user-pick-location/user-pick-location.component'
 import {MatButtonModule, MatCheckboxModule, MatDialogModule, MatIconModule, MatInputModule, MatSliderModule} from '@angular/material'
@@ -12,19 +12,9 @@ import {UserProfileSharedModule} from '../user-profile-shared/user-profile-share
 import {DialogModule} from 'primeng/dialog'
 
 
-const mapsRoutes: Routes = [
-  { path: 'users-map',
-    component: UsersMapComponent
-  },
-  { path: 'map',
-    component: UsersMapComponent
-  },
-];
-
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(mapsRoutes),
     MapsSharedModule,
     SharedModule,
     MatButtonModule,
@@ -39,7 +29,6 @@ const mapsRoutes: Routes = [
     DialogModule
   ],
   declarations: [
-    UsersMapComponent,
     UserPickLocationComponent,
   ],
   exports: [

@@ -1,11 +1,11 @@
 import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
-import {ItemListInputComponent} from '../../../shared/item-list-input/item-list-input.component'
-import {TagListModelEvent} from '../../../shared/TagListModel'
+import {TagListModelEvent} from '../../../topics/topics-core/TagListModel'
 import {UserProfileInputs} from '../../UserProfileInputs'
-import { WantedTopics } from '../../../user-profile-shared/user-interests'
-import { createTopicsDictionary } from '../../../user-profile-shared/user-profile.service'
+import { WantedTopics } from '../../../user-profile/user-profile-core/user-interests'
+import { createTopicsDictionary } from '../../../user-profile/user-profile-core/user-profile.service'
 import {isUndefined} from 'util'
+import { TopicListPickerComponent } from '../../../topics/topics-edit-shared/topic-list-picker/topic-list-picker.component'
 
 @Component({
   selector: 'app-topic-group-card',
@@ -25,7 +25,7 @@ export class TopicGroupCardComponent implements OnInit, ControlValueAccessor {
 
   @Input() userProfileInputs: UserProfileInputs
 
-  @ViewChild(ItemListInputComponent) itemListInputComponent: ItemListInputComponent
+  @ViewChild(TopicListPickerComponent) itemListInputComponent: TopicListPickerComponent
 
   propagateChange = (_: WantedTopics) => {}
 

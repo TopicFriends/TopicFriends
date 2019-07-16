@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {UserData, UserDataCombined} from 'app/user-profile-shared/user-profile.service';
-import { UserListService } from "app/user-list-page/user-list.service";
+import {UserData, UserDataCombined} from 'app/user-profile/user-profile-core/user-profile.service';
+import { UserListService } from "app/user-profile/user-profile-core/user-list.service";
 import { DbListReadOnly } from '../shared/db.service';
 import {Observable} from 'rxjs/Observable'
-import {sortUserByLastModified, sortUserByMatchScore, UserMatched, UserMatcherService} from '../user-profile-shared/user-matcher.service'
+import {sortUserByLastModified, sortUserByMatchScore, UserMatched, UserMatcherService} from '../user-profile/user-profile-core/user-matcher.service'
 import {MatSliderChange} from '@angular/material'
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.page.html',
-  styleUrls: ['./user-list.page.scss']
+  styleUrls: ['./user-list.page.sass']
 })
 export class UserListPage implements OnInit {
 
@@ -33,10 +33,10 @@ export class UserListPage implements OnInit {
   }
 
   ngOnInit() {
-    this.userList = this.userListService.listUserData();
-    this.userList.subscribe(list => {
-      this.userListSaved = list;
-    })
+    // this.userList = this.userListService.listUserData();
+    // this.userList.subscribe(list => {
+    //   this.userListSaved = list;
+    // })
     // this.userListService.listUserDataCombined().subscribe(list=> {
     //   this.userListCombinedSortedByName = list.sort((el1, el2) => {
     //     if ( ! el1.profile.displayName || ! el2.profile.displayName) {
@@ -56,10 +56,10 @@ export class UserListPage implements OnInit {
   }
 
   public potentialConnectionsCount() {
-    let n = this.userListSaved && this.userListSaved.length
+    let n = this.userListCombinedSorted && this.userListCombinedSorted.length
     // window.alert('count'+ count)
     // return  n * n / 2 - n / 2
-    return  n * n - n  // n^2 - n, because interactions can go in both directions
+    return  Math.round((n * n)/1000)  // n^2 - n, because interactions can go in both directions
   }
 
   maxDistanceChange(event: MatSliderChange) {
@@ -72,7 +72,5 @@ export class UserListPage implements OnInit {
       this.userListCombinedSorted = usersSorted
     })
   }
-
-
 
 }

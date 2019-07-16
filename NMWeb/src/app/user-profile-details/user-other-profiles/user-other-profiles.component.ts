@@ -9,9 +9,9 @@ import {
   FormGroup,
 } from '@angular/forms'
 import { UserProfileInputs } from '../UserProfileInputs'
-import { setFormControlEnabled } from '../../shared/utils'
-import { UserProfileService } from '../../user-profile-shared/user-profile.service'
-import { UserOtherProfiles } from '../../user-profile-shared/user-other-profiles.service'
+import { setFormControlEnabled } from '../../util/utils'
+import { UserProfileService } from '../../user-profile/user-profile-core/user-profile.service'
+import { UserOtherProfiles } from '../../user-profile/user-profile-core/user-other-profiles.service'
 import {
   getOtherProfileName,
   otherProfileUserName,
@@ -31,29 +31,9 @@ export class UserOtherProfilesComponent implements OnInit {
   // descriptors: UserOtherProfilesDescriptors<UserOtherProfileDescriptor> = [
   descriptorsMap = new UserOtherProfilesDescriptorsDefs()
 
-  formControls: UserOtherProfilesDescriptorVals<FormControl>
+  formControls: UserOtherProfilesDescriptorVals<FormControl> = {} as any
 
-  descriptorsList = this.prepareDescriptorsList()
-
-  /* TODO: extract to non-component */
-  private prepareDescriptorsList() {
-    this.formControls = <any> {}
-    let ret = [] as UserOtherProfileDescriptor[]
-    for ( let key in this.descriptorsMap ) {
-      if (this.descriptorsMap.hasOwnProperty(key)) {
-        // console.log('key: ', key)
-        let descriptor = this.descriptorsMap[key]
-        descriptor.id = key
-        descriptor.websiteName = descriptor.websiteName || key
-        // descriptor.iconImg = descriptor.iconImg || ('assets/images/logos/' + key.toLowerCase() + '.svg')
-        descriptor.iconImg = descriptor.iconImg || (! descriptor.iconClass && ('assets/images/logos/' + key.toLowerCase() + '.svg') )
-
-        ret.push(descriptor)
-        this.formControls[key] = new FormControl()
-      }
-    }
-    return ret
-  }
+  descriptorsList = UserOtherProfilesDescriptorsDefs.array
 
   @Input() public parentFormGroup: FormGroup;
   @Input() public userProfileInputs: UserProfileInputs
@@ -66,6 +46,12 @@ export class UserOtherProfilesComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userProfileService: UserProfileService,
   ) {
+    for ( let key in this.descriptorsMap ) {
+      if (this.descriptorsMap.hasOwnProperty(key)) {
+        this.formControls[key] = new FormControl()
+      }
+    }
+
     this.formGroup = this.formBuilder.group(this.formControls)
   }
 

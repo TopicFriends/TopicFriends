@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AboutRoutingModule } from './about-routing.module';
 import { SharedModule } from '../shared/shared.module'
 import { AboutPage } from './about.page'
-import { TopicsSharedModule } from '../topics-shared/topics-shared.module'
+import { TopicsSharedModule } from '../topics/topics-shared/topics-shared.module'
 import { MatChipsModule } from '@angular/material';
 import { AboutContributorsComponent } from './about-contributors/about-contributors.component';
 import { AboutPartnersComponent } from './about-partners/about-partners.component';

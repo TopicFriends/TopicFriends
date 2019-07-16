@@ -1,0 +1,55 @@
+<!-- Quill single-line / change/remove <p> tag:
+- https://github.com/quilljs/quill/issues/861#issuecomment-239961806
+- https://github.com/quilljs/quill/issues/1745
+- https://github.com/quilljs/quill/issues/1432
+- https://quilljs.com/docs/api/
+-->
+
+<h2>
+  <button mat-button [routerLink]="'/meeting/' + meetingId">
+    < Back to Meeting
+  </button>
+  Meeting Editor - Early Access
+</h2>
+
+<h3>Title:</h3>
+<app-meeting-description-editor
+  id="title-editor"
+  class=single-line-rich-text
+  [control]="controls.title"
+></app-meeting-description-editor>
+
+<br>
+
+<h3>Location:</h3>
+<app-rich-text-editor
+  class=single-line-rich-text
+  [control]="controls.place"
+></app-rich-text-editor>
+<mat-form-field class="full-width">
+  <input matInput placeholder="Location Link"
+         [formControl]="controls.placeLink">
+</mat-form-field>
+
+<br>
+
+<mat-form-field class="full-width">
+  <input matInput placeholder="Meetup Link" [formControl]="controls.meetupLink">
+</mat-form-field>
+
+<br>
+
+<mat-form-field>
+  <input matInput type="number" placeholder="Max Attendees (0 to disable limit)"
+         [formControl]="controls.maxAttendees" min="0">
+</mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Date & Time"
+         [formControl]="controls.date">
+</mat-form-field>
+<br>
+
+<h3>Description (size: ~{{stringKBytesCount(controls.description?.valueTyped)}} kBytes)</h3>
+<app-meeting-description-editor
+  [control]="controls.description"
+></app-meeting-description-editor>

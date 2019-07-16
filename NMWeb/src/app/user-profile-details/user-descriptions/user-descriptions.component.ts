@@ -3,12 +3,12 @@ import {FormBuilder, FormGroup} from '@angular/forms'
 import {
   UserDescriptions,
   UserDescriptionsService,
-} from '../../user-profile-shared/user-descriptions.service'
+} from '../../user-profile/user-profile-core/user-descriptions.service'
 import {TextAreaComponent} from '../../shared/text-area/text-area.component'
 import {UserProfileInputs} from '../UserProfileInputs'
 import {
   UserProfileService,
-} from '../../user-profile-shared/user-profile.service'
+} from '../../user-profile/user-profile-core/user-profile.service'
 
 
 @Component({

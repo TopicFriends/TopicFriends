@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChildren} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {MatTextareaAutosize} from '@angular/material'
-import {setFormControlEnabled} from '../utils'
+import {setFormControlEnabled} from '../../util/utils'
 
 @Component({
   selector: 'app-text-area',

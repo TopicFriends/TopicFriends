@@ -2,13 +2,13 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms'
 import {UserProfileInputs} from '../UserProfileInputs'
-import {isNullOrUndefinedOrWhiteSpace, setFormControlEnabled} from '../../shared/utils'
+import {isNullOrUndefinedOrWhiteSpace, setFormControlEnabled} from '../../util/utils'
 import {Title} from "@angular/platform-browser";
 import { AuthService } from '../../user-profile-shared/auth.service'
 import {
   UserProfile,
   UserProfileService,
-} from '../../user-profile-shared/user-profile.service'
+} from '../../user-profile/user-profile-core/user-profile.service'
 
 @Component({
   selector: 'app-user-profile-basic-info',

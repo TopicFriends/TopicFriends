@@ -16,7 +16,6 @@ import {MatButtonModule, MatCheckboxModule, MatInputModule} from '@angular/mater
 import {MatMenuModule} from '@angular/material';
 import {SharedModule} from '../shared/shared.module'
 import {UserProfileSharedModule} from '../user-profile-shared/user-profile-shared.module'
-import {MeetingsModule} from '../meeting-list/meetings.module'
 import {CapitalizeFirstPipe} from '../shared/pipes/capitalize-first.pipe';
 import {CleanUrlPipe} from '../shared/pipes/clean-url.pipe';
 import { FooterComponent } from './footer/footer.component';
@@ -25,6 +24,8 @@ import {LoginModule} from '../login/login.module';
 import { HeaderUserAccountButtonComponent } from './header/header-user-account-button/header-user-account-button.component'
 import { AuthDialogService } from './auth-dialog.service'
 import { ResetPasswordComponent } from 'app/login/reset-password/reset-password.component';
+import { CookieInfoComponent } from './cookie-info/cookie-info.component'
+import { CookieLawModule } from 'angular2-cookie-law'
 
 /** https://angular.io/guide/styleguide#prevent-re-import-of-the-core-module */
 export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
@@ -39,19 +40,20 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     SharedModule,
     FlexLayoutModule,
     UserProfileSharedModule,
-    MeetingsModule,
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
     MatToolbarModule,
     MatListModule,
-    LoginModule
+    LoginModule,
+    CookieLawModule,
   ],
   declarations: [
     NavbarComponent,
     HeaderComponent,
     FooterComponent,
     HeaderUserAccountButtonComponent,
+    CookieInfoComponent,
   ],
   exports: [
     NavbarComponent,
@@ -59,6 +61,7 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     FlexLayoutModule,
     FooterComponent,
     HeaderUserAccountButtonComponent,
+    CookieInfoComponent,
   ],
   entryComponents: [
     LoginComponent, ResetPasswordComponent

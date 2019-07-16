@@ -1,0 +1,86 @@
+<p>Topic details:
+  <app-topic-tag [tag]="topicInterest"></app-topic-tag>
+</p>
+
+<app-topics-map
+  id="map"
+  [topics]="[topic]"
+></app-topics-map>
+<p>
+  <a class="full-screen" routerLink="/topics-map/{{topic.id}}">
+    Go to full-screen map
+  </a>
+</p>
+
+<h2 id="related">Related Topics</h2>
+
+<mat-chip-list>
+  <app-topic-tag
+    *ngFor='let topic of topic.related'
+    [tag]="createTopicInterest(topic)"
+  ></app-topic-tag>
+</mat-chip-list>
+
+<h2 id="users">Interested Users</h2>
+<div class="users-list">
+  <nw-user-list-item
+    class="user-card"
+    *ngFor="let user of interestedUsers | limitTo:showLimit"
+    [userMatched]="user"
+    [showLess]="true"
+  ></nw-user-list-item>
+</div>
+
+<button
+  *ngIf="canShowLess()"
+  mat-raised-button
+  (click)="onShowLessClick()"
+>Show less</button>
+<button
+  *ngIf="canShowMore()"
+  mat-raised-button
+  (click)="onShowMoreClick()"
+>Show more</button>
+
+<h2 id="links">Links</h2>
+<p><a href="https://topicfriends.org/topic/{{topic.id}}">https://topicfriends.org/topic/{{topic.id}}</a></p>
+<p><a href="{{topic.website}}">{{topic.website}}</a></p>
+<p><a href="{{topic.urls.wikipedia}}">{{topic.urls.wikipedia}}</a></p>
+<div style="vertical-align: middle">
+  <a href="{{topic.urls.gitHub}}">
+    <img class='url-icon' src="/assets/images/logos/github.svg"/>{{topic.urls.gitHub}}</a>
+  &nbsp;
+  <a
+    *ngIf="topic.urls.gitHub"
+    style="vertical-align: middle"
+    class="github-button" href="{{topic.urls.gitHub}}" data-icon="star" data-size="large" data-show-count="true" aria-label="Star on GitHub"
+  > <!-- https://github.com/ntkme/github-buttons -->
+    Star
+  </a>
+</div>
+<div>
+  <a href="{{topic.urls.npm}}">
+    <img class='url-icon' src="/assets/images/logos/npm.svg"/>{{topic.urls.npm}}
+  </a>
+</div>
+<div>
+  <a href="{{topic.urls.stackOverFlow}}">
+    <img class='url-icon' src="/assets/images/logos/stackoverflow_icon.svg"/>{{topic.urls.stackOverFlow}}
+  </a>
+</div>
+<div>
+  <a href="{{topic.urls.stackShare}}">
+    <img class='url-icon' src="/assets/images/logos/stackshare.svg"/>{{topic.urls.stackShare}}
+  </a>
+</div>
+<div>
+  <a href="{{topic.urls.twitter}}">
+    <img class='url-icon' src="/assets/images/logos/twitter.svg"/>{{topic.urls.twitter}}
+  </a>
+</div>
+
+<!-- TODO: alternativeTo-->
+<!-- TODO: changelog-->
+<!-- TODO: RunKit-->
+
+<h2 id="news">News for this topic</h2>

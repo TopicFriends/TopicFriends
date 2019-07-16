@@ -1,5 +1,5 @@
 import { FormControl } from '@angular/forms'
-import { OtherProfile } from '../../user-profile-shared/user-other-profiles.service'
+import { OtherProfile } from '../../user-profile/user-profile-core/user-other-profiles.service'
 
 export function getOtherProfileName(otherProfile: OtherProfile) {
   return otherProfile && otherProfile.userName
@@ -36,7 +36,26 @@ export function descriptor(d: UserOtherProfileDescriptor) {
   return new UserOtherProfileDescriptor(d)
 }
 
+function prepareDescriptorsList(descriptorsMap: UserOtherProfilesDescriptorsDefs) {
+  let ret = [] as UserOtherProfileDescriptor[]
+  for ( let key in descriptorsMap ) {
+    if (descriptorsMap.hasOwnProperty(key)) {
+      // console.log('key: ', key)
+      let descriptor = descriptorsMap[key]
+      descriptor.id = key
+      descriptor.websiteName = descriptor.websiteName || key
+      // descriptor.iconImg = descriptor.iconImg || ('assets/images/logos/' + key.toLowerCase() + '.svg')
+      descriptor.iconImg = descriptor.iconImg || (! descriptor.iconClass && ('assets/images/logos/' + key.toLowerCase() + '.svg') )
+
+      ret.push(descriptor)
+    }
+  }
+  return ret
+}
+
 export class UserOtherProfilesDescriptorsDefs {
+  static array = prepareDescriptorsList(new UserOtherProfilesDescriptorsDefs())
+
   twitter = descriptor({
     websiteName: 'Twitter',
     urlPrefix: 'twitter.com/',
@@ -45,7 +64,8 @@ export class UserOtherProfilesDescriptorsDefs {
   linkedIn = descriptor({
     websiteName: 'LinkedIn',
     urlPrefix: 'linkedin.com/in/',
-    iconClass: 'ion-social-linkedin',
+    // iconClass: 'ion-social-linkedin',
+    iconImg: 'assets/images/logos/linkedin-icon.svg',
   })
   facebook = descriptor({
     websiteName: 'Facebook',

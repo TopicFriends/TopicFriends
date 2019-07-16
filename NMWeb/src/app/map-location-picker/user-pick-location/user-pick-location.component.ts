@@ -3,7 +3,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
-import {GeoLocation} from '../../user-profile-shared/user-geo-locations.types'
+import {GeoLocation} from '../../user-profile/user-profile-core/user-geo-locations.types'
 import {FormControl} from '@angular/forms';
 import {AgmMap, MapsAPILoader} from '@agm/core';
 // import { } from 'googlemaps';

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserProfileService, UserProfile } from 'app/user-profile-shared/user-profile.service';
+import { UserProfileService, UserProfile } from 'app/user-profile/user-profile-core/user-profile.service';
 
 @Component({
   selector: 'app-user-profile-popup',

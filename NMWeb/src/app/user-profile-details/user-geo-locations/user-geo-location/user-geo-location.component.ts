@@ -5,7 +5,7 @@ import {MatDialog} from '@angular/material'
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms'
 import {geoLocationToString} from '../user-geo-locations.component'
 import {UserProfileInputs} from '../../UserProfileInputs'
-import {GeoLocation} from '../../../user-profile-shared/user-geo-locations.types'
+import {GeoLocation} from '../../../user-profile/user-profile-core/user-geo-locations.types'
 
 @Component({
   selector: 'app-user-geo-location',
