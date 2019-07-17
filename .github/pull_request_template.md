@@ -22,3 +22,4 @@
   - [ ] Use names consistent with the name of the type, like `user: User`, `dialogService: DialogService`
   - [ ] Use existing terminology (look in related code to see what terms/names are used)
   - [ ] Avoid using vague terms like `data`, `info`, `object`. Prefer to be more descriptive.
+- [ ] If possible, use existing utility functions, e.g. from Lodash, for example things like `sumBy`
