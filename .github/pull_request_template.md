@@ -25,4 +25,4 @@
   - [ ] Avoid using vague terms like `data`, `info`, `object`. Prefer to be more descriptive.
   - [ ] Don't give alias names to `@Input()`-s
 - [ ] If possible, use existing utility functions, e.g. from Lodash, for example things like `sumBy`
-- [ ] Wrapping margin should be at about ~120-140 chars (160 columns an absolute maximum). Don't start new significant stuff beyond column 100 (just continuation of existing stuff).
+- [ ] Wrapping margin should be at about ~120-140 chars (160 columns an absolute maximum). Don't start new significant stuff beyond column 100 (just continuation of existing stuff). The logic is to see the significant stuff on a laptop screen, while seeing whole lines on big monitor. But since, TypeScript is not Java, it is easier to keep lines shorter :).
