@@ -17,6 +17,7 @@
 - [ ] Avoid duplicate code. Do not copy-paste ~2 or more lines. Instead, extract component / class / method and reuse in all places. For the sake of future maintenance.
 - [ ] Test on mobile resolutions. Manually and via `cd e2e-testcafe ; npm i && npm test:all`
 - [ ] Complex structured data should be displayed using HTML, not plaintext (applies e.g. to popups / tooltips), for styling it to make it more readable and look better, being able to add icons, images, links, etc.
+  - [ ] Prefer components over pipes, for things that might need some varying styling inside (even things like numbers-with-separators, dates, time). 
 - [ ] Naming:
   - [ ] Avoid crypting/short names like `a`, `x`, etc
   - [ ] Use names consistent with the name of the type, like `user: User`, `dialogService: DialogService`
