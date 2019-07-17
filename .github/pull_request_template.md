@@ -15,7 +15,7 @@
   - camelCaseVariableNames
   - CamelCaseClassNames  
 - [ ] Avoid duplicate code. Do not copy-paste ~2 or more lines. Instead, extract component / class / method and reuse in all places. For the sake of future maintenance.
-- [ ] Tested on mobile resolutions. Manually and via `cd e2e-testcafe ; npm i && npm test:all`
+- [ ] Test on mobile resolutions. Manually and via `cd e2e-testcafe ; npm i && npm test:all`
 - [ ] Complex structured data should be displayed using HTML, not plaintext (applies e.g. to popups / tooltips), for styling it to make it more readable and look better, being able to add icons, images, links, etc.
 - [ ] Naming:
   - [ ] Avoid crypting/short names like `a`, `x`, etc
