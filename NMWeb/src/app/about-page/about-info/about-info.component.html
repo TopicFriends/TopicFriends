@@ -1,0 +1,92 @@
+<mat-card>
+  <div class="about__basedOn">
+    <mat-card-title>This app connects people based on</mat-card-title>
+    <mat-card-content>
+      <div
+        class="about__basedOn--tiles"
+        fxLayout="row"
+        fxLayout.lt-sm="column"
+        fxLayoutAlign.lt-sm="center center"
+        fxLayoutAlign="center stretch"
+        fxLayoutGap="20px"
+        fxLayoutGap.lt-sm="0px"
+      >
+        <div
+          class="about__basedOn--tile"
+          fxLayout="column"
+          fxLayoutAlign="space-between center"
+        >
+          <div>
+            <mat-icon
+              aria-hidden="false"
+              aria-label="question-answer icon"
+              class="about__basedOn--icon"
+              >question_answer</mat-icon
+            >
+            <h4>Actionable interests</h4>
+            <p>
+              Actionable interests like pair programming, do a hackathon,
+              freelance, co-founder, business partner etc.
+            </p>
+          </div>
+          <a mat-raised-button routerLink="/profile">
+            <span fxLayout fxLayoutAlign="center center" fxLayoutGap="5px">
+              <mat-icon aria-hidden="false" aria-label="event icon"
+                >person_pin</mat-icon
+              >
+              <span>PROFILE</span>
+            </span>
+          </a>
+        </div>
+        <div
+          class="about__basedOn--tile"
+          fxLayout="column"
+          fxLayoutAlign="space-between center"
+        >
+          <div>
+            <mat-icon
+              aria-hidden="false"
+              aria-label="location icon"
+              class="about__basedOn--icon"
+              >location_on</mat-icon
+            >
+            <h4>Geo-locations</h4>
+            <p>See users on the map.</p>
+          </div>
+          <a mat-raised-button routerLink="/map">
+            <span fxLayout fxLayoutAlign="center center" fxLayoutGap="5px">
+              <mat-icon aria-hidden="false" aria-label="event icon"
+                >map</mat-icon
+              >
+              <span>USERS MAP</span>
+            </span>
+          </a>
+        </div>
+        <div
+          class="about__basedOn--tile"
+          fxLayout="column"
+          fxLayoutAlign="space-between center"
+        >
+          <div>
+            <mat-icon
+              aria-hidden="false"
+              aria-label="group icon"
+              class="about__basedOn--icon"
+              >group</mat-icon
+            >
+            <h4>Meetings attendance</h4>
+            <p>Check out our meetings.</p>
+          </div>
+          <a mat-raised-button routerLink="/meetings">
+            <span fxLayout fxLayoutAlign="center center" fxLayoutGap="5px">
+              <mat-icon aria-hidden="false" aria-label="event icon"
+                >event</mat-icon
+              >
+              <span>MEETINGS</span>
+            </span></a
+          >
+        </div>
+      </div>
+    </mat-card-content>
+  </div>
+</mat-card>
