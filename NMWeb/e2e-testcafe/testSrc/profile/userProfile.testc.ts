@@ -24,7 +24,7 @@ export function userProfileTests() {
       const inputFieldOnMapIDNum = _.range(36, 42);
       // Iterate through the geolocation pickers and check map
       for (let index = 0; index < inputFieldOnMapIDNum.length; index++) {
-        let randomNumber = Math.floor(Math.random() * 10);
+        let randomNumber = Math.ceil(Math.random() * 5);
         let locationPicker;
         if (geoTags[index] === 'homeTown') {
           locationPicker = Selector("app-user-geo-location[formControlName='" + geoTags[index] + "'] mat-form-field");
