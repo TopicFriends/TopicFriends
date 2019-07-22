@@ -35,20 +35,3 @@
   border-radius: 5px;
   box-shadow:0 0 1px #333;
 }
-
-mat-card {
-  margin-bottom: 0.5em;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-
-  @media screen and (max-width: 600px) {
-    padding: 16px 8px 16px 16px;
-    margin: 0 0 0.5em 0;
-  }
-}
-
-mat-card-subtitle {
-  @media screen and (max-width: 600px) {
-    margin: 0;
-  }
-}
