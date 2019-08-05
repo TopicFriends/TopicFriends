@@ -1,5 +1,6 @@
 <div class="container">
-  <div class="icons-size">
+  <div class="icons-size" fxLayout fxLayout.lt-sm="column">
+    <div fxLayout fxLayoutAlign="center center">
     <span>Icons size:</span>
     <mat-slider
       min="4"
@@ -8,7 +9,8 @@
       [(ngModel)]="iconBaseSize"
       (change)="onIconBaseSizeChange()"
     ></mat-slider>
-
+    </div>
+    <div fxLayout fxLayoutAlign="center center">
     <ng-template [ngIf]="topics.length > 1">
       <span>Separation:</span>
       <mat-slider
@@ -19,7 +21,7 @@
         (change)="onOffsetRadiusChange()"
       ></mat-slider>
     </ng-template>
-
+    </div>
   </div>
 
   <agm-map #agmMap
