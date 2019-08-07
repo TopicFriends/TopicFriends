@@ -67,6 +67,7 @@ mat-toolbar {
 @media only screen and (max-width: 600px) {
   .mat-toolbar {
     height: $toolbar-height-mobile;
+    background: black;
   }
 
 
