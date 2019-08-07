@@ -1,14 +1,16 @@
-$tool-bar-height: 5vh;
+@import '~variables.scss';
 
 .tf-icon {
-  height: 4vh;
-  margin-left: 10px;
+  height: 25px;
+  padding: 0 5px;
+  width: 100%;
 }
 
 .betta-icon {
   color: white;
   font-family: serif;
-  font-size: 3vh;
+  font-size: 20px;
+  margin-left: -15px;;
 }
 
 .toolbar-icon {
@@ -25,13 +27,12 @@ $tool-bar-height: 5vh;
 
 .mat-toolbar {
   width: 100%;
-  height: $tool-bar-height;
-  padding-right: 0;
+  height: $toolbar-height;
+  padding: 0;
   user-select: none;
   //background: rgba(255, 255, 255, 0.75);
-  background: rgba(0, 0, 0, 1);
+  background: transparent;
   color: black;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
 
   a {
     text-decoration: none;
@@ -43,32 +44,34 @@ $tool-bar-height: 5vh;
   }
 }
 
-.menu-button {
-  margin-left: -10px;
-}
 
 
 mat-toolbar {
-  //margin-left: 10px !important;
-  padding-left: 10px !important;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 100;
+}
+
+.logo {
+  background-color: black;
+  padding-right: 10px;
+  height: 100%;
+}
+
+.toolbar-left {
+  height: 100%;
+  width: 150px;
 }
 
 @media only screen and (max-width: 600px) {
   .mat-toolbar {
-    height: 40px !important;
+    height: $toolbar-height-mobile;
   }
 
-  .tf-icon {
-    height: 30px !important;
-  }
 
   button {
-    height: 40px !important;
+    height: $toolbar-height-mobile;
   }
 
-  .betta-icon {
-    font-size: 25px !important;
-  }
 }

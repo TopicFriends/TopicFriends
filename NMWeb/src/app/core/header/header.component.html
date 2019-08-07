@@ -1,4 +1,5 @@
 <mat-toolbar>
+  <div class="toolbar-left" fxLayout>
   <button mat-icon-button
           id='menuButtonHamburger'
           class="menu-button tf-toolbar-btn"
@@ -6,7 +7,7 @@
     <mat-icon>menu</mat-icon>
   </button>￼
 
-  <a routerLink="">
+  <a routerLink="" class="logo" fxLayout fxLayoutAlign="center center">
     <img
       src="assets/images/TopicFriendsLogo4.svg"
       class="tf-icon"
@@ -15,7 +16,7 @@
       &nbsp;β
     </span>
   </a>
-
+  </div>
   <span class="toolbar-spacer"></span>
 
   <app-header-user-account-button style="height: 100%"
