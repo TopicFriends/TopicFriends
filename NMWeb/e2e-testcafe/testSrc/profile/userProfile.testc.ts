@@ -9,9 +9,6 @@ const visitGeoTag = Selector("app-user-geo-location[formControlName='whereILive'
 const twitterInput = Selector('app-other-profile-user-name input');
 
 const closeTagButton = Selector('.ion-close-circled');
-const acceptGeoLocationButton = Selector(
-  'body > app-root > div > mat-sidenav-container > mat-sidenav-content > div > app-user-profile-details > form > app-user-geo-locations > mat-card > mat-card-content > div > app-user-geo-location:nth-child(1) > app-user-pick-location > p-dialog > div > div.ui-dialog-content.ui-widget-content > button'
-);
 
 export function userProfileTests() {
   function userProfileGeoLocations() {
@@ -21,25 +18,25 @@ export function userProfileTests() {
       await t.expect(getWindowDocumentLocation()).contains('/profile');
 
       const geoTags = ['Live', 'Work', 'Study', 'Studied', 'Visit', 'homeTown'];
-      const inputFieldOnMapIDNum = _.range(36, 42);
       // Iterate through the geolocation pickers and check map
-      for (let index = 0; index < inputFieldOnMapIDNum.length; index++) {
+      for (let index = 0; index < 6; index++) {
         let randomNumber = Math.ceil(Math.random() * 5);
         let locationPicker;
         if (geoTags[index] === 'homeTown') {
-          locationPicker = Selector("app-user-geo-location[formControlName='" + geoTags[index] + "'] mat-form-field");
+          locationPicker = Selector("app-user-geo-location[formControlName='" + geoTags[index] + "']");
         } else {
-          locationPicker = Selector("app-user-geo-location[formControlName='whereI" + geoTags[index] + "'] mat-form-field");
+          locationPicker = Selector("app-user-geo-location[formControlName='whereI" + geoTags[index] + "']");
         }
 
-        await t.click(locationPicker);
-        const inputSearchForLocation = Selector("input[id='mat-input-" + inputFieldOnMapIDNum[index] + "']");
+        await t.click(locationPicker.find('mat-form-field'));
+        const inputSearchForLocation = locationPicker.find('app-user-pick-location input');
+        const acceptButton = locationPicker.find('app-user-pick-location span').withText('Accept').parent();
         await t
           .click(inputSearchForLocation)
           .typeText(inputSearchForLocation, 'Calle ')
           .pressKey(' down '.repeat(randomNumber) + ' enter')
           .takeScreenshot()
-          .click(acceptGeoLocationButton);
+          .click(acceptButton);
       }
     });
   }

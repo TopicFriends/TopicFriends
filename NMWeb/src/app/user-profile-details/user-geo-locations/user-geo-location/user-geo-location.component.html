@@ -42,6 +42,7 @@
   <button mat-button mat-raised-button (click)="useCurrentLocation()">Use current location</button>
 -->
   <button
+    type="button"
     mat-button
     mat-raised-button
     (click)="openLocationPicker()"
@@ -55,6 +56,7 @@
   </button>
 
   <button
+    type="button"
     *ngIf="userProfileInputs.isEditable"
     mat-button
     mat-raised-button
