@@ -27,7 +27,7 @@
         <p>There are <b>{{ numberOfNearUsers }}</b> map points within {{ radiusSearch | distance }}.</p>
       </ng-template>
 
-      <div class="filter-buttons">
+      <div class="filter-buttons" fxLayout fxLayout.lt-sm="column">
         <mat-checkbox
           checked="showLabelsOverMarker"
           (change)="changeShowLabelOverMark()"

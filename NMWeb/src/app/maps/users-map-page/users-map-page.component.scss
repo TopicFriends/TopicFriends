@@ -26,6 +26,9 @@ $distance-slicer-width: 300px;
     1px 0 $blur-radius $names,
     0 -1px $blur-radius $names;
 
+  mat-checkbox {
+    padding: 5px;
+  }
 }
 
 agm-map {
