@@ -1,21 +1,22 @@
+@import '~variables.scss';
+
 app-header {
   position: relative;
   z-index: 100;
 }
 
 .content-container{
-    margin-top:0px;
-    margin-left:21px;
-    padding:10px;
+    margin: 0 0 0 21px;
+    padding: $toolbar-height 10px 0 10px;
     overflow-x: hidden;
-    min-height: 87.5vh;
-    max-height: 87.5vh;
+    height: 100%;
+    min-height: calc(100vh - #{$footer-height} - #{$toolbar-height});
 }
 
 app-footer{
   width: 100%;
-  position: absolute;
-  top: 95vh;
+  position: relative;
+  bottom: 0;
   right: 0;
   margin: 0;
   padding: 0;
@@ -24,6 +25,9 @@ app-footer{
 
 mat-sidenav {
   width: 150px;
+  position: fixed !important;
+  top: $toolbar-height !important;
+  height: 100vh;
 }
 
 app-wrapper {
@@ -34,9 +38,13 @@ app-wrapper {
 @media only screen and (max-width: 700px) {
   .content-container{
     overflow-y: scroll;
-    min-height: 91.8vh;
-    max-height: 91.8vh;
     margin-left:5px;
+    padding: $toolbar-height-mobile 10px 0 10px;
+    min-height: calc(100vh - #{$toolbar-height-mobile});
+  }
+
+  mat-sidenav {
+    top: $toolbar-height-mobile !important;
   }
 }
 
