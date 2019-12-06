@@ -1,5 +1,6 @@
 ### IMPORTANT: Checklist before committing / pull-request:
 - [ ] IMPORTANT: Please read this checklist and checkmark the items, putting `[x]` at the beginning of the bullet-point
+- [ ] First and foremost, please make sure that the things You push are compiling and do not obstruct work for other People. No missing files, etc.
 - [ ] Think of the reviewers and make their life easier :) while also keeping You reputation good by committing high-quality code and avoiding bad-quality commits
 - [ ] Self-review before committing, with graphical diff (e.g. IDE like WebStorm), ideally with per-character diff highlight.
 - [ ] Provide descriptive commit message, pull-request titles and branch names, including issue number in commit message, e.g. #123
