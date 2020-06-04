@@ -19,7 +19,7 @@
     "license": "ISC",
     "dependencies": {
         "@ffmpeg-installer/ffmpeg": "^1.0.17",
-        "lodash": "^4.17.11",
+        "lodash": "^4.17.13",
         "testcafe": "^1.1.2"
     },
     "devDependencies": {
