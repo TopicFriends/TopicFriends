@@ -34,6 +34,8 @@ import {MapsModule} from '../../maps/maps.module'
 import {HeaderComponent} from "../../core/header/header.component";
 import { TopicsSharedModule } from '../../topics/topics-shared/topics-shared.module'
 import { TopicsEditSharedModule } from '../../topics/topics-edit-shared/topics-edit-shared.module'
+import { TopicSkillsSharedModule } from '../../skills/topic-skills-shared/topic-skills-shared.module'
+import { SkillsSharedModule } from '../../skills/skills-shared/skills-shared.module'
 
 
 /** User profile editing/viewing here */
@@ -52,6 +54,8 @@ import { TopicsEditSharedModule } from '../../topics/topics-edit-shared/topics-e
     MatSelectModule,
     MapsModule,
     TopicsSharedModule,
+    TopicSkillsSharedModule,
+    SkillsSharedModule,
     TopicsEditSharedModule,
   ],
   declarations: [

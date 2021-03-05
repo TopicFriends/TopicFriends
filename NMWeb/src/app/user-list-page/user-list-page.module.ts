@@ -5,6 +5,8 @@ import { UserListPageRoutingModule } from './user-list-page-routing.module';
 import { UserListPage } from './user-list.page'
 import { SharedModule } from '../shared/shared.module'
 import {
+  MatButtonModule,
+  MatButtonToggleModule,
   MatListModule,
   MatOptionModule,
   MatRadioModule,
@@ -21,6 +23,8 @@ import { UserProfileSharedModule } from '../user-profile/user-profile-shared/use
     MatSelectModule,
     MatRadioModule,
     MatListModule,
+    MatButtonToggleModule,
+    MatButtonModule,
     UserProfileSharedModule,
   ],
   declarations: [
