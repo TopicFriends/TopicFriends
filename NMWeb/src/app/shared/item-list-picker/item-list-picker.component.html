@@ -41,18 +41,41 @@ Picked items:
     *ngIf="isEditable"
     [ngStyle]="{'width': width, 'margin': margin}"
   >
-    <input
-      matInput
-      [matAutocomplete]="auto"
-      [formControl]="stateCtrl"
-      (keydown.enter)="onEnterKey($event)"
+    <mat-chip-list #chipList aria-label="Choose items">
+      <!-- FIXME: mat-chip duplicated, because app-topic-tag also has mat-chip -->
+      <mat-chip
+        *ngFor="let tag of tagListModel.tags"
+        [selectable]="true"
+        [removable]="true"
+      >
+        <ng-container
+          *ngTemplateOutlet="itemTagTemplate; context: {$implicit: tag.tagEntry}"
+        ></ng-container>
+        <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
+      </mat-chip> <!--         (removed)="remove(fruit)">
+ -->
+      <input
+        #filterInput
+        matInput
+        [matChipInputFor]="chipList"
+        [matAutocomplete]="auto"
+        [formControl]="stateCtrl"
+        (keydown.enter)="onEnterKey($event)"
 
-    > <!-- FIXME!!!: addTag(currentFilteredOptions[0]) : this should check if a specific item was selected by
+      > <!--         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)"> [formControl]="fruitCtrl"
+ -->
+
+    </mat-chip-list>
+    <!-- FIXME!!!: addTag(currentFilteredOptions[0]) : this should check if a specific item was selected by
       down-arrow instead of always forcing [0] -->
     <mat-placeholder>
       {{placeholder}}
     </mat-placeholder>
-    <button mat-button *ngIf="stateCtrl.value && stateCtrl.value !== ''" matSuffix mat-icon-button aria-label="Clear" (click)="stateCtrl.setValue('')">
+    <button mat-button
+            *ngIf="stateCtrl.value && stateCtrl.value !== ''" matSuffix mat-icon-button aria-label="Clear"
+            (click)="stateCtrl.setValue('')">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
@@ -92,10 +115,21 @@ https://github.com/angular/material2/pull/1999
 - ?: CMM -> CamelCaseMatch -->
 <div *ngIf="false" style="max-height: 200px; overflow: scroll">
   <mat-list  >
-    <mat-list-item *ngFor="let option of lastFilteredOptions">
+    <mat-list-item *ngFor="let option of lastFilteredCandidates">
       <h4><img src="{{option.logo}}" onerror="this.style.display='none';"/> {{ option.name }}</h4>
     </mat-list-item>
   </mat-list>
+</div>
+
+<div *ngIf="false">
+  <div
+    *ngFor="let option of lastFilteredCandidates"
+    (click)="addTag(option)"
+  >
+    <ng-container
+      *ngTemplateOutlet="itemCandidateTemplate; context: {$implicit: option}"
+    ></ng-container>
+  </div>
 </div>
 
 
@@ -103,13 +137,14 @@ https://github.com/angular/material2/pull/1999
 <mat-autocomplete
   #auto="matAutocomplete"
   autoActiveFirstOption="true"
-  (optionSelected)="onAutocompleteOptionSelected($event)"
+  (optionSelected)="onAutocompleteCandidateSelected($event)"
 >
   <!--   *ngIf="isEditable"
   -->
   <mat-option
-    *ngFor="let option of lastFilteredOptions"
-
+    style="display: inline-block"
+    *ngFor="let option of lastFilteredCandidates"
+    [value]="option"
     (onSelectionChange)="addTag(option)"
   >
     <ng-container
