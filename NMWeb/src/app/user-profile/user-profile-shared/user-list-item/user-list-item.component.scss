@@ -35,3 +35,7 @@
   border-radius: 5px;
   box-shadow:0 0 1px #333;
 }
+
+::ng-deep .mat-card-header-text {
+  width: 100%;
+}

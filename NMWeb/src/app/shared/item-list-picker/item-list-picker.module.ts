@@ -6,6 +6,7 @@ import { PickerListItemCandidateDirective } from './picker-list-item-candidate.d
 import {
   MatAutocompleteModule,
   MatButtonModule,
+  MatChipsModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -33,6 +34,7 @@ const exportDeclarations = [
     MatListModule,
     MatInputModule,
     MatButtonModule,
+    MatChipsModule,
   ],
   declarations: [
     ...exportDeclarations,

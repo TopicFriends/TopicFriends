@@ -1,5 +1,5 @@
 <mat-card *ngIf=show.anything class="user-item" style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
-  <mat-card-header>
+  <mat-card-header style="width: 100%">
     <!--<div mat-card-avatar class="card-avatar"></div>-->
     <img
       mat-card-avatar
@@ -9,14 +9,17 @@
       onerror="this.src='assets/images/icons/user-solid.svg'"
     >
     <mat-card-title
-      style="vertical-align:middle"
+      style="vertical-align:middle; display: flex; width: 100%"
     >
       <!--<h3>-->
       <div class="user-display-name">
         <a routerLink="/user/{{userId}}">{{profileBasicInfo?.displayName || profileBasicInfo?.name}}</a>
         &nbsp; MatchScore: {{matchResults?.isBasedOnLoggedInUser ? matchResults?.matchScore : '(Please Log In to see MatchScore)'}}
           &nbsp; <span class="badge" *ngIf="isLoggedUser()"> YOU!</span>
-
+          <!-- lastSaved: {{profileBasicInfo.lastSaved || 'noLastSaved'}} -->
+      </div>
+      <div style="flex-grow: 1"></div>
+      <div>
         <app-user-other-profiles-badges
           *ngIf="show.otherProfileBadges"
           [userOtherProfiles]="userDataCombined.otherProfiles"
@@ -24,7 +27,6 @@
 
         <app-user-geo-locations-badges
         ></app-user-geo-locations-badges>
-
       </div>
       <!--</h3>-->
     </mat-card-title>

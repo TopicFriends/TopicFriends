@@ -11,14 +11,20 @@
   <div
     *appPickerListItemCandidate="let item"
   >
-    picker candidate content to be projected! :
-    Title {{item.title}}
+<!--    picker candidate proj! :-->
+<!--    Tit {{item.name}}-->
+    <app-topic-tag
+      [tag]="{tagEntry: item}"
+    ></app-topic-tag>
   </div>
   <div
     *appPickedListItemTag="let item"
   >
-    picker tag content to be projected! :
-    Title {{item.title}}
+<!--    p proj:-->
+<!--    t {{item.name}}-->
+    <app-topic-tag
+      [tag]="{tagEntry: item}"
+    ></app-topic-tag>
   </div>
 
 </app-item-list-picker>

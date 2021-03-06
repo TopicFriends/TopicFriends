@@ -5,7 +5,7 @@ import {UserSkillLevelsHaveWant} from '../../../user-profile-core/user-skills.se
 import {UserProfileInputs} from '../../UserProfileInputs'
 import { TagEntry } from '../../../../topics/topics-shared/tag-entry'
 import { UserInterestConfigurationDialogComponent } from '../../../user-profile-shared/user-interest-configuration-dialog/user-interest-configuration-dialog.component'
-import { SkillLevelPopoverComponent } from '../../../user-profile-shared/user-interest-configuration-dialog/skill-level-popover/skill-level-popover.component'
+import { SkillLevelPopoverComponent } from '../../../../skills/skills-shared/skill-level-popover/skill-level-popover.component'
 
 @Component({
   selector: 'app-user-skill',
