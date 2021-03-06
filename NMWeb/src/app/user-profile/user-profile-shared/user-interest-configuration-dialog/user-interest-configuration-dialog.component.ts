@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Input, Output, AfterViewInit, ElementRe
 import {Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import {TopicInterest} from "../../user-profile-core/user-interests";
-import {SkillLevelPopoverComponent} from "./skill-level-popover/skill-level-popover.component";
+import {SkillLevelPopoverComponent} from "../../../skills/skills-shared/skill-level-popover/skill-level-popover.component";
 import {UserSkillLevelsHaveWant} from '../../user-profile-core/user-skills.service';
 import { TagEntry } from '../../../topics/topics-shared/tag-entry'
 

@@ -39,7 +39,6 @@ export class UserOtherProfilesComponent implements OnInit {
   @Input() public userProfileInputs: UserProfileInputs
   public formGroup: FormGroup;
 
-
   public otherProfiles: UserOtherProfiles
 
   constructor(

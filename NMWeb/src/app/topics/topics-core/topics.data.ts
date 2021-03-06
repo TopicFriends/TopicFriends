@@ -171,7 +171,7 @@ export const topics = [
   tagLogoTipo('Ember'), 'React', 'Redux', 'MobX', tagNoIcon('React Native'),
   'Xamarin', tagNoIcon('Xamarin.Forms'),
   'Git',
-  tag('TensorFlow', 'tensorflow'), 'OpenCV',
+  tag('TensorFlow', 'tensorflow'), 'OpenCV', /* (AI) Brain.js - GPU accelerated Neural networks in JavaScript - https://brain.js.org/#/ */
   'Appium', tagNoIcon('Robotium'),
   'JHipster', tagLogoTipo('Meteor'), tagLogoTipo('Hoodie'),
   'Laravel', 'CakePHP', 'Zend Framework', 'CodeIgniter', 'Symfony',
@@ -214,7 +214,7 @@ export const topics = [
   'SVG', tag('WordPress', 'wordpress-icon'), 'Drupal', 'Joomla', tagLogoTipo('jQuery'), 'jQuery Mobile', tagNoIcon('jQuery UI'),
   'PouchDB', tagNoIcon('CloudBoost'), 'Spring', tagLogoTipo('Vaadin'), 'Yarn',
   'Heroku', 'Jenkins', 'Vagrant', tag('Kubernetes', 'kubernets' /* they have a typo*/),
-  tag('Vue.js', 'vue'),
+  tag('Vue.js', 'vue'), /* TODO: Weex - like Ionic for Vue? By Alibaba Group on Apache foundation */ /* TODO Rax by Alibaba, works with Weex */
   tag('Linux', 'tux'), tag('Debian Linux', 'debian'), tag('Ubuntu Linux', 'ubuntu') , tag('SUSE Linux', 'suse'),
   tag('RedHat Linux', 'redhat'),
   tag('Fedora Linux' /* Officially just "Fedora", but better for filtering*/, 'fedora'),
@@ -229,6 +229,7 @@ export const topics = [
   'CircleCI',
   tagNoIcon('Continuous Integration'),
   tagNoIcon('Continuous Delivery'),
+  // TODO: Grafana -- The open observability platform - Grafana is the open source analytics & monitoring solution for every database -- tool for beautiful monitoring and metric analytics & dashboards for Graphite, InfluxDB & Prometheus, Elasticsearch
   'Wix',
   tagLogoTipo('Lucene'), tagLogoTipo('Solr'),
   tag('macOS', 'macosx'),
@@ -492,6 +493,7 @@ export const topics = [
   tagNoIcon('OneDrive'),
   tagNoIcon('Algorithms'),
   tagNoIcon('Data Structures'),
+  // TODO: Codility, Leetcode
   tagNoIcon('Computer Networks'),
   tagNoIcon('Green Economy'),
   tagNoIcon('CleanTech'),
@@ -566,6 +568,7 @@ export const topics = [
   tag('Security', 'generic/lock-solid'),
   tag('Computer Security', 'generic/lock-solid'),
   tag('Computer Network Security', 'generic/lock-solid'),
+  // TODO: Hacking (Karl Hiramoto)
   tag('Moleculer', undefined, 'https://moleculer.services/', [], new TopicUrls(
     null,
     'https://github.com/ice-services/moleculer',
@@ -610,7 +613,7 @@ export const topics = [
   // TODO: Hyperloop
   // TODO: check Malaga meetup topics
 
-  // TODO: Handlebars.js, Mustashe
+  // TODO: Handlebars.js, Mustashe / Mustache?
   // LoDash, Underscore.js, Ramda
 
 
@@ -637,16 +640,18 @@ export const topics = [
   'Aurelia',
   'Marionette',
   tagNoIcon('Cypress' /* From David Atencia GitHub repo :) */) ,
-  'Dart', tagLogoTipo('Flutter'),
+  'Dart', tagLogoTipo('Flutter'), /* TODO: Flutter Web: https://github.com/flutter/flutter_web */
   'Angular Dart',
   tag('Codelyzer'),
+  'Knockout',
   // TODO: SaaS (from Ali P.), PaaS, *aaS with Acronyms.
-  // TODO: Go Language (Leo)
+  // TODO: Go Language (Leo, Karl Hiramoto)
   // TODO: SparQL
   'Preact',
-  // TODO: next, nuxt, rollup.js
+  // TODO: next, nuxt (Vue.js framework) https://nuxtjs.org , rollup.js
   // TODO: https://svelte.dev/
-  // TODO: gatsby - static renderer that uses React
+  // TODO: gatsby - static renderer that uses React;
+  // Contentful, Netflicy -- from Lemoncode(rs)
   // TODO: Server Side Rendering (SSR)
   // TODO: Streaming SSR - https://www.youtube.com/watch?v=k-A2VfuUROg
   // TODO: Spectrum - https://github.com/withspectrum/spectrum/issues/3303
@@ -658,4 +663,19 @@ export const topics = [
   // TODO: Android Jetpack
   // TODO: webGL, three.js (Adam 3d printing etc) and smth for scene graph
   // TODO: Vega lite
+  // TODO: R, R Studio
+  // TODO: Fuchsia OS
+  // TODO: Microsoft Blazor -- enables developers to create web apps using C# and HTML -- Run on WebAssembly or the server
+  // SuperTest, SuperAgent (NodeJS HTTP API, testing)
+  // TODO: GraalVM (by Oracle; runs Java, NodeJS?)
+  // TODO: TypeORM
+  // TODO: !!! Flow - https://flow.org/en/
+  // TODO: OCaml - Flow is written in it (has icon SVG); ML, Caml
+  // TODO: lisp, common lisp, CLOS
+  // Scheme
+  // TODO Haxe (has icon)
+  // TODO Julia Language (machine learning etc) https://julialang.org/
+
+  // Fun / sports:
+  // TODO: hiking, bicycle, motorcycles (Moi?, Jakob), travel, volleyball, beach volleyball, beer, party (parties), natural language learning, language exchanges, dating
 ]
