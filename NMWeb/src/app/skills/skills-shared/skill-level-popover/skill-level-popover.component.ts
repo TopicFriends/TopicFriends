@@ -1,6 +1,6 @@
 import {Component, OnInit, Inject, ElementRef, AfterViewInit, Output, EventEmitter} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material';
-import { UserSkillLevelsHaveWant } from '../../../user-profile-core/user-skills.service'
+import { UserSkillLevelsHaveWant } from '../../../user-profile/user-profile-core/user-skills.service'
 
 @Component({
   selector: 'app-dialog',

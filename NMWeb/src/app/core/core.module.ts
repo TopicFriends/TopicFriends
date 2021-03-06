@@ -38,7 +38,7 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
     CommonModule,
     SharedModule,
     FlexLayoutModule,
-    UserProfileSharedModule,
+    // UserProfileSharedModule,
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
