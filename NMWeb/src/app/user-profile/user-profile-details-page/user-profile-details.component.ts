@@ -149,7 +149,7 @@ export class UserProfileDetailsComponent implements OnInit {
   @HostListener('window:beforeunload', ['$event'])
   handleBeforeUnload($event) {
     if ( ! this.canDeactivate() ) {
-      console.log('this.formGroup...', this.formGroup.value)
+      event.preventDefault();
       $event.returnValue = 'Your data will be lost!';
     }
   }

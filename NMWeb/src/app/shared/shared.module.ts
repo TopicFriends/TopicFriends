@@ -40,10 +40,15 @@ import { DomainDbService } from './domain-db.service'
 import { DbService } from './db.service'
 import { ScrollingService } from './scrolling.service';
 import { HideOnScrollDirective } from './hide-on-scroll.directive';
+import { CapitalizeFirstPipe } from './pipes/capitalize-first.pipe'
 
 export const exportModules = [
   MatChipsModule,
   RouterModule,
+]
+
+const exportDeclarations = [
+  CapitalizeFirstPipe,
 ]
 
 @NgModule({
@@ -71,6 +76,7 @@ export const exportModules = [
     ...exportModules,
   ],
   declarations: [
+    ... exportDeclarations,
     SnackBarComponent,
     DistancePipe,
     CleanUrlPipe,
@@ -91,7 +97,8 @@ export const exportModules = [
     Angular2FontawesomeModule,
     TextAreaComponent,
     MatButtonModule,
-    ...exportModules,
+    ... exportModules,
+    ... exportDeclarations,
   ],
   providers: [
     SnackBarComponent,
