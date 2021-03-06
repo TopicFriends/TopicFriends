@@ -1,0 +1,48 @@
+#pickLocationMap {
+  width: 100%;
+}
+
+.editable-map {
+  height: 50vh;
+}
+
+.non-editable-map {
+  height: 50vh;
+}
+
+#searchInputFieldContainer {
+  width: 100%;
+}
+
+.pac-container {
+  z-index: 5000;
+}
+
+.map-dialog-button {
+  width: 10px;
+  margin-top: 10px;
+}
+
+p-dialog {
+  z-index: 10;
+}
+
+$names: #fff;
+
+agm-map {
+  width: 100%;
+  font-size: large;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .editable-map {
+    height: 350px;
+  }
+
+  .non-editable-map {
+    height: 450px;
+  }
+}
+
+

@@ -74,7 +74,11 @@ export class TagEntry {
 
   public getLogoPath(tag: string){
     // return '../../../assets/images/logos/' + tag.toLowerCase() + '-icon.svg'
-    return '../../../assets/images/logos/' + tag.toLowerCase().replace(/ /g, '-') + '.svg'
+    let path = '../../../assets/images/logos/' + tag.toLowerCase().replace(/ /g, '-')
+    if ( ! path.toLowerCase().endsWith(`.svg`) ) {
+      path += '.svg'
+    }
+    return path
   }
 
   matchesTextFilter(filterString: string) {
@@ -105,7 +109,5 @@ export class TagEntry {
     this.name = name
     return this
   }
-
-
 
 }

@@ -1,0 +1,7 @@
+<app-user-skill
+  *ngFor="let topic of topics; trackBy: trackTopicById"
+  [userProfileInputs]="userProfileInputs"
+  [tag]="topic"
+  [skillLevels]="getSkillLevelsForTopicId(topic.id)"
+  (levelsChanged)="onLevelsChanged($event, topic)"
+></app-user-skill>

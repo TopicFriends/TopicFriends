@@ -1,0 +1,130 @@
+<mat-card *ngIf=show.anything class="user-item" style="margin-bottom: 0.5em; margin-left: 0.5em; margin-right: 0.5em;">
+  <mat-card-header>
+    <!--<div mat-card-avatar class="card-avatar"></div>-->
+    <img
+      mat-card-avatar
+      *ngIf="show.image && profileBasicInfo?.photoUrl"
+      style="vertical-align:middle"
+      src="{{profileBasicInfo?.photoUrl}}"
+      onerror="this.src='assets/images/icons/user-solid.svg'"
+    >
+    <mat-card-title
+      style="vertical-align:middle"
+    >
+      <!--<h3>-->
+      <div class="user-display-name">
+        <a routerLink="/user/{{userId}}">{{profileBasicInfo?.displayName || profileBasicInfo?.name}}</a>
+        &nbsp; MatchScore: {{matchResults?.isBasedOnLoggedInUser ? matchResults?.matchScore : '(Please Log In to see MatchScore)'}}
+          &nbsp; <span class="badge" *ngIf="isLoggedUser()"> YOU!</span>
+
+        <app-user-other-profiles-badges
+          *ngIf="show.otherProfileBadges"
+          [userOtherProfiles]="userDataCombined.otherProfiles"
+        ></app-user-other-profiles-badges>
+
+        <app-user-geo-locations-badges
+        ></app-user-geo-locations-badges>
+
+      </div>
+      <!--</h3>-->
+    </mat-card-title>
+    <mat-card-subtitle *ngIf="!showLess">
+      {{userDescriptions?.descriptions?.myDescription?.text || 'No description yet'}}
+
+      <!--{{profileBasicInfo?.role}}-->
+      <!--<span *ngIf="profileBasicInfo?.company">-->
+      <!--at-->
+      <!--<span style="font-weight: bold;">{{' ' + profileBasicInfo?.company}}</span>-->
+      <!--</span>-->
+    </mat-card-subtitle>
+
+
+    <mat-card-subtitle *ngIf="showLess">
+      {{ shortDescription(userDescriptions?.descriptions?.myDescription?.text) || 'No description yet' }}
+
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="show.topics">
+    <!--{{_whatUserWants[0].desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}-->
+    <app-user-interests-mode-view
+      [topicGroup]="userInterests?.byInteractionMode?.symmetric?.exchange"
+      [loggedUserTopicGroupSymmetric]="loggedUserInterestsSymmetric?.exchange"
+    >
+      Would like to exchange knowledge on:
+    </app-user-interests-mode-view>
+    <app-user-interests-mode-view
+      [topicGroup]="userInterests?.byInteractionMode?.symmetric?.pairProgramming"
+      [loggedUserTopicGroupSymmetric]="loggedUserInterestsSymmetric?.pairProgramming"
+    >
+      Would like to do pair programming on:
+    </app-user-interests-mode-view>
+    <app-user-interests-mode-view
+      [topicGroup]="userInterests?.byInteractionMode?.symmetric?.hackathon"
+      [loggedUserTopicGroupSymmetric]="loggedUserInterestsSymmetric?.hackathon"
+    >
+      Would like to do hackathon on:
+    </app-user-interests-mode-view>
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.freelance?.demand"
+      [loggedUserTopicGroupSupplyDemandSame]="loggedUserInterestsSupplyDemand?.freelance?.demand"
+      [loggedUserTopicGroupSupplyDemandMatch]="loggedUserInterestsSupplyDemand?.freelance?.supply"
+    >
+      Would like to find a freelancer for:
+    </app-user-interests-mode-view>
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.freelance?.supply"
+      [loggedUserTopicGroupSupplyDemandSame]="loggedUserInterestsSupplyDemand?.freelance?.supply"
+      [loggedUserTopicGroupSupplyDemandMatch]="loggedUserInterestsSupplyDemand?.freelance?.demand"
+    >
+      Would like to work as a freelancer for:
+    </app-user-interests-mode-view>
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.intern?.demand"
+      [loggedUserTopicGroupSupplyDemandSame]="loggedUserInterestsSupplyDemand?.intern?.demand"
+      [loggedUserTopicGroupSupplyDemandMatch]="loggedUserInterestsSupplyDemand?.intern?.supply"
+    >
+      Would like to find an intern for:
+    </app-user-interests-mode-view>
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.intern?.supply"
+      [loggedUserTopicGroupSupplyDemandSame]="loggedUserInterestsSupplyDemand?.intern?.supply"
+      [loggedUserTopicGroupSupplyDemandMatch]="loggedUserInterestsSupplyDemand?.intern?.demand"
+    >
+      Would like to become an intern for:
+    </app-user-interests-mode-view>
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.mentor?.demand"
+      [loggedUserTopicGroupSupplyDemandSame]="loggedUserInterestsSupplyDemand?.mentor?.demand"
+      [loggedUserTopicGroupSupplyDemandMatch]="loggedUserInterestsSupplyDemand?.mentor?.supply"
+    >
+      Would like to find a mentor for:
+    </app-user-interests-mode-view>
+    <app-user-interests-mode-view
+      [topicGroup]="supplyDemand?.mentor?.supply"
+      [loggedUserTopicGroupSupplyDemandSame]="loggedUserInterestsSupplyDemand?.mentor?.supply"
+      [loggedUserTopicGroupSupplyDemandMatch]="loggedUserInterestsSupplyDemand?.mentor?.demand"
+    >
+      Would like to become a mentor for:
+    </app-user-interests-mode-view>
+    <!--</mat-card-content>-->
+  </mat-card-content>
+  <!--<mat-card-actions>-->
+    <!--&lt;!&ndash;<div>&ndash;&gt;-->
+    <!--<button mat-raised-button>MEET</button>-->
+    <!--<button mat-raised-button>SHARE</button>-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--</mat-card-actions>-->
+</mat-card>
+<!--
+<mat-grid-list
+    cols="12"
+    rowHeight="20px"
+    class="grid-element">
+    <mat-grid-tile [colspan]=3 [rowspan]=6>{{_userPublicProfile?.name}}</mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=6>Prueba</mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=6>Prueba</mat-grid-tile>
+    <mat-grid-tile [colspan]=3 [rowspan]=6>Prueba</mat-grid-tile>
+</mat-grid-list>
+-->
+<div *ngIf="! show.anything">UProfile</div>

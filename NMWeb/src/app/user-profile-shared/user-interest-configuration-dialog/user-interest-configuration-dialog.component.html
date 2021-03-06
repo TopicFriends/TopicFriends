@@ -1,0 +1,31 @@
+<div mat-dialog-title class="relative-position">
+  <button mat-button class="floating-right fit-content"
+          [mat-dialog-close]="data.skillLevels"
+  >
+    <fa [name]="'close'"></fa>
+  </button>
+  <span>
+    <app-topic-logo url="{{logo}}"></app-topic-logo>
+    {{data.name}}
+  </span>
+  <div>
+    <app-skill-level-label
+      [skillLevels]="data.skillLevels"
+    >
+    </app-skill-level-label>
+
+    <button mat-button
+      (click)="openDialog($event)"
+      *ngIf="data.userProfileInputs.isEditable"
+    >Set skills</button>
+  </div>
+</div>
+
+<div MatDialogContent fxLayout="column" fxLayoutAlign="center center">
+  <app-basic-actions-button-group [actions]='data.actions'></app-basic-actions-button-group>
+
+  <app-supply-demand-button-group [data]="supplyDemandOption" *ngFor="let supplyDemandOption of data.supplyDemandActions"></app-supply-demand-button-group>
+
+  <!--<button mat-button>Find matches!</button>-->
+
+</div>

@@ -53,15 +53,7 @@
           [zoom]="10">
 
           <ng-template [ngIf]="showPeople">
-            <!-- Notes about labels being re-added ("re-painted") on zoom/pan:
-              - apparently it only affects text labels (not markers themselves)
-              - ngForTrackBy does not seem to make a difference regarding the re-adding of labels
-                (but might improve handling of changes in the set of geo-locations from firebase)
-              - removing `async` in [label] did not seem to make a difference
-              - could those text labels be implemented in some hackish way in AGM?
-            -->
-            <ng-template ngFor let-userLocation [ngForOf]="allUsersGeoLocationsFlattened"
-                         [ngForTrackBy]="trackPersonById">
+            <ng-template ngFor let-userLocation [ngForOf]="allUsersGeoLocationsFlattened">
               <agm-marker
                 [markerClickable]="true"
                 (markerClick)="onMarkerClick(userLocation)"

@@ -1,0 +1,6 @@
+<span class="mat-subheading-1">I would like to:</span>
+<div class="button-container">
+  <mat-button-toggle *ngFor="let action of actions" >
+    {{action | capitalizeFirst}}
+  </mat-button-toggle>
+</div>

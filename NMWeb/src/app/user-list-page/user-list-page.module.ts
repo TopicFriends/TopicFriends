@@ -5,14 +5,12 @@ import { UserListPageRoutingModule } from './user-list-page-routing.module';
 import { UserListPage } from './user-list.page'
 import { SharedModule } from '../shared/shared.module'
 import {
-  MatButtonModule,
-  MatButtonToggleModule,
   MatListModule,
   MatOptionModule,
   MatRadioModule,
   MatSelectModule,
 } from '@angular/material';
-import { UserProfileSharedModule } from '../user-profile/user-profile-shared/user-profile-shared.module'
+import { UserProfileSharedModule } from '../user-profile-shared/user-profile-shared.module'
 
 @NgModule({
   imports: [
@@ -23,8 +21,6 @@ import { UserProfileSharedModule } from '../user-profile/user-profile-shared/use
     MatSelectModule,
     MatRadioModule,
     MatListModule,
-    MatButtonToggleModule,
-    MatButtonModule,
     UserProfileSharedModule,
   ],
   declarations: [

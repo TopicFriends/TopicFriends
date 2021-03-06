@@ -1,0 +1,38 @@
+<div
+  [formGroup]="parentFormGroup"
+>
+  <h2>
+    <ng-content select="[supply-demand-label]"></ng-content>
+  </h2>
+<!--
+<mat-card formGroupName="mentor">
+  <mat-card-title>
+    <ng-content select="[supply-demand-label]"></ng-content>
+  </mat-card-title>
+  <mat-card-content>
+-->
+<!--formGroupName="supplyDemand"-->
+
+  <div [formGroupName]="nestedFormGroupName">
+
+    <app-topic-group-card
+      formControlName="supply"
+      [userProfileInputs]="userProfileInputs"
+    >
+      <ng-content select="[supply-label]"></ng-content>
+    </app-topic-group-card>
+
+    <app-topic-group-card
+      formControlName="demand"
+      [userProfileInputs]="userProfileInputs"
+    >
+      <ng-content select="[demand-label]"></ng-content>
+    </app-topic-group-card>
+  </div>
+
+</div>
+
+<!--
+  </mat-card-content>
+</mat-card>
+-->

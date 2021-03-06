@@ -1,0 +1,23 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <span fxLayoutAlign="center center">
+    <app-topic-logo url="{{logo}}"></app-topic-logo>
+    {{data.name}}
+  </span>
+  <div fxLayout="row" fxLayoutAlign="center center">
+
+    <app-skill-levels #have [levels]="skillLevels" [actualValue]="data.skillLevels?.have ||'?'" header='have' isVertical=true></app-skill-levels>
+    <app-skill-levels #want [levels]="skillLevels" [actualValue]="data.skillLevels?.want ||'?'" header='want' isVertical=true></app-skill-levels>
+
+
+  </div>
+
+  <button
+    *ngIf="data.userProfileInputs.isEditable"
+    mat-raised-button color="primary"
+    [mat-dialog-close]="getDialogResult(have, want)"
+    id="skill-dialog-btn"
+  >
+    Save
+  </button>
+
+</div>

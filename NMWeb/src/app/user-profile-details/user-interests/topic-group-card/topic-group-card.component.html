@@ -1,0 +1,24 @@
+<div [hidden]="hidden">
+
+  <mat-card
+    style="margin-bottom: 0.5em"
+  >
+
+    <mat-card-title
+    >
+
+      <ng-content></ng-content>
+
+    </mat-card-title>
+
+    <mat-card-content>
+
+      <app-topic-list-picker
+        [isEditable]="userProfileInputs.isEditable"
+        (outputTagList)="onOutputTagListChanged($event)"
+      ></app-topic-list-picker>
+
+    </mat-card-content>
+
+  </mat-card>
+</div>

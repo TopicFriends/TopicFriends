@@ -6,7 +6,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
-import { AuthService } from './user-profile/user-profile-shared/auth.service';
+import { AuthService } from './user-profile-shared/auth.service';
 import { CoreModule } from 'app/core/core.module';
 import 'hammerjs';
 import { FormsModule } from '@angular/forms';

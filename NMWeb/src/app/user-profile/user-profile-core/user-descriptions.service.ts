@@ -3,7 +3,7 @@ import {
   DbList,
   DbService,
 } from '../../shared/db.service'
-import { AuthService } from '../user-profile-shared/auth.service'
+import { AuthService } from '../../user-profile-shared/auth.service'
 import 'rxjs/add/operator/switchMap';
 import { DomainDbService } from '../../shared/domain-db.service'
 

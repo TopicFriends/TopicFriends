@@ -1,0 +1,49 @@
+<div
+  [formGroup]="thisFormGroup"
+>
+
+  <ng-template [ngIf]="! userProfileReceived" >Loading User profile basic info...<br/></ng-template>
+
+  <img style="width: 100px; margin-top: 5px" src="{{photoUrl}}" />
+  <p *ngIf="! userProfileInputs.isUserIdFromRouter">
+    <span class="grayed-label">Log-in Account Name: </span>{{ (authService.user | async)?.displayName }}
+  </p>
+  <p>
+    <span id="profile-user-id" class="grayed-label">User Id: [User_{{userProfileInputs.userId}}]</span>
+  </p>
+
+
+  <!--<button-->
+    <!--mat-button-->
+    <!--mat-raised-button-->
+    <!--(click)="copyUserId()"-->
+  <!--&gt;-->
+    <!--Copy-->
+  <!--</button>-->
+
+  <!-- TODO: [position] at [organization] -->
+  <!-- TODO: save creation date-->
+  <!-- TODO: save number of profile updates -->
+
+  <mat-form-field
+    style="width: 100%"
+  >
+    <mat-placeholder>
+      Display Name
+    </mat-placeholder>
+
+    <!--<input (keydown.meta.s)="save()" matInput-->
+    <input
+      matInput
+      [formControlName]="'displayName'"
+    >
+  </mat-form-field>
+
+  <mat-select [formControlName]="'gender'" style="margin-bottom: 10px"
+             placeholder="Gender">
+    <mat-option value="female">Female</mat-option>
+    <mat-option value="male">Male</mat-option>
+    <mat-option value="other">Other</mat-option>
+  </mat-select>
+
+</div>

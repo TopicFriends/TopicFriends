@@ -1,0 +1,24 @@
+<h2>
+  Experimental Features
+</h2>
+<p>
+  Here you can activate and deactivate some experimental features for TopicFriends. Feel free to test it and let us know your opinion!
+</p>
+<mat-list>
+  <mat-list-item *ngFor="let feature of features">
+    <mat-slide-toggle
+      mat-line
+      labelPosition="after"
+      (change)="featureChange(feature.name)"
+      [checked]="userConfig[feature.name]"
+    >
+      <span class="line-header">
+        {{feature.label}}
+      </span>
+    </mat-slide-toggle>
+    <span mat-line>
+      {{feature.description}}
+    </span>
+  </mat-list-item>
+</mat-list>
+

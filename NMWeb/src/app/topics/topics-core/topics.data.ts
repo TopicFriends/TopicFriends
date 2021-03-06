@@ -676,6 +676,29 @@ export const topics = [
   // TODO Haxe (has icon)
   // TODO Julia Language (machine learning etc) https://julialang.org/
 
-  // Fun / sports:
+  // ========= Fun / sports:
   // TODO: hiking, bicycle, motorcycles (Moi?, Jakob), travel, volleyball, beach volleyball, beer, party (parties), natural language learning, language exchanges, dating
+
+  tag('Hiking', 'generic/hiking-solid') /* search terms: trail, walking trips */,
+  tag('Bicycle', 'generic/bicycle-solid') /* search terms: bike */,
+  tag('Road Bicycle', 'generic/bicycle-solid') /* search terms: bike */,
+  tag('Mountain Bicycle', 'generic/bicycle-solid') /* search terms: bike */,
+  tag('Motorcycles', 'generic/motorcycle-solid' /* search terms: bike, motorbike, bikers */),
+  tag('Volleyball', 'generic/volleyball-ball-solid' /* search terms: voley, volei (Spanish) */),
+  tag('Beach Volleyball', 'generic/volleyball-ball-solid' /* search terms: voley, volei (Spanish) */),
+  tag('Beach', 'generic/umbrella-beach-solid' /* Playa */),
+  tag('Beach Sports', 'generic/umbrella-beach-solid' /* Playa */),
+  'Travels',
+  'Beer',
+  'Parties',
+  'Language Exchanges',
+  'Swimming',
+  'Tennis',
+  'Padel' /* search terms: paddle paddel */,
+  'Paddle Tennis' /* search terms: paddle paddel */,
+  'Table tennis' /* search terms: ping pong */,
+  'Football' /* search terms: soccer */,
+  'Basketball',
+  'Badminton',
+
 ]

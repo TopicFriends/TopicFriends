@@ -1,0 +1,53 @@
+<mat-card
+  [formGroup]="parentFormGroup"
+  style="margin-bottom: 10px"
+>
+  <mat-card-title>Geo-Locations (optional, can be approximate)</mat-card-title>
+
+  <mat-card-content>
+
+    <div
+      formGroupName="geoLocations"
+    >
+
+      <app-user-geo-location
+        [userProfileInputs]="userProfileInputs"
+        formControlName="whereILive"
+        locationName="Where I live"
+      ></app-user-geo-location>
+
+      <app-user-geo-location
+        [userProfileInputs]="userProfileInputs"
+        formControlName="whereIWork"
+        locationName="Where I work"
+      ></app-user-geo-location>
+
+      <app-user-geo-location
+        [userProfileInputs]="userProfileInputs"
+        formControlName="whereIStudy"
+        locationName="Where I study"
+      ></app-user-geo-location>
+
+      <app-user-geo-location
+        [userProfileInputs]="userProfileInputs"
+        formControlName="whereIStudied"
+        locationName="Where I studied"
+      ></app-user-geo-location>
+
+      <app-user-geo-location
+        [userProfileInputs]="userProfileInputs"
+        formControlName="whereIVisit"
+        locationName="Where I visit"
+      ></app-user-geo-location>
+
+      <app-user-geo-location
+        [userProfileInputs]="userProfileInputs"
+        formControlName="homeTown"
+        locationName="Hometown"
+      ></app-user-geo-location>
+
+    </div>
+
+  </mat-card-content>
+
+</mat-card>

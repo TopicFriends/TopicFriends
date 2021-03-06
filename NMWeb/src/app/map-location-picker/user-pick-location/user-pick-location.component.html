@@ -1,0 +1,49 @@
+
+<p-dialog
+  [header]="locationName"
+  [(visible)]="display"
+  [width]="800"
+  [modal]="true"
+  (onShow)="onShowDialog()"
+  (onHide)="onHideDialog()">
+  <mat-form-field
+    *ngIf="isEditable"
+    id=searchInputFieldContainer
+  >
+    <mat-placeholder>
+      <mat-icon>map</mat-icon> Search for location:
+    </mat-placeholder>
+
+    <input
+      matInput
+      #searchInputField
+    />
+  </mat-form-field>
+
+<agm-map
+  [ngClass]="isEditable ? 'editable-map' : 'non-editable-map'"
+  #pickLocationMap
+  id=pickLocationMap
+  [latitude]="coordinates.latitude"
+  [longitude]="coordinates.longitude"
+  [zoom]="15">
+  <agm-marker
+    [latitude]="coordinates.latitude"
+    [longitude]="coordinates.longitude"
+    [label]="isEditable ? 'Drag Me' : null"
+    [markerDraggable]="isEditable"
+    (dragEnd)="markerDragEnd($event)"
+  >
+  </agm-marker>
+</agm-map>
+
+  <button
+    class="map-dialog-button"
+    mat-button
+    mat-raised-button
+    color="primary"
+    (click)="close()"
+  >
+    {{isEditable ? 'Accept' : 'Close'}}
+  </button>
+</p-dialog>

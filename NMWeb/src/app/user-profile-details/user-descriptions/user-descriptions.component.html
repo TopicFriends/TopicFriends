@@ -1,0 +1,42 @@
+
+<div
+  [formGroup]="thisFormGroup"
+>
+  <div
+    formGroupName="descriptions"
+  > <!-- TODO: descriptions -> textDescriptions ? -->
+
+    <app-text-area
+      [isEditable]="userProfileInputs.isEditable"
+      [parentFormGroup]="getDescriptionsFormGroup()"
+      [thisFormGroupName]="'myDescription'"
+      [placeholder]="'My description'"
+      [rows]="2"
+    ></app-text-area>
+
+    <app-text-area
+      [isEditable]="userProfileInputs.isEditable"
+      [parentFormGroup]="getDescriptionsFormGroup()"
+      [thisFormGroupName]="'whatDoYouExpectFromTheApp'"
+      [placeholder]="'What do you hope to accomplish in this app?'"
+      [rows]="1"
+    ></app-text-area>
+
+    <app-text-area
+      [isEditable]="userProfileInputs.isEditable"
+      [parentFormGroup]="getDescriptionsFormGroup()"
+      [thisFormGroupName]="'adviceOnContactingMe'"
+      [placeholder]="'Advice on contacting / meeting me'"
+      [rows]="1"
+    ></app-text-area>
+
+    <app-text-area
+      [isEditable]="userProfileInputs.isEditable"
+      [parentFormGroup]="getDescriptionsFormGroup()"
+      [thisFormGroupName]="'howDidYouFindThisCommunity'"
+      [placeholder]="'How did you find this community?'"
+      [rows]="1"
+    ></app-text-area>
+
+  </div>
+</div>

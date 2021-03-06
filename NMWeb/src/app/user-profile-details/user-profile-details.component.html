@@ -1,0 +1,108 @@
+
+<div
+  *ngIf="userProfileInputs?.isEditable"
+  (window:keydown.meta.s)="keyDownSave($event)"
+  (window:keydown.control.s)="keyDownSave($event)"
+></div>
+<div fxLayoutAlign="space-between center">
+  <h2>
+    Public Profile
+  </h2>
+  <button id="on-profile-config-button" mat-button routerLink="/config" *ngIf="userProfileService.userId">
+    Config
+  </button>
+</div>
+
+<ng-template [ngIf]="!userProfileService.userId && isOwnProfile()" >
+  <button id="login-on-profile-button" mat-raised-button
+          (click)="authDialogService.openLoginOrRegisterDialog()">
+    Please log in, to access your profile
+  </button>
+</ng-template>
+
+<ng-template [ngIf]="shouldShowUserProfile()">
+
+  <form>
+
+    <app-user-profile-basic-info
+      [userProfileInputs]="userProfileInputs"
+      #basicInfo
+      [thisFormGroup]="userProfileBasicInfoFormGroup"
+    ></app-user-profile-basic-info>
+
+    <app-user-description
+      [userProfileInputs]="userProfileInputs"
+      #userDescriptions
+      [thisFormGroup]="userDescriptionsFormGroup"
+    ></app-user-description>
+
+    <app-user-geo-locations
+      [userProfileInputs]="userProfileInputs"
+      #userGeoLocations
+      [parentFormGroup]="userGeoLocationsFormGroup"
+    ></app-user-geo-locations>
+
+    <app-user-other-profiles
+      [userProfileInputs]="userProfileInputs"
+      #userOtherProfiles
+      [parentFormGroup]="formGroup"
+    ></app-user-other-profiles>
+
+
+    <app-user-skills
+      [ngClass]="{hidden: ! showUserSkillsSection}"
+      [userProfileInputs]="userProfileInputs"
+      #userSkills
+      [parentFormGroup]="formGroup"
+      [thisFormGroup]="userSkillsFormGroup"
+    ></app-user-skills>
+
+    <h2 id="actionable-interests">Actionable Interests</h2>
+
+    <app-user-interests
+      [userProfileInputs]="userProfileInputs"
+      #userInterests
+      [thisFormGroup]="userInterestsFormGroup"
+    ></app-user-interests>
+
+
+  <label for="checkPrivacity" *ngIf="userProfileInputs.isEditable">
+    <input class='form-control' type="checkbox" name="checkPrivacity" id="checkPrivacity" [(ngModel)]="checkPrivacityValue">
+    I accept the  <a routerLink="/privacy" class="privacityLink">Privacy Statement</a> and I declare to be over 16 years old.
+  </label>
+
+</form>
+
+  <p
+    *ngIf="userProfileInputs.isEditable"
+  >
+    <button
+      class="save-fab"
+      appHideOnScroll
+      (click)="save()"
+      mat-fab
+    >
+      <mat-icon aria-label="Save profile">
+        save
+      </mat-icon>
+    </button>
+
+    <button
+      class="saveProfileButton"
+      #saveProfileButton
+      id="saveProfile"
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="save()"
+      [disabled]="! hasUnsavedChanges()"
+    >
+      Save <i>(Cmd/Ctrl+S)</i>
+    </button>
+  </p>
+
+  <!--<button mat-icon-button *ngIf="hasUnsavedChanges()" color="primary">-->
+    <!--<mat-icon (click)="saveProfileButton.click()">save</mat-icon>-->
+  <!--</button>-->
+
+</ng-template>

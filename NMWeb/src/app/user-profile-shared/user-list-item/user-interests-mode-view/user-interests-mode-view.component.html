@@ -1,0 +1,18 @@
+<ng-template [ngIf]="topicGroup?.topics">
+  <span
+    style="
+      display: inline-block;
+      margin-bottom: 8px;
+      margin-top: 5px
+    "
+  >
+    <ng-content></ng-content>
+  </span>
+
+  <app-topic-tag-list
+    [tagList]="topicGroup?.topics"
+    [relatedTopicLists]="relatedTopicLists"
+    [editable]="false"
+  ></app-topic-tag-list>
+
+</ng-template>

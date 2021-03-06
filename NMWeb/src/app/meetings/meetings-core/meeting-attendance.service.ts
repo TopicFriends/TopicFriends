@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AuthService} from '../../user-profile/user-profile-shared/auth.service';
+import {AuthService} from '../../user-profile-shared/auth.service';
 import {DbList, DbObject, DbService} from '../../shared/db.service';
 import {
   UserData,

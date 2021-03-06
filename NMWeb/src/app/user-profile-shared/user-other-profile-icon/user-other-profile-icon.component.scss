@@ -1,0 +1,15 @@
+$icon-size: 13px;
+
+.otherProfileIcon {
+  width: $icon-size;
+  height: $icon-size;
+}
+
+.icon {
+  display: inline;
+  margin: auto;
+}
+
+:host {
+  text-align: center;
+}

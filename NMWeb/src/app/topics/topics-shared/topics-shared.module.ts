@@ -6,7 +6,7 @@ import { TopicTagListComponent } from './topic-tag-list/topic-tag-list.component
 import { TopicTagComponent } from './topic-tag/topic-tag.component'
 import { SharedModule } from '../../shared/shared.module'
 
-const exportDeclarations = [
+let exportComponents = [
   TopicLogoComponent,
   TopicsPickerComponent,
   TopicTagListComponent,
@@ -19,10 +19,8 @@ const exportDeclarations = [
     SharedModule,
   ],
   declarations: [
-    ...exportDeclarations,
+    ...exportComponents,
   ],
-  exports: [
-    ...exportDeclarations,
-  ]
+  exports: exportComponents
 })
 export class TopicsSharedModule { }

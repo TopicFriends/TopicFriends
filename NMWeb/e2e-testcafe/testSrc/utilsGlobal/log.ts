@@ -1,4 +1,4 @@
-const enableDebugLog = true
+const enableDebugLog = false
 
 export function logDebug(...args) {
   if ( enableDebugLog ) {

@@ -1,0 +1,34 @@
+<mat-card style="margin-bottom: 10px">
+
+  <mat-card-title>Other Profiles (optional, but recommended)</mat-card-title>
+
+<mat-card-content>
+
+<div [formGroup]="formGroup">
+
+  <ng-template [ngIf]="! otherProfiles" >Loading external profiles...</ng-template>
+
+  <app-other-profile-user-name
+    *ngFor="let descriptor of descriptorsList"
+    [descriptor]="descriptor"
+    [parentFormGroup]="formGroup"
+    [thisFormControl]="formControls[descriptor.id]"
+    [userProfileInputs]="userProfileInputs"
+  ></app-other-profile-user-name>
+
+  <mat-form-field *ngIf="false">
+    <mat-placeholder>
+      My Website URL
+    </mat-placeholder>
+    <span matPrefix>
+      <mat-icon>languages</mat-icon>
+    </span>
+    <input
+      matInput
+      [formControl]="otherProfileFacebook"
+    >
+  </mat-form-field>
+</div>
+
+</mat-card-content>
+</mat-card>

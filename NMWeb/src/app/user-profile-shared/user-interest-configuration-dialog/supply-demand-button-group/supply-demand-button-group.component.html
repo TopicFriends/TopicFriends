@@ -1,0 +1,8 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <span fxFlex="50" class="text-right">
+    {{data.title | uppercase}}
+  </span>
+  <mat-button-toggle-group multiple vertical="false">
+      <mat-button-toggle [value]="action" *ngFor="let action of data.actions">{{action | capitalizeFirst}}</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

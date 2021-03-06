@@ -4,7 +4,7 @@ import { PreloadAllModules } from '@angular/router';
 const appRoutes: Routes = [
   {
     path: '',
-    loadChildren: './other/landing-page/landing-page.module#LandingPageModule',
+    loadChildren: './landing-page/landing-page.module#LandingPageModule',
   },
   {
     path: 'people-list',
@@ -48,11 +48,15 @@ const appRoutes: Routes = [
   },
   {
     path: 'terms',
-    loadChildren: 'app/other/terms-of-service-page/terms-of-service-page.module#TermsOfServicePageModule',
+    loadChildren: 'app/terms-of-service-page/terms-of-service-page.module#TermsOfServicePageModule',
+  },
+  {
+    path: 'profile',
+    loadChildren: 'app/user-profile-details/user-profile-details.module#UserProfileDetailsModule',
   },
   {
     path: 'config',
-    loadChildren: 'app/user-profile/user-config/user-config.module#UserConfigModule',
+    loadChildren: 'app/user-config/user-config.module#UserConfigModule',
   },
   {
     path: 'user', /* workaround to support older urls which were /user/<user-id> */
@@ -60,15 +64,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'u',
-    loadChildren: 'app/user-profile/user-profile-details-page/user-profile-details-page.module#UserProfileDetailsPageModule',
-  },
-  {
-    path: 'profile',
-    loadChildren: 'app/user-profile/user-profile-details-page/user-profile-details-page.module#UserProfileDetailsPageModule',
+    loadChildren: 'app/user-profile-details/user-profile-details.module#UserProfileDetailsModule',
   },
   {
     path: 'privacy',
-    loadChildren: './other/privacy-policy-page/privacy-policy-page.module#PrivacyPolicyPageModule',
+    loadChildren: './privacy-policy-page/privacy-policy-page.module#PrivacyPolicyPageModule',
   },
   {
     path: `topics-map`,
@@ -80,7 +80,7 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    loadChildren: './other/page-not-found/page-not-found.module#PageNotFoundModule',
+    loadChildren: './page-not-found/page-not-found.module#PageNotFoundModule',
   },
 
 ]

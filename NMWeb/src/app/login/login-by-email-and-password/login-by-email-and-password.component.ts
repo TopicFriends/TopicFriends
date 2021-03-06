@@ -4,7 +4,7 @@ import {
   NgForm,
   Validators,
 } from '@angular/forms'
-import { AuthService } from '../../user-profile/user-profile-shared/auth.service'
+import { AuthService } from '../../user-profile-shared/auth.service'
 
 @Component({
   selector: 'app-login-by-email-and-password',

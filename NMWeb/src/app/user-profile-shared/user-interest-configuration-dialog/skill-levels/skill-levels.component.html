@@ -1,0 +1,14 @@
+<div fxLayout="column" style="display:inline-block">
+  <h4>{{header|capitalizeFirst}}</h4>
+  <mat-button-toggle-group #group="matButtonToggleGroup"
+                           [vertical]="isVertical"
+                           [value]="actualValue"
+                           (valueChange)="selectedValue = group.value">
+    <mat-button-toggle value="{{level}}" *ngFor="let level of levels">
+      <span>
+        {{level | capitalizeFirst}}
+        <fa name="{{skillsIcons[level]}}"></fa>
+      </span>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

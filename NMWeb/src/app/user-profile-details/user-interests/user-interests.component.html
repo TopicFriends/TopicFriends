@@ -1,0 +1,103 @@
+
+<div [formGroup]="thisFormGroup">
+  <div formGroupName="byInteractionMode">
+    <div formGroupName="symmetric">
+
+
+      <app-topic-group-card id=topicsSportsAndFun formControlName="sportsAndFun"
+        [userProfileInputs]="userProfileInputs"
+      >
+        <b>Sports and fun</b>
+      </app-topic-group-card>
+
+      <app-topic-group-card id=topicsExchange formControlName="exchange"
+        [userProfileInputs]="userProfileInputs"
+      >
+        I would like to <b>exchange knowledge</b> on topics
+      </app-topic-group-card>
+
+      <app-topic-group-card id=topicsHackathon formControlName="hackathon"
+        [userProfileInputs]="userProfileInputs"
+      >
+        I would like to do a <b>hackathon</b> on topics
+      </app-topic-group-card>
+
+      <app-topic-group-card id=topicsPairProgramming formControlName="pairProgramming"
+        [userProfileInputs]="userProfileInputs"
+      >
+        I would like to do <b>pair programming</b> on topics
+      </app-topic-group-card>
+
+    </div>
+
+    <app-topic-group-supply-demand-card
+      [parentFormGroup]="supplyDemandFormGroup"
+      [nestedFormGroupName]="'review'"
+      [userProfileInputs]="userProfileInputs"
+    >
+      <div supply-demand-label>Code/architecture/database Review</div>
+      <div supply-label>I would like to <b><u>do</u> review</b> for topics/skills</div>
+      <div demand-label>I would like to <b><u>find</u> someone to do review</b> for topics/skills</div>
+    </app-topic-group-supply-demand-card>
+
+    <div formGroupName="supplyDemand">
+      <app-topic-group-supply-demand-card
+        [parentFormGroup]="supplyDemandFormGroup"
+        [nestedFormGroupName]="'mentor'"
+        [userProfileInputs]="userProfileInputs"
+      >
+        <div supply-demand-label>Mentoring</div>
+        <div supply-label>I would like to <b><u>become</u> a mentor</b> for topics</div>
+        <div demand-label>I would like to <b><u>find</u> a mentor</b> for topics</div>
+      </app-topic-group-supply-demand-card>
+
+      <app-topic-group-supply-demand-card
+        [parentFormGroup]="supplyDemandFormGroup"
+        [nestedFormGroupName]="'intern'"
+        [userProfileInputs]="userProfileInputs"
+      >
+        <div supply-demand-label>Internships</div>
+        <div supply-label>I would like to <b><u>become</u> an intern</b> for topics</div>
+        <div demand-label>I would like to <b><u>find</u> an intern</b> for topics</div>
+      </app-topic-group-supply-demand-card>
+
+      <app-topic-group-supply-demand-card
+        [parentFormGroup]="supplyDemandFormGroup"
+        [nestedFormGroupName]="'freelance'"
+        [userProfileInputs]="userProfileInputs"
+      >
+        <div supply-demand-label>Freelance/Consulting</div>
+        <div supply-label>I would like to <b><u>do</u> freelance/consulting</b> for topics/skills</div>
+        <div demand-label>I would like to <b><u>find</u> a freelancer/consultant</b> for topics/skills</div>
+      </app-topic-group-supply-demand-card>
+
+      <app-topic-group-supply-demand-card
+        [parentFormGroup]="supplyDemandFormGroup"
+        [nestedFormGroupName]="'coFounder'"
+        [userProfileInputs]="userProfileInputs"
+      >
+        <div supply-demand-label>Co-Founder</div>
+        <div supply-label>I would like to <b><u>become</u> a co-founder</b> using those skills</div>
+        <div demand-label>I would like to <b><u>find</u> a co-founder</b> with those skills</div>
+      </app-topic-group-supply-demand-card>
+
+      <app-topic-group-supply-demand-card
+        [parentFormGroup]="supplyDemandFormGroup"
+        [nestedFormGroupName]="'businessPartner'"
+        [userProfileInputs]="userProfileInputs"
+      >
+        <div supply-demand-label>Business Partner</div>
+        <div supply-label>I would like to <b><u>become</u> a business partner</b> using those skills</div>
+        <div demand-label>I would like to <b><u>find</u> a business partner</b> with those skills</div>
+      </app-topic-group-supply-demand-card>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Consider some slogans like this:
+  <mat-hint>
+    <mat-icon>favorite</mat-icon> Be a hero and help others learn! The good karma will come back to you.
+  </mat-hint>
+-->

@@ -142,8 +142,4 @@ export class UsersMapPageComponent implements OnInit, OnDestroy {
     this.showPeople = !this.showPeople
   }
 
-  trackPersonById(index, geoLoc: GeoLocation) {
-    return geoLoc.userId
-  }
-
 }
