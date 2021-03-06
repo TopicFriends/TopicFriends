@@ -15,16 +15,12 @@ import {
   MatListModule,
   MatSelectModule,
 } from '@angular/material'
-import {SkillLevelPopoverComponent} from './user-interest-configuration-dialog/skill-level-popover/skill-level-popover.component';
-import {CapitalizeFirstPipe} from '../../shared/pipes/capitalize-first.pipe';
-import {SkillLevelsComponent} from './user-interest-configuration-dialog/skill-levels/skill-levels.component';
 import {UserInterestConfigurationDialogComponent} from './user-interest-configuration-dialog/user-interest-configuration-dialog.component';
 import {BasicActionsButtonGroupComponent} from './user-interest-configuration-dialog/basic-actions-button-group/basic-actions-button-group.component';
 import {SupplyDemandButtonGroupComponent} from './user-interest-configuration-dialog/supply-demand-button-group/supply-demand-button-group.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {UserConfigService} from '../../shared/user-config.service';
 import { UserOtherProfileIconComponent } from './user-other-profile-icon/user-other-profile-icon.component'
-import { SkillLevelsLabelComponent } from '../../skills/skills-shared/skill-levels-label/skill-levels-label.component'
 import { TopicsSharedModule } from '../../topics/topics-shared/topics-shared.module'
 import { UserListItemComponent } from './user-list-item/user-list-item.component'
 import { RouterModule } from '@angular/router'
@@ -34,18 +30,15 @@ import { UserInterestsModeViewComponent } from './user-list-item/user-interests-
 import { TopicSkillsSharedModule } from '../../skills/topic-skills-shared/topic-skills-shared.module';
 import { UserTopicInterestsAndSkillsListPickerComponent } from './user-topic-interests-and-skills-list-picker/user-topic-interests-and-skills-list-picker.component'
 import { ItemListPickerModule } from '../../shared/item-list-picker/item-list-picker.module'
+import { SkillsSharedModule } from '../../skills/skills-shared/skills-shared.module'
 
 export const exportDeclarations = [
   UserOtherProfileIconComponent,
-  SkillLevelPopoverComponent,
-  CapitalizeFirstPipe,
-  SkillLevelsComponent,
   UserInterestConfigurationDialogComponent,
   BasicActionsButtonGroupComponent,
   SupplyDemandButtonGroupComponent,
   UserOtherProfilesBadgesComponent,
   UserGeoLocationsBadgesComponent,
-  SkillLevelsLabelComponent,
   UserListItemComponent,
   UserInterestsModeViewComponent,
   UserTopicInterestsAndSkillsListPickerComponent,
@@ -71,6 +64,7 @@ export const exportDeclarations = [
     FlexLayoutModule,
     TopicsSharedModule,
     TopicSkillsSharedModule,
+    SkillsSharedModule,
     RouterModule,
     ItemListPickerModule,
   ],
@@ -85,7 +79,6 @@ export const exportDeclarations = [
     // },
   ],
   entryComponents: [
-    SkillLevelPopoverComponent,
     UserInterestConfigurationDialogComponent,
   ],
   exports: [

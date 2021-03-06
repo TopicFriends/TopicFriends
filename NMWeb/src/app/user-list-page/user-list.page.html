@@ -1,4 +1,6 @@
-
+<div
+  class="user-list-page-container"
+>
 <h1>User List</h1>
 
 <ng-template [ngIf]="userListCombinedSorted?.length">
@@ -38,8 +40,9 @@
   <p>Loading User List and calculating MatchScore-s…</p>
 </div>
 
-
 <nw-user-list-item
   *ngFor="let userMatched of userListCombinedSorted; trackBy: trackByKey"
   [userMatched]="userMatched"
 ></nw-user-list-item>
+
+</div>
