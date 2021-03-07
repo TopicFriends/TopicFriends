@@ -24,11 +24,12 @@ export async function navViaNavBarTo(t: TestController, name: string, { openHamb
   // await tz
   // .maximizeWindow( )
   logDebug("navViaNavBarTo", name);
-  if (openHamburger) {
+  const menuItemSelector = Selector('#navTo' + name);
+  if (openHamburger || !(await menuItemSelector.visible)) {
     await t.click("#menuButtonHamburger");
   }
   await t
-    .click("#navTo" + name)
+    .click(menuItemSelector)
   await checkPageLoadedCorrectly(t, name)
 }
 
@@ -48,7 +49,6 @@ export function navToPages(options: {reloadBetweenNavTests: boolean}) {
     });
   } else {
     test(`Navigate to pages without reloading between them (faster and can uncover certain problems)`, async t => {
-      await t.click("#menuButtonHamburger");
       logDebug("navToNames", navToNames);
       for (const navToName of navToNames) {
         await navViaNavBarTo(t, navToName, { openHamburger: false });

@@ -16,8 +16,8 @@ mat-form-field {
 .save-fab {
   position: fixed;
   z-index: 2;
-  top: calc(100vh - 120px);
-  left: calc(100vw - 100px);
+  bottom: 20px;
+  right: 20px;
 }
 
 .saveProfileButton {
@@ -25,11 +25,3 @@ mat-form-field {
   margin-left: 10%;
 }
 
-@media only screen and (max-width: 600px) {
-  .save-fab {
-    position: fixed;
-    z-index: 2;
-    top: calc(100vh - 80px);
-    left: calc(100vw - 80px);
-  }
-}

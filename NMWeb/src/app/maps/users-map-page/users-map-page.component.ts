@@ -20,6 +20,7 @@ import {
 } from '../../user-profile/user-profile-core/user-geo-locations.types'
 import {ScrollingService} from '../../shared/scrolling.service'
 import { Poi } from '../../shared/Poi'
+import { MapsPopupService } from '../../maps-shared/maps-popup.service'
 
 export class UserCoords {
   user?: UserProfile
@@ -53,7 +54,8 @@ export class UsersMapPageComponent implements OnInit, OnDestroy {
     private userListService: UserListService,
     private poiService: PoiService,
     private router: Router,
-    private scrollingService: ScrollingService
+    private scrollingService: ScrollingService,
+    private mapsPopupService: MapsPopupService
   ) {}
 
   ngOnDestroy() {
@@ -140,6 +142,14 @@ export class UsersMapPageComponent implements OnInit, OnDestroy {
 
   changeShowPeople() {
     this.showPeople = !this.showPeople
+  }
+
+  onMouseOver(agmMap, profilePopup, profilePopupContent) {
+    this.mapsPopupService.openMapPopup(agmMap, profilePopup, profilePopupContent);
+  }
+
+  onMouseOut(agmMap, profilePopup) {
+    this.mapsPopupService.closeMapPopup(agmMap, profilePopup);
   }
 
 }
