@@ -23,4 +23,6 @@ export const pois = [
   new Poi('Centro de Recursos Participativos', new GeoLocation(36.7133099, -4.4514274)),
   new Poi('The Living Room Coworking', new GeoLocation(36.715998, -4.424373)),
   new Poi('Copenhalaga Soho Co-working', new GeoLocation(36.7165408, -4.423438)),
+  // TODO: innovation campus + new
+  // TODO: Coworking el Circulo
 ]
