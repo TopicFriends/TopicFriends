@@ -19,11 +19,13 @@ export class UserProfilePopupComponent implements OnInit {
   }
 
   loadUserProfile() {
-    this.userProfileService.userProfileById(this.userId).subscribe(
-      (userProfile: UserProfile) => {
-        this.userProfile = userProfile;
-      }
-    );
+    if (!this.userProfile) {
+      this.userProfileService.userProfileById(this.userId).subscribe(
+        (userProfile: UserProfile) => {
+          this.userProfile = userProfile;
+        }
+      );
+    }
   }
 
 }

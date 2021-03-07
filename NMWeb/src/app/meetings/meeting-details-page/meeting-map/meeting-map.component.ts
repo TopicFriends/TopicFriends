@@ -7,6 +7,7 @@ import {
   GeoLocation,
   UserGeoLocations,
 } from '../../../user-profile/user-profile-core/user-geo-locations.types'
+import { MapsPopupService } from '../../../maps-shared/maps-popup.service'
 
 @Component({
   selector: 'app-meeting-map',
@@ -25,7 +26,8 @@ export class MeetingMapComponent implements OnInit {
     private meetingAttendanceService: MeetingAttendanceService,
     private userProfileService: UserProfileService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private mapsPopupService: MapsPopupService,
   ) { }
 
   ngOnInit() {
@@ -50,5 +52,13 @@ export class MeetingMapComponent implements OnInit {
     console.log('click', marker)
     // window.alert('Click ' + marker)
     this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.userId])
+  }
+
+  onMouseOver(agmMap, profilePopup, profilePopupContent) {
+    this.mapsPopupService.openMapPopup(agmMap, profilePopup, profilePopupContent);
+  }
+
+  onMouseOut(agmMap, profilePopup) {
+    this.mapsPopupService.closeMapPopup(agmMap, profilePopup);
   }
 }

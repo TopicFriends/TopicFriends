@@ -6,6 +6,7 @@ import {TagEntry} from '../topics-shared/tag-entry'
 import {logosSizeRatio} from '../../../assets/logos-size-ratio'
 import {DbListReadOnly} from '../../shared/db.service'
 import { USER_ROUTE_WITH_TRAILING_SLASH } from '../../shared/routes'
+import { MapsPopupService } from '../../maps-shared/maps-popup.service'
 
 @Component({
   selector: 'app-topics-map',
@@ -23,7 +24,8 @@ export class TopicsMapComponent implements OnInit {
   coordinates: GeoLocation = {latitude: 36.726, longitude: -4.476} /* mock default value for faster testing */;
   constructor(
     private topicDetailsService: TopicsDetailsService,
-    private router: Router
+    private router: Router,
+    private mapsPopupService: MapsPopupService,
   ) { }
 
   ngOnInit() {
@@ -65,24 +67,12 @@ export class TopicsMapComponent implements OnInit {
     this.router.navigate(['/' + USER_ROUTE_WITH_TRAILING_SLASH + marker.userId])
   }
 
-  onMouseOver(popupElement, popupProfile, agmap) {
-    if (agmap.lastOpen != null) {
-      agmap.lastOpen.close();
-    }
-    agmap.lastOpen = popupProfile;
-    popupElement.loadUserProfile();
-    popupProfile.open();
-    setTimeout(() => {
-      let elementHTML = document.getElementsByClassName('gm-ui-hover-effect')[0];
-      if (elementHTML) {
-        let x = elementHTML.remove();
-      }
-    }, 10);
+  onMouseOver(agmMap, profilePopup, profilePopupContent) {
+    this.mapsPopupService.openMapPopup(agmMap, profilePopup, profilePopupContent);
   }
 
-  onMouseOut(popupProfile, gm) {
-    gm.lastOpen = popupProfile;
-    popupProfile.close();
+  onMouseOut(agmMap, profilePopup) {
+    this.mapsPopupService.closeMapPopup(agmMap, profilePopup);
   }
 
   onIconBaseSizeChange() {

@@ -1,23 +1,7 @@
 <div style="max-width: 1000px; margin: auto; ">
   <h1 id="about">About TopicFriends</h1>
 
-  <br>
-  This app connects people based on:
-  <ul>
-    <li><b class="actionable-interests">Actionable</b> interests. For example: would like to do pair programming on:
-      <mat-chip-list>
-        <app-topic-tag [tag]="angular"></app-topic-tag>
-        <app-topic-tag [tag]="ionic"></app-topic-tag>
-        <app-topic-tag [tag]="firebase"></app-topic-tag>
-      </mat-chip-list>
-      <ul>
-        <li><a routerLink="/topics">See list of topics</a>
-          which you can add to your <a routerLink="/profile">User Profile</a></li>
-      </ul>
-    </li>
-    <li>Geo-locations (<a routerLink="/users-map">see Users Map</a>)</li>
-    <li>Meetings/meetups attendance (<a routerLink="/meetings">see Meetings List</a>)</li>
-  </ul>
+  <app-about-info></app-about-info>
 
   <p>A community project. Open-Source: <a href="https://github.com/TopicFriends/TopicFriends">github.com/TopicFriends/TopicFriends</a></p>
 

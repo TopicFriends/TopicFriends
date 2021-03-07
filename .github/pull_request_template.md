@@ -1,0 +1,32 @@
+### IMPORTANT: Checklist before committing / pull-request:
+- [ ] IMPORTANT: Please read this checklist and checkmark the items, putting `[x]` at the beginning of the bullet-point
+- [ ] First and foremost, please make sure that the things You push are compiling and do not obstruct work for other People. If someone does a pull, that things don't get broken. No missing files/changes, etc. If You are not sure, please make a clean clone (`cd .. ; git clone /my/local/repo repo_clone_for_testing`) and test it there. If You have pushed breaking changes, please make sure You push a fix as soon as possible, to unblock work for other People! Git (version control) is a tool for *collaboration* between People, not just a bucket to save Your recent changes!
+- [ ] Think of the reviewers and make their life easier :) while also keeping You reputation good by committing high-quality code and avoiding bad-quality commits
+- [ ] Self-review before committing, with graphical diff (e.g. IDE like WebStorm), ideally with per-character diff highlight.
+- [ ] Provide descriptive commit message, pull-request titles and branch names, including issue number in commit message, e.g. #123
+- [ ] "Boy Scout Rule" - try to leave code in a bit better state than when You found it. Or at least don't leave it in worse state.
+- [ ] Proper indentation. Two spaces in Angular.
+- [ ] Use spell-checker built into Your IDE
+- [ ] Avoid compiler warnings or tslint / codelyzer / IDE warnings
+- [ ] Run unit tests `npm test` and TestCafe `cd e2e-testcafe ; npm i && npm test`
+- [ ] Check Continuous Integration (CI) build status (takes about 1m30s) after pushing
+- [ ] Small files / modules / classes / methods / components (Single Responsibility Principle). Even if a given thing seems like it will not be re-used, it should be split off, for the sake of making it easier to analyse it (and maybe it will actually be reused in the future or a new implementation will be developed / experimented-on in the future)
+- [ ] Don't put random changes in pull-requests, e.g. reformatting entire files, changing quotes to double/single, etc. For the sake of easier reviewing and not polluting `git annotate`
+- [ ] Please follow platform / language / library style guides
+  - camelCaseVariableNames
+  - CamelCaseClassNames  
+- [ ] Avoid duplicate code. Do not copy-paste ~2 or more lines. Instead, extract component / class / method / function and reuse in all places. For the sake of future maintenance.
+- [ ] Test on mobile resolutions. Manually and via `cd e2e-testcafe ; npm i && npm test:all`
+- [ ] Complex structured data should be displayed using HTML, not plaintext (applies e.g. to popups / tooltips as well), for styling it to make it more readable and look better, being able to add icons, images, links, etc.
+  - [ ] Prefer *components* over pipes, for things that might need some varying styling inside (even things like numbers-with-separators, currency, dates, time). Can `:host { display: inline }`.
+- [ ] Naming:
+  - [ ] Avoid cryptic/short names like `a`, `x`, etc
+  - [ ] Use names consistent with the name of the type, like `user: User`, `dialogService: DialogService`
+  - [ ] Use existing terminology/naming (look in related code to see what terms/names are used)
+  - [ ] Avoid using vague terms like `data`, `info`, `object`. Prefer to be more descriptive.
+  - [ ] Don't give alias names to `@Input()`-s
+- [ ] If possible, use existing utility functions, e.g. from Lodash, for example things like `sumBy`
+- [ ] Wrapping margin should be at about ~120-140 chars (160 columns an absolute maximum). Don't start new significant stuff beyond column 100 (just continuation of existing stuff). The logic is to see the significant stuff on a laptop screen, while seeing whole lines on big monitor. But since TypeScript is not Java, it is easier to keep lines shorter :).
+- [ ] Should: Make little video/screenshots if there are user visible changes. On mobile and desktop resolutions (can be just one video showing different screen sizes / responsive). This is to speed up review and feedback for people who are e.g. not at their computer or cannot checkout/run from source.
+
+Thank You :)

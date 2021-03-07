@@ -1,5 +1,6 @@
 <div class="container">
-  <div class="icons-size">
+  <div class="icons-size" fxLayout fxLayout.lt-sm="column">
+    <div fxLayout fxLayoutAlign="center center">
     <span>Icons size:</span>
     <mat-slider
       min="4"
@@ -8,7 +9,8 @@
       [(ngModel)]="iconBaseSize"
       (change)="onIconBaseSizeChange()"
     ></mat-slider>
-
+    </div>
+    <div fxLayout fxLayoutAlign="center center">
     <ng-template [ngIf]="topics.length > 1">
       <span>Separation:</span>
       <mat-slider
@@ -19,10 +21,10 @@
         (change)="onOffsetRadiusChange()"
       ></mat-slider>
     </ng-template>
-
+    </div>
   </div>
 
-  <agm-map #agmap
+  <agm-map #agmMap
     [latitude]="coordinates.latitude"
     [longitude]="coordinates.longitude"
     [zoom]="10">
@@ -30,14 +32,14 @@
       <ng-template ngFor  let-userLocation [ngForOf]="usersGeoLocations[topic.id]">
         <agm-marker
           [markerClickable]="true"
-          (mouseOver)="onMouseOver(popupElement, popupProfile, agmap)"
-          (mouseOut)="onMouseOut(popupProfile, agmap)"
+          (mouseOver)="onMouseOver(agmMap, profilePopup, profilePopupContent)"
+          (mouseOut)="onMouseOut(agmMap, profilePopup)"
           [latitude]="userLocation.latitude + offsets[i].lat"
           [longitude]="userLocation.longitude + offsets[i].lon"
           [iconUrl]="topicsIcon[topic.id]"
         >
-          <agm-info-window #popupProfile>
-            <app-user-profile-popup #popupElement [userId]="userLocation.userId"></app-user-profile-popup>
+          <agm-info-window #profilePopup>
+            <app-user-profile-popup #profilePopupContent [userId]="userLocation.userId"></app-user-profile-popup>
           </agm-info-window>
         </agm-marker>
       </ng-template>

@@ -1,4 +1,4 @@
-<agm-map
+<agm-map #agmMap
   [latitude]="coordinates.latitude"
   [longitude]="coordinates.longitude"
   [zoom]="10">
@@ -6,8 +6,14 @@
     <agm-marker
       [markerClickable]="true"
       (markerClick)="onMarkerClick(userLocation)"
+      (mouseOver)="onMouseOver(agmMap, profilePopup, profilePopupContent)"
+      (mouseOut)="onMouseOut(agmMap, profilePopup)"
       [latitude]="userLocation.latitude"
       [longitude]="userLocation.longitude"
-    ></agm-marker>
+    >
+      <agm-info-window #profilePopup>
+        <app-user-profile-popup #profilePopupContent [userId]="userLocation.userId"></app-user-profile-popup>
+      </agm-info-window>
+    </agm-marker>
   </ng-template>
 </agm-map>

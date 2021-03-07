@@ -679,7 +679,8 @@ export const topics = [
   // ========= Fun / sports:
   // TODO: hiking, bicycle, motorcycles (Moi?, Jakob), travel, volleyball, beach volleyball, beer, party (parties), natural language learning, language exchanges, dating
 
-  tag('Hiking', 'generic/hiking-solid') /* search terms: trail, walking trips */,
+  tag('Hiking', 'generic/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
+  tag('Trekking', 'generic/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
   tag('Bicycle', 'generic/bicycle-solid') /* search terms: bike */,
   tag('Road Bicycle', 'generic/bicycle-solid') /* search terms: bike */,
   tag('Mountain Bicycle', 'generic/bicycle-solid') /* search terms: bike */,
@@ -696,9 +697,11 @@ export const topics = [
   'Tennis',
   'Padel' /* search terms: paddle paddel */,
   'Paddle Tennis' /* search terms: paddle paddel */,
-  'Table tennis' /* search terms: ping pong */,
+  'Table Tennis' /* search terms: ping pong */,
   'Football' /* search terms: soccer */,
   'Basketball',
   'Badminton',
+  // 'Paintball',
+  // Airsoft gun
 
 ]

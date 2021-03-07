@@ -1,0 +1,50 @@
+.mat-raised-button {
+  border-radius: 16px;
+  color: mediumseagreen;
+  overflow: hidden;
+}
+
+mat-card-content {
+  margin: 0;
+}
+
+.about__basedOn {
+  text-align: center;
+
+  &--tiles {
+    padding-top: 15px;
+  }
+
+  &--icon {
+    font-size: 3rem;
+    color: rgb(88, 180, 129);
+    display: inline;
+  }
+
+  &--tile {
+    width: 260px;
+
+    @media screen and (max-width: 599px) {
+      padding: 15px 0;
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+      &:nth-child(2) {
+        border-top: 1px solid lightgray;
+        border-bottom: 1px solid lightgray;
+      }
+    }
+
+    & h4 {
+      margin: 0.5em;
+    }
+    & p {
+      color: #888;
+    }
+  }
+}

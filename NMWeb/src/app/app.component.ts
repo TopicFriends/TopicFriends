@@ -1,6 +1,13 @@
-import {ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import {Router} from '@angular/router'
 import {MediaMatcher} from '@angular/cdk/layout'
+import { MatSidenav } from '@angular/material'
 
 @Component({
   selector: 'app-root',
@@ -13,12 +20,15 @@ export class AppComponent implements OnInit {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
+  @ViewChild('sidenav')
+  private sidenav: MatSidenav;
+
   constructor(
     private router: Router,
     private changeDetectorRef: ChangeDetectorRef,
     private media: MediaMatcher
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia('(max-width: 700px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
@@ -29,6 +39,10 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((val) => {
         if(!this.router.url.includes('#')) {
           window.scrollTo(0,0);
+        }
+
+        if (this.mobileQuery.matches) {
+          this.sidenav.close();
         }
       })
   }

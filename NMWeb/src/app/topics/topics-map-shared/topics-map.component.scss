@@ -11,11 +11,20 @@
   position: absolute;
   color: white;
   z-index: 1;
-  margin: 10px 0px 0px 6px;
+  margin: 55px 0px 0px 6px;
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;
   background: rgba($color: #111111, $alpha: 0.5);
+
+  div {
+    padding-left: 5px;
+    width: 210px;
+  }
+
+  span {
+    white-space: nowrap;
+  }
 }
 
 agm-map {
