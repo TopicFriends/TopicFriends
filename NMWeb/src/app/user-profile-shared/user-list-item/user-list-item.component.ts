@@ -41,7 +41,7 @@ export class UserListItemComponent implements OnInit, OnDestroy {
   show = {
     anything: true,
     image: true,
-    topics: false,
+    topics: true,
     otherProfileBadges: true,
   }
   userId

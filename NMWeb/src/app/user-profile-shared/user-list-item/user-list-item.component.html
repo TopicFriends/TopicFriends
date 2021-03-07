@@ -48,6 +48,12 @@
   <mat-card-content *ngIf="show.topics">
     <!--{{_whatUserWants[0].desireType == 'supply' ? 'Is looking for being' : 'Is looking for '}}-->
     <app-user-interests-mode-view
+      [topicGroup]="userInterests?.byInteractionMode?.symmetric?.sportsAndFun"
+      [loggedUserTopicGroupSymmetric]="loggedUserInterestsSymmetric?.sportsAndFun"
+    >
+      Socialising, fun, sports:
+    </app-user-interests-mode-view>
+    <app-user-interests-mode-view
       [topicGroup]="userInterests?.byInteractionMode?.symmetric?.exchange"
       [loggedUserTopicGroupSymmetric]="loggedUserInterestsSymmetric?.exchange"
     >

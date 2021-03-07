@@ -681,6 +681,7 @@ export const topics = [
 
   tag('Hiking', 'generic/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
   tag('Trekking', 'generic/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
+  tag('Car trips', 'generic/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
   tag('Bicycle', 'generic/bicycle-solid') /* search terms: bike */,
   tag('Road Bicycle', 'generic/bicycle-solid') /* search terms: bike */,
   tag('Mountain Bicycle', 'generic/bicycle-solid') /* search terms: bike */,
@@ -690,7 +691,13 @@ export const topics = [
   tag('Beach', 'generic/umbrella-beach-solid' /* Playa */),
   tag('Beach Sports', 'generic/umbrella-beach-solid' /* Playa */),
   'Travels',
-  'Beer',
+  tag('Beer', 'generic/fun/beer-solid.svg'),
+  'Drinking Alcohol',
+  'Drinking Tea',
+  'Drinking Coffee',
+  'Eat lunch together',
+  'Eat breakfast together',
+  'Eat dinner together',
   'Parties',
   'Language Exchanges',
   'Swimming',
@@ -701,7 +708,30 @@ export const topics = [
   'Football' /* search terms: soccer */,
   'Basketball',
   'Badminton',
+  'Socialising' /* search term: hanging out */,
+  // 'Outdoors',
+  // 'Nature',
+  // 'Museums',
   // 'Paintball',
   // Airsoft gun
-
+  // Playing Guitar
+  // Playing Electric guitar
+  // Playing Drums
+  // Movies
+  // Board Games
+  // Chess
+  // Yoga
+  // Skiing
+  // Music
+  // Live Music
+  // TODO YouTube / Youtuber
+  // Ice skating
+  // Roller Skating
+  // Skateboarding
+  // Running
+  // Marathon Running
+  // boxing, karate, etc.
+  // boating
+  // motorcross
+  // Nordic walking
 ]
