@@ -25,6 +25,7 @@ function buildSupplyDemandSubForm(formBuilder: FormBuilder) {
 export class UserInterestsComponent implements OnInit {
 
   @Input() thisFormGroup: FormGroup
+
   @Input() public userProfileInputs: UserProfileInputs
 
   supplyDemandFormGroup: FormGroup
@@ -58,6 +59,7 @@ export class UserInterestsComponent implements OnInit {
     return formBuilder.group({
       byInteractionMode: formBuilder.group({
         symmetric: formBuilder.group({
+          sportsAndFun: INITIAL_WANTED_TOPICS,
           exchange: INITIAL_WANTED_TOPICS,
           pairProgramming: INITIAL_WANTED_TOPICS,
           hackathon: INITIAL_WANTED_TOPICS,

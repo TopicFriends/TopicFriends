@@ -94,4 +94,6 @@ export class UserOtherProfilesDescriptorsDefs {
     urlPrefix: 'angel.co/',
   })
 
+  // TODO: YouTube (Vianey, Jakob), Instagram, TikTok, Dev.To, Medium
+
 }

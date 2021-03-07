@@ -676,6 +676,67 @@ export const topics = [
   // TODO Haxe (has icon)
   // TODO Julia Language (machine learning etc) https://julialang.org/
 
-  // Fun / sports:
+  // ========= Fun / sports:
   // TODO: hiking, bicycle, motorcycles (Moi?, Jakob), travel, volleyball, beach volleyball, beer, party (parties), natural language learning, language exchanges, dating
+
+  tag('Hiking', 'generic/fun/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
+  tag('Trekking', 'generic/fun/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
+  tag('Car trips', 'generic/fun/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
+  tag('Bicycle', 'generic/fun/bicycle-solid') /* search terms: bike */,
+  tag('Road Bicycle', 'generic/fun/bicycle-solid') /* search terms: bike */,
+  tag('Mountain Bicycle', 'generic/fun/bicycle-solid') /* search terms: bike */,
+  tag('Motorcycles', 'generic/fun/motorcycle-solid' /* search terms: bike, motorbike, bikers */),
+  tag('Volleyball', 'generic/fun/volleyball-ball-solid' /* search terms: voley, volei (Spanish) */),
+  tag('Beach Volleyball', 'generic/fun/volleyball-ball-solid' /* search terms: voley, volei (Spanish) */),
+  tag('Beach', 'generic/fun/umbrella-beach-solid' /* Playa */),
+  tag('Beach Sports', 'generic/fun/umbrella-beach-solid' /* Playa */),
+  tagNoIcon('Sports'),
+  'Travels',
+  tag('Beer', 'generic/fun/beer-solid.svg'),
+  'Drinking Alcohol',
+  'Drinking Tea',
+  'Drinking Coffee',
+  'Eat lunch together',
+  'Eat breakfast together',
+  'Eat dinner together',
+  'Parties',
+  'Language Exchanges',
+  'Swimming',
+  'Tennis',
+  'Padel' /* search terms: paddle paddel */,
+  'Paddle Tennis' /* search terms: paddle paddel */,
+  'Table Tennis' /* search terms: ping pong */,
+  'Football' /* search terms: soccer */,
+  'Basketball',
+  'Badminton',
+  'Socialising' /* search term: hanging out */,
+  tag('Playing Drums', 'generic/fun/drum-solid' /* TODO: search terms: drumming */)
+
+  // 'Outdoors',
+  // 'Nature',
+  // 'Museums',
+  // 'Paintball',
+  // Airsoft gun
+  // Playing Guitar
+  // Playing Electric guitar
+  // Movies
+  // Board Games
+  // Chess
+  // Yoga
+  // Skiing
+  // Music
+  // Live Music
+  // TODO YouTube / Youtuber
+  // Ice skating
+  // Roller Skating
+  // Skateboarding
+  // Running
+  // Marathon Running
+  // Jogging
+  // martial arts, boxing, karate, etc.
+  // kayaking (canoe-ing?)
+  // rafting
+  // boating
+  // motocross
+  // Nordic walking
 ]
