@@ -73,7 +73,7 @@ export const angular = tag('Angular', 'angular', 'https://angular.io/', [
     'https://stackshare.io/angular-2',
     'https://twitter.com/angular',
   ));
-export const businessNetworking = tag('Business Networking', 'generic/business--chart-line')
+export const businessNetworking = tag('Business Networking' /* search terms: growing network */, 'generic/business--chart-line')
 export const entrepreneurship = tag('Entrepreneurship', 'generic/business--chart-line')
 export const jasmine = tag('Jasmine')
 export const topics = [
@@ -679,6 +679,7 @@ export const topics = [
   // ========= Fun / sports:
   // TODO: hiking, bicycle, motorcycles (Moi?, Jakob), travel, volleyball, beach volleyball, beer, party (parties), natural language learning, language exchanges, dating
 
+  tag('Interpersonal Networking' /* to disambiguate from computer networking */, 'generic/users-solid') /* search terms: growing network */,
   tag('Hiking', 'generic/fun/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
   tag('Trekking', 'generic/fun/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
   tag('Car trips', 'generic/fun/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
