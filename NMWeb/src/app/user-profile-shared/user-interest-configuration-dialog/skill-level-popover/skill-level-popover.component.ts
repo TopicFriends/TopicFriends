@@ -15,7 +15,7 @@ export class SkillLevelPopoverComponent implements OnInit, AfterViewInit {
       "none",
       "beginner",
       "intermediate",
-      "advanced",
+      "advanced", // TODO: very beginner (could be on double press/long-press on beginner), very advanced, maybe "considering"
       "expert",
   ];
 
