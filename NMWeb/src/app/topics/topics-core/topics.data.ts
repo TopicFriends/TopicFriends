@@ -740,4 +740,6 @@ export const topics = [
   // boating
   // motocross
   // Nordic walking
+  // theater, opera, live music, live sports
+  // going to concerts
 ]
