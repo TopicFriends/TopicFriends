@@ -695,18 +695,18 @@ export const topics = [
   'Travels',
   tag('Beer', 'generic/fun/beer-solid.svg'),
   tag('Drinking Alcohol','generic/fun/beer-solid'),
-  'Drinking Tea',
-  'Drinking Coffee',
+  tag('Drinking Tea','generic/fun/mug-hot-solid.svg'),
+  tag('Drinking Coffee', 'generic/fun/coffee-solid.svg'),
   tag('Eat lunch together', 'generic/fun/utensils-solid'),
-  'Eat breakfast together',
-  'Eat dinner together',
-  'Parties',
-  'Language Exchanges',
+  tag('Eat breakfast together','generic/fun/bread-slice-solid'),
+  tag('Eat dinner together','generic/fun/utensils-solid.svg'),
+  tag('Parties','generic/fun/glass-cheers-solid.svg'),
+  tag('Language Exchanges','generic/fun/comments-solid.svg'),
   tag('Swimming', 'generic/fun/swimmer-solid'),
   tag('Tennis','generic/fun/tennis-ball-svgrepo-com.svg'),
   'Padel' /* search terms: paddle paddel */,
   'Paddle Tennis' /* search terms: paddle paddel */,
-  'Table Tennis' /* search terms: ping pong */,
+  tag('Table Tennis', 'generic/fun/table-tennis-solid.svg'),/* search terms: ping pong */
   'Football' /* search terms: soccer */,
   'Basketball',
   'Badminton',
@@ -714,7 +714,7 @@ export const topics = [
   'Socialising' /* search term: hanging out */,
   tag('Playing Drums', 'generic/fun/drum-solid' /* TODO: search terms: drumming */)
 
-  
+
   // 'Outdoors',
   // 'Nature',
   // 'Museums',
@@ -744,4 +744,7 @@ export const topics = [
   // Nordic walking
   // theater, opera, live music, live sports
   // going to concerts
-]
+] //skatebord
+ //wine tasting
+ //craft beer
+ //microbrewery
