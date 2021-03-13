@@ -714,39 +714,45 @@ export const topics = [
   tag('Socialising', 'generic/fun/user-friends-solid.svg'),/* search term: hanging out */
   tag('Playing Drums', 'generic/fun/drum-solid'), /* TODO: search terms: drumming */
   tag('Paintball','generic/fun/rifle-gun-svgrepo-com.svg'),
-
-  // 'Outdoors',
-  // 'Nature',
-  // 'Museums',
-  //archery
-  // Airsoft gun
-  // Playing Guitar
-  // Playing Electric guitar
-  // Movies
-  // Board Games
-  // Chess
-  // Yoga
-  // Skiing
-  // Music
-  // Live Music
-  // TODO YouTube / Youtuber
-  // Ice skating
-  // Roller Skating
-  // Skateboarding
-  // Running
-  // Marathon Running
-  // Jogging
-  // martial arts, boxing, karate, etc.
-  // kayaking (canoe-ing?)
-  // rafting
-  // boating
-  // motocross
-  // Nordic walking
-  // theater, opera, live music, live sports
-  // going to concerts
+  tag( 'Outdoors','generic/fun/cloud-sun-solid.svg'),
+  tag('Nature','generic/fun/tree-solid.svg'),
+  tag('Museums','generic/fun/palette-solid.svg'),
+  tag('Archery','generic/fun/bullseye-solid.svg'),
+  tag('Airsoft Gun','generic/fun/gun-svgrepo-com.svg'),
+  tag('Playing Guitar','generic/fun/guitar-solid.svg'),
+  tag('Playing Electric guitar','generic/fun/electric-guitar-svgrepo-com.svg'),
+  tag('Movies','generic/fun/snacks-popcorn-svgrepo-com.svg'),
+  tag('Board Games','generic/fun/two-puzzle-pieces-svgrepo-com.svg'),
+  tag('Chess','generic/fun/chess-solid.svg'),
+  tag('Yoga','generic/fun/man-on-yoga-posture-of-relaxation-svgrepo-com.svg'),
+  tag('Skiing','generic/fun/skiing-solid.svg'),
+  tag('Music','generic/fun/music-solid.svg'),
+  tag('Live Music','generic/fun/dancer-with-music-svgrepo-com.svg'),
+  tag('Youtuber','generic/fun/youtube-brands.svg'),
+  tag('Ice Skating','generic/fun/skating-solid.svg'),
+  tag('Roller Skating','generic/fun/roller-skate-skate-svgrepo-com.svg'),
+  tag('Running', 'generic/fun/running-solid.svg'),
+  tag('Marathon Running','generic/fun/marathon-svgrepo-com.svg'),
+  tag('Boxing','generic/fun/boxing-svgrepo-com.svg'),
+  tag('Karate', 'generic/fun/karate-svgrepo-com.svg'),
+  tag('Kayaking', 'generic/fun/kayak-svgrepo-com.svg'),
+  tag('Rafting', 'generic/fun/rafting-fun-recreation-play-svgrepo-com.svg'),
+  tag('Boating', 'generic/fun/yachting-svgrepo-com.svg'),
+  tag('Motocross', 'generic/fun/motocross-svgrepo-com.svg'),
+  tag('Theater', 'generic/fun/theater-svgrepo-com.svg'),
+  tag('')
+  
+  
 ] //skatebord
  //wine tasting
  //craft beer
  //microbrewery
  //triathlon
+
  //nordic walking
+ // Skateboarding
+ // Jogging
+  // martial arts
+  // Nordic walking
+  // opera, live sports
+  // going to concerts
