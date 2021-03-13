@@ -692,54 +692,76 @@ export const topics = [
   tag('Beach', 'generic/fun/umbrella-beach-solid' /* Playa */),
   tag('Beach Sports', 'generic/fun/umbrella-beach-solid' /* Playa */),
   tagNoIcon('Sports'),
-  'Travels',
+  tag('Travels', 'generic/fun/globe-americas-solid.svg'),
   tag('Beer', 'generic/fun/beer-solid.svg'),
-  'Drinking Alcohol',
-  'Drinking Tea',
-  'Drinking Coffee',
-  'Eat lunch together',
-  'Eat breakfast together',
-  'Eat dinner together',
-  'Parties',
-  'Language Exchanges',
-  'Swimming',
-  'Tennis',
-  'Padel' /* search terms: paddle paddel */,
-  'Paddle Tennis' /* search terms: paddle paddel */,
-  'Table Tennis' /* search terms: ping pong */,
-  'Football' /* search terms: soccer */,
-  'Basketball',
+  tag('Drinking Alcohol','generic/fun/beer-solid'),
+  tag('Drinking Tea','generic/fun/mug-hot-solid.svg'),
+  tag('Drinking Coffee', 'generic/fun/coffee-solid.svg'),
+  tag('Eat lunch together', 'generic/fun/utensils-solid'),
+  tag('Eat breakfast together','generic/fun/bread-slice-solid'),
+  tag('Eat dinner together','generic/fun/utensils-solid.svg'),
+  tag('Parties','generic/fun/glass-cheers-solid.svg'),
+  tag('Language Exchanges','generic/fun/comments-solid.svg'),
+  tag('Swimming', 'generic/fun/swimmer-solid'),
+  tag('Tennis','generic/fun/tennis-ball-svgrepo-com.svg'),
+  tag('Padel', 'generic/fun/tennis-ball-svgrepo-com.svg'),/* search terms: paddle paddel */
+  tag('Paddle Tennis', 'generic/fun/tennis-ball-svgrepo-com.svg'),/* search terms: paddle paddel */
+  tag('Table Tennis', 'generic/fun/table-tennis-solid.svg'),/* search terms: ping pong */
+  tag('Football', 'generic/fun/futbol-solid.svg'),/* search terms: soccer */
+  tag('Basketball','generic/fun/basketball-ball-solid.svg'),
   'Badminton',
-  'Socialising' /* search term: hanging out */,
-  tag('Playing Drums', 'generic/fun/drum-solid' /* TODO: search terms: drumming */)
+  tag('Gym', 'generic/fun/dumbbell-solid.svg'),
+  tag('Socialising', 'generic/fun/user-friends-solid.svg'),/* search term: hanging out */
+  tag('Playing Drums', 'generic/fun/drum-solid'), /* TODO: search terms: drumming */
+  tag('Paintball','generic/fun/rifle-gun-svgrepo-com.svg'),
+  tag( 'Outdoors','generic/fun/cloud-sun-solid.svg'),
+  tag('Nature','generic/fun/tree-solid.svg'),
+  tag('Museums','generic/fun/palette-solid.svg'),
+  tag('Archery','generic/fun/bullseye-solid.svg'),
+  tag('Airsoft Gun','generic/fun/gun-svgrepo-com.svg'),
+  tag('Playing Guitar','generic/fun/guitar-solid.svg'),
+  tag('Playing Electric guitar','generic/fun/electric-guitar-svgrepo-com.svg'),
+  tag('Movies','generic/fun/snacks-popcorn-svgrepo-com.svg'),
+  tag('Board Games','generic/fun/two-puzzle-pieces-svgrepo-com.svg'),
+  tag('Chess','generic/fun/chess-solid.svg'),
+  tag('Yoga','generic/fun/man-on-yoga-posture-of-relaxation-svgrepo-com.svg'),
+  tag('Skiing','generic/fun/skiing-solid.svg'),
+  tag('Music','generic/fun/music-solid.svg'),
+  tag('Live Music','generic/fun/dancer-with-music-svgrepo-com.svg'),
+  tag('Youtuber','generic/fun/youtube-brands.svg'),
+  tag('Ice Skating','generic/fun/skating-solid.svg'),
+  tag('Roller Skating','generic/fun/roller-skate-skate-svgrepo-com.svg'),
+  tag('Running', 'generic/fun/running-solid.svg'),
+  tag('Marathon Running','generic/fun/marathon-svgrepo-com.svg'),
+  tag('Boxing','generic/fun/boxing-svgrepo-com.svg'),
+  tag('Karate', 'generic/fun/karate-svgrepo-com.svg'),
+  tag('Kayaking', 'generic/fun/kayak-svgrepo-com.svg'),
+  tag('Rafting', 'generic/fun/rafting-fun-recreation-play-svgrepo-com.svg'),
+  tag('Boating', 'generic/fun/yachting-svgrepo-com.svg'),
+  tag('Motocross', 'generic/fun/motocross-svgrepo-com.svg'),
+  tag('Theater', 'generic/fun/theater-svgrepo-com.svg'),
+  // tag('')
+  tagNoIcon('Missionary Work'),
+  tagNoIcon('Charities'),
+  tagNoIcon('Charity Work'),
+  tagNoIcon('Red Cross'),
+  tagNoIcon('Social Worker'),
+  tagNoIcon('Coaching'),
+  tagNoIcon('Life Coaching'),
+  tagNoIcon('Mentoring'),
+  tagNoIcon('Community Service'),
 
-  // 'Outdoors',
-  // 'Nature',
-  // 'Museums',
-  // 'Paintball',
-  // Airsoft gun
-  // Playing Guitar
-  // Playing Electric guitar
-  // Movies
-  // Board Games
-  // Chess
-  // Yoga
-  // Skiing
-  // Music
-  // Live Music
-  // TODO YouTube / Youtuber
-  // Ice skating
-  // Roller Skating
-  // Skateboarding
-  // Running
-  // Marathon Running
-  // Jogging
-  // martial arts, boxing, karate, etc.
-  // kayaking (canoe-ing?)
-  // rafting
-  // boating
-  // motocross
+
+] //skatebord
+ //wine tasting
+ //craft beer
+ //microbrewery
+ //triathlon
+
+ //nordic walking
+ // Skateboarding
+ // Jogging
+  // martial arts
   // Nordic walking
-  // theater, opera, live music, live sports
+  // opera, live sports
   // going to concerts
-]

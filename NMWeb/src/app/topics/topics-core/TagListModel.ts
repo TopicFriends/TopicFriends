@@ -43,13 +43,36 @@ export class TagListModel {
 
 
   tagExists(option: TagEntry) {
-    return this.tags.some((tag) => {
-      return (
-        tag.tagEntry.name.toLowerCase() === option.name.toLowerCase()
-        ||
-        tag.tagEntry.id === option.id
-      )
-    });
+    try {
+      return this.tags.some((tag) => {
+        return (
+          /* FIXME make work when tagEntry does not exist
+
+          ERROR TypeError: Cannot read property 'name' of undefined
+              at main.2245ca65df090fc28755.bundle.js:1
+              at Array.some (<anonymous>)
+              at t.tagExists (main.2245ca65df090fc28755.bundle.js:1)
+              at t.currentUserHasInterest (main.2245ca65df090fc28755.bundle.js:1)
+              at t.sortFuncTags (main.2245ca65df090fc28755.bundle.js:1)
+              at Array.sort (<anonymous>)
+              at t.set [as relatedTopicLists] (main.2245ca65df090fc28755.bundle.js:1)
+              at Eo (main.2245ca65df090fc28755.bundle.js:1)
+              at main.2245ca65df090fc28755.bundle.js:1
+              at main.2245ca65df090fc28755.bundle.js:1
+          St @ main.2245ca65df090fc28755.bundle.js:1
+
+          *
+          * */
+          tag.tagEntry.name.toLowerCase() === option.name.toLowerCase()
+          ||
+          tag.tagEntry.id === option.id
+        )
+      });
+
+    } catch (e) {
+      console.error('FIXME tagExists - does not exist', option)
+      return false
+    }
   }
 
   /**

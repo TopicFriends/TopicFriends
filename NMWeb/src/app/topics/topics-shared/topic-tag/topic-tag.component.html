@@ -12,6 +12,11 @@
   <div style="display:table-cell; vertical-align: middle">
     <ng-template [ngIf]="tag.tagEntry.logo" >
       <a *ngIf="! isCustomClick" [routerLink]="'/topic/'+tag.tagEntry.id">
+<!--        <svg width="50" height="50 ">-->
+<!--          <use xlink:href="{{tag.tagEntry.logo}}">-->
+
+<!--          </use>-->
+<!--        </svg>-->
         <img style="width: 18px; height: 18px; vertical-align: middle"
              src="{{tag.tagEntry.logo}}" onerror="this.style.display='none';"/>&nbsp;
       </a>

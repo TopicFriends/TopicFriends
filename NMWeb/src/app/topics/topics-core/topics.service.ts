@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
-import { TagEntry } from '../topics-shared/tag-entry'
+import {
+  TagEntry,
+  TopicUrls,
+} from '../topics-shared/tag-entry'
 import {
   tag,
   topics,
 } from './topics.data'
 
 export type TopicId = string
+
+/* FIXME COPY PASTE for prod bug */
+function tagNoIcon(name: string, gitHubLink?: string, related?: TagEntry[], urls?: TopicUrls) {
+  return new TagEntry(name, null, null, related, urls);
+}
+
 
 @Injectable()
 export class TopicsService {
@@ -29,6 +38,7 @@ export class TopicsService {
   getTopicById(topicIdOrName: string, topicsArray?: TagEntry[]): TagEntry {
     topicsArray = topicsArray || this.topics
 
+    /* FIXME linear search; PERF */
     let retVal = topicsArray.find((it: TagEntry) => it.id === topicIdOrName)
     if ( ! retVal ) {
       retVal = topicsArray.find((it: TagEntry) => it.name === topicIdOrName)
@@ -36,6 +46,7 @@ export class TopicsService {
     if ( ! retVal ) {
       // console.error('getTopicById failed for topicIdOrName', topicIdOrName)
       // console.log(topicsArray)
+      return tagNoIcon(topicIdOrName)
     }
     // console.log('getTopicById', topicId, retVal)
     return retVal
@@ -82,13 +93,16 @@ export class TopicsService {
   }
 
   topicExistsById(topicId: string, topicsArray?) {
-    return !! this.getTopicById(topicId, topicsArray)
+    return !! ( this.mapTopicById.get(topicId) )
   }
 
   getTopicById2(topicIdOrName: TopicId | string) {
     let existingTopic = this.mapTopicById.get(topicIdOrName)
     if ( ! existingTopic ) {
       existingTopic = this.mapTopicByName.get(topicIdOrName)
+    }
+    if ( ! existingTopic ) {
+      return tagNoIcon(topicIdOrName)
     }
     // FIXME: create stub topic (if new db used with old app version)
     return existingTopic

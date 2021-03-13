@@ -18,7 +18,7 @@ doAll () {
   #ng build \
   ${scriptDir}/compileFirebaseRules.sh \
     && ng build --prod --aot \
-    && firebase deploy \
+    && firebase deploy --only hosting \
     && git tag deploy_`date -u +%Y-%m-%d__%H.%M.%SZ` \
     && git push --tags
 

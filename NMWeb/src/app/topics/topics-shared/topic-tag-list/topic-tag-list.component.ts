@@ -96,8 +96,10 @@ export class TopicTagListComponent implements OnInit {
   }
 
   currentUserHasInterest(interest: TopicInterest) {
-    return this.relatedTopicLists.symmetric.tagExists(interest.tagEntry)  ||
-    this.relatedTopicLists.supplyDemandMatch.tagExists(interest.tagEntry) ||
-    this.relatedTopicLists.supplyDemandSame.tagExists(interest.tagEntry)
+    return (
+      this.relatedTopicLists.symmetric.tagExists(interest.tagEntry)  ||
+      this.relatedTopicLists.supplyDemandMatch.tagExists(interest.tagEntry) ||
+      this.relatedTopicLists.supplyDemandSame.tagExists(interest.tagEntry)
+    )
   }
 }
