@@ -692,7 +692,7 @@ export const topics = [
   tag('Beach', 'generic/fun/umbrella-beach-solid' /* Playa */),
   tag('Beach Sports', 'generic/fun/umbrella-beach-solid' /* Playa */),
   tagNoIcon('Sports'),
-  'Travels',
+  tag('Travels', 'generic/fun/globe-americas-solid.svg'),
   tag('Beer', 'generic/fun/beer-solid.svg'),
   tag('Drinking Alcohol','generic/fun/beer-solid'),
   tag('Drinking Tea','generic/fun/mug-hot-solid.svg'),
@@ -704,21 +704,21 @@ export const topics = [
   tag('Language Exchanges','generic/fun/comments-solid.svg'),
   tag('Swimming', 'generic/fun/swimmer-solid'),
   tag('Tennis','generic/fun/tennis-ball-svgrepo-com.svg'),
-  'Padel' /* search terms: paddle paddel */,
-  'Paddle Tennis' /* search terms: paddle paddel */,
+  tag('Padel', 'generic/fun/tennis-ball-svgrepo-com.svg'),/* search terms: paddle paddel */
+  tag('Paddle Tennis', 'generic/fun/tennis-ball-svgrepo-com.svg'),/* search terms: paddle paddel */
   tag('Table Tennis', 'generic/fun/table-tennis-solid.svg'),/* search terms: ping pong */
-  'Football' /* search terms: soccer */,
-  'Basketball',
+  tag('Football', 'generic/fun/futbol-solid.svg'),/* search terms: soccer */
+  tag('Basketball','generic/fun/basketball-ball-solid.svg'),
   'Badminton',
   tag('Gym', 'generic/fun/dumbbell-solid.svg'),
-  'Socialising' /* search term: hanging out */,
-  tag('Playing Drums', 'generic/fun/drum-solid' /* TODO: search terms: drumming */)
-
+  tag('Socialising', 'generic/fun/user-friends-solid.svg'),/* search term: hanging out */
+  tag('Playing Drums', 'generic/fun/drum-solid'), /* TODO: search terms: drumming */
+  tag('Paintball','generic/fun/rifle-gun-svgrepo-com.svg'),
 
   // 'Outdoors',
   // 'Nature',
   // 'Museums',
-  // 'Paintball',
+  //archery
   // Airsoft gun
   // Playing Guitar
   // Playing Electric guitar
@@ -748,3 +748,5 @@ export const topics = [
  //wine tasting
  //craft beer
  //microbrewery
+ //triathlon
+ //nordic walking
