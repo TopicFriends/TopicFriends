@@ -723,7 +723,7 @@ export const topics = [
   tag('Archery','generic/fun/bullseye-solid.svg'),
   tag('Airsoft Gun','generic/fun/gun-svgrepo-com.svg'),
   tag('Playing Guitar','generic/fun/guitar-solid.svg'),
-  tag('Playing Electric guitar','generic/fun/electric-guitar-svgrepo-com.svg'),
+  tag('Playing Electric Guitar','generic/fun/electric-guitar-svgrepo-com.svg'),
   tag('Movies','generic/fun/snacks-popcorn-svgrepo-com.svg'),
   tag('Board Games','generic/fun/two-puzzle-pieces-svgrepo-com.svg' /* FIXME */),
   tag('Chess','generic/fun/chess-solid.svg'),
