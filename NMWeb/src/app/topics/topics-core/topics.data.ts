@@ -748,7 +748,7 @@ export const topics = [
   tag('Triathlon','generic/fun/triathlon-svgrepo-com.svg'),
   tag('Monocycle','generic/fun/unicycle-svgrepo-com.svg'), // unicycle
   tagNoIcon('Surfing'),
-  tagNoIcon('Stand up paddleboarding'),
+  tagNoIcon('Stand up paddleboarding'), /* FIXME uppercase */
   tagNoIcon('Windsurfing'),
   tagNoIcon('Kitesurfing'),
   tagNoIcon('Paragliding '),
@@ -777,5 +777,28 @@ export const topics = [
   tagNoIcon('Metal Music'),
   tagNoIcon('Hip-Hop Music'),
   tagNoIcon('Rock Music'),
-]
+  tagNoIcon('Missionary Work'),
+  tagNoIcon('Charities'),
+  tagNoIcon('Charity Work'),
+  tagNoIcon('Red Cross'),
+  tagNoIcon('Social Worker'),
+  tagNoIcon('Coaching'),
+  tagNoIcon('Life Coaching'),
+  tagNoIcon('Mentoring'),
+  tagNoIcon('Community Service'),
 
+
+]
+ //skatebord
+ //wine tasting
+ //craft beer
+ //microbrewery
+ //triathlon
+
+ //nordic walking
+ // Skateboarding
+ // Jogging
+  // martial arts
+  // Nordic walking
+  // opera, live sports
+  // going to concerts
