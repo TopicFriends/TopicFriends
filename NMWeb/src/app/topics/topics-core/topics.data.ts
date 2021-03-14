@@ -225,6 +225,8 @@ export const topics = [
   'Redis', 'CouchBase', 'CouchDB', tagLogoTipo('MongoDB'), 'Memcached', 'RabbitMQ',
   tagNoIcon('Mongoose'),
   'PrestaShop', 'WooCommerce', tagNoIcon('osCommerce'), 'Magento', 'Shopify', tagNoIcon('BigCommerce'),
+  tagNoIcon('E-Commerce'),
+  tagNoIcon('Merchandising'),
   'Travis CI',
   'CircleCI',
   tagNoIcon('Continuous Integration'),
@@ -407,6 +409,7 @@ export const topics = [
   tagNoIcon('Bioinformatics'), tag('Layouts', 'generic/palette-solid'),
   tag('Graphic Design', 'generic/palette-solid'), tag('Logo Design', 'generic/palette-solid'),
   tagNoIcon('Social Media'),
+  tagNoIcon('Social Media Marketing'),
   tagNoIcon('Web Design'),
   tagNoIcon('Web Analytics'),
 
@@ -680,39 +683,39 @@ export const topics = [
   // TODO: hiking, bicycle, motorcycles (Moi?, Jakob), travel, volleyball, beach volleyball, beer, party (parties), natural language learning, language exchanges, dating
 
   tag('Interpersonal Networking' /* to disambiguate from computer networking */, 'generic/users-solid') /* search terms: growing network */,
-  tag('Hiking', 'generic/fun/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
-  tag('Trekking', 'generic/fun/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
-  tag('Car trips', 'generic/fun/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
-  tag('Bicycle', 'generic/fun/bicycle-solid') /* search terms: bike */,
-  tag('Road Bicycle', 'generic/fun/bicycle-solid') /* search terms: bike */,
-  tag('Mountain Bicycle', 'generic/fun/bicycle-solid') /* search terms: bike */,
-  tag('Motorcycles', 'generic/fun/motorcycle-solid' /* search terms: bike, motorbike, bikers */),
-  tag('Volleyball', 'generic/fun/volleyball-ball-solid' /* search terms: voley, volei (Spanish) */),
-  tag('Beach Volleyball', 'generic/fun/volleyball-ball-solid' /* search terms: voley, volei (Spanish) */),
+  tag('Hiking','generic/fun/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
+  tag('Trekking','generic/fun/hiking-solid') /* search terms: trail, walking trips, mountain trekking */,
+  tag('Car trips','generic/fun/hiking-solid' /* FIXME: Vianey: put car  ico*/) /* search terms: trail, walking trips, mountain trekking */,
+  tag('Bicycle','generic/fun/bicycle-solid') /* search terms: bike */,
+  tag('Road Bicycle','generic/fun/bicycle-solid') /* search terms: bike */,
+  tag('Mountain Bicycle','generic/fun/bicycle-solid') /* search terms: bike */,
+  tag('Motorcycles','generic/fun/motorcycle-solid' /* search terms: bike, motorbike, bikers */),
+  tag('Volleyball','generic/fun/volleyball-ball-solid' /* search terms: voley, volei (Spanish) */),
+  tag('Beach Volleyball','generic/fun/volleyball-ball-solid' /* search terms: voley, volei (Spanish) */),
   tag('Beach', 'generic/fun/umbrella-beach-solid' /* Playa */),
   tag('Beach Sports', 'generic/fun/umbrella-beach-solid' /* Playa */),
   tagNoIcon('Sports'),
-  tag('Travels', 'generic/fun/globe-americas-solid.svg'),
-  tag('Beer', 'generic/fun/beer-solid.svg'),
+  tag('Travels','generic/fun/globe-americas-solid.svg'),
+  tag('Beer','generic/fun/beer-solid.svg'),
   tag('Drinking Alcohol','generic/fun/beer-solid'),
   tag('Drinking Tea','generic/fun/mug-hot-solid.svg'),
-  tag('Drinking Coffee', 'generic/fun/coffee-solid.svg'),
-  tag('Eat lunch together', 'generic/fun/utensils-solid'),
+  tag('Drinking Coffee','generic/fun/coffee-solid.svg'),
+  tag('Eat lunch together','generic/fun/utensils-solid'),
   tag('Eat breakfast together','generic/fun/bread-slice-solid'),
   tag('Eat dinner together','generic/fun/utensils-solid.svg'),
   tag('Parties','generic/fun/glass-cheers-solid.svg'),
   tag('Language Exchanges','generic/fun/comments-solid.svg'),
-  tag('Swimming', 'generic/fun/swimmer-solid'),
+  tag('Swimming','generic/fun/swimmer-solid'),
   tag('Tennis','generic/fun/tennis-ball-svgrepo-com.svg'),
-  tag('Padel', 'generic/fun/tennis-ball-svgrepo-com.svg'),/* search terms: paddle paddel */
-  tag('Paddle Tennis', 'generic/fun/tennis-ball-svgrepo-com.svg'),/* search terms: paddle paddel */
-  tag('Table Tennis', 'generic/fun/table-tennis-solid.svg'),/* search terms: ping pong */
+  tag('Padel','generic/fun/tennis-ball-svgrepo-com.svg'),/* search terms: paddle paddel */
+  tag('Paddle Tennis','generic/fun/tennis-ball-svgrepo-com.svg'),/* search terms: paddle paddel */
+  tag('Table Tennis','generic/fun/table-tennis-solid.svg'),/* search terms: ping pong */
   tag('Football', 'generic/fun/futbol-solid.svg'),/* search terms: soccer */
   tag('Basketball','generic/fun/basketball-ball-solid.svg'),
   'Badminton',
   tag('Gym', 'generic/fun/dumbbell-solid.svg'),
-  tag('Socialising', 'generic/fun/user-friends-solid.svg'),/* search term: hanging out */
-  tag('Playing Drums', 'generic/fun/drum-solid'), /* TODO: search terms: drumming */
+  tag('Socialising','generic/fun/user-friends-solid.svg'),/* search term: hanging out */
+  tag('Playing Drums','generic/fun/drum-solid'), /* TODO: search terms: drumming */
   tag('Paintball','generic/fun/rifle-gun-svgrepo-com.svg'),
   tag( 'Outdoors','generic/fun/cloud-sun-solid.svg'),
   tag('Nature','generic/fun/tree-solid.svg'),
@@ -720,9 +723,9 @@ export const topics = [
   tag('Archery','generic/fun/bullseye-solid.svg'),
   tag('Airsoft Gun','generic/fun/gun-svgrepo-com.svg'),
   tag('Playing Guitar','generic/fun/guitar-solid.svg'),
-  tag('Playing Electric guitar','generic/fun/electric-guitar-svgrepo-com.svg'),
+  tag('Playing Electric Guitar','generic/fun/electric-guitar-svgrepo-com.svg'),
   tag('Movies','generic/fun/snacks-popcorn-svgrepo-com.svg'),
-  tag('Board Games','generic/fun/two-puzzle-pieces-svgrepo-com.svg'),
+  tag('Board Games','generic/fun/two-puzzle-pieces-svgrepo-com.svg' /* FIXME */),
   tag('Chess','generic/fun/chess-solid.svg'),
   tag('Yoga','generic/fun/man-on-yoga-posture-of-relaxation-svgrepo-com.svg'),
   tag('Skiing','generic/fun/skiing-solid.svg'),
@@ -731,16 +734,49 @@ export const topics = [
   tag('Youtuber','generic/fun/youtube-brands.svg'),
   tag('Ice Skating','generic/fun/skating-solid.svg'),
   tag('Roller Skating','generic/fun/roller-skate-skate-svgrepo-com.svg'),
-  tag('Running', 'generic/fun/running-solid.svg'),
+  tag('Running','generic/fun/running-solid.svg'),
   tag('Marathon Running','generic/fun/marathon-svgrepo-com.svg'),
   tag('Boxing','generic/fun/boxing-svgrepo-com.svg'),
-  tag('Karate', 'generic/fun/karate-svgrepo-com.svg'),
-  tag('Kayaking', 'generic/fun/kayak-svgrepo-com.svg'),
-  tag('Rafting', 'generic/fun/rafting-fun-recreation-play-svgrepo-com.svg'),
-  tag('Boating', 'generic/fun/yachting-svgrepo-com.svg'),
-  tag('Motocross', 'generic/fun/motocross-svgrepo-com.svg'),
-  tag('Theater', 'generic/fun/theater-svgrepo-com.svg'),
-  // tag('')
+  tag('Karate','generic/fun/karate-svgrepo-com.svg'),
+  tag('Kayaking','generic/fun/kayak-svgrepo-com.svg'),
+  tag('Rafting','generic/fun/rafting-fun-recreation-play-svgrepo-com.svg'),
+  tag('Boating','generic/fun/yachting-svgrepo-com.svg'),
+  tag('Motocross','generic/fun/motocross-svgrepo-com.svg'),
+  tag('Theater','generic/fun/theater-svgrepo-com.svg' /* search keyword: theatre (other spelling) */),
+  tag('Skateboarding ','generic/fun/skateboard-svgrepo-com.svg'),
+  tag('Wine Tasting','generic/fun/wine-bottle-svgrepo-com.svg'),
+  tag('Triathlon','generic/fun/triathlon-svgrepo-com.svg'),
+  tag('Monocycle','generic/fun/unicycle-svgrepo-com.svg'), // unicycle
+  tagNoIcon('Surfing'),
+  tagNoIcon('Stand up paddleboarding'), /* FIXME uppercase */
+  tagNoIcon('Windsurfing'),
+  tagNoIcon('Kitesurfing'),
+  tagNoIcon('Paragliding '),
+  tagNoIcon('Cooking '),
+  tagNoIcon('Business Lunch '),
+  tagNoIcon('Mountain Climbing'),
+  tagNoIcon('Camping'),
+  tagNoIcon('Digital Nomading'),
+  tagNoIcon('Video Games'),
+  tagNoIcon('Plants Parents'), // FIXME: is such a name?
+  tagNoIcon('Gardening '),
+  tagNoIcon('Social Dance '),
+  tagNoIcon('CouchSurfing '),
+  tagNoIcon('Nomading'),
+  tagNoIcon('Chilling'),
+  tagNoIcon('Beach Day'),
+  tagNoIcon('Tinkering/Mechanics'),
+  tagNoIcon('Nordic Walking'),
+  tagNoIcon('Jogging'),
+  tagNoIcon('Martial Arts'),
+  tagNoIcon('Craft Beer'),
+  tagNoIcon('Microbrewery'),
+  tagNoIcon('Live Sport'),
+  tagNoIcon('Going to Concerts'),
+  tagNoIcon('Do It Yourself (DIY)'),
+  tag('Metal Music', 'generic/fun/heavy-metal-sharpen-guitar-like-an-insect-svgrepo-com.svg'),
+  tagNoIcon('Hip-Hop Music'),
+  tag('Rock Music', 'generic/fun/heavy-metal-concert-svgrepo-com.svg'),
   tagNoIcon('Missionary Work'),
   tagNoIcon('Charities'),
   tagNoIcon('Charity Work'),
@@ -750,9 +786,8 @@ export const topics = [
   tagNoIcon('Life Coaching'),
   tagNoIcon('Mentoring'),
   tagNoIcon('Community Service'),
-
-
-] //skatebord
+]
+ //skatebord
  //wine tasting
  //craft beer
  //microbrewery
