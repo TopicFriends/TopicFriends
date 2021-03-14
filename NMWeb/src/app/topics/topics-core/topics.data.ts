@@ -774,9 +774,9 @@ export const topics = [
   tagNoIcon('Live Sport'),
   tagNoIcon('Going to Concerts'),
   tagNoIcon('Do It Yourself (DIY)'),
-  tagNoIcon('Metal Music'),
+  tag('Metal Music', 'generic/fun/heavy-metal-sharpen-guitar-like-an-insect-svgrepo-com.svg'),
   tagNoIcon('Hip-Hop Music'),
-  tagNoIcon('Rock Music'),
+  tag('Rock Music', 'generic/fun/heavy-metal-concert-svgrepo-com.svg'),
   tagNoIcon('Missionary Work'),
   tagNoIcon('Charities'),
   tagNoIcon('Charity Work'),
@@ -786,8 +786,6 @@ export const topics = [
   tagNoIcon('Life Coaching'),
   tagNoIcon('Mentoring'),
   tagNoIcon('Community Service'),
-
-
 ]
  //skatebord
  //wine tasting
