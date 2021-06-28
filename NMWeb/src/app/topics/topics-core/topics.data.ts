@@ -486,7 +486,8 @@ export const topics = [
   tagNoIcon('CSS Grid Layout'),
   tag('Economy', 'generic/business--chart-line'),
   tag('Economics', 'generic/business--chart-line'),
-  tagNoIcon('Underscore_Test'),
+  tag('Macroeconomics', 'generic/business--chart-line'),
+  // tagNoIcon('Underscore_Test'),
   tag('R Language', 'r-lang'),
   'nginx',
   'WebAssembly' /* TODO: short name: Wasm */,
@@ -498,7 +499,10 @@ export const topics = [
   tagNoIcon('Data Structures'),
   // TODO: Codility, Leetcode
   tagNoIcon('Computer Networks'),
+  tagNoIcon('Mobile networks Networks'),
+  tagNoIcon('Telecommunications'),
   tagNoIcon('Green Economy'),
+  tagNoIcon('Ecology'),
   tagNoIcon('CleanTech'),
   tagNoIcon('Windows Phone'),
   tagNoIcon('Windows Forms'),
@@ -531,6 +535,10 @@ export const topics = [
   tag('FIWARE', null, 'https://www.fiware.org/'),
   tag('Smart City', null),
   tag('Sustainable Development', null),
+  tag('Sustainability', null),
+  tag('Renewable Energy', null),
+  tag('Solar Power', null),
+  tag('Wind Power', null),
   tag('Apache Thrift', null, 'https://thrift.apache.org/'),
   tag('OpenID', null, 'http://openid.net/'),
   tag('OpenID Connect', null, 'http://openid.net/connect/'),
@@ -732,6 +740,7 @@ export const topics = [
   tag('Music','generic/fun/music-solid.svg'),
   tag('Live Music','generic/fun/dancer-with-music-svgrepo-com.svg'),
   tag('Youtuber','generic/fun/youtube-brands.svg'),
+  tag('Instagram', null),
   tag('Ice Skating','generic/fun/skating-solid.svg'),
   tag('Roller Skating','generic/fun/roller-skate-skate-svgrepo-com.svg'),
   tag('Running','generic/fun/running-solid.svg'),
@@ -746,6 +755,7 @@ export const topics = [
   tag('Skateboarding ','generic/fun/skateboard-svgrepo-com.svg'),
   tag('Wine Tasting','generic/fun/wine-bottle-svgrepo-com.svg'),
   tag('Triathlon','generic/fun/triathlon-svgrepo-com.svg'),
+  tagNoIcon('Decathlon'),
   tag('Monocycle','generic/fun/unicycle-svgrepo-com.svg'), // unicycle
   tagNoIcon('Surfing'),
   tagNoIcon('Stand up paddleboarding'), /* FIXME uppercase */
@@ -791,9 +801,7 @@ export const topics = [
  //wine tasting
  //craft beer
  //microbrewery
- //triathlon
 
- //nordic walking
  // Skateboarding
  // Jogging
   // martial arts
