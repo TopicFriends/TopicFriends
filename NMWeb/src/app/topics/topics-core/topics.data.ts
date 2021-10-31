@@ -808,3 +808,12 @@ export const topics = [
   // Nordic walking
   // opera, live sports
   // going to concerts
+
+
+// TODO: Bulma (web framework) https://bulma.io/
+// SkateJS
+// Lit / lit-element
+// GreenSock
+// Animated SVG
+// Web Animations API https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API
+// SVG-OMG, SVGO
