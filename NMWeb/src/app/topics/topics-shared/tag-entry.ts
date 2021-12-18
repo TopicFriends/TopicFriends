@@ -46,6 +46,10 @@ export class TagEntry {
     public related?: TagEntry[],
     public urls?: TopicUrls,
   ) {
+    if ( name.trim() !== name ) {
+      window.alert('name is not trimmed (has spaces): ' + name)
+      name = name.trim()
+    }
     this.id = name
       .replace('#', '_Sharp')
       .replace(/^\./, 'Dot_')
